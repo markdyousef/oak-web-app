@@ -1,0 +1,11 @@
+{
+    "parser": 'babel-eslint',
+    "extends": 'airbnb',
+    "rules": {
+        max-len: 0,
+        comma-dangle: ['error', 'never'],
+        indent: ['error', 4],
+        react/jsx-indent-props: ['error', 4],
+        react/jsx-indent: ['error', 4]
+    }
+}

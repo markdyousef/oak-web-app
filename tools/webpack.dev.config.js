@@ -1,0 +1,31 @@
+const path = require('path');
+
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+const config = require('./webpack.base.config')({
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client',
+        path.join(process.cwd(), 'src/js/main.js')
+    ],
+
+    output: {
+        filename: '[name].js',
+        chunkFilename: '[name].chunk.js'
+    },
+
+    devtool: 'inline-source-map',
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: true
+        })
+    ]
+});
+
+module.exports = config;
