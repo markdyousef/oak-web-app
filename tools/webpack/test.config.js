@@ -1,9 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const modules = [
-    'app',
+    'src',
     'node_modules'
 ];
 
@@ -17,23 +16,7 @@ module.exports = {
         filename: 'bundle.[chunkhash].js'
     },
 
-    debug: false,
-    noInfo: true,
-    target: 'web',
-    progress: true,
     devtool: 'inline-source-map',
-
-    stats: {
-        colors: true,
-        reasons: true,
-        hash: false,
-        version: false,
-        timings: true,
-        chunks: false,
-        chunkModules: false,
-        cached: false,
-        cachedAssets: false
-    },
 
     module: {
         // Some libraries don't like being run through babel.
@@ -44,15 +27,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.html$/,
-                loader: 'html-loader'
+                loader: 'file-loader?name=[name].[ext]'
             },
             {
                 test: /\.json$/,
                 loader: 'json-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'null-loader'
             },
 
             // sinon.js--aliased for enzyme--expects/requires global vars.
@@ -64,10 +43,15 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 exclude: [/node_modules/]
             },
             {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                // inline base64 URLs for <=8k images, direct URLs for the rest
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=8192'
             }
@@ -75,20 +59,15 @@ module.exports = {
     },
 
     plugins: [
-        // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-        // inside your code for any environment checks; UglifyJS will automatically
-        // drop any unreachable code.
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
-        }),
-        new HtmlWebpackPlugin({
-            template: 'src/index.html',
-            inject: true
         })
     ],
 
+    // Some node_modules pull in Node-specific dependencies.
+    // Since we're running in a browser we have to stub them out.
     node: {
         fs: 'empty',
         child_process: 'empty',
@@ -98,7 +77,7 @@ module.exports = {
 
     // required for enzyme to work properly
     externals: {
-        jsdom: 'window',
+        // jsdom: 'window',
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window'

@@ -10,7 +10,6 @@ module.exports = (config) => {
 
         autoWatch: false,
         singleRun: true,
-        colors: true,
 
         files: [
             './tools/test-helper.js',

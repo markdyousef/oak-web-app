@@ -1,5 +1,4 @@
 const path = require('path');
-
 const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -8,19 +7,16 @@ const isDev = process.env.NODE_ENV !== 'production';
 const config = (options) => ({
     entry: options.entry,
 
-    output: Object.assign({
+    output: {
+        filename: 'bundle.js',
         path: path.join(process.cwd(), 'build'),
         publicPath: '/'
-    }, options.output),
+    },
 
     debug: isDev,
-
     devtool: options.devtool,
-
     noInfo: true,
-
     target: 'web',
-
     progress: true,
 
     stats: {
@@ -48,12 +44,18 @@ const config = (options) => ({
         loaders: [
             {
                 test: /\.html$/,
-                loader: 'html-loader'
+                // loader: 'html-loader'
+                loader: 'file-loader?name=[name].[ext]'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                // exclude: /node_modules/,
+                exclude: /node_modules/,
+                // loaders: ["react-hot", "babel-loader"],
                 query: options.babelQuery
             },
             {
