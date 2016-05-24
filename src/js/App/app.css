@@ -1,3 +1,8 @@
 body {
   font-family: 'Helvetica';
+  background: #ddd;
+}
+
+.container {
+    width: 100%;
 }

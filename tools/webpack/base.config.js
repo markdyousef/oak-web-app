@@ -2,8 +2,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 
-const isDebug = !(process.argv.includes('--release') || process.argv.includes('-r'));
-const isVerbose = process.argv.includes('--verbose') || process.argv.includes('-v');
+const isDev = process.env.NODE_ENV !== 'production';
 
 
 const config = (options) => ({
@@ -14,7 +13,7 @@ const config = (options) => ({
         publicPath: '/'
     }, options.output),
 
-    debug: isDebug,
+    debug: isDev,
 
     devtool: options.devtool,
 
@@ -26,14 +25,14 @@ const config = (options) => ({
 
     stats: {
         colors: true,
-        reasons: isDebug,
-        hash: isVerbose,
-        version: isVerbose,
+        reasons: isDev,
+        hash: false,
+        version: false,
         timings: true,
-        chunks: isVerbose,
-        chunkModules: isVerbose,
-        cached: isVerbose,
-        cachedAssets: isVerbose
+        chunks: false,
+        chunkModules: false,
+        cached: false,
+        cachedAssets: false
     },
 
     plugins: options.plugins.concat([

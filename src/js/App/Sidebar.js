@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 
@@ -6,6 +6,10 @@ class Sidebar extends Component {
     constructor() {
         super();
         this.state = {};
+    }
+
+    componentDidMount() {
+        this.props.onMount();
     }
 
     render() {
@@ -39,19 +43,24 @@ class Sidebar extends Component {
             }
         ];
 
+        const { isActive } = this.props;
+        const className = isActive ? 'active-list' : 'inactive-list';
+
         return (
-            <div>
-                <h2>Categories6</h2>
-                <ul>
-                    {data.map((category, index) => (
-                        <li key={index}>
-                            <Link to={`/category/${category.name}`}>{category.name}</Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <ul className={className}>
+                {data.map((category, index) => (
+                    <li key={index}>
+                        <Link to={`/category/${category.name}`}>{category.name}</Link>
+                    </li>
+                ))}
+            </ul>
         );
     }
 }
+
+Sidebar.propTypes = {
+    onMount: PropTypes.func.isRequired,
+    isActive: PropTypes.bool
+};
 
 export default Sidebar;

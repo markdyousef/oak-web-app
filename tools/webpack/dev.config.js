@@ -13,7 +13,7 @@ const config = require('./base.config')({
 
     output: {
         filename: '[name].js'
-        //chunkFilename: '[name].chunk.js'
+        // chunkFilename: '[name].chunk.js'
     },
 
     devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
@@ -28,7 +28,7 @@ const config = require('./base.config')({
     ],
 
     babelQuery: {
-        presets: ['es2015', 'react', 'react-hmre']
+        presets: ['react-hmre']
     }
 });
 
