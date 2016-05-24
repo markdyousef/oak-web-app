@@ -11,12 +11,14 @@ const config = (options) => ({
 
     output: Object.assign({
         path: path.join(process.cwd(), 'build'),
-        publicPath: './'
+        publicPath: '/'
     }, options.output),
 
-    // debug: isDebug,
+    debug: isDebug,
 
     devtool: options.devtool,
+
+    noInfo: true,
 
     target: 'web',
 
@@ -52,13 +54,17 @@ const config = (options) => ({
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                // exclude: /node_modules/,
+                query: options.babelQuery
             },
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'
+            },
+            {
+                // inline base64 URLs for <=8k images, direct URLs for the rest
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=8192'
             }
         ]
     }

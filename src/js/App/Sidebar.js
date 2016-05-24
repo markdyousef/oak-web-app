@@ -41,7 +41,7 @@ class Sidebar extends Component {
 
         return (
             <div>
-                <h2>Categories2</h2>
+                <h2>Categories6</h2>
                 <ul>
                     {data.map((category, index) => (
                         <li key={index}>

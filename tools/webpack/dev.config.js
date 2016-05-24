@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const config = require('./webpack.base.config')({
+const config = require('./base.config')({
     entry: [
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client',
@@ -12,11 +12,11 @@ const config = require('./webpack.base.config')({
     ],
 
     output: {
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js'
+        filename: '[name].js'
+        //chunkFilename: '[name].chunk.js'
     },
 
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -25,7 +25,11 @@ const config = require('./webpack.base.config')({
             template: 'src/index.html',
             inject: true
         })
-    ]
+    ],
+
+    babelQuery: {
+        presets: ['es2015', 'react', 'react-hmre']
+    }
 });
 
 module.exports = config;

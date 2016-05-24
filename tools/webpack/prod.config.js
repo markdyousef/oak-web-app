@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const config = require('./webpack.base.config')({
+const config = require('./base.config')({
     entry: [
         path.join(process.cwd(), 'src/js/main.js')
     ],

@@ -3,12 +3,11 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-// const webpackConfig = require('./webpack.config');
 const isDev = process.env.NODE_ENV !== 'production';
 
 const webpackConfig = isDev
-  ? require('./webpack.dev.config')
-  : require('./webpack.prod.config');
+  ? require('./webpack/dev.config')
+  : require('./webpack/prod.config');
 
 const bs = browserSync.create();
 const bundler = webpack(webpackConfig);
@@ -23,7 +22,9 @@ bs.init({
 
     middleware: [
         webpackDevMiddleware(bundler, {
+            noInfo: true,
             publicPath: webpackConfig.output.publicPath,
+            silent: true,
             stats: {
                 colors: true
             }
