@@ -43,11 +43,11 @@ class Sidebar extends Component {
             }
         ];
 
-        const { isActive } = this.props;
+        const { isActive, onClick } = this.props;
         const className = isActive ? 'active-list' : 'inactive-list';
 
         return (
-            <ul className={className}>
+            <ul className={className} onClick={onClick}>
                 {data.map((category, index) => (
                     <li key={index}>
                         <Link to={`/category/${category.name}`}>{category.name}</Link>
@@ -60,7 +60,8 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
     onMount: PropTypes.func.isRequired,
-    isActive: PropTypes.bool
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func
 };
 
 export default Sidebar;
