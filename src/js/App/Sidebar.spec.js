@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
 
-import React from 'react';
+/* import React from 'react';
 
 // Once we set up Karma to run our tests through webpack
 // we will no longer need to have these long relative paths
@@ -78,4 +78,4 @@ describe('(Component) Sidebar', () => {
             });
         });
     });
-});
+});*/

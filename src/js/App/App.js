@@ -22,7 +22,7 @@ class App extends Component {
             <div style={styles}>
                 <h1 className="welcome-header">Welcome to testing React!</h1>
                 <div className="Sidebar">
-                    {sidebar || <Sidebar />}
+                    {sidebar || <Sidebar onMount={() => {}} isActive />}
                 </div>
                 <div className="Content">
                     {content || <Index />}
