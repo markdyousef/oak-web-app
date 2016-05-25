@@ -1,5 +1,8 @@
 process.env.NODE_ENV = 'test';
 
+
+// Prevent mocha from interpreting css imported files
+
 function noop() {
     return null;
 }
@@ -15,6 +18,7 @@ require.extensions['.gif'] = noop;
 
 
 // jsdom
+
 import jsdom from 'jsdom';
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
 const win = doc.defaultView;
