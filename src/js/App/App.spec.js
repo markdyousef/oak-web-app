@@ -1,17 +1,9 @@
 /* eslint-disable no-undef */
 
-describe('App', () => {
-    it('Should be true', () => {
-        expect(true).to.equal(true);
-    });
-});
-
-
-// Added enzyme
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
+
 
 describe('App', () => {
     const wrapper = shallow(<App />);

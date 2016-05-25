@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Sidebar from './Sidebar.js';
 import Index from './AppIndex.js';
-import css from './app.css';
+import css from './App.css';
 
 const styles = {
     height: '100%',

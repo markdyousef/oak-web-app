@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 import { shallow, mount } from 'enzyme';
 
 
-describe('Sidebar 0', () => {
+describe('Sidebar', () => {
     it('calls componentDidMount', () => {
         sinon.spy(Sidebar.prototype, 'componentDidMount');
 
@@ -41,6 +41,20 @@ describe('Sidebar 0', () => {
         expect(wrapper.type()).to.eql('ul');
     });
 
+    it('has button that fires a dom event for click', (done) => {
+        function handleClick() {
+            done();
+        }
+
+        const detachedComp = TestUtils.renderIntoDocument(<Sidebar onMount={() => {}} onClick={handleClick} />);
+        const button = TestUtils.findRenderedDOMComponentWithTag(detachedComp, 'ul');
+        const buttonNode = findDOMNode(button);
+
+        expect(buttonNode).to.exist;
+
+        TestUtils.Simulate.click(buttonNode);
+    });
+
     describe('when active...', () => {
         const wrapper = shallow(
             // just passing isActive is an alias for true
@@ -58,24 +72,5 @@ describe('Sidebar 0', () => {
         it('should render with className inactive-list', () => {
             expect(wrapper.prop('className')).to.eql('inactive-list');
         });
-    });
-});
-
-
-// Test for jsdom
-
-describe('Sidebar 1', () => {
-    it('has button that fires a dom event for click', (done) => {
-        function handleClick() {
-            done();
-        }
-
-        const detachedComp = TestUtils.renderIntoDocument(<Sidebar onMount={() => {}} onClick={handleClick} />);
-        const button = TestUtils.findRenderedDOMComponentWithTag(detachedComp, 'ul');
-        const buttonNode = findDOMNode(button);
-
-        expect(buttonNode).to.exist;
-
-        TestUtils.Simulate.click(buttonNode);
     });
 });

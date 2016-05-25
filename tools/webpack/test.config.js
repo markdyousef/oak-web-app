@@ -71,7 +71,7 @@ module.exports = {
 
     // required for enzyme to work properly
     externals: {
-        // jsdom: 'window',
+        jsdom: 'window',
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window'
