@@ -9,6 +9,10 @@ const styles = {
 };
 
 class App extends Component {
+    /* static propTypes = {
+        kind: React.PropTypes.oneOf(['primary', 'warning']).isRequired
+    }*/
+
     constructor() {
         super();
         this.state = {};

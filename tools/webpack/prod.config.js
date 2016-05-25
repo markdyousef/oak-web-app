@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const postcssFocus = require('postcss-focus');
-const cssnext = require('postcss-cssnext');
+const postcssCssNext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 
 
@@ -13,7 +13,7 @@ const config = require('./base.config')({
 
     postcssPlugins: [
         postcssFocus(),
-        cssnext({
+        postcssCssNext({
             browsers: ['last 2 versions', 'IE > 9']
         }),
         postcssReporter({

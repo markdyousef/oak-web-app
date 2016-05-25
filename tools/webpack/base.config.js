@@ -60,7 +60,13 @@ const config = (options) => ({
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'
+                // loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'
+                loaders: [
+                    'style',
+                    // 'css?modules&localIdentName=[local]---[hash:base64:5]',
+                    'css-loader?modules&importLoaders=1',
+                    'postcss'
+                ]
             },
             {
                 // inline base64 URLs for <=8k images, direct URLs for the rest
