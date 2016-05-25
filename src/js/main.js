@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { browserHistory, Router, Route, Link } from 'react-router';
 
 // Let webpack create the html file in the build folder
-require('../index.html');
+import '../index.html';
 
 class Category extends Component {
     constructor() {

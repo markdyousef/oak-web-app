@@ -60,7 +60,7 @@ const config = (options) => ({
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'
             },
             {
                 // inline base64 URLs for <=8k images, direct URLs for the rest
@@ -68,7 +68,9 @@ const config = (options) => ({
                 loader: 'url-loader?limit=8192'
             }
         ]
-    }
+    },
+
+    postcss: () => options.postcssPlugins
 });
 
 module.exports = config;

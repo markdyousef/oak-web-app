@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from './Sidebar.js';
 import Index from './AppIndex.js';
-
-// require('./app.css');
+import css from './app.css';
 
 const styles = {
     height: '100%',
@@ -19,7 +18,7 @@ class App extends Component {
         const { content, sidebar } = this.props;
 
         return (
-            <div style={styles}>
+            <div style={styles} className={css.container}>
                 <h1 className="welcome-header">Welcome to testing React!</h1>
                 <div className="Sidebar">
                     {sidebar || <Sidebar onMount={() => {}} isActive />}

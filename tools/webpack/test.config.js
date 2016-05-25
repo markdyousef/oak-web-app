@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
+
 const modules = [
     'src',
     'node_modules'
@@ -17,6 +18,8 @@ module.exports = {
     },
 
     devtool: 'inline-source-map',
+
+    target: 'node',
 
     module: {
         // Some libraries don't like being run through babel.
@@ -45,15 +48,6 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: [/node_modules/]
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
-                // inline base64 URLs for <=8k images, direct URLs for the rest
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader?limit=8192'
             }
         ]
     },
