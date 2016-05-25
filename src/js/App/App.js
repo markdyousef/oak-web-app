@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Sidebar from './Sidebar.js';
 import Index from './AppIndex.js';
 import css from './app.css';
@@ -9,9 +9,10 @@ const styles = {
 };
 
 class App extends Component {
-    /* static propTypes = {
-        kind: React.PropTypes.oneOf(['primary', 'warning']).isRequired
-    }*/
+    static propTypes = {
+        content: PropTypes.object,
+        sidebar: PropTypes.object
+    }
 
     constructor() {
         super();
