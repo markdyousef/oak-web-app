@@ -3,10 +3,8 @@
 
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
 import Sidebar from './Sidebar';
 
-import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
 
 

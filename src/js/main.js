@@ -89,9 +89,6 @@ class Item extends Component {
 
 const app = document.getElementById('app');
 
-console.log('Main:');
-console.log(app);
-
 const routes = (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
