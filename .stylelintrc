@@ -1,6 +1,7 @@
 {
     "extends": "stylelint-config-standard",
     "rules": {
-        "string-quotes": "single"
+        "string-quotes": "single",
+        "indentation": 4
     }
 }

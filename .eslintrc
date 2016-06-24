@@ -15,10 +15,12 @@
         "sourceType": "module"
     },
     "rules": {
-        max-len: 0,
-        comma-dangle: ['error', 'never'],
-        indent: ['error', 4],
-        react/jsx-indent-props: ['error', 4],
-        react/jsx-indent: ['error', 4]
+        "max-len": 0,
+        "comma-dangle": ['error', 'never'],
+        "indent": ['error', 4],
+        "react/jsx-indent-props": ['error', 4],
+        "react/jsx-indent": ['error', 4],
+        "arrow-body-style": ['error', 'always'],
+        "prefer-template": 0
     }
 }
