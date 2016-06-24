@@ -1,10 +1,16 @@
 import App from './App/App';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { browserHistory, Router, Route, Link } from 'react-router';
+import { useRouterHistory, Router, Route, Link } from 'react-router';
+import { createHashHistory } from 'history';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
+
+const history = useRouterHistory(createHashHistory)({
+    queryKey: false
+});
+
 
 class Category extends Component {
     constructor() {
@@ -90,7 +96,7 @@ class Item extends Component {
 const app = document.getElementById('app');
 
 const routes = (
-    <Router history={browserHistory}>
+    <Router history={history}>
         <Route path="/" component={App}>
             <Route path="category/:category" components={{ content: Category, sidebar: CategorySidebar }}>
                 <Route path=":item" component={Item} />
