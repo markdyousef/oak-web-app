@@ -1,5 +1,6 @@
 const browserSync = require('browser-sync');
 const webpack = require('webpack');
+const historyApiFallback = require('connect-history-api-fallback');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -21,6 +22,7 @@ bs.init({
     logFileChanges: false,
 
     middleware: [
+        historyApiFallback(),
         webpackDevMiddleware(bundler, {
             noInfo: true,
             publicPath: webpackConfig.output.publicPath,
