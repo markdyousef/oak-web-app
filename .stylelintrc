@@ -2,6 +2,14 @@
     "extends": "stylelint-config-standard",
     "rules": {
         "string-quotes": "single",
-        "indentation": 4
+        "indentation": 4,
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": [
+                    "global"
+                ]
+            }
+        ]
     }
 }
