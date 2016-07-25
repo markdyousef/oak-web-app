@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 
 const config = (options) => ({
-    entry: options.entry,
+    entry: ['whatwg-fetch'].concat(options.entry),
 
     output: {
         filename: 'bundle.js',
