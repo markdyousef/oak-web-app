@@ -1,4 +1,4 @@
-# Clai React Boilerplate
+# Project
 
 Start local server with browser sync:
 
@@ -11,3 +11,29 @@ Run tests:
 Build project for production:
 
     npm run build
+
+
+## Scripts
+Run linter:
+
+    npm run lint
+
+Run tests:
+
+    npm run test
+
+Run builder:
+
+    npm run build
+
+Remove build folder:
+
+    npm run clean
+
+Start dev server:
+
+    npm run start
+
+Check for updates to dependencies:
+
+    npm run check
