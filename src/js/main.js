@@ -2,6 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { useRouterHistory, Router, Route } from 'react-router';
 import { createHashHistory } from 'history';
+import { Provider } from 'react-redux';
+
+import initStore from './redux/store';
+const store = initStore();
 
 // Components / Containers
 import App from './components/App/App';
@@ -16,13 +20,15 @@ const history = useRouterHistory(createHashHistory)({
 
 
 const routes = (
-    <Router history={history}>
-        <Route path="/" component={App}>
-            <Route path="category/:category" components={{ content: Category, sidebar: CategorySidebar }}>
-                <Route path=":item" component={Item} />
+    <Provider store={store}>
+        <Router history={history}>
+            <Route path="/" component={App}>
+                <Route path="category/:category" components={{ content: Category, sidebar: CategorySidebar }}>
+                    <Route path=":item" component={Item} />
+                </Route>
             </Route>
-        </Route>
-    </Router>
+        </Router>
+    </Provider>
 );
 
 render(routes, document.getElementById('app'));
