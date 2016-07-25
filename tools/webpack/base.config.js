@@ -59,11 +59,21 @@ const config = (options) => ({
                 query: options.babelQuery
             },
             {
+                // Every css file not in the src folder
                 test: /\.css$/,
-                // loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'
+                exclude: path.join(process.cwd(), 'src'),
                 loaders: [
                     'style',
-                    // 'css?modules&localIdentName=[local]---[hash:base64:5]',
+                    'css?sourceMap&minimize',
+                    'postcss'
+                ]
+            },
+            {
+                // Every css file not in the node_modules folder
+                test: /\.css$/,
+                exclude: path.join(process.cwd(), 'node_modules'),
+                loaders: [
+                    'style',
                     'css-loader?modules&importLoaders=1',
                     'postcss'
                 ]

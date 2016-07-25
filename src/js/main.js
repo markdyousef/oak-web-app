@@ -13,6 +13,8 @@ import { Category, CategorySidebar, Item } from './components/Other/Other';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
+import '../css/reset.css';
+import '../css/app.css';
 
 const history = useRouterHistory(createHashHistory)({
     queryKey: false
