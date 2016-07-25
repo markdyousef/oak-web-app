@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { useRouterHistory, Router, Route } from 'react-router';
+import { useRouterHistory, Router, Route, IndexRoute } from 'react-router';
 import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 
@@ -9,7 +9,7 @@ const store = initStore();
 
 // Components / Containers
 import App from './components/App/App';
-import { Category, CategorySidebar, Item } from './components/Other/Other';
+import Home from './components/Home/Home';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -25,9 +25,7 @@ const routes = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App}>
-                <Route path="category/:category" components={{ content: Category, sidebar: CategorySidebar }}>
-                    <Route path=":item" component={Item} />
-                </Route>
+                <IndexRoute component={Home} />
             </Route>
         </Router>
     </Provider>

@@ -21,6 +21,10 @@
         "react/jsx-indent-props": ['error', 4],
         "react/jsx-indent": ['error', 4],
         "arrow-body-style": 0,
-        "prefer-template": 0
+        "prefer-template": 0,
+        "quote-props": [1, "consistent-as-needed"],
+        "new-cap": [2, {
+            "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+        }]
     }
 }
