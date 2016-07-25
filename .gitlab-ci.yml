@@ -5,9 +5,16 @@ cache:
   - node_modules/
 
 stages:
+  - build
   - test
 
-test_async:
+build_job:
+  stage: build
+  script:
+   - npm install
+   - npm build
+
+test_job:
   stage: test
   script:
    - npm install
