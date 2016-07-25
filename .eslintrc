@@ -20,7 +20,7 @@
         "indent": ['error', 4],
         "react/jsx-indent-props": ['error', 4],
         "react/jsx-indent": ['error', 4],
-        "arrow-body-style": ['error', 'always'],
+        "arrow-body-style": 0,
         "prefer-template": 0
     }
 }
