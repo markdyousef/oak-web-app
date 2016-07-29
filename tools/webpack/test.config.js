@@ -14,7 +14,8 @@ module.exports = {
     ],
 
     output: {
-        filename: 'bundle.[chunkhash].js'
+        filename: 'bundle.[chunkhash].js',
+        publicPath: '/'
     },
 
     devtool: 'inline-source-map',

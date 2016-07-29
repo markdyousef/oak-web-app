@@ -11,6 +11,10 @@ const config = require('./base.config')({
         path.join(process.cwd(), 'src/js/main.js')
     ],
 
+    output: {
+        publicPath: './'
+    },
+
     postcssPlugins: [
         postcssFocus(),
         postcssCssNext({

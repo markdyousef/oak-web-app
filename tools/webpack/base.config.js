@@ -10,7 +10,7 @@ const config = (options) => ({
     output: {
         filename: 'bundle.js',
         path: path.join(process.cwd(), 'build'),
-        publicPath: './'
+        publicPath: options.output.publicPath
     },
 
     debug: isDev,

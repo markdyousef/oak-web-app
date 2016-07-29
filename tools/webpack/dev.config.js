@@ -12,6 +12,10 @@ const config = require('./base.config')({
         path.join(process.cwd(), 'src/js/main.js')
     ],
 
+    output: {
+        publicPath: '/'
+    },
+
     devtool: 'cheap-module-eval-source-map',
 
     postcssPlugins: [
