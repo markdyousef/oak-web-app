@@ -16,7 +16,6 @@ const config = (options) => ({
     debug: isDev,
     devtool: options.devtool,
     noInfo: true,
-    target: 'web',
     progress: true,
 
     stats: {
