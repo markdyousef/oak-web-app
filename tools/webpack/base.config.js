@@ -5,12 +5,13 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 
 const config = (options) => ({
-    entry: ['whatwg-fetch'].concat(options.entry),
+    entry: options.entry,
 
     output: {
-        filename: 'bundle.js',
+        filename: options.output.filename || 'bundle.js',
         path: path.join(process.cwd(), 'build'),
-        publicPath: options.output.publicPath
+        publicPath: options.output.publicPath,
+        libraryTarget: options.output.libraryTarget
     },
 
     debug: isDev,
@@ -85,6 +86,9 @@ const config = (options) => ({
         ]
     },
 
+    resolve: options.resolve,
+    node: options.node,
+    target: options.target,
     postcss: () => options.postcssPlugins
 });
 

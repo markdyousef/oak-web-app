@@ -1,13 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-const postcssFocus = require('postcss-focus');
-const postcssCssNext = require('postcss-cssnext');
-const postcssReporter = require('postcss-reporter');
+import postcssFocus from 'postcss-focus';
+import postcssCssNext from 'postcss-cssnext';
+import postcssReporter from 'postcss-reporter';
 
 
 const config = require('./base.config')({
     entry: [
+        'whatwg-fetch',
         path.join(process.cwd(), 'src/js/main.js')
     ],
 

@@ -6,7 +6,7 @@
     ],
     "env": {
         "production": {
-            "only": ["src"],
+            "only": ["src", "tools"],
             "plugins": [
                 "transform-react-remove-prop-types",
                 "transform-react-constant-elements",

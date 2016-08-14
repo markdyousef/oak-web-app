@@ -1,5 +1,11 @@
 {
+  "app": {
+    "name": "Test",
+    "version": "0.0.1",
+    "build": "1"
+  },
   "private": true,
+  "main": "main.js",
   "engines": {
     "node": ">=6",
     "npm": ">=3.8"
@@ -13,14 +19,15 @@
     "build": "npm run build:prod",
     "build:dev": "npm run clean && NODE_ENV=development webpack --config tools/webpack/dev.config.js --color",
     "build:prod": "npm run clean && NODE_ENV=production webpack --config tools/webpack/prod.config.js --color -p",
-    "clean": "rm -rf build/*",
+    "clean": "rm -rf build && rm -rf release",
     "start": "npm run start:web:dev --",
     "start:web:dev": "NODE_ENV=development node -r babel-register tools/web/server",
     "start:web:prod": "NODE_ENV=production node -r babel-register tools/web/server",
     "start:app": "npm run start:app:dev --",
-    "start:app:dev": "electron -r babel-register ./tools/electron",
+    "start:app:dev": "electron -r babel-register ./tools/electron/main.js",
     "start:server": "npm run start:server:dev --",
     "start:server:dev": "NODE_ENV=development node -r babel-register tools/electron/server.js --target app",
+    "package": "NODE_ENV=production node -r babel-register tools/electron/package.js",
     "check": "npm outdated --depth=0"
   },
   "dependencies": {
@@ -58,6 +65,7 @@
     "connect-history-api-fallback": "1.2.0",
     "css-loader": "0.23.1",
     "electron": "1.3.3",
+    "electron-packager": "^7.5.1",
     "enzyme": "2.4.1",
     "eslint": "2.10.2",
     "eslint-config-airbnb": "9.0.1",

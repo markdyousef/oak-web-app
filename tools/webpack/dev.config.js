@@ -7,6 +7,7 @@ const postcssReporter = require('postcss-reporter');
 
 const config = require('./base.config')({
     entry: [
+        'whatwg-fetch',
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client',
         path.join(process.cwd(), 'src/js/main.js')
