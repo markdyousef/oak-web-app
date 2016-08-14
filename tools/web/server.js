@@ -1,16 +1,17 @@
-const browserSync = require('browser-sync');
-const webpack = require('webpack');
-const argv = require('yargs').argv;
-const historyApiFallback = require('connect-history-api-fallback');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
+import { argv } from 'yargs';
+import browserSync from 'browser-sync';
+import webpack from 'webpack';
+import historyApiFallback from 'connect-history-api-fallback';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackTargetElectronRenderer from 'webpack-target-electron-renderer';
+
 
 const isDev = process.env.NODE_ENV !== 'production';
 
 const webpackConfig = isDev
-  ? require('./webpack/dev.config')
-  : require('./webpack/prod.config');
+  ? require('../webpack/dev.config')
+  : require('../webpack/prod.config');
 
 if (argv.target === 'app') {
     webpackConfig.target = webpackTargetElectronRenderer(webpackConfig);

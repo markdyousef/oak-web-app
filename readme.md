@@ -13,6 +13,18 @@ Build project for production:
     npm run build
 
 
+## Electron
+
+Run server with: `npm run start:server`.
+
+Open another terminal to run the app with: `npm run start:app`.
+
+Arguments for both commands:
+**--port** (defaults to 3000).
+
+Example: `npm run start:app -- --port 3000` (the extra double hyphen, is not a typo).
+
+
 ## Scripts
 Run linter:
 

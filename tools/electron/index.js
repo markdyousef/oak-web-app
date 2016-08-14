@@ -1,7 +1,9 @@
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+import { argv } from 'yargs';
+import { app, BrowserWindow } from 'electron';
 // const crashReporter = electron.crashReporter;
+
+const PORT = argv.port || 3000;
+
 let mainWindow = null;
 
 // crashReporter.start();
@@ -16,7 +18,7 @@ app.on('ready', () => {
         height: 728
     });
 
-    mainWindow.loadURL('http://localhost:3000');
+    mainWindow.loadURL(`http://localhost:${PORT}`);
 
     mainWindow.on('closed', () => {
         mainWindow = null;
