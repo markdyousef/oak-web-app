@@ -86,7 +86,12 @@ const config = (options) => ({
         ]
     },
 
-    resolve: options.resolve,
+    resolve: {
+        root: path.join(process.cwd(), 'src'),
+        extensions: ['', '.js'],
+        ...options.resolve
+    },
+
     node: options.node,
     target: options.target,
     postcss: () => options.postcssPlugins

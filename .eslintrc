@@ -29,6 +29,9 @@
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
+        "import/no-unresolved": [2, {
+            ignore: ['img\/']
+        }],
         "import/no-extraneous-dependencies": 0
     }
 }
