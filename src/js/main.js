@@ -5,7 +5,6 @@ import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 
 import initStore from './redux/store';
-const store = initStore();
 
 // Components / Containers
 import App from './components/App/App';
@@ -15,6 +14,8 @@ import Home from './components/Home/Home';
 import '../index.html';
 import '../css/reset.css';
 import '../css/app.css';
+
+const store = initStore();
 
 const history = useRouterHistory(createHashHistory)({
     queryKey: false
