@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import initStore from './redux/store';
 
 // Components / Containers
-import App from './components/App/App';
-import Home from './components/Home/Home';
+import App from './containers/AppContainer';
+import Home from './containers/HomeContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
