@@ -14,7 +14,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint src/; exit 0",
     "lint:css": "stylelint ./src/**/*.css",
-    "test": "mocha --opts tools/tests/mocha.opts",
+    "test": "NODE_PATH=./src mocha --opts tools/tests/mocha.opts",
     "test:watch": "mocha --opts tools/tests/mocha.opts --watch",
     "build": "npm run build:prod",
     "build:dev": "NODE_ENV=development node -r babel-register tools/build.js",
