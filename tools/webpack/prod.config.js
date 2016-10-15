@@ -9,6 +9,7 @@ import postcssReporter from 'postcss-reporter';
 const config = require('./base.config')({
     entry: [
         'whatwg-fetch',
+        'babel-polyfill', // Possible fix for IE 11 render error
         path.join(process.cwd(), 'src/js/main.js')
     ],
 
