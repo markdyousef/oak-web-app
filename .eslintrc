@@ -25,6 +25,10 @@
         "quote-props": [1, "consistent-as-needed"],
         "new-cap": [2, {
             "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
-        }]
+        }],
+        "react/jsx-filename-extension": [1, {
+            "extensions": [".js", ".jsx"]
+        }],
+        "import/no-extraneous-dependencies": 0
     }
 }
