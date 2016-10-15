@@ -1,4 +1,0 @@
-src/**/*.spec.js
---compilers js:babel-register
---require ./tools/tests/test-helper.js
---reporter spec
