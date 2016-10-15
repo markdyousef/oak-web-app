@@ -1,6 +1,9 @@
 {
     "parser": 'babel-eslint',
     "extends": 'airbnb',
+    "ecmaFeatures": {
+        "jsx": true
+    },
     "env": {
         "browser": true,
         "node": true,
@@ -13,6 +16,12 @@
     ],
     "parserOptions": {
         "sourceType": "module"
+    },
+    "globals": {
+        "fetch": true,
+        "Promise": true,
+        "window": false,
+        "expect": false
     },
     "rules": {
         "max-len": 0,
