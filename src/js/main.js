@@ -4,7 +4,7 @@ import { useRouterHistory, Router, Route, IndexRoute } from 'react-router';
 import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 
-import initStore from './redux/store';
+import initStore from './store/configureStore';
 
 // Components / Containers
 import App from './containers/AppContainer';

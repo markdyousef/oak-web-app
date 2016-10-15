@@ -22,10 +22,6 @@ Theses constants could be:
 Use this directory for react components connected to redux.
 Theses components would usually be the same components specified in the router.
 
-#### Redux
-Use this directory for redux related files.
-Create types, actions and reducers, in the same file, as specified in the [Ducks-proposal](https://github.com/erikras/ducks-modular-redux).
-
 #### Utils
 Use this directory for files containing helper methods.
 Examples:

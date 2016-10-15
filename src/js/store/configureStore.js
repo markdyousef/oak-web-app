@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from './reducers';
+import reducers from '../reducers';
 
 const middleware = applyMiddleware(thunk);
 
@@ -22,9 +22,9 @@ export default () => {
     const store = createStore(reducers, {}, enhancer);
 
     if (isDev && module.hot) {
-        module.hot.accept('./reducers', () => {
+        module.hot.accept('../reducers', () => {
             // eslint-disable-next-line global-require
-            store.replaceReducer(require('./reducers'));
+            store.replaceReducer(require('../reducers'));
         });
     }
 
