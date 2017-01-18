@@ -27,7 +27,8 @@
     "start:server": "npm run start:server:dev --",
     "start:server:dev": "NODE_ENV=development node -r babel-register tools/electron/server.js --target app",
     "package": "NODE_ENV=production node -r babel-register tools/electron/package.js",
-    "check": "npm outdated --depth=0"
+    "check": "npm outdated --depth=0",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "fastclick": "1.0.6",
@@ -42,6 +43,7 @@
     "whatwg-fetch": "2.0.1"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
     "babel-cli": "6.18.0",
     "babel-core": "6.21.0",
     "babel-eslint": "7.1.1",
