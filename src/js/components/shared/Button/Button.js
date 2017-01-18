@@ -6,7 +6,7 @@ import css from './Button.css';
 const Button = ({ onClick, text }) => (
     <button
         onClick={onClick}
-        className={css.button}
+        className={css.container}
     >
         {text}
     </button>

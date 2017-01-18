@@ -1,5 +1,7 @@
 # Project
 
+
+### Basics
 Start local server with browser sync:
 
     npm start
@@ -7,11 +9,25 @@ Start local server with browser sync:
 Run tests:
 
     npm test
+    npm test: watch
 
-Build project for production:
+Check for package updates:
+
+    npm run check
+
+### Production
+Build project for production - build/:
 
     npm run build
 
+Remove build folder:
+
+    npm run clean
+
+### Storybook
+Run storybook server:
+
+    npm run storybook
 
 ## Electron
 
@@ -23,29 +39,3 @@ Arguments for both commands:
 **--port** (defaults to 3000).
 
 Example: `npm run start:app -- --port 3000` (the extra double hyphen, is not a typo).
-
-
-## Scripts
-Run linter:
-
-    npm run lint
-
-Run tests:
-
-    npm run test
-
-Run builder:
-
-    npm run build
-
-Remove build folder:
-
-    npm run clean
-
-Start dev server:
-
-    npm run start
-
-Check for updates to dependencies:
-
-    npm run check

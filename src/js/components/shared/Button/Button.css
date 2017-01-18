@@ -1,4 +1,6 @@
-.button {
+.container {
     padding: 15px;
     font-size: 18px;
+    background-color: #000;
+    height: 50px;
 }
