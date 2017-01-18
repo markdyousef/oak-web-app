@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { render } from 'react-dom';
 import { useRouterHistory, Router, Route, IndexRoute } from 'react-router';
@@ -8,7 +9,6 @@ import initStore from './store/configureStore';
 
 // Components / Containers
 import App from './containers/AppContainer';
-import Home from './containers/HomeContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -25,9 +25,7 @@ const history = useRouterHistory(createHashHistory)({
 const routes = (
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home} />
-            </Route>
+            <Route path="/" component={App} />
         </Router>
     </Provider>
 );

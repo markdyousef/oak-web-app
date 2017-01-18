@@ -1,14 +1,10 @@
+// @flow
 import { connect } from 'react-redux';
 
 import App from '../components/App/App';
-// import { login as loginAction } from '../actions';
 
-function mapStateToProps(state) {
-    return {};
-}
+const mapStateToProps = state => ({});
 
-function mapDispatchToProps(dispatch) {
-    return {};
-}
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
