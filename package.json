@@ -15,6 +15,7 @@
     "lint:js": "eslint src/; exit 0",
     "lint:css": "stylelint ./src/**/*.css",
     "test": "jest",
+    "test:watch": "jest --watch",
     "build": "npm run build:prod",
     "build:dev": "NODE_ENV=development node -r babel-register tools/build.js",
     "build:prod": "NODE_ENV=production node -r babel-register tools/build.js",
@@ -28,7 +29,8 @@
     "start:server:dev": "NODE_ENV=development node -r babel-register tools/electron/server.js --target app",
     "package": "NODE_ENV=production node -r babel-register tools/electron/package.js",
     "check": "npm outdated --depth=0",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "fastclick": "1.0.6",

@@ -1,0 +1,7 @@
+exports[`test renders Button 1`] = `
+<button
+  className={undefined}
+  onClick={[Function]}>
+  Hello
+</button>
+`;

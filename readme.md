@@ -8,8 +8,9 @@ Start local server with browser sync:
 
 Run tests:
 
-    npm test
-    npm test: watch
+    npm run test
+    npm run test:watch
+    npm run coverage
 
 Check for package updates:
 
