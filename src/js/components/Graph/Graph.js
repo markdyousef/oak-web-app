@@ -16,6 +16,18 @@ class Graph extends Component {
     render() {
         return (
             <div className={css.container}>
+                {(() => {
+                    if (type === 'line') {
+                        return (
+                            <LineChart
+                                data={graphFormat}
+                                width="500"
+                                height="500"
+                            />
+                        );
+                    }
+                    return null;
+                })()}
             </div>
         );
     }

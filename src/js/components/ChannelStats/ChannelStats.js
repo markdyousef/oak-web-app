@@ -35,7 +35,7 @@ const ChannelStats = ({ data } : Object) => {
                 }
             </div>
             <div>
-                <Graph data={messageFreq} />
+                <Graph data={messageFreq} type="line" />
             </div>
         </div>
     );
