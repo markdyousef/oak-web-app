@@ -1,14 +1,15 @@
 // @flow
 import React from 'react';
 import { render } from 'react-dom';
-import { useRouterHistory, Router, Route, IndexRoute } from 'react-router';
-import { createHashHistory } from 'history';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+// import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 
 import initStore from './store/configureStore';
 
 // Components / Containers
 import App from './containers/AppContainer';
+import Home from './pages/Home';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -17,15 +18,12 @@ import '../css/app.css';
 
 const store = initStore();
 
-const history = useRouterHistory(createHashHistory)({
-    queryKey: false
-});
-
-
 const routes = (
     <Provider store={store}>
-        <Router history={history}>
-            <Route path="/" component={App} />
+        <Router history={hashHistory}>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home} />
+            </Route>
         </Router>
     </Provider>
 );
