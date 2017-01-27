@@ -26,7 +26,11 @@ class BaseStats extends Component {
         ]
 
         return channels.map(channel =>
-            <ChannelStats data={channel.data} name={channel.name} />
+            <ChannelStats
+                key={channel.name}
+                data={channel.data}
+                name={channel.name}
+            />
             );
     }
     render() {

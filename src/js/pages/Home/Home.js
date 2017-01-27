@@ -8,7 +8,9 @@ import css from './Home.css';
 const Home = () => {
     return (
         <div className={css.container}>
-            <h1>Hello</h1>
+            <nav>
+                <h1>Navigation</h1>
+            </nav>
             <TeamStats team="clai" />
         </div>
     );
