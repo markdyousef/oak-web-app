@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 
 import styles from './Home.css';
 
@@ -8,6 +8,7 @@ class Home extends Component {
         params: Object
     };
     render() {
+        console.log('col');
         return (
             <div className={styles.container}>
                 <h1>Hello</h1>

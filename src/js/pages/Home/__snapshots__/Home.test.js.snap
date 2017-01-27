@@ -1,4 +1,8 @@
 exports[`test renders Home 1`] = `
 <div
-  className={undefined} />
+  className={undefined}>
+  <h1>
+    Hello
+  </h1>
+</div>
 `;
