@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import BaseStats from '../../components/BaseStats';
+import TeamStats from '../../containers/TeamStatsContainer';
 
 import css from './Home.css';
 
@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div className={css.container}>
             <h1>Hello</h1>
-            <BaseStats />
+            <TeamStats />
         </div>
     );
 };
