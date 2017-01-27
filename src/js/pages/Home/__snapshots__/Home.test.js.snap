@@ -1,0 +1,4 @@
+exports[`test renders Home 1`] = `
+<div
+  className={undefined} />
+`;
