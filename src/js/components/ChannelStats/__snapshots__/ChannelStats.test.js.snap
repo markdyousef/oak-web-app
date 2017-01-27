@@ -6,5 +6,7 @@ exports[`test renders ChannelStats 1`] = `
       general
     </h1>
   </header>
+  <div
+    className={undefined} />
 </div>
 `;

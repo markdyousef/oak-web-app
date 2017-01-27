@@ -7,20 +7,20 @@
 }
 
 .container {
-    width: 300px;
+    width: 350px;
     height: 250px;
     margin: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: #fff;
 }
 
 .container:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .container header {
     width: 100%;
-    height: 50px;
 }
 
 header h1 {
@@ -47,4 +47,22 @@ header h1 {
     color: var(--main-red-color);
     font-size: 12px;
     align-self: flex-end;
+}
+
+.statsRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.statsRow div {
+    width: 100px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statsRow img {
+    height: 30px;
 }
