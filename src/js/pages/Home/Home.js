@@ -2,15 +2,14 @@
 import React from 'react';
 
 import TeamStats from '../../containers/TeamStatsContainer';
+import TopNav from '../../containers/TopNavContainer';
 
 import css from './Home.css';
 
 const Home = () => {
     return (
         <div className={css.container}>
-            <nav>
-                <h1>Navigation</h1>
-            </nav>
+            <TopNav />
             <TeamStats team="clai" />
         </div>
     );
