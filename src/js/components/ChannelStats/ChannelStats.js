@@ -1,9 +1,9 @@
 // @flow
 import React, { PropTypes } from 'react';
 
-import css from './TeamStats.css';
+import css from './ChannelStats.css';
 
-const TeamStats = ({ data } : Object) => {
+const ChannelStats = ({ data } : Object) => {
     const { name } = data;
     return (
         <div className={css.container}>
@@ -12,10 +12,10 @@ const TeamStats = ({ data } : Object) => {
     );
 };
 
-TeamStats.propTypes = {
+ChannelStats.propTypes = {
     data: PropTypes.shape({
         name: PropTypes.string.isRequired
     }).isRequired
 };
 
-export default TeamStats;
+export default ChannelStats;
