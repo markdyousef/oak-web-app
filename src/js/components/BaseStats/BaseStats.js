@@ -13,7 +13,8 @@ class BaseStats extends Component {
     }
     renderStats() {
         const { data } = this.props;
-        return data;
+        console.log(data);
+        return null;
     }
     render() {
         return (
