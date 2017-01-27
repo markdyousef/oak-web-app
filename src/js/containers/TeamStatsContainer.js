@@ -11,8 +11,11 @@ const mapStateToProps = (state, ownProps) => {
     const props = {};
 
     const { team } = ownProps;
+
+    // assign team
     props.team = team;
-    // select team
+
+    // get team data
     switch (team) {
     case 'clai':
         props.data = claiJson;
