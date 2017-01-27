@@ -40,10 +40,10 @@ ChannelStats.propTypes = {
         name: PropTypes.string.isRequired,
         purpose: PropTypes.shape({
             value: PropTypes.string.isRequired,
-            creator: PropTypes.string.isRequired,
-            members: PropTypes.arrayOf(PropTypes.object),
-            messages: PropTypes.arrayOf(PropTypes.object)
-        })
+            creator: PropTypes.string.isRequired
+        }),
+        members: PropTypes.arrayOf(PropTypes.string),
+        messages: PropTypes.arrayOf(PropTypes.object)
     }).isRequired
 };
 
