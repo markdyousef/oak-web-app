@@ -7,17 +7,44 @@
 }
 
 .container {
-    width: 250px;
+    width: 300px;
     height: 250px;
-    border: 1px solid var(--main-black-color);
     margin: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.container:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .container header {
-    background-color: var(--main-red-color);
+    width: 100%;
+    height: 50px;
 }
 
 header h1 {
-    font-size: 18px;
+    padding: 15px;
+    font-size: 14px;
     color: var(--main-green-color);
+}
+
+.purpose {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.purpose h2 {
+    font-size: 12px;
+    font-weight: lighter;
+    width: 90%;
+}
+
+.purpose h4 {
+    padding: 14px;
+    color: var(--main-red-color);
+    font-size: 12px;
+    align-self: flex-end;
 }
