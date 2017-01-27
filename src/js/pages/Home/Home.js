@@ -1,20 +1,17 @@
 // @flow
-import React, { Component} from 'react';
+import React from 'react';
 
-import styles from './Home.css';
+import BaseStats from '../../components/BaseStats';
 
-class Home extends Component {
-    props: {
-        params: Object
-    };
-    render() {
-        console.log('col');
-        return (
-            <div className={styles.container}>
-                <h1>Hello</h1>
-            </div>
-        );
-    }
-}
+import css from './Home.css';
+
+const Home = () => {
+    return (
+        <div className={css.container}>
+            <h1>Hello</h1>
+            <BaseStats />
+        </div>
+    );
+};
 
 export default Home;
