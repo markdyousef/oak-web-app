@@ -17,9 +17,8 @@ class TopNav extends Component {
         return (
             <nav className={css.container}>
                 <div className={css.navLeft}>
-                    <span>
-                        <img src={logo}/>
-                    </span>
+                    <img src={logo} alt="logo" />
+                    <h1>DASHBOARD</h1>
                 </div>
             </nav>
         );

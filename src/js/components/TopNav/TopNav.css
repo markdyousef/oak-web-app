@@ -1,5 +1,3 @@
-@import '../../../css/app.css';
-
 :root {
     --main-black-color: #000;
     --main-white-color: #fefeff;
@@ -11,5 +9,23 @@
 .container {
     width: 100%;
     height: 60px;
-    background-color: var(--main-green-color);
+    background-color: var(--main-black-color);
+}
+
+.container h1 {
+    font-size: 18px;
+    color: var(--main-white-color);
+}
+
+.navLeft {
+    margin-left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 160px;
+    justify-content: space-between;
+}
+
+.navLeft img {
+    height: 40px;
 }
