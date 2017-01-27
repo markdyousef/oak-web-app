@@ -5,7 +5,7 @@ import css from './Graph.css';
 class Graph extends Component {
     static propTypes = {
         data: PropTypes.shape({
-            x: PropTypes.arrayOf(PropTypes.object).isRequired,
+            x: PropTypes.arrayOf(PropTypes.string).isRequired,
             y: PropTypes.arrayOf(PropTypes.object).isRequired
         })
     }
@@ -16,7 +16,6 @@ class Graph extends Component {
     render() {
         return (
             <div className={css.container}>
-                Graph
             </div>
         );
     }
