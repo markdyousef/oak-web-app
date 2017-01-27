@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const isDev = process.env.NODE_ENV !== 'production';
 
 
-const config = (options) => ({
+const config = options => ({
     entry: options.entry,
 
     output: {
@@ -77,6 +77,10 @@ const config = (options) => ({
                     'css-loader?modules&importLoaders=1',
                     'postcss'
                 ]
+            },
+            {
+                test: /\.config.css$/,
+                loader: 'babel-loader!postcss-variables-loader'
             },
             {
                 // inline base64 URLs for <=8k images, direct URLs for the rest

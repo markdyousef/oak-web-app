@@ -1,8 +1,11 @@
 exports[`test renders TopNav 1`] = `
 <nav
   className={undefined}>
-  <h1>
-    Navigation
-  </h1>
+  <div
+    className={undefined}>
+    <span>
+      <img />
+    </span>
+  </div>
 </nav>
 `;
