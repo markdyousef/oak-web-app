@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import _ from 'lodash';
+
+import ChannelStats from '../ChannelStats';
 
 import css from './BaseStats.css';
 
@@ -15,14 +16,18 @@ class BaseStats extends Component {
     constructor() {
         super();
         this.renderStats = this.renderStats.bind(this);
-        this.state = {};
     }
     renderStats() {
         const { data } = this.props;
 
         // group data by channel
-        const channels = data.map(channel => channel.name);
-        const stats = _.zipObject(channels, data);
+        const channels = [...data.map(channel =>
+            ({ name: channel.name, data: channel }))
+        ]
+
+        return channels.map(channel =>
+            <ChannelStats data={channel.data} name={channel.name} />
+            );
     }
     render() {
         return (

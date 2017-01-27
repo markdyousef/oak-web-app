@@ -1,0 +1,4 @@
+exports[`test renders BaseStats 1`] = `
+<div
+  className={undefined} />
+`;
