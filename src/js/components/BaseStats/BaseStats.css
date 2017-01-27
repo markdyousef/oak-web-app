@@ -1,0 +1,15 @@
+:root {
+    --main-black-color: #000;
+    --main-white-color: #fefeff;
+    --main-orange-color: #ff9200;
+    --main-red-color: #8b0000;
+    --main-green-color: #005d6c;
+}
+
+.container {}
+
+.statsGrid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

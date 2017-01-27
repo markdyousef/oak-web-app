@@ -36,7 +36,9 @@ class BaseStats extends Component {
     render() {
         return (
             <div className={css.container}>
-                {this.renderStats()}
+                <div className={css.statsGrid}>
+                    {this.renderStats()}
+                </div>
             </div>
         );
     }

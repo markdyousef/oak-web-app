@@ -80,6 +80,7 @@ const config = options => ({
             },
             {
                 test: /\.config.css$/,
+                exclude: path.join(process.cwd(), 'node_modules'),
                 loader: 'babel-loader!postcss-variables-loader'
             },
             {

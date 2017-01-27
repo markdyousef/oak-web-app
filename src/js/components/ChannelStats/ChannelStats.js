@@ -4,7 +4,6 @@ import React, { PropTypes } from 'react';
 import css from './ChannelStats.css';
 
 const ChannelStats = ({ data } : Object) => {
-    console.log(data);
     const { name, purpose } = data;
     return (
         <div className={css.container}>

@@ -1,4 +1,7 @@
 exports[`test renders BaseStats 1`] = `
 <div
-  className={undefined} />
+  className={undefined}>
+  <div
+    className={undefined} />
+</div>
 `;
