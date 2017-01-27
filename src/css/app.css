@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+:global {
+    --main-black-color: '#000000';
+    --main-white-color: '#FEFEFF';
+    --main-orange-color: '#FF9200';
+    --main-red-color: '#8B0000';
+    --main-green-color: '#005D6C';
+}
+
 html,
 body {
     width: 100%;

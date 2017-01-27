@@ -10,7 +10,9 @@ const Home = () => {
     return (
         <div className={css.container}>
             <TopNav />
-            <TeamStats team="clai" />
+            <div>
+                <TeamStats team="clai" />
+            </div>
         </div>
     );
 };
