@@ -19,11 +19,11 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-header {
+.container header {
     width: 100%;
 }
 
-header h1 {
+.container header h1 {
     padding: 15px;
     font-size: 14px;
     color: var(--main-green-color);
