@@ -1,0 +1,6 @@
+exports[`test renders ChannelDetail 1`] = `
+<div
+  className={undefined}>
+  CHANNEL
+</div>
+`;
