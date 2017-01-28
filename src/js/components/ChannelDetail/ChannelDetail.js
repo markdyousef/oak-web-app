@@ -10,7 +10,8 @@ class ChannelDetail extends Component {
         data: PropTypes.shape({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            members: PropTypes.arrayOf(PropTypes.string)
+            members: PropTypes.arrayOf(PropTypes.string),
+            messages: PropTypes.arrayOf(PropTypes.object)
         })
     };
     constructor() {
@@ -45,7 +46,7 @@ class ChannelDetail extends Component {
                     {this.renderMembers()}
                 </div>
                 <div className={css.messageContainer}>
-                    <MessageStats channel={data.name} />
+                    <MessageStats channel={data.name} messages={data.messages} />
                 </div>
             </div>
         );

@@ -1,18 +1,37 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import MessageItem from './MessageItem';
 
 import css from './MessageStats.css';
 
 class MessageStats extends Component {
-    static propTypes = {};
+    static propTypes = {
+        data: PropTypes.shape({
+            channel: PropTypes.string.isRequired,
+            messages: PropTypes.arrayOf(PropTypes.object)
+        })
+    };
     constructor() {
         super();
+        this.renderMessages = this.renderMessages.bind(this);
         this.state = {};
+    }
+    renderMessages() {
+        const { data } = this.props;
+
+        if (data && data.messages) {
+            return data.messages.map(message => (
+                <MessageItem message={message} />
+            ));
+        }
+        return <div className={css.noMessage}>No Messages</div>
     }
     render() {
         return (
             <div className={css.container}>
-                MESSAGES
+                <div className={css.messageList}>
+                    {this.renderMessages()}
+                </div>
             </div>
         );
     }
