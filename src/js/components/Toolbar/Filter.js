@@ -4,32 +4,45 @@ import css from './Toolbar.css';
 
 class Filter extends Component {
     static propTypes = {
-        placeholder: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
         options: PropTypes.arrayOf(PropTypes.shape({
             name: PropTypes.string.isRequired
-        })).isRequired
+        })).isRequired,
+        select: PropTypes.func.isRequired
     };
     constructor() {
         super();
         this.renderOptionList = this.renderOptionList.bind(this);
         this.state = {
-            selectedName: null
+            selected: null,
+            isOpen: false
         }
     }
     renderOptionList() {
-        const { options } = this.props;
+        const { options, select } = this.props;
+        return options.map(option => (
+            <div
+                key={option.name}
+                onClick={() => select(option.name)}
+            >
+                <span>{option.name}</span>
+            </div>
+        ));
     }
     render() {
-        const { selectedName } = this.state;
-        const { placeholder } = this.props;
+        const { selected, isOpen } = this.state;
+        const { name } = this.props;
         return (
             <div className={css.filter}>
-                <div className={css.selected}>
-                    {(selectedName) || placeholder }
+                <div
+                    className={css.selected}
+                    onClick={() => this.setState({ isOpen: !isOpen })}
+                >
+                    <span>{(selected) || name }</span>
                 </div>
-                <div className={css.optionList}>
+                {isOpen && <div className={css.optionList}>
                     {this.renderOptionList()}
-                </div>
+                </div>}
             </div>
         );
     }

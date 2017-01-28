@@ -28,7 +28,8 @@ export const getTeam = (team: String) => {
         break;
     }
     return {
-        type: 'GET_TEAM_SUCCESS',
+        type: 'RECEIVE_TEAM',
+        team,
         data
     };
 };

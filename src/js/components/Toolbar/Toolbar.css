@@ -12,3 +12,25 @@
     background-color: var(--main-green-color);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+
+.filter {
+    width: 150px;
+}
+
+.selected {
+    height: 40px;
+    background-color: var(--main-white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.optionList {
+    width: 100%;
+    background-color: var(--main-white-color);
+    position: relative;
+}
+
+.optionList div {
+    padding: 10px;
+}

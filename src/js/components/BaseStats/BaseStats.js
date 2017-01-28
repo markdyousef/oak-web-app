@@ -8,7 +8,7 @@ import css from './BaseStats.css';
 
 class BaseStats extends Component {
     static propTypes = {
-        data: PropTypes.arrayOf(
+        channels: PropTypes.arrayOf(
             PropTypes.shape({
                 name: PropTypes.string.isRequired
             })
@@ -18,15 +18,17 @@ class BaseStats extends Component {
         super();
         this.renderStats = this.renderStats.bind(this);
     }
+    componentWillMount() {
+        const { getTeam } = this.props;
+        getTeam('clai');
+    }
     renderStats() {
-        const { data } = this.props;
-
+        const { channels } = this.props;
         // group data by channel
-        const channels = [...data.map(channel =>
+        const groupedChannels = [...channels.map(channel =>
             ({ name: channel.name, data: channel }))
         ]
-
-        return channels.map(channel =>
+        return groupedChannels.map(channel =>
             <ChannelStats
                 key={channel.name}
                 data={channel.data}
@@ -39,7 +41,7 @@ class BaseStats extends Component {
         return (
             <div className={css.container}>
                 <div className={css.toolbar}>
-                    <Toolbar channels={this.props.data} />
+                    <Toolbar />
                 </div>
                 <div className={css.statsGrid}>
                     {this.renderStats()}

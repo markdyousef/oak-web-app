@@ -11,7 +11,8 @@ class ToolBar extends Component {
                 id: PropTypes.string,
                 options: PropTypes.arrayOf(PropTypes.object)
             }))
-        })
+        }),
+        selectTeam: PropTypes.func.isRequired
     }
     constructor() {
         super();
@@ -19,12 +20,17 @@ class ToolBar extends Component {
         this.state = {}
     }
     renderFilterOptions() {
-        const { data } = this.props;
+        const { data, selectTeam } = this.props;
         if (data && data.filters) {
             return data.filters.map(filter => (
-                <Filter filter={filter} />
+                <Filter
+                    {...filter}
+                    key={filter.name}
+                    select={team => selectTeam(team)}
+                />
             ));
         }
+        return null;
     }
     render() {
         return (
