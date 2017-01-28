@@ -5,7 +5,10 @@ import ChannelDetail from './ChannelDetail';
 
 test('renders ChannelDetail', () => {
     const props = {
-        name: 'general'
+        data: {
+            id: 'id',
+            name: 'general'
+        }
     };
     const component = renderer.create(
         <ChannelDetail {...props} />

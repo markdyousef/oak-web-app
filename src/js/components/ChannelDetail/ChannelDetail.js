@@ -17,12 +17,19 @@ class ChannelDetail extends Component {
         this.state = {};
     }
     renderMembers() {
-        const { members } = this.props.data;
+        const { data } = this.props;
+
+        // check if members is an array
+        const members = (data.members) ? data.members : [];
+        // some channels has no members
+        if (members.length === 0) {
+            return <div className={css.noMembers}>No members</div>;
+        }
         return members.map(member => (
             <div className={css.member} key={member}>
                 <span>{member}</span>
             </div>
-        ))
+        ));
     }
     render() {
         const { data } = this.props;
