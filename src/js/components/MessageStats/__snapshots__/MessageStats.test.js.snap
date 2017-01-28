@@ -1,0 +1,6 @@
+exports[`test renders MessageStats 1`] = `
+<div
+  className={undefined}>
+  MESSAGES
+</div>
+`;
