@@ -11,7 +11,7 @@ const Home = () => {
         <div className={css.container}>
             <TopNav />
             <div className={css.teamStats}>
-                <TeamStats team="clai" />
+                <TeamStats />
             </div>
         </div>
     );
