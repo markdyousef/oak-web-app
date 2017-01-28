@@ -4,8 +4,13 @@ import css from './MessageStats.css';
 
 const MessageItem = ({ message }:Object) => {
     return (
-        <div className={css.message}>
-            {message.text}
+        <div className={css.messageItem}>
+            <div className={css.userAvatar}>
+                <span />
+            </div>
+            <div>
+                <p>{message.text}</p>
+            </div>
         </div>
     );
 }
