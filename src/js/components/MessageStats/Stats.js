@@ -5,14 +5,15 @@ import css from './MessageStats.css';
 const Stats = ({ message }: Object) => {
     return (
         <div className={css.stats}>
-            {message.text}
+            <p>{message.text}</p>
         </div>
     );
 };
 
 Stats.propTypes = {
     message: PropTypes.shape({
-        text: PropTypes.string.isRequired
+        text: PropTypes.string.isRequired,
+        attachments: PropTypes.array
     })
 };
 

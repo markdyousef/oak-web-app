@@ -11,10 +11,11 @@
     height: 400px;
     background-color: #fff;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .messageList {
-    width: 30%;
+    width: 400px;
     height: 100%;
     overflow-x: scroll;
     background-color: var(--main-white-color);
@@ -60,6 +61,31 @@
     font-size: 14px;
 }
 
+/* MESSAGE STATS */
+
 .messageStats {
-    width: 70%;
+    width: 50%;
+    min-width: 400px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.stats p {
+    margin: 20px;
+    width: 80%;
+    padding: 25px;
+    font-size: 12px;
+    text-align: left;
+    word-wrap: break-word;
+    border: 1px solid var(--main-black-color);
+    border-radius: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
