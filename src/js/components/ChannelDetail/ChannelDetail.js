@@ -34,6 +34,7 @@ class ChannelDetail extends Component {
     }
     render() {
         const { data } = this.props;
+        console.log(data);
         return (
             <div className={css.container}>
                 <header>
