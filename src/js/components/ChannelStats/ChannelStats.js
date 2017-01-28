@@ -1,5 +1,6 @@
 // @flow
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import css from './ChannelStats.css';
 import chatIcon from '../../../img/chat.png';
@@ -7,11 +8,12 @@ import membersIcon from '../../../img/multiple-users-silhouette.png';
 import Graph from '../../components/Graph';
 
 const ChannelStats = ({ data } : Object) => {
-    const { name, purpose, members, messages } = data;
+    const { name, purpose, members, messages, id } = data;
+
 
     const messageFreq = { x: members, y: messages };
     return (
-        <div className={css.container}>
+        <Link className={css.container} to={`/channel/${id}`}>
             <header>
                 <h1>{name}</h1>
                 {purpose && purpose.value &&
@@ -37,7 +39,7 @@ const ChannelStats = ({ data } : Object) => {
             <div>
                 <Graph data={messageFreq} type="line" />
             </div>
-        </div>
+        </Link>
     );
 };
 

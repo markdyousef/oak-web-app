@@ -30,6 +30,7 @@ class BaseStats extends Component {
                 key={channel.name}
                 data={channel.data}
                 name={channel.name}
+                id={channel.id}
             />
             );
     }
