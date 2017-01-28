@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import ChannelStats from '../ChannelStats';
+import Toolbar from '../../containers/ToolbarContainer';
 
 import css from './BaseStats.css';
 
@@ -37,6 +38,9 @@ class BaseStats extends Component {
     render() {
         return (
             <div className={css.container}>
+                <div className={css.toolbar}>
+                    <Toolbar />
+                </div>
                 <div className={css.statsGrid}>
                     {this.renderStats()}
                 </div>

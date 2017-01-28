@@ -13,10 +13,7 @@ class ChannelDetail extends Component {
             name: PropTypes.string.isRequired,
             members: PropTypes.arrayOf(PropTypes.string),
             messages: PropTypes.arrayOf(PropTypes.object)
-        }),
-        router: PropTypes.shape({
-            goBack: PropTypes.func.isRequired
-        }).isRequired
+        })
     };
     constructor() {
         super();
