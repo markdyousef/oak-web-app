@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
+import configureMockStore from 'redux-mock-store'
+
 import ChannelDetail from './ChannelDetail';
 
 test('renders ChannelDetail', () => {

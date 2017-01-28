@@ -4,17 +4,18 @@ import krispaJson from '../../../../data/krispa/slack_raw.json';
 import travelJson from '../../../../data/travel/slack_raw.json';
 import tradeX from '../../../../data/tradeX/slack_raw.json';
 
-const TEAM = 'clai';
-
-export const getChannel = (id) => {
-    switch (TEAM) {
+export const getChannel = (team: String, id: String) => {
+    let data = {}
+    switch (team) {
     case 'clai':
-        return claiJson.filter(channel => channel.id === id)[0]
+        data = claiJson.filter(channel => channel.id === id)[0];
+        break;
     default:
         break;
     }
+
     return {
         type: 'GET_CHANNEL_SUCCESS',
-        data: {}
+        data
     };
 };

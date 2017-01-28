@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react';
 
 import css from './ChannelDetail.css';
 
+import MessageStats from '../../containers/MessageStatsContainer';
+
 class ChannelDetail extends Component {
     static propTypes = {
         data: PropTypes.shape({
@@ -41,6 +43,9 @@ class ChannelDetail extends Component {
                 </header>
                 <div className={css.membersContainer}>
                     {this.renderMembers()}
+                </div>
+                <div className={css.messageContainer}>
+                    <MessageStats channel={data.name} />
                 </div>
             </div>
         );
