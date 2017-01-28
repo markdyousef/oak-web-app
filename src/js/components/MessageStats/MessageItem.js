@@ -4,9 +4,12 @@ import moment from 'moment';
 
 import css from './MessageStats.css';
 
-const MessageItem = ({ message }:Object) => {
+const MessageItem = ({ message, onClick }:Object) => {
     return (
-        <div className={css.messageItem}>
+        <div
+            className={css.messageItem}
+            onClick={onClick}
+        >
             <div className={css.userAvatar}>
                 <span />
             </div>
@@ -25,7 +28,8 @@ MessageItem.propTypes = {
         text: PropTypes.string.isRequired,
         user: PropTypes.string.isRequired,
         ts: PropTypes.string.isRequired
-    })
+    }),
+    onClick: PropTypes.func.isRequired
 }
 
 export default MessageItem;

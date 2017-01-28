@@ -2,6 +2,18 @@ exports[`test renders MessageStats 1`] = `
 <div
   className={undefined}>
   <div
-    className={undefined} />
+    className={undefined}>
+    <div
+      className={undefined}>
+      No Messages
+    </div>
+  </div>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      No stats
+    </div>
+  </div>
 </div>
 `;
