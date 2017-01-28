@@ -14,7 +14,7 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
         messages
     };
 
-    return data;
+    return { data };
 };
 
 const mapDispatchToProps = (dispatch: Function) => ({});

@@ -18,10 +18,9 @@ class MessageStats extends Component {
     }
     renderMessages() {
         const { data } = this.props;
-
         if (data && data.messages) {
-            return data.messages.map(message => (
-                <MessageItem message={message} />
+            return data.messages.map((message, index) => (
+                <MessageItem message={message} key={index} />
             ));
         }
         return <div className={css.noMessage}>No Messages</div>
