@@ -27,7 +27,8 @@ class ChannelDetail extends Component {
         }
         return members.map(member => (
             <div className={css.member} key={member}>
-                <span>{member}</span>
+                <div />
+                <h4>{member}</h4>
             </div>
         ));
     }
