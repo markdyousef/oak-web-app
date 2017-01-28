@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import css from './ChannelDetail.css';
 
@@ -12,7 +13,10 @@ class ChannelDetail extends Component {
             name: PropTypes.string.isRequired,
             members: PropTypes.arrayOf(PropTypes.string),
             messages: PropTypes.arrayOf(PropTypes.object)
-        })
+        }),
+        router: PropTypes.shape({
+            goBack: PropTypes.func.isRequired
+        }).isRequired
     };
     constructor() {
         super();
@@ -39,9 +43,10 @@ class ChannelDetail extends Component {
         const { data } = this.props;
         return (
             <div className={css.container}>
-                <header>
+                <nav>
+                    <Link to="/">CHANNELS /</Link>
                     <h1>{data.name}</h1>
-                </header>
+                </nav>
                 <div className={css.membersContainer}>
                     {this.renderMembers()}
                 </div>
