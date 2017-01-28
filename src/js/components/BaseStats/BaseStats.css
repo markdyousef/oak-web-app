@@ -6,10 +6,12 @@
     --main-green-color: #005d6c;
 }
 
-.container {}
+.container {
+    display: flex;
+    align-items: center;
+}
 
 .statsGrid {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
