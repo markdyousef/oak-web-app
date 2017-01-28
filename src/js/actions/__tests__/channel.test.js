@@ -14,4 +14,16 @@ describe('ACTIONS - channel', () => {
             });
         });
     });
+    describe('getChannelMessages', () => {
+        it('should return channel messages', () => {
+            const team = 'mastermind';
+            const name = 'general';
+            const data = {};
+            const action = channel.getChannelMessages(team, name);
+            expect(action).toEqual({
+                type: 'GET_MESSAGES_SUCCESS',
+                data
+            });
+        });
+    });
 });

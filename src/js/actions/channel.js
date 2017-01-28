@@ -1,8 +1,10 @@
-import claiJson from '../../../../data/clai/slack_raw.json';
-import mastermindJson from '../../../../data/mastermind/slack_raw.json';
-import krispaJson from '../../../../data/krispa/slack_raw.json';
-import travelJson from '../../../../data/travel/slack_raw.json';
-import tradeX from '../../../../data/tradeX/slack_raw.json';
+import claiJson from '../../data/clai/slack_raw.json';
+import mastermindJson from '../../data/mastermind/slack_raw.json';
+import krispaJson from '../../data/krispa/slack_raw.json';
+import travelJson from '../../data/travel/slack_raw.json';
+import tradeX from '../../data/tradeX/slack_raw.json';
+
+import claiGeneral from '../../data/clai/messages/general.json';
 
 export const getChannel = (team: String, id: String) => {
     let data = {}
@@ -16,6 +18,22 @@ export const getChannel = (team: String, id: String) => {
 
     return {
         type: 'GET_CHANNEL_SUCCESS',
+        data
+    };
+};
+
+export const getChannelMessages = (team: String, name: String) => {
+    let data = {};
+
+    switch (team) {
+    case 'clai':
+        data = require('../../data/clai/messages/' + name + '.json');
+        break;
+    default:
+        break;
+    }
+    return {
+        type: 'GET_MESSAGES_SUCCESS',
         data
     };
 };
