@@ -3,9 +3,12 @@ exports[`test renders TopNav 1`] = `
   className={undefined}>
   <div
     className={undefined}>
-    <span>
-      <img />
-    </span>
+    <img
+      alt="logo"
+      src="test-file-stub" />
+    <h1>
+      DASHBOARD
+    </h1>
   </div>
 </nav>
 `;

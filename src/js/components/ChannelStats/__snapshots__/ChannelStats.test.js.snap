@@ -1,6 +1,8 @@
 exports[`test renders ChannelStats 1`] = `
-<div
-  className={undefined}>
+<a
+  className={undefined}
+  onClick={[Function]}
+  style={Object {}}>
   <header>
     <h1>
       general
@@ -8,5 +10,6 @@ exports[`test renders ChannelStats 1`] = `
   </header>
   <div
     className={undefined} />
-</div>
+  <div />
+</a>
 `;

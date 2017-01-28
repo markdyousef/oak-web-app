@@ -1,6 +1,4 @@
 exports[`test renders Graph 1`] = `
 <div
-  className={undefined}>
-  Graph
-</div>
+  className={undefined} />
 `;

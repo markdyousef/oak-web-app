@@ -8,7 +8,8 @@ test('renders Graph', () => {
         data: {
             x: [],
             y: []
-        }
+        },
+        type: 'line'
     };
     const component = renderer.create(
         <Graph {...props} />
