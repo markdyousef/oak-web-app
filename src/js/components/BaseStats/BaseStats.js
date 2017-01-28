@@ -39,7 +39,7 @@ class BaseStats extends Component {
         return (
             <div className={css.container}>
                 <div className={css.toolbar}>
-                    <Toolbar />
+                    <Toolbar channels={this.props.data} />
                 </div>
                 <div className={css.statsGrid}>
                     {this.renderStats()}
