@@ -7,24 +7,20 @@ class Graph extends Component {
         data: PropTypes.shape({
             x: PropTypes.arrayOf(PropTypes.string).isRequired,
             y: PropTypes.arrayOf(PropTypes.object).isRequired
-        })
+        }),
+        type: PropTypes.string.isRequired
     }
     constructor() {
         super();
         this.state = {};
     }
     render() {
+        const { type } = this.props;
         return (
             <div className={css.container}>
                 {(() => {
                     if (type === 'line') {
-                        return (
-                            <LineChart
-                                data={graphFormat}
-                                width="500"
-                                height="500"
-                            />
-                        );
+                        return null;
                     }
                     return null;
                 })()}
