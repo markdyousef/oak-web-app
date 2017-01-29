@@ -10,11 +10,18 @@ class UserProfile extends Component {
         super();
         this.state = {}
     }
+    componentWillMount() {
+        // getUser
+    }
     render() {
-        console.log(this.props);
         return (
             <div className={css.container}>
-
+                <header>
+                    <div className={css.profile}>
+                        <div className={css.avatar} />
+                        <h1>{this.props.userId}</h1>
+                    </div>
+                </header>
             </div>
         );
     }
