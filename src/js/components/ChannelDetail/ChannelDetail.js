@@ -13,12 +13,21 @@ class ChannelDetail extends Component {
             name: PropTypes.string.isRequired,
             members: PropTypes.arrayOf(PropTypes.string),
             messages: PropTypes.arrayOf(PropTypes.object)
-        })
+        }),
+        getChannel: PropTypes.func.isRequired,
+        params: PropTypes.shape({
+            channelId: PropTypes.string
+        }).isRequired,
+        team: PropTypes.string.isRequired
     };
     constructor() {
         super();
         this.renderMembers = this.renderMembers.bind(this);
         this.state = {};
+    }
+    componentWillMount() {
+        const { team, params, getChannel } = this.props;
+        getChannel(team, params.channelId);
     }
     renderMembers() {
         const { data } = this.props;
@@ -40,7 +49,7 @@ class ChannelDetail extends Component {
         const { data } = this.props;
         return (
             <div className={css.container}>
-                <nav>
+                {/* <nav>
                     <Link to="/">CHANNELS /</Link>
                     <h1>{data.name}</h1>
                 </nav>
@@ -49,7 +58,7 @@ class ChannelDetail extends Component {
                 </div>
                 <div className={css.messageContainer}>
                     <MessageStats channel={data.name} messages={data.messages} />
-                </div>
+                </div> */}
             </div>
         );
     }

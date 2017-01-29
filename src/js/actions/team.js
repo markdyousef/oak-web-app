@@ -5,7 +5,7 @@ import travelJson from '../../../../data/travel/slack_raw.json';
 import tradeX from '../../../../data/tradeX/slack_raw.json';
 
 export const getTeam = (team: String) => {
-    let data = {};
+    let data = [];
     // get team data
     switch (team) {
     case 'clai':
@@ -24,7 +24,6 @@ export const getTeam = (team: String) => {
         data = tradeX;
         break;
     default:
-        data = claiJson;
         break;
     }
     return {

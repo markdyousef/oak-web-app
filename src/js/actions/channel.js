@@ -15,23 +15,24 @@ export const getChannel = (team: String, id: String) => {
     }
 
     return {
-        type: 'GET_CHANNEL_SUCCESS',
+        type: 'RECEIVE_CHANNEL',
         data
     };
 };
 
-export const getChannelMessages = (team: String, name: String) => {
-    let data = {};
-
-    switch (team) {
-    case 'clai':
-        data = require('../../data/clai/messages/' + name + '.json');
-        break;
-    default:
-        break;
-    }
-    return {
-        type: 'GET_MESSAGES_SUCCESS',
-        data
-    };
-};
+// export const getChannelMessages = (team: String, name: String) => {
+//     let data = {};
+//
+//     switch (team) {
+//     case 'clai':
+//         data = require('../../data/clai/messages/' + name + '.json');
+//         break;
+//     default:
+//         data = require('../../data/clai/messages/' + name + '.json');
+//         break;
+//     }
+//     return {
+//         type: 'GET_MESSAGES_SUCCESS',
+//         data
+//     };
+// };

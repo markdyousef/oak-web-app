@@ -8,6 +8,7 @@ import css from './BaseStats.css';
 
 class BaseStats extends Component {
     static propTypes = {
+        getTeam: PropTypes.func.isRequired,
         channels: PropTypes.arrayOf(
             PropTypes.shape({
                 name: PropTypes.string.isRequired

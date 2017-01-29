@@ -10,7 +10,12 @@ test('renders ChannelDetail', () => {
         data: {
             id: 'id',
             name: 'general'
-        }
+        },
+        params: {
+            channelId: 'id'
+        },
+        getChannel: () => {},
+        team: 'team name'
     };
     const component = renderer.create(
         <ChannelDetail {...props} />

@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
-import * as channel from '../channel';
+import * as team from '../team';
 
-describe('ACTIONS - channel', () => {
+describe('ACTIONS - team', () => {
     describe('getTeam', () => {
         it('should return team data', () => {
-            const team = 'mastermind';
-            const data = {};
-            const action = channel.getChannel(team);
+            const name = 'doom';
+            const data = [];
+            const action = team.getTeam(name);
             expect(action).toEqual({
-                type: 'GET_TEAM_SUCCESS',
+                type: 'RECEIVE_TEAM',
+                team: name,
                 data
             });
         });

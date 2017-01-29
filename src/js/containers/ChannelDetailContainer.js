@@ -5,15 +5,17 @@ import { getChannel } from '../actions/index';
 
 const TEAM = 'clai';
 
-const mapStateToProps = (state: Object, ownProps: Object) => {
-    const channelId = ownProps.params.channelId;
+const mapStateToProps = (state: Object) => (
+    {
+        team: state.team.get('name')
+    }
+);
 
-    const data = getChannel(TEAM, channelId).data;
-
-    return { data };
-};
-
-const mapDispatchToProps = (dispatch: Function) => ({});
+const mapDispatchToProps = (dispatch: Function) => (
+    {
+        getChannel: (team, channelId) => dispatch(getChannel(team, channelId))
+    }
+);
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelDetail);

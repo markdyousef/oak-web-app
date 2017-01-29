@@ -5,7 +5,8 @@ import BaseStats from './BaseStats';
 
 test('renders BaseStats', () => {
     const props = {
-        data: []
+        channels: [],
+        getTeam: () => {}
     };
     const component = renderer.create(
         <BaseStats {...props} />

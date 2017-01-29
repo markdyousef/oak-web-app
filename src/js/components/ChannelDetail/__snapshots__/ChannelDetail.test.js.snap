@@ -1,17 +1,4 @@
 exports[`test renders ChannelDetail 1`] = `
 <div
-  className={undefined}>
-  <header>
-    <h1>
-      general
-    </h1>
-  </header>
-  <div
-    className={undefined}>
-    <div
-      className={undefined}>
-      No members
-    </div>
-  </div>
-</div>
+  className={undefined} />
 `;

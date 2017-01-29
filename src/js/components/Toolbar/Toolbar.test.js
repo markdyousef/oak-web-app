@@ -5,6 +5,7 @@ import Toolbar from './Toolbar';
 
 test('renders Toolbar', () => {
     const props = {
+        selectTeam: () => {}
     };
     const component = renderer.create(
         <Toolbar {...props} />
