@@ -7,10 +7,9 @@ import css from './MessageStats.css';
 
 class MessageStats extends Component {
     static propTypes = {
-        data: PropTypes.shape({
-            channel: PropTypes.string.isRequired,
-            messages: PropTypes.arrayOf(PropTypes.object)
-        })
+        channel: PropTypes.string.isRequired,
+        messages: PropTypes.arrayOf(PropTypes.object),
+        isLoading: PropTypes.bool.isRequired
     };
     constructor() {
         super();
@@ -21,9 +20,9 @@ class MessageStats extends Component {
         };
     }
     renderMessages() {
-        const { data } = this.props;
-        if (data && data.messages) {
-            return data.messages.map(message => (
+        const { messages } = this.props.data;
+        if (messages) {
+            return messages.map(message => (
                 <MessageItem
                     onClick={() => this.setState({ activeMessage: message })}
                     message={message}
@@ -42,6 +41,10 @@ class MessageStats extends Component {
         return <div className={css.noStats}>No stats</div>
     }
     render() {
+        const { isLoading } = this.props;
+        console.log(this.props);
+
+        if (isLoading) return <div>Loading</div>;
         return (
             <div className={css.container}>
                 <div className={css.messageList}>

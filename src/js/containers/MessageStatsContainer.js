@@ -5,7 +5,8 @@ import MessageStats from '../components/MessageStats';
 
 const mapStateToProps = (state: Object) => (
     {
-        // messages: state.channel.data.get('messages').toJS(),
+        isLoading: state.channel.get('isLoading'),
+        data: state.channel.get('data').toJS(),
         channel: state.channel.get('name')
     }
 );
