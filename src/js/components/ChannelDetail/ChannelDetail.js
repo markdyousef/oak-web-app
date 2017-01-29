@@ -40,10 +40,14 @@ class ChannelDetail extends Component {
             return <div className={css.noMembers}>No members</div>;
         }
         return members.map(member => (
-            <div className={css.member} key={member}>
+            <Link
+                className={css.member}
+                key={member}
+                to={`/user/${member}`}
+            >
                 <div />
                 <h4>{member}</h4>
-            </div>
+            </Link>
         ));
     }
     render() {

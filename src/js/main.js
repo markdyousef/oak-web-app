@@ -11,6 +11,7 @@ import initStore from './store/configureStore';
 import App from './containers/AppContainer';
 import Home from './pages/Home';
 import ChannelDetail from './containers/ChannelDetailContainer';
+import User from './pages/User';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -25,6 +26,7 @@ const routes = (
             <Route path="/" component={App}>
                 <IndexRoute component={Home} />
                 <Route path="/channel/:channelId" component={ChannelDetail} />
+                <Route path="/user/:userId" component={User} />
             </Route>
         </Router>
     </Provider>
