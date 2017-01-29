@@ -11,6 +11,7 @@ class UserProfile extends Component {
         this.state = {}
     }
     render() {
+        console.log(this.props);
         return (
             <div className={css.container}>
 

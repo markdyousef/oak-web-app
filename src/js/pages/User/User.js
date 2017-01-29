@@ -1,5 +1,6 @@
 // @flow
 import React, { PropTypes } from 'react';
+import UserProfile from '../../containers/UserProfileContainer';
 
 import css from './User.css';
 
@@ -7,7 +8,7 @@ const User = ({ params }: Object) => {
     const { userId } = params;
     return (
         <div className={css.container}>
-            USER
+            <UserProfile userId={userId} />
         </div>
     );
 };
