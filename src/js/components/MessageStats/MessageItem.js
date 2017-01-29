@@ -26,7 +26,7 @@ const MessageItem = ({ message, onClick }:Object) => {
 MessageItem.propTypes = {
     message: PropTypes.shape({
         text: PropTypes.string.isRequired,
-        user: PropTypes.string.isRequired,
+        user: PropTypes.string,
         ts: PropTypes.string.isRequired
     }),
     onClick: PropTypes.func.isRequired
