@@ -9,8 +9,8 @@ import MessageStats from '../../containers/MessageStatsContainer';
 class ChannelDetail extends Component {
     static propTypes = {
         data: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
+            id: PropTypes.string,
+            name: PropTypes.string,
             members: PropTypes.arrayOf(PropTypes.string),
             messages: PropTypes.arrayOf(PropTypes.object)
         }),
@@ -18,7 +18,8 @@ class ChannelDetail extends Component {
         params: PropTypes.shape({
             channelId: PropTypes.string
         }).isRequired,
-        team: PropTypes.string.isRequired
+        team: PropTypes.string.isRequired,
+        isLoading: PropTypes.bool.isRequired
     };
     constructor() {
         super();
@@ -46,10 +47,13 @@ class ChannelDetail extends Component {
         ));
     }
     render() {
-        const { data } = this.props;
+        const { data, isLoading } = this.props;
+
+        if (isLoading) return <div>Loading</div>
+
         return (
             <div className={css.container}>
-                {/* <nav>
+                <nav>
                     <Link to="/">CHANNELS /</Link>
                     <h1>{data.name}</h1>
                 </nav>
@@ -58,7 +62,7 @@ class ChannelDetail extends Component {
                 </div>
                 <div className={css.messageContainer}>
                     <MessageStats channel={data.name} messages={data.messages} />
-                </div> */}
+                </div>
             </div>
         );
     }

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import ChannelDetail from '../components/ChannelDetail';
 import { getChannel } from '../actions/index';
 
-const TEAM = 'clai';
-
 const mapStateToProps = (state: Object) => (
     {
-        team: state.team.get('name')
+        team: state.team.get('name'),
+        name: state.channel.get('name'),
+        data: state.channel.get('data').toJS(),
+        isLoading: state.channel.get('isLoading'),
     }
 );
 

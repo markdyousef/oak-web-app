@@ -1,11 +1,10 @@
 import Immutable from 'immutable';
 
 const inititalState = Immutable.fromJS({
-    isLoading: false,
+    isLoading: true,
     message: null,
     name: 'general',
-    messages: [],
-    members: []
+    data: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {
@@ -14,8 +13,7 @@ export default (state = inititalState, action) => {
         return state
             .set('isLoading', false)
             .set('name', action.data.name)
-            .set('messages', Immutable.List(action.data.messages))
-            .set('members', Immutable.List(action.data.members));
+            .set('data', Immutable.Map(action.data));
     default:
         return state;
     }

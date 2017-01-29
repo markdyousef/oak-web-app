@@ -4,6 +4,8 @@ import krispaJson from '../../data/krispa/slack_raw.json';
 import travelJson from '../../data/travel/slack_raw.json';
 import tradeX from '../../data/tradeX/slack_raw.json';
 
+
+
 export const getChannel = (team: String, id: String) => {
     let data = {}
     switch (team) {
