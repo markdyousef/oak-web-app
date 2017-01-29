@@ -2,7 +2,7 @@ import claiJson from '../../../../data/clai/slack_raw.json';
 import mastermindJson from '../../../../data/mastermind/slack_raw.json';
 import krispaJson from '../../../../data/krispa/slack_raw.json';
 import travelJson from '../../../../data/travel/slack_raw.json';
-import tradeX from '../../../../data/tradeX/slack_raw.json';
+import tradeXJson from '../../../../data/tradeX/slack_raw.json';
 
 export const getTeam = (team: String) => {
     let data = [];
@@ -20,8 +20,8 @@ export const getTeam = (team: String) => {
     case 'travel':
         data = travelJson;
         break;
-    case 'tradeX':
-        data = tradeX;
+    case 'trade':
+        data = tradeXJson;
         break;
     default:
         break;
