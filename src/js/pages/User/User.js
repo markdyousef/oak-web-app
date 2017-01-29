@@ -5,7 +5,6 @@ import css from './User.css';
 
 const User = ({ params }: Object) => {
     const { userId } = params;
-    console.log(userId);
     return (
         <div className={css.container}>
             USER
