@@ -20,7 +20,7 @@ class MessageStats extends Component {
         };
     }
     renderMessages() {
-        const { messages } = this.props.data;
+        const { messages } = this.props;
         if (messages) {
             return messages.map(message => (
                 <MessageItem
