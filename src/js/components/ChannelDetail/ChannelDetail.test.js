@@ -7,6 +7,7 @@ import ChannelDetail from './ChannelDetail';
 
 test('renders ChannelDetail', () => {
     const props = {
+        isLoading: false,
         data: {
             id: 'id',
             name: 'general'
