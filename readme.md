@@ -1,5 +1,12 @@
 # Project
+Web client for 'team culture' project.
 
+* [Trello Board](https://trello.com/b/PjIE6AJI/swebly)
+* [Jupyter Notebook]()
+
+#### Purpose
+* Help visualize the data retrieved from Slack and the ongoing analysis
+* Experiment with new front-end tools
 
 ### Basics
 Start local server with browser sync:
