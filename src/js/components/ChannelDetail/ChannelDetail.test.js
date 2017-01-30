@@ -1,8 +1,6 @@
 // @flow
 import React from 'react';
-import renderer from 'react-test-renderer';
-import configureMockStore from 'redux-mock-store'
-
+import { shallow } from 'enzyme';
 import ChannelDetail from './ChannelDetail';
 
 test('renders ChannelDetail', () => {
@@ -18,9 +16,8 @@ test('renders ChannelDetail', () => {
         getChannel: () => {},
         team: 'team name'
     };
-    const component = renderer.create(
+    const shallowComponent = shallow(
         <ChannelDetail {...props} />
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(shallowComponent).toMatchSnapshot();
 });

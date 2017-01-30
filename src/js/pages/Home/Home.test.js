@@ -1,8 +1,11 @@
 // @flow
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Home from './Home';
 
 test('renders Home', () => {
-
+    const shallowComponent = shallow(
+        <Home />
+    )
+    expect(shallowComponent).toMatchSnapshot();
 });
