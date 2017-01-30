@@ -6,7 +6,7 @@ Web client for 'team culture' project.
 
 #### Purpose
 * Help visualize the data retrieved from Slack and the ongoing analysis
-* Experiment with new front-end tools
+* Experiment with new front-end tools (storybook, flow, jest)
 
 ### Basics
 Start local server with browser sync:
