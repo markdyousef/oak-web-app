@@ -5,8 +5,6 @@ import krispaJson from '../../data/krispa/krispa_slack.json';
 import travelJson from '../../data/travel/travel_slack.json';
 import tradeXJson from '../../data/tradeX/tradeX_slack.json';
 
-import { getChannels } from './channel';
-
 export const getTeam = (team: String) => {
     let data = [];
     // get team data

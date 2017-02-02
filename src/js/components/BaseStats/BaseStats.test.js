@@ -7,7 +7,8 @@ import BaseStats from './BaseStats';
 test('renders BaseStats', () => {
     const props = {
         channels: [],
-        getTeam: () => {}
+        getTeam: () => {},
+        name: 'clai'
     };
     const shallowComponent = shallow(
         <BaseStats {...props} />

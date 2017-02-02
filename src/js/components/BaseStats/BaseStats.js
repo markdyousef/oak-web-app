@@ -8,6 +8,7 @@ import css from './BaseStats.css';
 
 class BaseStats extends Component {
     static propTypes = {
+        name: PropTypes.string.isRequired,
         getTeam: PropTypes.func.isRequired,
         channels: PropTypes.arrayOf(
             PropTypes.shape({
@@ -15,13 +16,16 @@ class BaseStats extends Component {
             })
         )
     }
+    static defaultProps = {
+        channels: []
+    };
     constructor() {
         super();
         this.renderStats = this.renderStats.bind(this);
     }
     componentWillMount() {
-        const { getTeam } = this.props;
-        getTeam('clai');
+        const { getTeam, name } = this.props;
+        getTeam(name);
     }
     renderStats() {
         const { channels } = this.props;
@@ -29,7 +33,7 @@ class BaseStats extends Component {
         if (channels.length > 0) {
             const groupedChannels = [...channels.map(channel =>
                 ({ name: channel.name, data: channel }))
-            ]
+            ];
             return groupedChannels.map(channel =>
                 <ChannelStats
                     key={channel.name}
