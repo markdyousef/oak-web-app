@@ -42,7 +42,6 @@ class MessageStats extends Component {
     }
     render() {
         const { isLoading } = this.props;
-        console.log(this.props);
 
         if (isLoading) return <div>Loading</div>;
         return (
