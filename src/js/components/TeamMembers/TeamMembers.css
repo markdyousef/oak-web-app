@@ -3,3 +3,9 @@
     display: flex;
     height: 300px;
 }
+
+/* MEMBERS */
+.member {
+    width: 100px;
+    height: 100px;
+}

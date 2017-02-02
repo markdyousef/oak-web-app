@@ -11,7 +11,7 @@ describe('ACTIONS - members', () => {
             const action = members.getMembers(name);
             expect(action).toEqual({
                 type: type.RECEIVE_MEMBERS,
-                members: name,
+                team: name,
                 data
             });
         });

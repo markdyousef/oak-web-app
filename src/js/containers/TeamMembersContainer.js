@@ -5,7 +5,8 @@ import TeamMembers from '../components/TeamMembers';
 
 const mapStateToProps = (state: Object) => (
     {
-        members: state.members.get('members')
+        team: state.members.get('team'),
+        members: state.members.get('members').toJS()
     }
 );
 
