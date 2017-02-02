@@ -1,20 +1,26 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 
 import TeamStats from '../../containers/TeamStatsContainer';
 import TopNav from '../../containers/TopNavContainer';
 
 import css from './Home.css';
 
-const Home = () => {
-    return (
-        <div className={css.container}>
-            <TopNav />
-            <div className={css.teamStats}>
-                <TeamStats />
+class Home extends Component {
+    constructor() {
+        super();
+        this.state = {};
+    }
+    render() {
+        return (
+            <div className={css.container}>
+                <TopNav />
+                <div className={css.teamStats}>
+                    <TeamStats />
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 export default Home;
