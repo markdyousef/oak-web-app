@@ -25,7 +25,6 @@ class TeamMembers extends Component {
     }
     renderMembers() {
         const { members } = this.props;
-        console.log(members);
         if (members.length > 0) {
             return members.map(member => (
                 <Member member={member} key={member.id} />
@@ -37,7 +36,6 @@ class TeamMembers extends Component {
     render() {
         return (
             <div className={css.container}>
-                <h1>Members</h1>
                 {this.renderMembers()}
             </div>
         );

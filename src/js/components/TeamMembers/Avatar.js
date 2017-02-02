@@ -1,7 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
 
-import css from './Member';
+import css from './TeamMembers.css';
 
 // import placeholderImg
 const placeholderImg = null;

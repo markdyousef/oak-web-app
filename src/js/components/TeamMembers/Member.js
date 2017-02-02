@@ -1,7 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
 
-import css from './Member';
+import css from './TeamMembers.css';
 
 const Member = ({ member }: Object) => (
     <div className={css.member}>
