@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import css from './ChannelDetail.css';
 
 import MessageStats from '../../containers/MessageStatsContainer';
+import TeamMembers from '../../containers/TeamMembersContainer';
 
 class ChannelDetail extends Component {
     static propTypes = {
@@ -21,39 +22,21 @@ class ChannelDetail extends Component {
         team: PropTypes.string.isRequired,
         isLoading: PropTypes.bool.isRequired
     };
+    static defaultProps = {
+        data: {}
+    }
     constructor() {
         super();
-        this.renderMembers = this.renderMembers.bind(this);
         this.state = {};
     }
     componentWillMount() {
         const { team, params, getChannel } = this.props;
         getChannel(team, params.channelId);
     }
-    renderMembers() {
-        const { data } = this.props;
-
-        // check if members is an array
-        const members = (data.members) ? data.members : [];
-        // some channels has no members
-        if (members.length === 0) {
-            return <div className={css.noMembers}>No members</div>;
-        }
-        return members.map(member => (
-            <Link
-                className={css.member}
-                key={member}
-                to={`/user/${member}`}
-            >
-                <div />
-                <h4>{member}</h4>
-            </Link>
-        ));
-    }
     render() {
         const { data, isLoading } = this.props;
 
-        if (isLoading) return <div>Loading</div>
+        if (isLoading) return <div>Loading</div>;
 
         return (
             <div className={css.container}>
@@ -62,7 +45,7 @@ class ChannelDetail extends Component {
                     <h1>{data.name}</h1>
                 </nav>
                 <div className={css.membersContainer}>
-                    {this.renderMembers()}
+                    <TeamMembers />
                 </div>
                 <div className={css.messageContainer}>
                     <MessageStats channel={data.name} messages={data.messages} />
