@@ -13,33 +13,17 @@ class Filter extends Component {
     constructor() {
         super();
         this.renderOptionList = this.renderOptionList.bind(this);
-        this.onMouseClick = this.onMouseClick.bind(this);
         this.state = {
             selected: null,
             isOpen: false
         }
-    }
-    // componentWillMount() {
-    //     window.addEventListener('click', this.onMouseClick, false)
-    // }
-    // componentWillUnmount() {
-    //     window.removeEventListener('click', this.onMouseClick)
-    // }
-    onMouseClick(event) {
-        const { isOpen } = this.state;
-        // console.log(event.target.className);
-        // const { name } = this.props;
-        // if (isOpen && event && event.target.className !== 'filter') {
-        //     return this.setState({ isOpen: false });
-        // }
-        // return null;
     }
     renderOptionList() {
         const { options, select } = this.props;
         return options.map(option => (
             <div
                 key={option.name}
-                onClick={() => select(option.name)}
+                onClick={() => { select(option.name); this.setState({ isOpen: false }); }}
             >
                 <span>{option.name}</span>
             </div>
@@ -50,12 +34,12 @@ class Filter extends Component {
         const { name } = this.props;
         return (
             <div className={css.filter}>
-                    <div
-                        className={css.selected}
-                        onClick={() => this.setState({ isOpen: !isOpen })}
-                    >
-                        <span>{(selected) || name }</span>
-                    </div>
+                <div
+                    className={css.selected}
+                    onClick={() => this.setState({ isOpen: !isOpen })}
+                >
+                    <span>{(selected) || name }</span>
+                </div>
                 <div className="filter">
                     {isOpen && <div className={css.optionList}>
                         {this.renderOptionList()}

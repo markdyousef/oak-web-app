@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import BaseStats from '../components/BaseStats';
 import { getTeam } from '../actions';
 
-const mapStateToProps = (state: Object, ownProps: Object) => {
+const mapStateToProps = (state: Object) => {
     return {
         channels: state.team.get('channels').toJS(),
         name: state.team.get('name')
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch: Function) => (

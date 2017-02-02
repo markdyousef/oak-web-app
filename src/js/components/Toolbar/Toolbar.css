@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .optionList {
@@ -33,4 +34,5 @@
 
 .optionList div {
     padding: 10px;
+    cursor: pointer;
 }
