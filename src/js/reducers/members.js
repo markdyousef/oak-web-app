@@ -4,7 +4,7 @@ import * as type from '../constants/ActionTypes';
 const inititalState = Immutable.fromJS({
     isLoading: true,
     message: null,
-    team: 'clai',
+    team: 'mastermind',
     members: Immutable.List([])
 });
 

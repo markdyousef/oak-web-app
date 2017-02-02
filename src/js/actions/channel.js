@@ -11,10 +11,10 @@ export const getChannel = (team: String, id: String) => {
     let data = {};
     switch (team) {
     case 'clai':
-        data = claiJson.filter(channel => channel.id === id)[0];
+        data = _.value(claiJson).filter(channel => channel.id === id)[0];
         break;
     case 'mastermind':
-        data = mastermindJson.filter(channel => channel.id === id)[0];
+        data = _.values(mastermindJson).filter(channel => channel.id === id)[0];
         break;
     case 'krispa':
         data = krispaJson.filter(channel => channel.id === id)[0];

@@ -5,13 +5,10 @@ import { Link } from 'react-router';
 import css from './ChannelStats.css';
 import chatIcon from '../../../img/chat.png';
 import membersIcon from '../../../img/multiple-users-silhouette.png';
-import Graph from '../../components/Graph';
 
 const ChannelStats = ({ data } : Object) => {
     const { name, purpose, members, messages, id } = data;
 
-
-    const messageFreq = { x: members, y: messages };
     return (
         <Link className={css.container} to={`/channel/${id}`}>
             <header>
@@ -35,9 +32,6 @@ const ChannelStats = ({ data } : Object) => {
                         <h5>{messages.length}</h5>
                     </div>
                 }
-            </div>
-            <div>
-                {/* <Graph data={messageFreq} type="line" /> */}
             </div>
         </Link>
     );
