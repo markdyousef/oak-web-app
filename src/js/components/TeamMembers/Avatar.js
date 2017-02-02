@@ -6,7 +6,7 @@ import css from './TeamMembers.css';
 // import placeholderImg
 const placeholderImg = null;
 
-const Avatar = (img: String) => (
+const Avatar = ({ img }:Object) => (
     <div className={css.avatar}>
         <img src={img} alt="profile" />
     </div>
