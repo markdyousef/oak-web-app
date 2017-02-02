@@ -21,15 +21,15 @@ class ToolBar extends Component {
     }
     renderFilterOptions() {
         const { data, selectTeam } = this.props;
-        if (data && data.filters) {
-            return data.filters.map(filter => (
-                <Filter
-                    {...filter}
-                    key={filter.name}
-                    select={team => selectTeam(team)}
-                />
-            ));
-        }
+        // if (data && data.filters) {
+        //     return data.filters.map(filter => (
+        //         <Filter
+        //             {...filter}
+        //             key={filter.name}
+        //             select={team => selectTeam(team)}
+        //         />
+        //     ));
+        // }
         return null;
     }
     render() {
