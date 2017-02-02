@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import * as channel from '../channel';
+import * as type from '../../constants/ActionTypes';
 
 describe('ACTIONS - channel', () => {
     describe('getChannel', () => {
@@ -9,7 +10,7 @@ describe('ACTIONS - channel', () => {
             const data = {};
             const action = channel.getChannel(team, id);
             expect(action).toEqual({
-                type: 'RECEIVE_CHANNEL',
+                type: type.RECEIVE_CHANNEL,
                 data
             });
         });

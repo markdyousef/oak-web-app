@@ -1,10 +1,9 @@
+import * as type from '../constants/ActionTypes';
 import claiJson from '../../data/clai/slack_raw.json';
 import mastermindJson from '../../data/mastermind/slack_raw.json';
 import krispaJson from '../../data/krispa/slack_raw.json';
 import travelJson from '../../data/travel/slack_raw.json';
 import tradeXJson from '../../data/tradeX/slack_raw.json';
-
-
 
 export const getChannel = (team: String, id: String) => {
     let data = {};
@@ -29,7 +28,7 @@ export const getChannel = (team: String, id: String) => {
     }
 
     return {
-        type: 'RECEIVE_CHANNEL',
+        type: type.RECEIVE_CHANNEL,
         data
     };
 };

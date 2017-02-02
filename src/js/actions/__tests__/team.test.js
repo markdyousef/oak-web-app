@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import * as team from '../team';
+import * as type from '../../constants/ActionTypes';
 
 describe('ACTIONS - team', () => {
     describe('getTeam', () => {
@@ -8,7 +9,7 @@ describe('ACTIONS - team', () => {
             const data = [];
             const action = team.getTeam(name);
             expect(action).toEqual({
-                type: 'RECEIVE_TEAM',
+                type: type.RECEIVE_TEAM,
                 team: name,
                 data
             });
