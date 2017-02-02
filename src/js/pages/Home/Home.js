@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import TeamStats from '../../containers/TeamStatsContainer';
 import TopNav from '../../containers/TopNavContainer';
+import TeamMembers from '../../containers/TeamMembersContainer';
 
 import css from './Home.css';
 
@@ -15,6 +16,9 @@ class Home extends Component {
         return (
             <div className={css.container}>
                 <TopNav />
+                <div className={css.teamMembers}>
+
+                </div>
                 <div className={css.teamStats}>
                     <TeamStats />
                 </div>
