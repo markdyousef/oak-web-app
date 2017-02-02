@@ -1,3 +1,4 @@
+import * as type from '../constants/ActionTypes';
 import claiJson from '../../data/clai/slack_raw.json';
 import mastermindJson from '../../data/mastermind/slack_raw.json';
 import krispaJson from '../../data/krispa/slack_raw.json';
@@ -27,7 +28,7 @@ export const getTeam = (team: String) => {
         break;
     }
     return {
-        type: 'RECEIVE_TEAM',
+        type: type.RECEIVE_TEAM,
         team,
         data
     };

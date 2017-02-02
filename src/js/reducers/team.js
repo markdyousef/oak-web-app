@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import * as type from '../constants/ActionTypes';
 
 const inititalState = Immutable.fromJS({
     isLoading: false,
@@ -9,7 +10,7 @@ const inititalState = Immutable.fromJS({
 
 export default (state = inititalState, action) => {
     switch (action.type) {
-    case 'RECEIVE_TEAM':
+    case type.RECEIVE_TEAM:
         return state
             .set('isLoading', false)
             .set('name', action.team)
