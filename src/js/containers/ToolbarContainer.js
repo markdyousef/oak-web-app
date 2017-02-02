@@ -31,7 +31,7 @@ const mapStateToProps = (state: Object) => {
     data.filters.push(teamFilter);
     return {
         data,
-        channels: state.team.get('channels').toJS()
+        channels: state.channel.get('channels').toJS()
     };
 };
 

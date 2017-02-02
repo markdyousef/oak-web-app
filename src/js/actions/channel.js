@@ -1,9 +1,11 @@
+import _ from 'lodash';
+
 import * as type from '../constants/ActionTypes';
-import claiJson from '../../data/clai/slack_raw.json';
-import mastermindJson from '../../data/mastermind/slack_raw.json';
-import krispaJson from '../../data/krispa/slack_raw.json';
-import travelJson from '../../data/travel/slack_raw.json';
-import tradeXJson from '../../data/tradeX/slack_raw.json';
+import claiJson from '../../data/clai/channels/channels.json';
+import mastermindJson from '../../data/mastermind/channels/channels.json';
+import krispaJson from '../../data/krispa/channels/channels.json';
+import travelJson from '../../data/travel/channels/channels.json';
+import tradeXJson from '../../data/tradeX/channels/channels.json';
 
 export const getChannel = (team: String, id: String) => {
     let data = {};
@@ -29,23 +31,40 @@ export const getChannel = (team: String, id: String) => {
 
     return {
         type: type.RECEIVE_CHANNEL,
-        data
+        data,
+        team
     };
 };
 
-// export const getChannelMessages = (team: String, name: String) => {
-//     let data = {};
-//
-//     switch (team) {
-//     case 'clai':
-//         data = require('../../data/clai/messages/' + name + '.json');
-//         break;
-//     default:
-//         data = require('../../data/clai/messages/' + name + '.json');
-//         break;
-//     }
-//     return {
-//         type: 'GET_MESSAGES_SUCCESS',
-//         data
-//     };
-// };
+export const getChannels = (team: String) => {
+    let data = [];
+    switch (team) {
+    case 'clai':
+        data = claiJson;
+        break;
+    case 'mastermind':
+        data = mastermindJson;
+        break;
+    case 'krispa':
+        data = krispaJson;
+        break;
+    case 'travel':
+        data = travelJson;
+        break;
+    case 'trade':
+        data = tradeXJson;
+        break;
+    default:
+        break;
+    }
+
+    // transform object to array
+    if (typeof data === 'object') {
+        data = _.values(data);
+    }
+    return {
+        type: type.RECEIVE_CHANNELS,
+        data,
+        team
+    };
+};

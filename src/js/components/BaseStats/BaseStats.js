@@ -13,7 +13,7 @@ class BaseStats extends Component {
             PropTypes.shape({
                 name: PropTypes.string.isRequired
             })
-        ).isRequired
+        )
     }
     constructor() {
         super();
@@ -26,17 +26,22 @@ class BaseStats extends Component {
     renderStats() {
         const { channels } = this.props;
         // group data by channel
-        const groupedChannels = [...channels.map(channel =>
-            ({ name: channel.name, data: channel }))
-        ]
-        return groupedChannels.map(channel =>
-            <ChannelStats
-                key={channel.name}
-                data={channel.data}
-                name={channel.name}
-                id={channel.id}
-            />
-            );
+        if (channels.length > 0) {
+            const groupedChannels = [...channels.map(channel =>
+                ({ name: channel.name, data: channel }))
+            ]
+            return groupedChannels.map(channel =>
+                <ChannelStats
+                    key={channel.name}
+                    data={channel.data}
+                    name={channel.name}
+                    id={channel.id}
+                />
+                );
+        }
+        return (
+            <div>No Channels</div>
+        );
     }
     render() {
         return (

@@ -8,3 +8,4 @@ export const RECEIVE_TEAM = 'team/RECEIVE_TEAM';
 * CHANNELS
 */
 export const RECEIVE_CHANNEL = 'channel/RECEIVE_CHANNEL';
+export const RECEIVE_CHANNELS = 'channel/RECEIVE_CHANNELS';

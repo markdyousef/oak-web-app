@@ -4,8 +4,9 @@ import * as type from '../constants/ActionTypes';
 const inititalState = Immutable.fromJS({
     isLoading: true,
     message: null,
-    name: 'general',
-    data: Immutable.Map({})
+    team: 'clai',
+    channels: Immutable.List([]),
+    activeChannel: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {
@@ -13,8 +14,13 @@ export default (state = inititalState, action) => {
     case type.RECEIVE_CHANNEL:
         return state
             .set('isLoading', false)
-            .set('name', action.data.name)
-            .set('data', Immutable.Map(action.data));
+            .set('team', action.team)
+            .set('activeChannel', Immutable.Map(action.data));
+    case type.RECEIVE_CHANNELS:
+        return state
+            .set('isLoading', false)
+            .set('team', action.team)
+            .set('channels', Immutable.List(action.data));
     default:
         return state;
     }

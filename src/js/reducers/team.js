@@ -5,7 +5,7 @@ const inititalState = Immutable.fromJS({
     isLoading: false,
     message: null,
     name: 'clai',
-    channels: []
+    data: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {
@@ -14,7 +14,7 @@ export default (state = inititalState, action) => {
         return state
             .set('isLoading', false)
             .set('name', action.team)
-            .set('channels', Immutable.List(action.data));
+            .set('data', Immutable.Map(action.data));
     default:
         return state;
     }

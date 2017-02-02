@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable no-undef */
 import * as channel from '../channel';
 import * as type from '../../constants/ActionTypes';
@@ -11,20 +12,21 @@ describe('ACTIONS - channel', () => {
             const action = channel.getChannel(team, id);
             expect(action).toEqual({
                 type: type.RECEIVE_CHANNEL,
-                data
+                data,
+                team
             });
         });
     });
-    // describe('getChannelMessages', () => {
-    //     it('should return channel messages', () => {
-    //         const team = 'mastermind';
-    //         const name = 'general';
-    //         const data = {};
-    //         const action = channel.getChannelMessages(team, name);
-    //         expect(action).toEqual({
-    //             type: 'GET_MESSAGES_SUCCESS',
-    //             data
-    //         });
-    //     });
-    // });
+    describe('getChannels', () => {
+        it('should return channels', () => {
+            const team = 'doom';
+            const data = [];
+            const action = channel.getChannels(team);
+            expect(action).toEqual({
+                type: type.RECEIVE_CHANNELS,
+                data,
+                team
+            });
+        });
+    });
 });

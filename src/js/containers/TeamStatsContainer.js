@@ -1,18 +1,21 @@
 // @flow
 import { connect } from 'react-redux';
 import BaseStats from '../components/BaseStats';
-import { getTeam } from '../actions';
+import { getTeam, getChannels } from '../actions';
 
 const mapStateToProps = (state: Object) => {
     return {
-        channels: state.team.get('channels').toJS(),
-        name: state.team.get('name')
+        name: state.team.get('name'),
+        channels: state.channel.get('channels').toJS()
     };
 };
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        getTeam: (name: String) => dispatch(getTeam(name))
+        getTeam: (name: String) => {
+            dispatch(getTeam(name));
+            dispatch(getChannels(name));
+        }
     }
 );
 
