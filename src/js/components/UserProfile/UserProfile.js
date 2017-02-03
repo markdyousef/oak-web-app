@@ -11,6 +11,7 @@ class UserProfile extends Component {
         user: PropTypes.shape({
             profile: PropTypes.object
         }),
+        users: PropTypes.arrayOf(PropTypes.object),
         insights: PropTypes.object,
         otherInsights: PropTypes.object,
         getInsight: PropTypes.func.isRequired
@@ -19,6 +20,7 @@ class UserProfile extends Component {
         user: {
             profile: {}
         },
+        users: [],
         insights: {},
         otherInsights: {}
     }
@@ -28,8 +30,21 @@ class UserProfile extends Component {
         this.state = {};
     }
     renderUsers() {
-        const { getInsight, users } = this.props;
+        const { getInsight, users, userId } = this.props;
 
+        if (users) {
+            const others = users.filter(user => user.id !== userId);
+            return others.map(other => (
+                <button
+                    key={other.id}
+                    onClick={() => getInsight(userId, other.id)}
+                >
+                    <Avatar img={other.profile.image_512} />
+                </button>
+            )
+        )
+        }
+        return null;
     }
     componentWillMount() {
         const { getInsight, userId } = this.props;
@@ -45,7 +60,7 @@ class UserProfile extends Component {
                             <Avatar img={user.profile.image_512} />
                         </div>
                         <div className={css.compare}>
-                            {this.renderUsers}
+                            {this.renderUsers()}
                         </div>
                         <div className={css.stats}>
                             <Insights insights={insights} otherInsights={otherInsights} />
