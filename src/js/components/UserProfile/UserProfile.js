@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from 'react';
 
 import css from './UserProfile.css';
@@ -11,24 +12,31 @@ class UserProfile extends Component {
             profile: PropTypes.object
         }),
         insights: PropTypes.object,
+        otherInsights: PropTypes.object,
         getInsight: PropTypes.func.isRequired
     }
     static defaultProps = {
         user: {
             profile: {}
         },
-        insights: {}
+        insights: {},
+        otherInsights: {}
     }
     constructor() {
         super();
-        this.state = {}
+        this.renderUsers = this.renderUsers.bind(this);
+        this.state = {};
+    }
+    renderUsers() {
+        const { getInsight, users } = this.props;
+
     }
     componentWillMount() {
         const { getInsight, userId } = this.props;
         getInsight(userId);
     }
     render() {
-        const { user, insights } = this.props;
+        const { user, insights, otherInsights } = this.props;
         return (
             <div className={css.container}>
                 <header>
@@ -36,8 +44,11 @@ class UserProfile extends Component {
                         <div className={css.avatar}>
                             <Avatar img={user.profile.image_512} />
                         </div>
+                        <div className={css.compare}>
+                            {this.renderUsers}
+                        </div>
                         <div className={css.stats}>
-                            <Insights insights={insights} />
+                            <Insights insights={insights} otherInsights={otherInsights} />
                         </div>
                     </div>
                 </header>
