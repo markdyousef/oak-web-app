@@ -17,6 +17,7 @@ class Home extends Component {
             <div className={css.container}>
                 <TopNav />
                 <div className={css.teamMembers}>
+                    <h1>TEAM MEMBERS:</h1>
                     <TeamMembers />
                 </div>
                 <div className={css.teamStats}>

@@ -6,6 +6,11 @@
     height: 100%;
 }
 
+.teamMembers h1 {
+    padding: 20px;
+    font-size: 20px;
+}
+
 .teamStats {
     width: 100%;
 }

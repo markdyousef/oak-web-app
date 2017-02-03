@@ -34,7 +34,7 @@ class UserProfile extends Component {
                 <header>
                     <div className={css.profile}>
                         <div className={css.avatar}>
-                            <Avatar img={user.profile.image_original} />
+                            <Avatar img={user.profile.image_512} />
                         </div>
                         <div className={css.stats}>
                             <Insights insights={insights} />
