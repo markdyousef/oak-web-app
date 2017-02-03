@@ -15,6 +15,10 @@ class ChannelDetail extends Component {
             members: PropTypes.arrayOf(PropTypes.string),
             messages: PropTypes.arrayOf(PropTypes.object)
         }),
+        tone: PropTypes.shape({
+            document_tone: PropTypes.object
+
+        }),
         getChannel: PropTypes.func.isRequired,
         params: PropTypes.shape({
             channelId: PropTypes.string
@@ -23,7 +27,8 @@ class ChannelDetail extends Component {
         isLoading: PropTypes.bool.isRequired
     };
     static defaultProps = {
-        data: {}
+        data: {},
+        tone: {}
     }
     constructor() {
         super();
@@ -35,6 +40,7 @@ class ChannelDetail extends Component {
     }
     render() {
         const { data, isLoading } = this.props;
+        console.log(this.props);
 
         if (isLoading) return <div>Loading</div>;
 
