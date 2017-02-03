@@ -19,6 +19,8 @@ ShallowWrapper {
       "_compositeType": 2,
       "_context": Object {},
       "_currentElement": <Chart
+        categories={Array []}
+        data={Array []}
         items={Array []}
         title={null}
         type={null} />,
@@ -29,6 +31,8 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
+          "categories": Array [],
+          "data": Array [],
           "items": Array [],
           "title": null,
           "type": null,
@@ -70,6 +74,8 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Chart
+    categories={Array []}
+    data={Array []}
     items={Array []}
     title={null}
     type={null} />,
