@@ -5,7 +5,7 @@ import css from './Insights.css';
 class Insights extends Component {
     static propTypes = {
         insights: PropTypes.shape({
-            value: PropTypes.array
+            values: PropTypes.array
         })
     }
     static defaultProps = {
@@ -13,12 +13,23 @@ class Insights extends Component {
     }
     constructor() {
         super();
+        this.renderInsight = this.renderInsight.bind(this);
         this.state = {}
+    }
+    renderInsight(name: string) {
+        const { insights } = this.props;
+
+        if (insights[name]) {
+            const items = insights[name];
+        }
+        return null;
     }
     render() {
         return (
             <div className={css.container}>
-
+                {this.renderInsight('values')}
+                {this.renderInsight('personality')}
+                {this.renderInsight('needs')}
             </div>
         );
     }
