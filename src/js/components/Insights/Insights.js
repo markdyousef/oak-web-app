@@ -8,10 +8,14 @@ class Insights extends Component {
     static propTypes = {
         insights: PropTypes.shape({
             values: PropTypes.array
+        }),
+        insightsOther: PropTypes.shape({
+            values: PropTypes.array
         })
     }
     static defaultProps = {
-        insights: {}
+        insights: {},
+        insightsOther: {}
     }
     constructor() {
         super();
@@ -19,16 +23,29 @@ class Insights extends Component {
         this.state = {}
     }
     renderInsight(name: string) {
-        const { insights } = this.props;
+        const { insights, insightsOther } = this.props;
 
         if (insights[name]) {
+            const data = [];
             const items = insights[name];
-
             const categories = items.map(item => item.name);
-            const data = items.map(item => Math.floor(item.percentile * 100));
+
+            const insight = items.map(item => Math.floor(item.percentile * 100));
+            data.push(insight);
+
+            if (insightsOther[name]) {
+                const itemsOther = insightsOther[name];
+                const insightOther = itemsOther.map(item => Math.floor(item.percentile * 100));
+                data.push(insightOther);
+            }
             return (
                 <div className={css.insight}>
-                    <Chart categories={categories} data={data} type="polar" title={name} />
+                    <Chart
+                        categories={categories}
+                        data={data}
+                        type="polar"
+                        title={name}
+                    />
                 </div>
             );
         }

@@ -32,7 +32,7 @@ class MessageTone extends Component {
 
                 return (
                     <div className={css.chart}>
-                        <Chart categories={categories} data={data} type="stackedBar" title={name} />
+                        <Chart categories={categories} data={[data]} type="stackedBar" title={name} />
                     </div>
                 );
             }

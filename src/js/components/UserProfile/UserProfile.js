@@ -13,7 +13,7 @@ class UserProfile extends Component {
         }),
         users: PropTypes.arrayOf(PropTypes.object),
         insights: PropTypes.object,
-        otherInsights: PropTypes.object,
+        insightsOther: PropTypes.object,
         getInsight: PropTypes.func.isRequired
     }
     static defaultProps = {
@@ -22,7 +22,7 @@ class UserProfile extends Component {
         },
         users: [],
         insights: {},
-        otherInsights: {}
+        insightsOther: {}
     }
     constructor() {
         super();
@@ -50,7 +50,7 @@ class UserProfile extends Component {
         return null;
     }
     render() {
-        const { user, insights, otherInsights } = this.props;
+        const { user, insights, insightsOther } = this.props;
         return (
             <div className={css.container}>
                 <header>
@@ -64,7 +64,7 @@ class UserProfile extends Component {
                             {this.renderUsers()}
                         </div>
                         <div className={css.stats}>
-                            <Insights insights={insights} otherInsights={otherInsights} />
+                            <Insights insights={insights} insightsOther={insightsOther} />
                         </div>
                     </div>
                 </header>

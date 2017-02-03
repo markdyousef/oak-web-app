@@ -13,6 +13,12 @@ const Chart = ({ categories, data, title, type }: Object) => {
         <div className={css.container}>
             {(() => {
                 if (type === 'polar') {
+                    const series = data.map(items => (
+                        {
+                            data: items,
+                            pointPlacement: 'on'
+                        }
+                    ))
                     const config = {
                         chart: {
                             polar: true
@@ -30,16 +36,16 @@ const Chart = ({ categories, data, title, type }: Object) => {
                         credits: {
                             enabled: false
                         },
-                        series: [
-                            {
-                                data,
-                                pointPlacement: 'on'
-                            }
-                        ]
+                        series
                     };
                     return <Highcharts config={config} className={css.polarChart} />;
                 }
                 if (type === 'stackedBar') {
+                    const series = data.map(items => (
+                        {
+                            data: items
+                        }
+                    ))
                     const config = {
                         chart: {
                             type: 'bar'
@@ -56,11 +62,7 @@ const Chart = ({ categories, data, title, type }: Object) => {
                         credits: {
                             enabled: false
                         },
-                        series: [
-                            {
-                                data
-                            }
-                        ]
+                        series
                     };
                     return <Highcharts config={config} />;
                 }
@@ -72,7 +74,7 @@ const Chart = ({ categories, data, title, type }: Object) => {
 
 Chart.propTypes = {
     categories: PropTypes.arrayOf(PropTypes.string),
-    data: PropTypes.arrayOf(PropTypes.number),
+    data: PropTypes.arrayOf(PropTypes.array),
     type: PropTypes.string,
     title: PropTypes.string
 };
