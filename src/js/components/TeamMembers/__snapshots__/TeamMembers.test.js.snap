@@ -8,16 +8,16 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <h1>
-        Members
-    </h1>
+    <div>
+        No Members
+    </div>
 </div>,
   "nodes": Array [
     <div
       className={undefined}>
-      <h1>
-            Members
-      </h1>
+      <div>
+            No Members
+      </div>
 </div>,
   ],
   "options": Object {},
@@ -26,15 +26,23 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <TeamMembers />,
+      "_currentElement": <TeamMembers
+        getMembers={[Function]}
+        members={Array []}
+        team="clai" />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": TeamMembers {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "getMembers": [Function],
+          "members": Array [],
+          "team": "clai",
+        },
         "refs": Object {},
+        "renderMembers": [Function],
         "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
@@ -56,16 +64,16 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <h1>
-                    Members
-          </h1>
+          <div>
+                    No Members
+          </div>
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <h1>
-                    Members
-          </h1>
+          <div>
+                    No Members
+          </div>
 </div>,
       },
       "_renderedNodeType": 0,
@@ -78,6 +86,9 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <TeamMembers />,
+  "unrendered": <TeamMembers
+    getMembers={[Function]}
+    members={Array []}
+    team="clai" />,
 }
 `;

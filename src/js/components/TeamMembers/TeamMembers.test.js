@@ -6,6 +6,9 @@ import TeamMembers from './TeamMembers';
 
 test('renders TeamMembers', () => {
     const props = {
+        getMembers: () => {},
+        members: [],
+        team: 'clai'
     };
     const shallowComponent = shallow(
         <TeamMembers {...props} />
