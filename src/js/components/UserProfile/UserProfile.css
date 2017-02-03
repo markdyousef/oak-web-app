@@ -18,6 +18,18 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+.container h1 {
+    font-weight: bold;
+    align-self: flex-start;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.container h3 {
+    align-self: flex-start;
+    margin: 10px 0;
+}
+
 .profile {
     margin-top: 30px;
     display: flex;
@@ -40,4 +52,17 @@
 .stats {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.users {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.users button {
+    border: 0 !important;
+    padding: 0 !important;
+    height: 30px;
+    width: 30px;
 }

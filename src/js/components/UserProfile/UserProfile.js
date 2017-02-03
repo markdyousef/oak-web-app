@@ -29,6 +29,10 @@ class UserProfile extends Component {
         this.renderUsers = this.renderUsers.bind(this);
         this.state = {};
     }
+    componentWillMount() {
+        const { getInsight, userId } = this.props;
+        getInsight(userId);
+    }
     renderUsers() {
         const { getInsight, users, userId } = this.props;
 
@@ -41,14 +45,9 @@ class UserProfile extends Component {
                 >
                     <Avatar img={other.profile.image_512} />
                 </button>
-            )
-        )
+            ));
         }
         return null;
-    }
-    componentWillMount() {
-        const { getInsight, userId } = this.props;
-        getInsight(userId);
     }
     render() {
         const { user, insights, otherInsights } = this.props;
@@ -59,7 +58,9 @@ class UserProfile extends Component {
                         <div className={css.avatar}>
                             <Avatar img={user.profile.image_512} />
                         </div>
-                        <div className={css.compare}>
+                        <h1>PERSONAL INSIGHTS</h1>
+                        <h3>Compare with:</h3>
+                        <div className={css.users}>
                             {this.renderUsers()}
                         </div>
                         <div className={css.stats}>
