@@ -10,12 +10,14 @@ class UserProfile extends Component {
         user: PropTypes.shape({
             profile: PropTypes.object
         }),
+        insights: PropTypes.object,
         getInsight: PropTypes.func.isRequired
     }
     static defaultProps = {
         user: {
             profile: {}
-        }
+        },
+        insights: {}
     }
     constructor() {
         super();
@@ -34,7 +36,9 @@ class UserProfile extends Component {
                         <div className={css.avatar}>
                             <Avatar img={user.profile.image_original} />
                         </div>
-                        <Insights insights={insights} />
+                        <div className={css.stats}>
+                            <Insights insights={insights} />
+                        </div>
                     </div>
                 </header>
             </div>
