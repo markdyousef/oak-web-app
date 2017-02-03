@@ -6,7 +6,8 @@ const inititalState = Immutable.fromJS({
     message: null,
     team: 'mastermind',
     channels: Immutable.List([]),
-    activeChannel: Immutable.Map({})
+    activeChannel: Immutable.Map({}),
+    channelTone: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {
@@ -15,7 +16,8 @@ export default (state = inititalState, action) => {
         return state
             .set('isLoading', false)
             .set('team', action.team)
-            .set('activeChannel', Immutable.Map(action.data));
+            .set('activeChannel', Immutable.Map(action.data))
+            .set('channelTone', Immutable.Map(action.tone));
     case type.RECEIVE_CHANNELS:
         return state
             .set('isLoading', false)
