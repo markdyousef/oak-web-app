@@ -36,3 +36,8 @@
     background-color: var(--main-green-color);
     border-radius: 100px;
 }
+
+.stats {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

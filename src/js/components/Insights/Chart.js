@@ -12,7 +12,7 @@ const Chart = ({ items, type, title }: Object) => {
             {(() => {
                 if(type === 'polar') {
                     const categories = items.map(item => item.name);
-                    const data = items.map(item => item.percentile * 100);
+                    const data = items.map(item => Math.floor(item.percentile * 100));
 
                     const config = {
                         chart: {
@@ -25,9 +25,14 @@ const Chart = ({ items, type, title }: Object) => {
                             categories,
                             tickmarkPlacement: 'on'
                         },
+                        legend: {
+                            enabled: false
+                        },
+                        credits: {
+                            enabled: false
+                        },
                         series: [
                             {
-                                name: '',
                                 data,
                                 pointPlacement: 'on'
                             }
