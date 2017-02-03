@@ -6,9 +6,7 @@ import MessageTone from './MessageTone';
 
 test('renders MessageTone', () => {
     const props = {
-        channels: [],
-        getTeam: () => {},
-        name: 'clai'
+        tone: null
     };
     const shallowComponent = shallow(
         <MessageTone {...props} />

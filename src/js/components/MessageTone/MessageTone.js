@@ -18,9 +18,9 @@ class MessageTone extends Component {
         this.state = {};
     }
     renderAnalysis(name: string) {
-        const { document_tone } = this.props.tone;
+        const { tone } = this.props;
 
-        if (document_tone) {
+        if (tone && tone.document_tone) {
             const { tone_categories } = document_tone;
             const categoryIndex = tone_categories.findIndex(category => category.category_id === name);
             if (categoryIndex > -1) {

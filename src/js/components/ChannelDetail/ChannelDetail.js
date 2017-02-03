@@ -29,7 +29,7 @@ class ChannelDetail extends Component {
     };
     static defaultProps = {
         data: {},
-        tone: {}
+        tone: null
     }
     constructor() {
         super();

@@ -25,6 +25,11 @@ ShallowWrapper {
     </div>
     <div
         className={undefined}>
+        <MessageTone
+            tone={null} />
+    </div>
+    <div
+        className={undefined}>
         <Connect(MessageStats)
             channel="general"
             messages={undefined} />
@@ -47,6 +52,11 @@ ShallowWrapper {
       <div
             className={undefined}>
             <Connect(TeamMembers) />
+      </div>
+      <div
+            className={undefined}>
+            <MessageTone
+                  tone={null} />
       </div>
       <div
             className={undefined}>
@@ -76,7 +86,8 @@ ShallowWrapper {
                         "channelId": "id",
                       }
         }
-        team="team name" />,
+        team="team name"
+        tone={null} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -94,6 +105,7 @@ ShallowWrapper {
             "channelId": "id",
           },
           "team": "team name",
+          "tone": null,
         },
         "refs": Object {},
         "state": Object {},
@@ -134,6 +146,11 @@ ShallowWrapper {
           </div>
           <div
                     className={undefined}>
+                    <MessageTone
+                              tone={null} />
+          </div>
+          <div
+                    className={undefined}>
                     <Connect(MessageStats)
                               channel="general"
                               messages={undefined} />
@@ -156,6 +173,11 @@ ShallowWrapper {
           <div
                     className={undefined}>
                     <Connect(TeamMembers) />
+          </div>
+          <div
+                    className={undefined}>
+                    <MessageTone
+                              tone={null} />
           </div>
           <div
                     className={undefined}>
@@ -189,6 +211,7 @@ ShallowWrapper {
             "channelId": "id",
           }
     }
-    team="team name" />,
+    team="team name"
+    tone={null} />,
 }
 `;

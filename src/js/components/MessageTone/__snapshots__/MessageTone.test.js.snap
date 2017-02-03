@@ -1,4 +1,4 @@
-exports[`test renders Home 1`] = `
+exports[`test renders MessageTone 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,32 +8,12 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <div
-        className={undefined}>
-        <h1>
-            TEAM MEMBERS:
-        </h1>
-        <Connect(TeamMembers) />
-    </div>
-    <div
-        className={undefined}>
-        <Connect(BaseStats) />
-    </div>
+    
 </div>,
   "nodes": Array [
     <div
       className={undefined}>
-      <div
-            className={undefined}>
-            <h1>
-                  TEAM MEMBERS:
-            </h1>
-            <Connect(TeamMembers) />
-      </div>
-      <div
-            className={undefined}>
-            <Connect(BaseStats) />
-      </div>
+      
 </div>,
   ],
   "options": Object {},
@@ -42,15 +22,19 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Home />,
+      "_currentElement": <MessageTone
+        tone={null} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": Home {
+      "_instance": MessageTone {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "tone": null,
+        },
         "refs": Object {},
+        "renderAnalysis": [Function],
         "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
@@ -72,32 +56,12 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <div
-                    className={undefined}>
-                    <h1>
-                              TEAM MEMBERS:
-                    </h1>
-                    <Connect(TeamMembers) />
-          </div>
-          <div
-                    className={undefined}>
-                    <Connect(BaseStats) />
-          </div>
+          
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <div
-                    className={undefined}>
-                    <h1>
-                              TEAM MEMBERS:
-                    </h1>
-                    <Connect(TeamMembers) />
-          </div>
-          <div
-                    className={undefined}>
-                    <Connect(BaseStats) />
-          </div>
+          
 </div>,
       },
       "_renderedNodeType": 0,
@@ -110,6 +74,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Home />,
+  "unrendered": <MessageTone
+    tone={null} />,
 }
 `;

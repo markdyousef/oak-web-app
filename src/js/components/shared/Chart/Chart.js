@@ -10,7 +10,7 @@ HighchartsMore(Highcharts.Highcharts);
 
 const Chart = ({ items, type, title }: Object) => {
     return (
-        <div className={css.chart}>
+        <div className={css.container}>
             {(() => {
                 if (type === 'polar') {
                     const categories = items.map(item => item.name);
@@ -40,8 +40,8 @@ const Chart = ({ items, type, title }: Object) => {
                             }
                         ]
                     };
-                    return <Highcharts config={config} className={css.polarChart}/>
-                };
+                    return <Highcharts config={config} className={css.polarChart} />;
+                }
                 return null;
             })()}
         </div>

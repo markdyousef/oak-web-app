@@ -1,6 +1,6 @@
 // @flow
 import React, { PropTypes, Component } from 'react';
-import Chart from './Chart';
+import Chart from '../shared/Chart';
 
 import css from './Insights.css';
 
