@@ -10,6 +10,5 @@ exports[`test renders ChannelStats 1`] = `
   </header>
   <div
     className={undefined} />
-  <div />
 </a>
 `;
