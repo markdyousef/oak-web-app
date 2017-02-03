@@ -3,12 +3,9 @@ import React, { PropTypes } from 'react';
 
 import css from './Avatar.css';
 
-// import placeholderImg
-const placeholderImg = null;
-
 const Avatar = ({ img }:Object) => (
     <div className={css.avatar}>
-        <img src={img || placeholderImg} alt="profile" />
+        <img src={img} alt="profile" />
     </div>
 );
 
@@ -17,7 +14,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-    img: placeholderImg
+    img: null
 };
 
 export default Avatar;

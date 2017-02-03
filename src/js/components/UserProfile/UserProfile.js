@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import css from './UserProfile.css';
+import Avatar from '../shared/Avatar';
 
 class UserProfile extends Component {
     static propTypes = {
@@ -22,13 +23,15 @@ class UserProfile extends Component {
         // getUser
     }
     render() {
-        console.log(this.props.user)
+        const { user } = this.props;
+        console.log(user);
         return (
             <div className={css.container}>
                 <header>
                     <div className={css.profile}>
-                        <div className={css.avatar} />
-                        <h1>{this.props.userId}</h1>
+                        <div className={css.avatar}>
+                            <Avatar img={user.profile.image_original} />
+                        </div>
                     </div>
                 </header>
             </div>

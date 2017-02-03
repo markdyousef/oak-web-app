@@ -28,15 +28,18 @@ class MessageStats extends Component {
         if (messages) {
             return messages.map((message) => {
                 const member = members.filter(user => user.id === message.user)[0];
-
-                return (
-                    <MessageItem
-                        onClick={() => this.setState({ activeMessage: message })}
-                        message={message}
-                        member={member}
-                        key={message.ts}
-                    />
-                );
+                // don't display bot messages
+                if (message.user) {
+                    return (
+                        <MessageItem
+                            onClick={() => this.setState({ activeMessage: message })}
+                            message={message}
+                            member={member}
+                            key={message.ts}
+                        />
+                    );
+                }
+                return null;
             });
         }
         return <div className={css.noMessage}>No Messages</div>;
