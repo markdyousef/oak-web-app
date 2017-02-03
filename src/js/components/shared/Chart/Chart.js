@@ -8,14 +8,11 @@ import css from './Chart.css';
 HighchartsMore(Highcharts.Highcharts);
 
 
-const Chart = ({ items, type, title }: Object) => {
+const Chart = ({ categories, data, title, type }: Object) => {
     return (
         <div className={css.container}>
             {(() => {
                 if (type === 'polar') {
-                    const categories = items.map(item => item.name);
-                    const data = items.map(item => Math.floor(item.percentile * 100));
-
                     const config = {
                         chart: {
                             polar: true
@@ -42,6 +39,8 @@ const Chart = ({ items, type, title }: Object) => {
                     };
                     return <Highcharts config={config} className={css.polarChart} />;
                 }
+                if (type === 'stackedBar') {
+                }
                 return null;
             })()}
         </div>
@@ -49,17 +48,15 @@ const Chart = ({ items, type, title }: Object) => {
 };
 
 Chart.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string,
-        percentile: PropTypes.number.isRequired,
-        children: PropTypes.arrayOf(PropTypes.object)
-    })),
+    categories: PropTypes.arrayOf(PropTypes.string),
+    data: PropTypes.arrayOf(PropTypes.number),
     type: PropTypes.string,
     title: PropTypes.string
 };
 
 Chart.defaultProps = {
-    items: [],
+    categories: [],
+    data: [],
     type: null,
     title: null
 };

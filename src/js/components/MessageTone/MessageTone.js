@@ -21,10 +21,11 @@ class MessageTone extends Component {
         const { tone } = this.props;
 
         if (tone && tone.document_tone) {
-            const { tone_categories } = document_tone;
+            const { tone_categories } = tone.document_tone;
             const categoryIndex = tone_categories.findIndex(category => category.category_id === name);
             if (categoryIndex > -1) {
                 const tones = tone_categories[categoryIndex].tones;
+                console.log(tones);
             }
         }
         return null;

@@ -23,9 +23,12 @@ class Insights extends Component {
 
         if (insights[name]) {
             const items = insights[name];
+
+            const categories = items.map(item => item.name);
+            const data = items.map(item => Math.floor(item.percentile * 100));
             return (
                 <div className={css.insight}>
-                    <Chart items={items} type="polar" title={name} />
+                    <Chart categories={categories} data={data} type="polar" title={name} />
                 </div>
             );
         }
