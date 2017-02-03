@@ -1,4 +1,8 @@
 import React, { PropTypes } from 'react';
+import Highcharts from 'react-highcharts';
+import HighchartsMore from 'highcharts-more';
+
+HighchartsMore(Highcharts.Highcharts);
 
 import css from './Insights.css';
 
@@ -7,16 +11,28 @@ const Chart = ({ items, type }: Object) => {
         <div className={css.chart}>
             {(() => {
                 if(type === 'polar') {
-                    const labels = items.map(item => item.name);
-                    const dataset = items.map(item => item.percentile);
+                    const categories = items.map(item => item.name);
+                    const data = items.map(item => item.percentile);
 
-                    const data = {
-                        labels,
-                        datasets: [dataset]
+                    const config = {
+                        chart: {
+                            polar: true
+                        },
+                        xAxis: {
+                            categories
+                        },
+                        // yAxis: {
+                        //     gridLineInterpolation: 'polygon',
+                        // },
+                        series: [
+                            {
+                                data,
+                                pointPlacement: 'on'
+                            }
+                        ]
                     }
-
-                    // return <PolarChart data={data} options={null} />
-                    return null
+                    console.log(config);
+                    return <Highcharts config={config} className={css.polarChart}/>
                 }
                 return null;
             })()}
