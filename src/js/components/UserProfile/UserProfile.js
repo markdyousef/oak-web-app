@@ -25,7 +25,8 @@ class UserProfile extends Component {
         getInsight(userId);
     }
     render() {
-        const { user } = this.props;
+        const { user, insights } = this.props;
+        console.log(insights);
         return (
             <div className={css.container}>
                 <header>

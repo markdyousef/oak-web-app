@@ -13,7 +13,8 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
     return (
     {
         userId,
-        user
+        user,
+        insights: state.insights.get('data').toJS()
     }
     );
 };
