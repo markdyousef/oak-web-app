@@ -3,7 +3,6 @@ import _ from 'lodash';
 import * as type from '../constants/ActionTypes';
 
 export const getChannel = (team: String, id: String) => {
-    console.log(id);
     let data = require(`../../data/${team}/channels/channels.json`);
     let tone = {};
 
@@ -16,7 +15,6 @@ export const getChannel = (team: String, id: String) => {
     if (data.name) {
         tone = require(`../../data/${team}/messages/${data.name}-tone.json`);
     }
-    console.log(tone);
 
     return {
         type: type.RECEIVE_CHANNEL,
