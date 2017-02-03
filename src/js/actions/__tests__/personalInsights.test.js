@@ -8,9 +8,9 @@ describe('ACTIONS - personalInsights', () => {
         it('should return insight data', () => {
             const team = 'mastermind';
             const userId = 'U0F1ZMA72';
-            const data = {};
+            const data = require(`../../../data/${team}/users/${userId}_pi.json`);
             const action = insights.getInsight(team, userId);
-            expect(action).toContain({
+            expect(action).toEqual({
                 type: type.RECEIVE_INSIGHTS,
                 userId,
                 data
