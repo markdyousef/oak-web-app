@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { PolarChart } from 'react-chartjs';
 
 import css from './Insights.css';
 
@@ -8,7 +7,16 @@ const Chart = ({ items, type }: Object) => {
         <div className={css.chart}>
             {(() => {
                 if(type === 'polar') {
-                    return null;
+                    const labels = items.map(item => item.name);
+                    const dataset = items.map(item => item.percentile);
+
+                    const data = {
+                        labels,
+                        datasets: [dataset]
+                    }
+
+                    // return <PolarChart data={data} options={null} />
+                    return null
                 }
                 return null;
             })()}
