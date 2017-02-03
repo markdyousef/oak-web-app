@@ -10,7 +10,7 @@ const Member = ({ member }: Object) => {
     return (
         <Link
             className={css.member}
-            to={`/user/${member}`}
+            to={`/user/${member.id}`}
         >
             <Avatar img={profile.image_72} />
             <h4>{member.name}</h4>
