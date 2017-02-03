@@ -11,7 +11,7 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
     const user = members.filter(member => member.id === userId)[0];
 
     // personal insights
-    getInsight(userId);
+    getInsight('mastermind', userId);
     return (
     {
         userId,

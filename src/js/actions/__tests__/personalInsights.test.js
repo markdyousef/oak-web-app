@@ -7,10 +7,10 @@ describe('ACTIONS - personalInsights', () => {
     describe('getInsight', () => {
         it('should return insight data', () => {
             const team = 'mastermind';
-            const userId = 'id';
+            const userId = 'U0F1ZMA72';
             const data = {};
             const action = insights.getInsight(team, userId);
-            expect(action).toEqual({
+            expect(action).toContain({
                 type: type.RECEIVE_INSIGHTS,
                 userId,
                 data
