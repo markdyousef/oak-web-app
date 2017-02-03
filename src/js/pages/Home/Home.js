@@ -15,7 +15,7 @@ class Home extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
+                {/* <TopNav /> */}
                 <div className={css.teamMembers}>
                     <h1>TEAM MEMBERS:</h1>
                     <TeamMembers />
