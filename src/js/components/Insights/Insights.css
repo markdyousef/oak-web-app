@@ -1,7 +1,16 @@
 .container {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .insight {
+    height: 250px;
+    width: 250px;
+}
+
+.insight div {
+    height: 100%;
     width: 100%;
 }

@@ -24,8 +24,7 @@ class Insights extends Component {
             const items = insights[name];
             return (
                 <div className={css.insight}>
-                    <h1>{name.toUpperCase()}</h1>
-                    <Chart items={items} type="polar" />
+                    <Chart items={items} type="polar" title={name} />
                 </div>
             );
         }
