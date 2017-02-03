@@ -6,6 +6,7 @@ import css from './ChannelDetail.css';
 
 import MessageStats from '../../containers/MessageStatsContainer';
 import TeamMembers from '../../containers/TeamMembersContainer';
+import MessageTone from '../MessageTone';
 
 class ChannelDetail extends Component {
     static propTypes = {
@@ -39,8 +40,7 @@ class ChannelDetail extends Component {
         getChannel(team, params.channelId);
     }
     render() {
-        const { data, isLoading } = this.props;
-        console.log(this.props);
+        const { data, isLoading, tone } = this.props;
 
         if (isLoading) return <div>Loading</div>;
 
@@ -52,6 +52,9 @@ class ChannelDetail extends Component {
                 </nav>
                 <div className={css.membersContainer}>
                     <TeamMembers />
+                </div>
+                <div className={css.toneContainer}>
+                    <MessageTone tone={tone} />
                 </div>
                 <div className={css.messageContainer}>
                     <MessageStats channel={data.name} messages={data.messages} />
