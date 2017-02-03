@@ -11,6 +11,9 @@ ShallowWrapper {
     <Connect(TopNav) />
     <div
         className={undefined}>
+        <h1>
+            TEAM MEMBERS:
+        </h1>
         <Connect(TeamMembers) />
     </div>
     <div
@@ -24,6 +27,9 @@ ShallowWrapper {
       <Connect(TopNav) />
       <div
             className={undefined}>
+            <h1>
+                  TEAM MEMBERS:
+            </h1>
             <Connect(TeamMembers) />
       </div>
       <div
@@ -71,6 +77,9 @@ ShallowWrapper {
           <Connect(TopNav) />
           <div
                     className={undefined}>
+                    <h1>
+                              TEAM MEMBERS:
+                    </h1>
                     <Connect(TeamMembers) />
           </div>
           <div
@@ -84,6 +93,9 @@ ShallowWrapper {
           <Connect(TopNav) />
           <div
                     className={undefined}>
+                    <h1>
+                              TEAM MEMBERS:
+                    </h1>
                     <Connect(TeamMembers) />
           </div>
           <div
