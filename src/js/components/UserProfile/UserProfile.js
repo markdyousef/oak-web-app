@@ -8,7 +8,8 @@ class UserProfile extends Component {
         userId: PropTypes.string.isRequired,
         user: PropTypes.shape({
             profile: PropTypes.object
-        })
+        }),
+        getInsight: PropTypes.func.isRequired
     }
     static defaultProps = {
         user: {
@@ -20,7 +21,8 @@ class UserProfile extends Component {
         this.state = {}
     }
     componentWillMount() {
-        // getUser
+        const { getInsight, userId } = this.props;
+        getInsight(userId);
     }
     render() {
         const { user } = this.props;

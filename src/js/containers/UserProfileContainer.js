@@ -10,8 +10,6 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
 
     const user = members.filter(member => member.id === userId)[0];
 
-    // personal insights
-    getInsight('mastermind', userId);
     return (
     {
         userId,
@@ -20,6 +18,10 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
     );
 };
 
-const mapDispatchToProps = (dispatch: Function) => ({});
+const mapDispatchToProps = (dispatch: Function) => (
+    {
+        getInsight: userId => dispatch(getInsight('mastermind', userId))
+    }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
