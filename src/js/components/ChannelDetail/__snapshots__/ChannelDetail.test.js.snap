@@ -21,10 +21,7 @@ ShallowWrapper {
     </nav>
     <div
         className={undefined}>
-        <div
-            className={undefined}>
-            No members
-        </div>
+        <Connect(TeamMembers) />
     </div>
     <div
         className={undefined}>
@@ -49,10 +46,7 @@ ShallowWrapper {
       </nav>
       <div
             className={undefined}>
-            <div
-                  className={undefined}>
-                  No members
-            </div>
+            <Connect(TeamMembers) />
       </div>
       <div
             className={undefined}>
@@ -102,7 +96,6 @@ ShallowWrapper {
           "team": "team name",
         },
         "refs": Object {},
-        "renderMembers": [Function],
         "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
@@ -137,10 +130,7 @@ ShallowWrapper {
           </nav>
           <div
                     className={undefined}>
-                    <div
-                              className={undefined}>
-                              No members
-                    </div>
+                    <Connect(TeamMembers) />
           </div>
           <div
                     className={undefined}>
@@ -165,10 +155,7 @@ ShallowWrapper {
           </nav>
           <div
                     className={undefined}>
-                    <div
-                              className={undefined}>
-                              No members
-                    </div>
+                    <Connect(TeamMembers) />
           </div>
           <div
                     className={undefined}>

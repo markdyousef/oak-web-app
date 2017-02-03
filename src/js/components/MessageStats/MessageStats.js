@@ -9,8 +9,12 @@ class MessageStats extends Component {
     static propTypes = {
         channel: PropTypes.string.isRequired,
         messages: PropTypes.arrayOf(PropTypes.object),
+        members: PropTypes.arrayOf(PropTypes.object),
         isLoading: PropTypes.bool.isRequired
     };
+    static defaultProps = {
+        members: []
+    }
     constructor() {
         super();
         this.renderMessages = this.renderMessages.bind(this);
@@ -20,15 +24,20 @@ class MessageStats extends Component {
         };
     }
     renderMessages() {
-        const { messages } = this.props;
+        const { messages, members } = this.props;
         if (messages) {
-            return messages.map(message => (
-                <MessageItem
-                    onClick={() => this.setState({ activeMessage: message })}
-                    message={message}
-                    key={message.ts}
-                />
-            ));
+            return messages.map((message) => {
+                const member = members.filter(user => user.id === message.user)[0];
+
+                return (
+                    <MessageItem
+                        onClick={() => this.setState({ activeMessage: message })}
+                        message={message}
+                        member={member}
+                        key={message.ts}
+                    />
+                );
+            });
         }
         return <div className={css.noMessage}>No Messages</div>;
     }
