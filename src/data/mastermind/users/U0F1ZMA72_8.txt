@@ -1,0 +1,35 @@
+"Shape-shifting tech will change work as we know it :sweat_drops::sweat_drops::sweat_drops:
+<https://www.ted.com/talks/sean_follmer_shape_shifting_tech_will_change_work_as_we_know_it>"
+"Watson for President
+<http://watson2016.com>"
+"Hahaha. But don't you eventually have to change? What are the downsides of python 3.x in your regard? Yeah, some of the blackbox algorithms seems very efficient. Hahaha, I could imagine that would suck :sweat_smile:"
+"The Three Cultures of Machine Learning
+<http://cs.jhu.edu/~jason/tutorials/ml-simplex.html>
+<@U0F570U57> which area do you use the most? Did you notice udacity's new course on deep learning?"
+<https://atap.google.com/soli/>
+"That’s so cool! <@U0F2WABLM> we need to reevaluate TSLA as an investment thesis (take it to <#C0FK9AG4C>)! This company shouldn’t be assessed as a car company but as a software company! They have huge intangible assets compared to other car manufacturers. Their sales aren’t really giving a clear picture, since the company receives preorders in a huge scale, which aren’t placed in revenue - orders out phases production. In 5-10 years this company will be in the top 5 of most valuable companies in the world in my opinion."
+"Summon Your Tesla from Your Phone
+<https://www.teslamotors.com/blog/summon-your-tesla-your-phone>"
+<@U0F570U57>: check this out!!!! Time to build :grin:
+"Build your own Jarvis
+<http://jasperproject.github.io/>"
+<@U0F570U57>: did you make the transition to Python 3x yet? 
+"Short interesting article about ethics in Artificial Intelligence: 
+<https://www.project-syndicate.org/commentary/can-artificial-intelligence-be-ethical-by-peter-singer-2016-04>"
+"Great point! Maybe I’m a little pessimistic, but initially we’ll be creating a conscious (being). As we know, if you are self-contious you’ll want to better yourself and ensure your survival, and this is the point where things might take a turn. I really don’t think we can compare this to nations, military or corporations competing on making the best motor og even an atomic bomb and whoever is in control wins the race. Once succeeding in creating a self-contious artificial mind it will want to grow and expand by digesting the internet, etc. This is not a biological being constrained by evolutionary means!! What if this ‘thing’ becomes so powerful and figures out how to use nanotechnology all at once and how to use to manipulate every atom to it’s benefit - it might better it probability of surviving and flourish afterall (and btw we’re also made of atoms)… Yeah I know, it’s a little dark, but in all seriousness – this is not something we get 99,99% right and fix later. If this goes wrong we’re fucked and if it goes right well… 
+But still we’re ‘only’ taking about one dimension of intelligence and the physical world, I wonder how it will influence the spiritual world (for those of us who believe in such a thing). Maybe we’ll rather be companions with AI because it understands the aspect of souls, multiple dimensions, etc…"
+<@U0F570U57>: and <@U0F1V9D9A> I would love to hear your points of view on the above...
+"btw. from a critical standpoint the authors and viewholders are all ‘scientifically’ deducing the issues from a narrow standpoint. Some of us believe in something bigger not comprehensible by science (God, the universe, love, etc.) is this a safeline? Not saying that a Superintelligence in a rational matter couldn’t be dangerous, but shouldn’t we consider more then just intellect when speaking about intelligence (in lack of a better word)?"
+"<!channel>:  I’ve recently read some books (‘Our Final Invention’ and ‘The Second Machine Age’ just to name a few) that takes a rather pessimistic view on the rapid development and soon realization of Artificial Intelligence. Problems like ‘The Busy Child’, ‘The Intelligence Explosion’ and more that stems from the fact that computers doesn’t have the same capacity boundaries a humans are highlighted and culminates in the question: If we develop an Artificial Superintelligence, why should it obey us? And if it’s trying to solve an optimization problem why shouldn’t it just utilize the atoms we’re composed of more effectively (in it’s view)? So do you guys thing we should be scared and really do some practical measures to avoid this reality? How?"
+"<@U0F570U57>: First impressions: Python - awesome syntax and seems very useful in respect to machine learning and data mining, due to a shitload of scientific libraries. Course -Sebastian Thrun is just the coolest guy to learn from! But pip really seems like a step backwards once you’ve got used to npm :confused:"
+Thanks brow! :simple_smile:
+"<@U0F570U57>: I’m thinking about diving a little bit into Machine Learning, Data analysis and hopefully AI. What approach, tools, languages, etc. would you recommend? What you recommend languages such as Python or R - taking learning curve, usage, libraries, community, etc. into consideration."
+"<@U0F1ZMA72|mark> has renamed the channel from ""techology"" to ""technology"""
+just wanted to see whether you were awake :wink:
+"Holy macaroni!!!!
+<http://techcrunch.com/2016/05/09/siri-creator-shows-off-first-public-demo-of-viv-the-intelligent-interface-for-everything/>"
+"<@U0F1ZMA72|mark> has renamed the channel from ""tech"" to ""techology"""
+"<@U0F1ZMA72|mark> set the channel purpose: discuss trends, ideas, concepts, thoughts and share knowledge in the field of technology."
+"<@U0F1ZMA72|mark> set the channel purpose: The purpose of this channel is to discuss trends, ideas, concepts, thoughts and share knowledge in the field of technology."
+<@U0F1ZMA72|mark> has joined the channel
+<@U0F570U57>:  Awesome ‘little’ application for ML. The era of the intellignet agent: <https://x.ai/how-to-teach-a-machine-to-understand-us/?utm_source=Waitlist&amp;utm_campaign=e6c7f70fbb-Waitlist_30days_PreNov&amp;utm_medium=email&amp;utm_term=0_cd48ea201d-e6c7f70fbb-172682981>

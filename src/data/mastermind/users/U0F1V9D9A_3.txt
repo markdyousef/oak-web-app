@@ -1,0 +1,6 @@
+Tomorrow is good!
+"Yes exactly! Sorry about that, I would happily tell you more about it, but that would probably fit the <#C0F1W4PQT> channel better :stuck_out_tongue:"
+"Since Mark can’t seem to answer.. In short, it is nodejs servers powering most of the mobile applications we develop, hosted in AWS as either Lambda or EB instances, using mongodb or dynamodb databases :simple_smile:"
+<@U0F1V9D9A|rasmus> has joined the channel
+"Fascinating “food” Mark. It led might thoughts to the many world theory,  pretty cool stuff.
+I am up for that date, if time fits :simple_smile:"
