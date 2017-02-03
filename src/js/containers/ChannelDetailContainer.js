@@ -7,7 +7,7 @@ const mapStateToProps = (state: Object) => (
     {
         team: state.team.get('name'),
         name: state.channel.get('name'),
-        data: state.channel.get('activeChannel'),
+        data: state.channel.get('activeChannel').toJS(),
         isLoading: state.channel.get('isLoading')
     }
 );
