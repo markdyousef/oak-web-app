@@ -1,7 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import Avatar from './Avatar';
+import Avatar from '../shared/Avatar';
 
 import css from './TeamMembers.css';
 
@@ -12,7 +12,7 @@ const Member = ({ member }: Object) => {
             className={css.member}
             to={`/user/${member}`}
         >
-            <Avatar img={profile.image_72}/>
+            <Avatar img={profile.image_72} />
             <h4>{member.name}</h4>
         </Link>
     );
