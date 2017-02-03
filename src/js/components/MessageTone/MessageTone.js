@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import Chart from '../shared/Chart';
 
 import css from './MessageTone.css';
 
@@ -25,7 +26,15 @@ class MessageTone extends Component {
             const categoryIndex = tone_categories.findIndex(category => category.category_id === name);
             if (categoryIndex > -1) {
                 const tones = tone_categories[categoryIndex].tones;
-                console.log(tones);
+
+                const categories = tones.map(item => item.tone_name);
+                const data = tones.map(item => item.score);
+
+                return (
+                    <div className={css.chart}>
+                        <Chart categories={categories} data={data} type="stackedBar" title={name} />
+                    </div>
+                );
             }
         }
         return null;

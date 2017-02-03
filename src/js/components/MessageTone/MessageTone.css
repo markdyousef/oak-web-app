@@ -1,0 +1,11 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chart {
+    width: 300px;
+    padding: 10px;
+}

@@ -40,6 +40,29 @@ const Chart = ({ categories, data, title, type }: Object) => {
                     return <Highcharts config={config} className={css.polarChart} />;
                 }
                 if (type === 'stackedBar') {
+                    const config = {
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: title.toUpperCase()
+                        },
+                        xAxis: {
+                            categories
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        series: [
+                            {
+                                data
+                            }
+                        ]
+                    };
+                    return <Highcharts config={config} />;
                 }
                 return null;
             })()}
