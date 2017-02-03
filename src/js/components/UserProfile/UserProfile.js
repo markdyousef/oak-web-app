@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import css from './UserProfile.css';
 import Avatar from '../shared/Avatar';
+import Insights from '../Insights';
 
 class UserProfile extends Component {
     static propTypes = {
@@ -33,6 +34,7 @@ class UserProfile extends Component {
                         <div className={css.avatar}>
                             <Avatar img={user.profile.image_original} />
                         </div>
+                        <Insights insights={insights} />
                     </div>
                 </header>
             </div>

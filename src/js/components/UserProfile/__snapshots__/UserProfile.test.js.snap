@@ -13,6 +13,8 @@ exports[`test renders UserProfile 1`] = `
             src={null} />
         </div>
       </div>
+      <div
+        className={undefined} />
     </div>
   </header>
 </div>

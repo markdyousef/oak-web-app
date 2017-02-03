@@ -3,6 +3,14 @@ import React, { PropTypes, Component } from 'react';
 import css from './Insights.css';
 
 class Insights extends Component {
+    static propTypes = {
+        insights: PropTypes.shape({
+            value: PropTypes.array
+        })
+    }
+    static defaultProps = {
+        insights: {}
+    }
     constructor() {
         super();
         this.state = {}
