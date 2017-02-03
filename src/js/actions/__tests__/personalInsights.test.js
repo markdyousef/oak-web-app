@@ -9,11 +9,12 @@ describe('ACTIONS - personalInsights', () => {
             const team = 'mastermind';
             const userId = 'U0F1ZMA72';
             const data = require(`../../../data/${team}/users/${userId}_pi.json`);
-            const action = insights.getInsight(team, userId);
+            const action = insights.getInsight(team, userId, userId);
             expect(action).toEqual({
                 type: type.RECEIVE_INSIGHTS,
                 userId,
-                data
+                data,
+                otherData: data
             });
         });
     });
