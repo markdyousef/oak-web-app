@@ -8,7 +8,7 @@ const placeholderImg = null;
 
 const Avatar = ({ img }:Object) => (
     <div className={css.avatar}>
-        <img src={img} alt="profile" />
+        <img src={img || placeholderImg} alt="profile" />
     </div>
 );
 

@@ -2,16 +2,20 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 
+import Avatar from '../shared/Avatar';
+
 import css from './MessageStats.css';
 
-const MessageItem = ({ message, onClick }:Object) => {
+const MessageItem = ({ message, member, onClick }:Object) => {
+    const { profile } = member
+
     return (
         <div
             className={css.messageItem}
             onClick={onClick}
         >
             <div className={css.userAvatar}>
-                <span />
+                <Avatar img={profile.image_72} />
             </div>
             <div className={css.text}>
                 <p>{message.text}</p>
@@ -29,7 +33,15 @@ MessageItem.propTypes = {
         user: PropTypes.string,
         ts: PropTypes.string.isRequired
     }),
+    member: PropTypes.shape({
+        profile: PropTypes.object
+    }),
     onClick: PropTypes.func.isRequired
-}
+};
+
+MessageItem.defaultProps = {
+    message: {},
+    member: { profile: {} }
+};
 
 export default MessageItem;
