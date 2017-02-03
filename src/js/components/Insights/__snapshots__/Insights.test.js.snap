@@ -7,10 +7,14 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className={undefined} />,
+    className={undefined}>
+    
+</div>,
   "nodes": Array [
     <div
-      className={undefined} />,
+      className={undefined}>
+      
+</div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -30,6 +34,7 @@ ShallowWrapper {
           "insights": Object {},
         },
         "refs": Object {},
+        "renderInsight": [Function],
         "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
@@ -50,10 +55,14 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className={undefined} />,
+          className={undefined}>
+          
+</div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className={undefined} />,
+          className={undefined}>
+          
+</div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
