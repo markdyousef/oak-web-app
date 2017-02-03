@@ -6,9 +6,6 @@ exports[`test renders UserProfile 1`] = `
       className={undefined}>
       <div
         className={undefined} />
-      <h1>
-        userId
-      </h1>
     </div>
   </header>
 </div>
