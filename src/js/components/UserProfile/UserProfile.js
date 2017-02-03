@@ -4,7 +4,15 @@ import css from './UserProfile.css';
 
 class UserProfile extends Component {
     static propTypes = {
-        userId: PropTypes.string.isRequired
+        userId: PropTypes.string.isRequired,
+        user: PropTypes.shape({
+            profile: PropTypes.object
+        })
+    }
+    static defaultProps = {
+        user: {
+            profile: {}
+        }
     }
     constructor() {
         super();
@@ -14,6 +22,7 @@ class UserProfile extends Component {
         // getUser
     }
     render() {
+        console.log(this.props.user)
         return (
             <div className={css.container}>
                 <header>
