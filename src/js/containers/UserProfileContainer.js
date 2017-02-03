@@ -21,7 +21,7 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        getInsight: userId => dispatch(getInsight('mastermind', userId))
+        getInsight: (userId, otherId) => dispatch(getInsight('mastermind', userId, otherId))
     }
 );
 
