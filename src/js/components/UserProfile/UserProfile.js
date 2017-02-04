@@ -15,9 +15,12 @@ class UserProfile extends Component {
         tone: PropTypes.shape({
             document_tone: PropTypes.object
         }),
+        toneOther: PropTypes.shape({
+            document_tone: PropTypes.object
+        }),
         users: PropTypes.arrayOf(PropTypes.object),
-        insights: PropTypes.object,
-        insightsOther: PropTypes.object,
+        insight: PropTypes.object,
+        insightOther: PropTypes.object,
         getInsight: PropTypes.func.isRequired,
         getUser: PropTypes.func.isRequired
     }
@@ -26,9 +29,10 @@ class UserProfile extends Component {
             profile: {}
         },
         users: [],
-        insights: {},
-        insightsOther: {},
-        tone: {}
+        insighs: {},
+        insightOther: {},
+        tone: {},
+        toneOther: {}
     }
     constructor() {
         super();
@@ -57,7 +61,7 @@ class UserProfile extends Component {
         return null;
     }
     render() {
-        const { user, insights, insightsOther, tone } = this.props;
+        const { user, insight, insightOther, tone, toneOther } = this.props;
         return (
             <div className={css.container}>
                 <header>
@@ -75,8 +79,8 @@ class UserProfile extends Component {
                     </div>
                 </header>
                 <div className={css.stats}>
-                    <Insights insights={insights} insightsOther={insightsOther} />
-                    <MessageTone tone={tone} />
+                    <Insights insights={insight} insightsOther={insightOther} />
+                    <MessageTone tone={tone} toneOther={toneOther} />
                 </div>
             </div>
         );

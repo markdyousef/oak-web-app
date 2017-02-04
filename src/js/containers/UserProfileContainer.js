@@ -15,9 +15,10 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
         userId,
         user,
         users: members,
-        insights: state.user.get('insight').toJS(),
-        insightsOther: state.insights.get('otherData').toJS(),
-        tone: state.user.get('tone').toJS()
+        insight: state.user.get('insight').toJS(),
+        insightOther: state.insights.get('insightOther').toJS(),
+        tone: state.user.get('tone').toJS(),
+        toneOther: state.insights.get('toneOther').toJS()
     }
     );
 };

@@ -4,8 +4,10 @@ import * as type from '../constants/ActionTypes';
 const inititalState = Immutable.fromJS({
     isLoading: false,
     message: null,
-    data: Immutable.Map({}),
-    otherData: Immutable.Map({})
+    insight: Immutable.Map({}),
+    tone: Immutable.Map({}),
+    insightOther: Immutable.Map({}),
+    toneOther: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {
@@ -13,9 +15,10 @@ export default (state = inititalState, action) => {
     case type.RECEIVE_INSIGHTS:
         return state
             .set('isLoading', false)
-            .set('name', action.team)
-            .set('data', Immutable.Map(action.data))
-            .set('otherData', Immutable.Map(action.otherData));
+            .set('insight', Immutable.Map(action.insight))
+            .set('insightOther', Immutable.Map(action.insightOther))
+            .set('tone', Immutable.Map(action.tone))
+            .set('toneOther', Immutable.Map(action.toneOther));
     default:
         return state;
     }

@@ -12,7 +12,6 @@ class TopNav extends Component {
         this.state = {};
     }
     render() {
-        console.log(this.props);
         return (
             <nav className={css.container}>
                 <div className={css.navLeft}>

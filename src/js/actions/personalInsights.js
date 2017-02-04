@@ -2,15 +2,20 @@
 import * as type from '../constants/ActionTypes';
 
 export const getInsight = (team: string, userId: string, otherId: string) => {
-    const data = require(`../../data/${team}/users/${userId}_pi.json`);
-    let otherData = {};
+    const tone = require(`../../data/${team}/analysis/users/${userId}_tone.json`);
+    const insight = require(`../../data/${team}/analysis/users/${userId}_pi.json`);
+
+    let toneOther = {};
+    let insightOther = {};
     if (otherId) {
-        otherData = require(`../../data/${team}/users/${otherId}_pi.json`);
+        toneOther = require(`../../data/${team}/analysis/users/${otherId}_tone.json`);
+        insightOther = require(`../../data/${team}/analysis/users/${otherId}_pi.json`);
     }
     return {
         type: type.RECEIVE_INSIGHTS,
-        userId,
-        data,
-        otherData
+        tone,
+        toneOther,
+        insight,
+        insightOther
     };
 };
