@@ -9,7 +9,7 @@ import initStore from './store/configureStore';
 
 // Components / Containers
 import App from './containers/AppContainer';
-import Home from './pages/Home';
+import Team from './pages/Team';
 import ChannelDetail from './containers/ChannelDetailContainer';
 import User from './pages/User';
 import MyProfile from './pages/MyProfile';
@@ -25,7 +25,7 @@ const routes = (
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Home} />
+                <IndexRoute component={Team} />
                 <Route path="/channel/:channelId" component={ChannelDetail} />
                 <Route path="/user/:userId" component={User} />
                 <Route path="/me" component={MyProfile} />

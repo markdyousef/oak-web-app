@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
 import { shallow } from 'enzyme';
-import Home from './Home';
+import Team from './Team';
 
-test('renders Home', () => {
+test('renders Team', () => {
     const shallowComponent = shallow(
-        <Home />
+        <Team />
     )
     expect(shallowComponent).toMatchSnapshot();
 });

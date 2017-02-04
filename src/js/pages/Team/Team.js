@@ -5,9 +5,9 @@ import TeamStats from '../../containers/TeamStatsContainer';
 import TopNav from '../../containers/TopNavContainer';
 import TeamMembers from '../../containers/TeamMembersContainer';
 
-import css from './Home.css';
+import css from './Team.css';
 
-class Home extends Component {
+class Team extends Component {
     constructor() {
         super();
         this.state = {};
@@ -29,4 +29,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Team;
