@@ -8,6 +8,7 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
+    <Connect(TopNav) />
     <div
         className={undefined}>
         <h1>
@@ -23,6 +24,7 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className={undefined}>
+      <Connect(TopNav) />
       <div
             className={undefined}>
             <h1>
@@ -72,6 +74,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
+          <Connect(TopNav) />
           <div
                     className={undefined}>
                     <h1>
@@ -87,6 +90,7 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
+          <Connect(TopNav) />
           <div
                     className={undefined}>
                     <h1>

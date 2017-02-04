@@ -6,9 +6,19 @@ exports[`test renders TopNav 1`] = `
     <img
       alt="logo"
       src="test-file-stub" />
-    <h1>
-      DASHBOARD
-    </h1>
+  </div>
+  <div
+    className={undefined}>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <div
+        className={undefined}>
+        <img
+          alt="profile"
+          src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" />
+      </div>
+    </a>
   </div>
 </nav>
 `;

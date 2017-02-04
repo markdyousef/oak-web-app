@@ -43,7 +43,7 @@
     padding-right: 30px;
 }
 
-.navRight span {
+.navRight a {
     height: 35px;
     width: 35px;
     border: 1px solid var(--main-black-color);

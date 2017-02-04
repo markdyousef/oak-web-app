@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import css from './TopNav.css';
 import logo from '../../../img/full_blue.png';
@@ -6,16 +7,12 @@ import Avatar from '../shared/Avatar';
 
 const IMG = '//style.anu.edu.au/_anu/4/images/placeholders/person.png'
 class TopNav extends Component {
-    static propTypes = {
-        user: PropTypes.shape({
-            id: PropTypes.string.isRequired
-        })
-    }
     constructor() {
         super();
         this.state = {};
     }
     render() {
+        console.log(this.props);
         return (
             <nav className={css.container}>
                 <div className={css.navLeft}>
@@ -23,9 +20,9 @@ class TopNav extends Component {
                     {/* <h1>TEAMS</h1> */}
                 </div>
                 <div className={css.navRight}>
-                    <span onClick={() => console.log('click')}>
+                    <Link to="/me">
                         <Avatar img={IMG} />
-                    </span>
+                    </Link>
                 </div>
             </nav>
         );

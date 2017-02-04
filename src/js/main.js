@@ -12,6 +12,7 @@ import App from './containers/AppContainer';
 import Home from './pages/Home';
 import ChannelDetail from './containers/ChannelDetailContainer';
 import User from './pages/User';
+import MyProfile from './pages/MyProfile';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -27,6 +28,7 @@ const routes = (
                 <IndexRoute component={Home} />
                 <Route path="/channel/:channelId" component={ChannelDetail} />
                 <Route path="/user/:userId" component={User} />
+                <Route path="/me" component={MyProfile} />
             </Route>
         </Router>
     </Provider>
