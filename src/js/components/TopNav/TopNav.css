@@ -44,13 +44,17 @@
     padding-right: 30px;
 }
 
-.navRight img {
-    height: 20px;
-    width: 20px;
-    margin-left: 10px;
+.navRight a {
+    font-size: 12px;
+    color: var(--main-green-color);
+    margin-left: 20px;
 }
 
-.myProfile img {
+.active {
+    font-weight: bold;
+}
+
+.myProfile {
     height: 35px;
     width: 35px;
     border: 1px solid var(--main-green-color);

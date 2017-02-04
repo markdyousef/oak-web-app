@@ -19,8 +19,8 @@ class TopNav extends Component {
                     <img src={logo} alt="logo" />
                 </div>
                 <div className={css.navRight}>
-                    <Link to="/">
-                        <img src={teamIcon} alt="team" />
+                    <Link to="/" activeClassName={css.active}>
+                        TEAM
                     </Link>
                     <Link to="/me" className={css.myProfile}>
                         <Avatar img={IMG} />
