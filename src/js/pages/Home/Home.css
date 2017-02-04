@@ -6,6 +6,10 @@
     height: 100%;
 }
 
+.teamMembers {
+    padding-top: 80px;
+}
+
 .teamMembers h1 {
     padding: 20px;
     font-size: 20px;
