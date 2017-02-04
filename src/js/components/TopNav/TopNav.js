@@ -16,7 +16,7 @@ class TopNav extends Component {
             <nav className={css.container}>
                 <div className={css.navLeft}>
                     <img src={logo} alt="logo" />
-                    <h1>MASTERMIND</h1>
+                    <h1>TEAM</h1>
                 </div>
                 <div className={css.navRight}>
                     <Link to="/me">

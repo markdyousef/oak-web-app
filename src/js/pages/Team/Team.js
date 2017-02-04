@@ -17,11 +17,12 @@ class Team extends Component {
             <div className={css.container}>
                 <TopNav />
                 <div className={css.teamMembers}>
-                    <h1>TEAM MEMBERS:</h1>
+                    <h1>MASTERMIND</h1>
+                    <h3>MEMBERS:</h3>
                     <TeamMembers />
                 </div>
                 <div className={css.teamStats}>
-                    <h1>CHANNELS:</h1>
+                    <h3>CHANNELS:</h3>
                     <TeamStats />
                 </div>
             </div>
