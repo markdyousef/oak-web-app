@@ -14,7 +14,8 @@ class ChannelDetail extends Component {
             id: PropTypes.string,
             name: PropTypes.string,
             members: PropTypes.arrayOf(PropTypes.string),
-            messages: PropTypes.arrayOf(PropTypes.object)
+            messages: PropTypes.arrayOf(PropTypes.object),
+            purpose: PropTypes.object
         }),
         tone: PropTypes.shape({
             document_tone: PropTypes.object
@@ -50,16 +51,24 @@ class ChannelDetail extends Component {
                     <Link to="/">CHANNELS /</Link>
                     <h4>{data.name}</h4>
                 </nav>
-                <div className={css.membersContainer}>
-                    <h2>MEMBERS</h2>
-                    <TeamMembers />
-                </div>
-                <div className={css.messageContainer}>
-                    <MessageStats channel={data.name} messages={data.messages} />
-                </div>
-                <div className={css.toneContainer}>
-                    <MessageTone tone={tone} />
-                </div>
+                <content>
+                    {data.purpose && data.purpose.value &&
+                        <div className={css.purpose}>
+                            <h2>PURPOSE</h2>
+                            <p>{data.purpose.value}</p>
+                        </div>
+                    }
+                    <div className={css.membersContainer}>
+                        <h2>MEMBERS</h2>
+                        <TeamMembers />
+                    </div>
+                    <div className={css.messageContainer}>
+                        <MessageStats channel={data.name} messages={data.messages} />
+                    </div>
+                    <div className={css.toneContainer}>
+                        <MessageTone tone={tone} />
+                    </div>
+                </content>
             </div>
         );
     }
