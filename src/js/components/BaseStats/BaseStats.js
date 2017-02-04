@@ -50,9 +50,9 @@ class BaseStats extends Component {
     render() {
         return (
             <div className={css.container}>
-                <div className={css.toolbar}>
+                {/* <div className={css.toolbar}>
                     <Toolbar />
-                </div>
+                </div> */}
                 <div className={css.statsGrid}>
                     {this.renderStats()}
                 </div>
