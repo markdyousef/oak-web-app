@@ -60,7 +60,7 @@
     flex-wrap: wrap;
 }
 
-.users button {
+.users span {
     border: 0 !important;
     padding: 0 !important;
     height: 30px;

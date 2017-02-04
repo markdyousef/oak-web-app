@@ -39,12 +39,12 @@ class UserProfile extends Component {
         if (users) {
             const others = users.filter(user => user.id !== userId);
             return others.map(other => (
-                <button
+                <span
                     key={other.id}
                     onClick={() => getInsight(userId, other.id)}
                 >
                     <Avatar img={other.profile.image_512} />
-                </button>
+                </span>
             ));
         }
         return null;
