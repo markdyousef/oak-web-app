@@ -11,6 +11,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+}
+
+.container h2 {
+    font-size: 18px;
+    color: var(--main-white-color);
+    padding: 20px;
 }
 
 .container nav {
@@ -31,7 +38,7 @@
     font-weight: bold;
 }
 
-.container nav h1 {
+.container nav h4 {
     margin-left: 5px;
     font-size: 20px;
     color: var(--main-green-color);
@@ -39,4 +46,9 @@
 
 .membersContainer {
     padding-top: 60px;
+    background-color: var(--main-green-color);
+}
+
+.membersContainer a {
+    color: var(--main-white-color);
 }

@@ -48,16 +48,17 @@ class ChannelDetail extends Component {
             <div className={css.container}>
                 <nav>
                     <Link to="/">CHANNELS /</Link>
-                    <h1>{data.name}</h1>
+                    <h4>{data.name}</h4>
                 </nav>
                 <div className={css.membersContainer}>
+                    <h2>MEMBERS</h2>
                     <TeamMembers />
-                </div>
-                <div className={css.toneContainer}>
-                    <MessageTone tone={tone} />
                 </div>
                 <div className={css.messageContainer}>
                     <MessageStats channel={data.name} messages={data.messages} />
+                </div>
+                <div className={css.toneContainer}>
+                    <MessageTone tone={tone} />
                 </div>
             </div>
         );
