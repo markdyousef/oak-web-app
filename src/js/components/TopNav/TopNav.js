@@ -20,7 +20,7 @@ class TopNav extends Component {
                 </div>
                 <div className={css.navRight}>
                     <Link to="/" activeClassName={css.active}>
-                        TEAM
+                        TEAMS
                     </Link>
                     <Link to="/me" className={css.myProfile}>
                         <Avatar img={IMG} />

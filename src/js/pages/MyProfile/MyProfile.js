@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import TopNav from '../../components/TopNav';
+
 import css from './MyProfile.css';
 
 class MyProfile extends Component {
@@ -9,8 +11,8 @@ class MyProfile extends Component {
     }
     render() {
         return (
-            <div>
-
+            <div className={css.container}>
+                <TopNav />
             </div>
         );
     }
