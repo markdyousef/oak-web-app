@@ -15,24 +15,28 @@ ShallowWrapper {
             to="/">
             CHANNELS /
         </Link>
-        <h1>
+        <h4>
             general
-        </h1>
+        </h4>
     </nav>
     <div
         className={undefined}>
+        <h2>
+            MEMBERS
+        </h2>
         <Connect(TeamMembers) />
-    </div>
-    <div
-        className={undefined}>
-        <MessageTone
-            tone={null} />
     </div>
     <div
         className={undefined}>
         <Connect(MessageStats)
             channel="general"
             messages={undefined} />
+    </div>
+    <div
+        className={undefined}>
+        <MessageTone
+            tone={null}
+            toneOther={Object {}} />
     </div>
 </div>,
   "nodes": Array [
@@ -45,24 +49,28 @@ ShallowWrapper {
                   to="/">
                   CHANNELS /
             </Link>
-            <h1>
+            <h4>
                   general
-            </h1>
+            </h4>
       </nav>
       <div
             className={undefined}>
+            <h2>
+                  MEMBERS
+            </h2>
             <Connect(TeamMembers) />
-      </div>
-      <div
-            className={undefined}>
-            <MessageTone
-                  tone={null} />
       </div>
       <div
             className={undefined}>
             <Connect(MessageStats)
                   channel="general"
                   messages={undefined} />
+      </div>
+      <div
+            className={undefined}>
+            <MessageTone
+                  tone={null}
+                  toneOther={Object {}} />
       </div>
 </div>,
   ],
@@ -136,24 +144,28 @@ ShallowWrapper {
                               to="/">
                               CHANNELS /
                     </Link>
-                    <h1>
+                    <h4>
                               general
-                    </h1>
+                    </h4>
           </nav>
           <div
                     className={undefined}>
+                    <h2>
+                              MEMBERS
+                    </h2>
                     <Connect(TeamMembers) />
-          </div>
-          <div
-                    className={undefined}>
-                    <MessageTone
-                              tone={null} />
           </div>
           <div
                     className={undefined}>
                     <Connect(MessageStats)
                               channel="general"
                               messages={undefined} />
+          </div>
+          <div
+                    className={undefined}>
+                    <MessageTone
+                              tone={null}
+                              toneOther={Object {}} />
           </div>
 </div>,
         "_debugID": 2,
@@ -166,24 +178,28 @@ ShallowWrapper {
                               to="/">
                               CHANNELS /
                     </Link>
-                    <h1>
+                    <h4>
                               general
-                    </h1>
+                    </h4>
           </nav>
           <div
                     className={undefined}>
+                    <h2>
+                              MEMBERS
+                    </h2>
                     <Connect(TeamMembers) />
-          </div>
-          <div
-                    className={undefined}>
-                    <MessageTone
-                              tone={null} />
           </div>
           <div
                     className={undefined}>
                     <Connect(MessageStats)
                               channel="general"
                               messages={undefined} />
+          </div>
+          <div
+                    className={undefined}>
+                    <MessageTone
+                              tone={null}
+                              toneOther={Object {}} />
           </div>
 </div>,
       },
