@@ -45,7 +45,6 @@
 .avatar {
     height: 150px;
     width: 150px;
-    background-color: var(--main-green-color);
     border-radius: 100px;
 }
 

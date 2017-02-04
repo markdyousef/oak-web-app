@@ -13,6 +13,8 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: fixed;
     z-index: 999999;
+    display: flex;
+    justify-content: space-between;
 }
 
 .container h1 {
@@ -31,4 +33,19 @@
 
 .navLeft img {
     height: 40px;
+}
+
+.navRight {
+    height: 100%;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.navRight span {
+    height: 35px;
+    width: 35px;
+    border: 1px solid var(--main-black-color);
+    border-radius: 60px;
 }
