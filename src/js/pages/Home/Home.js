@@ -21,6 +21,7 @@ class Home extends Component {
                     <TeamMembers />
                 </div>
                 <div className={css.teamStats}>
+                    <h1>CHANNELS:</h1>
                     <TeamStats />
                 </div>
             </div>
