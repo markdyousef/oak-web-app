@@ -19,3 +19,8 @@ export const RECEIVE_MEMBERS = 'channel/RECEIVE_MEMBERS';
 * INSIGHTS
 */
 export const RECEIVE_INSIGHTS = 'insights/RECEIVE_INSIGHTS';
+
+/**
+*   USER
+*/
+export const RECEIVE_USER = 'user/RECEIVE_USER';

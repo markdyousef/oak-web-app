@@ -1,26 +1,20 @@
 import Immutable from 'immutable';
+import * as type from '../constants/ActionTypes';
 
 const inititalState = Immutable.Map({
     isLoading: false,
     message: null,
-    user: {}
+    tone: {},
+    insight: {}
 });
 
 export default (state = inititalState, action) => {
-    if (action.type === 'user/REQUEST_DATA') {
-        return state.set('isLoading', true);
+    switch (action.type) {
+    case type.RECEIVE_USER:
+        return state
+            .set('tone', Immutable.Map(action.tone))
+            .set('insight', Immutable.Map(action.insight));
+    default:
+        return state;
     }
-    if (action.type === 'user/RECEIVE_USER') {
-        return state.merge({
-            isLoading: false,
-            message: null,
-            user: action.user
-        });
-    }
-    if (action.type === 'user/CLEAR_MESSAGE') {
-        return state.merge({
-            message: null
-        });
-    }
-    return state;
 };
