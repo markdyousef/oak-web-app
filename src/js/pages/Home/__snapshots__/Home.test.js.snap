@@ -18,6 +18,9 @@ ShallowWrapper {
     </div>
     <div
         className={undefined}>
+        <h1>
+            CHANNELS:
+        </h1>
         <Connect(BaseStats) />
     </div>
 </div>,
@@ -34,6 +37,9 @@ ShallowWrapper {
       </div>
       <div
             className={undefined}>
+            <h1>
+                  CHANNELS:
+            </h1>
             <Connect(BaseStats) />
       </div>
 </div>,
@@ -84,6 +90,9 @@ ShallowWrapper {
           </div>
           <div
                     className={undefined}>
+                    <h1>
+                              CHANNELS:
+                    </h1>
                     <Connect(BaseStats) />
           </div>
 </div>,
@@ -100,6 +109,9 @@ ShallowWrapper {
           </div>
           <div
                     className={undefined}>
+                    <h1>
+                              CHANNELS:
+                    </h1>
                     <Connect(BaseStats) />
           </div>
 </div>,

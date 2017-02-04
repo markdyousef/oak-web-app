@@ -19,7 +19,7 @@ class TopNav extends Component {
                     <h1>MASTERMIND</h1>
                 </div>
                 <div className={css.navRight}>
-                    <Link to="/me">
+                    <Link to="/">
                         <Avatar img={IMG} />
                     </Link>
                 </div>

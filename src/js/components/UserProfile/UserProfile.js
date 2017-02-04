@@ -37,7 +37,9 @@ class UserProfile extends Component {
     constructor() {
         super();
         this.renderUsers = this.renderUsers.bind(this);
-        this.state = {};
+        this.state = {
+            otherId: null
+        };
     }
     componentWillMount() {
         const { getInsight, getUser, userId } = this.props;
@@ -46,13 +48,20 @@ class UserProfile extends Component {
     }
     renderUsers() {
         const { getInsight, users, userId } = this.props;
+        const { otherId } = this.state;
 
         if (users) {
             const others = users.filter(user => user.id !== userId);
             return others.map(other => (
                 <span
                     key={other.id}
-                    onClick={() => getInsight(userId, other.id)}
+                    onClick={() => {
+                        getInsight(userId, other.id);
+                        this.setState({ otherId: other.id });
+                    }}
+                    className={(otherId === other.id) ?
+                        css.active : null
+                    }
                 >
                     <Avatar img={other.profile.image_512} />
                 </span>
