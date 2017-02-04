@@ -1,6 +1,7 @@
 // @flow
 import { connect } from 'react-redux';
 import { getInsight } from '../actions';
+import { getUser } from '../actions';
 
 import UserProfile from '../components/UserProfile';
 
@@ -23,7 +24,8 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        getInsight: (userId, otherId) => dispatch(getInsight('mastermind', userId, otherId))
+        getInsight: (userId, otherId) => dispatch(getInsight('mastermind', userId, otherId)),
+        getUser: userId => dispatch(getUser('mastermind', userId))
     }
 );
 

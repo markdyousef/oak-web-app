@@ -14,7 +14,8 @@ class UserProfile extends Component {
         users: PropTypes.arrayOf(PropTypes.object),
         insights: PropTypes.object,
         insightsOther: PropTypes.object,
-        getInsight: PropTypes.func.isRequired
+        getInsight: PropTypes.func.isRequired,
+        getUser: PropTypes.func.isRequired
     }
     static defaultProps = {
         user: {
@@ -30,8 +31,9 @@ class UserProfile extends Component {
         this.state = {};
     }
     componentWillMount() {
-        const { getInsight, userId } = this.props;
+        const { getInsight, getUser, userId } = this.props;
         getInsight(userId);
+        getUser(userId);
     }
     renderUsers() {
         const { getInsight, users, userId } = this.props;

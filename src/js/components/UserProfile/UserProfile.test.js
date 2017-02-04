@@ -6,7 +6,8 @@ import UserProfile from './UserProfile';
 test('renders UserProfile', () => {
     const props = {
         userId: 'userId',
-        getInsight: () => {}
+        getInsight: () => {},
+        getUser: () => {}
     };
     const component = renderer.create(
         <UserProfile {...props} />
