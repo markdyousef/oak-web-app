@@ -7,7 +7,7 @@ import css from './MessageTone.css';
 class MessageTone extends Component {
     static propTypes = {
         tone: PropTypes.shape({
-            document_tone: PropTypes.object.isRequired
+            document_tone: PropTypes.object
         })
     }
     static defaultProps = {

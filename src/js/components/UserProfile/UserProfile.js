@@ -4,12 +4,16 @@ import React, { Component, PropTypes } from 'react';
 import css from './UserProfile.css';
 import Avatar from '../shared/Avatar';
 import Insights from '../Insights';
+import MessageTone from '../MessageTone';
 
 class UserProfile extends Component {
     static propTypes = {
         userId: PropTypes.string.isRequired,
         user: PropTypes.shape({
             profile: PropTypes.object
+        }),
+        tone: PropTypes.shape({
+            document_tone: PropTypes.object
         }),
         users: PropTypes.arrayOf(PropTypes.object),
         insights: PropTypes.object,
@@ -23,7 +27,8 @@ class UserProfile extends Component {
         },
         users: [],
         insights: {},
-        insightsOther: {}
+        insightsOther: {},
+        tone: {}
     }
     constructor() {
         super();
@@ -52,7 +57,7 @@ class UserProfile extends Component {
         return null;
     }
     render() {
-        const { user, insights, insightsOther } = this.props;
+        const { user, insights, insightsOther, tone } = this.props;
         return (
             <div className={css.container}>
                 <header>
@@ -71,6 +76,7 @@ class UserProfile extends Component {
                 </header>
                 <div className={css.stats}>
                     <Insights insights={insights} insightsOther={insightsOther} />
+                    <MessageTone tone={tone} />
                 </div>
             </div>
         );

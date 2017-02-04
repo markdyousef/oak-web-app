@@ -4,8 +4,8 @@ import * as type from '../constants/ActionTypes';
 const inititalState = Immutable.Map({
     isLoading: false,
     message: null,
-    tone: {},
-    insight: {}
+    tone: Immutable.Map({}),
+    insight: Immutable.Map({})
 });
 
 export default (state = inititalState, action) => {

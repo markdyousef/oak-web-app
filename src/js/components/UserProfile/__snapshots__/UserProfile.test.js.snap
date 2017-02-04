@@ -13,6 +13,9 @@ exports[`test renders UserProfile 1`] = `
             src={null} />
         </div>
       </div>
+    </div>
+    <div
+      className={undefined}>
       <h1>
         PERSONAL INSIGHTS
       </h1>
@@ -21,12 +24,14 @@ exports[`test renders UserProfile 1`] = `
       </h3>
       <div
         className={undefined} />
-      <div
-        className={undefined}>
-        <div
-          className={undefined} />
-      </div>
     </div>
   </header>
+  <div
+    className={undefined}>
+    <div
+      className={undefined} />
+    <div
+      className={undefined} />
+  </div>
 </div>
 `;

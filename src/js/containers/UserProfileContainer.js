@@ -1,7 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { getInsight } from '../actions';
-import { getUser } from '../actions';
+import { getInsight, getUser } from '../actions';
 
 import UserProfile from '../components/UserProfile';
 
@@ -16,8 +15,9 @@ const mapStateToProps = (state: Object, ownProps: Object) => {
         userId,
         user,
         users: members,
-        insights: state.insights.get('data').toJS(),
-        insightsOther: state.insights.get('otherData').toJS()
+        insights: state.user.get('insight').toJS(),
+        insightsOther: state.insights.get('otherData').toJS(),
+        tone: state.user.get('tone').toJS()
     }
     );
 };
