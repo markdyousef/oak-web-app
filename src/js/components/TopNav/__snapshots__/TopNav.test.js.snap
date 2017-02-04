@@ -12,9 +12,7 @@ exports[`test renders TopNav 1`] = `
     <a
       onClick={[Function]}
       style={Object {}}>
-      <img
-        alt="team"
-        src="test-file-stub" />
+      TEAMS
     </a>
     <a
       className={undefined}
