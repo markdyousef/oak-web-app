@@ -8,13 +8,17 @@
 
 .container {
     width: 100%;
+    background-color: #fff;
 }
 
 .container header {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--main-green-color);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    z-index: 999999;
 }
 
 .container h1 {
@@ -52,7 +56,7 @@
 }
 
 .stats {
-    margin-top: 30px;
+    padding-top: 350px;
     margin-bottom: 30px;
 }
 
