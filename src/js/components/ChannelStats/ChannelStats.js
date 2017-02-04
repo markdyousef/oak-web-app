@@ -7,17 +7,12 @@ import chatIcon from '../../../img/chat.png';
 import membersIcon from '../../../img/multiple-users-silhouette.png';
 
 const ChannelStats = ({ data } : Object) => {
-    const { name, purpose, members, messages, id } = data;
+    const { name, members, messages, id } = data;
 
     return (
         <Link className={css.container} to={`/channel/${id}`}>
             <header>
                 <h1>{name}</h1>
-                {purpose && purpose.value &&
-                    <div className={css.purpose}>
-                        <h2>{`"${purpose.value}"`}</h2>
-                        <h4>{purpose.creator}</h4>
-                    </div>}
             </header>
             <div className={css.statsRow}>
                 {members &&
@@ -40,10 +35,6 @@ const ChannelStats = ({ data } : Object) => {
 ChannelStats.propTypes = {
     data: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        purpose: PropTypes.shape({
-            value: PropTypes.string.isRequired,
-            creator: PropTypes.string.isRequired
-        }),
         members: PropTypes.arrayOf(PropTypes.string),
         messages: PropTypes.arrayOf(PropTypes.object)
     }).isRequired
