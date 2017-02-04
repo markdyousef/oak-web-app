@@ -9,7 +9,10 @@
 .container {
     width: 100%;
     height: 60px;
-    background-color: var(--main-black-color);
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    z-index: 999999;
 }
 
 .container h1 {
