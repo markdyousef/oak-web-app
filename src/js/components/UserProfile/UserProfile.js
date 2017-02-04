@@ -60,16 +60,18 @@ class UserProfile extends Component {
                         <div className={css.avatar}>
                             <Avatar img={user.profile.image_512} />
                         </div>
+                    </div>
+                    <div className={css.compare}>
                         <h1>PERSONAL INSIGHTS</h1>
                         <h3>Compare with:</h3>
                         <div className={css.users}>
                             {this.renderUsers()}
                         </div>
-                        <div className={css.stats}>
-                            <Insights insights={insights} insightsOther={insightsOther} />
-                        </div>
                     </div>
                 </header>
+                <div className={css.stats}>
+                    <Insights insights={insights} insightsOther={insightsOther} />
+                </div>
             </div>
         );
     }
