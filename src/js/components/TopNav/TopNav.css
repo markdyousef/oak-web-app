@@ -44,7 +44,13 @@
     padding-right: 30px;
 }
 
-.navRight a {
+.navRight img {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.myProfile img {
     height: 35px;
     width: 35px;
     border: 1px solid var(--main-green-color);
