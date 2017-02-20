@@ -5,7 +5,14 @@
 
 .container div {
     width: 120px;
-    height: 30px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.title {
+    font-size: 12px;
+    font-weight: bold;
 }
 
 /* LIKE BUTTON */
