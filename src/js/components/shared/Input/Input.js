@@ -7,7 +7,11 @@ const Input = ({ title, value, placeholder, onChange }:Object) => {
     return (
         <div className={css.container}>
             <label htmlFor="input">{title}</label>
-            <input value={value} placeholder={placeholder} onChange={onChange} />
+            <input
+                value={value}
+                placeholder={placeholder}
+                onChange={event => onChange(event.target.value)}
+            />
         </div>
     );
 };
@@ -16,7 +20,7 @@ Input.propTypes = {
     title: PropTypes.string.isRequired,
     value: PropTypes.string,
     placeholder: PropTypes.string,
-    onChange: PropTypes.string.isRequired
+    onChange: PropTypes.func.isRequired
 };
 
 Input.defaultProps = {
