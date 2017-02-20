@@ -10,6 +10,7 @@ import initStore from './store/configureStore';
 // Components
 import App from './containers/AppContainer';
 import Home from './pages/Home';
+import CollectionDetail from './containers/CollectionDetailContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -23,6 +24,7 @@ const routes = (
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={Home} />
+                <Route path="/:collectionId" component={CollectionDetail} />
             </Route>
         </Router>
     </Provider>
