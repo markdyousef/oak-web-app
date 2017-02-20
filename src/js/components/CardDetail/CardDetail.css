@@ -30,6 +30,23 @@
     cursor: pointer;
 }
 
+.main {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.rightPane {
+    width: 100px;
+    height: 200px;
+    background-color: #ddd;
+}
+
+.leftPane {
+    width: 80%;
+}
+
 .inputs {
     padding: 40px;
     width: 100%;

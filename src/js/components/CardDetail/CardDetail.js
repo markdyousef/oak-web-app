@@ -19,17 +19,24 @@ class CardDetail extends Component {
             <div className={css.modal}>
                 <div className={css.container}>
                     <div className={css.close} onClick={() => close()}>X</div>
-                    <div className={css.inputs}>
-                        <Input
-                            title="TITLE"
-                            onChange={(value: String) => this.setState({ title: value })}
-                            value={title || ''}
-                        />
-                        <Input
-                            title="URL"
-                            onChange={(value: String) => this.setState({ url: value })}
-                            value={url || ''}
-                        />
+                    <div className={css.main}>
+                        <div className={css.leftPane}>
+                            <div className={css.inputs}>
+                                <Input
+                                    title="TITLE"
+                                    onChange={(value: String) => this.setState({ title: value })}
+                                    value={title || ''}
+                                />
+                                <Input
+                                    title="URL"
+                                    onChange={(value: String) => this.setState({ url: value })}
+                                    value={url || ''}
+                                />
+                            </div>
+                        </div>
+                        <div className={css.rightPane}>
+
+                        </div>
                     </div>
                 </div>
             </div>
