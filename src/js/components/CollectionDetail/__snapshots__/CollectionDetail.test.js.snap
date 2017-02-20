@@ -7,10 +7,9 @@ exports[`test renders correctly 1`] = `
   </div>
   <div
     className={undefined}>
-    <a
+    <div
       className={undefined}
-      onClick={[Function]}
-      style={Object {}}>
+      onClick={[Function]}>
       <div
         className={undefined}>
         <div
@@ -20,11 +19,10 @@ exports[`test renders correctly 1`] = `
           </h1>
         </div>
       </div>
-    </a>
-    <a
+    </div>
+    <div
       className={undefined}
-      onClick={[Function]}
-      style={Object {}}>
+      onClick={[Function]}>
       <div
         className={undefined}>
         <div
@@ -34,11 +32,10 @@ exports[`test renders correctly 1`] = `
           </h1>
         </div>
       </div>
-    </a>
-    <a
+    </div>
+    <div
       className={undefined}
-      onClick={[Function]}
-      style={Object {}}>
+      onClick={[Function]}>
       <div
         className={undefined}>
         <div
@@ -48,7 +45,7 @@ exports[`test renders correctly 1`] = `
           </h1>
         </div>
       </div>
-    </a>
+    </div>
   </div>
 </div>
 `;

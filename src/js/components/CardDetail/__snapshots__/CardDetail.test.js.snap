@@ -2,6 +2,11 @@ exports[`test renders correctly 1`] = `
 <div
   className={undefined}>
   <div
-    className={undefined} />
+    className={undefined}>
+    <div
+      onClick={[Function]}>
+      X
+    </div>
+  </div>
 </div>
 `;

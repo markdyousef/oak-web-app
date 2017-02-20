@@ -8,10 +8,11 @@ class CardDetail extends Component {
         this.state = {};
     }
     render() {
+        const { close } = this.props;
         return (
             <div className={css.modal}>
                 <div className={css.container}>
-
+                    <div onClick={() => close()}>X</div>
                 </div>
             </div>
         );

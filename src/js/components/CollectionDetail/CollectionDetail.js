@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import Card from '../Card';
+import CardDetail from '../CardDetail';
 
 import css from './CollectionDetail.css';
 
@@ -22,9 +22,12 @@ const ITEMS = [
 class CollectionDetail extends Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            showCard: false
+        };
     }
     render() {
+        const { showCard } = this.state;
         return (
             <div className={css.container}>
                 <div className={css.header}>
@@ -32,11 +35,16 @@ class CollectionDetail extends Component {
                 </div>
                 <div className={css.grid}>
                     {ITEMS.map(item =>
-                        <Link to={`/card/${item.id}`} className={css.card} key={item.id}>
+                        <div
+                            onClick={() => this.setState({ showCard: !showCard })}
+                            className={css.card}
+                            key={item.id}
+                        >
                             <Card title={item.title} />
-                        </Link>
+                        </div>
                     )}
                 </div>
+                {showCard && <CardDetail close={() => this.setState({ showCard: false })} />}
             </div>
         );
     }
