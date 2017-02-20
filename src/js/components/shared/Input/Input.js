@@ -6,13 +6,15 @@ import css from './Input.css';
 const Input = ({ title, value, placeholder, onChange, type }:Object) => {
     return (
         <div className={css.container}>
-            <label htmlFor="input">{title}</label>
             <input
-                type={type}
+                type={type || 'text'}
                 value={value}
                 placeholder={placeholder}
                 onChange={event => onChange(event.target.value)}
             />
+            <span className={css.highlight} />
+            <span className={css.bar} />
+            <label htmlFor="input">{title}</label>
         </div>
     );
 };

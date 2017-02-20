@@ -8,12 +8,13 @@ class CardDetail extends Component {
     constructor() {
         super();
         this.state = {
-            title: null
+            title: null,
+            url: null
         };
     }
     render() {
         const { close } = this.props;
-        const { title } = this.state;
+        const { title, url } = this.state;
         return (
             <div className={css.modal}>
                 <div className={css.container}>
@@ -23,6 +24,11 @@ class CardDetail extends Component {
                             title="TITLE"
                             onChange={(value: String) => this.setState({ title: value })}
                             value={title || ''}
+                        />
+                        <Input
+                            title="URL"
+                            onChange={(value: String) => this.setState({ url: value })}
+                            value={url || ''}
                         />
                     </div>
                 </div>
