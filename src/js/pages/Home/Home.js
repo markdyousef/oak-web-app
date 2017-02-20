@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import KnowledgeStats from '../../components/KnowledgeStats';
-import Categories from '../../components/Categories';
+import Collections from '../../components/Collections';
 
 import css from './Home.css';
 
@@ -19,7 +19,7 @@ class Home extends Component {
                     <KnowledgeStats />
                 </div>
                 <div className={css.categories}>
-                    <Categories />
+                    <Collections />
                 </div>
             </div>
         );

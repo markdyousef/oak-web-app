@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import Card from '../Card';
 
-import css from './Categories.css';
+import css from './Collections.css';
 
 const CATEGORIES = [
     {
@@ -16,7 +16,7 @@ const CATEGORIES = [
     }
 ];
 
-class Categories extends Component {
+class Collections extends Component {
     static propTypes = {};
     static defaultProps = {};
     constructor() {
@@ -37,4 +37,4 @@ class Categories extends Component {
     }
 }
 
-export default Categories;
+export default Collections;
