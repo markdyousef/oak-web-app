@@ -1,11 +1,8 @@
-# Project
-Web client for 'team culture' project.
-
-* [Trello Board](https://trello.com/b/PjIE6AJI/swebly)
-* [Jupyter Notebook]()
+# Project OAK
+Knowledge sharing platform for teams
 
 #### Purpose
-* Help visualize the data retrieved from Slack and the ongoing analysis
+* Test and prototype knowledge sharing
 * Experiment with new front-end tools (storybook, flow, jest)
 
 ### Basics

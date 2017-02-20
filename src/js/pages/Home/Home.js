@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
-import TopNav from '../../components/TopNav';
+import css from './Home.css';
 
-import css from './MyProfile.css';
-
-class MyProfile extends Component {
+class Home extends Component {
+    static propTypes = {};
+    static defaultProps = {};
     constructor() {
         super();
         this.state = {};
@@ -12,10 +12,10 @@ class MyProfile extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
+
             </div>
         );
     }
 }
 
-export default MyProfile;
+export default Home;

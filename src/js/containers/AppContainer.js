@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import App from '../components/App/App';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state:Object) => ({});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch:Function) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

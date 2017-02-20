@@ -7,12 +7,9 @@ import { Provider } from 'react-redux';
 
 import initStore from './store/configureStore';
 
-// Components / Containers
+// Components
 import App from './containers/AppContainer';
-import Team from './pages/Team';
-import ChannelDetail from './containers/ChannelDetailContainer';
-import User from './pages/User';
-import MyProfile from './pages/MyProfile';
+import Home from './pages/Home';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -25,10 +22,7 @@ const routes = (
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Team} />
-                <Route path="/channel/:channelId" component={ChannelDetail} />
-                <Route path="/user/:userId" component={User} />
-                <Route path="/me" component={MyProfile} />
+                <IndexRoute component={Home} />
             </Route>
         </Router>
     </Provider>

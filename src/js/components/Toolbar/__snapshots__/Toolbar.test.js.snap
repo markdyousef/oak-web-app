@@ -1,4 +1,0 @@
-exports[`test renders Toolbar 1`] = `
-<div
-  className={undefined} />
-`;

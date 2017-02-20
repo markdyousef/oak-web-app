@@ -1,14 +1,10 @@
-// @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Toolbar from './Toolbar';
+import Home from './Home';
 
-test('renders Toolbar', () => {
-    const props = {
-        selectTeam: () => {}
-    };
+it('renders correctly', () => {
     const component = renderer.create(
-        <Toolbar {...props} />
+        <Home />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
