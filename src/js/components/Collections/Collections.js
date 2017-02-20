@@ -1,18 +1,22 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import Card from '../Card';
 
 import css from './Collections.css';
 
 const CATEGORIES = [
     {
-        title: 'Design'
+        title: 'Design',
+        id: '1'
     },
     {
-        title: 'Frontend'
+        title: 'Frontend',
+        id: '2'
     },
     {
-        title: 'Strategy'
+        title: 'Strategy',
+        id: '3'
     }
 ];
 
@@ -30,7 +34,11 @@ class Collections extends Component {
                     TOOLBAR
                 </div>
                 <div className={css.grid}>
-                    {CATEGORIES.map(category => <Card title={category.title} key={category.title} />)}
+                    {CATEGORIES.map(category =>
+                        <Link to={`/${category.id}`} key={category.id}>
+                            <Card title={category.title} />
+                        </Link>
+                    )}
                 </div>
             </div>
         );
