@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import Input from '../shared/Input';
+import Button from '../shared/Button'
 
 import css from './CardDetail.css';
 
@@ -9,12 +10,13 @@ class CardDetail extends Component {
         super();
         this.state = {
             title: null,
-            url: null
+            url: null,
+            likes: 0
         };
     }
     render() {
         const { close } = this.props;
-        const { title, url } = this.state;
+        const { title, url, likes } = this.state;
         return (
             <div className={css.modal}>
                 <div className={css.container}>
@@ -35,7 +37,12 @@ class CardDetail extends Component {
                             </div>
                         </div>
                         <div className={css.rightPane}>
-
+                            <Button
+                                text="LIKE"
+                                onClick={() => this.setState({ likes: likes + 1 })}
+                                type="like"
+                                value={likes}
+                            />
                         </div>
                     </div>
                 </div>

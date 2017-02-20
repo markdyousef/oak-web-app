@@ -5,7 +5,7 @@
     max-width: 400px;
 }
 
-input {
+.container input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -15,12 +15,12 @@ input {
     font-weight: lighter;
 }
 
-input:focus {
+.container input:focus {
     outline: none;
 }
 
 /* LABEL ======================================= */
-label {
+.container label {
     color: #999;
     font-size: 12px;
     font-weight: normal;
@@ -34,7 +34,7 @@ label {
 }
 
 /* active state */
-input:focus ~ label,
+.container input:focus ~ label,
 input:valid ~ label {
     top: -15px;
     font-size: 10px;
@@ -70,7 +70,7 @@ input:valid ~ label {
 }
 
 /* active state */
-input:focus ~ .bar::before,
+.container input:focus ~ .bar::before,
 input:focus ~ .bar::after {
     width: 50%;
 }
@@ -87,7 +87,7 @@ input:focus ~ .bar::after {
 }
 
 /* active state */
-input:focus ~ .highlight {
+.container input:focus ~ .highlight {
     -webkit-animation: inputHighlighter 0.3s ease;
     -moz-animation: inputHighlighter 0.3s ease;
     animation: inputHighlighter 0.3s ease;
