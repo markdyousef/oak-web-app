@@ -43,6 +43,10 @@ class CardDetail extends Component {
                                 type="like"
                                 value={likes}
                             />
+                            <Button
+                                text="LABELS"
+                                onClick={() => console.log('attach')}
+                            />
                         </div>
                     </div>
                 </div>

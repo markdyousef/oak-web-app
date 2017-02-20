@@ -1,6 +1,7 @@
 .container {
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .container div {
@@ -8,6 +9,7 @@
     height: 40px;
     border: 1px solid #ddd;
     border-radius: 3px;
+    padding: 10px;
 }
 
 .title {
@@ -20,7 +22,6 @@
     background-color: #fff;
     display: flex;
     align-items: center;
-    padding: 10px;
 }
 
 .like label {
