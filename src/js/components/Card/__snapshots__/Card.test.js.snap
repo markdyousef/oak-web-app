@@ -3,7 +3,9 @@ exports[`test renders correctly 1`] = `
   className={undefined}>
   <div
     className={undefined}>
-    <h1 />
+    <h1>
+      Design
+    </h1>
   </div>
 </div>
 `;
