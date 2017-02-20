@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import Card from '../Card';
 
 import css from './CollectionDetail.css';
@@ -31,9 +32,9 @@ class CollectionDetail extends Component {
                 </div>
                 <div className={css.grid}>
                     {ITEMS.map(item =>
-                        <div className={css.card} key={item.id}>
+                        <Link to={`/card/${item.id}`} className={css.card} key={item.id}>
                             <Card title={item.title} />
-                        </div>
+                        </Link>
                     )}
                 </div>
             </div>
