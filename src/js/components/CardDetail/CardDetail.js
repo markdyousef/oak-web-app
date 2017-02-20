@@ -18,7 +18,7 @@ class CardDetail extends Component {
         return (
             <div className={css.modal}>
                 <div className={css.container}>
-                    <div onClick={() => close()}>X</div>
+                    <div className={css.close} onClick={() => close()}>X</div>
                     <div className={css.inputs}>
                         <Input
                             title="TITLE"

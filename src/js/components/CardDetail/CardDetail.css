@@ -20,6 +20,14 @@
     border-radius: 3px;
     padding: 20px;
     border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.close {
+    align-self: flex-end;
+    cursor: pointer;
 }
 
 .inputs {
