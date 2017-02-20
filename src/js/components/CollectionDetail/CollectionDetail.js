@@ -30,7 +30,11 @@ class CollectionDetail extends Component {
                     TEXT
                 </div>
                 <div className={css.grid}>
-                    {ITEMS.map(item => <Card title={item.title} key={item.id} />)}
+                    {ITEMS.map(item =>
+                        <div className={css.card} key={item.id}>
+                            <Card title={item.title} />
+                        </div>
+                    )}
                 </div>
             </div>
         );

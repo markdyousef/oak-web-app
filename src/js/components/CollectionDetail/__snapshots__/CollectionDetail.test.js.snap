@@ -1,4 +1,48 @@
 exports[`test renders correctly 1`] = `
 <div
-  className={undefined} />
+  className={undefined}>
+  <div
+    className={undefined}>
+    TEXT
+  </div>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      <div
+        className={undefined}>
+        <div
+          className={undefined}>
+          <h1>
+            React
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div
+      className={undefined}>
+      <div
+        className={undefined}>
+        <div
+          className={undefined}>
+          <h1>
+            Jest
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div
+      className={undefined}>
+      <div
+        className={undefined}>
+        <div
+          className={undefined}>
+          <h1>
+            GraphQL
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

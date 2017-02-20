@@ -9,3 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.grid a {
+    margin: 10px;
+}
