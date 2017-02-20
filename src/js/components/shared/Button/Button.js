@@ -15,11 +15,11 @@ const Button = ({ onClick, text, value, type }: Object) => {
     return (
         <button
             onClick={onClick}
-            className={[css.container, className].join('')}
+            className={[css.container, className].join(' ')}
         >
             <div>
-                {value && <label htmlFor="value">{value}</label>}
-                <label htmlFor="text">{text}</label>
+                {value !== null && <label htmlFor="value">{value}</label>}
+                <label className={css.title} htmlFor="text">{text}</label>
             </div>
         </button>
     );

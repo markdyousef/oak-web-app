@@ -1,5 +1,21 @@
 .container {
-    /*width: 200px;*/
-    padding: 15px;
-    font-size: 18px;
+    border: none;
+    background: none;
+}
+
+.container div {
+    width: 120px;
+    height: 30px;
+}
+
+/* LIKE BUTTON */
+.like div {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.like label {
+    padding: 10px;
 }
