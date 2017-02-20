@@ -1,0 +1,34 @@
+:root {
+    --main-black-color: #000;
+    --main-white-color: #fefeff;
+    --main-orange-color: #ff9200;
+    --main-red-color: #8b0000;
+    --main-green-color: #005d6c;
+}
+
+.container {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: #fff;
+    margin: 10px;
+}
+
+.container:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content h1 {
+    font-size: 18px;
+    font-weight: bold;
+}

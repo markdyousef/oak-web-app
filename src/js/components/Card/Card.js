@@ -14,7 +14,9 @@ class Card extends Component {
         const { title } = this.props;
         return (
             <div className={css.container}>
-                <h1>{title}</h1>
+                <div className={css.content}>
+                    <h1>{title}</h1>
+                </div>
             </div>
         );
     }
