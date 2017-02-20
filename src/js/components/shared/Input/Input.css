@@ -12,6 +12,7 @@ input {
     width: 100%;
     border: none;
     border-bottom: 1px solid #757575;
+    font-weight: lighter;
 }
 
 input:focus {
@@ -21,7 +22,7 @@ input:focus {
 /* LABEL ======================================= */
 label {
     color: #999;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -35,9 +36,9 @@ label {
 /* active state */
 input:focus ~ label,
 input:valid ~ label {
-    top: -20px;
-    font-size: 14px;
-    color: #000;
+    top: -15px;
+    font-size: 10px;
+    color: #999;
 }
 
 /* BOTTOM BARS ================================= */
