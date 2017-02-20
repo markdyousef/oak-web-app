@@ -13,6 +13,7 @@ class Categories extends Component {
     render() {
         return (
             <div className={css.container}>
+                Categories
             </div>
         );
     }

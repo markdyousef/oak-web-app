@@ -15,8 +15,12 @@ class Home extends Component {
     render() {
         return (
             <div className={css.container}>
-                <KnowledgeStats />
-                <Categories />
+                <div className={css.stats}>
+                    <KnowledgeStats />
+                </div>
+                <div className={css.categories}>
+                    <Categories />
+                </div>
             </div>
         );
     }
