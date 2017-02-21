@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TopNav from '../TopNav';
+import SideNav from '../SideNav';
 
 import css from './App.css';
 
@@ -17,8 +18,11 @@ class App extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
-                {this.props.children}
+                <SideNav />
+                <div className={css.right}>
+                    <TopNav />
+                    {this.props.children}
+                </div>
             </div>
         );
     }
