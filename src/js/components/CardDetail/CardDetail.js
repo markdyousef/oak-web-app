@@ -50,7 +50,7 @@ class CardDetail extends Component {
                                 text="LABELS"
                                 onClick={() => this.setState({ showLabels: !showLabels })}
                             />
-                            {showLabels && <LabelsActionBox />}
+                            {showLabels && <LabelsActionBox close={() => this.setState({ showLabels: false })} />}
                         </div>
                     </div>
                 </div>

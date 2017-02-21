@@ -5,7 +5,9 @@ import CreateLabels from './CreateLabels';
 import css from './LabelsActionBox.css';
 
 class LabelsActionBox extends Component {
-    static propTypes = {};
+    static propTypes = {
+        close: PropTypes.func.isRequired
+    };
     static defaultProps = {};
     constructor() {
         super();
@@ -15,10 +17,15 @@ class LabelsActionBox extends Component {
         };
     }
     renderLabels() {
+        const { close } = this.props;
         const { showCreate } = this.state;
 
         if (showCreate) {
-            return <CreateLabels />;
+            return (
+                <CreateLabels
+                    onCreate={close}
+                />
+            );
         }
         return null;
     }

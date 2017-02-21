@@ -12,6 +12,9 @@ const Button = ({ onClick, text, value, type }: Object) => {
     case 'transparent':
         className = css.transparent;
         break;
+    case 'primary':
+        className = css.primary
+        break;
     default:
         break;
     }

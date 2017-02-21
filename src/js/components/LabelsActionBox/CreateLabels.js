@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Input from '../shared/Input';
+import Button from '../shared/Button';
+
+import css from './LabelsActionBox.css';
 
 const COLORS = [
     '#0aa5ea',
@@ -9,9 +12,11 @@ const COLORS = [
     '#b2668c'
 ];
 
-import css from './LabelsActionBox.css';
 
 class CreateLabels extends Component {
+    static propTypes = {
+        onCreate: PropTypes.func.isRequired
+    }
     constructor() {
         super();
         this.renderColorGrid = this.renderColorGrid.bind(this);
@@ -28,7 +33,7 @@ class CreateLabels extends Component {
                     <div
                         key={index}
                         style={{
-                            border: (color === selectedColor) ? '2px solid #303b42' : null,
+                            border: (color === selectedColor) ? '2px solid #000' : null,
                             backgroundColor: color
                         }}
                         className={css.color}
@@ -40,6 +45,7 @@ class CreateLabels extends Component {
     }
     render() {
         const { name } = this.state;
+        const { onCreate } = this.props;
         return (
             <div className={css.createContainer}>
                 <header>
@@ -56,6 +62,11 @@ class CreateLabels extends Component {
                     <h5>SELECT COLOR: </h5>
                     {this.renderColorGrid()}
                 </div>
+                <Button
+                    onClick={() => onCreate()}
+                    text="CREATE"
+                    type="primary"
+                />
             </div>
         );
     }
