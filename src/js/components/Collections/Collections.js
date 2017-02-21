@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Card from '../Card';
+import Button from '../shared/Button';
 
 import css from './Collections.css';
 
@@ -31,7 +32,11 @@ class Collections extends Component {
         return (
             <div className={css.container}>
                 <div className={css.toolbar}>
-                    TOOLBAR
+                    <Button
+                        onClick={() => {}}
+                        text="Add Collection"
+                        type="primary"
+                    />
                 </div>
                 <div className={css.grid}>
                     {CATEGORIES.map(category =>
