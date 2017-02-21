@@ -2,18 +2,9 @@ exports[`test renders TopNav 1`] = `
 <nav
   className={undefined}>
   <div
-    className={undefined}>
-    <img
-      alt="logo"
-      src="test-file-stub" />
-  </div>
+    className={undefined} />
   <div
     className={undefined}>
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      TEAMS
-    </a>
     <a
       className={undefined}
       onClick={[Function]}
