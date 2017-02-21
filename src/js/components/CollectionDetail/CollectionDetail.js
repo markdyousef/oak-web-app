@@ -1,8 +1,10 @@
+// @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Card from '../Card';
 import CardDetail from '../CardDetail';
 import Button from '../shared/Button';
+import Description from '../shared/Description';
 
 
 import css from './CollectionDetail.css';
@@ -40,7 +42,9 @@ class CollectionDetail extends Component {
                     >
                         {'< Back'}
                     </Link>
-                    TEXT
+                    <div className={css.description}>
+                        <Description />
+                    </div>
                 </div>
                 <div className={css.toolbar}>
                     <Button
