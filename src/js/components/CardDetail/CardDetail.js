@@ -5,6 +5,7 @@ import Input from '../shared/Input';
 import Button from '../shared/Button'
 import Description from '../shared/Description';
 import LabelsActionBox from '../LabelsActionBox';
+import AttachActionBox from '../AttachActionBox';
 
 import css from './CardDetail.css';
 
@@ -64,15 +65,28 @@ class CardDetail extends Component {
                                     type="like"
                                     value={likes}
                                 />
-                                <Button
-                                    text="Labels"
-                                    onClick={() => this.setState({ showLabels: !showLabels })}
-                                />
-                                {showLabels && <LabelsActionBox close={() => this.setState({ showLabels: false })} />}
-                                <Button
-                                    text="Attachment"
-                                    onClick={() => this.setState({ showAttach: !showAttach })}
-                                />
+                                <div>
+                                    <Button
+                                        text="Labels"
+                                        onClick={() => this.setState({ showLabels: !showLabels })}
+                                    />
+                                    {showLabels &&
+                                        <LabelsActionBox
+                                            close={() => this.setState({ showLabels: false })}
+                                        />
+                                    }
+                                </div>
+                                <div>
+                                    <Button
+                                        text="Attachment"
+                                        onClick={() => this.setState({ showAttach: !showAttach })}
+                                    />
+                                    {showAttach &&
+                                        <AttachActionBox
+                                            close={() => this.setState({ showAttach: false })}
+                                        />
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
