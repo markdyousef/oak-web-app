@@ -62,7 +62,8 @@ exports[`test renders correctly 1`] = `
             </div>
             <div
               className={undefined}>
-              <div>
+              <div
+                onClick={[Function]}>
                 <div>
                   <span
                     dangerouslySetInnerHTML={

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Input from '../shared/Input';
 import Button from '../shared/Button'
 import Description from '../shared/Description';
+import LabelsActionBox from '../LabelsActionBox';
 
 import css from './CardDetail.css';
 
@@ -13,12 +14,13 @@ class CardDetail extends Component {
         this.state = {
             title: null,
             url: null,
-            likes: 0
+            likes: 0,
+            showLabels: false
         };
     }
     render() {
         const { close } = this.props;
-        const { title, url, likes } = this.state;
+        const { title, url, likes, showLabels } = this.state;
         return (
             <div className={css.modal}>
                 <div className={css.container}>
@@ -46,8 +48,9 @@ class CardDetail extends Component {
                             />
                             <Button
                                 text="LABELS"
-                                onClick={() => console.log('attach')}
+                                onClick={() => this.setState({ showLabels: !showLabels })}
                             />
+                            {showLabels && <LabelsActionBox />}
                         </div>
                     </div>
                 </div>
