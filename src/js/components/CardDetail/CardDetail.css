@@ -16,7 +16,7 @@
 .container {
     width: 600px;
     height: 600px;
-    background-color: #fff;
+    background-color: rgb(242, 242, 242);
     border-radius: 3px;
     padding: 20px;
     border: 1px solid #ddd;
@@ -57,9 +57,10 @@
 
 .name h3 {
     font-size: 12px;
+    color: rgb(156, 156, 156);
 }
 
 .name a {
     font-weight: bold;
-    color: #000;
+    color: rgb(156, 156, 156);
 }
