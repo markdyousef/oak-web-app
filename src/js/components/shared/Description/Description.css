@@ -10,3 +10,11 @@
 .toggle h3 {
     font-size: 14px;
 }
+
+.description textarea {
+    width: 400px;
+    height: 150px;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    font-size: 14px;
+}
