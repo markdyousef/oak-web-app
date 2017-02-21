@@ -34,7 +34,7 @@ class CardDetail extends Component {
                                 <h3>In collection <Link to="/">Design</Link></h3>
                             </div>
                             <div className={css.description}>
-
+                                <Description />
                             </div>
                         </div>
                         <div className={css.rightPane}>

@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+}
+
+.toggle {
+    display: flex;
+    align-items: baseline;
+}
+
+.toggle h3 {
+    font-size: 14px;
+}

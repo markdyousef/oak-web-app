@@ -4,8 +4,83 @@ exports[`test renders correctly 1`] = `
   <div
     className={undefined}>
     <div
+      className={undefined}
       onClick={[Function]}>
       X
+    </div>
+    <div
+      className={undefined}>
+      <div
+        className={undefined}>
+        <div
+          className={undefined}>
+          <div
+            className={undefined}>
+            <input
+              onChange={[Function]}
+              placeholder={null}
+              type="text"
+              value="" />
+            <span
+              className={undefined} />
+            <span
+              className={undefined} />
+            <label
+              htmlFor="input">
+              TITLE
+            </label>
+          </div>
+          <h3>
+            In collection 
+            <a
+              onClick={[Function]}
+              style={Object {}}>
+              Design
+            </a>
+          </h3>
+        </div>
+        <div
+          className={undefined}>
+          <div
+            className={undefined}>
+            <div
+              className={undefined}>
+              <h3>
+                Description
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className={undefined}>
+        <button
+          className=" "
+          onClick={[Function]}>
+          <div>
+            <label
+              htmlFor="value">
+              0
+            </label>
+            <label
+              className={undefined}
+              htmlFor="text">
+              LIKE
+            </label>
+          </div>
+        </button>
+        <button
+          className=" "
+          onClick={[Function]}>
+          <div>
+            <label
+              className={undefined}
+              htmlFor="text">
+              LABELS
+            </label>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </div>

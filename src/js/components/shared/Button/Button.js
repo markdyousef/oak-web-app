@@ -9,6 +9,9 @@ const Button = ({ onClick, text, value, type }: Object) => {
     case 'like':
         className = css.like;
         break;
+    case 'transparent':
+        className = css.transparent;
+        break;
     default:
         break;
     }

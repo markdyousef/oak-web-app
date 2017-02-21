@@ -27,3 +27,17 @@
 .like label {
     padding: 10px;
 }
+
+/* TRANSPARENT */
+
+.transparent div {
+    background: none;
+    width: 100%;
+    border: none;
+    padding: 0px;
+}
+
+.transparent label {
+    font-size: 12px;
+    color: rgb(156, 156, 156);
+}
