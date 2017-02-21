@@ -1,13 +1,13 @@
 .container {
     width: 100%;
     position: relative;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
     max-width: 400px;
 }
 
 .container input {
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
+    font-size: 14px;
+    padding: 10px 5px 5px;
     display: block;
     width: 100%;
     border: none;
@@ -36,8 +36,8 @@
 /* active state */
 .container input:focus ~ label,
 input:valid ~ label {
-    top: -15px;
-    font-size: 10px;
+    top: -10px;
+    font-size: 8px;
     color: #999;
 }
 
