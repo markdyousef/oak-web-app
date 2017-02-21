@@ -1,4 +1,42 @@
 exports[`test renders correctly 1`] = `
 <div
-  className={undefined} />
+  className={undefined}>
+  <header>
+    <h3>
+      Attach from...
+    </h3>
+  </header>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      <input
+        onChange={[Function]}
+        placeholder="www.clai.io"
+        type="text"
+        value="" />
+      <span
+        className={undefined} />
+      <span
+        className={undefined} />
+      <label
+        htmlFor="input">
+        URL
+      </label>
+    </div>
+  </div>
+  <div>
+    <button
+      className=" "
+      onClick={undefined}>
+      <div>
+        <label
+          className={undefined}
+          htmlFor="text">
+          Attach
+        </label>
+      </div>
+    </button>
+  </div>
+</div>
 `;

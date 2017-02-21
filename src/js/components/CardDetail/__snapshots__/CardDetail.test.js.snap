@@ -97,28 +97,32 @@ exports[`test renders correctly 1`] = `
               </label>
             </div>
           </button>
-          <button
-            className=" "
-            onClick={[Function]}>
-            <div>
-              <label
-                className={undefined}
-                htmlFor="text">
-                Labels
-              </label>
-            </div>
-          </button>
-          <button
-            className=" "
-            onClick={[Function]}>
-            <div>
-              <label
-                className={undefined}
-                htmlFor="text">
-                Attachment
-              </label>
-            </div>
-          </button>
+          <div>
+            <button
+              className=" "
+              onClick={[Function]}>
+              <div>
+                <label
+                  className={undefined}
+                  htmlFor="text">
+                  Labels
+                </label>
+              </div>
+            </button>
+          </div>
+          <div>
+            <button
+              className=" "
+              onClick={[Function]}>
+              <div>
+                <label
+                  className={undefined}
+                  htmlFor="text">
+                  Attachment
+                </label>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
