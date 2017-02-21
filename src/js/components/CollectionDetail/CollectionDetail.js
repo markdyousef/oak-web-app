@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import Card from '../Card';
 import CardDetail from '../CardDetail';
-import { Link } from 'react-router';
+import Button from '../shared/Button';
+
 
 import css from './CollectionDetail.css';
 
@@ -40,6 +42,13 @@ class CollectionDetail extends Component {
                     </Link>
                     TEXT
                 </div>
+                <div className={css.toolbar}>
+                    <Button
+                        onClick={() => this.setState({ showCard: true })}
+                        text="Add Card"
+                        type="primary"
+                    />
+                </div>
                 <div className={css.grid}>
                     {ITEMS.map(item =>
                         <div
@@ -51,7 +60,11 @@ class CollectionDetail extends Component {
                         </div>
                     )}
                 </div>
-                {showCard && <CardDetail close={() => this.setState({ showCard: false })} />}
+                {showCard &&
+                    <CardDetail
+                        close={() => this.setState({ showCard: false })}
+                    />
+                }
             </div>
         );
     }
