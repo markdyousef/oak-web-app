@@ -34,7 +34,6 @@ class Description extends Component {
     }
     onMouseClick(event) {
         // close edit if open
-        console.log(event.path)
         if (event.path.filter(item => item.className === 'edit-markdown').length === 0) {
             this.setState({ showEdit: false })
         }
