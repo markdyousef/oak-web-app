@@ -1,9 +1,11 @@
 :root {
-    --primary-color: #5ed892
+    --primary-color: #5ed892;
     --main-black-color: #131517;
     --light-black-color: #2d3438;
     --dark-gray-color: #737a80;
-    --light-gray-color: #f2f2f2;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
 }
 
 .container {
@@ -12,6 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--main-green-color);
+    background-color: var(--primary-color);
     color: var(--main-white-color);
 }
