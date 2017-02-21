@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Card from '../Card';
 import Button from '../shared/Button';
+import CollectionDialog from '../CollectionDialog';
 
 import css from './Collections.css';
 
@@ -26,17 +27,25 @@ class Collections extends Component {
     static defaultProps = {};
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            showAdd: false
+        };
     }
     render() {
+        const { showAdd } = this.state;
         return (
             <div className={css.container}>
                 <div className={css.toolbar}>
                     <Button
-                        onClick={() => {}}
+                        onClick={() => this.setState({ showAdd: true })}
                         text="Add Collection"
                         type="primary"
                     />
+                    {showAdd &&
+                        <CollectionDialog
+                            close={() => this.setState({ showAdd: false })}
+                        />
+                    }
                 </div>
                 <div className={css.grid}>
                     {CATEGORIES.map(category =>
