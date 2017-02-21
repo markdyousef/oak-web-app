@@ -36,12 +36,6 @@ class CollectionDetail extends Component {
         return (
             <div className={css.container}>
                 <div className={css.header}>
-                    <Link
-                        className={css.back}
-                        to="/"
-                    >
-                        {'< Back'}
-                    </Link>
                     <div className={css.description}>
                         <Description />
                     </div>

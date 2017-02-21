@@ -33,7 +33,10 @@ class SideNav extends Component {
             <div className={css.subCategories}>
                 {categories.map(category => (
                     <div key={category.id}>
-                        <Link to={`/${category.id}`}>
+                        <Link
+                            to={`/${category.id}`}
+                            activeStyle={{ 'font-weight': 'bold' }}
+                        >
                             {category.title}
                         </Link>
                     </div>

@@ -11,11 +11,15 @@
 .container {
     width: 200px;
     background-color: var(--light-black-color);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .collections {
     margin-top: 80px;
-    padding: 25px;
+    height: 150px;
 }
 
 .collections h1 {
