@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #5ed892;
+    --main-black-color: #131517;
+    --light-black-color: #2d3438;
+    --dark-gray-color: #737a80;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
+}
+
 .container {
     border: none;
     background: none;
@@ -15,7 +25,6 @@
 
 .title {
     font-size: 12px;
-    font-weight: bold;
 }
 
 /* LIKE BUTTON */
@@ -45,6 +54,7 @@
 /* PRIMARY */
 
 .primary div {
-    border: 2px solid rgb(62, 179, 31);
-    color: rgb(62, 179, 31);
+    background-color: var(--primary-color);
+    color: var(--main-white-color);
+    border: 1px solid var(--primary-color);
 }

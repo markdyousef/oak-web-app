@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import Button from '../shared/Button'
 
 import css from './SideNav.css';
 
@@ -50,6 +51,11 @@ class SideNav extends Component {
                     </Link>
                     {this.renderSubCategories(CATEGORIES)}
                 </div>
+                <Button
+                    onClick={() => console.log('click')}
+                    text="Add Collection"
+                    type="primary"
+                />
             </div>
         );
     }
