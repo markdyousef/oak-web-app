@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Card from '../Card';
 import CardDetail from '../CardDetail';
+import { Link } from 'react-router';
 
 import css from './CollectionDetail.css';
 
@@ -31,6 +32,12 @@ class CollectionDetail extends Component {
         return (
             <div className={css.container}>
                 <div className={css.header}>
+                    <Link
+                        className={css.back}
+                        to="/"
+                    >
+                        {'< Back'}
+                    </Link>
                     TEXT
                 </div>
                 <div className={css.grid}>
