@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import CreateLabels from './CreateLabels';
 
 import css from './LabelsActionBox.css';
 
@@ -17,7 +18,7 @@ class LabelsActionBox extends Component {
         const { showCreate } = this.state;
 
         if (showCreate) {
-            return null;
+            return <CreateLabels />;
         }
         return null;
     }
