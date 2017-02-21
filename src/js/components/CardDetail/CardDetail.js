@@ -19,7 +19,8 @@ class CardDetail extends Component {
             title: null,
             url: null,
             likes: 0,
-            showLabels: false
+            showLabels: false,
+            showAttach: false
         };
     }
     componentDidMount() {
@@ -36,7 +37,7 @@ class CardDetail extends Component {
     }
     render() {
         const { close } = this.props;
-        const { title, url, likes, showLabels } = this.state;
+        const { title, url, likes, showLabels, showAttach } = this.state;
         return (
             <div className={css.modal}>
                 <div className="detail">
@@ -58,16 +59,20 @@ class CardDetail extends Component {
                             </div>
                             <div className={css.rightPane}>
                                 <Button
-                                    text="LIKE"
+                                    text="Like"
                                     onClick={() => this.setState({ likes: likes + 1 })}
                                     type="like"
                                     value={likes}
                                 />
                                 <Button
-                                    text="LABELS"
+                                    text="Labels"
                                     onClick={() => this.setState({ showLabels: !showLabels })}
                                 />
                                 {showLabels && <LabelsActionBox close={() => this.setState({ showLabels: false })} />}
+                                <Button
+                                    text="Attachment"
+                                    onClick={() => this.setState({ showAttach: !showAttach })}
+                                />
                             </div>
                         </div>
                     </div>
