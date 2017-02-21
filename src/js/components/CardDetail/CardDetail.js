@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import Input from '../shared/Input';
 import Button from '../shared/Button'
 
@@ -23,17 +24,13 @@ class CardDetail extends Component {
                     <div className={css.close} onClick={() => close()}>X</div>
                     <div className={css.main}>
                         <div className={css.leftPane}>
-                            <div className={css.inputs}>
+                            <div className={css.name}>
                                 <Input
                                     title="TITLE"
                                     onChange={(value: String) => this.setState({ title: value })}
                                     value={title || ''}
                                 />
-                                <Input
-                                    title="URL"
-                                    onChange={(value: String) => this.setState({ url: value })}
-                                    value={url || ''}
-                                />
+                                <h3>In collection <Link to="/">Design</Link></h3>
                             </div>
                         </div>
                         <div className={css.rightPane}>
