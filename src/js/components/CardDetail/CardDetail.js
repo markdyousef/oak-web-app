@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
 import Button from '../shared/Button'
+import Description from '../shared/Description';
 
 import css from './CardDetail.css';
 
@@ -31,6 +32,9 @@ class CardDetail extends Component {
                                     value={title || ''}
                                 />
                                 <h3>In collection <Link to="/">Design</Link></h3>
+                            </div>
+                            <div className={css.description}>
+
                             </div>
                         </div>
                         <div className={css.rightPane}>
