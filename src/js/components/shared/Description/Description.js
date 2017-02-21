@@ -18,6 +18,7 @@ class Description extends Component {
         super();
         this.displayMarkdown = this.displayMarkdown.bind(this);
         this.renderDescription = this.renderDescription.bind(this);
+        this.onMouseClick = this.onMouseClick.bind(this);
         this.state = {
             showEdit: false
         }
@@ -25,9 +26,24 @@ class Description extends Component {
     componentWillMount() {
         this.setState({ markdown: MARKDOWN })
     }
+    componentDidMount() {
+        window.addEventListener('mousedown', this.onMouseClick, false);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('mousedown', this.onMouseClick);
+    }
+    onMouseClick(event) {
+        // close edit if open
+        console.log(event.path)
+        if (event.path.filter(item => item.className === 'edit-markdown').length === 0) {
+            this.setState({ showEdit: false })
+        }
+    }
     displayMarkdown(markdown: String) {
         return (
-            <div>
+            <div
+                onClick={() => this.setState({ showEdit: true })}
+            >
                 <Markdown>
                     {markdown}
                 </Markdown>
@@ -42,6 +58,7 @@ class Description extends Component {
                 <textarea
                     value={markdown}
                     onChange={event => this.setState({ markdown: event.target.value })}
+                    className="edit-markdown"
                 />
             );
         }
