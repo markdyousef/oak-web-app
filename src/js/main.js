@@ -12,6 +12,7 @@ import App from './containers/AppContainer';
 import Anonymous from './components/App/Anonymous';
 import Authenticated from './components/App/Authenticated';
 import Login from './components/Login';
+import SignUp from './containers/SignUpContainer';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
 

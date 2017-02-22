@@ -1,0 +1,68 @@
+exports[`test renders correctly 1`] = `
+<div
+  className={undefined}>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      <div
+        className={undefined}>
+        <input
+          onChange={[Function]}
+          placeholder={null}
+          type="email"
+          value="" />
+        <span
+          className={undefined} />
+        <span
+          className={undefined} />
+        <label
+          htmlFor="input">
+          Email
+        </label>
+      </div>
+      <div
+        className={undefined}>
+        <input
+          onChange={[Function]}
+          placeholder={null}
+          type="password"
+          value="" />
+        <span
+          className={undefined} />
+        <span
+          className={undefined} />
+        <label
+          htmlFor="input">
+          Password
+        </label>
+      </div>
+    </div>
+    <div
+      className={undefined}>
+      <button
+        className=" "
+        onClick={[Function]}>
+        <div>
+          <label
+            className={undefined}
+            htmlFor="text">
+            LOGIN
+          </label>
+        </div>
+      </button>
+      <button
+        className=" "
+        onClick={[Function]}>
+        <div>
+          <label
+            className={undefined}
+            htmlFor="text">
+            CREATE
+          </label>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;
