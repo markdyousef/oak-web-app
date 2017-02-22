@@ -6,7 +6,11 @@ import Button from '../shared/Button';
 import css from './SignUp.css';
 
 class SignUp extends Component {
-    static propTypes = {};
+    static propTypes = {
+        router: PropTypes.shape({
+            push: PropTypes.func
+        }).isRequired
+    };
     constructor() {
         super();
         this.state = {
@@ -16,6 +20,7 @@ class SignUp extends Component {
     }
     render() {
         const { email, password } = this.state;
+        const { router } = this.props;
         return (
             <div className={css.container}>
                 <div className={css.login}>
@@ -36,12 +41,12 @@ class SignUp extends Component {
                     <div className={css.buttons}>
                         <Button
                             onClick={() => {}}
-                            text="LOGIN"
+                            text="CREATE"
                             type="primary"
                         />
                         <Button
-                            onClick={() => {}}
-                            text="CREATE"
+                            onClick={() => router.push('/')}
+                            text="LOGIN"
                             // type="transparent"
                         />
                     </div>
