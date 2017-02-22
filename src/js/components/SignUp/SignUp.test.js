@@ -3,8 +3,11 @@ import renderer from 'react-test-renderer';
 import SignUp from './SignUp';
 
 it('renders correctly', () => {
+    const props = {
+        router: {}
+    };
     const component = renderer.create(
-        <SignUp />
+        <SignUp {...props} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

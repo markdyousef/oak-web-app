@@ -47,7 +47,7 @@ exports[`test renders correctly 1`] = `
           <label
             className={undefined}
             htmlFor="text">
-            LOGIN
+            CREATE
           </label>
         </div>
       </button>
@@ -58,7 +58,7 @@ exports[`test renders correctly 1`] = `
           <label
             className={undefined}
             htmlFor="text">
-            CREATE
+            LOGIN
           </label>
         </div>
       </button>
