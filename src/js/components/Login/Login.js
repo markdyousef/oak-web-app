@@ -12,7 +12,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: ''
-        }
+        };
     }
     render() {
         const { email, password } = this.state;
