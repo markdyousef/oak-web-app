@@ -1,17 +1,19 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import TopNav from '../TopNav';
+import SideNav from '../SideNav';
+
+import css from './App.css';
 
 // Localstorage token
 const token = localStorage.authToken;
 
-class Anonymous extends Component {
+class Authenticated extends Component {
     static propTypes = {
-        children: PropTypes.node,
+        children: PropTypes.node.isRequired,
         router: PropTypes.shape({
             replace: PropTypes.func.isRequired
-        }).isRequired,
-        isAuthenticated: PropTypes.bool.isRequired,
-        isAuthenticating: PropTypes.bool.isRequired
+        }).isRequired
     };
     constructor() {
         super();
@@ -19,23 +21,23 @@ class Anonymous extends Component {
     }
     componentWillMount() {
         const { router } = this.props;
-        if (token && token.length > 0) {
+        if (!token) {
             router.replace({
                 pathname: '/'
             });
         }
     }
     render() {
-        const { isAuthenticated, isAuthenticating } = this.props;
-        if (!isAuthenticated && !isAuthenticating) {
-            return (
-                <div>
+        return (
+            <div className={css.container}>
+                <SideNav />
+                <div className={css.right}>
+                    <TopNav />
                     {this.props.children}
                 </div>
-            );
-        }
-        return null;
+            </div>
+        );
     }
 }
 
-export default Anonymous;
+export default Authenticated;

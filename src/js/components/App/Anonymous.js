@@ -1,40 +1,42 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import css from './App.css';
+
 
 // Localstorage token
 const token = localStorage.authToken;
 
 class Anonymous extends Component {
     static propTypes = {
-        children: PropTypes.node,
+        children: PropTypes.node.isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string
+        }).isRequired,
         router: PropTypes.shape({
             replace: PropTypes.func.isRequired
-        }).isRequired,
-        isAuthenticated: PropTypes.bool.isRequired,
-        isAuthenticating: PropTypes.bool.isRequired
+        }).isRequired
     };
     constructor() {
         super();
         this.state = {};
     }
     componentWillMount() {
-        const { router } = this.props;
+        const { router, location } = this.props;
         if (token && token.length > 0) {
             router.replace({
-                pathname: '/'
+                pathname: '/home',
+                state: { nextPathname: location.pathname }
             });
         }
     }
     render() {
-        const { isAuthenticated, isAuthenticating } = this.props;
-        if (!isAuthenticated && !isAuthenticating) {
-            return (
-                <div>
-                    {this.props.children}
-                </div>
-            );
-        }
-        return null;
+        if (token) return null;
+
+        return (
+            <div className={css.container}>
+                {this.props.children}
+            </div>
+        );
     }
 }
 

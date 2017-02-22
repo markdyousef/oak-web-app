@@ -10,6 +10,7 @@ class Login extends Component {
         this.state = {}
     }
     render() {
+        console.log('login');
         return (
             <div className={css.container}>
                 LOGIN

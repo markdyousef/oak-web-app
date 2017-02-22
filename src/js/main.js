@@ -9,6 +9,9 @@ import initStore from './store/configureStore';
 
 // Components
 import App from './containers/AppContainer';
+import Anonymous from './components/App/Anonymous';
+import Authenticated from './components/App/Authenticated';
+import Login from './components/Login';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
 
@@ -23,8 +26,13 @@ const routes = (
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Home} />
-                <Route path="/:collectionId" component={CollectionDetail} />
+                <Route component={Anonymous}>
+                    <IndexRoute component={Login} />
+                </Route>
+                <Route component={Authenticated}>
+                    <IndexRoute component={Home} />
+                    <Route path="/:collectionId" component={CollectionDetail} />
+                </Route>
             </Route>
         </Router>
     </Provider>
