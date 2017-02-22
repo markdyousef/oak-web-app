@@ -5,7 +5,7 @@ import AttachActionBox from './AttachActionBox';
 it('renders correctly', () => {
     const props = {
         close: () => {}
-    }
+    };
     const component = renderer.create(
         <AttachActionBox {...props} />
     );

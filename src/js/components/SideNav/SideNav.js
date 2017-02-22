@@ -35,7 +35,7 @@ class SideNav extends Component {
                     <div key={category.id}>
                         <Link
                             to={`/${category.id}`}
-                            activeStyle={{ 'font-weight': 'bold' }}
+                            activeStyle={{ fontWeight: 'bold' }}
                         >
                             {category.title}
                         </Link>
