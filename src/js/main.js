@@ -29,6 +29,7 @@ const routes = (
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <IndexRoute component={Login} />
+                    <Route path="/signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated}>
                     <IndexRoute component={Home} />

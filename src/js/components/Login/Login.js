@@ -6,7 +6,11 @@ import Button from '../shared/Button';
 import css from './Login.css';
 
 class Login extends Component {
-    static propTypes = {};
+    static propTypes = {
+        router: PropTypes.shape({
+            push: PropTypes.func
+        }).isRequired
+    };
     constructor() {
         super();
         this.state = {
@@ -16,6 +20,7 @@ class Login extends Component {
     }
     render() {
         const { email, password } = this.state;
+        const { router } = this.props;
         return (
             <div className={css.container}>
                 <div className={css.login}>
@@ -40,7 +45,7 @@ class Login extends Component {
                             type="primary"
                         />
                         <Button
-                            onClick={() => {}}
+                            onClick={() => router.push('/signup')}
                             text="CREATE"
                             // type="transparent"
                         />
