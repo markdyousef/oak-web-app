@@ -1,12 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
-import Highcharts from 'react-highcharts';
-import HighchartsMore from 'highcharts-more';
 
 import css from './Chart.css';
-
-HighchartsMore(Highcharts.Highcharts);
-
 
 const Chart = ({ categories, data, title, type }: Object) => {
     return (
@@ -38,7 +33,7 @@ const Chart = ({ categories, data, title, type }: Object) => {
                         },
                         series
                     };
-                    return <Highcharts config={config} className={css.polarChart} />;
+                    return null;
                 }
                 if (type === 'stackedBar') {
                     const series = data.map(items => (
@@ -64,7 +59,7 @@ const Chart = ({ categories, data, title, type }: Object) => {
                         },
                         series
                     };
-                    return <Highcharts config={config} />;
+                    return null;
                 }
                 return null;
             })()}

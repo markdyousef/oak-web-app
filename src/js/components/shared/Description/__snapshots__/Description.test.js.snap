@@ -18,20 +18,6 @@ exports[`test renders correctly 1`] = `
       </div>
     </button>
   </div>
-  <div
-    className={undefined}>
-    <div
-      onClick={[Function]}>
-      <div>
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<h1>Remarkable rulezz!</h1>
-            ",
-            }
-          } />
-      </div>
-    </div>
-  </div>
+  <p class=\"md-block-unstyled\"><br/></p>
 </div>
 `;
