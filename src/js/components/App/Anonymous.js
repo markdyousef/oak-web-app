@@ -24,7 +24,7 @@ class Anonymous extends Component {
         const { router, location } = this.props;
         if (token && token.length > 0) {
             router.replace({
-                pathname: '/home',
+                pathname: '/',
                 state: { nextPathname: location.pathname }
             });
         }

@@ -9,6 +9,7 @@ class Profile extends Component {
         this.state = {}
     }
     render() {
+        console.log('hello');
         return (
             <div className={css.container}>
                 PROFILE

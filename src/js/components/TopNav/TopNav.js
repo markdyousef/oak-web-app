@@ -16,7 +16,7 @@ class TopNav extends Component {
                 <div className={css.navLeft}>
                 </div>
                 <div className={css.navRight}>
-                    <Link to="/" className={css.myProfile}>
+                    <Link to="/profile" className={css.myProfile}>
                         <Avatar img={IMG} />
                     </Link>
                 </div>

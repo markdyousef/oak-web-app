@@ -23,11 +23,12 @@ class Authenticated extends Component {
         const { router } = this.props;
         if (!token) {
             router.replace({
-                pathname: '/'
+                pathname: '/login'
             });
         }
     }
     render() {
+        if (!token) return null;
         return (
             <div className={css.container}>
                 <SideNav />

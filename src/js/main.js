@@ -15,6 +15,7 @@ import Login from './containers/LoginContainer';
 import SignUp from './containers/SignUpContainer';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
+import Profile from './containers/ProfileContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -31,12 +32,13 @@ const routes = (
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
-                    <IndexRoute component={Login} />
+                    <Route path="/login" component={Login} />
                     <Route path="/signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated}>
                     <IndexRoute component={Home} />
                     <Route path="/:collectionId" component={CollectionDetail} />
+                    <Route path="/profile" component={Profile} />
                 </Route>
             </Route>
         </Router>
