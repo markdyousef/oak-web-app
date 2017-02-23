@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
-import initStore from './store/configureStore';
+// import initStore from './store/configureStore';
 
 // Components
 import App from './containers/AppContainer';
@@ -22,13 +22,13 @@ import '../index.html';
 import '../css/reset.css';
 import '../css/app.css';
 
-const store = initStore();
+// const store = initStore();
 const client = new ApolloClient({
     networkInterface: createNetworkInterface({ uri: 'http://empress.clai.io/graphql' })
 });
 
 const routes = (
-    <ApolloProvider store={store} client={client}>
+    <ApolloProvider client={client}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
