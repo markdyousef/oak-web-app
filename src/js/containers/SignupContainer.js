@@ -4,12 +4,10 @@ import gql from 'graphql-tag';
 import SignUp from '../components/SignUp';
 
 const createUser = gql`
-    mutation createUser($email: !String, $password: !String) {
-        createUser(email: $email, password: !String) {
-        }
+    mutation createUser($email: String!, $password: String!) {
+        createUser(email: $email, password: $password)
     }
 `;
-
 
 export default compose(
     graphql(createUser, {

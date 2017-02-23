@@ -2,8 +2,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-// import { ApolloProvider } from 'react-apollo';
-import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 import initStore from './store/configureStore';
 
@@ -11,7 +11,7 @@ import initStore from './store/configureStore';
 import App from './containers/AppContainer';
 import Anonymous from './components/App/Anonymous';
 import Authenticated from './components/App/Authenticated';
-import Login from './components/Login';
+import Login from './containers/LoginContainer';
 import SignUp from './containers/SignUpContainer';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
@@ -22,9 +22,12 @@ import '../css/reset.css';
 import '../css/app.css';
 
 const store = initStore();
+const client = new ApolloClient({
+    networkInterface: createNetworkInterface({ uri: 'http://empress.clai.io/graphql' })
+});
 
 const routes = (
-    <Provider store={store}>
+    <ApolloProvider store={store} client={client}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
@@ -37,7 +40,7 @@ const routes = (
                 </Route>
             </Route>
         </Router>
-    </Provider>
+    </ApolloProvider>
 );
 
 render(routes, document.getElementById('app'));

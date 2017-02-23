@@ -7,19 +7,36 @@ import css from './SignUp.css';
 
 class SignUp extends Component {
     static propTypes = {
+        createUser: PropTypes.func.isRequired,
         router: PropTypes.shape({
             push: PropTypes.func
         }).isRequired
     };
     constructor() {
         super();
+        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            message: null
         };
     }
-    render() {
+    onSubmit() {
+        const { createUser } = this.props;
         const { email, password } = this.state;
+
+        if (email.length < 6) {
+            return this.setState({ message: 'please provide a valid email'});
+        }
+        if (password.length < 6) {
+            return this.setState({ message: 'your password should be at least 6 characters' });
+        }
+        return createUser(email, password)
+            .then(res => console.log(res))
+            .catch(err => this.setState({ message: err.errors[0].message }))
+    }
+    render() {
+        const { email, password, message } = this.state;
         const { router } = this.props;
         return (
             <div className={css.container}>
@@ -40,7 +57,7 @@ class SignUp extends Component {
                     </div>
                     <div className={css.buttons}>
                         <Button
-                            onClick={() => {}}
+                            onClick={this.onSubmit}
                             text="CREATE"
                             type="primary"
                         />
@@ -50,6 +67,11 @@ class SignUp extends Component {
                             // type="transparent"
                         />
                     </div>
+                    {message &&
+                        <div className={css.message}>
+                            <h5>{message}</h5>
+                        </div>
+                    }
                 </div>
             </div>
         );
