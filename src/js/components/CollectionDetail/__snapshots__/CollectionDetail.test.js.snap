@@ -1,88 +1,221 @@
 exports[`test renders correctly 1`] = `
-<div
-  className={undefined}>
-  <div
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
     className={undefined}>
+    <div
+        className={undefined}>
+        <div
+            className={undefined}>
+            <Description
+                markdown={null} />
+        </div>
+    </div>
+    <div
+        className={undefined}>
+        <Button
+            onClick={[Function]}
+            text="Add Card"
+            type="primary"
+            value={null} />
+    </div>
+    <div
+        className={undefined}>
+        <div
+            className={undefined}
+            onClick={[Function]}>
+            <Card
+                title="React" />
+        </div>
+        <div
+            className={undefined}
+            onClick={[Function]}>
+            <Card
+                title="Jest" />
+        </div>
+        <div
+            className={undefined}
+            onClick={[Function]}>
+            <Card
+                title="GraphQL" />
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
     <div
       className={undefined}>
       <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h3>
-            Description
-          </h3>
-          <button
-            className=" "
-            onClick={[Function]}>
-            <div>
-              <label
-                className={undefined}
-                htmlFor="text">
-                Edit
-              </label>
+            className={undefined}>
+            <div
+                  className={undefined}>
+                  <Description
+                        markdown={null} />
             </div>
-          </button>
-        </div>
-        <p class=\"md-block-unstyled\"><br/></p>
       </div>
-    </div>
-  </div>
-  <div
-    className={undefined}>
-    <button
-      className=" "
-      onClick={[Function]}>
-      <div>
-        <label
-          className={undefined}
-          htmlFor="text">
-          Add Card
-        </label>
-      </div>
-    </button>
-  </div>
-  <div
-    className={undefined}>
-    <div
-      className={undefined}
-      onClick={[Function]}>
       <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h1>
-            React
-          </h1>
-        </div>
+            className={undefined}>
+            <Button
+                  onClick={[Function]}
+                  text="Add Card"
+                  type="primary"
+                  value={null} />
       </div>
-    </div>
-    <div
-      className={undefined}
-      onClick={[Function]}>
       <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h1>
-            Jest
-          </h1>
-        </div>
+            className={undefined}>
+            <div
+                  className={undefined}
+                  onClick={[Function]}>
+                  <Card
+                        title="React" />
+            </div>
+            <div
+                  className={undefined}
+                  onClick={[Function]}>
+                  <Card
+                        title="Jest" />
+            </div>
+            <div
+                  className={undefined}
+                  onClick={[Function]}>
+                  <Card
+                        title="GraphQL" />
+            </div>
       </div>
-    </div>
-    <div
-      className={undefined}
-      onClick={[Function]}>
-      <div
-        className={undefined}>
-        <div
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <CollectionDetail />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": CollectionDetail {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {},
+        "refs": Object {},
+        "state": Object {
+          "showCard": false,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
           className={undefined}>
-          <h1>
-            GraphQL
-          </h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          <div
+                    className={undefined}>
+                    <div
+                              className={undefined}>
+                              <Description
+                                        markdown={null} />
+                    </div>
+          </div>
+          <div
+                    className={undefined}>
+                    <Button
+                              onClick={[Function]}
+                              text="Add Card"
+                              type="primary"
+                              value={null} />
+          </div>
+          <div
+                    className={undefined}>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="React" />
+                    </div>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="Jest" />
+                    </div>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="GraphQL" />
+                    </div>
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className={undefined}>
+          <div
+                    className={undefined}>
+                    <div
+                              className={undefined}>
+                              <Description
+                                        markdown={null} />
+                    </div>
+          </div>
+          <div
+                    className={undefined}>
+                    <Button
+                              onClick={[Function]}
+                              text="Add Card"
+                              type="primary"
+                              value={null} />
+          </div>
+          <div
+                    className={undefined}>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="React" />
+                    </div>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="Jest" />
+                    </div>
+                    <div
+                              className={undefined}
+                              onClick={[Function]}>
+                              <Card
+                                        title="GraphQL" />
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <CollectionDetail />,
+}
 `;

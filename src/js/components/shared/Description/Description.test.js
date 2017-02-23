@@ -1,11 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Description from './Description';
 
 it('renders correctly', () => {
-    const component = renderer.create(
+    const shallowComponent = shallow(
         <Description />
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    )
+    expect(shallowComponent).toMatchSnapshot();
 });

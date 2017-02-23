@@ -1,11 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import CollectionDetail from './CollectionDetail';
 
 it('renders correctly', () => {
-    const component = renderer.create(
+    const shallowComponent = shallow(
         <CollectionDetail />
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    )
+    expect(shallowComponent).toMatchSnapshot();
 });
