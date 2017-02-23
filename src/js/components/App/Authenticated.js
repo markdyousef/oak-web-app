@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import { withRouter } from 'react-router';
 import TopNav from '../TopNav';
 import SideNav from '../SideNav';
 
@@ -43,4 +42,4 @@ class Authenticated extends Component {
     }
 }
 
-export default withRouter(Authenticated);
+export default Authenticated;
