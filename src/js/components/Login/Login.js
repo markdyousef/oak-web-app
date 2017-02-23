@@ -7,19 +7,45 @@ import css from './Login.css';
 
 class Login extends Component {
     static propTypes = {
+        loginUser: PropTypes.func.isRequired,
         router: PropTypes.shape({
             push: PropTypes.func
         }).isRequired
     };
     constructor() {
         super();
+        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            message: null
         };
     }
-    render() {
+    onSubmit() {
+        const { loginUser, router } = this.props;
         const { email, password } = this.state;
+
+        // clear messsage
+        this.setState({ message: null });
+
+        // email validation
+        if (email.length < 6) {
+            return this.setState({ message: 'please provide a valid email'});
+        }
+        // password validation
+        if (password.length < 6) {
+            return this.setState({ message: 'your password should be at least 6 characters' });
+        }
+        return loginUser(email, password)
+            .then((res) => {
+                // save token to localstorage
+                localStorage.authToken = res.data.loginUser;
+                router.push('/home');
+            })
+            .catch(err => this.setState({ message: err.errors[0].message }))
+    }
+    render() {
+        const { email, password, message } = this.state;
         const { router } = this.props;
         return (
             <div className={css.container}>
@@ -40,7 +66,7 @@ class Login extends Component {
                     </div>
                     <div className={css.buttons}>
                         <Button
-                            onClick={() => {}}
+                            onClick={this.onSubmit}
                             text="LOGIN"
                             type="primary"
                         />
@@ -50,6 +76,11 @@ class Login extends Component {
                             // type="transparent"
                         />
                     </div>
+                    {message &&
+                        <div className={css.message}>
+                            <h5>{message}</h5>
+                        </div>
+                    }
                 </div>
             </div>
         );

@@ -25,9 +25,14 @@ class SignUp extends Component {
         const { createUser } = this.props;
         const { email, password } = this.state;
 
+        // clear messsage
+        this.setState({ message: null });
+
+        // email validation
         if (email.length < 6) {
             return this.setState({ message: 'please provide a valid email'});
         }
+        // password validation
         if (password.length < 6) {
             return this.setState({ message: 'your password should be at least 6 characters' });
         }
