@@ -4,7 +4,8 @@ import SignUp from './SignUp';
 
 it('renders correctly', () => {
     const props = {
-        router: {}
+        router: {},
+        createUser: () => {}
     };
     const component = renderer.create(
         <SignUp {...props} />

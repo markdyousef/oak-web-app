@@ -40,7 +40,7 @@ class Login extends Component {
             .then((res) => {
                 // save token to localstorage
                 localStorage.authToken = res.data.loginUser;
-                router.push('/home');
+                router.push('/');
             })
             .catch(err => this.setState({ message: err.errors[0].message }))
     }
