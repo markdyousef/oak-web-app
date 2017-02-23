@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { withRouter } from 'react-router';
 import TopNav from '../TopNav';
 import SideNav from '../SideNav';
 
@@ -29,6 +30,7 @@ class Authenticated extends Component {
     }
     render() {
         if (!token) return null;
+
         return (
             <div className={css.container}>
                 <SideNav />
@@ -41,4 +43,4 @@ class Authenticated extends Component {
     }
 }
 
-export default Authenticated;
+export default withRouter(Authenticated);

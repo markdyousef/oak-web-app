@@ -30,6 +30,7 @@ class Anonymous extends Component {
         }
     }
     render() {
+        console.log(this.props.children);
         if (token) return null;
 
         return (

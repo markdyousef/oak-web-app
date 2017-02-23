@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import Card from '../Card';
 import CardDetail from '../CardDetail';
 import Button from '../shared/Button';
