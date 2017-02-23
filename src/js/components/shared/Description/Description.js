@@ -1,7 +1,13 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { Editor, createEditorState } from 'medium-draft';
+import { convertToRaw } from 'draft-js';
+import mediumDraftExporter from 'medium-draft/lib/exporter';
+import 'medium-draft/lib/index.css';
+import 'medium-draft/lib/basic.css';
+import ReactHtmlParser from 'react-html-parser';
+
 import Button from '../../shared/Button';
-import Markdown from 'react-remarkable';
 
 import css from './Description.css';
 
@@ -19,8 +25,10 @@ class Description extends Component {
         this.displayMarkdown = this.displayMarkdown.bind(this);
         this.renderDescription = this.renderDescription.bind(this);
         this.onMouseClick = this.onMouseClick.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.state = {
-            showEdit: false
+            showEdit: false,
+            editorState: createEditorState()
         }
     }
     componentWillMount() {
@@ -32,22 +40,23 @@ class Description extends Component {
     componentWillUnmount() {
         window.removeEventListener('mousedown', this.onMouseClick);
     }
+    onChange(state) {
+        const { editorState } = this.state;
+        this.setState({ editorState: state });
+        console.log(convertToRaw(editorState.getCurrentContent()));
+    }
     onMouseClick(event) {
         // close edit if open
-        if (event.path.filter(item => item.className === 'edit-markdown').length === 0) {
-            this.setState({ showEdit: false })
-        }
+        // if (event.path.filter(item => item.className === 'edit-markdown').length === 0) {
+        //     this.setState({ showEdit: false })
+        // }
     }
-    displayMarkdown(markdown: String) {
-        return (
-            <div
-                onClick={() => this.setState({ showEdit: true })}
-            >
-                <Markdown>
-                    {markdown}
-                </Markdown>
-            </div>
-        );
+    displayMarkdown() {
+        const { editorState } = this.state;
+        const current = editorState.getCurrentContent();
+        const medium = mediumDraftExporter(current);
+        return ReactHtmlParser(medium);
+
     }
     renderDescription() {
         const { showEdit, markdown } = this.state;
@@ -64,7 +73,7 @@ class Description extends Component {
         return this.displayMarkdown(markdown);
     }
     render() {
-        const { showEdit } = this.state;
+        const { showEdit, editorState } = this.state;
         return (
             <div className={css.container}>
                 <div className={css.toggle}>
@@ -75,9 +84,12 @@ class Description extends Component {
                         type="transparent"
                     />
                 </div>
-                <div className={css.description}>
-                    {this.renderDescription()}
-                </div>
+                {showEdit && <Editor
+                    ref="editor"
+                    editorState={editorState}
+                    onChange={this.onChange}
+                />}
+                {!showEdit && this.displayMarkdown()}
             </div>
         );
     }
