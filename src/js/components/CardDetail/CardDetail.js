@@ -33,9 +33,10 @@ class CardDetail extends Component {
                     edit={() => this.setState({ showEdit: true })}
                 />
                 <div className={css.main}>
-                    {/* <div className={css.description}>
-                        <Description />
-                    </div> */}
+                    <Description
+                        showEdit={showEdit}
+                        content={null}
+                    />
                 </div>
             </div>
         );
