@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
 import Profile from './pages/Profile';
 import CardDetail from './components/CardDetail';
+import Settings from './containers/SettingsContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -52,6 +53,7 @@ const routes = (
                 <Route component={Authenticated}>
                     <IndexRoute component={Home} />
                     <Route path="/profile" component={Profile} />
+                    <Route path="/settings" component={Settings} />
                     <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
                     <Route path="/collection/:collectionId" component={CollectionDetail} />
                 </Route>
