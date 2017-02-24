@@ -8,23 +8,16 @@ import KnowledgeStats from '../KnowledgeStats';
 
 import css from './Collections.css';
 
-const CATEGORIES = [
-    {
-        title: 'Design',
-        id: '1'
-    },
-    {
-        title: 'Frontend',
-        id: '2'
-    },
-    {
-        title: 'Strategy',
-        id: '3'
-    }
-];
-
 class Collections extends Component {
-    static propTypes = {};
+    static propTypes = {
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            groves: PropTypes.arrayOf(PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                id: PropTypes.string.isRequired
+            }))
+        }).isRequired
+    };
     static defaultProps = {};
     constructor() {
         super();
@@ -34,7 +27,12 @@ class Collections extends Component {
     }
     render() {
         const { showAdd } = this.state;
-        console.log(this.props);
+        const { data } = this.props;
+
+        if (data.loading) return <div>LOADING</div>
+
+        const { groves } = data;
+
         return (
             <div className={css.container}>
                 <div className={css.header}>
@@ -55,9 +53,9 @@ class Collections extends Component {
                     </div>
                 </div>
                 <div className={css.grid}>
-                    {CATEGORIES.map(category =>
-                        <Link to={`/${category.id}`} key={category.id}>
-                            <Card title={category.title} />
+                    {groves.map(grove =>
+                        <Link to={`/${grove.id}`} key={grove.id}>
+                            <Card title={grove.title} />
                         </Link>
                     )}
                 </div>
