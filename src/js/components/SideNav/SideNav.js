@@ -4,44 +4,44 @@ import { Link } from 'react-router';
 
 import css from './SideNav.css';
 
-const CATEGORIES = [
-    {
-        title: 'Design',
-        id: '1'
-    },
-    {
-        title: 'Frontend',
-        id: '2'
-    },
-    {
-        title: 'Strategy',
-        id: '3'
-    }
-];
-
 class SideNav extends Component {
-    static propTypes = {};
+    static propTypes = {
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            groves: PropTypes.arrayOf(PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                id: PropTypes.string.isRequired
+            }))
+        })
+    };
     static defaultProps = {};
     constructor() {
         super();
         this.renderSubCategories = this.renderSubCategories.bind(this);
         this.state = {};
     }
-    renderSubCategories(categories) {
-        return (
-            <div className={css.subCategories}>
-                {categories.map(category => (
-                    <div key={category.id}>
-                        <Link
-                            to={`/${category.id}`}
-                            activeStyle={{ fontWeight: 'bold' }}
-                        >
-                            {category.title}
-                        </Link>
-                    </div>
-                ))}
-            </div>
-        );
+    renderSubCategories() {
+        const { data } = this.props;
+
+        if (data.loading) return <div>Loading</div>
+
+        if (!data.loading && data.groves) {
+            return (
+                <div className={css.subCategories}>
+                    {data.groves.map(category => (
+                        <div key={category.id}>
+                            <Link
+                                to={`/${category.id}`}
+                                activeStyle={{ fontWeight: 'bold' }}
+                            >
+                                {category.title}
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+        return null;
     }
     render() {
         return (
@@ -51,7 +51,7 @@ class SideNav extends Component {
                         <div />
                         <h1>Collections</h1>
                     </Link>
-                    {this.renderSubCategories(CATEGORIES)}
+                    {this.renderSubCategories()}
                 </div>
             </div>
         );

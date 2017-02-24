@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import SideNav from '../SideNav';
+import SideNav from '../../containers/SideNavContainer';
 
 import css from './App.css';
 
