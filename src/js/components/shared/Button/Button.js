@@ -13,7 +13,13 @@ const Button = ({ onClick, text, value, type }: Object) => {
         className = css.transparent;
         break;
     case 'primary':
-        className = css.primary
+        className = css.primary;
+        break;
+    case 'primaryAction':
+        className = [css.action, css.primaryAction].join(' ');
+        break;
+    case 'secondaryAction':
+        className = [css.action, css.secondaryAction].join(' ');
         break;
     default:
         break;

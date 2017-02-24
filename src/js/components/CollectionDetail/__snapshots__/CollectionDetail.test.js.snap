@@ -103,9 +103,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {},
         "refs": Object {},
-        "state": Object {
-          "showCard": false,
-        },
+        "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],

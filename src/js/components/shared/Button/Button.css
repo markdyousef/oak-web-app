@@ -24,7 +24,7 @@
 }
 
 .title {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 /* LIKE BUTTON */
@@ -56,5 +56,16 @@
 .primary div {
     background-color: var(--primary-color);
     color: var(--main-white-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* ACTION BUTTONS */
+.action div {
+    border-radius: 100px;
+    color: var(--dark-gray-color);
+}
+
+.primaryAction div {
+    color: var(--primary-color);
     border: 1px solid var(--primary-color);
 }

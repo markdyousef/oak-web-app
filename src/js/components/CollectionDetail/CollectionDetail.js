@@ -1,7 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import Card from '../Card';
-import CardDetail from '../CardDetail';
 import Button from '../shared/Button';
 import Description from '../shared/Description';
 
@@ -24,14 +23,17 @@ const ITEMS = [
 ];
 
 class CollectionDetail extends Component {
+    static propTypes = {
+        router: PropTypes.shape({
+            push: PropTypes.func.isRequired
+        })
+    }
     constructor() {
         super();
-        this.state = {
-            showCard: false
-        };
+        this.state = {};
     }
     render() {
-        const { showCard } = this.state;
+        const { router } = this.props;
         return (
             <div className={css.container}>
                 <div className={css.header}>
@@ -41,7 +43,7 @@ class CollectionDetail extends Component {
                 </div>
                 <div className={css.toolbar}>
                     <Button
-                        onClick={() => this.setState({ showCard: true })}
+                        onClick={() => {}}
                         text="Add Card"
                         type="primary"
                     />
@@ -49,7 +51,7 @@ class CollectionDetail extends Component {
                 <div className={css.grid}>
                     {ITEMS.map(item =>
                         <div
-                            onClick={() => this.setState({ showCard: !showCard })}
+                            onClick={() => router.push(`card/${item.id}`)}
                             className={css.card}
                             key={item.id}
                         >
@@ -57,11 +59,6 @@ class CollectionDetail extends Component {
                         </div>
                     )}
                 </div>
-                {showCard &&
-                    <CardDetail
-                        close={() => this.setState({ showCard: false })}
-                    />
-                }
             </div>
         );
     }

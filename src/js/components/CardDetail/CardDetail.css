@@ -1,35 +1,42 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+:root {
+    --primary-color: #5ed892;
+    --main-black-color: #131517;
+    --light-black-color: #2d3438;
+    --dark-gray-color: #737a80;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
 }
 
 .container {
-    width: 800px;
-    height: 800px;
-    background-color: rgb(242, 242, 242);
-    border-radius: 3px;
-    padding: 30px;
-    border: 1px solid #ddd;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    background-color: var(--main-white-color);
+}
+
+/* TOPBAR */
+.topBar {
+    display: flex;
+    background: var(--main-white-color);
+    border-bottom: 1px solid var(--main-gray-color);
+    height: 60px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
 }
 
 .close {
-    align-self: flex-end;
     cursor: pointer;
 }
 
+/* MAIN */
 .main {
     margin-top: 40px;
     display: flex;

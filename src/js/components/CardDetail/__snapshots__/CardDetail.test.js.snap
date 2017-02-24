@@ -8,65 +8,48 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
+    <TopBar />
     <div
-        className="detail">
+        className={undefined}>
         <div
             className={undefined}>
             <div
-                className={undefined}
-                onClick={[Function]}>
-                X
+                className={undefined}>
+                <Input
+                    onChange={[Function]}
+                    placeholder={null}
+                    title="TITLE"
+                    type=""
+                    value="" />
+                <h3>
+                    In collection 
+                    <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/">
+                        Design
+                    </Link>
+                </h3>
             </div>
             <div
                 className={undefined}>
-                <div
-                    className={undefined}>
-                    <div
-                        className={undefined}>
-                        <Input
-                            onChange={[Function]}
-                            placeholder={null}
-                            title="TITLE"
-                            type=""
-                            value="" />
-                        <h3>
-                            In collection 
-                            <Link
-                                onlyActiveOnIndex={false}
-                                style={Object {}}
-                                to="/">
-                                Design
-                            </Link>
-                        </h3>
-                    </div>
-                    <div
-                        className={undefined}>
-                        <Description
-                            markdown={null} />
-                    </div>
-                </div>
-                <div
-                    className={undefined}>
-                    <Button
-                        onClick={[Function]}
-                        text="Like"
-                        type="like"
-                        value={0} />
-                    <div>
-                        <Button
-                            onClick={[Function]}
-                            text="Labels"
-                            type={null}
-                            value={null} />
-                    </div>
-                    <div>
-                        <Button
-                            onClick={[Function]}
-                            text="Attachment"
-                            type={null}
-                            value={null} />
-                    </div>
-                </div>
+                <Description
+                    markdown={null} />
+            </div>
+        </div>
+        <div
+            className={undefined}>
+            <Button
+                onClick={[Function]}
+                text="Like"
+                type="like"
+                value={0} />
+            <div>
+                <Button
+                    onClick={[Function]}
+                    text="Attachment"
+                    type={null}
+                    value={null} />
             </div>
         </div>
     </div>
@@ -74,65 +57,48 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className={undefined}>
+      <TopBar />
       <div
-            className="detail">
+            className={undefined}>
             <div
                   className={undefined}>
                   <div
-                        className={undefined}
-                        onClick={[Function]}>
-                        X
+                        className={undefined}>
+                        <Input
+                              onChange={[Function]}
+                              placeholder={null}
+                              title="TITLE"
+                              type=""
+                              value="" />
+                        <h3>
+                              In collection 
+                              <Link
+                                    onlyActiveOnIndex={false}
+                                    style={Object {}}
+                                    to="/">
+                                    Design
+                              </Link>
+                        </h3>
                   </div>
                   <div
                         className={undefined}>
-                        <div
-                              className={undefined}>
-                              <div
-                                    className={undefined}>
-                                    <Input
-                                          onChange={[Function]}
-                                          placeholder={null}
-                                          title="TITLE"
-                                          type=""
-                                          value="" />
-                                    <h3>
-                                          In collection 
-                                          <Link
-                                                onlyActiveOnIndex={false}
-                                                style={Object {}}
-                                                to="/">
-                                                Design
-                                          </Link>
-                                    </h3>
-                              </div>
-                              <div
-                                    className={undefined}>
-                                    <Description
-                                          markdown={null} />
-                              </div>
-                        </div>
-                        <div
-                              className={undefined}>
-                              <Button
-                                    onClick={[Function]}
-                                    text="Like"
-                                    type="like"
-                                    value={0} />
-                              <div>
-                                    <Button
-                                          onClick={[Function]}
-                                          text="Labels"
-                                          type={null}
-                                          value={null} />
-                              </div>
-                              <div>
-                                    <Button
-                                          onClick={[Function]}
-                                          text="Attachment"
-                                          type={null}
-                                          value={null} />
-                              </div>
-                        </div>
+                        <Description
+                              markdown={null} />
+                  </div>
+            </div>
+            <div
+                  className={undefined}>
+                  <Button
+                        onClick={[Function]}
+                        text="Like"
+                        type="like"
+                        value={0} />
+                  <div>
+                        <Button
+                              onClick={[Function]}
+                              text="Attachment"
+                              type={null}
+                              value={null} />
                   </div>
             </div>
       </div>
@@ -152,7 +118,6 @@ ShallowWrapper {
       "_instance": CardDetail {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "onMouseClick": [Function],
         "props": Object {
           "close": [Function],
         },
@@ -160,7 +125,6 @@ ShallowWrapper {
         "state": Object {
           "likes": 0,
           "showAttach": false,
-          "showLabels": false,
           "title": null,
           "url": null,
         },
@@ -184,65 +148,48 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
+          <TopBar />
           <div
-                    className="detail">
+                    className={undefined}>
                     <div
                               className={undefined}>
                               <div
-                                        className={undefined}
-                                        onClick={[Function]}>
-                                        X
+                                        className={undefined}>
+                                        <Input
+                                                  onChange={[Function]}
+                                                  placeholder={null}
+                                                  title="TITLE"
+                                                  type=""
+                                                  value="" />
+                                        <h3>
+                                                  In collection 
+                                                  <Link
+                                                            onlyActiveOnIndex={false}
+                                                            style={Object {}}
+                                                            to="/">
+                                                            Design
+                                                  </Link>
+                                        </h3>
                               </div>
                               <div
                                         className={undefined}>
-                                        <div
-                                                  className={undefined}>
-                                                  <div
-                                                            className={undefined}>
-                                                            <Input
-                                                                      onChange={[Function]}
-                                                                      placeholder={null}
-                                                                      title="TITLE"
-                                                                      type=""
-                                                                      value="" />
-                                                            <h3>
-                                                                      In collection 
-                                                                      <Link
-                                                                                onlyActiveOnIndex={false}
-                                                                                style={Object {}}
-                                                                                to="/">
-                                                                                Design
-                                                                      </Link>
-                                                            </h3>
-                                                  </div>
-                                                  <div
-                                                            className={undefined}>
-                                                            <Description
-                                                                      markdown={null} />
-                                                  </div>
-                                        </div>
-                                        <div
-                                                  className={undefined}>
-                                                  <Button
-                                                            onClick={[Function]}
-                                                            text="Like"
-                                                            type="like"
-                                                            value={0} />
-                                                  <div>
-                                                            <Button
-                                                                      onClick={[Function]}
-                                                                      text="Labels"
-                                                                      type={null}
-                                                                      value={null} />
-                                                  </div>
-                                                  <div>
-                                                            <Button
-                                                                      onClick={[Function]}
-                                                                      text="Attachment"
-                                                                      type={null}
-                                                                      value={null} />
-                                                  </div>
-                                        </div>
+                                        <Description
+                                                  markdown={null} />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}>
+                              <Button
+                                        onClick={[Function]}
+                                        text="Like"
+                                        type="like"
+                                        value={0} />
+                              <div>
+                                        <Button
+                                                  onClick={[Function]}
+                                                  text="Attachment"
+                                                  type={null}
+                                                  value={null} />
                               </div>
                     </div>
           </div>
@@ -250,65 +197,48 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
+          <TopBar />
           <div
-                    className="detail">
+                    className={undefined}>
                     <div
                               className={undefined}>
                               <div
-                                        className={undefined}
-                                        onClick={[Function]}>
-                                        X
+                                        className={undefined}>
+                                        <Input
+                                                  onChange={[Function]}
+                                                  placeholder={null}
+                                                  title="TITLE"
+                                                  type=""
+                                                  value="" />
+                                        <h3>
+                                                  In collection 
+                                                  <Link
+                                                            onlyActiveOnIndex={false}
+                                                            style={Object {}}
+                                                            to="/">
+                                                            Design
+                                                  </Link>
+                                        </h3>
                               </div>
                               <div
                                         className={undefined}>
-                                        <div
-                                                  className={undefined}>
-                                                  <div
-                                                            className={undefined}>
-                                                            <Input
-                                                                      onChange={[Function]}
-                                                                      placeholder={null}
-                                                                      title="TITLE"
-                                                                      type=""
-                                                                      value="" />
-                                                            <h3>
-                                                                      In collection 
-                                                                      <Link
-                                                                                onlyActiveOnIndex={false}
-                                                                                style={Object {}}
-                                                                                to="/">
-                                                                                Design
-                                                                      </Link>
-                                                            </h3>
-                                                  </div>
-                                                  <div
-                                                            className={undefined}>
-                                                            <Description
-                                                                      markdown={null} />
-                                                  </div>
-                                        </div>
-                                        <div
-                                                  className={undefined}>
-                                                  <Button
-                                                            onClick={[Function]}
-                                                            text="Like"
-                                                            type="like"
-                                                            value={0} />
-                                                  <div>
-                                                            <Button
-                                                                      onClick={[Function]}
-                                                                      text="Labels"
-                                                                      type={null}
-                                                                      value={null} />
-                                                  </div>
-                                                  <div>
-                                                            <Button
-                                                                      onClick={[Function]}
-                                                                      text="Attachment"
-                                                                      type={null}
-                                                                      value={null} />
-                                                  </div>
-                                        </div>
+                                        <Description
+                                                  markdown={null} />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}>
+                              <Button
+                                        onClick={[Function]}
+                                        text="Like"
+                                        type="like"
+                                        value={0} />
+                              <div>
+                                        <Button
+                                                  onClick={[Function]}
+                                                  text="Attachment"
+                                                  type={null}
+                                                  value={null} />
                               </div>
                     </div>
           </div>

@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import TopNav from '../TopNav';
 import SideNav from '../SideNav';
 
 import css from './App.css';
@@ -34,7 +33,6 @@ class Authenticated extends Component {
             <div className={css.container}>
                 <SideNav />
                 <div className={css.right}>
-                    <TopNav />
                     {this.props.children}
                 </div>
             </div>
