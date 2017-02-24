@@ -21,19 +21,28 @@ class CollectionDialog extends Component {
         return (
             <div className={css.modal}>
                 <div className={css.container}>
-                    <div className={css.close} onClick={() => close()}>X</div>
+                    <div className={css.title}>
+                        <h1>Add/Edit collection: </h1>
+                    </div>
                     <div className={css.main}>
                         <Input
                             title="NAME"
                             value={name}
                             onChange={value => this.setState({ name: value })}
+                            placeholder="Name"
                         />
                     </div>
-                    <Button
-                        onClick={close}
-                        text="Create"
-                        type="primary"
-                    />
+                    <div className={css.buttons}>
+                        <Button
+                            onClick={close}
+                            text="Cancel"
+                        />
+                        <Button
+                            onClick={close}
+                            text="Save"
+                            type="primary"
+                        />
+                    </div>
                 </div>
             </div>
         );

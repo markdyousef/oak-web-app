@@ -1,3 +1,14 @@
+:root {
+    --primary-color: #5ed892;
+    --main-black-color: #131517;
+    --light-black-color: #2d3438;
+    --dark-gray-color: #737a80;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
+    --line-gray-color: #e5e5e5;
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -14,23 +25,36 @@
 }
 
 .container {
-    height: 200px;
-    width: 300px;
+    width: 400px;
+    height: 240px;
     background-color: #fff;
     border-radius: 3px;
-    padding: 30px;
     border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
-.close {
-    align-self: flex-end;
-    cursor: pointer;
+.title {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid var(--line-gray-color);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .main {
-    margin-top: 30px;
-    width: 200px;
+    padding: 5px 20px;
+    width: 100%;
+}
+
+.buttons {
+    padding: 15px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

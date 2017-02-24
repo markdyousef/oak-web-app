@@ -12,9 +12,6 @@ const Input = ({ title, value, placeholder, onChange, type }:Object) => {
                 placeholder={placeholder}
                 onChange={event => onChange(event.target.value)}
             />
-            <span className={css.highlight} />
-            <span className={css.bar} />
-            <label htmlFor="input">{title}</label>
         </div>
     );
 };

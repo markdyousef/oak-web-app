@@ -1,113 +1,28 @@
+:root {
+    --primary-color: #5ed892;
+    --main-black-color: #131517;
+    --light-black-color: #2d3438;
+    --dark-gray-color: #737a80;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
+    --line-gray-color: #e5e5e5;
+}
+
 .container {
     width: 100%;
     position: relative;
-    margin-bottom: 20px;
     max-width: 400px;
 }
 
 .container input {
-    font-size: 14px;
-    padding: 10px 5px 5px;
+    font-size: 16px;
+    padding: 10px;
     display: block;
     width: 100%;
-    border: none;
-    border-bottom: 1px solid #757575;
     font-weight: lighter;
     background-color: rgba(255, 0, 0, 0.0);
+    border: 1px solid var(--line-gray-color);
+    height: 50px;
+    border-radius: 3px;
 }
-
-.container input:focus {
-    outline: none;
-}
-
-/* LABEL ======================================= */
-.container label {
-    color: #999;
-    font-size: 12px;
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-/* active state */
-.container input:focus ~ label,
-input:valid ~ label {
-    top: -10px;
-    font-size: 8px;
-    color: #999;
-}
-
-/* BOTTOM BARS ================================= */
-.bar {
-    position: relative;
-    display: block;
-    width: 100%;
-}
-
-.bar::before,
-.bar::after {
-    content: '';
-    height: 1px;
-    width: 0;
-    bottom: 1px;
-    position: absolute;
-    background: #000;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-.bar::before {
-    left: 50%;
-}
-
-.bar::after {
-    right: 50%;
-}
-
-/* active state */
-.container input:focus ~ .bar::before,
-input:focus ~ .bar::after {
-    width: 50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-    position: absolute;
-    height: 60%;
-    width: 100px;
-    top: 25%;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-/* active state */
-.container input:focus ~ .highlight {
-    -webkit-animation: inputHighlighter 0.3s ease;
-    -moz-animation: inputHighlighter 0.3s ease;
-    animation: inputHighlighter 0.3s ease;
-}
-/* ANIMATIONS ================ */
-
-/*
-@-webkit-keyframes inputHighlighter {
-    from { background: #000; }
-    to { width: 0; background: transparent; }
-}
-
-@-moz-keyframes inputHighlighter {
-    from { background: #000; }
-  to    { width:0; background:transparent; }
-}
-
-@keyframes inputHighlighter {
-    from { background: #000; }
-  to    { width:0; background:transparent; }
-}
-*/

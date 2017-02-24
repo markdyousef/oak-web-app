@@ -54,11 +54,6 @@ class SideNav extends Component {
                     </Link>
                     {this.renderSubCategories(CATEGORIES)}
                 </div>
-                <Button
-                    onClick={() => console.log('click')}
-                    text="Add Collection"
-                    type="primary"
-                />
             </div>
         );
     }
