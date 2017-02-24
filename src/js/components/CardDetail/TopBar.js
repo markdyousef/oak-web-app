@@ -5,7 +5,9 @@ import Button from '../shared/Button';
 import css from './CardDetail.css';
 
 class TopBar extends Component {
-    static propTypes = {};
+    static propTypes = {
+        close: PropTypes.func.isRequired
+    };
     constructor() {
         super();
         this.state = {
@@ -14,6 +16,7 @@ class TopBar extends Component {
     }
     render() {
         const { showLabels } = this.state;
+        const { close } = this.props;
         return (
             <div className={css.topBar}>
                 <div className={css.right}>
@@ -34,7 +37,12 @@ class TopBar extends Component {
                         onClick={() => {}}
                         type="primaryAction"
                     />
-                    <div className={css.close} onClick={() => close()}>X</div>
+                    <Button
+                        className={css.close}
+                        onClick={() => close()}
+                        text="X"
+                        type="transparent"
+                    />
                 </div>
 
             </div>

@@ -11,6 +11,9 @@ import css from './CardDetail.css';
 
 class CardDetail extends Component {
     static propTypes = {
+        router: PropTypes.shape({
+            back: PropTypes.func.isRequired
+        })
     }
     constructor() {
         super();
@@ -29,9 +32,11 @@ class CardDetail extends Component {
     }
     render() {
         const { title, url, likes, showAttach } = this.state;
+        const { router } = this.props;
+        console.log(router);
         return (
             <div className={css.container}>
-                <TopBar />
+                <TopBar close={() => router.goBack()} />
                 <div className={css.main}>
                     <div className={css.leftPane}>
                         <div className={css.name}>

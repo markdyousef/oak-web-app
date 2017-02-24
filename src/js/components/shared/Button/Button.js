@@ -6,9 +6,6 @@ import css from './Button.css';
 const Button = ({ onClick, text, value, type }: Object) => {
     let className = null;
     switch (type) {
-    case 'like':
-        className = css.like;
-        break;
     case 'transparent':
         className = css.transparent;
         break;
