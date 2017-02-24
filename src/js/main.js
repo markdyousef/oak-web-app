@@ -23,9 +23,22 @@ import '../index.html';
 import '../css/reset.css';
 import '../css/app.css';
 
-// const store = initStore();
+const networkInterface = createNetworkInterface({ uri: 'http://empress.clai.io/graphql' });
+
+// set header with token from localStorage
+networkInterface.use([{
+    applyMiddleware(req, next) {
+        if (!req.options.headers) {
+            req.options.headers = {};
+        }
+        const token = localStorage.getItem('authToken');
+        req.options.headers.authorization = token ? `${token}` : null;
+        next();
+    }
+}]);
+
 const client = new ApolloClient({
-    networkInterface: createNetworkInterface({ uri: 'http://empress.clai.io/graphql' })
+    networkInterface
 });
 
 const routes = (

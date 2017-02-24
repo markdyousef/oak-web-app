@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import Card from '../Card';
 import Button from '../shared/Button';
-import CollectionDialog from '../CollectionDialog';
+import CollectionDialog from '../../containers/CollectionDialogContainer';
 import KnowledgeStats from '../KnowledgeStats';
 
 import css from './Collections.css';
