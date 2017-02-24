@@ -52,8 +52,8 @@ const routes = (
                 <Route component={Authenticated}>
                     <IndexRoute component={Home} />
                     <Route path="/profile" component={Profile} />
-                    <Route path="/card(/:cardId)" component={CardDetail} />
-                    <Route path="/:collectionId" component={CollectionDetail} />
+                    <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
+                    <Route path="/collection/:collectionId" component={CollectionDetail} />
                 </Route>
             </Route>
         </Router>

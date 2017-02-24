@@ -10,6 +10,9 @@ import css from './CollectionDetail.css';
 
 class CollectionDetail extends Component {
     static propTypes = {
+        params: PropTypes.shape({
+            collectionId: PropTypes.string
+        }).isRequired,
         router: PropTypes.shape({
             push: PropTypes.func
         }).isRequired,
@@ -27,7 +30,7 @@ class CollectionDetail extends Component {
         this.state = {};
     }
     renderCards() {
-        const { data, router } = this.props;
+        const { data, router, params } = this.props;
 
         if (data.loading) return <div>LOADING</div>
 
@@ -36,7 +39,7 @@ class CollectionDetail extends Component {
                 <div className={css.grid}>
                     {data.seeds.map(item =>
                         <div
-                            onClick={() => router.push(`card/${item.id}`)}
+                            onClick={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
                             className={css.card}
                             key={item.id}
                         >
@@ -50,7 +53,7 @@ class CollectionDetail extends Component {
         return null;
     }
     render() {
-        const { router } = this.props;
+        const { router, params } = this.props;
 
         return (
             <div className={css.container}>
@@ -64,7 +67,7 @@ class CollectionDetail extends Component {
                             STATS
                         </div>
                         <Button
-                            onClick={() => router.push('card')}
+                            onClick={() => router.push(`collection/${params.collectionId}/card`)}
                             text="Add Card"
                             type="primary"
                         />

@@ -35,7 +35,7 @@ class Collections extends Component {
             return (
                 <div className={css.grid}>
                     {data.groves.map(grove =>
-                        <Link to={`/${grove.id}`} key={grove.id}>
+                        <Link to={`/collection/${grove.id}`} key={grove.id}>
                             <Card title={grove.title} />
                         </Link>
                     )}
