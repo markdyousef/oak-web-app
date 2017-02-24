@@ -21,18 +21,32 @@ class Collections extends Component {
     static defaultProps = {};
     constructor() {
         super();
+        this.renderCollections = this.renderCollections.bind(this);
         this.state = {
             showAdd: false
         };
     }
-    render() {
-        const { showAdd } = this.state;
+    renderCollections() {
         const { data } = this.props;
 
         if (data.loading) return <div>LOADING</div>
 
-        const { groves } = data;
+        if (!data.loading && data.groves) {
+            return (
+                <div className={css.grid}>
+                    {data.groves.map(grove =>
+                        <Link to={`/${grove.id}`} key={grove.id}>
+                            <Card title={grove.title} />
+                        </Link>
+                    )}
+                </div>
+            );
+        }
 
+        return null;
+    }
+    render() {
+        const { showAdd } = this.state;
         return (
             <div className={css.container}>
                 <div className={css.header}>
@@ -52,13 +66,7 @@ class Collections extends Component {
                         }
                     </div>
                 </div>
-                <div className={css.grid}>
-                    {groves.map(grove =>
-                        <Link to={`/${grove.id}`} key={grove.id}>
-                            <Card title={grove.title} />
-                        </Link>
-                    )}
-                </div>
+                {this.renderCollections()}
             </div>
         );
     }
