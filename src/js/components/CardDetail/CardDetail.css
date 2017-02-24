@@ -32,8 +32,8 @@
     padding-right: 30px;
 }
 
-.close {
-    cursor: pointer;
+.editNav {
+    display: flex;
 }
 
 /* MAIN */

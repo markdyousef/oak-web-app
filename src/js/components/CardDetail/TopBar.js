@@ -6,20 +6,25 @@ import css from './CardDetail.css';
 
 class TopBar extends Component {
     static propTypes = {
-        close: PropTypes.func.isRequired
+        close: PropTypes.func.isRequired,
+        save: PropTypes.func.isRequired,
+        showEdit: PropTypes.bool.isRequired,
+        edit: PropTypes.func.isRequired
     };
     constructor() {
         super();
+        this.renderButtons = this.renderButtons.bind(this);
         this.state = {
             showLabels: false
         };
     }
-    render() {
+    renderButtons() {
+        const { save, showEdit, edit } = this.props;
         const { showLabels } = this.state;
-        const { close } = this.props;
-        return (
-            <div className={css.topBar}>
-                <div className={css.right}>
+
+        if (showEdit) {
+            return (
+                <div className={css.editNav}>
                     <div>
                         <Button
                             text="Add label"
@@ -34,9 +39,20 @@ class TopBar extends Component {
                     </div>
                     <Button
                         text="Save card"
-                        onClick={() => {}}
+                        onClick={save}
                         type="primaryAction"
                     />
+                </div>
+            );
+        }
+        return <Button text="Edit card" type="secondaryAction" onClick={edit} />;
+    }
+    render() {
+        const { close } = this.props;
+        return (
+            <div className={css.topBar}>
+                <div className={css.right}>
+                    {this.renderButtons()}
                     <Button
                         className={css.close}
                         onClick={() => close()}
