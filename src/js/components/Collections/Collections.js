@@ -34,6 +34,7 @@ class Collections extends Component {
     }
     render() {
         const { showAdd } = this.state;
+        console.log(this.props);
         return (
             <div className={css.container}>
                 <div className={css.header}>
