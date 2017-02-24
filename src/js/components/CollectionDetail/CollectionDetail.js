@@ -8,33 +8,29 @@ import TopNav from '../TopNav'
 
 import css from './CollectionDetail.css';
 
-const ITEMS = [
-    {
-        title: 'React',
-        id: '1'
-    },
-    {
-        title: 'Jest',
-        id: '2'
-    },
-    {
-        title: 'GraphQL',
-        id: '3'
-    }
-];
-
 class CollectionDetail extends Component {
     static propTypes = {
         router: PropTypes.shape({
-            push: PropTypes.func.isRequired
-        })
+            push: PropTypes.func
+        }).isRequired,
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            seeds: PropTypes.arrayOf(PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                content: PropTypes.string.isRequired
+            }))
+        }).isRequired
     }
     constructor() {
         super();
         this.state = {};
     }
     render() {
-        const { router } = this.props;
+        const { router, data } = this.props;
+
+        if (data.loading) return <div>LOADING</div>
+
+        const { seeds } = data;
         return (
             <div className={css.container}>
                 <TopNav />
@@ -54,13 +50,13 @@ class CollectionDetail extends Component {
                     </div>
                 </div>
                 <div className={css.grid}>
-                    {ITEMS.map(item =>
+                    {seeds.map(item =>
                         <div
                             onClick={() => router.push(`card/${item.id}`)}
                             className={css.card}
                             key={item.id}
                         >
-                            <Card title={item.title} />
+                            <Card title={item.content} />
                         </div>
                     )}
                 </div>
