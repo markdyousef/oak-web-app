@@ -42,13 +42,16 @@ class CollectionDetail extends Component {
                     <div className={css.description}>
                         <Description />
                     </div>
-                </div>
-                <div className={css.toolbar}>
-                    <Button
-                        onClick={() => router.push('card')}
-                        text="Add Card"
-                        type="primary"
-                    />
+                    <div className={css.toolbar}>
+                        <div>
+                            STATS
+                        </div>
+                        <Button
+                            onClick={() => router.push('card')}
+                            text="Add Card"
+                            type="primary"
+                        />
+                    </div>
                 </div>
                 <div className={css.grid}>
                     {ITEMS.map(item =>

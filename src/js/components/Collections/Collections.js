@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Card from '../Card';
 import Button from '../shared/Button';
 import CollectionDialog from '../CollectionDialog';
+import KnowledgeStats from '../KnowledgeStats';
 
 import css from './Collections.css';
 
@@ -35,17 +36,22 @@ class Collections extends Component {
         const { showAdd } = this.state;
         return (
             <div className={css.container}>
-                <div className={css.toolbar}>
-                    <Button
-                        onClick={() => this.setState({ showAdd: true })}
-                        text="Add Collection"
-                        type="primary"
-                    />
-                    {showAdd &&
-                        <CollectionDialog
-                            close={() => this.setState({ showAdd: false })}
+                <div className={css.header}>
+                    <div className={css.stats}>
+                        <KnowledgeStats />
+                    </div>
+                    <div className={css.toolbar}>
+                        <Button
+                            onClick={() => this.setState({ showAdd: true })}
+                            text="Add Collection"
+                            type="primary"
                         />
-                    }
+                        {showAdd &&
+                            <CollectionDialog
+                                close={() => this.setState({ showAdd: false })}
+                            />
+                        }
+                    </div>
                 </div>
                 <div className={css.grid}>
                     {CATEGORIES.map(category =>
