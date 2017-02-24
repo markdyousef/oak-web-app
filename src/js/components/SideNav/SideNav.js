@@ -1,7 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Button from '../shared/Button'
 
 import css from './SideNav.css';
 
