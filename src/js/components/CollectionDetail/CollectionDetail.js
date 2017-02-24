@@ -23,14 +23,35 @@ class CollectionDetail extends Component {
     }
     constructor() {
         super();
+        this.renderCards = this.renderCards.bind(this);
         this.state = {};
     }
-    render() {
-        const { router, data } = this.props;
+    renderCards() {
+        const { data, router } = this.props;
 
         if (data.loading) return <div>LOADING</div>
 
-        const { seeds } = data;
+        if (!data.loading && data.seeds) {
+            return (
+                <div className={css.grid}>
+                    {data.seeds.map(item =>
+                        <div
+                            onClick={() => router.push(`card/${item.id}`)}
+                            className={css.card}
+                            key={item.id}
+                        >
+                            <Card title={item.content} />
+                        </div>
+                    )}
+                </div>
+            )
+        }
+
+        return null;
+    }
+    render() {
+        const { router } = this.props;
+
         return (
             <div className={css.container}>
                 <TopNav />
@@ -49,17 +70,7 @@ class CollectionDetail extends Component {
                         />
                     </div>
                 </div>
-                <div className={css.grid}>
-                    {seeds.map(item =>
-                        <div
-                            onClick={() => router.push(`card/${item.id}`)}
-                            className={css.card}
-                            key={item.id}
-                        >
-                            <Card title={item.content} />
-                        </div>
-                    )}
-                </div>
+                {this.renderCards()}
             </div>
         );
     }
