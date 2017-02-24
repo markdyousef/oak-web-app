@@ -17,14 +17,6 @@ exports[`test renders correctly 1`] = `
           placeholder={null}
           type="text"
           value="" />
-        <span
-          className={undefined} />
-        <span
-          className={undefined} />
-        <label
-          htmlFor="input">
-          NAME
-        </label>
       </div>
     </div>
     <div

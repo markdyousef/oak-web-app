@@ -4,7 +4,10 @@ import CardDetail from './CardDetail';
 
 it('renders correctly', () => {
     const props = {
-        close: () => {}
+        close: () => {},
+        router: {
+            goBack: () => {}
+        }
     };
     const shallowComponent = shallow(
         <CardDetail {...props} />

@@ -36,16 +36,5 @@ exports[`test renders correctly 1`] = `
       </div>
     </div>
   </div>
-  <button
-    className=" "
-    onClick={[Function]}>
-    <div>
-      <label
-        className={undefined}
-        htmlFor="text">
-        Add Collection
-      </label>
-    </div>
-  </button>
 </div>
 `;

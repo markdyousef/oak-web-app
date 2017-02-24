@@ -1,30 +1,52 @@
 exports[`test renders correctly 1`] = `
 <div
   className={undefined}>
-  <div
+  <nav
     className={undefined}>
     <div
+      className={undefined} />
+    <div
       className={undefined}>
-      KNOWLEDGESTATS
+      <a
+        className={undefined}
+        onClick={[Function]}
+        style={Object {}}>
+        <div
+          className={undefined}>
+          <img
+            alt="profile"
+            src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" />
+        </div>
+      </a>
     </div>
-  </div>
+  </nav>
   <div
     className={undefined}>
     <div
       className={undefined}>
       <div
         className={undefined}>
-        <button
-          className=" "
-          onClick={[Function]}>
-          <div>
-            <label
-              className={undefined}
-              htmlFor="text">
-              Add Collection
-            </label>
+        <div
+          className={undefined}>
+          <div
+            className={undefined}>
+            KNOWLEDGESTATS
           </div>
-        </button>
+        </div>
+        <div
+          className={undefined}>
+          <button
+            className=" "
+            onClick={[Function]}>
+            <div>
+              <label
+                className={undefined}
+                htmlFor="text">
+                Add Collection
+              </label>
+            </div>
+          </button>
+        </div>
       </div>
       <div
         className={undefined}>
