@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import Collections from '../../components/Collections';
+import Collections from '../../containers/CollectionsContainer';
 import TopNav from '../../components/TopNav';
 
 import css from './Home.css';

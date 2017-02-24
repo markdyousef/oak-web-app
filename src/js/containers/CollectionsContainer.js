@@ -4,9 +4,11 @@ import gql from 'graphql-tag';
 import Collections from '../components/Collections';
 
 const getCollections = gql`
-    groves {
-        id
-        title
+    query groves {
+        groves {
+            id
+            title
+        }
     }
 `;
 
