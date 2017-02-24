@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Card from '../Card';
 import Button from '../shared/Button';
 import Description from '../shared/Description';
+import TopNav from '../TopNav'
 
 
 import css from './CollectionDetail.css';
@@ -36,6 +37,7 @@ class CollectionDetail extends Component {
         const { router } = this.props;
         return (
             <div className={css.container}>
+                <TopNav />
                 <div className={css.header}>
                     <div className={css.description}>
                         <Description />
@@ -43,7 +45,7 @@ class CollectionDetail extends Component {
                 </div>
                 <div className={css.toolbar}>
                     <Button
-                        onClick={() => {}}
+                        onClick={() => router.push('card')}
                         text="Add Card"
                         type="primary"
                     />

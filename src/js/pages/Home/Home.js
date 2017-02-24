@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import KnowledgeStats from '../../components/KnowledgeStats';
 import Collections from '../../components/Collections';
+import TopNav from '../../components/TopNav';
 
 import css from './Home.css';
 
@@ -15,6 +16,7 @@ class Home extends Component {
     render() {
         return (
             <div className={css.container}>
+                <TopNav />
                 <div className={css.stats}>
                     <KnowledgeStats />
                 </div>
