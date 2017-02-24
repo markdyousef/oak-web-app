@@ -12,7 +12,7 @@ class SideNav extends Component {
                 title: PropTypes.string.isRequired,
                 id: PropTypes.string.isRequired
             }))
-        })
+        }).isRequired
     };
     static defaultProps = {};
     constructor() {
@@ -31,7 +31,7 @@ class SideNav extends Component {
                     {data.groves.map(category => (
                         <div key={category.id}>
                             <Link
-                                to={`/${category.id}`}
+                                to={`collection/${category.id}`}
                                 activeStyle={{ fontWeight: 'bold' }}
                             >
                                 {category.title}
