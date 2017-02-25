@@ -15,7 +15,7 @@ import SignUp from './containers/SignUpContainer';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
 import Profile from './pages/Profile';
-import CardDetail from './components/CardDetail';
+import CardDetail from './containers/CardDetailContainer';
 import Settings from './containers/SettingsContainer';
 
 // Let webpack create the html file in the build folder
