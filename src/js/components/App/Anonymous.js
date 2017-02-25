@@ -30,9 +30,6 @@ class Anonymous extends Component {
         }
     }
     render() {
-        if (token) return null;
-
-        console.log('anonymous: ' + token)
         return (
             <div className={[css.container, css.anonymous].join(' ')}>
                 {this.props.children}

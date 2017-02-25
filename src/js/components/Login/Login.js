@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
+import { saveToken } from '../../utils'
 
 import css from './Login.css';
 
@@ -9,7 +10,7 @@ class Login extends Component {
     static propTypes = {
         loginUser: PropTypes.func.isRequired,
         router: PropTypes.shape({
-            push: PropTypes.func
+            replace: PropTypes.func
         }).isRequired
     };
     constructor() {
@@ -39,8 +40,10 @@ class Login extends Component {
         return loginUser(email, password)
             .then((res) => {
                 // save token to localstorage
-                localStorage.authToken = res.data.loginUser;
-                router.push('/');
+                saveToken(res.data.loginUser);
+                router.replace({
+                    pathname: 'home'
+                });
             })
             .catch(err => console.log(err))
     }

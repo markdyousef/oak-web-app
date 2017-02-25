@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import TopNav from '../../components/TopNav';
 import Button from '../../components/shared/Button';
+import { signOut } from '../../utils'
 
 import css from './Settings.css';
-
-const signOut = () => delete localStorage.authToken;
 
 class Settings extends Component {
     static propTypes = {
@@ -21,7 +20,7 @@ class Settings extends Component {
         const { router } = this.props;
         signOut();
         router.replace({
-            path: '/login'
+            pathname: '/login'
         })
     }
     render() {
@@ -31,7 +30,7 @@ class Settings extends Component {
                 <div className={css.settings}>
                     <h1>Settings:</h1>
                     <Button
-                        onClick={() => signOut()}
+                        onClick={this.signOut}
                         text="Sign out"
                     />
                 </div>
