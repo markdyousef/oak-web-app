@@ -37,8 +37,8 @@ class SignUp extends Component {
             return this.setState({ message: 'your password should be at least 6 characters' });
         }
         return createUser(email, password)
-            .then(res => console.log(res))
-            .catch(err => this.setState({ message: err.errors[0].message }))
+            .then(() => this.setState({ message: { type: 'success', text: 'Your account has been created ' } }))
+            .catch(err => this.setState({ message: { type: 'failed', text: 'Lame!' } }));
     }
     render() {
         const { email, password, message } = this.state;
@@ -77,8 +77,8 @@ class SignUp extends Component {
                     </div>
                     <div className={css.message}>
                         {message &&
-                            <div>
-                                <h5>{message}</h5>
+                            <div className={(message.type === 'success') ? css.success : null}>
+                                <h5>{message.text}</h5>
                             </div>
                         }
                     </div>

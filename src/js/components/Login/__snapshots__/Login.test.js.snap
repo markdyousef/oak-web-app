@@ -3,13 +3,16 @@ exports[`test renders correctly 1`] = `
   className={undefined}>
   <div
     className={undefined}>
+    <h1>
+      Login
+    </h1>
     <div
       className={undefined}>
       <div
         className={undefined}>
         <input
           onChange={[Function]}
-          placeholder={null}
+          placeholder="Email"
           type="email"
           value="" />
       </div>
@@ -17,7 +20,7 @@ exports[`test renders correctly 1`] = `
         className={undefined}>
         <input
           onChange={[Function]}
-          placeholder={null}
+          placeholder="Password"
           type="password"
           value="" />
       </div>
@@ -31,7 +34,7 @@ exports[`test renders correctly 1`] = `
           <label
             className={undefined}
             htmlFor="text">
-            LOGIN
+            Create Account
           </label>
         </div>
       </button>
@@ -42,11 +45,13 @@ exports[`test renders correctly 1`] = `
           <label
             className={undefined}
             htmlFor="text">
-            CREATE
+            Login
           </label>
         </div>
       </button>
     </div>
+    <div
+      className={undefined} />
   </div>
 </div>
 `;

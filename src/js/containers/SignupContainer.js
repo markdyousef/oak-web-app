@@ -5,7 +5,9 @@ import SignUp from '../components/SignUp';
 
 const createUser = gql`
     mutation createUser($email: String!, $password: String!) {
-        createUser(email: $email, password: $password)
+        createUser(email: $email, password: $password) {
+            id
+        }
     }
 `;
 

@@ -42,7 +42,7 @@ class Login extends Component {
                 localStorage.authToken = res.data.loginUser;
                 router.push('/');
             })
-            .catch(err => this.setState({ message: err.errors[0].message }))
+            .catch(err => console.log(err))
     }
     render() {
         const { email, password, message } = this.state;
