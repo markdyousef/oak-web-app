@@ -29,6 +29,8 @@ class Authenticated extends Component {
     render() {
         if (!token) return null;
 
+        console.log('authenticated: ' + token)
+
         return (
             <div className={css.container}>
                 <SideNav />

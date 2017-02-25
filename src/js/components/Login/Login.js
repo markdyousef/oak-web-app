@@ -56,24 +56,26 @@ class Login extends Component {
                             value={email}
                             onChange={value => this.setState({ email: value })}
                             type="email"
+                            placeholder="Email"
                         />
                         <Input
                             title="Password"
                             value={password}
                             onChange={value => this.setState({ password: value })}
                             type="password"
+                            placeholder="Password"
                         />
                     </div>
                     <div className={css.buttons}>
                         <Button
-                            onClick={this.onSubmit}
-                            text="LOGIN"
-                            type="primary"
+                            onClick={() => router.push('/signup')}
+                            text="Create Account"
+                            // type="transparent"
                         />
                         <Button
-                            onClick={() => router.push('/signup')}
-                            text="CREATE"
-                            // type="transparent"
+                            onClick={this.onSubmit}
+                            text="Login"
+                            type="primary"
                         />
                     </div>
                     {message &&

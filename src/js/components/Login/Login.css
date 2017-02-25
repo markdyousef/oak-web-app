@@ -22,19 +22,24 @@
     height: 300px;
     background-color: var(--main-white-color);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    padding: 50px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .inputs {
-    width: 300px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-between;
 }
 
 .buttons {
-    width: 250px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
