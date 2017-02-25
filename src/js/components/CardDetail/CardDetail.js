@@ -7,6 +7,11 @@ import css from './CardDetail.css';
 
 class CardDetail extends Component {
     static propTypes = {
+        params: PropTypes.shape({
+            cardId: PropTypes.string,
+            collectionId: PropTypes.string.isRequired
+        }).isRequired,
+        create: PropTypes.func.isRequired,
         router: PropTypes.shape({
             goBack: PropTypes.func.isRequired
         }).isRequired
@@ -15,14 +20,29 @@ class CardDetail extends Component {
         super();
         this.onSave = this.onSave.bind(this);
         this.state = {
-            showEdit: false
+            showEdit: false,
+            content: null,
+            message: null
         };
     }
     onSave() {
-        this.setState({ showEdit: false });
+        const { create, params } = this.props;
+        const { content } = this.state;
+
+        const { cardId, collectionId } = params;
+
+        // if card doesn't exist create new
+        if (!cardId && collectionId) {
+            create(collectionId, JSON.stringify(content))
+                .then(() => {
+                    this.setState({ showEdit: false, message: { type: 'success', text: 'Saved!'} });
+                })
+                .catch(err => console.log(err));
+        }
+        // TODO: else update existing card
     }
     render() {
-        const { showEdit } = this.state;
+        const { showEdit, content } = this.state;
         const { router } = this.props;
         return (
             <div className={css.container}>
@@ -36,6 +56,7 @@ class CardDetail extends Component {
                     <Description
                         showEdit={showEdit}
                         content={null}
+                        onChange={value => this.setState({ content: value })}
                     />
                 </div>
             </div>

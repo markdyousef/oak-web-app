@@ -12,7 +12,8 @@ import css from './Description.css';
 class Description extends Component {
     static propTypes = {
         showEdit: PropTypes.bool,
-        content: PropTypes.string
+        content: PropTypes.string,
+        onChange: PropTypes.func.isRequired
     };
     static defaultProps = {
         content: null,
@@ -26,10 +27,12 @@ class Description extends Component {
             editorState: createEditorState()
         }
     }
-    onChange(state) {
+    onChange(state: Object) {
         const { editorState } = this.state;
+        const { onChange } = this.props;
         this.setState({ editorState: state });
         const raw = convertToRaw(editorState.getCurrentContent());
+        onChange(raw);
     }
     displayMarkdown() {
         const { editorState } = this.state;

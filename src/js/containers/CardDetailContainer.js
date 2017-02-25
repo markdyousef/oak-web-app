@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import CardDetail from '../components/CardDetail';
 
 const createSeed = gql`
-    mutation createSeed($groveId: ID!, content: String!) {
+    mutation createSeed($groveId: ID!, $content: String!) {
         createSeed(groveId: $groveId, content: $content) {
             id
         }
