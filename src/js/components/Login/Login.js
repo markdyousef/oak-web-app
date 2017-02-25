@@ -50,6 +50,7 @@ class Login extends Component {
         return (
             <div className={css.container}>
                 <div className={css.login}>
+                    <h1>Login</h1>
                     <div className={css.inputs}>
                         <Input
                             title="Email"
@@ -78,11 +79,13 @@ class Login extends Component {
                             type="primary"
                         />
                     </div>
-                    {message &&
-                        <div className={css.message}>
-                            <h5>{message}</h5>
-                        </div>
-                    }
+                    <div className={css.message}>
+                        {message &&
+                            <div>
+                                <h5>{message}</h5>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         );

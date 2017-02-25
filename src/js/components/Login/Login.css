@@ -1,3 +1,4 @@
+
 :root {
     --primary-color: #5ed892;
     --main-black-color: #131517;
@@ -19,14 +20,18 @@
 
 .login {
     width: 400px;
-    height: 300px;
     background-color: var(--main-white-color);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+}
+
+.login h1 {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .inputs {
@@ -36,11 +41,36 @@
     flex-direction: column;
     height: 120px;
     justify-content: space-between;
+    padding: 5px;
 }
 
 .buttons {
+    margin-top: 15px;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+}
+
+.message {
+    margin-bottom: 30px;
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+}
+
+.message div {
+    width: 100%;
+    background-color: rgba(242, 35, 35, 0.8);
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.message h5 {
+    color: var(--main-white-color);
+    font-size: 14px;
 }

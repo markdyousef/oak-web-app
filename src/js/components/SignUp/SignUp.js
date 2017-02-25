@@ -45,7 +45,8 @@ class SignUp extends Component {
         const { router } = this.props;
         return (
             <div className={css.container}>
-                <div className={css.login}>
+                <div className={css.signup}>
+                    <h1>Create Account</h1>
                     <div className={css.inputs}>
                         <Input
                             title="Email"
@@ -74,11 +75,13 @@ class SignUp extends Component {
                             type="primary"
                         />
                     </div>
-                    {message &&
-                        <div className={css.message}>
-                            <h5>{message}</h5>
-                        </div>
-                    }
+                    <div className={css.message}>
+                        {message &&
+                            <div>
+                                <h5>{message}</h5>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         );

@@ -23,7 +23,7 @@ class SideNav extends Component {
     renderSubCategories() {
         const { data } = this.props;
 
-        if (data.loading) return <div>Loading</div>
+        if (data.loading) return <div>Loading</div>;
 
         if (!data.loading && data.groves) {
             return (
