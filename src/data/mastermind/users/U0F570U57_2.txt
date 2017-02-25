@@ -1,6 +1,0 @@
-Happy New Year!
-"Awesome! Thank you Mark. Should we start with an introduction round? Just briefly explaining who you are, where you're from, your interests and what you've been doing for the past couple of years. 
-
-I'm Soufyan Belkaid from The Netherlands, I currently study Computational Linguistics at The VU University, this is a data science oriented study with an interdisciplanairy way of going about analyzing data. The data is naturally unstructured meaning that it's about written text (for now, gestures are also being investigated). Extracting information such as who, where, when, what automatically from news articles and recognizing sentiment on events that are mentioned in texts. You could call it text mining.
-Recently, I've been funded a research project for a year, where I do research on creating concept hierarchies from text and extracting relations between concepts. For example automatically recognizing that a ""dog""  is some type of animal. or that ""fuscarium"" has been used in soil. Now the goal eventually of these hierarchies is to turn them into ontologies on which a reasoner can work and can be used in AI systems."
-<@U0F570U57|soufyanbelkaid> has joined the channel
