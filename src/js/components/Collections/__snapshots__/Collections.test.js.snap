@@ -25,47 +25,5 @@ exports[`test renders correctly 1`] = `
       </button>
     </div>
   </div>
-  <div
-    className={undefined}>
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h1>
-            Design
-          </h1>
-        </div>
-      </div>
-    </a>
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h1>
-            Frontend
-          </h1>
-        </div>
-      </div>
-    </a>
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      <div
-        className={undefined}>
-        <div
-          className={undefined}>
-          <h1>
-            Strategy
-          </h1>
-        </div>
-      </div>
-    </a>
-  </div>
 </div>
 `;

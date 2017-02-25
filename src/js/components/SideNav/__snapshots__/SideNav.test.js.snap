@@ -11,30 +11,6 @@ exports[`test renders correctly 1`] = `
         Collections
       </h1>
     </a>
-    <div
-      className={undefined}>
-      <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}>
-          Design
-        </a>
-      </div>
-      <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}>
-          Frontend
-        </a>
-      </div>
-      <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}>
-          Strategy
-        </a>
-      </div>
-    </div>
   </div>
 </div>
 `;

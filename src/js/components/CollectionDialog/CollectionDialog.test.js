@@ -4,7 +4,8 @@ import CollectionDialog from './CollectionDialog';
 
 it('renders correctly', () => {
     const props = {
-        close: () => {}
+        close: () => {},
+        create: () => {}
     }
     const component = renderer.create(
         <CollectionDialog {...props} />

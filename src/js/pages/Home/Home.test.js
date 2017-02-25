@@ -1,11 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Home from './Home';
 
 it('renders correctly', () => {
-    const component = renderer.create(
-        <Home />
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const shallowComponent = shallow(<Home />)
+    expect(shallowComponent).toMatchSnapshot();
 });
