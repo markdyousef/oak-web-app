@@ -9,6 +9,12 @@ exports[`test renders TopNav 1`] = `
       className={undefined}
       onClick={[Function]}
       style={Object {}}>
+      <div />
+    </a>
+    <a
+      className={undefined}
+      onClick={[Function]}
+      style={Object {}}>
       <div
         className={undefined}>
         <img

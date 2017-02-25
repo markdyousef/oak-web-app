@@ -5,7 +5,9 @@ import CollectionDialog from '../components/CollectionDialog';
 
 const createGrove = gql`
     mutation createGrove($title: String!) {
-        createGrove(title: $title)
+        createGrove(title: $title) {
+            id
+        }
     }
 `;
 
