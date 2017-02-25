@@ -47,15 +47,15 @@ const routes = (
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
-                    <Route path="/login" component={Login} />
-                    <Route path="/signup" component={SignUp} />
+                    <Route path="login" component={Login} />
+                    <Route path="signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated}>
                     <IndexRoute component={Home} />
-                    <Route path="/profile" component={Profile} />
-                    <Route path="/settings" component={Settings} />
+                    <Route path="profile" component={Profile} />
+                    <Route path="settings" component={Settings} />
                     <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
-                    <Route path="/collection/:collectionId" component={CollectionDetail} />
+                    <Route path="collection/:collectionId" component={CollectionDetail} />
                 </Route>
             </Route>
         </Router>
