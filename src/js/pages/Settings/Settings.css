@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings {
+    display: flex;
+}
+
+.settings h1 {
+    padding: 20px;
+}
