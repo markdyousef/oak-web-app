@@ -43,7 +43,7 @@ class CollectionDetail extends Component {
                             className={css.card}
                             key={item.id}
                         >
-                            <Card title={item.content} />
+                            <Card content={JSON.parse(item.content)} />
                         </div>
                     )}
                 </div>

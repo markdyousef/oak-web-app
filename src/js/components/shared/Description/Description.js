@@ -13,11 +13,12 @@ class Description extends Component {
     static propTypes = {
         showEdit: PropTypes.bool,
         content: PropTypes.string,
-        onChange: PropTypes.func.isRequired
+        onChange: PropTypes.func
     };
     static defaultProps = {
         content: null,
-        showEdit: null
+        showEdit: null,
+        onChange: null
     };
     constructor() {
         super();
