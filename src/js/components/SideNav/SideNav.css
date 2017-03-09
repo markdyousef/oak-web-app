@@ -25,7 +25,8 @@
 .collections h1 {
     color: var(--main-white-color);
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 400;
+    margin-top: 10px;
 }
 
 .collections a {

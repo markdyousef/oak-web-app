@@ -49,9 +49,21 @@ class SideNav extends Component {
                 <div className={css.collections}>
                     <Link to="/">
                         <div />
+                        <h1>Home</h1>
+                    </Link>
+                    <Link to="/">
+                        <div />
                         <h1>Collections</h1>
                     </Link>
                     {this.renderSubCategories()}
+                    <Link to="/">
+                        <div />
+                        <h1>Scoreboards</h1>
+                    </Link>
+                    <Link to="/">
+                        <div />
+                        <h1>Toolset</h1>
+                    </Link>
                 </div>
             </div>
         );
