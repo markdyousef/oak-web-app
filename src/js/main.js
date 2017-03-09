@@ -17,6 +17,8 @@ import CollectionDetail from './containers/CollectionDetailContainer';
 import Profile from './pages/Profile';
 import CardDetail from './containers/CardDetailContainer';
 import Settings from './containers/SettingsContainer';
+import User from './pages/User';
+import Admin from './pages/Admin';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -50,12 +52,17 @@ const routes = (
                     <Route path="signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
-                    <IndexRoute component={Home} />
-                    <Route path="home" component={Home} />
-                    <Route path="profile" component={Profile} />
-                    <Route path="settings" component={Settings} />
-                    <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
-                    <Route path="collection/:collectionId" component={CollectionDetail} />
+                    <Route component={User}>
+                        <IndexRoute component={Admin} />
+                    </Route>
+                    <Route component={Authenticated}>
+                        <IndexRoute component={Home} />
+                        <Route path="home" component={Home} />
+                        <Route path="profile" component={Profile} />
+                        <Route path="settings" component={Settings} />
+                        <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
+                        <Route path="collection/:collectionId" component={CollectionDetail} />
+                    </Route>
                 </Route>
             </Route>
         </Router>
