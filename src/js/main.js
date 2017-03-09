@@ -18,7 +18,7 @@ import Profile from './pages/Profile';
 import CardDetail from './containers/CardDetailContainer';
 import Settings from './containers/SettingsContainer';
 import User from './pages/User';
-import Admin from './components/Admin';
+import Admin from './containers/AdminContainer';
 import Team from './pages/Team';
 
 // Let webpack create the html file in the build folder

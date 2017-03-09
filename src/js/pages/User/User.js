@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import Admin from '../../components/Admin';
 import TopNav from '../../components/TopNav';
 
 import css from './User.css';
 
 class User extends Component {
+    static propTypes = {
+        children: PropTypes.node.isRequired
+    }
     constructor() {
         super();
         this.state = {};
@@ -13,7 +15,7 @@ class User extends Component {
         return (
             <div className={css.container}>
                 <TopNav />
-                <Admin />
+                {this.props.children}
             </div>
         );
     }
