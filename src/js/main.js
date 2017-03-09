@@ -53,9 +53,9 @@ const routes = (
                     <Route path="signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
-                    {/* <Route component={User}>
+                    <Route component={User}>
                         <IndexRoute component={Admin} />
-                    </Route> */}
+                    </Route>
                     <Route component={Team}>
                         <IndexRoute component={Home} />
                         <Route path="home" component={Home} />

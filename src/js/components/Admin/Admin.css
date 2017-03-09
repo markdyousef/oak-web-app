@@ -1,0 +1,30 @@
+:root {
+    --primary-color: #5ed892;
+    --main-black-color: #131517;
+    --light-black-color: #2d3438;
+    --dark-gray-color: #737a80;
+    --main-gray-color: #f2f2f2;
+    --light-gray-color: #fafafa;
+    --main-white-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actionField {
+    height: 100px;
+    width: 450px;
+}
+
+.actionField h1 {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.actionField div {
+    display: flex;
+}

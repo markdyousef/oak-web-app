@@ -1,16 +1,25 @@
+// @flow
 import React, { Component, PropTypes } from 'react';
+import CreateTeam from './CreateTeam';
 
 import css from './Admin.css';
 
 class Admin extends Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            teamName: ''
+        };
     }
     render() {
+        const { teamName } = this.state;
         return (
             <div className={css.container}>
-                ADMIN
+                <CreateTeam
+                    onChange={value => this.setState({ teamName: value })}
+                    onSubmit={() => {}}
+                    teamName={teamName}
+                />
             </div>
         );
     }

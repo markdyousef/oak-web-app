@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 
 import css from './Input.css';
 
-const Input = ({ title, value, placeholder, onChange, type }:Object) => {
+const Input = ({ value, placeholder, onChange, type }:Object) => {
     return (
         <div className={css.container}>
             <input
@@ -17,7 +17,6 @@ const Input = ({ title, value, placeholder, onChange, type }:Object) => {
 };
 
 Input.propTypes = {
-    title: PropTypes.string.isRequired,
     value: PropTypes.string,
     placeholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
