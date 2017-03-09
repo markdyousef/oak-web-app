@@ -18,7 +18,8 @@ import Profile from './pages/Profile';
 import CardDetail from './containers/CardDetailContainer';
 import Settings from './containers/SettingsContainer';
 import User from './pages/User';
-import Admin from './pages/Admin';
+import Admin from './components/Admin';
+import Team from './pages/Team';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -52,10 +53,10 @@ const routes = (
                     <Route path="signup" component={SignUp} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
-                    <Route component={User}>
+                    {/* <Route component={User}>
                         <IndexRoute component={Admin} />
-                    </Route>
-                    <Route component={Authenticated}>
+                    </Route> */}
+                    <Route component={Team}>
                         <IndexRoute component={Home} />
                         <Route path="home" component={Home} />
                         <Route path="profile" component={Profile} />

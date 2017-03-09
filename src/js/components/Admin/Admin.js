@@ -10,7 +10,7 @@ class Admin extends Component {
     render() {
         return (
             <div className={css.container}>
-                HELLO
+                ADMIN
             </div>
         );
     }
