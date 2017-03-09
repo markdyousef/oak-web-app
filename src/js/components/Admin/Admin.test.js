@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import User from './User';
+import Admin from './Admin';
 
 it('renders correctly', () => {
-    const shallowComponent = shallow(<User />);
+    const shallowComponent = shallow(<Admin />);
     expect(shallowComponent).toMatchSnapshot();
 });

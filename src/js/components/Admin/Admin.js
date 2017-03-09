@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import Admin from '../../components/Admin';
 
-import css from './User.css';
+import css from './Admin.css';
 
-class User extends Component {
+class Admin extends Component {
     constructor() {
         super();
         this.state = {};
@@ -11,10 +10,10 @@ class User extends Component {
     render() {
         return (
             <div className={css.container}>
-                <Admin />
+                HELLO
             </div>
         );
     }
 }
 
-export default User;
+export default Admin;
