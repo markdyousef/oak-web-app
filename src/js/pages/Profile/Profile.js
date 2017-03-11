@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TopNav from '../../components/TopNav';
 
 import css from './Profile.css';
 
@@ -12,7 +11,6 @@ class Profile extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
                 PROFILE
             </div>
         );

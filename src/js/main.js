@@ -55,10 +55,12 @@ const routes = (
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>
                         <IndexRoute component={Admin} />
+                        <Route path="profile" component={Profile} />
+                        <Route path="settings" component={Settings} />
                     </Route>
                     <Route component={Team}>
                         <IndexRoute component={Home} />
-                        <Route path="home" component={Home} />
+                        {/* <Route path="home" component={Home} /> */}
                         <Route path="profile" component={Profile} />
                         <Route path="settings" component={Settings} />
                         <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />

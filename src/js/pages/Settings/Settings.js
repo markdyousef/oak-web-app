@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TopNav from '../../components/TopNav';
 import Button from '../../components/shared/Button';
 import { signOut } from '../../utils'
 
@@ -26,7 +25,6 @@ class Settings extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
                 <div className={css.settings}>
                     <h1>Settings:</h1>
                     <Button
