@@ -6,7 +6,7 @@ import css from './Team.css';
 
 class Team extends Component {
     static propTypes = {
-        children: PropTypes.node.isRequired
+        children: PropTypes.node
     }
     constructor() {
         super();

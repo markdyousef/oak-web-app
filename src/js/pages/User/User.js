@@ -5,7 +5,7 @@ import css from './User.css';
 
 class User extends Component {
     static propTypes = {
-        children: PropTypes.node.isRequired
+        children: PropTypes.node
     }
     constructor() {
         super();

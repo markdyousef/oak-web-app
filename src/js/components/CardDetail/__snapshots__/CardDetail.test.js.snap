@@ -17,6 +17,7 @@ ShallowWrapper {
         className={undefined}>
         <Description
             content={null}
+            onChange={[Function]}
             showEdit={false} />
     </div>
 </div>,
@@ -32,6 +33,7 @@ ShallowWrapper {
             className={undefined}>
             <Description
                   content={null}
+                  onChange={[Function]}
                   showEdit={false} />
       </div>
 </div>,
@@ -44,6 +46,12 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <CardDetail
         close={[Function]}
+        create={[Function]}
+        params={
+                Object {
+                        "collectionId": "1",
+                      }
+        }
         router={
                 Object {
                         "goBack": [Function],
@@ -58,12 +66,18 @@ ShallowWrapper {
         "onSave": [Function],
         "props": Object {
           "close": [Function],
+          "create": [Function],
+          "params": Object {
+            "collectionId": "1",
+          },
           "router": Object {
             "goBack": [Function],
           },
         },
         "refs": Object {},
         "state": Object {
+          "content": null,
+          "message": null,
           "showEdit": false,
         },
         "updater": Object {
@@ -95,6 +109,7 @@ ShallowWrapper {
                     className={undefined}>
                     <Description
                               content={null}
+                              onChange={[Function]}
                               showEdit={false} />
           </div>
 </div>,
@@ -110,6 +125,7 @@ ShallowWrapper {
                     className={undefined}>
                     <Description
                               content={null}
+                              onChange={[Function]}
                               showEdit={false} />
           </div>
 </div>,
@@ -126,6 +142,12 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <CardDetail
     close={[Function]}
+    create={[Function]}
+    params={
+        Object {
+            "collectionId": "1",
+          }
+    }
     router={
         Object {
             "goBack": [Function],

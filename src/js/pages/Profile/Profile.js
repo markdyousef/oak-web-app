@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CoverPhoto from './CoverPhoto';
+import ProfileNav from './ProfileNav';
 
 import css from './Profile.css';
 
@@ -18,6 +19,7 @@ class Profile extends Component {
         return (
             <div className={css.container}>
                 <CoverPhoto picture={null} />
+                <ProfileNav />
             </div>
         );
     }

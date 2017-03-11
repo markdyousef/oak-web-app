@@ -4,7 +4,8 @@ import Admin from './Admin';
 
 it('renders correctly', () => {
     const props = {
-        createTeam: () => {}
+        createTeam: () => {},
+        data: {}
     };
     const shallowComponent = shallow(<Admin {...props} />);
     expect(shallowComponent).toMatchSnapshot();

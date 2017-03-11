@@ -8,7 +8,31 @@ exports[`test renders correctly 1`] = `
       style={Object {}}>
       <div />
       <h1>
+        Home
+      </h1>
+    </a>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <div />
+      <h1>
         Collections
+      </h1>
+    </a>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <div />
+      <h1>
+        Scoreboards
+      </h1>
+    </a>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <div />
+      <h1>
+        Toolset
       </h1>
     </a>
   </div>

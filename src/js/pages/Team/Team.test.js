@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import Team from './Team';
 
 it('renders correctly', () => {
-    const shallowComponent = shallow(<Team />);
+    const props = {
+        children: null
+    }
+    const shallowComponent = shallow(<Team {...props} />);
     expect(shallowComponent).toMatchSnapshot();
 });

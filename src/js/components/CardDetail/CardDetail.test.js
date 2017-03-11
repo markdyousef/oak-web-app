@@ -4,7 +4,11 @@ import CardDetail from './CardDetail';
 
 it('renders correctly', () => {
     const props = {
+        params: {
+            collectionId: '1'
+        },
         close: () => {},
+        create: () => {},
         router: {
             goBack: () => {}
         }

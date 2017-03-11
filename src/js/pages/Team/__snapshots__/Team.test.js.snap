@@ -8,36 +8,16 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <CreateTeam
-        onChange={[Function]}
-        onSubmit={[Function]}
-        teamName="" />
+    <Apollo(SideNav) />
     <div
-        className={undefined}>
-        <h1>
-            Select a team:
-        </h1>
-        <div>
-            You don\'t have any teams yet
-        </div>
-    </div>
+        className={undefined} />
 </div>,
   "nodes": Array [
     <div
       className={undefined}>
-      <CreateTeam
-            onChange={[Function]}
-            onSubmit={[Function]}
-            teamName="" />
+      <Apollo(SideNav) />
       <div
-            className={undefined}>
-            <h1>
-                  Select a team:
-            </h1>
-            <div>
-                  You don\'t have any teams yet
-            </div>
-      </div>
+            className={undefined} />
 </div>,
   ],
   "options": Object {},
@@ -46,26 +26,18 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Admin
-        createTeam={[Function]}
-        data={Object {}} />,
+      "_currentElement": <Team />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": Admin {
+      "_instance": Team {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "createTeam": [Function],
         "props": Object {
-          "createTeam": [Function],
-          "data": Object {},
+          "children": null,
         },
         "refs": Object {},
-        "renderTeams": [Function],
-        "state": Object {
-          "message": null,
-          "teamName": "",
-        },
+        "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -86,36 +58,16 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <CreateTeam
-                    onChange={[Function]}
-                    onSubmit={[Function]}
-                    teamName="" />
+          <Apollo(SideNav) />
           <div
-                    className={undefined}>
-                    <h1>
-                              Select a team:
-                    </h1>
-                    <div>
-                              You don\'t have any teams yet
-                    </div>
-          </div>
+                    className={undefined} />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <CreateTeam
-                    onChange={[Function]}
-                    onSubmit={[Function]}
-                    teamName="" />
+          <Apollo(SideNav) />
           <div
-                    className={undefined}>
-                    <h1>
-                              Select a team:
-                    </h1>
-                    <div>
-                              You don\'t have any teams yet
-                    </div>
-          </div>
+                    className={undefined} />
 </div>,
       },
       "_renderedNodeType": 0,
@@ -128,8 +80,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Admin
-    createTeam={[Function]}
-    data={Object {}} />,
+  "unrendered": <Team />,
 }
 `;
