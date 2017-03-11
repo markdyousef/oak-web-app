@@ -28,9 +28,10 @@
 }
 
 .avatar {
+    margin-left: 40px;
     height: 100px;
     width: 100px;
     border-radius: 100px;
     background-color: var(--main-white-color);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--dark-gray-color);
 }
