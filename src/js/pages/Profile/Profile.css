@@ -27,6 +27,20 @@
     align-items: center;
 }
 
+.nav a {
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 50px;
+    color: var(--main-black-color);
+    font-size: 14px;
+}
+
+.activeTab {
+    font-weight: bold;
+    border-bottom: 2px solid var(--main-black-color);
+}
+
 .avatar {
     margin-left: 40px;
     height: 100px;
