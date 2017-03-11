@@ -14,17 +14,22 @@
     align-items: center;
 }
 
-.actionField {
-    height: 100px;
-    width: 450px;
-}
-
-.actionField h1 {
+.container h1 {
     font-size: 18px;
     font-weight: bold;
     padding: 15px;
 }
 
+.actionField {
+    height: 100px;
+    width: 450px;
+}
+
 .actionField div {
     display: flex;
+}
+
+.teamList {
+    margin-top: 20px;
+    width: 450px;
 }

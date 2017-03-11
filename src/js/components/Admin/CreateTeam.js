@@ -8,7 +8,7 @@ import css from './Admin.css';
 const CreateTeam = ({ teamName, onChange, onSubmit }:Object) => {
     return (
         <div className={css.actionField}>
-            <h1>CREATE TEAM</h1>
+            <h1>Create a new team</h1>
             <div>
                 <Input
                     value={teamName}

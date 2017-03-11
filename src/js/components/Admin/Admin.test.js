@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import Admin from './Admin';
 
 it('renders correctly', () => {
-    const shallowComponent = shallow(<Admin />);
+    const props = {
+        createTeam: () => {}
+    };
+    const shallowComponent = shallow(<Admin {...props} />);
     expect(shallowComponent).toMatchSnapshot();
 });
