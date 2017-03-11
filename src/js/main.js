@@ -14,7 +14,7 @@ import Login from './containers/LoginContainer';
 import SignUp from './containers/SignUpContainer';
 import Home from './pages/Home';
 import CollectionDetail from './containers/CollectionDetailContainer';
-import Profile from './pages/Profile';
+import Profile from './containers/ProfileContainer';
 import CardDetail from './containers/CardDetailContainer';
 import Settings from './containers/SettingsContainer';
 import User from './pages/User';
