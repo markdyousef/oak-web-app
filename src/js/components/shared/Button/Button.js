@@ -38,6 +38,7 @@ const Default = styled.button`
     padding: 8px 24px;
     font-weight: bold;
     outline: none;
+    cursor: pointer;
     &:active {
         background-color: ${colors.lightGrey}
     }

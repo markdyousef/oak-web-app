@@ -24,7 +24,7 @@ const valid = (notValid) => {
 const Default = styled.input`
     padding: 12px 8px;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     border-radius: 3px;
     border: 1px solid ${colors.lightGrey};
     font-size: 15px;

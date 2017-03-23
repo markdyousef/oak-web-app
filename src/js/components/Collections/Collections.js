@@ -47,6 +47,7 @@ class Collections extends Component {
     }
     render() {
         const { showAdd } = this.state;
+        const { data } = this.props;
         return (
             <div className={css.container}>
                 <div className={css.header}>
@@ -61,7 +62,10 @@ class Collections extends Component {
                         />
                         {showAdd &&
                             <CollectionDialog
-                                close={() => this.setState({ showAdd: false })}
+                                close={() => {
+                                    data.refetch();
+                                    this.setState({ showAdd: false });
+                                }}
                             />
                         }
                     </div>

@@ -2,10 +2,11 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import CollectionDialog from '../components/CollectionDialog';
+import { getTeam } from '../utils';
 
 const createGrove = gql`
-    mutation createGrove($title: String!) {
-        createGrove(title: $title) {
+    mutation createGrove($teamId: ID!, $title: String!, $description: String) {
+        createGrove(teamId: $teamId, title: $title, description: $description) {
             id
         }
     }
@@ -14,7 +15,7 @@ const createGrove = gql`
 export default compose(
     graphql(createGrove, {
         props: ({ mutate }) => ({
-            create: title => mutate({ variables: { title } })
+            create: (title, description) => mutate({ variables: { teamId: getTeam(), title, description } })
         })
     })
 )(CollectionDialog);
