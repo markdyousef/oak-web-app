@@ -15,4 +15,4 @@ storiesOf('Button', module)
             text="Add Label"
             rounded
         />
-    ))
+    ));

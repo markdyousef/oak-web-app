@@ -54,7 +54,7 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string,
-    rounded: PropTypes.string
+    rounded: PropTypes.bool
 };
 
 Button.defaultProps = {
