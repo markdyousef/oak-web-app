@@ -2,7 +2,6 @@
 import React, { Component, PropTypes } from 'react';
 import Card from '../Card';
 import Button from '../shared/Button';
-import Description from '../shared/Description';
 import TopNav from '../TopNav'
 
 
@@ -60,7 +59,6 @@ class CollectionDetail extends Component {
                 <TopNav />
                 <div className={css.header}>
                     <div className={css.description}>
-                        <Description />
                     </div>
                     <div className={css.toolbar}>
                         <div>

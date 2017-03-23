@@ -8,16 +8,12 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <TopNav />
+    <TopNav
+        team={null} />
     <div
         className={undefined}>
         <div
-            className={undefined}>
-            <Description
-                content={null}
-                onChange={null}
-                showEdit={null} />
-        </div>
+            className={undefined} />
         <div
             className={undefined}>
             <div>
@@ -25,6 +21,7 @@ ShallowWrapper {
             </div>
             <Button
                 onClick={[Function]}
+                rounded={false}
                 text="Add Card"
                 type="primary" />
         </div>
@@ -33,16 +30,12 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className={undefined}>
-      <TopNav />
+      <TopNav
+            team={null} />
       <div
             className={undefined}>
             <div
-                  className={undefined}>
-                  <Description
-                        content={null}
-                        onChange={null}
-                        showEdit={null} />
-            </div>
+                  className={undefined} />
             <div
                   className={undefined}>
                   <div>
@@ -50,6 +43,7 @@ ShallowWrapper {
                   </div>
                   <Button
                         onClick={[Function]}
+                        rounded={false}
                         text="Add Card"
                         type="primary" />
             </div>
@@ -100,16 +94,12 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <TopNav />
+          <TopNav
+                    team={null} />
           <div
                     className={undefined}>
                     <div
-                              className={undefined}>
-                              <Description
-                                        content={null}
-                                        onChange={null}
-                                        showEdit={null} />
-                    </div>
+                              className={undefined} />
                     <div
                               className={undefined}>
                               <div>
@@ -117,6 +107,7 @@ ShallowWrapper {
                               </div>
                               <Button
                                         onClick={[Function]}
+                                        rounded={false}
                                         text="Add Card"
                                         type="primary" />
                     </div>
@@ -125,16 +116,12 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <TopNav />
+          <TopNav
+                    team={null} />
           <div
                     className={undefined}>
                     <div
-                              className={undefined}>
-                              <Description
-                                        content={null}
-                                        onChange={null}
-                                        showEdit={null} />
-                    </div>
+                              className={undefined} />
                     <div
                               className={undefined}>
                               <div>
@@ -142,6 +129,7 @@ ShallowWrapper {
                               </div>
                               <Button
                                         onClick={[Function]}
+                                        rounded={false}
                                         text="Add Card"
                                         type="primary" />
                     </div>

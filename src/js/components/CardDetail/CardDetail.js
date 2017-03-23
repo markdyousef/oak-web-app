@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import Description from '../shared/Description';
 import TopBar from './TopBar';
 
 import css from './CardDetail.css';
@@ -53,11 +52,6 @@ class CardDetail extends Component {
                     edit={() => this.setState({ showEdit: true })}
                 />
                 <div className={css.main}>
-                    <Description
-                        showEdit={showEdit}
-                        content={null}
-                        onChange={value => this.setState({ content: value })}
-                    />
                 </div>
             </div>
         );

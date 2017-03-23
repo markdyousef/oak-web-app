@@ -14,12 +14,7 @@ ShallowWrapper {
         save={[Function]}
         showEdit={false} />
     <div
-        className={undefined}>
-        <Description
-            content={null}
-            onChange={[Function]}
-            showEdit={false} />
-    </div>
+        className={undefined} />
 </div>,
   "nodes": Array [
     <div
@@ -30,12 +25,7 @@ ShallowWrapper {
             save={[Function]}
             showEdit={false} />
       <div
-            className={undefined}>
-            <Description
-                  content={null}
-                  onChange={[Function]}
-                  showEdit={false} />
-      </div>
+            className={undefined} />
 </div>,
   ],
   "options": Object {},
@@ -106,12 +96,7 @@ ShallowWrapper {
                     save={[Function]}
                     showEdit={false} />
           <div
-                    className={undefined}>
-                    <Description
-                              content={null}
-                              onChange={[Function]}
-                              showEdit={false} />
-          </div>
+                    className={undefined} />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
@@ -122,12 +107,7 @@ ShallowWrapper {
                     save={[Function]}
                     showEdit={false} />
           <div
-                    className={undefined}>
-                    <Description
-                              content={null}
-                              onChange={[Function]}
-                              showEdit={false} />
-          </div>
+                    className={undefined} />
 </div>,
       },
       "_renderedNodeType": 0,

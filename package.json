@@ -39,7 +39,6 @@
     "graphql-tag": "^1.2.4",
     "history": "4.5.1",
     "immutable": "3.8.1",
-    "medium-draft": "^0.4.1",
     "react": "^15.4.2",
     "react-apollo": "^0.11.2",
     "react-dom": "^15.4.2",
