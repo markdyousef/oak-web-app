@@ -20,7 +20,8 @@ const COLORS = [
 const H5 = styled.h5`
     font-size: 14px;
     font-weight: lighter;
-    color: ${colors.grey}
+    color: ${colors.grey};
+    font-family: 'proxima-nova'
 `;
 
 const Grid = styled.div`
