@@ -36,6 +36,7 @@
     "apollo-client": "^0.8.7",
     "draft-convert": "^1.4.2",
     "draft-js-plugins-editor": "^2.0.0-beta1",
+    "draft-js-side-toolbar-plugin": "beta",
     "fastclick": "1.0.6",
     "graphql-tag": "^1.2.4",
     "history": "4.5.1",

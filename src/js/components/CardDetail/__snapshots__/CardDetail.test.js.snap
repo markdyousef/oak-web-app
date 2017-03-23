@@ -14,7 +14,9 @@ ShallowWrapper {
         save={[Function]}
         showEdit={false} />
     <div
-        className={undefined} />
+        className={undefined}>
+        <MainEditor />
+    </div>
 </div>,
   "nodes": Array [
     <div
@@ -25,7 +27,9 @@ ShallowWrapper {
             save={[Function]}
             showEdit={false} />
       <div
-            className={undefined} />
+            className={undefined}>
+            <MainEditor />
+      </div>
 </div>,
   ],
   "options": Object {},
@@ -96,7 +100,9 @@ ShallowWrapper {
                     save={[Function]}
                     showEdit={false} />
           <div
-                    className={undefined} />
+                    className={undefined}>
+                    <MainEditor />
+          </div>
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
@@ -107,7 +113,9 @@ ShallowWrapper {
                     save={[Function]}
                     showEdit={false} />
           <div
-                    className={undefined} />
+                    className={undefined}>
+                    <MainEditor />
+          </div>
 </div>,
       },
       "_renderedNodeType": 0,

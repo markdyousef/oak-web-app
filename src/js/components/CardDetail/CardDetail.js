@@ -53,6 +53,7 @@ class CardDetail extends Component {
                     edit={() => this.setState({ showEdit: true })}
                 />
                 <div className={css.main}>
+                    <Editor />
                 </div>
             </div>
         );
