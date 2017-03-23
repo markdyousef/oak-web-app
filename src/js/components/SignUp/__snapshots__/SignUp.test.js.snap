@@ -36,26 +36,14 @@ exports[`test renders correctly 1`] = `
     <div
       className={undefined}>
       <button
-        className=" "
+        className="iAecad"
         onClick={[Function]}>
-        <div>
-          <label
-            className={undefined}
-            htmlFor="text">
-            Login
-          </label>
-        </div>
+        Login
       </button>
       <button
-        className=" "
+        className="iAecad"
         onClick={[Function]}>
-        <div>
-          <label
-            className={undefined}
-            htmlFor="text">
-            Create Account
-          </label>
-        </div>
+        Create Account
       </button>
     </div>
     <div

@@ -3,6 +3,16 @@ import { storiesOf, action } from '@kadira/storybook';
 import Button from './Button';
 
 storiesOf('Button', module)
-    .add('with text', () => (
-        <Button onClick={action('Fuck Yeah!')} text="Click me!" />
+    .add('Ghost Squared', () => (
+        <Button
+            onClick={action('Fuck Yeah!')}
+            text="Cancel"
+        />
+    ))
+    .add('Ghost Rounded', () => (
+        <Button
+            onClick={action('Clicked!')}
+            text="Add Label"
+            rounded
+        />
     ))

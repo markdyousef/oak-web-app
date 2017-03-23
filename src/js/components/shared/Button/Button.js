@@ -1,36 +1,52 @@
 // @flow
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
-import css from './Button.css';
+const Default = styled.button`
+    border: 1px solid ${colors.lightGrey};
+    font-size: 14px;
+    background-color: ${colors.white};
+    padding: 8px 24px;
+    font-weight: bold;
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        background-color: ${colors.lightGrey}
+    }
+    &:hover {
+        border-color: ${colors.grey}
+    }
+`;
 
-const Button = ({ onClick, text, value, type }: Object) => {
-    let className = null;
-    switch (type) {
-    case 'transparent':
-        className = css.transparent;
-        break;
-    case 'primary':
-        className = css.primary;
-        break;
-    case 'primaryAction':
-        className = [css.action, css.primaryAction].join(' ');
-        break;
-    case 'secondaryAction':
-        className = [css.action, css.secondaryAction].join(' ');
-        break;
-    default:
-        break;
+const Squared = styled(Default)`
+    color: #131517;
+    border-radius: 3px;
+`;
+
+const Rounded = styled(Default)`
+    border-radius: 999em;
+`;
+
+const Button = ({ ...props }: Object) => {
+    if (props.rounded) {
+        return (
+            <Rounded
+                onClick={props.onClick}
+                type={props.type}
+            >
+                {props.text}
+            </Rounded>
+        );
     }
     return (
-        <button
-            onClick={onClick}
-            className={[css.container, className].join(' ')}
+        <Squared
+            onClick={props.onClick}
+            type={props.type}
         >
-            <div>
-                {value !== null && <label htmlFor="value">{value}</label>}
-                <label className={css.title} htmlFor="text">{text}</label>
-            </div>
-        </button>
+            {props.text}
+        </Squared>
     );
 };
 
@@ -38,12 +54,12 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string,
-    value: PropTypes.number
+    rounded: PropTypes.string
 };
 
 Button.defaultProps = {
     type: null,
-    value: null
+    rounded: false
 };
 
 export default Button;

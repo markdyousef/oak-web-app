@@ -23,26 +23,14 @@ exports[`test renders correctly 1`] = `
     <div
       className={undefined}>
       <button
-        className=" "
+        className="iAecad"
         onClick={[Function]}>
-        <div>
-          <label
-            className={undefined}
-            htmlFor="text">
-            Cancel
-          </label>
-        </div>
+        Cancel
       </button>
       <button
-        className=" "
+        className="iAecad"
         onClick={[Function]}>
-        <div>
-          <label
-            className={undefined}
-            htmlFor="text">
-            Save
-          </label>
-        </div>
+        Save
       </button>
     </div>
   </div>

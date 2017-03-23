@@ -26,8 +26,7 @@ ShallowWrapper {
             <Button
                 onClick={[Function]}
                 text="Add Card"
-                type="primary"
-                value={null} />
+                type="primary" />
         </div>
     </div>
 </div>,
@@ -52,8 +51,7 @@ ShallowWrapper {
                   <Button
                         onClick={[Function]}
                         text="Add Card"
-                        type="primary"
-                        value={null} />
+                        type="primary" />
             </div>
       </div>
 </div>,
@@ -120,8 +118,7 @@ ShallowWrapper {
                               <Button
                                         onClick={[Function]}
                                         text="Add Card"
-                                        type="primary"
-                                        value={null} />
+                                        type="primary" />
                     </div>
           </div>
 </div>,
@@ -146,8 +143,7 @@ ShallowWrapper {
                               <Button
                                         onClick={[Function]}
                                         text="Add Card"
-                                        type="primary"
-                                        value={null} />
+                                        type="primary" />
                     </div>
           </div>
 </div>,

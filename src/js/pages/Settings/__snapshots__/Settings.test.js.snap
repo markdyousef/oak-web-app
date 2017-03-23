@@ -7,15 +7,9 @@ exports[`test renders correctly 1`] = `
       Settings:
     </h1>
     <button
-      className=" "
+      className="iAecad"
       onClick={[Function]}>
-      <div>
-        <label
-          className={undefined}
-          htmlFor="text">
-          Sign out
-        </label>
-      </div>
+      Sign out
     </button>
   </div>
 </div>
