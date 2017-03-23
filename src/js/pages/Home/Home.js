@@ -15,7 +15,7 @@ class Home extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
+                <TopNav team />
                 <div className={css.categories}>
                     <Collections />
                 </div>
