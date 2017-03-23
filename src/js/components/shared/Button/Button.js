@@ -3,15 +3,41 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../../styles/colors';
 
+const style = (type) => {
+    if (type === 'primary') {
+        return `
+            background-color: ${colors.green};
+            border-color: ${colors.green};
+            color: ${colors.white};
+            &:active {
+                background-color: #57B188
+            }
+            &:hover {
+                border-color: ${colors.green}
+            }`;
+    }
+    if (type === 'alarm') {
+        return `
+            background-color: #E87385;
+            border-color: #E87385;
+            color: ${colors.white};
+            &:active {
+                background-color: #D95D70
+            }
+            &:hover {
+                border-color: #E87385
+            }`;
+    }
+    return null;
+};
+
 const Default = styled.button`
     border: 1px solid ${colors.lightGrey};
     font-size: 14px;
     background-color: ${colors.white};
     padding: 8px 24px;
     font-weight: bold;
-    &:focus {
-        outline: none;
-    }
+    outline: none;
     &:active {
         background-color: ${colors.lightGrey}
     }
@@ -23,10 +49,12 @@ const Default = styled.button`
 const Squared = styled(Default)`
     color: #131517;
     border-radius: 3px;
+    ${props => style(props.type)};
 `;
 
 const Rounded = styled(Default)`
     border-radius: 999em;
+    ${props => style(props.type)};
 `;
 
 const Button = ({ ...props }: Object) => {

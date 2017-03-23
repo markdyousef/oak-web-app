@@ -15,4 +15,26 @@ storiesOf('Button', module)
             text="Add Label"
             rounded
         />
+    ))
+    .add('Primary Rounded', () => (
+        <Button
+            onClick={action('Clicked!')}
+            text="Share Card"
+            rounded
+            type="primary"
+        />
+    ))
+    .add('Primary Square', () => (
+        <Button
+            onClick={action('Clicked!')}
+            text="Challenge"
+            type="primary"
+        />
+    ))
+    .add('Alarm Square', () => (
+        <Button
+            onClick={action('Clicked!')}
+            text="Challenge"
+            type="alarm"
+        />
     ));
