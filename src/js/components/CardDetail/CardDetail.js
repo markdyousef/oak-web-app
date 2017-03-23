@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import TopBar from './TopBar';
+import Editor from '../Editor';
 
 import css from './CardDetail.css';
 
