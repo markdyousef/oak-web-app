@@ -21,6 +21,13 @@ const valid = (notValid) => {
     }`;
 };
 
+const H5 = styled.h5`
+    font-size: 14px;
+    font-weight: lighter;
+    color: ${colors.darkGrey};
+    margin-bottom: 5px;
+`;
+
 const Default = styled.input`
     padding: 12px 8px;
     width: 100%;
@@ -36,6 +43,7 @@ const Default = styled.input`
 const Input = ({ ...props }:Object) => {
     return (
         <div>
+            <H5>{props.title}</H5>
             <Default
                 type={props.type || 'text'}
                 value={props.value}
