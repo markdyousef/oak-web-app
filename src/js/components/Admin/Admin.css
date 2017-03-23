@@ -20,15 +20,6 @@
     padding: 15px;
 }
 
-.actionField {
-    height: 100px;
-    width: 450px;
-}
-
-.actionField div {
-    display: flex;
-}
-
 .teamList {
     margin-top: 20px;
     width: 450px;

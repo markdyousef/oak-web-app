@@ -36,7 +36,11 @@ class Admin extends Component {
             return (
                 <div>
                     {data.teams.map(team =>
-                        <Team team={team} onSelect={id => console.log(id)} />
+                        <Team
+                            team={team}
+                            onSelect={() => console.log(team.id)}
+                            key={team.id}
+                        />
                     )}
                 </div>
             );

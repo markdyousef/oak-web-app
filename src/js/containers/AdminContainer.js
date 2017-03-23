@@ -6,7 +6,9 @@ import Admin from '../components/Admin';
 const getTeams = gql`
     query teams {
         teams {
+            id
             name
+            role
         }
     }
 `;

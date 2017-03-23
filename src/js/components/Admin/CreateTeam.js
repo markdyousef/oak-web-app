@@ -1,15 +1,20 @@
 // @flow
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 import Input from '../../components/shared/Input';
 import Button from '../../components/shared/Button';
 
-import css from './Admin.css';
+const Container = styled.div`
+    display: flex;
+    width: 450px;
+`;
+
 
 const CreateTeam = ({ teamName, onChange, onSubmit }:Object) => {
     return (
-        <div className={css.actionField}>
+        <div>
             <h1>Create a new team</h1>
-            <div>
+            <Container>
                 <Input
                     value={teamName}
                     placeholder="Clai"
@@ -20,7 +25,7 @@ const CreateTeam = ({ teamName, onChange, onSubmit }:Object) => {
                     text="Create"
                     type="primary"
                 />
-            </div>
+            </Container>
         </div>
     );
 };
