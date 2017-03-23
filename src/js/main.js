@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { requireAuth } from './utils';
+import { requireAuth, requireTeam } from './utils';
 
 // Components
 import App from './containers/AppContainer';
@@ -54,11 +54,11 @@ const routes = (
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>
-                        <IndexRoute component={Admin} />
+                        <Route path="admin" component={Admin} />
                         <Route path="profile" component={Profile} />
                         <Route path="settings" component={Settings} />
                     </Route>
-                    <Route component={Team}>
+                    <Route component={Team} onEnter={requireTeam}>
                         <IndexRoute component={Home} />
                         <Route path="home" component={Home} />
                         <Route path="profile" component={Profile} />

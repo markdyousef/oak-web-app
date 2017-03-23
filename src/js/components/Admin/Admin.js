@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import CreateTeam from './CreateTeam';
 import Team from './Team';
+import { selectTeam } from '../../utils';
 
 import css from './Admin.css';
 
@@ -38,7 +39,7 @@ class Admin extends Component {
                     {data.teams.map(team =>
                         <Team
                             team={team}
-                            onSelect={() => console.log(team.id)}
+                            onSelect={() => selectTeam(team.id)}
                             key={team.id}
                         />
                     )}

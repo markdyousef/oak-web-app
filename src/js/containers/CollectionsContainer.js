@@ -2,10 +2,11 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import Collections from '../components/Collections';
+import { getTeam } from '../utils';
 
 const getCollections = gql`
-    query groves {
-        groves {
+    query groves($teamId: ID!) {
+        groves(teamId: $teamId) {
             id
             title
         }
@@ -13,5 +14,8 @@ const getCollections = gql`
 `;
 
 export default compose(
-    graphql(getCollections)
+    graphql(getCollections, {
+        name: 'data',
+        options: () => ({ variables: { teamId: getTeam() } })
+    })
 )(Collections);
