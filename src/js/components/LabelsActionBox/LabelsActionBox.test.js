@@ -5,7 +5,7 @@ import LabelsActionBox from './LabelsActionBox';
 it('renders correctly', () => {
     const props = {
         close: () => {}
-    }
+    };
     const component = renderer.create(
         <LabelsActionBox {...props} />
     );
