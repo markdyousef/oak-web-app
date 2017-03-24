@@ -1,7 +1,8 @@
 exports[`test renders Button 1`] = `
 <button
-  className="iAecad"
-  onClick={[Function]}>
+  className="bBPMRg"
+  onClick={[Function]}
+  type={null}>
   Hello
 </button>
 `;

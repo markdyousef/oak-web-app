@@ -11,6 +11,28 @@ exports[`test renders correctly 1`] = `
     className={undefined}>
     <div
       className={undefined} />
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      Overview
+    </a>
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      Insights
+    </a>
+  </div>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      <h1>
+        mark
+      </h1>
+      <h2>
+        mark
+      </h2>
+    </div>
   </div>
 </div>
 `;

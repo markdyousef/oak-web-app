@@ -6,7 +6,9 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
+  "node": <styled.div
+    className={undefined}
+    onClick={[Function]}>
     <PluginEditor
         customStyleMap={Object {}}
         decorators={Array []}
@@ -18,11 +20,11 @@ ShallowWrapper {
                   "allowUndo": true,
                   "currentContent": Object {
                     "blockMap": Object {
-                      "14pgn": Object {
+                      "fomtp": Object {
                         "characterList": Array [],
                         "data": Object {},
                         "depth": 0,
-                        "key": "14pgn",
+                        "key": "fomtp",
                         "text": "",
                         "type": "unstyled",
                       },
@@ -42,17 +44,17 @@ ShallowWrapper {
                       "replaceData": [Function],
                     },
                     "selectionAfter": Object {
-                      "anchorKey": "14pgn",
+                      "anchorKey": "fomtp",
                       "anchorOffset": 0,
-                      "focusKey": "14pgn",
+                      "focusKey": "fomtp",
                       "focusOffset": 0,
                       "hasFocus": false,
                       "isBackward": false,
                     },
                     "selectionBefore": Object {
-                      "anchorKey": "14pgn",
+                      "anchorKey": "fomtp",
                       "anchorOffset": 0,
-                      "focusKey": "14pgn",
+                      "focusKey": "fomtp",
                       "focusOffset": 0,
                       "hasFocus": false,
                       "isBackward": false,
@@ -60,7 +62,7 @@ ShallowWrapper {
                   },
                   "decorator": null,
                   "directionMap": Object {
-                    "14pgn": "LTR",
+                    "fomtp": "LTR",
                   },
                   "forceSelection": false,
                   "inCompositionMode": false,
@@ -69,15 +71,15 @@ ShallowWrapper {
                   "nativelyRenderedContent": null,
                   "redoStack": Array [],
                   "selection": Object {
-                    "anchorKey": "14pgn",
+                    "anchorKey": "fomtp",
                     "anchorOffset": 0,
-                    "focusKey": "14pgn",
+                    "focusKey": "fomtp",
                     "focusOffset": 0,
                     "hasFocus": false,
                     "isBackward": false,
                   },
                   "treeMap": Object {
-                    "14pgn": Array [
+                    "fomtp": Array [
                       Object {
                         "decoratorKey": null,
                         "end": 0,
@@ -105,9 +107,12 @@ ShallowWrapper {
                 },
               ]
         } />
+    <Decorated(Toolbar) />
 </styled.div>,
   "nodes": Array [
-    <styled.div>
+    <styled.div
+      className={undefined}
+      onClick={[Function]}>
       <PluginEditor
             customStyleMap={Object {}}
             decorators={Array []}
@@ -119,11 +124,11 @@ ShallowWrapper {
                           "allowUndo": true,
                           "currentContent": Object {
                             "blockMap": Object {
-                              "14pgn": Object {
+                              "fomtp": Object {
                                 "characterList": Array [],
                                 "data": Object {},
                                 "depth": 0,
-                                "key": "14pgn",
+                                "key": "fomtp",
                                 "text": "",
                                 "type": "unstyled",
                               },
@@ -143,17 +148,17 @@ ShallowWrapper {
                               "replaceData": [Function],
                             },
                             "selectionAfter": Object {
-                              "anchorKey": "14pgn",
+                              "anchorKey": "fomtp",
                               "anchorOffset": 0,
-                              "focusKey": "14pgn",
+                              "focusKey": "fomtp",
                               "focusOffset": 0,
                               "hasFocus": false,
                               "isBackward": false,
                             },
                             "selectionBefore": Object {
-                              "anchorKey": "14pgn",
+                              "anchorKey": "fomtp",
                               "anchorOffset": 0,
-                              "focusKey": "14pgn",
+                              "focusKey": "fomtp",
                               "focusOffset": 0,
                               "hasFocus": false,
                               "isBackward": false,
@@ -161,7 +166,7 @@ ShallowWrapper {
                           },
                           "decorator": null,
                           "directionMap": Object {
-                            "14pgn": "LTR",
+                            "fomtp": "LTR",
                           },
                           "forceSelection": false,
                           "inCompositionMode": false,
@@ -170,15 +175,15 @@ ShallowWrapper {
                           "nativelyRenderedContent": null,
                           "redoStack": Array [],
                           "selection": Object {
-                            "anchorKey": "14pgn",
+                            "anchorKey": "fomtp",
                             "anchorOffset": 0,
-                            "focusKey": "14pgn",
+                            "focusKey": "fomtp",
                             "focusOffset": 0,
                             "hasFocus": false,
                             "isBackward": false,
                           },
                           "treeMap": Object {
-                            "14pgn": Array [
+                            "fomtp": Array [
                               Object {
                                 "decoratorKey": null,
                                 "end": 0,
@@ -206,6 +211,7 @@ ShallowWrapper {
                         },
                       ]
             } />
+      <Decorated(Toolbar) />
 </styled.div>,
   ],
   "options": Object {},
@@ -221,6 +227,8 @@ ShallowWrapper {
       "_instance": MainEditor {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "focus": [Function],
+        "onChange": [Function],
         "props": Object {},
         "refs": Object {},
         "state": Object {
@@ -229,11 +237,11 @@ ShallowWrapper {
               "allowUndo": true,
               "currentContent": Object {
                 "blockMap": Object {
-                  "14pgn": Object {
+                  "fomtp": Object {
                     "characterList": Array [],
                     "data": Object {},
                     "depth": 0,
-                    "key": "14pgn",
+                    "key": "fomtp",
                     "text": "",
                     "type": "unstyled",
                   },
@@ -253,17 +261,17 @@ ShallowWrapper {
                   "replaceData": [Function],
                 },
                 "selectionAfter": Object {
-                  "anchorKey": "14pgn",
+                  "anchorKey": "fomtp",
                   "anchorOffset": 0,
-                  "focusKey": "14pgn",
+                  "focusKey": "fomtp",
                   "focusOffset": 0,
                   "hasFocus": false,
                   "isBackward": false,
                 },
                 "selectionBefore": Object {
-                  "anchorKey": "14pgn",
+                  "anchorKey": "fomtp",
                   "anchorOffset": 0,
-                  "focusKey": "14pgn",
+                  "focusKey": "fomtp",
                   "focusOffset": 0,
                   "hasFocus": false,
                   "isBackward": false,
@@ -271,7 +279,7 @@ ShallowWrapper {
               },
               "decorator": null,
               "directionMap": Object {
-                "14pgn": "LTR",
+                "fomtp": "LTR",
               },
               "forceSelection": false,
               "inCompositionMode": false,
@@ -280,15 +288,15 @@ ShallowWrapper {
               "nativelyRenderedContent": null,
               "redoStack": Array [],
               "selection": Object {
-                "anchorKey": "14pgn",
+                "anchorKey": "fomtp",
                 "anchorOffset": 0,
-                "focusKey": "14pgn",
+                "focusKey": "fomtp",
                 "focusOffset": 0,
                 "hasFocus": false,
                 "isBackward": false,
               },
               "treeMap": Object {
-                "14pgn": Array [
+                "fomtp": Array [
                   Object {
                     "decoratorKey": null,
                     "end": 0,
@@ -324,7 +332,9 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
+        "_currentElement": <styled.div
+          className={undefined}
+          onClick={[Function]}>
           <PluginEditor
                     customStyleMap={Object {}}
                     decorators={Array []}
@@ -336,11 +346,11 @@ ShallowWrapper {
                                           "allowUndo": true,
                                           "currentContent": Object {
                                             "blockMap": Object {
-                                              "14pgn": Object {
+                                              "fomtp": Object {
                                                 "characterList": Array [],
                                                 "data": Object {},
                                                 "depth": 0,
-                                                "key": "14pgn",
+                                                "key": "fomtp",
                                                 "text": "",
                                                 "type": "unstyled",
                                               },
@@ -360,17 +370,17 @@ ShallowWrapper {
                                               "replaceData": [Function],
                                             },
                                             "selectionAfter": Object {
-                                              "anchorKey": "14pgn",
+                                              "anchorKey": "fomtp",
                                               "anchorOffset": 0,
-                                              "focusKey": "14pgn",
+                                              "focusKey": "fomtp",
                                               "focusOffset": 0,
                                               "hasFocus": false,
                                               "isBackward": false,
                                             },
                                             "selectionBefore": Object {
-                                              "anchorKey": "14pgn",
+                                              "anchorKey": "fomtp",
                                               "anchorOffset": 0,
-                                              "focusKey": "14pgn",
+                                              "focusKey": "fomtp",
                                               "focusOffset": 0,
                                               "hasFocus": false,
                                               "isBackward": false,
@@ -378,7 +388,7 @@ ShallowWrapper {
                                           },
                                           "decorator": null,
                                           "directionMap": Object {
-                                            "14pgn": "LTR",
+                                            "fomtp": "LTR",
                                           },
                                           "forceSelection": false,
                                           "inCompositionMode": false,
@@ -387,15 +397,15 @@ ShallowWrapper {
                                           "nativelyRenderedContent": null,
                                           "redoStack": Array [],
                                           "selection": Object {
-                                            "anchorKey": "14pgn",
+                                            "anchorKey": "fomtp",
                                             "anchorOffset": 0,
-                                            "focusKey": "14pgn",
+                                            "focusKey": "fomtp",
                                             "focusOffset": 0,
                                             "hasFocus": false,
                                             "isBackward": false,
                                           },
                                           "treeMap": Object {
-                                            "14pgn": Array [
+                                            "fomtp": Array [
                                               Object {
                                                 "decoratorKey": null,
                                                 "end": 0,
@@ -423,9 +433,12 @@ ShallowWrapper {
                                         },
                                       ]
                     } />
+          <Decorated(Toolbar) />
 </styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
+        "_renderedOutput": <styled.div
+          className={undefined}
+          onClick={[Function]}>
           <PluginEditor
                     customStyleMap={Object {}}
                     decorators={Array []}
@@ -437,11 +450,11 @@ ShallowWrapper {
                                           "allowUndo": true,
                                           "currentContent": Object {
                                             "blockMap": Object {
-                                              "14pgn": Object {
+                                              "fomtp": Object {
                                                 "characterList": Array [],
                                                 "data": Object {},
                                                 "depth": 0,
-                                                "key": "14pgn",
+                                                "key": "fomtp",
                                                 "text": "",
                                                 "type": "unstyled",
                                               },
@@ -461,17 +474,17 @@ ShallowWrapper {
                                               "replaceData": [Function],
                                             },
                                             "selectionAfter": Object {
-                                              "anchorKey": "14pgn",
+                                              "anchorKey": "fomtp",
                                               "anchorOffset": 0,
-                                              "focusKey": "14pgn",
+                                              "focusKey": "fomtp",
                                               "focusOffset": 0,
                                               "hasFocus": false,
                                               "isBackward": false,
                                             },
                                             "selectionBefore": Object {
-                                              "anchorKey": "14pgn",
+                                              "anchorKey": "fomtp",
                                               "anchorOffset": 0,
-                                              "focusKey": "14pgn",
+                                              "focusKey": "fomtp",
                                               "focusOffset": 0,
                                               "hasFocus": false,
                                               "isBackward": false,
@@ -479,7 +492,7 @@ ShallowWrapper {
                                           },
                                           "decorator": null,
                                           "directionMap": Object {
-                                            "14pgn": "LTR",
+                                            "fomtp": "LTR",
                                           },
                                           "forceSelection": false,
                                           "inCompositionMode": false,
@@ -488,15 +501,15 @@ ShallowWrapper {
                                           "nativelyRenderedContent": null,
                                           "redoStack": Array [],
                                           "selection": Object {
-                                            "anchorKey": "14pgn",
+                                            "anchorKey": "fomtp",
                                             "anchorOffset": 0,
-                                            "focusKey": "14pgn",
+                                            "focusKey": "fomtp",
                                             "focusOffset": 0,
                                             "hasFocus": false,
                                             "isBackward": false,
                                           },
                                           "treeMap": Object {
-                                            "14pgn": Array [
+                                            "fomtp": Array [
                                               Object {
                                                 "decoratorKey": null,
                                                 "end": 0,
@@ -524,6 +537,7 @@ ShallowWrapper {
                                         },
                                       ]
                     } />
+          <Decorated(Toolbar) />
 </styled.div>,
       },
       "_renderedNodeType": 1,

@@ -8,17 +8,25 @@ exports[`test renders correctly 1`] = `
     </h1>
     <div
       className={undefined}>
-      <div
-        className={undefined}>
+      <div>
+        <h5
+          className="eKaiQM">
+          Email
+        </h5>
         <input
+          className="bwXyts"
           onChange={[Function]}
           placeholder="Email"
           type="email"
           value="" />
       </div>
-      <div
-        className={undefined}>
+      <div>
+        <h5
+          className="eKaiQM">
+          Password
+        </h5>
         <input
+          className="bwXyts"
           onChange={[Function]}
           placeholder="Password"
           type="password"
@@ -28,13 +36,15 @@ exports[`test renders correctly 1`] = `
     <div
       className={undefined}>
       <button
-        className="iAecad"
-        onClick={[Function]}>
+        className="bBPMRg"
+        onClick={[Function]}
+        type={null}>
         Create Account
       </button>
       <button
-        className="iAecad"
-        onClick={[Function]}>
+        className="iZsHgX"
+        onClick={[Function]}
+        type="primary">
         Login
       </button>
     </div>

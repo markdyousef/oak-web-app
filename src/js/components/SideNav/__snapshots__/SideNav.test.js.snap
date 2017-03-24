@@ -1,9 +1,21 @@
 exports[`test renders correctly 1`] = `
-<div
-  className={undefined}>
+<nav
+  className="fyRfhW">
   <div
-    className={undefined}>
+    className="jvngIl">
+    <img
+      alt="team logo"
+      className="cPvMma"
+      src="test-file-stub" />
+    <h1
+      className="gQcCkW">
+      Clai
+    </h1>
+  </div>
+  <section
+    className="dYOurd">
     <a
+      className="hqoBfH"
       onClick={[Function]}
       style={Object {}}>
       <div />
@@ -12,6 +24,7 @@ exports[`test renders correctly 1`] = `
       </h1>
     </a>
     <a
+      className="hqoBfH"
       onClick={[Function]}
       style={Object {}}>
       <div />
@@ -20,6 +33,7 @@ exports[`test renders correctly 1`] = `
       </h1>
     </a>
     <a
+      className="hqoBfH"
       onClick={[Function]}
       style={Object {}}>
       <div />
@@ -28,6 +42,7 @@ exports[`test renders correctly 1`] = `
       </h1>
     </a>
     <a
+      className="hqoBfH"
       onClick={[Function]}
       style={Object {}}>
       <div />
@@ -35,6 +50,6 @@ exports[`test renders correctly 1`] = `
         Toolset
       </h1>
     </a>
-  </div>
-</div>
+  </section>
+</nav>
 `;

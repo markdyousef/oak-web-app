@@ -4,7 +4,12 @@ import Profile from './Profile';
 
 it('renders correctly', () => {
     const props = {
-        data: {}
+        data: {
+            me: {
+                name: 'mark',
+                username: 'mark'
+            }
+        }
     };
     const component = renderer.create(
         <Profile {...props} />

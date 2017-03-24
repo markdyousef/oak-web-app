@@ -1,18 +1,16 @@
 exports[`test renders TopNav 1`] = `
 <nav
-  className={undefined}>
+  className="disVZu">
   <div
-    className={undefined} />
+    className="gAxmAZ" />
   <div
-    className={undefined}>
+    className="dHeKBC">
     <a
-      className={undefined}
+      className="BEkwK"
       onClick={[Function]}
-      style={Object {}}>
-      <div />
-    </a>
+      style={Object {}} />
     <a
-      className={undefined}
+      className="BEkwK"
       onClick={[Function]}
       style={Object {}}>
       <div

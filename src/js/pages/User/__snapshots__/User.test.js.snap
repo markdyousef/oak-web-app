@@ -8,12 +8,14 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <TopNav />
+    <TopNav
+        team={null} />
 </div>,
   "nodes": Array [
     <div
       className={undefined}>
-      <TopNav />
+      <TopNav
+            team={null} />
 </div>,
   ],
   "options": Object {},
@@ -54,12 +56,14 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <TopNav />
+          <TopNav
+                    team={null} />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <TopNav />
+          <TopNav
+                    team={null} />
 </div>,
       },
       "_renderedNodeType": 0,

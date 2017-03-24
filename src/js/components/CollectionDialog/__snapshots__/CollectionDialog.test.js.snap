@@ -11,9 +11,13 @@ exports[`test renders correctly 1`] = `
     </div>
     <div
       className={undefined}>
-      <div
-        className={undefined}>
+      <div>
+        <h5
+          className="eKaiQM">
+          NAME
+        </h5>
         <input
+          className="bwXyts"
           onChange={[Function]}
           placeholder="Name"
           type="text"
@@ -23,13 +27,15 @@ exports[`test renders correctly 1`] = `
     <div
       className={undefined}>
       <button
-        className="iAecad"
-        onClick={[Function]}>
+        className="bBPMRg"
+        onClick={[Function]}
+        type={null}>
         Cancel
       </button>
       <button
-        className="iAecad"
-        onClick={[Function]}>
+        className="iZsHgX"
+        onClick={[Function]}
+        type="primary">
         Save
       </button>
     </div>

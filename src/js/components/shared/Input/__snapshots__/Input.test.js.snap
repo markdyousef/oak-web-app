@@ -1,7 +1,11 @@
 exports[`test renders correctly 1`] = `
-<div
-  className={undefined}>
+<div>
+  <h5
+    className="eKaiQM">
+    Name
+  </h5>
   <input
+    className="bwXyts"
     onChange={[Function]}
     placeholder={null}
     type="text"
