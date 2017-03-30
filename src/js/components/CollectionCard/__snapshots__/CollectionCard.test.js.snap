@@ -1,0 +1,13 @@
+exports[`test renders correctly 1`] = `
+<div
+  className="kHkkOf">
+  <div
+    className="elmvfS" />
+  <h3
+    className="hXEwwP">
+    collection
+  </h3>
+  <p
+    className="hsPFOR" />
+</div>
+`;
