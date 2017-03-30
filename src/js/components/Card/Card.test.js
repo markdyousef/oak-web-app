@@ -4,7 +4,8 @@ import Card from './Card';
 
 it('renders correctly', () => {
     const props = {
-        title: 'Design'
+        creator: '',
+        updatedAt: ''
     };
     const component = renderer.create(
         <Card {...props} />
