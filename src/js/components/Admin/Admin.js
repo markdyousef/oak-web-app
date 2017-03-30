@@ -11,27 +11,39 @@ class Admin extends Component {
         createTeam: PropTypes.func.isRequired,
         data: PropTypes.shape({
             loading: PropTypes.bool
+        }).isRequired,
+        router: PropTypes.shape({
+            replace: PropTypes.func.isRequired
+        }).isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired
         }).isRequired
     }
     constructor() {
         super();
-        this.renderTeams = this.renderTeams.bind(this);
-        this.createTeam = this.createTeam.bind(this);
         this.state = {
             teamName: '',
             message: null
         };
     }
-    createTeam() {
+    createTeam = () => {
         const { teamName } = this.state;
         const { createTeam } = this.props;
         createTeam(teamName)
             .then(res => console.log(res))
             .catch(err => this.setState({ message: { type: 'error', message: 'shit' } }));
     }
-    renderTeams() {
+    selectTeam = (id:Number) => {
+        const { router, location } = this.props;
+        selectTeam(id);
+        router.replace({
+            pathname: '/',
+            state: { nextPathname: location.pathname }
+        });
+    }
+    renderTeams = () => {
         const { data } = this.props;
-        if (data.loading) return <div>LOADING!</div>
+        if (data.loading) return <div>LOADING!</div>;
 
         if (data.teams && data.teams.length > 0) {
             return (
@@ -39,7 +51,7 @@ class Admin extends Component {
                     {data.teams.map(team =>
                         <Team
                             team={team}
-                            onSelect={() => selectTeam(team.id)}
+                            onSelect={() => this.selectTeam(team.id)}
                             key={team.id}
                         />
                     )}

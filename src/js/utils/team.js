@@ -5,7 +5,7 @@ export const teamSelected = () => !!localStorage.team;
 
 export const getTeam = () => localStorage.team;
 
-export const requiredTeam = (nextState: Object, replace: Function) => {
+export const requireTeam = (nextState: Object, replace: Function) => {
     if (!teamSelected()) {
         replace({
             pathname: '/admin',
