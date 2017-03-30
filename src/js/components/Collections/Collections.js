@@ -18,6 +18,7 @@ const Header = styled.section`
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 `;
 
 const Info = styled.div`
@@ -61,6 +62,7 @@ const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-top: 20px;
 `;
 
 const Grid = styled.section`
