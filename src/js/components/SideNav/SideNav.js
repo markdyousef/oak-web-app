@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import claiLogo from '../../../img/clai-logo.png';
-import { teamStats } from '../../styles/icons';
 
 const Container = styled.nav`
     width: 230px;
