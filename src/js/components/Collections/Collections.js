@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Card from '../Card';
+import CollectionCard from '../CollectionCard';
 import Button from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import KnowledgeStats from '../KnowledgeStats';
@@ -36,7 +36,7 @@ class Collections extends Component {
                 <div className={css.grid}>
                     {data.groves.map(grove =>
                         <Link to={`/collection/${grove.id}`} key={grove.id}>
-                            <Card title={grove.name} />
+                            <CollectionCard name={grove.name} />
                         </Link>
                     )}
                 </div>
