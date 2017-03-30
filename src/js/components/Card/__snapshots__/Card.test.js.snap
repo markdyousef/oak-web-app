@@ -1,11 +1,18 @@
 exports[`test renders correctly 1`] = `
 <div
-  className={undefined}>
+  className="iMOoSi">
   <div
-    className={undefined}>
-    <h1>
-      Design
-    </h1>
+    className="a" />
+  <div
+    className="a">
+    <div />
+  </div>
+  <div
+    className="foqgVb">
+    <span
+      className="cKgiew">
+      a few seconds ago
+    </span>
   </div>
 </div>
 `;

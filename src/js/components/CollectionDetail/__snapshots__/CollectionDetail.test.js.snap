@@ -6,49 +6,45 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className={undefined}>
-    <TopNav
-        team={null} />
-    <div
-        className={undefined}>
-        <div
-            className={undefined} />
-        <div
-            className={undefined}>
-            <div>
-                STATS
-            </div>
+  "node": <styled.div>
+    <styled.section>
+        <styled.div>
+            <h1>
+                Collections
+            </h1>
+            <p>
+                A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
+            </p>
+        </styled.div>
+        <styled.div>
             <Button
                 onClick={[Function]}
                 rounded={false}
                 text="Add Card"
                 type="primary" />
-        </div>
-    </div>
-</div>,
+        </styled.div>
+    </styled.section>
+</styled.div>,
   "nodes": Array [
-    <div
-      className={undefined}>
-      <TopNav
-            team={null} />
-      <div
-            className={undefined}>
-            <div
-                  className={undefined} />
-            <div
-                  className={undefined}>
-                  <div>
-                        STATS
-                  </div>
+    <styled.div>
+      <styled.section>
+            <styled.div>
+                  <h1>
+                        Collections
+                  </h1>
+                  <p>
+                        A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
+                  </p>
+            </styled.div>
+            <styled.div>
                   <Button
                         onClick={[Function]}
                         rounded={false}
                         text="Add Card"
                         type="primary" />
-            </div>
-      </div>
-</div>,
+            </styled.div>
+      </styled.section>
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -92,51 +88,47 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}>
-          <TopNav
-                    team={null} />
-          <div
-                    className={undefined}>
-                    <div
-                              className={undefined} />
-                    <div
-                              className={undefined}>
-                              <div>
-                                        STATS
-                              </div>
+        "_currentElement": <styled.div>
+          <styled.section>
+                    <styled.div>
+                              <h1>
+                                        Collections
+                              </h1>
+                              <p>
+                                        A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
+                              </p>
+                    </styled.div>
+                    <styled.div>
                               <Button
                                         onClick={[Function]}
                                         rounded={false}
                                         text="Add Card"
                                         type="primary" />
-                    </div>
-          </div>
-</div>,
+                    </styled.div>
+          </styled.section>
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className={undefined}>
-          <TopNav
-                    team={null} />
-          <div
-                    className={undefined}>
-                    <div
-                              className={undefined} />
-                    <div
-                              className={undefined}>
-                              <div>
-                                        STATS
-                              </div>
+        "_renderedOutput": <styled.div>
+          <styled.section>
+                    <styled.div>
+                              <h1>
+                                        Collections
+                              </h1>
+                              <p>
+                                        A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
+                              </p>
+                    </styled.div>
+                    <styled.div>
                               <Button
                                         onClick={[Function]}
                                         rounded={false}
                                         text="Add Card"
                                         type="primary" />
-                    </div>
-          </div>
-</div>,
+                    </styled.div>
+          </styled.section>
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

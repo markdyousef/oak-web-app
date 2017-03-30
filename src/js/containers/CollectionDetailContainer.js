@@ -7,7 +7,16 @@ const getCards = gql`
     query seeds($groveId: ID!) {
         seeds(groveId: $groveId) {
             id
-            content
+            content,
+            creatorId,
+            updatedAt,
+            labels {
+                name
+                color
+            },
+            comments {
+                id
+            }
         }
     }
 `;

@@ -8,8 +8,6 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
-    <TopNav
-        team={true} />
     <div
         className={undefined}>
         <Apollo(Collections) />
@@ -18,8 +16,6 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className={undefined}>
-      <TopNav
-            team={true} />
       <div
             className={undefined}>
             <Apollo(Collections) />
@@ -62,8 +58,6 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
-          <TopNav
-                    team={true} />
           <div
                     className={undefined}>
                     <Apollo(Collections) />
@@ -72,8 +66,6 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
-          <TopNav
-                    team={true} />
           <div
                     className={undefined}>
                     <Apollo(Collections) />

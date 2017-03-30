@@ -72,7 +72,7 @@ const Grid = styled.section`
     flex-wrap: wrap;
     justify-content: center;
     & a {
-        margin: 5px;
+        margin: 8px;
     }
 `;
 

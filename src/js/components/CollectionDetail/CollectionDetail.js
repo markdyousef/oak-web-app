@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Card from '../Card';
 import Button from '../shared/Button';
-import TopNav from '../TopNav'
 
 const Container = styled.div`
     width: 100%;
@@ -17,6 +16,7 @@ const Header = styled.section`
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 `;
 
 const Info = styled.div`
@@ -70,9 +70,10 @@ const Grid = styled.section`
     justify-content: center;
     & button {
         margin: 5px;
-        background-color: none;
+        background-color: transparent;
         border: 0;
         padding: 0;
+        cursor: pointer;
     }
 `;
 
@@ -87,8 +88,12 @@ class CollectionDetail extends Component {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             seeds: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                content: PropTypes.string.isRequired
+                id: PropTypes.string,
+                content: PropTypes.string,
+                creatorId: PropTypes.string,
+                labels: PropTypes.arrayOf(PropTypes.object),
+                comments: PropTypes.arrayOf(PropTypes.object),
+                updatedAt: PropTypes.string.isRequired
             }))
         }).isRequired
     }
@@ -109,11 +114,17 @@ class CollectionDetail extends Component {
                             onClick={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
                             key={item.id}
                         >
-                            <Card content={JSON.parse(item.content)} />
+                            <Card
+                                content={JSON.parse(item.content)}
+                                creator={item.creatorId}
+                                labels={item.labels}
+                                comments={item.comments}
+                                updatedAt={item.updatedAt}
+                            />
                         </button>
                     )}
                 </Grid>
-            )
+            );
         }
 
         return null;
