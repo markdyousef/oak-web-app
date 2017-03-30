@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import claiLogo from '../../../img/clai-logo.png';
+import { teamStats } from '../../styles/icons';
 
 const Container = styled.nav`
     width: 230px;
@@ -54,7 +55,7 @@ class SideNav extends Component {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             groves: PropTypes.arrayOf(PropTypes.shape({
-                title: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
                 id: PropTypes.string.isRequired
             }))
         }).isRequired
@@ -79,7 +80,7 @@ class SideNav extends Component {
                                 to={`collection/${category.id}`}
                                 activeStyle={{ color: colors.white }}
                             >
-                                {category.title}
+                                {category.name}
                             </SubLink>
                         </div>
                     ))}
@@ -100,7 +101,7 @@ class SideNav extends Component {
                         // to="/"
                         activeStyle={{ color: colors.white, borderColor: colors.green }}
                     >
-                        <div />
+                        <teamStats />
                         <h1>Home</h1>
                     </StyledLink>
                     <StyledLink

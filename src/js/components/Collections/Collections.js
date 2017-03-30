@@ -13,7 +13,7 @@ class Collections extends Component {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             groves: PropTypes.arrayOf(PropTypes.shape({
-                title: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
                 id: PropTypes.string.isRequired
             }))
         }).isRequired
@@ -36,7 +36,7 @@ class Collections extends Component {
                 <div className={css.grid}>
                     {data.groves.map(grove =>
                         <Link to={`/collection/${grove.id}`} key={grove.id}>
-                            <Card title={grove.title} />
+                            <Card title={grove.name} />
                         </Link>
                     )}
                 </div>
