@@ -8,7 +8,7 @@ import claiLogo from '../../../img/clai-logo.png';
 const Container = styled.nav`
     max-width: 230px;
     width: 100%;
-    background-color: #2D3438;
+    background-color: ${colors.darkGrey};
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -45,7 +45,7 @@ const StyledLink = styled(Link)`
     margin-bottom: 16px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 15px;
-    border-left: 3px solid #2D3438;
+    border-left: 3px solid ${colors.darkGrey};
     padding-left: 16px;
 `;
 
