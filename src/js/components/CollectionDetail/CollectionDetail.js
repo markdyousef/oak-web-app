@@ -68,13 +68,6 @@ const Grid = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    & button {
-        margin: 5px;
-        background-color: transparent;
-        border: 0;
-        padding: 0;
-        cursor: pointer;
-    }
 `;
 
 class CollectionDetail extends Component {
@@ -104,24 +97,21 @@ class CollectionDetail extends Component {
     renderCards = () => {
         const { data, router, params } = this.props;
 
-        if (data.loading) return <div>LOADING</div>
+        if (data.loading) return <div>LOADING</div>;
 
         if (!data.loading && data.seeds) {
             return (
                 <Grid>
                     {data.seeds.map(item =>
-                        <button
-                            onClick={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
+                        <Card
                             key={item.id}
-                        >
-                            <Card
-                                content={JSON.parse(item.content)}
-                                creator={item.creatorId}
-                                labels={item.labels}
-                                comments={item.comments}
-                                updatedAt={item.updatedAt}
-                            />
-                        </button>
+                            content={JSON.parse(item.content)}
+                            creator={item.creatorId}
+                            labels={item.labels}
+                            comments={item.comments}
+                            updatedAt={item.updatedAt}
+                            onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
+                        />
                     )}
                 </Grid>
             );
