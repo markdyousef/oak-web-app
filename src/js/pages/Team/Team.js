@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SideNav from '../../containers/SideNavContainer';
 import TopNav from '../../containers/TopNavContainer';
@@ -33,30 +33,16 @@ const MainInner = styled.div`
     overflow-x: hidden;
 `;
 
-class Team extends Component {
-    static propTypes = {
-        children: PropTypes.node
-    }
-    constructor() {
-        super();
-        this.state = {};
-    }
-    render() {
-        return (
-            <Container>
-                <InnerContainer>
-                    <SideNav />
-                    <Main>
-                        <TopNav team />
-                        <MainInner>
-                            {this.props.children}
-                        </MainInner>
-                    </Main>
-                </InnerContainer>
-            </Container>
-
-        );
-    }
-}
-
-export default Team;
+export default ({ children }:Object) => (
+    <Container>
+        <InnerContainer>
+            <SideNav />
+            <Main>
+                <TopNav team />
+                <MainInner>
+                    {children}
+                </MainInner>
+            </Main>
+        </InnerContainer>
+    </Container>
+);
