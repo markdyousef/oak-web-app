@@ -3399,12 +3399,34 @@ draft-convert:
     immutable "~3.7.4"
     invariant "^2.2.1"
 
+draft-js, draft-js@>=0.8.1, draft-js@>=0.9.1:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/draft-js/-/draft-js-0.10.0.tgz#29d16191012b932fdab28a9b37ec1538f421abf6"
+  dependencies:
+    fbjs "^0.8.7"
+    immutable "~3.7.4"
+    object-assign "^4.1.0"
+
 draft-js-buttons@^2.0.0-beta10:
   version "2.0.0-beta9"
   resolved "https://registry.yarnpkg.com/draft-js-buttons/-/draft-js-buttons-2.0.0-beta9.tgz#1e46fc3de2a6b75a45bb13b5f7e924a1b7bd29f3"
   dependencies:
     draft-js ">=0.9.1"
     react ">=15.3.1"
+    union-class-names "^1.0.0"
+
+draft-js-emoji-plugin@^2.0.0-beta10:
+  version "2.0.0-beta9"
+  resolved "https://registry.yarnpkg.com/draft-js-emoji-plugin/-/draft-js-emoji-plugin-2.0.0-beta9.tgz#142d348240fee5bb4a1c11d4eeade0789c220126"
+  dependencies:
+    decorate-component-with-props "^1.0.2"
+    draft-js ">=0.9.1"
+    emojione "^2.2.6"
+    find-with-regex "^1.0.2"
+    immutable ">=3.8.1"
+    lodash.keys "^4.2.0"
+    react ">=15.3.1"
+    react-dom ">=15.3.1"
     union-class-names "^1.0.0"
 
 draft-js-plugins-editor@^2.0.0-beta1:
@@ -3429,14 +3451,6 @@ draft-js-side-toolbar-plugin@beta:
     find-with-regex "^1.0.2"
     immutable "~3.7.4"
     union-class-names "^1.0.0"
-
-draft-js@>=0.8.1, draft-js@>=0.9.1:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/draft-js/-/draft-js-0.10.0.tgz#29d16191012b932fdab28a9b37ec1538f421abf6"
-  dependencies:
-    fbjs "^0.8.7"
-    immutable "~3.7.4"
-    object-assign "^4.1.0"
 
 duplexer@~0.1.1:
   version "0.1.1"
@@ -3542,6 +3556,10 @@ elliptic@^6.0.0:
 emitter-steward@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/emitter-steward/-/emitter-steward-1.0.0.tgz#f3411ade9758a7565df848b2da0cbbd1b46cbd64"
+
+emojione@^2.2.6:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/emojione/-/emojione-2.2.7.tgz#46457cf6b9b2f8da13ae8a2e4e547de06ee15e96"
 
 emojis-list@^2.0.0:
   version "2.1.0"
@@ -5857,6 +5875,10 @@ lodash.keys@^3.0.0, lodash.keys@^3.1.2:
     lodash._getnative "^3.0.0"
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
+
+lodash.keys@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-4.2.0.tgz#a08602ac12e4fb83f91fc1fb7a360a4d9ba35205"
 
 lodash.map@^4.4.0:
   version "4.6.0"
