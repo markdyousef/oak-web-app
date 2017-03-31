@@ -6,31 +6,27 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className={undefined}>
+  "node": <styled.div>
     <TopBar
         close={[Function]}
         edit={[Function]}
         save={[Function]}
         showEdit={false} />
-    <div
-        className={undefined}>
+    <styled.section>
         <MainEditor />
-    </div>
-</div>,
+    </styled.section>
+</styled.div>,
   "nodes": Array [
-    <div
-      className={undefined}>
+    <styled.div>
       <TopBar
             close={[Function]}
             edit={[Function]}
             save={[Function]}
             showEdit={false} />
-      <div
-            className={undefined}>
+      <styled.section>
             <MainEditor />
-      </div>
-</div>,
+      </styled.section>
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -92,33 +88,29 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}>
+        "_currentElement": <styled.div>
           <TopBar
                     close={[Function]}
                     edit={[Function]}
                     save={[Function]}
                     showEdit={false} />
-          <div
-                    className={undefined}>
+          <styled.section>
                     <MainEditor />
-          </div>
-</div>,
+          </styled.section>
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className={undefined}>
+        "_renderedOutput": <styled.div>
           <TopBar
                     close={[Function]}
                     edit={[Function]}
                     save={[Function]}
                     showEdit={false} />
-          <div
-                    className={undefined}>
+          <styled.section>
                     <MainEditor />
-          </div>
-</div>,
+          </styled.section>
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

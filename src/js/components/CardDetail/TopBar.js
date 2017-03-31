@@ -1,6 +1,27 @@
 import React, { PropTypes, Component } from 'react';
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 import LabelsActionBox from '../LabelsActionBox';
 import Button from '../shared/Button';
+
+const Container = styled.nav`
+    display: flex;
+    background: ${colors.white};
+    border-bottom: 1px solid ${colors.lightGrey};
+    height: 60px;
+    align-items: center;
+    justify-content: flex-end;
+`;
+
+const Right = styled.div`
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+`;
+
+const EditNav = styled.div`
+    display: flex;
+`;
 
 import css from './CardDetail.css';
 
@@ -24,7 +45,7 @@ class TopBar extends Component {
 
         if (showEdit) {
             return (
-                <div className={css.editNav}>
+                <EditNav>
                     <div>
                         <Button
                             text="Add label"
@@ -42,7 +63,7 @@ class TopBar extends Component {
                         onClick={save}
                         type="primaryAction"
                     />
-                </div>
+                </EditNav>
             );
         }
         return <Button text="Edit card" type="secondaryAction" onClick={edit} />;
@@ -50,8 +71,8 @@ class TopBar extends Component {
     render() {
         const { close } = this.props;
         return (
-            <div className={css.topBar}>
-                <div className={css.right}>
+            <Container>
+                <Right>
                     {this.renderButtons()}
                     <Button
                         className={css.close}
@@ -59,9 +80,9 @@ class TopBar extends Component {
                         text="X"
                         type="transparent"
                     />
-                </div>
+                </Right>
 
-            </div>
+            </Container>
         );
     }
 }

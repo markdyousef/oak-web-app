@@ -1,9 +1,26 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 import TopBar from './TopBar';
 import Editor from '../Editor';
 
 import css from './CardDetail.css';
+
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: ${colors.white};
+`;
+
+const Main = styled.section`
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+`;
 
 class CardDetail extends Component {
     static propTypes = {
@@ -18,14 +35,13 @@ class CardDetail extends Component {
     }
     constructor() {
         super();
-        this.onSave = this.onSave.bind(this);
         this.state = {
             showEdit: false,
             content: null,
             message: null
         };
     }
-    onSave() {
+    onSave = () => {
         const { create, params } = this.props;
         const { content } = this.state;
 
@@ -45,17 +61,17 @@ class CardDetail extends Component {
         const { showEdit, content } = this.state;
         const { router } = this.props;
         return (
-            <div className={css.container}>
+            <Container>
                 <TopBar
                     close={() => router.goBack()}
                     save={this.onSave}
                     showEdit={showEdit}
                     edit={() => this.setState({ showEdit: true })}
                 />
-                <div className={css.main}>
+                <Main>
                     <Editor />
-                </div>
-            </div>
+                </Main>
+            </Container>
         );
     }
 }
