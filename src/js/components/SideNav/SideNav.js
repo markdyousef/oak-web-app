@@ -16,7 +16,7 @@ const Container = styled.nav`
     padding-top: 16px;
     height: 100vh;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 `;
 
 const Team = styled.div`
