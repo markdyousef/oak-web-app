@@ -1,3 +1,4 @@
+// @flow
 import React, { PropTypes, Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
@@ -22,8 +23,6 @@ const Right = styled.div`
 const EditNav = styled.div`
     display: flex;
 `;
-
-import css from './CardDetail.css';
 
 class TopBar extends Component {
     static propTypes = {
@@ -75,10 +74,13 @@ class TopBar extends Component {
                 <Right>
                     {this.renderButtons()}
                     <Button
-                        className={css.close}
+                        onClick={() => console.log('comments')}
+                        text="Comments"
+                        rounded
+                    />
+                    <Button
                         onClick={() => close()}
                         text="X"
-                        type="transparent"
                     />
                 </Right>
 

@@ -11,6 +11,7 @@ ShallowWrapper {
         close={[Function]}
         edit={[Function]}
         save={[Function]}
+        showComments={[Function]}
         showEdit={false} />
     <styled.section>
         <MainEditor />
@@ -22,6 +23,7 @@ ShallowWrapper {
             close={[Function]}
             edit={[Function]}
             save={[Function]}
+            showComments={[Function]}
             showEdit={false} />
       <styled.section>
             <MainEditor />
@@ -68,6 +70,7 @@ ShallowWrapper {
         "state": Object {
           "content": null,
           "message": null,
+          "showComments": false,
           "showEdit": false,
         },
         "updater": Object {
@@ -93,6 +96,7 @@ ShallowWrapper {
                     close={[Function]}
                     edit={[Function]}
                     save={[Function]}
+                    showComments={[Function]}
                     showEdit={false} />
           <styled.section>
                     <MainEditor />
@@ -104,6 +108,7 @@ ShallowWrapper {
                     close={[Function]}
                     edit={[Function]}
                     save={[Function]}
+                    showComments={[Function]}
                     showEdit={false} />
           <styled.section>
                     <MainEditor />

@@ -6,15 +6,15 @@ import TopNav from '../../containers/TopNavContainer';
 
 const Container = styled.div`
     display: flex;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    ${''/* overflow-x: hidden;
+    overflow-y: hidden; */}
     flex-direction: column;
 `;
 
 const InnerContainer = styled.div`
     z-index: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    ${''/* overflow-x: hidden;
+    overflow-y: hidden; */}
     display: flex;
 `;
 
@@ -29,8 +29,8 @@ const Main = styled.section`
 
 const MainInner = styled.div`
     display: block;
-    overflow-y: auto;
-    overflow-x: hidden;
+    ${''/* overflow-y: auto; */}
+    ${''/* overflow-x: hidden; */}
 `;
 
 export default ({ children }:Object) => (

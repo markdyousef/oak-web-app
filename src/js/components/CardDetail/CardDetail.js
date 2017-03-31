@@ -5,8 +5,6 @@ import colors from '../../styles/colors';
 import TopBar from './TopBar';
 import Editor from '../Editor';
 
-import css from './CardDetail.css';
-
 const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -38,7 +36,8 @@ class CardDetail extends Component {
         this.state = {
             showEdit: false,
             content: null,
-            message: null
+            message: null,
+            showComments: false
         };
     }
     onSave = () => {
@@ -58,7 +57,7 @@ class CardDetail extends Component {
         // TODO: else update existing card
     }
     render() {
-        const { showEdit, content } = this.state;
+        const { showEdit, showComments } = this.state;
         const { router } = this.props;
         return (
             <Container>
@@ -67,6 +66,7 @@ class CardDetail extends Component {
                     save={this.onSave}
                     showEdit={showEdit}
                     edit={() => this.setState({ showEdit: true })}
+                    showComments={() => this.setStat({ showComments: !showComments })}
                 />
                 <Main>
                     <Editor />
