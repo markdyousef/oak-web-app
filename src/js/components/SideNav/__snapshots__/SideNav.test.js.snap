@@ -1,6 +1,6 @@
 exports[`test renders correctly 1`] = `
 <nav
-  className="fyRfhW">
+  className="gHgkfI">
   <div
     className="jvngIl">
     <img
@@ -18,7 +18,7 @@ exports[`test renders correctly 1`] = `
       className="hqoBfH"
       onClick={[Function]}
       style={Object {}}>
-      <div />
+      <teamStats />
       <h1>
         Home
       </h1>

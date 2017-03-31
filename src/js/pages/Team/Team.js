@@ -27,6 +27,12 @@ const Main = styled.section`
     max-width: 100%;
 `;
 
+const MainInner = styled.div`
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+`;
+
 class Team extends Component {
     static propTypes = {
         children: PropTypes.node
@@ -42,7 +48,9 @@ class Team extends Component {
                     <SideNav />
                     <Main>
                         <TopNav team />
-                        {this.props.children}
+                        <MainInner>
+                            {this.props.children}
+                        </MainInner>
                     </Main>
                 </InnerContainer>
             </Container>

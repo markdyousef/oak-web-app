@@ -66,13 +66,12 @@ class SideNav extends Component {
     static defaultProps = {};
     constructor() {
         super();
-        this.renderSubCategories = this.renderSubCategories.bind(this);
         this.state = {};
     }
-    renderSubCategories() {
+    renderSubCategories = () => {
         const { data } = this.props;
 
-        if (data.loading) return <div>Loading</div>;
+        if (data.loading) return null;
 
         if (!data.loading && data.groves) {
             return (

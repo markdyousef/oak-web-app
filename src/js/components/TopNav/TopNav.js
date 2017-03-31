@@ -12,6 +12,7 @@ const Container = styled.nav`
     display: flex;
     justify-content: space-between;
     position: relative;
+    flex-shrink: 0;
 `;
 
 const NavElemement = styled(Link)`

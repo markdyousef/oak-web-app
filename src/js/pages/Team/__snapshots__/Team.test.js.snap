@@ -6,19 +6,27 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className={undefined}>
-    <Apollo(SideNav) />
-    <div
-        className={undefined} />
-</div>,
+  "node": <styled.div>
+    <styled.div>
+        <Apollo(SideNav) />
+        <styled.section>
+            <TopNav
+                team={true} />
+            <styled.div />
+        </styled.section>
+    </styled.div>
+</styled.div>,
   "nodes": Array [
-    <div
-      className={undefined}>
-      <Apollo(SideNav) />
-      <div
-            className={undefined} />
-</div>,
+    <styled.div>
+      <styled.div>
+            <Apollo(SideNav) />
+            <styled.section>
+                  <TopNav
+                        team={true} />
+                  <styled.div />
+            </styled.section>
+      </styled.div>
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -56,21 +64,29 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}>
-          <Apollo(SideNav) />
-          <div
-                    className={undefined} />
-</div>,
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <Apollo(SideNav) />
+                    <styled.section>
+                              <TopNav
+                                        team={true} />
+                              <styled.div />
+                    </styled.section>
+          </styled.div>
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className={undefined}>
-          <Apollo(SideNav) />
-          <div
-                    className={undefined} />
-</div>,
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <Apollo(SideNav) />
+                    <styled.section>
+                              <TopNav
+                                        team={true} />
+                              <styled.div />
+                    </styled.section>
+          </styled.div>
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
