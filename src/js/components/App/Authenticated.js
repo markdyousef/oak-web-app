@@ -1,8 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 
-import css from './App.css';
-
 // Localstorage token
 const token = localStorage.authToken;
 
@@ -29,7 +27,7 @@ class Authenticated extends Component {
         if (!token) return null;
 
         return (
-            <div className={css.container}>
+            <div>
                 {this.props.children}
             </div>
         );

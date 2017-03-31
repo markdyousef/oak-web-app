@@ -6,13 +6,17 @@ import colors from '../../styles/colors';
 import claiLogo from '../../../img/clai-logo.png';
 
 const Container = styled.nav`
-    width: 230px;
+    max-width: 230px;
+    width: 100%;
     background-color: #2D3438;
     display: flex;
     flex-direction: column;
     align-items: baseline;
     height: 100%;
     padding-top: 16px;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
 `;
 
 const Team = styled.div`

@@ -11,6 +11,7 @@ const Container = styled.nav`
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     justify-content: space-between;
+    position: relative;
 `;
 
 const NavElemement = styled(Link)`

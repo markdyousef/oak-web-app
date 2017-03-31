@@ -5,19 +5,26 @@ import SideNav from '../../containers/SideNavContainer';
 import TopNav from '../../containers/TopNavContainer';
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    flex-direction: column;
+`;
+
+const InnerContainer = styled.div`
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
     display: flex;
 `;
 
-const LeftPane = styled.section`
-    ${''/* position: absolute; */}
-    height: 100%;
-    width: 230px;
-`
-
 const Main = styled.section`
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    position: relative;
+    min-width: 1em;
+    max-width: 100%;
 `;
 
 class Team extends Component {
@@ -31,13 +38,13 @@ class Team extends Component {
     render() {
         return (
             <Container>
-                <LeftPane>
+                <InnerContainer>
                     <SideNav />
-                </LeftPane>
-                <Main>
-                    <TopNav team />
-                    {this.props.children}
-                </Main>
+                    <Main>
+                        <TopNav team />
+                        {this.props.children}
+                    </Main>
+                </InnerContainer>
             </Container>
 
         );

@@ -32,12 +32,11 @@ class LabelsActionBox extends Component {
     static defaultProps = {};
     constructor() {
         super();
-        this.renderLabels = this.renderLabels.bind(this);
         this.state = {
             showCreate: true
         };
     }
-    renderLabels() {
+    renderLabels = () => {
         const { close } = this.props;
         const { showCreate } = this.state;
 
