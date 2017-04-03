@@ -32,15 +32,25 @@ const Modal = styled.div`
     justify-content: space-between;
 `;
 
-const Title = styled.h1`
+const Header = styled.div`
     width: 100%;
     height: 60px;
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
-    font-size: 16px;
-    font-weight: bold;
+    & h1 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+`;
+
+const Close = styled.button`
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    font-size: 14px;
 `;
 
 const Main = styled.div`
@@ -61,33 +71,64 @@ const Buttons = styled.div`
 class CollectionDialog extends Component {
     static propTypes = {
         close: PropTypes.func.isRequired,
-        create: PropTypes.func.isRequired
+        create: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
+        remove: PropTypes.func.isRequired,
+        name: PropTypes.string,
+        description: PropTypes.string,
+        editMode: PropTypes.bool,
+        id: PropTypes.string,
+        router: PropTypes.shape({
+            replace: PropTypes.func
+        })
     }
-    static defaultProps = {}
-    constructor() {
-        super();
-        this.onSave = this.onSave.bind(this);
+    static defaultProps = {
+        name: '',
+        description: '',
+        editMode: false,
+        id: null,
+        router: null
+    }
+    constructor(props) {
+        super(props);
         this.state = {
-            name: '',
-            description: '',
+            name: props.name || '',
+            description: props.description || '',
             image: null,
             message: ''
         };
     }
-    onSave() {
+    onSave = () => {
         const { name, description } = this.state;
-        const { create, close } = this.props;
-        create(name, description)
-            .then(() => close())
+        const { create, update, close, editMode, id } = this.props;
+
+        if (editMode) {
+            update(id, name, description)
+                .then(() => close())
+                .catch(err => console.log(err));
+        } else {
+            create(name, description)
+                .then(() => close())
+                .catch(err => console.log(err));
+        }
+    }
+    onDelete = () => {
+        const { id, remove, router } = this.props;
+
+        remove(id)
+            .then(() => router.replace('/'))
             .catch(err => console.log(err))
     }
     render() {
-        const { close } = this.props;
+        const { close, editMode } = this.props;
         const { name, description } = this.state;
         return (
             <Container>
                 <Modal>
-                    <Title>Add/Edit collection: </Title>
+                    <Header>
+                        <h1>Add/Edit collection: </h1>
+                        <Close onClick={close}>X</Close>
+                    </Header>
                     <Main>
                         <Input
                             title="NAME"
@@ -103,10 +144,18 @@ class CollectionDialog extends Component {
                         />
                     </Main>
                     <Buttons>
-                        <Button
-                            onClick={close}
-                            text="Cancel"
-                        />
+                        {(editMode) ?
+                            <Button
+                                onClick={this.onDelete}
+                                text="Delete"
+                                type="alarm"
+                            />
+                            :
+                            <Button
+                                onClick={close}
+                                text="Cancel"
+                            />
+                        }
                         <Button
                             onClick={this.onSave}
                             text="Save"

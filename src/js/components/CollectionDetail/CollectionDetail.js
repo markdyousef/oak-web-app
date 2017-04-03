@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Card from '../Card';
 import Button from '../shared/Button';
+import CollectionDialog from '../../containers/CollectionDialogContainer';
 
 const Container = styled.div`
     width: 100%;
@@ -60,6 +61,9 @@ const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    & button {
+        margin-top: 5px;
+    }
 `;
 
 const Grid = styled.section`
@@ -81,6 +85,7 @@ class CollectionDetail extends Component {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             grove: PropTypes.shape({
+                id: PropTypes.string,
                 name: PropTypes.string,
                 description: PropTypes.string,
                 stats: PropTypes.object
@@ -97,7 +102,9 @@ class CollectionDetail extends Component {
     }
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            showEdit: false
+        };
     }
     renderCards = () => {
         const { data, router, params } = this.props;
@@ -145,8 +152,8 @@ class CollectionDetail extends Component {
         );
     }
     render() {
-        const { router, params } = this.props;
-
+        const { router, params, data } = this.props;
+        const { showEdit } = this.state;
         return (
             <Container>
                 <Header>
@@ -157,6 +164,23 @@ class CollectionDetail extends Component {
                             text="Add Card"
                             type="primary"
                         />
+                        <Button
+                            onClick={() => this.setState({ showEdit: true })}
+                            text="Edit Collection"
+                        />
+                        {showEdit &&
+                            <CollectionDialog
+                                close={() => {
+                                    data.refetch();
+                                    this.setState({ showEdit: false })
+                                }}
+                                name={data.grove.name}
+                                description={data.grove.description}
+                                editMode
+                                id={data.grove.id}
+                                router={router}
+                            />
+                        }
                     </ButtonGroup>
                 </Header>
                 {this.renderCards()}
