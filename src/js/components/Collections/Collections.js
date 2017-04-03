@@ -82,7 +82,8 @@ class Collections extends Component {
             loading: PropTypes.bool,
             groves: PropTypes.arrayOf(PropTypes.shape({
                 name: PropTypes.string.isRequired,
-                id: PropTypes.string.isRequired
+                id: PropTypes.string.isRequired,
+                description: PropTypes.string
             }))
         }).isRequired
     };
@@ -106,7 +107,7 @@ class Collections extends Component {
                 <Grid>
                     {data.groves.map(grove =>
                         <Link to={`/collection/${grove.id}`} key={grove.id}>
-                            <CollectionCard name={grove.name} />
+                            <CollectionCard name={grove.name} description={grove.description} />
                         </Link>
                     )}
                 </Grid>

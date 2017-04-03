@@ -8,7 +8,8 @@ const getCollections = gql`
     query groves($teamId: ID!) {
         groves(teamId: $teamId) {
             id
-            name
+            name,
+            description
         }
     }
 `;
