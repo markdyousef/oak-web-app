@@ -49,12 +49,12 @@ const Dropdown = styled.div`
     width: 200px;
 `;
 
-const Logout = styled.button`
-    border: none;
-    padding: 0;
-    font-size: 16px;
-    background: transparent;
+const Logout = styled.div`
+    width: 100%;
+    border-top: 1px solid #efefef;
     cursor: pointer;
+    padding-top: 5px;
+    margin-top: 10px;
 `;
 
 

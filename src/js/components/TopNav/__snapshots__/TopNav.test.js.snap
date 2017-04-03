@@ -5,21 +5,16 @@ exports[`test renders TopNav 1`] = `
     className="gAxmAZ" />
   <div
     className="dHeKBC">
-    <a
-      className="BEkwK"
-      onClick={[Function]}
-      style={Object {}} />
-    <a
-      className="BEkwK"
-      onClick={[Function]}
-      style={Object {}}>
+    <button
+      className="bkZCfp"
+      onClick={[Function]}>
       <div
         className={undefined}>
         <img
           alt="profile"
           src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" />
       </div>
-    </a>
+    </button>
   </div>
 </nav>
 `;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CreateLabels from './CreateLabels';
 import AddLabels from './AddLabels';
 import colors from '../../styles/colors';
+import Dropdown from '../shared/Dropdown';
 
 const Container = styled.div`
     position: absolute;
@@ -55,9 +56,9 @@ class LabelsActionBox extends Component {
     render() {
         return (
             <Container>
-                <ToolBox>
+                <Dropdown arrowPos="left">
                     {this.renderLabels()}
-                </ToolBox>
+                </Dropdown>
             </Container>
         );
     }

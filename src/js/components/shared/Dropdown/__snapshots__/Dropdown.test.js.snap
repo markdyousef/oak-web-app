@@ -1,1 +1,8 @@
-exports[`test renders Dropdown 1`] = `null`;
+exports[`test renders Dropdown 1`] = `
+<div>
+  <div
+    className="YCsrE" />
+  <div
+    className="fEcnKi" />
+</div>
+`;

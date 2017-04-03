@@ -10,7 +10,6 @@ const Arrow = styled.div`
     background: var(--white);
     position: absolute;
     top: -7px;
-    right: 25px;
     transform: rotate(45deg);
     background-color: #fff;
 `;
@@ -23,7 +22,7 @@ const Menu = styled.div`
     border: 1px solid #efefef;
     border-radius: 3px;
     padding: 20px;
-    & a, button {
+    & a {
         color: #000;
         display: block;
         margin-top: 10px;
@@ -32,10 +31,19 @@ const Menu = styled.div`
     }
 `;
 
-const Dropdown = ({ children }:Object) => {
+const Dropdown = ({ children, arrowPos }:Object) => {
+    let style;
+    switch (arrowPos) {
+    case 'left':
+        style = { left: '25px' };
+        break;
+    default:
+        style = { right: '25px' };
+        break;
+    }
     return (
         <div>
-            <Arrow />
+            <Arrow style={style} />
             <Menu>
                 {children}
             </Menu>
@@ -44,11 +52,13 @@ const Dropdown = ({ children }:Object) => {
 };
 
 Dropdown.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    arrowPos: PropTypes.string
 };
 
 Dropdown.defaultProps = {
-    children: null
+    children: null,
+    arrowPos: null
 };
 
 export default Dropdown;

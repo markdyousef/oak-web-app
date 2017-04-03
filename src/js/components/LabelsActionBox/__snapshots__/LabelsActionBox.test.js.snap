@@ -1,138 +1,142 @@
 exports[`test renders correctly 1`] = `
 <div
   className="hhVBpK">
-  <div
-    className="klmhsA">
-    <div>
-      <button
-        className="fvMeyS"
-        onClick={[Function]}>
-        Back
-      </button>
-      <section
-        className="llBzlB">
-        <div>
-          <h5
-            className="eKaiQM">
-            NAME
-          </h5>
-          <input
-            className="bwXyts"
-            onChange={[Function]}
-            placeholder="Label name"
-            type="text"
-            value="" />
-        </div>
-      </section>
-      <section
-        className="llBzlB">
-        <h5
-          className="jgkgS">
-          SELECT COLOR: 
-        </h5>
-        <div
-          className="huwVrA">
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#C1BD9D",
-                "border": "1px solid #797C80",
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#FEC288",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#FFA489",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#E87385",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#EAABC8",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#B5D3C9",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#708680",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#67B1B4",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#6A76A7",
-                "border": null,
-              }
-            } />
-          <div
-            className="egaIAV"
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#6E4B6E",
-                "border": null,
-              }
-            } />
-        </div>
-      </section>
-      <section
-        className="txchV">
+  <div>
+    <div
+      className="YCsrE" />
+    <div
+      className="fEcnKi">
+      <div>
         <button
-          className="iZsHgX"
-          onClick={[Function]}
-          type="primary">
-          CREATE
+          className="fvMeyS"
+          onClick={[Function]}>
+          Back
         </button>
-      </section>
+        <section
+          className="llBzlB">
+          <div>
+            <h5
+              className="eKaiQM">
+              NAME
+            </h5>
+            <input
+              className="bwXyts"
+              onChange={[Function]}
+              placeholder="Label name"
+              type="text"
+              value="" />
+          </div>
+        </section>
+        <section
+          className="llBzlB">
+          <h5
+            className="jgkgS">
+            SELECT COLOR: 
+          </h5>
+          <div
+            className="huwVrA">
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#C1BD9D",
+                  "border": "1px solid #797C80",
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#FEC288",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#FFA489",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#E87385",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#EAABC8",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#B5D3C9",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#708680",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#67B1B4",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#6A76A7",
+                  "border": null,
+                }
+              } />
+            <div
+              className="egaIAV"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#6E4B6E",
+                  "border": null,
+                }
+              } />
+          </div>
+        </section>
+        <section
+          className="txchV">
+          <button
+            className="iZsHgX"
+            onClick={[Function]}
+            type="primary">
+            CREATE
+          </button>
+        </section>
+      </div>
     </div>
   </div>
 </div>

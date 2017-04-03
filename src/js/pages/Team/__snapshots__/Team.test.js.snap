@@ -11,6 +11,7 @@ ShallowWrapper {
         <Apollo(SideNav) />
         <styled.section>
             <TopNav
+                router={null}
                 team={true} />
             <styled.div />
         </styled.section>
@@ -22,6 +23,7 @@ ShallowWrapper {
             <Apollo(SideNav) />
             <styled.section>
                   <TopNav
+                        router={null}
                         team={true} />
                   <styled.div />
             </styled.section>
@@ -69,6 +71,7 @@ ShallowWrapper {
                     <Apollo(SideNav) />
                     <styled.section>
                               <TopNav
+                                        router={null}
                                         team={true} />
                               <styled.div />
                     </styled.section>
@@ -80,6 +83,7 @@ ShallowWrapper {
                     <Apollo(SideNav) />
                     <styled.section>
                               <TopNav
+                                        router={null}
                                         team={true} />
                               <styled.div />
                     </styled.section>
