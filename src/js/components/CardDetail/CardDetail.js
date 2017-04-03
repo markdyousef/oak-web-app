@@ -20,6 +20,12 @@ const Main = styled.section`
     width: 100%;
 `;
 
+const CommentsContainer = styled.div`
+    width: 200px;
+    height: 100%;
+    background: ${colors.grey};
+`;
+
 class CardDetail extends Component {
     static propTypes = {
         params: PropTypes.shape({
@@ -58,6 +64,7 @@ class CardDetail extends Component {
     }
     render() {
         const { showEdit, showComments } = this.state;
+        console.log(showComments);
         const { router } = this.props;
         return (
             <Container>
@@ -66,10 +73,15 @@ class CardDetail extends Component {
                     save={this.onSave}
                     showEdit={showEdit}
                     edit={() => this.setState({ showEdit: true })}
-                    showComments={() => this.setStat({ showComments: !showComments })}
+                    showComments={() => this.setState({ showComments: !showComments })}
                 />
                 <Main>
                     <Editor />
+                    {showComments &&
+                        <CommentsContainer>
+                            HOL
+                        </CommentsContainer>
+                    }
                 </Main>
             </Container>
         );

@@ -6,13 +6,15 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    Comment
-</div>,
+  "node": <styled.section>
+    <styled.div />
+    <CommentBox />
+</styled.section>,
   "nodes": Array [
-    <div>
-      Comment
-</div>,
+    <styled.section>
+      <styled.div />
+      <CommentBox />
+</styled.section>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -29,6 +31,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {},
         "refs": Object {},
+        "renderComments": [Function],
         "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
@@ -48,15 +51,17 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          Comment
-</div>,
+        "_currentElement": <styled.section>
+          <styled.div />
+          <CommentBox />
+</styled.section>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          Comment
-</div>,
+        "_renderedOutput": <styled.section>
+          <styled.div />
+          <CommentBox />
+</styled.section>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

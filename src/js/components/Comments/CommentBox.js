@@ -28,7 +28,10 @@ const Container = styled.div`
 `;
 
 const Input = styled.div`
-`
+    border: 1px solid ${colors.lightGrey};
+    padding: 9px 12px;
+    border-radius: 3px;
+`;
 
 export default class CommentBox extends Component {
     constructor() {

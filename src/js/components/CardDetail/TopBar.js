@@ -18,6 +18,9 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     padding-right: 30px;
+    & button {
+        margin: 0 2px;
+    }
 `;
 
 const EditNav = styled.div`
@@ -29,7 +32,8 @@ class TopBar extends Component {
         close: PropTypes.func.isRequired,
         save: PropTypes.func.isRequired,
         showEdit: PropTypes.bool.isRequired,
-        edit: PropTypes.func.isRequired
+        edit: PropTypes.func.isRequired,
+        showComments: PropTypes.func.isRequired
     };
     constructor() {
         super();
@@ -49,7 +53,6 @@ class TopBar extends Component {
                         <Button
                             text="Add label"
                             onClick={() => this.setState({ showLabels: !showLabels })}
-                            type="secondaryAction"
                         />
                         {showLabels &&
                             <LabelsActionBox
@@ -60,7 +63,7 @@ class TopBar extends Component {
                     <Button
                         text="Save card"
                         onClick={save}
-                        type="primaryAction"
+                        type="primary"
                     />
                 </EditNav>
             );
@@ -68,19 +71,20 @@ class TopBar extends Component {
         return <Button text="Edit card" type="secondaryAction" onClick={edit} />;
     }
     render() {
-        const { close } = this.props;
+        const { close, showComments } = this.props;
         return (
             <Container>
                 <Right>
                     {this.renderButtons()}
                     <Button
-                        onClick={() => console.log('comments')}
+                        onClick={showComments}
                         text="Comments"
                         rounded
                     />
                     <Button
-                        onClick={() => close()}
+                        onClick={close}
                         text="X"
+                        rounded
                     />
                 </Right>
 
