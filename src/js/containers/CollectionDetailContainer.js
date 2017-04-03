@@ -3,8 +3,15 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import CollectionDetail from '../components/CollectionDetail';
 
-const getCards = gql`
-    query seeds($groveId: ID!) {
+const getCollection = gql`
+    query collection($groveId: ID!) {
+        grove(id: $groveId) {
+            name
+            description
+            stats {
+                seeds
+            }
+        }
         seeds(groveId: $groveId) {
             id
             content,
@@ -22,7 +29,7 @@ const getCards = gql`
 `;
 
 export default compose(
-    graphql(getCards, {
+    graphql(getCollection, {
         name: 'data',
         options: ownProps => ({ variables: { groveId: ownProps.params.collectionId } })
     })

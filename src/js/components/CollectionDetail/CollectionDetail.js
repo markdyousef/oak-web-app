@@ -80,6 +80,11 @@ class CollectionDetail extends Component {
         }).isRequired,
         data: PropTypes.shape({
             loading: PropTypes.bool,
+            grove: PropTypes.shape({
+                name: PropTypes.string,
+                description: PropTypes.string,
+                stats: PropTypes.object
+            }),
             seeds: PropTypes.arrayOf(PropTypes.shape({
                 id: PropTypes.string,
                 content: PropTypes.string,
@@ -119,16 +124,33 @@ class CollectionDetail extends Component {
 
         return null;
     }
+    renderInfo = () => {
+        const { data } = this.props;
+
+        if (data.loading) return <div>Loading </div>;
+
+        const { name, description, stats } = data.grove;
+
+        return (
+            <Info>
+                <h1>{name}</h1>
+                <p>{description}</p>
+                <Stats>
+                    <div>
+                        <h3>{stats.seeds}</h3>
+                        <h5>Cards</h5>
+                    </div>
+                </Stats>
+            </Info>
+        );
+    }
     render() {
         const { router, params } = this.props;
 
         return (
             <Container>
                 <Header>
-                    <Info>
-                        <h1>Collections</h1>
-                        <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
-                    </Info>
+                    {this.renderInfo()}
                     <ButtonGroup>
                         <Button
                             onClick={() => router.push(`collection/${params.collectionId}/card`)}
