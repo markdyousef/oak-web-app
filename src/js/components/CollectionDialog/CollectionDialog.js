@@ -5,8 +5,6 @@ import Button from '../shared/Button';
 import TextField from '../shared/TextField';
 import colors from '../../styles/colors';
 
-import css from './CollectionDialog.css';
-
 const Container = styled.section`
     position: fixed;
     top: 0;
@@ -77,9 +75,9 @@ class CollectionDialog extends Component {
         };
     }
     onSave() {
-        const { name } = this.state;
+        const { name, description } = this.state;
         const { create, close } = this.props;
-        create(name)
+        create(name, description)
             .then(() => close())
             .catch(err => console.log(err))
     }
