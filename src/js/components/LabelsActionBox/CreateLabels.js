@@ -55,6 +55,7 @@ const Back = styled.button`
     border: none;
     background-color: #fff;
     padding: 0;
+    font-weight: bold;
 `;
 
 
@@ -93,7 +94,7 @@ class CreateLabels extends Component {
         );
     }
     render() {
-        const { name } = this.state;
+        const { name, selectedColor } = this.state;
         const { onCreate, onChange } = this.props;
         return (
             <div>
@@ -114,7 +115,7 @@ class CreateLabels extends Component {
                 </Section>
                 <ActionSection>
                     <Button
-                        onClick={() => onCreate()}
+                        onClick={() => onCreate(name, selectedColor)}
                         text="CREATE"
                         type="primary"
                     />

@@ -2,7 +2,7 @@
 import React, { PropTypes, Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import LabelsActionBox from '../LabelsActionBox';
+import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
 import Button from '../shared/Button';
 
 const Container = styled.nav`
@@ -33,7 +33,9 @@ class TopBar extends Component {
         save: PropTypes.func.isRequired,
         showEdit: PropTypes.bool.isRequired,
         edit: PropTypes.func.isRequired,
-        showComments: PropTypes.func.isRequired
+        showComments: PropTypes.func.isRequired,
+        collectionId: PropTypes.string.isRequired,
+        cardId: PropTypes.string.isRequired
     };
     constructor() {
         super();
@@ -43,7 +45,7 @@ class TopBar extends Component {
         };
     }
     renderButtons() {
-        const { save, showEdit, edit } = this.props;
+        const { save, showEdit, edit, cardId, collectionId } = this.props;
         const { showLabels } = this.state;
 
         if (showEdit) {
@@ -57,6 +59,8 @@ class TopBar extends Component {
                         {showLabels &&
                             <LabelsActionBox
                                 close={() => this.setState({ showLabels: false })}
+                                cardId={cardId}
+                                collectionId={collectionId}
                             />
                         }
                     </div>

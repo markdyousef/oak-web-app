@@ -64,8 +64,7 @@ class CardDetail extends Component {
     }
     render() {
         const { showEdit, showComments } = this.state;
-        console.log(showComments);
-        const { router } = this.props;
+        const { router, params } = this.props;
         return (
             <Container>
                 <TopBar
@@ -74,6 +73,8 @@ class CardDetail extends Component {
                     showEdit={showEdit}
                     edit={() => this.setState({ showEdit: true })}
                     showComments={() => this.setState({ showComments: !showComments })}
+                    cardId={params.cardId}
+                    collectionId={params.collectionId}
                 />
                 <Main>
                     <Editor />
