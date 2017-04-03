@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Avatar from '../shared/Avatar';
+import Menu from '../shared/Dropdown';
+import { signOut } from '../../utils';
 
 const Container = styled.nav`
     width: 100%;
@@ -15,12 +17,13 @@ const Container = styled.nav`
     flex-shrink: 0;
 `;
 
-const NavElemement = styled(Link)`
+const Profile = styled.button`
     height: 32px;
     width: 32px;
     border-radius: 999em;
     border: 1px solid #E5E5E5;
     margin-left: 5px;
+    padding: 0;
 `;
 
 const NavRight = styled.div`
@@ -39,21 +42,50 @@ const NavLeft = styled.div`
     width: 100px;
 `;
 
+const Dropdown = styled.div`
+    top: 60px;
+    right: 5px;
+    position: absolute;
+    width: 200px;
+`;
+
+const Logout = styled.button`
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    background: transparent;
+    cursor: pointer;
+`;
+
 
 const IMG = '//style.anu.edu.au/_anu/4/images/placeholders/person.png';
 class TopNav extends Component {
     static propTypes = {
+        router: PropTypes.shape({
+            replace: PropTypes.func
+        }),
         team: PropTypes.bool
     }
     static defaultProps = {
-        team: null
+        team: null,
+        router: null
     }
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            isOpen: false
+        };
+    }
+    signOut = () => {
+        const { router } = this.props;
+        signOut();
+        router.replace({
+            pathname: '/login'
+        })
     }
     render() {
         const { team } = this.props;
+        const { isOpen } = this.state;
         // differ between routes inside team and outside
         const settingsRoute = (team) ? '/my-settings' : 'settings';
         const profileRoute = (team) ? '/my-profile' : 'profile';
@@ -63,11 +95,23 @@ class TopNav extends Component {
                     {/* TODO: Search */}
                 </NavLeft>
                 <NavRight>
-                    <NavElemement to={settingsRoute} />
-                    <NavElemement to={profileRoute}>
+                    <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
                         <Avatar img={IMG} />
-                    </NavElemement>
+                    </Profile>
                 </NavRight>
+                {isOpen &&
+                    <Dropdown>
+                        <Menu>
+                            <Link to={profileRoute}>
+                                Profile
+                            </Link>
+                            <Link to={settingsRoute}>
+                                Settings
+                            </Link>
+                            <Logout onClick={this.signOut}>Logout</Logout>
+                        </Menu>
+                    </Dropdown>
+                }
             </Container>
         );
     }

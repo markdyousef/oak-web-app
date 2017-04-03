@@ -33,12 +33,12 @@ const MainInner = styled.div`
     ${''/* overflow-x: hidden; */}
 `;
 
-export default ({ children }:Object) => (
+export default ({ children, router }:Object) => (
     <Container>
         <InnerContainer>
             <SideNav />
             <Main>
-                <TopNav team />
+                <TopNav team router={router} />
                 <MainInner>
                     {children}
                 </MainInner>
