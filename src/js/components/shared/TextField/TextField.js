@@ -20,6 +20,7 @@ const Default = styled.textarea`
     border-radius: 3px;
     outline: none;
     background-color: #fff;
+    resize: none;
     &:focus {
 
         border-color: #67C198
