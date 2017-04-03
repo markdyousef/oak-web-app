@@ -20,6 +20,7 @@ const Container = styled.div`
     border-radius: 3px;
     padding: 16px;
     margin: 5px;
+    position: relative;
 `;
 
 const Header = styled.div`
@@ -38,6 +39,14 @@ const User = styled.div`
         margin-right: 5px;
         border: 1px solid ${colors.lightGrey}
     }
+`;
+
+const Label = styled.div`
+    width: 10px;
+    height: 20px;
+    line-height: 1.54
+    position: absolute;
+    top: 0;
 `;
 
 const Main = styled.div`
@@ -118,9 +127,20 @@ export default class Card extends Component {
         );
     }
     renderHeader = () => {
-        const { creator } = this.props;
+        const { creator, labels } = this.props;
         return (
             <Header>
+                <div>
+                    {labels.map((label, index) => {
+                        const right = 16 + (index * 12);
+                        return (
+                            <Label
+                                key={label.id}
+                                style={{ background: label.color, right }}
+                            />
+                        );
+                    })}
+                </div>
                 <User>
                     <img />
                     {creator}

@@ -19,6 +19,7 @@ const getCollection = gql`
             creatorId,
             updatedAt,
             labels {
+                id
                 name
                 color
             },

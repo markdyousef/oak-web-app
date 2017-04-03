@@ -8,7 +8,9 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <TopBar
+        cardId={undefined}
         close={[Function]}
+        collectionId="1"
         edit={[Function]}
         save={[Function]}
         showComments={[Function]}
@@ -20,7 +22,9 @@ ShallowWrapper {
   "nodes": Array [
     <styled.div>
       <TopBar
+            cardId={undefined}
             close={[Function]}
+            collectionId="1"
             edit={[Function]}
             save={[Function]}
             showComments={[Function]}
@@ -93,7 +97,9 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <TopBar
+                    cardId={undefined}
                     close={[Function]}
+                    collectionId="1"
                     edit={[Function]}
                     save={[Function]}
                     showComments={[Function]}
@@ -105,7 +111,9 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <TopBar
+                    cardId={undefined}
                     close={[Function]}
+                    collectionId="1"
                     edit={[Function]}
                     save={[Function]}
                     showComments={[Function]}
