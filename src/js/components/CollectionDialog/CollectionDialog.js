@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
+import TextField from '../shared/TextField';
 
 import css from './CollectionDialog.css';
 
@@ -15,6 +16,8 @@ class CollectionDialog extends Component {
         this.onSave = this.onSave.bind(this);
         this.state = {
             name: '',
+            description: '',
+            image: null,
             message: ''
         };
     }
@@ -27,7 +30,7 @@ class CollectionDialog extends Component {
     }
     render() {
         const { close } = this.props;
-        const { name } = this.state;
+        const { name, description } = this.state;
         return (
             <div className={css.modal}>
                 <div className={css.container}>
@@ -40,6 +43,12 @@ class CollectionDialog extends Component {
                             value={name}
                             onChange={value => this.setState({ name: value })}
                             placeholder="Name"
+                        />
+                        <TextField
+                            title="DESCRIPTION"
+                            value={description}
+                            onChange={value => this.setState({ description: value })}
+                            placeholder="Description"
                         />
                     </div>
                     <div className={css.buttons}>

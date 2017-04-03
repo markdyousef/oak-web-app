@@ -82,6 +82,10 @@ input:focus:-ms-input-placeholder {
     color: rgba(19, 21, 23, 0.18);
 }
 
+textarea {
+    outline: none;
+}
+
 i {
     font-style: normal;
 }
