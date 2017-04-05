@@ -33,15 +33,16 @@ class MainEditor extends Component {
     }
     render() {
         const { editorState } = this.state;
+        console.log('on')
         return (
             <Container onClick={this.focus} className={css.editor}>
+                <SideToolbar />
                 <Editor
                     editorState={editorState}
                     onChange={this.onChange}
                     plugins={plugins}
                     ref={(element) => { this.editor = element; }}
                 />
-                <SideToolbar />
             </Container>
         );
     }

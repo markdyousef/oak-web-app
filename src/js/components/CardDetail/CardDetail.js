@@ -37,47 +37,62 @@ class CardDetail extends Component {
             goBack: PropTypes.func.isRequired
         }).isRequired
     }
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.cardId = props.params.cardId,
+        this.collectionId = props.params.collectionId
         this.state = {
             showEdit: false,
             content: null,
             message: null,
-            showComments: false
+            showComments: false,
+            isSaved: false
         };
     }
     onSave = () => {
         const { create, params } = this.props;
         const { content } = this.state;
 
-        const { cardId, collectionId } = params;
-
         // if card doesn't exist create new
-        if (!cardId && collectionId) {
-            create(collectionId, JSON.stringify(content))
-                .then(() => {
-                    this.setState({ showEdit: false, message: { type: 'success', text: 'Saved!'} });
+        if (!this.cardId && this.collectionId) {
+            create(this.collectionId, JSON.stringify(content))
+                .then((res) => {
+                    this.cardId = res.data.createSeed.id;
+                    this.setState({ showEdit: false, isSaved: true, message: { type: 'success', text: 'Saved!'} });
                 })
                 .catch(err => console.log(err));
         }
         // TODO: else update existing card
     }
+    renderTopBar = () => {
+        const { router } = this.props;
+        const { showEdit, isSaved } = this.state;
+
+        // if no cardId, save to get cardId
+        if (!this.cardId) {
+            // if card is already saved
+            if (!isSaved) this.onSave();
+            return null;
+        }
+        return (
+            <TopBar
+                close={() => router.goBack()}
+                save={this.onSave}
+                showEdit={showEdit}
+                edit={() => this.setState({ showEdit: true })}
+                showComments={() => this.setState({ showComments: !showComments })}
+                cardId={this.cardId}
+                collectionId={this.collectionId}
+            />
+        );
+    }
     render() {
         const { showEdit, showComments } = this.state;
-        const { router, params } = this.props;
         return (
             <Container>
-                <TopBar
-                    close={() => router.goBack()}
-                    save={this.onSave}
-                    showEdit={showEdit}
-                    edit={() => this.setState({ showEdit: true })}
-                    showComments={() => this.setState({ showComments: !showComments })}
-                    cardId={params.cardId}
-                    collectionId={params.collectionId}
-                />
+                {this.renderTopBar()}
                 <Main>
-                    <Editor />
+                    {/* <Editor /> */}
                     {showComments &&
                         <CommentsContainer>
                             HOL
