@@ -3,27 +3,26 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import TopBar from './TopBar';
-import Editor from '../Editor';
+import Comments from '../../containers/CommentsContainer';
 
 const Container = styled.div`
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: absolute;
     background-color: ${colors.white};
 `;
 
 const Main = styled.section`
-    margin-top: 40px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
 `;
 
 const CommentsContainer = styled.div`
-    width: 200px;
-    height: 100%;
-    background: ${colors.grey};
+    width: 300px;
+    height: 80%;
+    position: absolute;
+    right: 0;
 `;
 
 class CardDetail extends Component {
@@ -66,7 +65,7 @@ class CardDetail extends Component {
     }
     renderTopBar = () => {
         const { router } = this.props;
-        const { showEdit, isSaved } = this.state;
+        const { showEdit, isSaved, showComments } = this.state;
 
         // if no cardId, save to get cardId
         if (!this.cardId) {
@@ -86,18 +85,24 @@ class CardDetail extends Component {
             />
         );
     }
+    renderComments = () => {
+        const { showComments } = this.state;
+
+        if (!showComments) return null;
+
+        return (
+            <CommentsContainer>
+                <Comments cardId={this.cardId} />
+            </CommentsContainer>
+        );
+    }
     render() {
-        const { showEdit, showComments } = this.state;
         return (
             <Container>
                 {this.renderTopBar()}
                 <Main>
-                    {/* <Editor /> */}
-                    {showComments &&
-                        <CommentsContainer>
-                            HOL
-                        </CommentsContainer>
-                    }
+                    <div />
+                    {this.renderComments()}
                 </Main>
             </Container>
         );

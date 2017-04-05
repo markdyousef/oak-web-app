@@ -8,33 +8,58 @@ const Container = styled.section`
     height: 100%;
     width: 100%;
     max-width: 400px;
-    min-height: 400px;
     border: 1px solid ${colors.lightGrey};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: relative;
 `;
 
 const CommentsPanel = styled.div`
-    padding: 16px 16px 4px;
+    ${''/* padding: 16px 16px 4px; */}
     background: ${colors.white};
-    height: 100%;
+`;
+
+const CommentsInput = styled.div`
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+`;
+
+const Comment = styled.div`
+    width: 100%;
+    height: 50px;
 `;
 
 export default class Comments extends Component {
-    static propTypes = {};
+    static propTypes = {
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            seed: PropTypes.object
+        }).isRequired
+    };
     constructor() {
         super();
         this.state = {}
     }
-    renderComments = () => {}
+    renderComments = () => {
+        const { data } = this.props;
+
+        if (data.loading) return null;
+
+        const { comments } = data.seed;
+        return comments.map(comment => (
+            <Comment>
+                {comment.text}
+            </Comment>
+        ));
+    }
     render() {
         return (
             <Container>
                 <CommentsPanel>
                     {this.renderComments()}
                 </CommentsPanel>
-                <CommentBox />
+                <CommentsInput>
+                    <CommentBox />
+                </CommentsInput>
             </Container>
         );
     }
