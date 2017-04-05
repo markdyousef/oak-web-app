@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import claiLogo from '../../../img/clai-logo.png';
+import HomeIcon from '../../icons/home';
+import CollectionIcon from '../../icons/collections';
 
 const Container = styled.nav`
     max-width: 230px;
@@ -13,7 +15,6 @@ const Container = styled.nav`
     flex-direction: column;
     align-items: baseline;
     height: 100%;
-    padding-top: 16px;
     height: 100vh;
     position: relative;
     z-index: 10;
@@ -23,7 +24,7 @@ const Team = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 16px;
+    padding: 16px;
 `;
 
 const TeamPic = styled.img`
@@ -35,6 +36,8 @@ const TeamPic = styled.img`
 const TeamName = styled.h1`
     color: ${colors.white};
     margin-left: 8px;
+    font-weight: bold;
+    font-size: 16px;
 `;
 
 const Nav = styled.section`
@@ -46,11 +49,21 @@ const StyledLink = styled(Link)`
     color: rgba(255, 255, 255, 0.5);
     font-size: 15px;
     border-left: 3px solid ${colors.darkGrey};
-    padding-left: 16px;
+    padding-left: 16px
+`;
+
+const LinkWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    & svg {
+        margin-right: 8px;
+        fill: ${colors.white};
+    }
 `;
 
 const SubLink = styled(StyledLink)`
     margin: 14px;
+    padding-left: 35px !important;
 `;
 
 class SideNav extends Component {
@@ -99,22 +112,20 @@ class SideNav extends Component {
                     <TeamName>Clai</TeamName>
                 </Team>
                 <Nav>
-                    <StyledLink
+                    {/* <StyledLink
                         // to="/"
                         activeStyle={{ color: colors.white, borderColor: colors.green }}
                     >
-                        <teamStats />
-                        <h1>Home</h1>
-                    </StyledLink>
+                        <LinkWrapper><HomeIcon /><h1>Home</h1></LinkWrapper>
+                    </StyledLink> */}
                     <StyledLink
                         to="/"
                         activeStyle={{ color: colors.white, borderColor: colors.green }}
                     >
-                        <div />
-                        <h1>Collections</h1>
+                        <LinkWrapper><CollectionIcon /><h1>Collections</h1></LinkWrapper>
                     </StyledLink>
                     {this.renderSubCategories()}
-                    <StyledLink
+                    {/* <StyledLink
                         // to="/"
                         activeStyle={{ color: colors.white, borderColor: colors.green }}
                     >
@@ -127,7 +138,7 @@ class SideNav extends Component {
                     >
                         <div />
                         <h1>Toolset</h1>
-                    </StyledLink>
+                    </StyledLink> */}
                 </Nav>
             </Container>
         );
