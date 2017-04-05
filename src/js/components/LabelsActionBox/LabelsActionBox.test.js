@@ -4,7 +4,14 @@ import LabelsActionBox from './LabelsActionBox';
 
 it('renders correctly', () => {
     const props = {
-        close: () => {}
+        close: () => {},
+        createLabel: () => {},
+        addLabel: () => {},
+        removeLabel: () => {},
+        collectionId: '1',
+        cardId: '2',
+        collection: {},
+        card: {}
     };
     const component = renderer.create(
         <LabelsActionBox {...props} />

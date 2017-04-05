@@ -5,7 +5,9 @@ import Card from './Card';
 it('renders correctly', () => {
     const props = {
         creator: '',
-        updatedAt: ''
+        updatedAt: '',
+        onShow: () => {},
+        removeCard: () => {}
     };
     const component = renderer.create(
         <Card {...props} />

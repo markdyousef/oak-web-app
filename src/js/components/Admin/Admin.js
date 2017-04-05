@@ -13,10 +13,10 @@ class Admin extends Component {
             loading: PropTypes.bool
         }).isRequired,
         router: PropTypes.shape({
-            replace: PropTypes.func.isRequired
+            replace: PropTypes.func
         }).isRequired,
         location: PropTypes.shape({
-            pathname: PropTypes.string.isRequired
+            pathname: PropTypes.string
         }).isRequired
     }
     constructor() {

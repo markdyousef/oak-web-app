@@ -48,7 +48,9 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Admin
         createTeam={[Function]}
-        data={Object {}} />,
+        data={Object {}}
+        location={Object {}}
+        router={Object {}} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -59,9 +61,12 @@ ShallowWrapper {
         "props": Object {
           "createTeam": [Function],
           "data": Object {},
+          "location": Object {},
+          "router": Object {},
         },
         "refs": Object {},
         "renderTeams": [Function],
+        "selectTeam": [Function],
         "state": Object {
           "message": null,
           "teamName": "",
@@ -130,6 +135,8 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Admin
     createTeam={[Function]}
-    data={Object {}} />,
+    data={Object {}}
+    location={Object {}}
+    router={Object {}} />,
 }
 `;

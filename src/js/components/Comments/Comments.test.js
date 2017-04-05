@@ -4,6 +4,9 @@ import Comments from './Comments';
 
 it('renders correctly', () => {
     const props = {
+        data: {
+            loading: true
+        }
     };
     const shallowComponent = shallow(
         <Comments {...props} />

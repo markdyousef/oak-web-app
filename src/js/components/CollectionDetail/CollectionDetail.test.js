@@ -6,8 +6,11 @@ it('renders correctly', () => {
     const props = {
         params: {},
         router: {},
-        data: {}
-    }
+        data: {
+            loading: true
+        },
+        remove: () => {}
+    };
     const shallowComponent = shallow(
         <CollectionDetail {...props} />
     );

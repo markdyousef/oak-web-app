@@ -8,7 +8,7 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <TopBar
-        cardId={undefined}
+        cardId="2"
         close={[Function]}
         collectionId="1"
         edit={[Function]}
@@ -16,13 +16,13 @@ ShallowWrapper {
         showComments={[Function]}
         showEdit={false} />
     <styled.section>
-        <MainEditor />
+        <div />
     </styled.section>
 </styled.div>,
   "nodes": Array [
     <styled.div>
       <TopBar
-            cardId={undefined}
+            cardId="2"
             close={[Function]}
             collectionId="1"
             edit={[Function]}
@@ -30,7 +30,7 @@ ShallowWrapper {
             showComments={[Function]}
             showEdit={false} />
       <styled.section>
-            <MainEditor />
+            <div />
       </styled.section>
 </styled.div>,
   ],
@@ -45,6 +45,7 @@ ShallowWrapper {
         create={[Function]}
         params={
                 Object {
+                        "cardId": "2",
                         "collectionId": "1",
                       }
         }
@@ -58,12 +59,15 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": CardDetail {
         "_reactInternalInstance": [Circular],
+        "cardId": "2",
+        "collectionId": "1",
         "context": Object {},
         "onSave": [Function],
         "props": Object {
           "close": [Function],
           "create": [Function],
           "params": Object {
+            "cardId": "2",
             "collectionId": "1",
           },
           "router": Object {
@@ -71,8 +75,11 @@ ShallowWrapper {
           },
         },
         "refs": Object {},
+        "renderComments": [Function],
+        "renderTopBar": [Function],
         "state": Object {
           "content": null,
+          "isSaved": false,
           "message": null,
           "showComments": false,
           "showEdit": false,
@@ -97,7 +104,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <TopBar
-                    cardId={undefined}
+                    cardId="2"
                     close={[Function]}
                     collectionId="1"
                     edit={[Function]}
@@ -105,13 +112,13 @@ ShallowWrapper {
                     showComments={[Function]}
                     showEdit={false} />
           <styled.section>
-                    <MainEditor />
+                    <div />
           </styled.section>
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <TopBar
-                    cardId={undefined}
+                    cardId="2"
                     close={[Function]}
                     collectionId="1"
                     edit={[Function]}
@@ -119,7 +126,7 @@ ShallowWrapper {
                     showComments={[Function]}
                     showEdit={false} />
           <styled.section>
-                    <MainEditor />
+                    <div />
           </styled.section>
 </styled.div>,
       },
@@ -138,6 +145,7 @@ ShallowWrapper {
     create={[Function]}
     params={
         Object {
+            "cardId": "2",
             "collectionId": "1",
           }
     }

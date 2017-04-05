@@ -5,8 +5,10 @@ import CollectionDialog from './CollectionDialog';
 it('renders correctly', () => {
     const props = {
         close: () => {},
-        create: () => {}
-    }
+        create: () => {},
+        update: () => {},
+        remove: () => {}
+    };
     const component = renderer.create(
         <CollectionDialog {...props} />
     );

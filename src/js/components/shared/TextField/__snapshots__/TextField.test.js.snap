@@ -6,17 +6,21 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
-    <textarea
+  "node": <div>
+    <styled.h5 />
+    <styled.textarea
         onChange={[Function]}
-        value={null} />
-</styled.div>,
+        placeholder={null}
+        value="" />
+</div>,
   "nodes": Array [
-    <styled.div>
-      <textarea
+    <div>
+      <styled.h5 />
+      <styled.textarea
             onChange={[Function]}
-            value={null} />
-</styled.div>,
+            placeholder={null}
+            value="" />
+</div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -26,7 +30,9 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <TextField
         onChange={[Function]}
-        value={null} />,
+        placeholder={null}
+        title=""
+        value="" />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -35,7 +41,9 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "onChange": [Function],
-          "value": null,
+          "placeholder": null,
+          "title": "",
+          "value": "",
         },
         "refs": Object {},
         "state": null,
@@ -57,19 +65,23 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <textarea
+        "_currentElement": <div>
+          <styled.h5 />
+          <styled.textarea
                     onChange={[Function]}
-                    value={null} />
-</styled.div>,
+                    placeholder={null}
+                    value="" />
+</div>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <textarea
+        "_renderedOutput": <div>
+          <styled.h5 />
+          <styled.textarea
                     onChange={[Function]}
-                    value={null} />
-</styled.div>,
+                    placeholder={null}
+                    value="" />
+</div>,
       },
-      "_renderedNodeType": 1,
+      "_renderedNodeType": 0,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -81,6 +93,8 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <TextField
     onChange={[Function]}
-    value={null} />,
+    placeholder={null}
+    title=""
+    value="" />,
 }
 `;

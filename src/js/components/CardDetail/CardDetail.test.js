@@ -5,7 +5,8 @@ import CardDetail from './CardDetail';
 it('renders correctly', () => {
     const props = {
         params: {
-            collectionId: '1'
+            collectionId: '1',
+            cardId: '2'
         },
         close: () => {},
         create: () => {},
