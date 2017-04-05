@@ -98,13 +98,20 @@ class CollectionDetail extends Component {
                 comments: PropTypes.arrayOf(PropTypes.object),
                 updatedAt: PropTypes.string.isRequired
             }))
-        }).isRequired
+        }).isRequired,
+        remove: PropTypes.func.isRequired
     }
     constructor() {
         super();
         this.state = {
             showEdit: false
         };
+    }
+    removeCard = (id:String) => {
+        const { remove, data } = this.props;
+        remove(id)
+            .then(() => data.refetch())
+            .catch(err => console.log(err))
     }
     renderCards = () => {
         const { data, router, params } = this.props;
@@ -123,6 +130,7 @@ class CollectionDetail extends Component {
                             comments={item.comments}
                             updatedAt={item.updatedAt}
                             onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
+                            removeCard={() => this.removeCard(item.id)}
                         />
                     )}
                 </Grid>

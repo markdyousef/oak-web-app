@@ -30,9 +30,20 @@ const getCollection = gql`
     }
 `;
 
+const removeSeed = gql`
+    mutation removeSeed($id: ID!) {
+        removeSeed(id: $id)
+    }
+`;
+
 export default compose(
     graphql(getCollection, {
         name: 'data',
         options: ownProps => ({ variables: { groveId: ownProps.params.collectionId } })
+    }),
+    graphql(removeSeed, {
+        props: ({ mutate }) => ({
+            remove: (id:String) => mutate({ variables: { id } })
+        })
     })
 )(CollectionDetail);

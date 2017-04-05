@@ -2,9 +2,11 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
+import Dropdown from '../shared/Dropdown';
 import colors from '../../styles/colors';
 import CommentsIcon from '../../icons/comments';
 import LikesIcon from '../../icons/likes';
+import DotsIcon from '../../icons/dots';
 
 const button = () => {
     return `
@@ -98,6 +100,14 @@ const Icon = styled.div`
     }
 `;
 
+const Settings = styled.div`
+    position: absolute;
+    width: 100px;
+    bottom: -55px;
+    left: 82px;
+    z-index: 99;
+`;
+
 export default class Card extends Component {
     static propTypes = {
         content: PropTypes.shape({
@@ -108,7 +118,8 @@ export default class Card extends Component {
         labels: PropTypes.arrayOf(PropTypes.object),
         comments: PropTypes.arrayOf(PropTypes.object),
         updatedAt: PropTypes.string.isRequired,
-        onShow: PropTypes.func.isRequired
+        onShow: PropTypes.func.isRequired,
+        removeCard: PropTypes.func.isRequired
     }
     static defaultProps = {
         title: null,
@@ -118,7 +129,9 @@ export default class Card extends Component {
     }
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            showOptions: false
+        };
     }
     formatContent = (content: Object) => {
         const { blocks } = content;
@@ -151,18 +164,19 @@ export default class Card extends Component {
         );
     }
     renderContent = () => {
-        const { content } = this.props;
+        const { content, onShow } = this.props;
 
         return (
             <Main>
                 <img alt="card" src={null} />
                 {content && this.formatContent(content)}
-                <button>Read more</button>
+                <button onClick={onShow}>Read more</button>
             </Main>
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onShow } = this.props;
+        const { updatedAt, comments, removeCard } = this.props;
+        const { showOptions } = this.state;
         return (
             <Bottom>
                 <div>
@@ -173,6 +187,16 @@ export default class Card extends Component {
                     <Icon>
                         <LikesIcon />
                         <span>{0}</span>
+                    </Icon>
+                    <Icon>
+                        <DotsIcon onClick={() => this.setState({ showOptions: !showOptions })} />
+                        {showOptions &&
+                            <Settings>
+                                <Dropdown arrowPos="left">
+                                    <Icon onClick={removeCard}>Delete</Icon>
+                                </Dropdown>
+                            </Settings>
+                        }
                     </Icon>
                 </div>
                 <Time>
