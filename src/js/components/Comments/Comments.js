@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CommentBox from './CommentBox';
+import Comment from './Comment';
 
 const Container = styled.section`
     height: 100%;
@@ -13,7 +14,7 @@ const Container = styled.section`
 `;
 
 const CommentsPanel = styled.div`
-    ${''/* padding: 16px 16px 4px; */}
+    padding: 16px 16px 4px;
     background: ${colors.white};
 `;
 
@@ -23,17 +24,13 @@ const CommentsInput = styled.div`
     bottom: 0;
 `;
 
-const Comment = styled.div`
-    width: 100%;
-    height: 50px;
-`;
-
 export default class Comments extends Component {
     static propTypes = {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             seed: PropTypes.object
-        }).isRequired
+        }).isRequired,
+        create: PropTypes.func.isRequired
     };
     constructor() {
         super();
@@ -46,9 +43,10 @@ export default class Comments extends Component {
 
         const { comments } = data.seed;
         return comments.map(comment => (
-            <Comment>
-                {comment.text}
-            </Comment>
+            <Comment
+                key={comment.id}
+                {...comment}
+            />
         ));
     }
     render() {
