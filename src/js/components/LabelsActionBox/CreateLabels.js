@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
 import colors from '../../styles/colors';
+import BackIcon from '../../icons/back';
 
 const COLORS = [
     '#C1BD9D',
@@ -56,6 +57,12 @@ const Back = styled.button`
     background-color: #fff;
     padding: 0;
     font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    & svg {
+        margin-right: 5px;
+    }
 `;
 
 
@@ -99,6 +106,7 @@ class CreateLabels extends Component {
         return (
             <div>
                 <Back onClick={onChange}>
+                    <BackIcon />
                     Back
                 </Back>
                 <Section>

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import CheckIcon from '../../icons/checkmark';
 
 const Section = styled.section`
     margin: 20px 0;
@@ -42,6 +43,9 @@ const Label = styled.div`
     overflow: hidden;
     margin-top: 5px;
     cursor: pointer;
+    & svg {
+        fill: ${colors.white}
+    }
 `;
 
 class AddLabels extends Component {
@@ -68,7 +72,7 @@ class AddLabels extends Component {
                             style={{ backgroundColor: label.color }}
                         >
                             {label.name}
-                            {isActive && <div>/</div>}
+                            {isActive && <CheckIcon />}
                         </Label>
                     );
                 })}
