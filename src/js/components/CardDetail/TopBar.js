@@ -39,12 +39,11 @@ class TopBar extends Component {
     };
     constructor() {
         super();
-        this.renderButtons = this.renderButtons.bind(this);
         this.state = {
             showLabels: false
         };
     }
-    renderButtons() {
+    renderButtons = () => {
         const { save, showEdit, edit, cardId, collectionId } = this.props;
         const { showLabels } = this.state;
 

@@ -46,7 +46,7 @@ class LabelsActionBox extends Component {
         const { collection, card } = nextProps;
 
         if (collection.loading || card.loading) return;
-        if (!collection.grove && !collection.grove.labels) return;
+        if (!collection.grove) return;
         // TODO: issue with grove
         this.setState({
             collectionLabels: collection.grove.labels,

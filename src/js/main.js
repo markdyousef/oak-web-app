@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, dataIdFromObject } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { requireAuth, requireTeam } from './utils';
 
@@ -41,7 +41,13 @@ networkInterface.use([{
 }]);
 
 const client = new ApolloClient({
-    networkInterface
+    networkInterface,
+    dataIdFromObject: (object) => {
+        if (object.__typename !== null && object.id !== null) {
+            return `${object.__typename}-${object.id}`;
+        }
+        return null;
+    }
 });
 
 const routes = (
