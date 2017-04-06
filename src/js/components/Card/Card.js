@@ -120,7 +120,8 @@ export default class Card extends Component {
         updatedAt: PropTypes.string.isRequired,
         onShow: PropTypes.func.isRequired,
         onRemove: PropTypes.func.isRequired,
-        onLike: PropTypes.func.isRequired
+        onLike: PropTypes.func.isRequired,
+        showComments: PropTypes.func.isRequired
     }
     static defaultProps = {
         title: null,
@@ -176,21 +177,21 @@ export default class Card extends Component {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike } = this.props;
+        const { updatedAt, comments, onRemove, onLike, showComments } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
                 <div>
-                    <Icon>
+                    <Icon onClick={showComments}>
                         <CommentsIcon />
                         <span>{comments.length}</span>
                     </Icon>
-                    <Icon>
-                        <LikesIcon onClick={onLike} />
+                    <Icon onClick={onLike}>
+                        <LikesIcon />
                         <span>{0}</span>
                     </Icon>
-                    <Icon>
-                        <DotsIcon onClick={() => this.setState({ showOptions: !showOptions })} />
+                    <Icon onClick={() => this.setState({ showOptions: !showOptions })}>
+                        <DotsIcon />
                         {showOptions &&
                             <Settings>
                                 <Dropdown arrowPos="left">

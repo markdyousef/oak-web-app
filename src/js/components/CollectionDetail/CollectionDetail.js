@@ -138,6 +138,7 @@ class CollectionDetail extends Component {
                             onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
                             onRemove={() => this.removeCard(item.id)}
                             onLike={() => this.handleLike(item.id)}
+                            showComments={() => router.push(`collection/${params.collectionId}/card/${item.id}/comments`)}
                         />
                     )}
                 </Grid>

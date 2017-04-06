@@ -28,8 +28,9 @@ const CommentsContainer = styled.div`
 class CardDetail extends Component {
     static propTypes = {
         params: PropTypes.shape({
+            collectionId: PropTypes.string.isRequired,
             cardId: PropTypes.string,
-            collectionId: PropTypes.string.isRequired
+            comments: PropTypes.string
         }).isRequired,
         create: PropTypes.func.isRequired,
         router: PropTypes.shape({
@@ -48,6 +49,12 @@ class CardDetail extends Component {
             isSaved: false
         };
     }
+    componentWillMount() {
+        const { params } = this.props;
+        if (params.comments) {
+            this.setState({ showComments: true });
+        }
+    }
     onSave = () => {
         const { create, params } = this.props;
         const { content } = this.state;
@@ -57,7 +64,11 @@ class CardDetail extends Component {
             create(this.collectionId, JSON.stringify(content))
                 .then((res) => {
                     this.cardId = res.data.createSeed.id;
-                    this.setState({ showEdit: false, isSaved: true, message: { type: 'success', text: 'Saved!'} });
+                    this.setState({
+                        showEdit: false,
+                        isSaved: true,
+                        message: { type: 'success', text: 'Saved!'}
+                    });
                 })
                 .catch(err => console.log(err));
         }
