@@ -4,7 +4,7 @@ import { EditorState, getDefaultKeyBinding, KeyBindingUtil, convertToRaw } from 
 import styled from 'styled-components';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import colors from '../../styles/colors';
-import emojiStyles from './emojiStyles.css'
+import emojiStyles from './emojiStyles.css';
 
 const emojiPlugin = createEmojiPlugin({
     theme: {

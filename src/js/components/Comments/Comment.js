@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import Editor from 'draft-js-plugins-editor';
+import { EditorState, convertFromRaw } from 'draft-js';
 import colors from '../../styles/colors';
 
 const Container = styled.div`
@@ -21,7 +23,7 @@ const Profile = styled.img`
 const MessageContainer = styled.div`
     min-width: 100px;
     width: 80%;
-    & p {
+    & span {
         font-size: 15px;
         color: ${colors.black};
         line-height: 1.45;
@@ -46,7 +48,7 @@ const Header = styled.div`
         color: #797C80;
         margin-right: 5px;
     }
-    & span {
+    & h5 {
         font-size: 12px;
         font-weight: normal;
         color: #797C80;
@@ -56,16 +58,25 @@ const Header = styled.div`
 // TODO: make it editable with draft-js
 export default class Comment extends Component {
     static propTypes = {
-        text: PropTypes.string.isRequired,
+        text: PropTypes.shape({
+            blocks: PropTypes.arrayOf(PropTypes.object),
+            entityMap: PropTypes.object
+        }).isRequired,
         createdAt: PropTypes.string.isRequired,
         creatorId: PropTypes.string.isRequired
     }
-    constructor() {
-        super();
-        this.state = {}
+    static defaultProps = {
+        type: 'string'
+    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            editorState: EditorState.createWithContent(convertFromRaw(props.text))
+        }
     }
     render() {
-        const { text, createdAt, creatorId } = this.props;
+        const { createdAt, creatorId } = this.props;
+        const { editorState } = this.state;
         return (
             <Container>
                 <Profile />
@@ -73,9 +84,13 @@ export default class Comment extends Component {
                     <Header>
                         <h3>{creatorId}</h3>
                         {/* <a>{creatorId}</a> */}
-                        <span>{moment(createdAt).fromNow()}</span>
+                        <h5>{moment(createdAt).fromNow()}</h5>
                     </Header>
-                    <p>{text}</p>
+                    <Editor
+                        editorState={editorState}
+                        readOnly
+                        onChange={() => {}}
+                    />
                 </MessageContainer>
             </Container>
         );

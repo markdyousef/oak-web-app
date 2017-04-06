@@ -39,6 +39,8 @@ export default class Comments extends Component {
     }
     createComment = (comment:Object) => {
         const { create, cardId, data } = this.props;
+        console.log(comment);
+        console.log(JSON.stringify(comment))
 
         create(cardId, JSON.stringify(comment))
             .then(() => data.refetch())
@@ -50,12 +52,24 @@ export default class Comments extends Component {
         if (data.loading) return null;
 
         const { comments } = data.seed;
-        return comments.map(comment => (
-            <Comment
-                key={comment.id}
-                {...comment}
-            />
-        ));
+        return comments.map((comment) => {
+            // TODO: improve this
+            // currently both normal text string and draft-js content
+            // is used for comments
+            let text = null;
+            try {
+                text = JSON.parse(comment.text);
+            } catch (e) {
+                return null;
+            }
+            return (
+                <Comment
+                    key={comment.id}
+                    {...comment}
+                    text={text}
+                />
+            );
+        });
     }
     render() {
         return (
