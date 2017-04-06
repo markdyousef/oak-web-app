@@ -6,6 +6,7 @@ import colors from '../../styles/colors';
 import CollectionCard from '../CollectionCard';
 import Button from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
+import DotSpinner from '../../components/shared/DotSpinner';
 
 const Container = styled.div`
     width: 100%;
@@ -100,7 +101,7 @@ class Collections extends Component {
     renderCollections = () => {
         const { data } = this.props;
 
-        if (data.loading) return <div>LOADING</div>
+        if (true) return <div><DotSpinner /></div>
 
         if (!data.loading && data.groves) {
             return (
