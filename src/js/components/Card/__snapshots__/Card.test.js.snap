@@ -7,7 +7,7 @@ exports[`test renders correctly 1`] = `
     <div
       className="hwxUWS">
       <img />
-      
+      1
     </div>
   </div>
   <div
@@ -24,7 +24,8 @@ exports[`test renders correctly 1`] = `
     className="fdBgn">
     <div>
       <div
-        className="eEtODH">
+        className="eEtODH"
+        onClick={[Function]}>
         <svg
           height="16"
           viewBox="0 0 16.6 16"
@@ -44,7 +45,8 @@ exports[`test renders correctly 1`] = `
         </span>
       </div>
       <div
-        className="eEtODH">
+        className="eEtODH"
+        onClick={[Function]}>
         <svg
           height="16"
           viewBox="0 0 18 16"
@@ -57,10 +59,10 @@ exports[`test renders correctly 1`] = `
         </span>
       </div>
       <div
-        className="eEtODH">
+        className="eEtODH"
+        onClick={[Function]}>
         <svg
           height="16"
-          onClick={[Function]}
           viewBox="0 0 16 16"
           width="16">
           <g>

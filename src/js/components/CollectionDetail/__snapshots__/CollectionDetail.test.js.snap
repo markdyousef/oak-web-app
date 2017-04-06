@@ -64,22 +64,27 @@ ShallowWrapper {
                         "loading": true,
                       }
         }
+        likeCard={[Function]}
         params={Object {}}
-        remove={[Function]}
-        router={Object {}} />,
+        removeCard={[Function]}
+        router={Object {}}
+        unlikeCard={[Function]} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": CollectionDetail {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "handleLike": [Function],
         "props": Object {
           "data": Object {
             "loading": true,
           },
+          "likeCard": [Function],
           "params": Object {},
-          "remove": [Function],
+          "removeCard": [Function],
           "router": Object {},
+          "unlikeCard": [Function],
         },
         "refs": Object {},
         "removeCard": [Function],
@@ -168,8 +173,10 @@ ShallowWrapper {
             "loading": true,
           }
     }
+    likeCard={[Function]}
     params={Object {}}
-    remove={[Function]}
-    router={Object {}} />,
+    removeCard={[Function]}
+    router={Object {}}
+    unlikeCard={[Function]} />,
 }
 `;

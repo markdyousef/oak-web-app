@@ -4,10 +4,12 @@ import Card from './Card';
 
 it('renders correctly', () => {
     const props = {
-        creator: '',
+        creatorId: '1',
         updatedAt: '',
         onShow: () => {},
-        removeCard: () => {}
+        onRemove: () => {},
+        onLike: () => {},
+        showComments: () => {}
     };
     const component = renderer.create(
         <Card {...props} />

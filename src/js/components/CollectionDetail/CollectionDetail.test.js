@@ -9,7 +9,9 @@ it('renders correctly', () => {
         data: {
             loading: true
         },
-        remove: () => {}
+        removeCard: () => {},
+        likeCard: () => {},
+        unlikeCard: () => {}
     };
     const shallowComponent = shallow(
         <CollectionDetail {...props} />

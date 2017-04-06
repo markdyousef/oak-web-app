@@ -9,14 +9,16 @@ ShallowWrapper {
   "node": <styled.section>
     <styled.div />
     <styled.div>
-        <CommentBox />
+        <CommentBox
+            createComment={[Function]} />
     </styled.div>
 </styled.section>,
   "nodes": Array [
     <styled.section>
       <styled.div />
       <styled.div>
-            <CommentBox />
+            <CommentBox
+                  createComment={[Function]} />
       </styled.div>
 </styled.section>,
   ],
@@ -27,6 +29,8 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <Comments
+        cardId="1"
+        create={[Function]}
         data={
                 Object {
                         "loading": true,
@@ -38,7 +42,10 @@ ShallowWrapper {
       "_instance": Comments {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "createComment": [Function],
         "props": Object {
+          "cardId": "1",
+          "create": [Function],
           "data": Object {
             "loading": true,
           },
@@ -67,14 +74,16 @@ ShallowWrapper {
         "_currentElement": <styled.section>
           <styled.div />
           <styled.div>
-                    <CommentBox />
+                    <CommentBox
+                              createComment={[Function]} />
           </styled.div>
 </styled.section>,
         "_debugID": 2,
         "_renderedOutput": <styled.section>
           <styled.div />
           <styled.div>
-                    <CommentBox />
+                    <CommentBox
+                              createComment={[Function]} />
           </styled.div>
 </styled.section>,
       },
@@ -89,6 +98,8 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Comments
+    cardId="1"
+    create={[Function]}
     data={
         Object {
             "loading": true,
