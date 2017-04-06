@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Card from '../Card';
 import Button from '../shared/Button';
+import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 
 const Container = styled.div`
@@ -12,6 +13,7 @@ const Container = styled.div`
 
 const Header = styled.section`
     width: 100%;
+    height: 260px;
     background-color: ${colors.white};
     padding: 48px 72px;
     border-bottom: 1px solid ${colors.lightGrey};
@@ -125,7 +127,7 @@ class CollectionDetail extends Component {
     renderCards = () => {
         const { data, router, params } = this.props;
 
-        if (data.loading) return <div>LOADING</div>;
+        if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
         if (!data.loading && data.seeds) {
             return (

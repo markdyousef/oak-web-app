@@ -101,7 +101,7 @@ class Collections extends Component {
     renderCollections = () => {
         const { data } = this.props;
 
-        if (true) return <div><DotSpinner /></div>
+        if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
         if (!data.loading && data.groves) {
             return (
