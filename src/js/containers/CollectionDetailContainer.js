@@ -36,6 +36,18 @@ const removeSeed = gql`
     }
 `;
 
+const likeSeed = gql`
+    mutation likeSeed($id: ID!) {
+        likeSeed(id: $id)
+    }
+`;
+
+const unlikeSeed = gql`
+    mutation unlikeSeed($id: ID!) {
+        unlikeSeed(id: $id)
+    }
+`;
+
 export default compose(
     graphql(getCollection, {
         name: 'data',
@@ -43,7 +55,17 @@ export default compose(
     }),
     graphql(removeSeed, {
         props: ({ mutate }) => ({
-            remove: (id:String) => mutate({ variables: { id } })
+            removeCard: (id:String) => mutate({ variables: { id } })
+        })
+    }),
+    graphql(likeSeed, {
+        props: ({ mutate }) => ({
+            likeCard: (id:String) => mutate({ variables: { id } })
+        })
+    }),
+    graphql(unlikeSeed, {
+        props: ({ mutate }) => ({
+            unlikeCard: (id:String) => mutate({ variables: { id } })
         })
     })
 )(CollectionDetail);

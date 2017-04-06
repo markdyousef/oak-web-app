@@ -99,7 +99,9 @@ class CollectionDetail extends Component {
                 updatedAt: PropTypes.string.isRequired
             }))
         }).isRequired,
-        remove: PropTypes.func.isRequired
+        removeCard: PropTypes.func.isRequired,
+        likeCard: PropTypes.func.isRequired,
+        unlikeCard: PropTypes.func.isRequired
     }
     constructor() {
         super();
@@ -107,11 +109,18 @@ class CollectionDetail extends Component {
             showEdit: false
         };
     }
-    removeCard = (id:String) => {
-        const { remove, data } = this.props;
-        remove(id)
+    removeCard = (cardId:String) => {
+        const { removeCard, data } = this.props;
+        removeCard(cardId)
             .then(() => data.refetch())
             .catch(err => console.log(err))
+    }
+    handleLike = (cardId: String) => {
+        const { likeCard, unlikeCard } = this.props;
+        // TODO: if card is already liked - unlike
+        likeCard(cardId)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
     renderCards = () => {
         const { data, router, params } = this.props;
@@ -124,13 +133,11 @@ class CollectionDetail extends Component {
                     {data.seeds.map(item =>
                         <Card
                             key={item.id}
+                            {...item}
                             content={JSON.parse(item.content)}
-                            creator={item.creatorId}
-                            labels={item.labels}
-                            comments={item.comments}
-                            updatedAt={item.updatedAt}
                             onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
-                            removeCard={() => this.removeCard(item.id)}
+                            onRemove={() => this.removeCard(item.id)}
+                            onLike={() => this.handleLike(item.id)}
                         />
                     )}
                 </Grid>

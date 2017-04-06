@@ -114,12 +114,13 @@ export default class Card extends Component {
             blocks: PropTypes.arrayOf(PropTypes.object),
             entityMap: PropTypes.object
         }),
-        creator: PropTypes.string.isRequired,
+        creatorId: PropTypes.string.isRequired,
         labels: PropTypes.arrayOf(PropTypes.object),
         comments: PropTypes.arrayOf(PropTypes.object),
         updatedAt: PropTypes.string.isRequired,
         onShow: PropTypes.func.isRequired,
-        removeCard: PropTypes.func.isRequired
+        onRemove: PropTypes.func.isRequired,
+        onLike: PropTypes.func.isRequired
     }
     static defaultProps = {
         title: null,
@@ -142,7 +143,7 @@ export default class Card extends Component {
         );
     }
     renderHeader = () => {
-        const { creator, labels } = this.props;
+        const { creatorId, labels } = this.props;
         return (
             <Header>
                 <div>
@@ -158,7 +159,7 @@ export default class Card extends Component {
                 </div>
                 <User>
                     <img />
-                    {creator}
+                    {creatorId}
                 </User>
             </Header>
         );
@@ -175,7 +176,7 @@ export default class Card extends Component {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, removeCard } = this.props;
+        const { updatedAt, comments, onRemove, onLike } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
@@ -185,7 +186,7 @@ export default class Card extends Component {
                         <span>{comments.length}</span>
                     </Icon>
                     <Icon>
-                        <LikesIcon />
+                        <LikesIcon onClick={onLike} />
                         <span>{0}</span>
                     </Icon>
                     <Icon>
@@ -193,7 +194,7 @@ export default class Card extends Component {
                         {showOptions &&
                             <Settings>
                                 <Dropdown arrowPos="left">
-                                    <Icon onClick={removeCard}>Delete</Icon>
+                                    <Icon onClick={onRemove}>Delete</Icon>
                                 </Dropdown>
                             </Settings>
                         }
