@@ -30,11 +30,19 @@ export default class Comments extends Component {
             loading: PropTypes.bool,
             seed: PropTypes.object
         }).isRequired,
-        create: PropTypes.func.isRequired
+        create: PropTypes.func.isRequired,
+        cardId: PropTypes.string.isRequired
     };
     constructor() {
         super();
         this.state = {}
+    }
+    createComment = (comment:Object) => {
+        const { create, cardId, data } = this.props;
+
+        create(cardId, JSON.stringify(comment))
+            .then(() => data.refetch())
+            .catch(err => console.log(err));
     }
     renderComments = () => {
         const { data } = this.props;
@@ -56,7 +64,9 @@ export default class Comments extends Component {
                     {this.renderComments()}
                 </CommentsPanel>
                 <CommentsInput>
-                    <CommentBox />
+                    <CommentBox
+                        createComment={this.createComment}
+                    />
                 </CommentsInput>
             </Container>
         );
