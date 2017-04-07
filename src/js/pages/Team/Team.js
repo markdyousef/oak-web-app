@@ -6,31 +6,32 @@ import TopNav from '../../containers/TopNavContainer';
 
 const Container = styled.div`
     display: flex;
-    ${''/* overflow-x: hidden;
-    overflow-y: hidden; */}
+    overflow: hidden;
     flex-direction: column;
+    flex-grow: 1;
 `;
 
 const InnerContainer = styled.div`
     z-index: 0;
-    ${''/* overflow-x: hidden;
-    overflow-y: hidden; */}
     display: flex;
+    flex: 1;
 `;
 
 const Main = styled.section`
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-basis: 100%;
-    position: relative;
     min-width: 1em;
     max-width: 100%;
 `;
 
 const MainInner = styled.div`
     display: block;
-    ${''/* overflow-y: auto; */}
-    ${''/* overflow-x: hidden; */}
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    padding-bottom: 40px;
 `;
 
 export default ({ children, router }:Object) => (

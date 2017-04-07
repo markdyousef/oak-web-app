@@ -9,11 +9,13 @@ import CollectionDialog from '../../containers/CollectionDialogContainer';
 
 const Container = styled.div`
     width: 100%;
+    height: 100%;
+    overflow: auto;
 `;
 
 const Header = styled.section`
     width: 100%;
-    height: 260px;
+    min-height: 260px;
     background-color: ${colors.white};
     padding: 48px 72px;
     border-bottom: 1px solid ${colors.lightGrey};
