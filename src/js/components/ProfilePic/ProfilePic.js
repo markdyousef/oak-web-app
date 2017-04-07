@@ -7,6 +7,7 @@ const Container = styled.div`
     display: flex;
     padding: 20px;
     border: 1px solid ${colors.lightGrey};
+    background: ${colors.white};
     border-radius: 3px;
     flex-wrap: wrap;
 `;

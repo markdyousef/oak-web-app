@@ -6,17 +6,21 @@ import SettingsProfile from '../../containers/SettingsProfileContainer';
 
 const Container = styled.div`
     width: 100%;
+    padding: 80px 0 40px;
+    ${''/* position: absolute; */}
+    background-color: #fff;
     height: 100%;
-    position: absolute;
+    min-height: 200px;
+`;
+
+const Content = styled.div`
     display: flex;
-    background-color: ${colors.white};
     justify-content: center;
     flex-wrap: wrap;
-    padding-top: 80px;
 `;
 
 const Divider = styled.div`
-    height: 70%;
+    max-height: 600px;
     margin: 0 80px;
     width: 1px;
     background-color: ${colors.lightGrey};
@@ -56,15 +60,17 @@ class Settings extends Component {
         const { activeSection } = this.state;
         return (
             <Container>
-                <NavContainer>
-                    <Navigation activeSection={activeSection} onSelect={section => this.setState({ activeSection: section })} />
-                </NavContainer>
-                <Divider />
-                <MainContainer>
-                    {(activeSection === 0) &&
-                        <SettingsProfile />
-                    }
-                </MainContainer>
+                <Content>
+                    <NavContainer>
+                        <Navigation activeSection={activeSection} onSelect={section => this.setState({ activeSection: section })} />
+                    </NavContainer>
+                    <Divider />
+                    <MainContainer>
+                        {(activeSection === 0) &&
+                            <SettingsProfile />
+                        }
+                    </MainContainer>
+                </Content>
             </Container>
         );
     }
