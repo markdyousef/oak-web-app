@@ -7,27 +7,21 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <styled.div>
-        <Apollo(SideNav) />
-        <styled.section>
-            <Apollo(TopNav)
-                router={undefined}
-                team={true} />
-            <styled.div />
-        </styled.section>
-    </styled.div>
+    <styled.div
+        style={undefined} />
+    <styled.div
+        style={undefined} />
+    <styled.div
+        style={undefined} />
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <styled.div>
-            <Apollo(SideNav) />
-            <styled.section>
-                  <Apollo(TopNav)
-                        router={undefined}
-                        team={true} />
-                  <styled.div />
-            </styled.section>
-      </styled.div>
+      <styled.div
+            style={undefined} />
+      <styled.div
+            style={undefined} />
+      <styled.div
+            style={undefined} />
 </styled.div>,
   ],
   "options": Object {},
@@ -43,9 +37,7 @@ ShallowWrapper {
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "children": null,
-        },
+        "props": Object {},
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -67,27 +59,21 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <styled.div>
-                    <Apollo(SideNav) />
-                    <styled.section>
-                              <Apollo(TopNav)
-                                        router={undefined}
-                                        team={true} />
-                              <styled.div />
-                    </styled.section>
-          </styled.div>
+          <styled.div
+                    style={undefined} />
+          <styled.div
+                    style={undefined} />
+          <styled.div
+                    style={undefined} />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <styled.div>
-                    <Apollo(SideNav) />
-                    <styled.section>
-                              <Apollo(TopNav)
-                                        router={undefined}
-                                        team={true} />
-                              <styled.div />
-                    </styled.section>
-          </styled.div>
+          <styled.div
+                    style={undefined} />
+          <styled.div
+                    style={undefined} />
+          <styled.div
+                    style={undefined} />
 </styled.div>,
       },
       "_renderedNodeType": 1,

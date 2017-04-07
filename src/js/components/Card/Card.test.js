@@ -9,7 +9,8 @@ it('renders correctly', () => {
         onShow: () => {},
         onRemove: () => {},
         onLike: () => {},
-        showComments: () => {}
+        showComments: () => {},
+        creator: { avatar: {} }
     };
     const component = renderer.create(
         <Card {...props} />

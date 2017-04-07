@@ -7,18 +7,10 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className={undefined}>
-    <TopNav
-        router={null}
-        team={null} />
-</div>,
+    className={undefined} />,
   "nodes": Array [
     <div
-      className={undefined}>
-      <TopNav
-            router={null}
-            team={null} />
-</div>,
+      className={undefined} />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -57,18 +49,10 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className={undefined}>
-          <TopNav
-                    router={null}
-                    team={null} />
-</div>,
+          className={undefined} />,
         "_debugID": 2,
         "_renderedOutput": <div
-          className={undefined}>
-          <TopNav
-                    router={null}
-                    team={null} />
-</div>,
+          className={undefined} />,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,

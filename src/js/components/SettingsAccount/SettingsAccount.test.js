@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import SettingsAccount from './SettingsAccount';
 
 it('renders correctly', () => {
-    const shallowComponent = shallow(<SettingsAccount />);
+    const props = {
+        updatePassword: () => {}
+    };
+    const shallowComponent = shallow(<SettingsAccount {...props} />);
     expect(shallowComponent).toMatchSnapshot();
 });

@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import ProfilePic from './ProfilePic';
 
 it('renders correctly', () => {
-    const shallowComponent = shallow(<ProfilePic />);
+    const props = {
+        onChange: () => {}
+    }
+    const shallowComponent = shallow(<ProfilePic {...props} />);
     expect(shallowComponent).toMatchSnapshot();
 });

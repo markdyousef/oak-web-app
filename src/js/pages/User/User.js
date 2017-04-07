@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TopNav from '../../components/TopNav';
 
 import css from './User.css';
 
@@ -14,7 +13,6 @@ class User extends Component {
     render() {
         return (
             <div className={css.container}>
-                <TopNav />
                 {this.props.children}
             </div>
         );

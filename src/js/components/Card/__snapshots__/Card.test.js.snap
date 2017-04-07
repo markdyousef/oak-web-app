@@ -5,9 +5,16 @@ exports[`test renders correctly 1`] = `
     className="lmwPmP">
     <div />
     <div
-      className="hwxUWS">
-      <img />
-      1
+      className="dwVQkf">
+      <img
+        alt="avatar"
+        src={undefined} />
+      <div>
+        <h4 />
+        <h5>
+          @
+        </h5>
+      </div>
     </div>
   </div>
   <div

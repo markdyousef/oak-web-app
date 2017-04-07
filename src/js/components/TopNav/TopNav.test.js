@@ -5,7 +5,7 @@ import TopNav from './TopNav';
 
 test('renders TopNav', () => {
     const props = {
-        user: { id: 'id' }
+        data: {}
     };
     const component = renderer.create(
         <TopNav {...props} />

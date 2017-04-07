@@ -24,8 +24,13 @@ ShallowWrapper {
                 type={null} />
         </styled.div>
     </styled.section>
-    <div>
-        LOADING
+    <div
+        style={
+            Object {
+                "marginTop": "40px",
+              }
+        }>
+        <Unknown />
     </div>
 </styled.div>,
   "nodes": Array [
@@ -47,8 +52,13 @@ ShallowWrapper {
                         type={null} />
             </styled.div>
       </styled.section>
-      <div>
-            LOADING
+      <div
+            style={
+                  Object {
+                        "marginTop": "40px",
+                      }
+            }>
+            <Unknown />
       </div>
 </styled.div>,
   ],
@@ -129,8 +139,13 @@ ShallowWrapper {
                                         type={null} />
                     </styled.div>
           </styled.section>
-          <div>
-                    LOADING
+          <div
+                    style={
+                              Object {
+                                        "marginTop": "40px",
+                                      }
+                    }>
+                    <Unknown />
           </div>
 </styled.div>,
         "_debugID": 2,
@@ -152,8 +167,13 @@ ShallowWrapper {
                                         type={null} />
                     </styled.div>
           </styled.section>
-          <div>
-                    LOADING
+          <div
+                    style={
+                              Object {
+                                        "marginTop": "40px",
+                                      }
+                    }>
+                    <Unknown />
           </div>
 </styled.div>,
       },

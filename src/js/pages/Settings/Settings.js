@@ -44,9 +44,6 @@ const MainContainer = styled.div`
 
 class Settings extends Component {
     static propTypes = {
-        router: PropTypes.shape({
-            replace: PropTypes.func
-        }).isRequired
     }
     constructor() {
         super();
