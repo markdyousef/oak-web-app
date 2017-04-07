@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Navigation from './Navigation';
 import SettingsProfile from '../../containers/SettingsProfileContainer';
+import SettingsAccount from '../../containers/SettingsAccountContainer';
 
 const Container = styled.div`
     width: 100%;
@@ -68,6 +69,9 @@ class Settings extends Component {
                     <MainContainer>
                         {(activeSection === 0) &&
                             <SettingsProfile />
+                        }
+                        {(activeSection === 1) &&
+                            <SettingsAccount />
                         }
                     </MainContainer>
                 </Content>

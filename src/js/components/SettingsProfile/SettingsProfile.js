@@ -92,7 +92,7 @@ export default class SettingsProfile extends Component {
         const avatarId = (avatar.id) ? avatar.id : null;
 
         updateUser(name, username, avatarId)
-            .then(res => console.log(res))
+            .then(res => this.setState({ isSaved: true }))
             .catch(err => console.log(err));
     }
     changeField = (key, value) => {

@@ -44,7 +44,7 @@ const Navigation = ({ activeSection, onSelect }:Object) => {
             <NavGroup active={activeSection === 1}>
                 <h3>Account</h3>
                 <h5>Change your email address and password</h5>
-                <button onClick={() => onSelect(1)}>Edit profile information</button>
+                <button onClick={() => onSelect(1)}>Edit account information</button>
             </NavGroup>
             {/* <NavGroup active={activeSection === 2}>
                 <h3>Cancel Account</h3>
