@@ -5,8 +5,7 @@ import colors from '../../styles/colors';
 
 const Container = styled.nav`
     width: 100%;
-    max-width: 220px;
-    max-height: 580px;
+    height: 100%;
 `;
 
 const NavGroup = styled.div`
@@ -39,24 +38,19 @@ const Navigation = ({ activeSection, onSelect }:Object) => {
         <Container>
             <NavGroup active={activeSection === 0}>
                 <h3>Profile</h3>
-                <h5>Chang your Full Name and/or @username.</h5>
-                <button>Edit profile information</button>
+                <h5>Change your name, @username and profile pic</h5>
+                <button onClick={() => onSelect(0)}>Edit profile information</button>
             </NavGroup>
             <NavGroup active={activeSection === 1}>
-                <h3>Profile Pic</h3>
-                <h5>Edit your profile pic to change the way you look on Cuest.</h5>
-                <button>Edit profile pic</button>
+                <h3>Account</h3>
+                <h5>Change your email address and password</h5>
+                <button onClick={() => onSelect(1)}>Edit profile information</button>
             </NavGroup>
-            <NavGroup active={activeSection === 2}>
-                <h3>Profile</h3>
+            {/* <NavGroup active={activeSection === 2}>
+                <h3>Cancel Account</h3>
                 <h5>Chang your Full Name and/or @username.</h5>
                 <button>Edit profile information</button>
-            </NavGroup>
-            <NavGroup active={activeSection === 3}>
-                <h3>Profile</h3>
-                <h5>Chang your Full Name and/or @username.</h5>
-                <button>Edit profile information</button>
-            </NavGroup>
+            </NavGroup> */}
         </Container>
     );
 };

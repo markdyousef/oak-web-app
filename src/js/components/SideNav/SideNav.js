@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import claiLogo from '../../../img/clai-logo.png';
-import HomeIcon from '../../icons/home';
+// import HomeIcon from '../../icons/home';
 import CollectionIcon from '../../icons/collections';
 
 const Container = styled.nav`

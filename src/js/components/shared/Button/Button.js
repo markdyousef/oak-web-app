@@ -18,8 +18,8 @@ const style = (type) => {
     }
     if (type === 'alarm') {
         return `
-            background-color: #E87385;
-            border-color: #E87385;
+            background-color: ${colors.red};
+            border-color: ${colors.red};
             color: ${colors.white};
             &:active {
                 background-color: #D95D70

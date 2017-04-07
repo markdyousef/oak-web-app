@@ -47,6 +47,7 @@ const Dropdown = styled.div`
     right: 5px;
     position: absolute;
     width: 200px;
+    z-index: 99;
 `;
 
 const Logout = styled.div`
