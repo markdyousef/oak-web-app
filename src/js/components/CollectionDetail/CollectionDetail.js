@@ -88,6 +88,9 @@ class CollectionDetail extends Component {
         }).isRequired,
         data: PropTypes.shape({
             loading: PropTypes.bool,
+            me: PropTypes.shape({
+                likedSeeds: PropTypes.arrayOf(PropTypes.object)
+            }),
             grove: PropTypes.shape({
                 id: PropTypes.string,
                 name: PropTypes.string,
@@ -120,11 +123,17 @@ class CollectionDetail extends Component {
             .catch(err => console.log(err))
     }
     handleLike = (cardId: String) => {
-        const { likeCard, unlikeCard } = this.props;
-        // TODO: if card is already liked - unlike
-        likeCard(cardId)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        const { likeCard, unlikeCard, data: { me } } = this.props;
+        const isLiked = me.likedSeeds.findIndex(item => item.id === cardId) > -1;
+        if (isLiked) {
+            unlikeCard(cardId)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        } else {
+            likeCard(cardId)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        }
     }
     renderCards = () => {
         const { data, router, params } = this.props;
@@ -143,6 +152,7 @@ class CollectionDetail extends Component {
                             onRemove={() => this.removeCard(item.id)}
                             onLike={() => this.handleLike(item.id)}
                             showComments={() => router.push(`collection/${params.collectionId}/card/${item.id}/comments`)}
+                            likes={item.likes.length}
                         />
                     )}
                 </Grid>

@@ -128,20 +128,22 @@ export default class Card extends Component {
             name: PropTypes.string,
             username: PropTypes.string,
             avatar: PropTypes.object
-        }),
+        }).isRequired,
         labels: PropTypes.arrayOf(PropTypes.object),
         comments: PropTypes.arrayOf(PropTypes.object),
         updatedAt: PropTypes.string.isRequired,
         onShow: PropTypes.func.isRequired,
         onRemove: PropTypes.func.isRequired,
         onLike: PropTypes.func.isRequired,
-        showComments: PropTypes.func.isRequired
+        showComments: PropTypes.func.isRequired,
+        likes: PropTypes.number
     }
     static defaultProps = {
         title: null,
         content: null,
         labels: [],
-        comments: []
+        comments: [],
+        likes: 0
     }
     constructor() {
         super();
@@ -194,7 +196,7 @@ export default class Card extends Component {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike, showComments } = this.props;
+        const { updatedAt, comments, onRemove, onLike, showComments, likes } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
@@ -205,7 +207,7 @@ export default class Card extends Component {
                     </Icon>
                     <Icon onClick={onLike}>
                         <LikesIcon />
-                        <span>{0}</span>
+                        <span>{likes}</span>
                     </Icon>
                     <Icon onClick={() => this.setState({ showOptions: !showOptions })}>
                         <DotsIcon />

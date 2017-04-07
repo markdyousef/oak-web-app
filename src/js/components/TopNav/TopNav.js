@@ -68,7 +68,7 @@ class TopNav extends Component {
         team: PropTypes.bool,
         data: PropTypes.shape({
             loading: PropTypes.bool,
-            avatar: PropTypes.object
+            me: PropTypes.object
         }).isRequired
     }
     static defaultProps = {
@@ -85,11 +85,10 @@ class TopNav extends Component {
     componentWillReceiveProps(nextProps) {
         const { data } = nextProps;
 
-        if (data.loading) return;
-
+        if (data.loading || !data.me) return;
         const { avatar } = data.me;
         const picture = (avatar.urlThumb64) ? avatar.urlThumb64 : IMG;
-        this.setState({ picture })
+        this.setState({ picture });
     }
     signOut = () => {
         const { router } = this.props;

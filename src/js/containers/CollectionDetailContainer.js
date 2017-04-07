@@ -5,6 +5,11 @@ import CollectionDetail from '../components/CollectionDetail';
 
 const getCollection = gql`
     query collection($groveId: ID!) {
+        me {
+            likedSeeds {
+                id
+            }
+        }
         grove(id: $groveId) {
             id
             name
@@ -24,6 +29,7 @@ const getCollection = gql`
                 }
             }
             updatedAt
+            likes
             labels {
                 id
                 name
