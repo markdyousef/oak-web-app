@@ -65,7 +65,11 @@ class TopNav extends Component {
         router: PropTypes.shape({
             replace: PropTypes.func
         }),
-        team: PropTypes.bool
+        team: PropTypes.bool,
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            avatar: PropTypes.object
+        }).isRequired
     }
     static defaultProps = {
         team: null,
@@ -74,8 +78,18 @@ class TopNav extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            picture: IMG
         };
+    }
+    componentWillReceiveProps(nextProps) {
+        const { data } = nextProps;
+
+        if (data.loading) return;
+
+        const { avatar } = data.me;
+        const picture = (avatar.urlThumb64) ? avatar.urlThumb64 : IMG;
+        this.setState({ picture })
     }
     signOut = () => {
         const { router } = this.props;
@@ -86,10 +100,10 @@ class TopNav extends Component {
     }
     render() {
         const { team } = this.props;
-        const { isOpen } = this.state;
+        const { isOpen, picture } = this.state;
         // differ between routes inside team and outside
         const settingsRoute = (team) ? '/my-settings' : 'settings';
-        const profileRoute = (team) ? '/my-profile' : 'profile';
+        // const profileRoute = (team) ? '/my-profile' : 'profile';
         return (
             <Container>
                 <NavLeft>
@@ -97,7 +111,7 @@ class TopNav extends Component {
                 </NavLeft>
                 <NavRight>
                     <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
-                        <Avatar img={IMG} />
+                        <Avatar img={picture} />
                     </Profile>
                 </NavRight>
                 {isOpen &&

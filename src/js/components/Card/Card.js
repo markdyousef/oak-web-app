@@ -43,6 +43,16 @@ const User = styled.div`
         margin-right: 5px;
         border: 1px solid ${colors.lightGrey}
     }
+    & h4 {
+        font-size: 14px;
+        font-weight: bold;
+        color: ${colors.black}
+    }
+    & h5 {
+        font-size: 14px;
+        font-weight: normal;
+        color: ${colors.grey}
+    }
 `;
 
 const Label = styled.div`
@@ -114,7 +124,11 @@ export default class Card extends Component {
             blocks: PropTypes.arrayOf(PropTypes.object),
             entityMap: PropTypes.object
         }),
-        creatorId: PropTypes.string.isRequired,
+        creator: PropTypes.shape({
+            name: PropTypes.string,
+            username: PropTypes.string,
+            avatar: PropTypes.object
+        }),
         labels: PropTypes.arrayOf(PropTypes.object),
         comments: PropTypes.arrayOf(PropTypes.object),
         updatedAt: PropTypes.string.isRequired,
@@ -144,7 +158,7 @@ export default class Card extends Component {
         );
     }
     renderHeader = () => {
-        const { creatorId, labels } = this.props;
+        const { creator, labels } = this.props;
         return (
             <Header>
                 <div>
@@ -159,8 +173,11 @@ export default class Card extends Component {
                     })}
                 </div>
                 <User>
-                    <img />
-                    {creatorId}
+                    <img src={creator.avatar.urlThumb64} alt="avatar" />
+                    <div>
+                        <h4>{creator.name}</h4>
+                        <h5>@{creator.username}</h5>
+                    </div>
                 </User>
             </Header>
         );

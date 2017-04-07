@@ -97,7 +97,7 @@ class CollectionDetail extends Component {
             seeds: PropTypes.arrayOf(PropTypes.shape({
                 id: PropTypes.string,
                 content: PropTypes.string,
-                creatorId: PropTypes.string,
+                creator: PropTypes.object,
                 labels: PropTypes.arrayOf(PropTypes.object),
                 comments: PropTypes.arrayOf(PropTypes.object),
                 updatedAt: PropTypes.string.isRequired

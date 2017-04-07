@@ -8,10 +8,7 @@ import SettingsAccount from '../../containers/SettingsAccountContainer';
 const Container = styled.div`
     width: 100%;
     padding: 80px 0 40px;
-    ${''/* position: absolute; */}
     background-color: #fff;
-    height: 100%;
-    min-height: 200px;
 `;
 
 const Content = styled.div`
