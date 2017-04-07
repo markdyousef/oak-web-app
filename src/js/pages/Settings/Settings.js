@@ -20,7 +20,7 @@ const Divider = styled.div`
     margin: 0 80px;
     width: 1px;
     background-color: ${colors.lightGrey};
-    @media (max-width: 970px) {
+    @media (max-width: 1000px) {
         width: 0;
     }
 `;

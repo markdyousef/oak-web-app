@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import ProfilePic from '../../components/ProfilePic';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
 import SavedIcon from '../../icons/saved';
@@ -8,6 +9,9 @@ import SavedIcon from '../../icons/saved';
 const Container = styled.section`
     width: 100%;
     height: 100%;
+    & h1 {
+        margin-bottom: 20px;
+    }
     & h5 {
         margin: 10px 5px;
         font-size: 14px;
@@ -61,7 +65,7 @@ export default class SettingsProfile extends Component {
             name: '',
             username: '',
             errorMessage: null,
-            avatar: null,
+            avatar: {},
             isSaved: false
         };
     }
@@ -69,30 +73,58 @@ export default class SettingsProfile extends Component {
         const { data } = nextProps;
 
         if (data.loading) return;
+        const { name, username, avatar } = data.me;
+
+        const picture = (avatar.urlThumb512) ?
+            { id: avatar.id, url: avatar.urlThumb512 }
+            : null;
 
         this.setState({
-            name: data.me.name,
-            username: data.me.username
+            name,
+            username,
+            avatar: picture
         });
     }
     onSave = () => {
         const { updateUser } = this.props;
         const { name, username, avatar } = this.state;
 
-        updateUser(name)
+        const avatarId = (avatar.id) ? avatar.id : null;
+
+        updateUser(name, username, avatarId)
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
+    changeField = (key, value) => {
+        switch (key) {
+        case 'name':
+            this.setState({ name: value });
+            break;
+        case 'username':
+            this.setState({ username: value });
+            break;
+        case 'avatar':
+            this.setState({ avatar: value });
+            break;
+        default:
+            break;
+        }
+        this.setState({ isSaved: false, errorMessage: false });
+    }
     render() {
-        const { name, username, errorMessage, isSaved } = this.state;
+        const { name, username, avatar, errorMessage, isSaved } = this.state;
         return (
             <Container>
                 <h1>Profile</h1>
+                <ProfilePic
+                    picture={avatar.url}
+                    onChange={this.changeField}
+                />
                 <InputContainer>
                     <Input
                         value={name}
                         placeholder="John Doe"
-                        onChange={value => this.setState({ name: value, isSaved: false, errorMessage: false })}
+                        onChange={value => this.changeField('name', value)}
                         title="Full Name"
                     />
                     <h5>Your name goes whereever you go on Cuest, and
@@ -103,7 +135,7 @@ export default class SettingsProfile extends Component {
                     <Input
                         value={username}
                         placeholder="john"
-                        onChange={value => this.setState({ username: value, isSaved: false, errorMessage: false })}
+                        onChange={value => this.changeField('username', value)}
                         title="Username"
                     />
                     <h5>Here's how you're username looks: <span>@{username}</span>

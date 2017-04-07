@@ -17,12 +17,9 @@ const getUser = gql`
 `;
 
 const updateUser = gql`
-    mutation updateUser($name: String, $avatarId: ID) {
-        updateUser(name: $name, avatarId: $avatarId) {
+    mutation updateUser($name: String, $username: String, $avatarId: ID) {
+        updateUser(name: $name, username: $username, avatarId: $avatarId) {
             name
-            avatar {
-                urlThumb512
-            }
         }
     }
 `;
@@ -31,7 +28,7 @@ export default compose(
     graphql(getUser),
     graphql(updateUser, {
         props: ({ mutate }) => ({
-            updateUser: (name:String, avatarId:String) => mutate({ variables: { name, avatarId } })
+            updateUser: (name, username, avatarId) => mutate({ variables: { name, username, avatarId } })
         })
     })
 )(SettingsProfile);
