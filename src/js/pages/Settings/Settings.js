@@ -1,8 +1,24 @@
 import React, { Component, PropTypes } from 'react';
-import Button from '../../components/shared/Button';
-import { signOut } from '../../utils'
+import styled from 'styled-components';
+import colors from '../../styles/colors';
+import Navigation from './Navigation';
 
-import css from './Settings.css';
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    background-color: ${colors.white};
+    align-items: center;
+    justify-content: center;
+`;
+
+const Divider = styled.div`
+    height: 70%;
+    margin: 0 80px;
+    width: 1px;
+    background-color: ${colors.lightGrey}
+`;
 
 class Settings extends Component {
     static propTypes = {
@@ -12,27 +28,17 @@ class Settings extends Component {
     }
     constructor() {
         super();
-        this.signOut = this.signOut.bind(this);
-        this.state = {};
-    }
-    signOut() {
-        const { router } = this.props;
-        signOut();
-        router.replace({
-            pathname: '/login'
-        })
+        this.state = {
+            activeSection: 0
+        };
     }
     render() {
+        const { activeSection } = this.state;
         return (
-            <div className={css.container}>
-                <div className={css.settings}>
-                    <h1>Settings:</h1>
-                    <Button
-                        onClick={this.signOut}
-                        text="Sign out"
-                    />
-                </div>
-            </div>
+            <Container>
+                <Navigation activeSection={activeSection} onSelect={() => {}} />
+                <Divider />
+            </Container>
         );
     }
 }

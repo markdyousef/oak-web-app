@@ -102,9 +102,9 @@ class TopNav extends Component {
                 {isOpen &&
                     <Dropdown>
                         <Menu>
-                            <Link to={profileRoute}>
+                            {/* <Link to={profileRoute}>
                                 Profile
-                            </Link>
+                            </Link> */}
                             <Link to={settingsRoute}>
                                 Settings
                             </Link>
