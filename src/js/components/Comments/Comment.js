@@ -55,7 +55,6 @@ const Header = styled.div`
     }
 `;
 
-// TODO: make it editable with draft-js
 export default class Comment extends Component {
     static propTypes = {
         text: PropTypes.shape({

@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { convertToRaw } from 'draft-js';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import TopBar from './TopBar';
@@ -39,7 +40,12 @@ class CardDetail extends Component {
             cardId: PropTypes.string,
             comments: PropTypes.string
         }).isRequired,
+        data: PropTypes.shape({
+            loading: PropTypes.bool,
+            seed: PropTypes.object
+        }).isRequired,
         create: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
         router: PropTypes.shape({
             goBack: PropTypes.func.isRequired
         }).isRequired
@@ -50,7 +56,6 @@ class CardDetail extends Component {
         this.collectionId = props.params.collectionId
         this.state = {
             showEdit: false,
-            content: null,
             message: null,
             showComments: false,
             isSaved: false
@@ -63,12 +68,13 @@ class CardDetail extends Component {
         }
     }
     onSave = () => {
-        const { create, params } = this.props;
-        const { content } = this.state;
+        const { create, update } = this.props;
+        const { editorState } = this.editor.state;
+        const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
         // if card doesn't exist create new
         if (!this.cardId && this.collectionId) {
-            create(this.collectionId, JSON.stringify(content))
+            create(this.collectionId, content)
                 .then((res) => {
                     this.cardId = res.data.createSeed.id;
                     this.setState({
@@ -78,8 +84,16 @@ class CardDetail extends Component {
                     });
                 })
                 .catch(err => console.log(err));
+        } else if (this.cardId && this.collectionId) {
+            update(this.cardId, content)
+                .then((res) => {
+                    this.setState({
+                        showEdit: false,
+                        message: { type: 'success', text: 'Saved' }
+                    });
+                })
+                .catch(err => console.log(err));
         }
-        // TODO: else update existing card
     }
     renderTopBar = () => {
         const { router } = this.props;
@@ -116,6 +130,9 @@ class CardDetail extends Component {
     }
     render() {
         const { showEdit } = this.state;
+        const { data } = this.props;
+
+        if (data.loading) return null;
         return (
             <Container>
                 {this.renderTopBar()}
@@ -123,6 +140,8 @@ class CardDetail extends Component {
                     <EditorContainer>
                         <Editor
                             canEdit={showEdit}
+                            ref={(element) => { this.editor = element; }}
+                            content={JSON.parse(data.seed.content)}
                         />
                     </EditorContainer>
                     {this.renderComments()}

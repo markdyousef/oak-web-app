@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { EditorState, RichUtils, Editor } from 'draft-js';
+import { EditorState, RichUtils, Editor, convertFromRaw } from 'draft-js';
 // TODO: add custom styling
 import 'draft-js/dist/Draft.css';
 import styled from 'styled-components';
@@ -65,11 +65,18 @@ type State = {
 }
 
 export default class App extends Component<DefaultProps, Props, State> {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             editorState: EditorState.createEmpty()
         };
+    }
+    componentWillReceiveProps(nextProps:Object) {
+        const { content } = nextProps;
+        if (content !== null && typeof content === 'object') {
+            console.log(content);
+            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(content)) });
+        }
     }
     onChange = (editorState:Object) => this.setState({ editorState })
     onTab = (event:Object) => {
