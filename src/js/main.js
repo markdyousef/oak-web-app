@@ -69,6 +69,7 @@ const routes = (
                         <Route path="home" component={Home} />
                         <Route path="my-profile" component={Profile} />
                         <Route path="my-settings" component={Settings} />
+                        <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
                         <Route path="collection/:collectionId/card(/:cardId/:comments)" component={CardDetail} />
                         <Route path="collection/:collectionId" component={CollectionDetail} />
                     </Route>

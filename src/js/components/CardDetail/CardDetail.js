@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
+import Editor from '../Editor';
 
 const Container = styled.div`
     width: 100%;
@@ -23,6 +24,10 @@ const CommentsContainer = styled.div`
     height: 80%;
     position: absolute;
     right: 0;
+`;
+
+const EditorContainer = styled.div`
+    width: 100%;
 `;
 
 class CardDetail extends Component {
@@ -112,7 +117,9 @@ class CardDetail extends Component {
             <Container>
                 {this.renderTopBar()}
                 <Main>
-                    <div />
+                    <EditorContainer>
+                        <Editor />
+                    </EditorContainer>
                     {this.renderComments()}
                 </Main>
             </Container>
