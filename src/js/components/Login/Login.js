@@ -119,8 +119,9 @@ class Login extends Component {
                 // save token to localstorage
                 saveToken(res.data.loginUser);
                 router.replace({
-                    pathname: 'home'
+                    pathname: '/home'
                 });
+                window.location.reload();
             })
             .catch(err => console.log(err))
     }

@@ -6,6 +6,7 @@ import Card from '../Card';
 import Button from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
+import NoCards from './NoCards';
 
 const Container = styled.div`
     width: 100%;
@@ -135,12 +136,13 @@ class CollectionDetail extends Component {
                 .catch(err => console.log(err));
         }
     }
+    addCard = () => router.push(`collection/${params.collectionId}/card`)
     renderCards = () => {
         const { data, router, params } = this.props;
 
         if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
-        if (!data.loading && data.seeds) {
+        if (data.seeds.length > 0) {
             return (
                 <Grid>
                     {data.seeds.map((item) => {
@@ -163,8 +165,7 @@ class CollectionDetail extends Component {
                 </Grid>
             );
         }
-
-        return null;
+        return <NoCards onClick={this.addCard} />;
     }
     renderInfo = () => {
         const { data } = this.props;
@@ -195,7 +196,7 @@ class CollectionDetail extends Component {
                     {this.renderInfo()}
                     <ButtonGroup>
                         <Button
-                            onClick={() => router.push(`collection/${params.collectionId}/card`)}
+                            onClick={this.addCard}
                             text="Add Card"
                             type="primary"
                         />

@@ -87,7 +87,9 @@ const config = options => ({
                 // inline base64 URLs for <=8k images, direct URLs for the rest
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=8192'
-            }
+            },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+            { test: /\.(ttf|eot|svg||woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
         ]
     },
 
