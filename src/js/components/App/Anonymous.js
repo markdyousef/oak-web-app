@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import LoginNav from '../LoginNav';
 import css from './App.css';
 
 
@@ -32,6 +33,7 @@ class Anonymous extends Component {
     render() {
         return (
             <div className={[css.container, css.anonymous].join(' ')}>
+                <LoginNav />
                 {this.props.children}
             </div>
         );

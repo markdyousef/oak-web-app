@@ -20,6 +20,7 @@ import Settings from './containers/SettingsContainer';
 import User from './pages/User';
 import Admin from './containers/AdminContainer';
 import Team from './pages/Team';
+import Forgot from './containers/ForgotContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -57,6 +58,7 @@ const routes = (
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
                     <Route path="signup" component={SignUp} />
+                    <Route path="forgot" component={Forgot} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>

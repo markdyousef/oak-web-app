@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
-import { saveToken } from '../../utils';
 import colors from '../../styles/colors';
 import Arrow from '../../icons/rightArrow';
 
@@ -17,7 +16,7 @@ const Box = styled.div`
     width: 480px;
     ${''/* height: 380px; */}
     background-color: ${colors.white};
-    padding: 64px 100px;
+    padding: 45px 100px;
     display: flex;
     flex-direction: column;
     border: 1px solid ${colors.lightGrey};
@@ -73,7 +72,7 @@ const ErrorMessage = styled.div`
 `;
 
 const Forgot = styled.div`
-    max-width: 300px;
+    max-width: 250px;
     margin: auto;
     margin-top: 32px;
     color: ${colors.grey};
@@ -85,7 +84,7 @@ const Forgot = styled.div`
 
 class Login extends Component {
     static propTypes = {
-        loginUser: PropTypes.func.isRequired,
+        resetPassword: PropTypes.func.isRequired,
         router: PropTypes.shape({
             replace: PropTypes.func
         }).isRequired
@@ -95,41 +94,26 @@ class Login extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             email: '',
-            password: '',
             message: null
         };
     }
     onSubmit() {
-        const { loginUser, router } = this.props;
-        const { email, password } = this.state;
+        const { resetPassword, router } = this.props;
+        const { email } = this.state;
 
         // clear messsage
         this.setState({ message: null });
-
-        // email validation
-        if (email.length < 6) {
-            return this.setState({ message: 'please provide a valid email'});
-        }
-        // password validation
-        if (password.length < 6) {
-            return this.setState({ message: 'your password should be at least 6 characters' });
-        }
-        return loginUser(email, password)
-            .then((res) => {
-                // save token to localstorage
-                saveToken(res.data.loginUser);
-                router.replace({
-                    pathname: 'home'
-                });
-            })
+        return resetPassword(email)
+            .then(res => console.log(res))
             .catch(err => console.log(err))
     }
     render() {
         const { email, password, message } = this.state;
+        const { router } = this.props;
         return (
             <Container>
                 <Box>
-                    <h1>Sign in to Cuest</h1>
+                    <h1>Reset password</h1>
                     <div>
                         <Input
                             title="EMAIL"
@@ -137,13 +121,6 @@ class Login extends Component {
                             onChange={value => this.setState({ email: value, message: null })}
                             type="email"
                             placeholder="Email"
-                        />
-                        <Input
-                            title="PASSWORD"
-                            value={password}
-                            onChange={value => this.setState({ password: value, message: null })}
-                            type="password"
-                            placeholder="Password"
                             onKeyDown={(e) => {
                                 if (e.keyCode === 13) {
                                     this.onSubmit();
@@ -155,7 +132,7 @@ class Login extends Component {
                         <Button
                             onClick={this.onSubmit}
                         >
-                            Sign in
+                            Reset password
                             <Arrow />
                         </Button>
                     </div>
@@ -168,7 +145,7 @@ class Login extends Component {
                     </div>
                 </Box>
                 <Forgot>
-                    <p>Forgot your password? <Link to="/forgot">Get a new one</Link></p>
+                    <p>Remember your password? <Link to="/login">Sign in!</Link></p>
                 </Forgot>
             </Container>
         );
