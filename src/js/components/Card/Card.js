@@ -136,7 +136,8 @@ export default class Card extends Component {
         onRemove: PropTypes.func.isRequired,
         onLike: PropTypes.func.isRequired,
         showComments: PropTypes.func.isRequired,
-        likes: PropTypes.number
+        likes: PropTypes.number,
+        isLiked: PropTypes.bool.isRequired
     }
     static defaultProps = {
         title: null,
@@ -196,7 +197,7 @@ export default class Card extends Component {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike, showComments, likes } = this.props;
+        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
@@ -206,7 +207,7 @@ export default class Card extends Component {
                         <span>{comments.length}</span>
                     </Icon>
                     <Icon onClick={onLike}>
-                        <LikesIcon />
+                        <LikesIcon isLiked={isLiked} />
                         <span>{likes}</span>
                     </Icon>
                     <Icon onClick={() => this.setState({ showOptions: !showOptions })}>

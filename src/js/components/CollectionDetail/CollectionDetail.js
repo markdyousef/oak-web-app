@@ -123,15 +123,15 @@ class CollectionDetail extends Component {
             .catch(err => console.log(err))
     }
     handleLike = (cardId: String) => {
-        const { likeCard, unlikeCard, data: { me } } = this.props;
-        const isLiked = me.likedSeeds.findIndex(item => item.id === cardId) > -1;
+        const { likeCard, unlikeCard, data } = this.props;
+        const isLiked = data.me.likedSeeds.findIndex(item => item.id === cardId) > -1;
         if (isLiked) {
             unlikeCard(cardId)
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+                .then(() => data.refetch())
+                .catch(err => console.log(err))
         } else {
             likeCard(cardId)
-                .then(res => console.log(res))
+                .then(() => data.refetch())
                 .catch(err => console.log(err));
         }
     }
@@ -143,17 +143,22 @@ class CollectionDetail extends Component {
         if (!data.loading && data.seeds) {
             return (
                 <Grid>
-                    {data.seeds.map(item =>
-                        <Card
-                            key={item.id}
-                            {...item}
-                            content={JSON.parse(item.content)}
-                            onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
-                            onRemove={() => this.removeCard(item.id)}
-                            onLike={() => this.handleLike(item.id)}
-                            showComments={() => router.push(`collection/${params.collectionId}/card/${item.id}/comments`)}
-                            likes={item.likes.length}
-                        />
+                    {data.seeds.map((item) => {
+                        const isLiked = data.me.likedSeeds.findIndex(card => card.id === item.id) > -1;
+                        return (
+                            <Card
+                                key={item.id}
+                                {...item}
+                                content={JSON.parse(item.content)}
+                                onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
+                                onRemove={() => this.removeCard(item.id)}
+                                onLike={() => this.handleLike(item.id)}
+                                showComments={() => router.push(`collection/${params.collectionId}/card/${item.id}/comments`)}
+                                likes={item.likes.length}
+                                isLiked={isLiked}
+                            />
+                        );
+                    }
                     )}
                 </Grid>
             );
