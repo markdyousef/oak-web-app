@@ -15,10 +15,6 @@
     position: absolute;
 }
 
-.anonymous {
-    background-color: var(--main-gray-color);
-}
-
 .right {
     width: 100%;
 }

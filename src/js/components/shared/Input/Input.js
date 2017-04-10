@@ -50,6 +50,7 @@ const Input = ({ ...props }:Object) => {
                 placeholder={props.placeholder}
                 onChange={event => props.onChange(event.target.value)}
                 notValid={props.notValid}
+                onKeyDown={props.onKeyDown}
             />
         </div>
     );
@@ -61,7 +62,8 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     type: PropTypes.string,
-    notValid: PropTypes.bool
+    notValid: PropTypes.bool,
+    onKeyDown: PropTypes.func
 };
 
 Input.defaultProps = {
@@ -69,7 +71,8 @@ Input.defaultProps = {
     value: null,
     placeholder: null,
     type: null,
-    notValid: false
+    notValid: false,
+    onKeyDown: null
 };
 
 export default Input;

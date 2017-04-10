@@ -71,10 +71,9 @@ export default class App extends Component<DefaultProps, Props, State> {
             editorState: EditorState.createEmpty()
         };
     }
-    componentWillReceiveProps(nextProps:Object) {
-        const { content } = nextProps;
+    componentWillMount() {
+        const { content } = this.props;
         if (content !== null && typeof content === 'object') {
-            console.log(content);
             this.setState({ editorState: EditorState.createWithContent(convertFromRaw(content)) });
         }
     }

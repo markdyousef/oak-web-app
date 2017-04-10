@@ -6,7 +6,8 @@ const colors = {
     lightGrey: '#E5E5E5',
     extraLightGrey: '#F9FAFB',
     white: '#FFFFFF',
-    red: '#E87385'
+    red: '#E87385',
+    orange: '#FEC288'
 };
 
 export default colors;
