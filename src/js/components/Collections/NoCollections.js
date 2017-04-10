@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../shared/Button';
-import empty from '../../../img/cards-empty-state.svg';
+import empty from '../../../img/collections-empty-state.svg';
 
 const Container = styled.div`
     width: 60%;
@@ -34,9 +34,9 @@ const Container = styled.div`
 const Empty = ({ onClick }:Object) => {
     return (
         <Container>
-            <h2>Cards</h2>
+            <h2>Collections</h2>
             <img src={empty} alt="empty state" />
-            <p>A collection is much better with some cards!</p>
+            <p>You haven’t created any collections yet. Create your first collection by hitting the button below.</p>
             <Button
                 text="Create a card"
                 onClick={onClick}

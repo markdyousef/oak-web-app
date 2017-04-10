@@ -132,7 +132,7 @@ class CardDetail extends Component {
         const { showEdit } = this.state;
         const { data } = this.props;
 
-        if (data.loading) return null;
+        // if (data.loading) return null;
         return (
             <Container>
                 {this.renderTopBar()}

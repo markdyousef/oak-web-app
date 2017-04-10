@@ -136,7 +136,7 @@ class CollectionDetail extends Component {
                 .catch(err => console.log(err));
         }
     }
-    addCard = () => router.push(`collection/${params.collectionId}/card`)
+    addCard = () => this.props.router.push(`collection/${this.props.params.collectionId}/card`)
     renderCards = () => {
         const { data, router, params } = this.props;
 

@@ -7,6 +7,7 @@ import CollectionCard from '../CollectionCard';
 import Button from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import DotSpinner from '../../components/shared/DotSpinner';
+import NoCollections from './NoCollections';
 
 const Container = styled.div`
     width: 100%;
@@ -92,10 +93,7 @@ class Collections extends Component {
     constructor() {
         super();
         this.state = {
-            showAdd: false,
-            collections: 0,
-            cards: 0,
-            members: 0
+            showAdd: false
         };
     }
     renderCollections = () => {
@@ -103,7 +101,7 @@ class Collections extends Component {
 
         if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
-        if (!data.loading && data.groves) {
+        if (data.groves.length > 0) {
             return (
                 <Grid>
                     {data.groves.map(grove =>
@@ -115,10 +113,10 @@ class Collections extends Component {
             );
         }
 
-        return null;
+        return <NoCollections onClick={() => this.setState({ showAdd: true })} />;
     }
     render() {
-        const { showAdd, collections, cards, members } = this.state;
+        const { showAdd } = this.state;
         const { data } = this.props;
         return (
             <Container>
@@ -126,7 +124,7 @@ class Collections extends Component {
                     <Info>
                         <h1>Collections</h1>
                         <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
-                        <Stats>
+                        {/* <Stats>
                             <div>
                                 <h3>{collections}</h3>
                                 <h5>Collections</h5>
@@ -139,7 +137,7 @@ class Collections extends Component {
                                 <h3>{collections}</h3>
                                 <h5>Teammates</h5>
                             </div>
-                        </Stats>
+                        </Stats> */}
                     </Info>
                     <ButtonGroup>
                         <Button
