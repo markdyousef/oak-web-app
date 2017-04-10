@@ -11,6 +11,7 @@ const Container = styled.div`
     height: 100%;
     position: absolute;
     background-color: ${colors.white};
+    top: 0;
 `;
 
 const Main = styled.section`
@@ -27,6 +28,7 @@ const CommentsContainer = styled.div`
 `;
 
 const EditorContainer = styled.div`
+    padding-top: 20px;
     width: 100%;
 `;
 
@@ -113,12 +115,15 @@ class CardDetail extends Component {
         );
     }
     render() {
+        const { showEdit } = this.state;
         return (
             <Container>
                 {this.renderTopBar()}
                 <Main>
                     <EditorContainer>
-                        <Editor />
+                        <Editor
+                            canEdit={showEdit}
+                        />
                     </EditorContainer>
                     {this.renderComments()}
                 </Main>

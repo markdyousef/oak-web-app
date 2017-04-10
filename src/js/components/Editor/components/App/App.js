@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { EditorState, RichUtils, Editor } from 'draft-js';
 // TODO: add custom styling
@@ -51,15 +52,27 @@ const EditorContainer = styled.div`
     max-width: 700px;
 `;
 
-export default class App extends Component {
+type DefaultProps = {
+    canEdit: Boolean
+}
+
+type Props = {
+    canEdit: Boolean
+}
+
+type State = {
+    editorState: Object
+}
+
+export default class App extends Component<DefaultProps, Props, State> {
     constructor() {
         super();
         this.state = {
             editorState: EditorState.createEmpty()
         };
     }
-    onChange = editorState => this.setState({ editorState })
-    onTab = (event) => {
+    onChange = (editorState:Object) => this.setState({ editorState })
+    onTab = (event:Object) => {
         const { editorState } = this.state;
         // depth on ul and ol
         const levels = 2;
@@ -70,7 +83,7 @@ export default class App extends Component {
     };
     getEditorState = () => this.state.editorState;
     focus = () => this.editor.focus();
-    toggleBlockType = (blockType) => {
+    toggleBlockType = (blockType:Object) => {
         const { editorState } = this.state;
         const type = RichUtils.getCurrentBlockType(editorState);
         if (type.indexOf(`${Block.ATOMIC}:`) === 0) return;
@@ -81,7 +94,7 @@ export default class App extends Component {
             )
         );
     }
-    toggleInlineStyle = (inlineStyle) => {
+    toggleInlineStyle = (inlineStyle:Object) => {
         const { editorState } = this.state;
         this.onChange(
             RichUtils.toggleInlineStyle(
@@ -92,6 +105,7 @@ export default class App extends Component {
     }
     render() {
         const { editorState } = this.state;
+        const { canEdit } = this.props;
         const showToolbar = !editorState.getSelection().isCollapsed();
         return (
             <Container>
@@ -104,6 +118,7 @@ export default class App extends Component {
                         onChange={this.onChange}
                         blockRendererFn={customRenderer(editorState, this.onChange)}
                         onTab={this.onTab}
+                        readOnly={!canEdit}
                     />
                     <FloatingActionButton
                         editorState={editorState}
