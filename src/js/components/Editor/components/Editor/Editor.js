@@ -68,7 +68,10 @@ type State = {
     editorState: Object
 }
 
-export default class App extends Component<DefaultProps, Props, State> {
+export default class App extends Component {
+    defaultProps: DefaultProps
+    props: Props
+    state: State
     onTab = (event:Object) => {
         const { onChange, editorState } = this.props;
         // depth on ul and ol
@@ -82,7 +85,6 @@ export default class App extends Component<DefaultProps, Props, State> {
     focus = () => this.editor.focus();
     toggleBlockType = (blockType:Object) => {
         const { onChange, editorState } = this.props;
-        console.log(blockType);
         const type = RichUtils.getCurrentBlockType(editorState);
         if (type.indexOf(`${Block.ATOMIC}:`) === 0) return;
         onChange(

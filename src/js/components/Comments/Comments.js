@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CommentBox from './CommentBox';
 import Comment from './Comment';
+import NoComments from './NoComments';
 
 const Container = styled.section`
     height: 100%;
@@ -39,8 +40,6 @@ export default class Comments extends Component {
     }
     createComment = (comment:Object) => {
         const { create, cardId, data } = this.props;
-        console.log(comment);
-        console.log(JSON.stringify(comment))
 
         create(cardId, JSON.stringify(comment))
             .then(() => data.refetch())
@@ -52,24 +51,27 @@ export default class Comments extends Component {
         if (data.loading) return null;
 
         const { comments } = data.seed;
-        return comments.map((comment) => {
-            // TODO: improve this
-            // currently both normal text string and draft-js content
-            // is used for comments
-            let text = null;
-            try {
-                text = JSON.parse(comment.text);
-            } catch (e) {
-                return null;
-            }
-            return (
-                <Comment
-                    key={comment.id}
-                    {...comment}
-                    text={text}
-                />
-            );
-        });
+        if (comments.lenght > 0) {
+            return comments.map((comment) => {
+                // TODO: improve this
+                // currently both normal text string and draft-js content
+                // is used for comments
+                let text = null;
+                try {
+                    text = JSON.parse(comment.text);
+                } catch (e) {
+                    return null;
+                }
+                return (
+                    <Comment
+                        key={comment.id}
+                        {...comment}
+                        text={text}
+                    />
+                );
+            });
+        }
+        return <NoComments />;
     }
     render() {
         return (
