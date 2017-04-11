@@ -16,7 +16,94 @@ ShallowWrapper {
         showComments={[Function]}
         showEdit={false} />
     <styled.section>
-        <div />
+        <styled.div>
+            <App
+                canEdit={false}
+                editorState={
+                    EditorState {
+                        "_immutable": Object {
+                          "allowUndo": true,
+                          "currentContent": Object {
+                            "blockMap": Object {
+                              "2trfb": Object {
+                                "characterList": Array [],
+                                "data": Object {},
+                                "depth": 0,
+                                "key": "2trfb",
+                                "text": "",
+                                "type": "unstyled",
+                              },
+                            },
+                            "entityMap": Object {
+                              "__add": [Function],
+                              "__create": [Function],
+                              "__get": [Function],
+                              "__getLastCreatedEntityKey": [Function],
+                              "__mergeData": [Function],
+                              "__replaceData": [Function],
+                              "add": [Function],
+                              "create": [Function],
+                              "get": [Function],
+                              "getLastCreatedEntityKey": [Function],
+                              "mergeData": [Function],
+                              "replaceData": [Function],
+                            },
+                            "selectionAfter": Object {
+                              "anchorKey": "2trfb",
+                              "anchorOffset": 0,
+                              "focusKey": "2trfb",
+                              "focusOffset": 0,
+                              "hasFocus": false,
+                              "isBackward": false,
+                            },
+                            "selectionBefore": Object {
+                              "anchorKey": "2trfb",
+                              "anchorOffset": 0,
+                              "focusKey": "2trfb",
+                              "focusOffset": 0,
+                              "hasFocus": false,
+                              "isBackward": false,
+                            },
+                          },
+                          "decorator": null,
+                          "directionMap": Object {
+                            "2trfb": "LTR",
+                          },
+                          "forceSelection": false,
+                          "inCompositionMode": false,
+                          "inlineStyleOverride": null,
+                          "lastChangeType": null,
+                          "nativelyRenderedContent": null,
+                          "redoStack": Array [],
+                          "selection": Object {
+                            "anchorKey": "2trfb",
+                            "anchorOffset": 0,
+                            "focusKey": "2trfb",
+                            "focusOffset": 0,
+                            "hasFocus": false,
+                            "isBackward": false,
+                          },
+                          "treeMap": Object {
+                            "2trfb": Array [
+                              Object {
+                                "decoratorKey": null,
+                                "end": 0,
+                                "leaves": Array [
+                                  Object {
+                                    "end": 0,
+                                    "start": 0,
+                                  },
+                                ],
+                                "start": 0,
+                              },
+                            ],
+                          },
+                          "undoStack": Array [],
+                        },
+                      }
+                }
+                onChange={[Function]} />
+        </styled.div>
     </styled.section>
 </styled.div>,
   "nodes": Array [
@@ -30,7 +117,94 @@ ShallowWrapper {
             showComments={[Function]}
             showEdit={false} />
       <styled.section>
-            <div />
+            <styled.div>
+                  <App
+                        canEdit={false}
+                        editorState={
+                              EditorState {
+                                    "_immutable": Object {
+                                      "allowUndo": true,
+                                      "currentContent": Object {
+                                        "blockMap": Object {
+                                          "2trfb": Object {
+                                            "characterList": Array [],
+                                            "data": Object {},
+                                            "depth": 0,
+                                            "key": "2trfb",
+                                            "text": "",
+                                            "type": "unstyled",
+                                          },
+                                        },
+                                        "entityMap": Object {
+                                          "__add": [Function],
+                                          "__create": [Function],
+                                          "__get": [Function],
+                                          "__getLastCreatedEntityKey": [Function],
+                                          "__mergeData": [Function],
+                                          "__replaceData": [Function],
+                                          "add": [Function],
+                                          "create": [Function],
+                                          "get": [Function],
+                                          "getLastCreatedEntityKey": [Function],
+                                          "mergeData": [Function],
+                                          "replaceData": [Function],
+                                        },
+                                        "selectionAfter": Object {
+                                          "anchorKey": "2trfb",
+                                          "anchorOffset": 0,
+                                          "focusKey": "2trfb",
+                                          "focusOffset": 0,
+                                          "hasFocus": false,
+                                          "isBackward": false,
+                                        },
+                                        "selectionBefore": Object {
+                                          "anchorKey": "2trfb",
+                                          "anchorOffset": 0,
+                                          "focusKey": "2trfb",
+                                          "focusOffset": 0,
+                                          "hasFocus": false,
+                                          "isBackward": false,
+                                        },
+                                      },
+                                      "decorator": null,
+                                      "directionMap": Object {
+                                        "2trfb": "LTR",
+                                      },
+                                      "forceSelection": false,
+                                      "inCompositionMode": false,
+                                      "inlineStyleOverride": null,
+                                      "lastChangeType": null,
+                                      "nativelyRenderedContent": null,
+                                      "redoStack": Array [],
+                                      "selection": Object {
+                                        "anchorKey": "2trfb",
+                                        "anchorOffset": 0,
+                                        "focusKey": "2trfb",
+                                        "focusOffset": 0,
+                                        "hasFocus": false,
+                                        "isBackward": false,
+                                      },
+                                      "treeMap": Object {
+                                        "2trfb": Array [
+                                          Object {
+                                            "decoratorKey": null,
+                                            "end": 0,
+                                            "leaves": Array [
+                                              Object {
+                                                "end": 0,
+                                                "start": 0,
+                                              },
+                                            ],
+                                            "start": 0,
+                                          },
+                                        ],
+                                      },
+                                      "undoStack": Array [],
+                                    },
+                                  }
+                        }
+                        onChange={[Function]} />
+            </styled.div>
       </styled.section>
 </styled.div>,
   ],
@@ -43,6 +217,7 @@ ShallowWrapper {
       "_currentElement": <CardDetail
         close={[Function]}
         create={[Function]}
+        data={Object {}}
         params={
                 Object {
                         "cardId": "2",
@@ -53,7 +228,8 @@ ShallowWrapper {
                 Object {
                         "goBack": [Function],
                       }
-        } />,
+        }
+        update={[Function]} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -62,10 +238,12 @@ ShallowWrapper {
         "cardId": "2",
         "collectionId": "1",
         "context": Object {},
+        "onChange": [Function],
         "onSave": [Function],
         "props": Object {
           "close": [Function],
           "create": [Function],
+          "data": Object {},
           "params": Object {
             "cardId": "2",
             "collectionId": "1",
@@ -73,12 +251,93 @@ ShallowWrapper {
           "router": Object {
             "goBack": [Function],
           },
+          "update": [Function],
         },
         "refs": Object {},
         "renderComments": [Function],
         "renderTopBar": [Function],
         "state": Object {
-          "content": null,
+          "editorState": EditorState {
+            "_immutable": Object {
+              "allowUndo": true,
+              "currentContent": Object {
+                "blockMap": Object {
+                  "2trfb": Object {
+                    "characterList": Array [],
+                    "data": Object {},
+                    "depth": 0,
+                    "key": "2trfb",
+                    "text": "",
+                    "type": "unstyled",
+                  },
+                },
+                "entityMap": Object {
+                  "__add": [Function],
+                  "__create": [Function],
+                  "__get": [Function],
+                  "__getLastCreatedEntityKey": [Function],
+                  "__mergeData": [Function],
+                  "__replaceData": [Function],
+                  "add": [Function],
+                  "create": [Function],
+                  "get": [Function],
+                  "getLastCreatedEntityKey": [Function],
+                  "mergeData": [Function],
+                  "replaceData": [Function],
+                },
+                "selectionAfter": Object {
+                  "anchorKey": "2trfb",
+                  "anchorOffset": 0,
+                  "focusKey": "2trfb",
+                  "focusOffset": 0,
+                  "hasFocus": false,
+                  "isBackward": false,
+                },
+                "selectionBefore": Object {
+                  "anchorKey": "2trfb",
+                  "anchorOffset": 0,
+                  "focusKey": "2trfb",
+                  "focusOffset": 0,
+                  "hasFocus": false,
+                  "isBackward": false,
+                },
+              },
+              "decorator": null,
+              "directionMap": Object {
+                "2trfb": "LTR",
+              },
+              "forceSelection": false,
+              "inCompositionMode": false,
+              "inlineStyleOverride": null,
+              "lastChangeType": null,
+              "nativelyRenderedContent": null,
+              "redoStack": Array [],
+              "selection": Object {
+                "anchorKey": "2trfb",
+                "anchorOffset": 0,
+                "focusKey": "2trfb",
+                "focusOffset": 0,
+                "hasFocus": false,
+                "isBackward": false,
+              },
+              "treeMap": Object {
+                "2trfb": Array [
+                  Object {
+                    "decoratorKey": null,
+                    "end": 0,
+                    "leaves": Array [
+                      Object {
+                        "end": 0,
+                        "start": 0,
+                      },
+                    ],
+                    "start": 0,
+                  },
+                ],
+              },
+              "undoStack": Array [],
+            },
+          },
           "isSaved": false,
           "message": null,
           "showComments": false,
@@ -112,7 +371,94 @@ ShallowWrapper {
                     showComments={[Function]}
                     showEdit={false} />
           <styled.section>
-                    <div />
+                    <styled.div>
+                              <App
+                                        canEdit={false}
+                                        editorState={
+                                                  EditorState {
+                                                            "_immutable": Object {
+                                                              "allowUndo": true,
+                                                              "currentContent": Object {
+                                                                "blockMap": Object {
+                                                                  "2trfb": Object {
+                                                                    "characterList": Array [],
+                                                                    "data": Object {},
+                                                                    "depth": 0,
+                                                                    "key": "2trfb",
+                                                                    "text": "",
+                                                                    "type": "unstyled",
+                                                                  },
+                                                                },
+                                                                "entityMap": Object {
+                                                                  "__add": [Function],
+                                                                  "__create": [Function],
+                                                                  "__get": [Function],
+                                                                  "__getLastCreatedEntityKey": [Function],
+                                                                  "__mergeData": [Function],
+                                                                  "__replaceData": [Function],
+                                                                  "add": [Function],
+                                                                  "create": [Function],
+                                                                  "get": [Function],
+                                                                  "getLastCreatedEntityKey": [Function],
+                                                                  "mergeData": [Function],
+                                                                  "replaceData": [Function],
+                                                                },
+                                                                "selectionAfter": Object {
+                                                                  "anchorKey": "2trfb",
+                                                                  "anchorOffset": 0,
+                                                                  "focusKey": "2trfb",
+                                                                  "focusOffset": 0,
+                                                                  "hasFocus": false,
+                                                                  "isBackward": false,
+                                                                },
+                                                                "selectionBefore": Object {
+                                                                  "anchorKey": "2trfb",
+                                                                  "anchorOffset": 0,
+                                                                  "focusKey": "2trfb",
+                                                                  "focusOffset": 0,
+                                                                  "hasFocus": false,
+                                                                  "isBackward": false,
+                                                                },
+                                                              },
+                                                              "decorator": null,
+                                                              "directionMap": Object {
+                                                                "2trfb": "LTR",
+                                                              },
+                                                              "forceSelection": false,
+                                                              "inCompositionMode": false,
+                                                              "inlineStyleOverride": null,
+                                                              "lastChangeType": null,
+                                                              "nativelyRenderedContent": null,
+                                                              "redoStack": Array [],
+                                                              "selection": Object {
+                                                                "anchorKey": "2trfb",
+                                                                "anchorOffset": 0,
+                                                                "focusKey": "2trfb",
+                                                                "focusOffset": 0,
+                                                                "hasFocus": false,
+                                                                "isBackward": false,
+                                                              },
+                                                              "treeMap": Object {
+                                                                "2trfb": Array [
+                                                                  Object {
+                                                                    "decoratorKey": null,
+                                                                    "end": 0,
+                                                                    "leaves": Array [
+                                                                      Object {
+                                                                        "end": 0,
+                                                                        "start": 0,
+                                                                      },
+                                                                    ],
+                                                                    "start": 0,
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "undoStack": Array [],
+                                                            },
+                                                          }
+                                        }
+                                        onChange={[Function]} />
+                    </styled.div>
           </styled.section>
 </styled.div>,
         "_debugID": 2,
@@ -126,7 +472,94 @@ ShallowWrapper {
                     showComments={[Function]}
                     showEdit={false} />
           <styled.section>
-                    <div />
+                    <styled.div>
+                              <App
+                                        canEdit={false}
+                                        editorState={
+                                                  EditorState {
+                                                            "_immutable": Object {
+                                                              "allowUndo": true,
+                                                              "currentContent": Object {
+                                                                "blockMap": Object {
+                                                                  "2trfb": Object {
+                                                                    "characterList": Array [],
+                                                                    "data": Object {},
+                                                                    "depth": 0,
+                                                                    "key": "2trfb",
+                                                                    "text": "",
+                                                                    "type": "unstyled",
+                                                                  },
+                                                                },
+                                                                "entityMap": Object {
+                                                                  "__add": [Function],
+                                                                  "__create": [Function],
+                                                                  "__get": [Function],
+                                                                  "__getLastCreatedEntityKey": [Function],
+                                                                  "__mergeData": [Function],
+                                                                  "__replaceData": [Function],
+                                                                  "add": [Function],
+                                                                  "create": [Function],
+                                                                  "get": [Function],
+                                                                  "getLastCreatedEntityKey": [Function],
+                                                                  "mergeData": [Function],
+                                                                  "replaceData": [Function],
+                                                                },
+                                                                "selectionAfter": Object {
+                                                                  "anchorKey": "2trfb",
+                                                                  "anchorOffset": 0,
+                                                                  "focusKey": "2trfb",
+                                                                  "focusOffset": 0,
+                                                                  "hasFocus": false,
+                                                                  "isBackward": false,
+                                                                },
+                                                                "selectionBefore": Object {
+                                                                  "anchorKey": "2trfb",
+                                                                  "anchorOffset": 0,
+                                                                  "focusKey": "2trfb",
+                                                                  "focusOffset": 0,
+                                                                  "hasFocus": false,
+                                                                  "isBackward": false,
+                                                                },
+                                                              },
+                                                              "decorator": null,
+                                                              "directionMap": Object {
+                                                                "2trfb": "LTR",
+                                                              },
+                                                              "forceSelection": false,
+                                                              "inCompositionMode": false,
+                                                              "inlineStyleOverride": null,
+                                                              "lastChangeType": null,
+                                                              "nativelyRenderedContent": null,
+                                                              "redoStack": Array [],
+                                                              "selection": Object {
+                                                                "anchorKey": "2trfb",
+                                                                "anchorOffset": 0,
+                                                                "focusKey": "2trfb",
+                                                                "focusOffset": 0,
+                                                                "hasFocus": false,
+                                                                "isBackward": false,
+                                                              },
+                                                              "treeMap": Object {
+                                                                "2trfb": Array [
+                                                                  Object {
+                                                                    "decoratorKey": null,
+                                                                    "end": 0,
+                                                                    "leaves": Array [
+                                                                      Object {
+                                                                        "end": 0,
+                                                                        "start": 0,
+                                                                      },
+                                                                    ],
+                                                                    "start": 0,
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "undoStack": Array [],
+                                                            },
+                                                          }
+                                        }
+                                        onChange={[Function]} />
+                    </styled.div>
           </styled.section>
 </styled.div>,
       },
@@ -143,6 +576,7 @@ ShallowWrapper {
   "unrendered": <CardDetail
     close={[Function]}
     create={[Function]}
+    data={Object {}}
     params={
         Object {
             "cardId": "2",
@@ -153,6 +587,7 @@ ShallowWrapper {
         Object {
             "goBack": [Function],
           }
-    } />,
+    }
+    update={[Function]} />,
 }
 `;

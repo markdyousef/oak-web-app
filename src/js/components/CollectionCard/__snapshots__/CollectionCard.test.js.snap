@@ -2,7 +2,11 @@ exports[`test renders correctly 1`] = `
 <div
   className="kHkkOf">
   <div
-    className="elmvfS" />
+    className="gqgaML">
+    <img
+      alt="cover"
+      src={null} />
+  </div>
   <h3
     className="hXEwwP">
     collection

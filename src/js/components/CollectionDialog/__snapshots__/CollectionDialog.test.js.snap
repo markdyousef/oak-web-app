@@ -2,7 +2,7 @@ exports[`test renders correctly 1`] = `
 <section
   className="bGtZFR">
   <div
-    className="KpTMw">
+    className="hsANYj">
     <div
       className="jqVAxc">
       <h1>
@@ -16,6 +16,25 @@ exports[`test renders correctly 1`] = `
     </div>
     <div
       className="lbvwyG">
+      <div
+        className="cAyAmI">
+        <div />
+        <input
+          accept="image/*"
+          onChange={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          type="file" />
+        <button
+          className="bBPMRg"
+          onClick={[Function]}
+          type={null}>
+          Add Cover
+        </button>
+      </div>
       <div>
         <h5
           className="eKaiQM">

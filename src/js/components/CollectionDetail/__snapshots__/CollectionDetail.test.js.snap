@@ -101,6 +101,7 @@ ShallowWrapper {
         "removeCard": [Function],
         "renderCards": [Function],
         "renderInfo": [Function],
+        "showDialog": [Function],
         "state": Object {
           "showEdit": false,
         },
