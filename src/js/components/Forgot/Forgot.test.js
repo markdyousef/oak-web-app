@@ -4,7 +4,7 @@ import Forgot from './Forgot';
 
 it('renders correctly', () => {
     const props = {
-        loginUser: () => {},
+        resetPassword: () => {},
         router: {}
     }
     const component = renderer.create(

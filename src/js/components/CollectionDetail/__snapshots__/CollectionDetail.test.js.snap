@@ -84,6 +84,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": CollectionDetail {
         "_reactInternalInstance": [Circular],
+        "addCard": [Function],
         "context": Object {},
         "handleLike": [Function],
         "props": Object {

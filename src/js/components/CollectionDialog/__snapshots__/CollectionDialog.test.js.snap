@@ -24,6 +24,7 @@ exports[`test renders correctly 1`] = `
         <input
           className="bwXyts"
           onChange={[Function]}
+          onKeyDown={null}
           placeholder="Name"
           type="text"
           value="" />

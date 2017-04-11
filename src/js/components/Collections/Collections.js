@@ -101,7 +101,7 @@ class Collections extends Component {
 
         if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
-        if (data.groves.length > 0) {
+        if (data.groves && data.groves.length > 0) {
             return (
                 <Grid>
                     {data.groves.map(grove =>

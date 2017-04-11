@@ -11,33 +11,6 @@ exports[`test renders correctly 1`] = `
       <p>
         A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
       </p>
-      <div
-        className="juQDmc">
-        <div>
-          <h3>
-            0
-          </h3>
-          <h5>
-            Collections
-          </h5>
-        </div>
-        <div>
-          <h3>
-            0
-          </h3>
-          <h5>
-            Cards
-          </h5>
-        </div>
-        <div>
-          <h3>
-            0
-          </h3>
-          <h5>
-            Teammates
-          </h5>
-        </div>
-      </div>
     </div>
     <div
       className="cWGcft">
@@ -49,5 +22,23 @@ exports[`test renders correctly 1`] = `
       </button>
     </div>
   </section>
+  <div
+    className="gVkhVA">
+    <h2>
+      Collections
+    </h2>
+    <img
+      alt="empty state"
+      src="test-file-stub" />
+    <p>
+      You haven’t created any collections yet. Create your first collection by hitting the button below.
+    </p>
+    <button
+      className="bBPMRg"
+      onClick={[Function]}
+      type={null}>
+      Create a card
+    </button>
+  </div>
 </div>
 `;

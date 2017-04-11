@@ -8,6 +8,8 @@ it('renders correctly', () => {
             collectionId: '1',
             cardId: '2'
         },
+        update: () => {},
+        data: {},
         close: () => {},
         create: () => {},
         router: {
