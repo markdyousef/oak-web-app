@@ -43,6 +43,6 @@ const Empty = ({ onClick }:Object) => {
             />
         </Container>
     );
-}
+};
 
 export default Empty;

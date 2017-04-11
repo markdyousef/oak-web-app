@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { EditorState, RichUtils, Editor, convertFromRaw } from 'draft-js';
+import { RichUtils, Editor } from 'draft-js';
 // TODO: add custom styling
 import 'draft-js/dist/Draft.css';
 import styled from 'styled-components';
@@ -53,11 +53,15 @@ const EditorContainer = styled.div`
 `;
 
 type DefaultProps = {
-    canEdit: Boolean
+    editorState: Object,
+    canEdit: false,
+    onChange: Function
 }
 
 type Props = {
-    canEdit: Boolean
+    editorState: Object,
+    canEdit: boolean,
+    onChange: Function
 }
 
 type State = {
@@ -65,35 +69,23 @@ type State = {
 }
 
 export default class App extends Component<DefaultProps, Props, State> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            editorState: EditorState.createEmpty()
-        };
-    }
-    componentWillMount() {
-        const { content } = this.props;
-        if (content !== null && typeof content === 'object') {
-            this.setState({ editorState: EditorState.createWithContent(convertFromRaw(content)) });
-        }
-    }
-    onChange = (editorState:Object) => this.setState({ editorState })
     onTab = (event:Object) => {
-        const { editorState } = this.state;
+        const { onChange, editorState } = this.props;
         // depth on ul and ol
         const levels = 2;
         const newEditorState = RichUtils.onTab(event, editorState, levels);
         if (newEditorState !== editorState) {
-            this.onChange(newEditorState);
+            onChange(newEditorState);
         }
     };
     getEditorState = () => this.state.editorState;
     focus = () => this.editor.focus();
     toggleBlockType = (blockType:Object) => {
-        const { editorState } = this.state;
+        const { onChange, editorState } = this.props;
+        console.log(blockType);
         const type = RichUtils.getCurrentBlockType(editorState);
         if (type.indexOf(`${Block.ATOMIC}:`) === 0) return;
-        this.onChange(
+        onChange(
             RichUtils.toggleBlockType(
                 editorState,
                 blockType
@@ -101,8 +93,8 @@ export default class App extends Component<DefaultProps, Props, State> {
         );
     }
     toggleInlineStyle = (inlineStyle:Object) => {
-        const { editorState } = this.state;
-        this.onChange(
+        const { onChange, editorState } = this.props;
+        onChange(
             RichUtils.toggleInlineStyle(
                 editorState,
                 inlineStyle
@@ -110,8 +102,7 @@ export default class App extends Component<DefaultProps, Props, State> {
         );
     }
     render() {
-        const { editorState } = this.state;
-        const { canEdit } = this.props;
+        const { canEdit, editorState, onChange } = this.props;
         const showToolbar = !editorState.getSelection().isCollapsed();
         return (
             <Container>
@@ -121,16 +112,16 @@ export default class App extends Component<DefaultProps, Props, State> {
                         editorState={editorState}
                         spellCheck
                         placeholder="Write something cool..."
-                        onChange={this.onChange}
-                        blockRendererFn={customRenderer(editorState, this.onChange)}
+                        onChange={onChange}
+                        blockRendererFn={customRenderer(editorState, onChange)}
                         onTab={this.onTab}
                         readOnly={!canEdit}
                     />
-                    <FloatingActionButton
+                    {canEdit && <FloatingActionButton
                         editorState={editorState}
                         focus={this.focus}
-                        setEditorState={this.onChange}
-                    />
+                        setEditorState={onChange}
+                    />}
                     <Toolbar
                         editorState={editorState}
                         toggleBlockType={this.toggleBlockType}

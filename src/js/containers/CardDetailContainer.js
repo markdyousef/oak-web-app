@@ -16,6 +16,7 @@ const createSeed = gql`
     mutation createSeed($groveId: ID!, $content: String!) {
         createSeed(groveId: $groveId, content: $content) {
             id
+            content
         }
     }
 `;
@@ -24,6 +25,7 @@ const updateSeed = gql`
     mutation updateSeed($id: ID!, $content: String!) {
         updateSeed(id: $id, content: $content) {
             id
+            content
         }
     }
 `;

@@ -1,3 +1,3 @@
-import App from './components/App';
+import Editor from './components/Editor';
 
-export default App;
+export default Editor;
