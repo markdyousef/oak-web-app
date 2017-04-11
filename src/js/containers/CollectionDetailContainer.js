@@ -14,6 +14,10 @@ const getCollection = gql`
             id
             name
             description
+            cover {
+                id
+                urlThumb512
+            }
             stats {
                 seeds
             }

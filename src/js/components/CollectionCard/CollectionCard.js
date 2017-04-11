@@ -17,6 +17,10 @@ const Image = styled.div`
     border-radius: 2px;
     border: 1px solid ${colors.lightGrey};
     background-color: ${colors.lightGrey};
+    & img {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const Name = styled.h3`
@@ -35,10 +39,12 @@ const Description = styled.p`
     line-height: 1.54px;
 `;
 
-const CollectionCard = ({ name, description, image }:Object) => {
+const CollectionCard = ({ name, description, picture }:Object) => {
     return (
         <Container>
-            <Image />
+            <Image>
+                <img src={picture} alt="cover" />
+            </Image>
             <Name>{name}</Name>
             <Description>{description}</Description>
         </Container>
@@ -48,12 +54,12 @@ const CollectionCard = ({ name, description, image }:Object) => {
 CollectionCard.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    image: PropTypes.string
+    picture: PropTypes.string
 };
 
 CollectionCard.defaultProps = {
     description: null,
-    image: null
+    picture: null
 };
 
 export default CollectionCard;

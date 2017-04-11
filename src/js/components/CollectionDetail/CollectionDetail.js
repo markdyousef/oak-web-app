@@ -96,6 +96,7 @@ class CollectionDetail extends Component {
                 id: PropTypes.string,
                 name: PropTypes.string,
                 description: PropTypes.string,
+                cover: PropTypes.object,
                 stats: PropTypes.object
             }),
             seeds: PropTypes.arrayOf(PropTypes.shape({
@@ -187,9 +188,35 @@ class CollectionDetail extends Component {
             </Info>
         );
     }
-    render() {
-        const { router, params, data } = this.props;
+    showDialog = () => {
         const { showEdit } = this.state;
+        const { data, router } = this.props;
+
+        if (data.loading) return null;
+        const { grove } = data;
+        console.log(grove);
+        const cover = (grove.cover && grove.cover.urlThumb512) ? grove.cover : {};
+
+        if (showEdit) {
+            return (
+                <CollectionDialog
+                    close={() => {
+                        data.refetch();
+                        this.setState({ showEdit: false })
+                    }}
+                    name={data.grove.name}
+                    description={data.grove.description}
+                    editMode
+                    id={data.grove.id}
+                    router={router}
+                    picture={cover.urlThumb512}
+                    pictureId={cover.id}
+                />
+            );
+        }
+        return null;
+    }
+    render() {
         return (
             <Container>
                 <Header>
@@ -204,19 +231,7 @@ class CollectionDetail extends Component {
                             onClick={() => this.setState({ showEdit: true })}
                             text="Edit Collection"
                         />
-                        {showEdit &&
-                            <CollectionDialog
-                                close={() => {
-                                    data.refetch();
-                                    this.setState({ showEdit: false })
-                                }}
-                                name={data.grove.name}
-                                description={data.grove.description}
-                                editMode
-                                id={data.grove.id}
-                                router={router}
-                            />
-                        }
+                        {this.showDialog()}
                     </ButtonGroup>
                 </Header>
                 {this.renderCards()}

@@ -22,7 +22,7 @@ const Container = styled.section`
 
 const Modal = styled.div`
     width: 400px;
-    height: 350px;
+    ${''/* height: 350px; */}
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #ddd;
@@ -61,12 +61,35 @@ const Main = styled.div`
     }
 `;
 
+const Upload = styled.div`
+    height: 100px;
+    border: 1px solid ${colors.lightGrey};
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    & div {
+        margin: 0;
+        height: 80px;
+        width: 100px;
+        background-color: ${colors.lightGrey};
+        border-radius: 3px;
+    }
+    & img {
+        height: 100%;
+        width: 100%;
+        border-radius: 3px;
+    }
+`;
+
 const Buttons = styled.div`
     padding: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 `;
+const URL = 'https://empress.clai.io/files/upload';
 
 class CollectionDialog extends Component {
     static propTypes = {
@@ -78,6 +101,8 @@ class CollectionDialog extends Component {
         description: PropTypes.string,
         editMode: PropTypes.bool,
         id: PropTypes.string,
+        picture: PropTypes.string,
+        pictureId: PropTypes.string,
         router: PropTypes.shape({
             replace: PropTypes.func
         })
@@ -87,28 +112,42 @@ class CollectionDialog extends Component {
         description: '',
         editMode: false,
         id: null,
-        router: null
+        router: null,
+        picture: null,
+        pictureId: null
     }
     constructor(props) {
         super(props);
         this.state = {
+            id: props.id,
             name: props.name || '',
             description: props.description || '',
-            image: null,
-            message: ''
+            picture: props.picture,
+            message: '',
+            file: null,
+            editMode: props.editMode,
+            pictureId: props.pictureId
         };
     }
     onSave = () => {
-        const { name, description } = this.state;
-        const { create, update, close, editMode, id } = this.props;
+        const { id, name, description, file, editMode, pictureId } = this.state;
+        const { create, update, close } = this.props;
 
         if (editMode) {
-            update(id, name, description)
+            update(id, name, description, pictureId)
                 .then(() => close())
                 .catch(err => console.log(err));
         } else {
             create(name, description)
-                .then(() => close())
+                .then((res) => {
+                    if (file) {
+                        const { createGrove } = res.data;
+                        this.onUpload(createGrove.id, file, true);
+                        this.setState({ editMode: true, id: createGrove.id });
+                    } else {
+                        close()
+                    }
+                })
                 .catch(err => console.log(err));
         }
     }
@@ -117,11 +156,51 @@ class CollectionDialog extends Component {
 
         remove(id)
             .then(() => router.replace('/'))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+    }
+    onClick = () => {
+        this.input.value = null;
+        this.input.click();
+    }
+    onChange = (e) => {
+        const { editMode, id } = this.props;
+        e.preventDefault();
+        const file = e.target.files[0];
+        const url = window.URL.createObjectURL(file);
+        this.setState({ picture: url, file });
+
+        // if collection alrady exists
+        if (editMode) {
+            this.onUpload(id, file);
+        }
+    }
+    onUpload = (id, file, save) => {
+        // // check file type
+        if (file.type.indexOf('image/') === 0) {
+            const body = new FormData();
+            body.append('file', file);
+            body.append('type', 'grove');
+            body.append('groveId', id);
+            const token = localStorage.authToken;
+            const options = {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                body
+            };
+            fetch(URL, options)
+                .then(res => res.json())
+                .then(res => this.setState({ pictureId: res.id }))
+                .then(() => {
+                    if (save) this.onSave();
+                })
+                .catch(err => console.log(err));
+        }
     }
     render() {
         const { close, editMode } = this.props;
-        const { name, description } = this.state;
+        const { name, description, picture } = this.state;
         return (
             <Container>
                 <Modal>
@@ -130,6 +209,22 @@ class CollectionDialog extends Component {
                         <Close onClick={close}>X</Close>
                     </Header>
                     <Main>
+                        <Upload>
+                            <div>
+                                {picture && <img src={picture} alt="cover" />}
+                            </div>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                ref={(c) => { this.input = c; }}
+                                onChange={this.onChange}
+                                style={{ display: 'none' }}
+                            />
+                            <Button
+                                text="Add Cover"
+                                onClick={this.onClick}
+                            />
+                        </Upload>
                         <Input
                             title="NAME"
                             value={name}

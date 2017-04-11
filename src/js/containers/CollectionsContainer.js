@@ -9,7 +9,10 @@ const getCollections = gql`
         groves(teamId: $teamId) {
             id
             name,
-            description
+            description,
+            cover {
+                urlThumb512
+            }
         }
     }
 `;

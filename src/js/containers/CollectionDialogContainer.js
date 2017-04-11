@@ -13,8 +13,8 @@ const createGrove = gql`
 `;
 
 const updateGrove = gql`
-    mutation updateGrove($id: ID!, $name: String, $description: String) {
-        updateGrove(id: $id, name: $name, description: $description) {
+    mutation updateGrove($id: ID!, $name: String, $description: String, $coverId: ID) {
+        updateGrove(id: $id, name: $name, description: $description, coverId: $coverId) {
             id
         }
     }
@@ -34,7 +34,7 @@ export default compose(
     }),
     graphql(updateGrove, {
         props: ({ mutate }) => ({
-            update: (id, name, description) => mutate({ variables: { id, name, description } })
+            update: (id, name, description, coverId) => mutate({ variables: { id, name, description, coverId } })
         })
     }),
     graphql(removeGrove, {
