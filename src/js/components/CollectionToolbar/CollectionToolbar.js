@@ -34,9 +34,23 @@ const DropdownContainer = styled.div`
     width: 200px;
 `;
 
+const MenuItem = styled.div`
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: ${props => props.active ? 'bolder' : 'normal'}
+`;
+
 export default class Toolbar extends Component {
-    state = {
-        isOpen: Boolean
+    state: {
+        isOpen: boolean
+    }
+    props: {
+        active: ?string,
+        // onSelect: void
+    }
+    static defaultProps = {
+        active: 'date',
+        onSelect: () => {}
     }
     constructor() {
         super();
@@ -45,30 +59,38 @@ export default class Toolbar extends Component {
         };
     }
     renderMenuItems = () => {
+        const { active, onSelect } = this.props;
         const sortItems = [
-            { name: 'Date' },
-            { name: 'Likes' },
-            { name: 'Comments' }
+            { name: 'date' },
+            { name: 'likes' },
+            { name: 'comments' }
         ];
 
         return sortItems.map(item => (
-            <div key={item.name}>
+            <MenuItem
+                key={item.name}
+                active={item.name === active}
+                onClick={() => {
+                    onSelect(item.name);
+                    this.setState({ isOpen: false });
+                }}
+            >
                 {item.name}
-            </div>
+            </MenuItem>
         ));
     }
     render() {
         const { isOpen } = this.state;
-        const chosen = 'Date';
+        const { active } = this.props;
         return (
             <Container>
                 <ActionMenu onClick={() => this.setState({ isOpen: !isOpen })}>
                     <span>Sort by</span>
-                    {chosen}
+                    {active}
                 </ActionMenu>
                 {isOpen &&
                     <DropdownContainer>
-                        <Dropdown>
+                        <Dropdown arrowPos="none">
                             {this.renderMenuItems()}
                         </Dropdown>
                     </DropdownContainer>

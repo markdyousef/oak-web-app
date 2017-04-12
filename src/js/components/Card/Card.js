@@ -58,7 +58,7 @@ const User = styled.div`
 const Label = styled.div`
     width: 10px;
     height: 20px;
-    line-height: 1.54
+    line-height: 1.54;
     position: absolute;
     top: 0;
 `;

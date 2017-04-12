@@ -1,84 +1,19 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
-import colors from '../../styles/colors';
 import Card from '../Card';
 import Button from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
-
-const Container = styled.div`
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-`;
-
-const Header = styled.section`
-    width: 100%;
-    min-height: 260px;
-    background-color: ${colors.white};
-    padding: 48px 72px;
-    border-bottom: 1px solid ${colors.lightGrey};
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-`;
-
-const Info = styled.div`
-    max-width: 500px;
-    & h1 {
-        font-size: 24px;
-        font-weight: bold;
-        padding-bottom: 24px;
-        display: block;
-        letter-spacing: -.04em;
-    }
-    & p {
-        font-size: 18px;
-        font-weight: normal;
-        padding-bottom: 40px;
-        display: block;
-        line-height: 1.48;
-    }
-`;
-
-const Stats = styled.div`
-    & div {
-        display: inline-block;
-        margin-right: 20px;
-    }
-    & h3 {
-        font-size: 20px;
-        font-weight: bold;
-        padding-bottom: 8px;
-        display: block;
-    }
-    & h5 {
-        font-size: 14px;
-        font-weight: 300;
-        text-transform: uppercase;
-        padding-bottom: 8px;
-    }
-`;
-
-const ButtonGroup = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    & button {
-        margin-top: 5px;
-    }
-`;
-
-const Grid = styled.section`
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`;
+import {
+    Container,
+    Header,
+    Info,
+    Stats,
+    ButtonGroup,
+    Grid
+} from './styles'
 
 class CollectionDetail extends Component {
     static propTypes = {
@@ -116,8 +51,38 @@ class CollectionDetail extends Component {
     constructor() {
         super();
         this.state = {
-            showEdit: false
+            showEdit: false,
+            cards: [],
+            sortKey: 'date'
         };
+    }
+    componentWillReceiveProps(nextProps) {
+        const { data } = nextProps;
+
+        if (data.loading) return;
+
+        if (data.seeds) {
+            this.setState({ cards: data.seeds });
+        }
+    }
+    onSortCards = (key: string) => {
+        const { data: { seeds } } = this.props;
+        const { cards } = this.state;
+        let sortedCards = Object.assign([], cards);
+        if (key === 'comments' || key === 'likes') {
+            sortedCards.sort((a, b) => {
+                if (a[key].length > b[key].length) {
+                    return -1;
+                }
+                if (a[key].length < b[key].length) {
+                    return 1;
+                }
+                return 0;
+            });
+        } else {
+            sortedCards = seeds;
+        }
+        this.setState({ cards: sortedCards, sortKey: key });
     }
     removeCard = (cardId:String) => {
         const { removeCard, data } = this.props;
@@ -168,13 +133,14 @@ class CollectionDetail extends Component {
     }
     renderCards = () => {
         const { data, router, params } = this.props;
+        const { cards } = this.state;
 
         if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
-        if (data.seeds.length > 0) {
+        if (cards.length > 0) {
             return (
                 <Grid>
-                    {data.seeds.map((item) => {
+                    {cards.map((item) => {
                         const isLiked = data.me.likedSeeds.findIndex(card => card.id === item.id) > -1;
                         return (
                             <Card
@@ -217,6 +183,7 @@ class CollectionDetail extends Component {
         );
     }
     render() {
+        const { sortKey } = this.state;
         return (
             <Container>
                 <Header>
@@ -234,7 +201,7 @@ class CollectionDetail extends Component {
                         {this.showDialog()}
                     </ButtonGroup>
                 </Header>
-                <CollectionToolbar />
+                <CollectionToolbar onSelect={this.onSortCards} active={sortKey} />
                 {this.renderCards()}
             </Container>
         );

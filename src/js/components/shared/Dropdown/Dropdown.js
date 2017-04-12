@@ -37,6 +37,9 @@ const Dropdown = ({ children, arrowPos }:Object) => {
     case 'left':
         style = { left: '25px' };
         break;
+    case 'none':
+        style = { display: 'none' };
+        break;
     default:
         style = { right: '25px' };
         break;

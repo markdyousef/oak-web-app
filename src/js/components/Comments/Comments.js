@@ -51,7 +51,7 @@ export default class Comments extends Component {
         if (data.loading) return null;
 
         const { comments } = data.seed;
-        if (comments.lenght > 0) {
+        if (comments.length > 0) {
             return comments.map((comment) => {
                 // TODO: improve this
                 // currently both normal text string and draft-js content
