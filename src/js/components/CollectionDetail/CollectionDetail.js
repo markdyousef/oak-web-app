@@ -7,6 +7,7 @@ import Button from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
+import CollectionToolbar from '../CollectionToolbar';
 
 const Container = styled.div`
     width: 100%;
@@ -138,6 +139,33 @@ class CollectionDetail extends Component {
         }
     }
     addCard = () => this.props.router.push(`collection/${this.props.params.collectionId}/card`)
+    showDialog = () => {
+        const { showEdit } = this.state;
+        const { data, router } = this.props;
+
+        if (data.loading) return null;
+        const { grove } = data;
+        const cover = (grove.cover && grove.cover.urlThumb512) ? grove.cover : {};
+
+        if (showEdit) {
+            return (
+                <CollectionDialog
+                    close={() => {
+                        data.refetch();
+                        this.setState({ showEdit: false })
+                    }}
+                    name={data.grove.name}
+                    description={data.grove.description}
+                    editMode
+                    id={data.grove.id}
+                    router={router}
+                    picture={cover.urlThumb512}
+                    pictureId={cover.id}
+                />
+            );
+        }
+        return null;
+    }
     renderCards = () => {
         const { data, router, params } = this.props;
 
@@ -188,34 +216,6 @@ class CollectionDetail extends Component {
             </Info>
         );
     }
-    showDialog = () => {
-        const { showEdit } = this.state;
-        const { data, router } = this.props;
-
-        if (data.loading) return null;
-        const { grove } = data;
-        console.log(grove);
-        const cover = (grove.cover && grove.cover.urlThumb512) ? grove.cover : {};
-
-        if (showEdit) {
-            return (
-                <CollectionDialog
-                    close={() => {
-                        data.refetch();
-                        this.setState({ showEdit: false })
-                    }}
-                    name={data.grove.name}
-                    description={data.grove.description}
-                    editMode
-                    id={data.grove.id}
-                    router={router}
-                    picture={cover.urlThumb512}
-                    pictureId={cover.id}
-                />
-            );
-        }
-        return null;
-    }
     render() {
         return (
             <Container>
@@ -234,6 +234,7 @@ class CollectionDetail extends Component {
                         {this.showDialog()}
                     </ButtonGroup>
                 </Header>
+                <CollectionToolbar />
                 {this.renderCards()}
             </Container>
         );
