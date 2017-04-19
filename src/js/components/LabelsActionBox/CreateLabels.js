@@ -1,29 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React from 'react';
 import styled from 'styled-components';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
 import colors from '../../styles/colors';
 import BackIcon from '../../icons/back';
-
-const COLORS = [
-    '#C1BD9D',
-    '#FEC288',
-    '#FFA489',
-    '#E87385',
-    '#EAABC8',
-    '#B5D3C9',
-    '#708680',
-    '#67B1B4',
-    '#6A76A7',
-    '#6E4B6E'
-];
-
-const H5 = styled.h5`
-    font-size: 14px;
-    font-weight: lighter;
-    color: ${colors.grey};
-    font-family: 'proxima-nova'
-`;
 
 const Grid = styled.div`
     display: flex;
@@ -41,6 +22,12 @@ const Label = styled.div`
 
 const Section = styled.section`
     margin: 20px 0;
+    & h5 {
+        font-size: 14px;
+        font-weight: lighter;
+        color: ${colors.grey};
+        font-family: 'proxima-nova'
+    }
 `;
 
 const ActionSection = styled.section`
@@ -65,72 +52,56 @@ const Back = styled.button`
     }
 `;
 
-
-class CreateLabels extends Component {
-    static propTypes = {
-        onCreate: PropTypes.func.isRequired,
-        onChange: PropTypes.func.isRequired
-    }
-    constructor() {
-        super();
-        this.renderColorGrid = this.renderColorGrid.bind(this);
-        this.state = {
-            name: '',
-            selectedColor: COLORS[0]
-        };
-    }
-    renderColorGrid() {
-        const { selectedColor } = this.state;
-        return (
-            <Grid>
-                {COLORS.map((color) => {
-                    const isSelected = (selectedColor === color);
-                    return (
-                        <Label
-                            style={{
-                                backgroundColor: color,
-                                border: (isSelected) ? `1px solid ${colors.grey}` : null
-                            }}
-                            key={color}
-                            onClick={() => this.setState({ selectedColor: color })}
-                        />
-                    );
-                }
-                )}
-            </Grid>
-        );
-    }
-    render() {
-        const { name, selectedColor } = this.state;
-        const { onCreate, onChange } = this.props;
-        return (
-            <div>
-                <Back onClick={onChange}>
-                    <BackIcon />
-                    Back
-                </Back>
-                <Section>
-                    <Input
-                        title="NAME"
-                        value={name}
-                        onChange={value => this.setState({ name: value })}
-                        placeholder="Label name"
-                    />
-                </Section>
-                <Section>
-                    <H5>SELECT COLOR: </H5>
-                    {this.renderColorGrid()}
-                </Section>
-                <ActionSection>
-                    <Button
-                        onClick={() => onCreate(name, selectedColor)}
-                        text="CREATE"
-                        type="primary"
-                    />
-                </ActionSection>
-            </div>
-        );
-    }
+type Props = {
+    onCreate: Function,
+    onChange: Function,
+    changePage: Function,
+    labelName: string,
+    selectedColor: string,
+    labelColors: Array<string>
 }
 
-export default CreateLabels;
+export default ({ onCreate, onChange, changePage, labelName, selectedColor, labelColors }:Props) => {
+    return (
+        <div>
+            <Back onClick={changePage}>
+                <BackIcon />
+                Back
+            </Back>
+            <Section>
+                <Input
+                    title="NAME"
+                    value={labelName}
+                    onChange={value => onChange('labelName', value)}
+                    placeholder="Label name"
+                />
+            </Section>
+            <Section>
+                <h5>SELECT COLOR: </h5>
+                <Grid>
+                    {labelColors.map((color) => {
+                        const isSelected = (selectedColor === color);
+                        return (
+                            <Label
+                                style={{
+                                    backgroundColor: color,
+                                    border: (isSelected) ? `1px solid ${colors.grey}` : null
+                                }}
+                                key={color}
+                                onClick={() => onChange('selectedColor', color)}
+                            />
+                        );
+                    }
+                    )}
+                </Grid>
+            </Section>
+            <ActionSection>
+                <Button
+                    onClick={() => onCreate(labelName, selectedColor)}
+                    text="CREATE"
+                    type="primary"
+                />
+            </ActionSection>
+        </div>
+    );
+};

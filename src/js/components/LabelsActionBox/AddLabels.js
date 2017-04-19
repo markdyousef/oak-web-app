@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CheckIcon from '../../icons/checkmark';
@@ -48,58 +49,45 @@ const Label = styled.div`
     }
 `;
 
-class AddLabels extends Component {
-    static propTypes = {
-        onChange: PropTypes.func.isRequired,
-        collectionLabels: PropTypes.arrayOf(PropTypes.object),
-        cardLabels: PropTypes.arrayOf(PropTypes.string),
-        onSelect: PropTypes.func.isRequired
-    }
-    constructor() {
-        super();
-        this.state = {};
-    }
-    renderLabels = () => {
-        const { collectionLabels, cardLabels, onSelect } = this.props;
-        if (cardLabels.length > 0) {
-            return (
-                <LabelsSection>
-                    {collectionLabels.map((label) => {
-                        const isActive = cardLabels.findIndex(id => id === label.id) > -1;
-                        return (
-                            <Label
-                                key={label.index + label.name}
-                                onClick={() => onSelect(label.id)}
-                                style={{ backgroundColor: label.color }}
-                            >
-                                {label.name}
-                                {isActive && <CheckIcon />}
-                            </Label>
-                        );
-                    })}
-                </LabelsSection>
-            );
-        }
-        return <LabelsSection>No labels...</LabelsSection>
-    }
-    render() {
-        const { onChange } = this.props;
-        return (
-            <div>
-                <Section>
-                    Add label:
-                </Section>
-                <Section>
-                    {this.renderLabels()}
-                </Section>
-                <ActionSection>
-                    <AddButton onClick={onChange}>
-                        Create a new label
-                    </AddButton>
-                </ActionSection>
-            </div>
-        );
-    }
+type Props = {
+    cardLabels: Array<string>,
+    collectionLabels: Array<Object>,
+    changePage: Function,
+    onSelect: Function
 }
 
-export default AddLabels;
+export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) => {
+    return (
+        <div>
+            <Section>
+                Add label:
+            </Section>
+            <Section>
+                {(collectionLabels.length > 0) ?
+                    <LabelsSection>
+                        {collectionLabels.map((label) => {
+                            const isActive = cardLabels.findIndex(id => id === label.id) > -1;
+                            return (
+                                <Label
+                                    key={label.index + label.name}
+                                    onClick={() => onSelect(label.id)}
+                                    style={{ backgroundColor: label.color }}
+                                >
+                                    {label.name}
+                                    {isActive && <CheckIcon />}
+                                </Label>
+                            );
+                        })}
+                    </LabelsSection>
+                    :
+                    <LabelsSection>No labels...</LabelsSection>
+                }
+            </Section>
+            <ActionSection>
+                <AddButton onClick={changePage}>
+                    Create a new label
+                </AddButton>
+            </ActionSection>
+        </div>
+    );
+};

@@ -13,30 +13,6 @@ const createLabel = gql`
     }
 `;
 
-const addSeedLabel = gql`
-    mutation addSeedLabel($seedId: ID!, $labelId: ID!) {
-        addSeedLabel(seedId: $seedId, labelId: $labelId)
-    }
-`;
-
-const removeSeedLabel = gql`
-    mutation removeSeedLabel($seedId: ID!, $labelId: ID!) {
-        removeSeedLabel(seedId: $seedId, labelId: $labelId)
-    }
-`;
-
-const getSeedLabels = gql`
-    query seed($id: ID!) {
-        seed(id: $id) {
-            labels {
-                id
-                name
-                color
-            }
-        }
-    }
-`;
-
 const getGroveLabels = gql`
     query grove($id: ID!) {
         grove(id: $id) {
@@ -50,27 +26,13 @@ const getGroveLabels = gql`
 `;
 
 export default compose(
-    graphql(getSeedLabels, {
-        name: 'card',
-        options: ownProps => ({ variables: { id: ownProps.cardId } })
-    }),
     graphql(getGroveLabels, {
-        name: 'collection',
+        name: 'data',
         options: ownProps => ({ variables: { id: ownProps.collectionId } })
     }),
     graphql(createLabel, {
         props: ({ mutate }) => ({
-            createLabel: (groveId, name, color) => mutate({ variables: { groveId, name, color } })
-        })
-    }),
-    graphql(addSeedLabel, {
-        props: ({ mutate }) => ({
-            addLabel: (seedId, labelId) => mutate({ variables: { seedId, labelId } })
-        })
-    }),
-    graphql(removeSeedLabel, {
-        props: ({ mutate }) => ({
-            removeLabel: (seedId, labelId) => mutate({ variables: { seedId, labelId } })
+            createLabel: (groveId:string, name:string, color:string) => mutate({ variables: { groveId, name, color } })
         })
     })
 )(LabelsActionBox);

@@ -8,12 +8,17 @@ const getCard = gql`
         seed(id: $id) {
             id
             content
+            labels {
+                id
+                name
+                color
+            }
         }
     }
 `;
 
 const createSeed = gql`
-    mutation createSeed($groveId: ID!, $content: String!) {
+    mutation createSeed($groveId: ID!, $content: String) {
         createSeed(groveId: $groveId, content: $content) {
             id
             content
@@ -30,6 +35,18 @@ const updateSeed = gql`
     }
 `;
 
+const addSeedLabel = gql`
+    mutation addSeedLabel($seedId: ID!, $labelId: ID!) {
+        addSeedLabel(seedId: $seedId, labelId: $labelId)
+    }
+`;
+
+const removeSeedLabel = gql`
+    mutation removeSeedLabel($seedId: ID!, $labelId: ID!) {
+        removeSeedLabel(seedId: $seedId, labelId: $labelId)
+    }
+`;
+
 export default compose(
     graphql(getCard, {
         name: 'data',
@@ -43,7 +60,17 @@ export default compose(
     }),
     graphql(updateSeed, {
         props: ({ mutate }) => ({
-            update: (id, content) => mutate({ variables: { id, content } })
+            update: (id:string, content:string) => mutate({ variables: { id, content } })
+        })
+    }),
+    graphql(addSeedLabel, {
+        props: ({ mutate }) => ({
+            addLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
+        })
+    }),
+    graphql(removeSeedLabel, {
+        props: ({ mutate }) => ({
+            removeLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
         })
     })
 )(CardDetail);

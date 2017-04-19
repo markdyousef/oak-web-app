@@ -42,6 +42,7 @@
         "import/no-unresolved": [2, {
             ignore: ['img\/']
         }],
-        "import/no-extraneous-dependencies": 0
+        "import/no-extraneous-dependencies": 0,
+        "react/sort-comp": 0
     }
 }

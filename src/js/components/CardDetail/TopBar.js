@@ -1,5 +1,5 @@
 // @flow
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
@@ -27,19 +27,25 @@ const EditNav = styled.div`
     display: flex;
 `;
 
-class TopBar extends Component {
-    static propTypes = {
-        close: PropTypes.func.isRequired,
-        save: PropTypes.func.isRequired,
-        showEdit: PropTypes.bool.isRequired,
-        edit: PropTypes.func.isRequired,
-        showComments: PropTypes.func.isRequired,
-        collectionId: PropTypes.string.isRequired,
-        cardId: PropTypes.string
-    };
-    static defaultProps = {
-        cardId: null
-    }
+type Props = {
+    onClose: Function,
+    onSave: Function,
+    onEdit: Function,
+    showEdit: bool,
+    showComments: Function,
+    collectionId: string,
+    changeCardLabel: Function,
+    labels: Array<Object>
+};
+type State = {
+    showLabels: bool
+};
+type DefaultProps = {};
+
+class TopBar extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps
+    state: State;
+    props: Props;
     constructor() {
         super();
         this.state = {
@@ -47,7 +53,7 @@ class TopBar extends Component {
         };
     }
     renderButtons = () => {
-        const { save, showEdit, edit, cardId, collectionId } = this.props;
+        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel } = this.props;
         const { showLabels } = this.state;
 
         if (showEdit) {
@@ -60,24 +66,25 @@ class TopBar extends Component {
                         />
                         {showLabels &&
                             <LabelsActionBox
-                                close={() => this.setState({ showLabels: false })}
-                                cardId={cardId}
+                                onClose={() => this.setState({ showLabels: false })}
                                 collectionId={collectionId}
+                                labels={labels}
+                                changeCardLabel={changeCardLabel}
                             />
                         }
                     </div>
                     <Button
                         text="Save card"
-                        onClick={save}
+                        onClick={onSave}
                         type="primary"
                     />
                 </EditNav>
             );
         }
-        return <Button text="Edit card" type="secondaryAction" onClick={edit} />;
+        return <Button text="Edit card" type="secondaryAction" onClick={onEdit} />;
     }
     render() {
-        const { close, showComments } = this.props;
+        const { onClose, showComments } = this.props;
         return (
             <Container>
                 <Right>
@@ -88,7 +95,7 @@ class TopBar extends Component {
                         rounded
                     />
                     <Button
-                        onClick={close}
+                        onClick={onClose}
                         text="X"
                         rounded
                     />
