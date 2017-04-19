@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
 
 type Data = {
+    refetch: Function,
     loading: bool,
     seed: {
         id: string,
         content: ?string,
-        labels: Array<Object>
+        labels: Array<Object>,
+        comments: Array<Object>
     }
 }
 
@@ -18,7 +20,8 @@ type Props = {
     removeLabel: Function,
     params: Object,
     data: ?Data,
-    router: Object
+    router: Object,
+    createComment: Function
 }
 
 type State = {
@@ -27,7 +30,8 @@ type State = {
     isLoading: bool,
     showComments: bool,
     content: EditorState,
-    labels: Array<Object>
+    labels: Array<string>,
+    comments: Array<Object>
 }
 
 type DefaultProps = {}
@@ -45,7 +49,8 @@ export default (CardDetail:Function) => {
                     showComments: !!props.params.comments,
                     isLoading: false,
                     content: EditorState.createEmpty(),
-                    labels: []
+                    labels: [],
+                    comments: []
                 };
             }
             componentWillReceiveProps(nextProps:Props) {
@@ -55,13 +60,33 @@ export default (CardDetail:Function) => {
                     this.setState({ isLoading: true });
                     return;
                 }
-                // create editorstate based on content (string)
-                const content = JSON.parse(data.seed.content);
-                if (content !== null && typeof content === 'object') {
-                    const state = convertFromRaw(content);
-                    this.setState({ content: EditorState.createWithContent(state) });
+                const { seed } = data;
+                if (seed.content) {
+                    // create editorstate based on content (string)
+                    const content = JSON.parse(seed.content);
+                    if (content !== null && typeof content === 'object') {
+                        const state = convertFromRaw(content);
+                        this.setState({ content: EditorState.createWithContent(state) });
+                    }
                 }
-                this.setState({ isLoading: false, labels: data.seed.labels });
+                if (seed.comments) {
+                    const comments = seed.comments.map((item) => {
+                        try {
+                            let { text } = item;
+                            text = JSON.parse(text);
+                            text = EditorState.createWithContent(convertFromRaw(text));
+                            return { ...item, text };
+                        } catch (e) {
+                            return null;
+                        }
+                    }).filter(Boolean);
+                    this.setState({ comments });
+                }
+
+                this.setState({
+                    isLoading: false,
+                    labels: seed.labels.map(label => label.id)
+                });
             }
             onSave = (editorState: EditorState) => {
                 const { cardId, collectionId } = this.state;
@@ -72,44 +97,60 @@ export default (CardDetail:Function) => {
                 return create(collectionId, content);
             }
             changeCardLabel = (labelId:string) => {
-                const { create } = this.props;
-                const { cardId, collectionId } = this.state;
+                const { create, removeLabel, addLabel } = this.props;
+                const { cardId, collectionId, labels } = this.state;
                 // if there is no cardId create card and save
                 // TODO: waiting for new seed mutation with title
-                // if (!cardId) {
-                //     create(collectionId)
-                //         .then((res) => {
-                //             console.log(res);
-                //             // this.setState({ cardId: })
-                //         })
-                //         .catch(err => console.log(err));
-                // }
-                //     const { addLabel, removeLabel } = this.props;
-                //     const { cardLabels } = this.state;
-                //
-                //     const labelExist = cardLabels.findIndex(labelId => labelId === id) > -1;
-                //     if (labelExist) {
-                //         removeLabel(id)
-                //             .then((res) => {
-                //                 if (res.data.removeSeedLabel) {
-                //                     const labels = cardLabels.filter(labelId => labelId !== id);
-                //                     this.setState({ cardLabels: labels });
-                //                 }
-                //             })
-                //             .catch(err => console.log(err));
-                //     } else {
-                //         addLabel(id)
-                //             .then((res) => {
-                //                 if (res.data.addSeedLabel) {
-                //                     cardLabels.push(id);
-                //                     this.setState({ cardLabels });
-                //                 }
-                //             })
-                //             .catch(err => console.log(err));
-                //     }
+                // call this.changeCardLabel after saved cardId (recursive)
+                if (!cardId) {
+                    // create(collectionId)
+                    //     .then((res) => {
+                    //         console.log(res);
+                    //         // this.setState({ cardId: })
+                    //     })
+                    //     .catch(err => console.log(err));
+                }
+                const labelExist = labels.findIndex(id => id === labelId) > -1;
+                if (labelExist) {
+                    removeLabel(cardId, labelId)
+                        .then((res) => {
+                            if (res.data.removeSeedLabel) {
+                                this.setState({ labels: labels.filter(id => id !== labelId) });
+                            }
+                        })
+                        .catch(err => console.log(err));
+                } else {
+                    addLabel(cardId, labelId)
+                        .then((res) => {
+                            if (res.data.addSeedLabel) {
+                                labels.push(labelId);
+                                this.setState({ labels });
+                            }
+                        })
+                        .catch(err => console.log(err));
+                }
+            }
+            createComment = (editorState:EditorState) => {
+                const { cardId } = this.state;
+                const { createComment, data } = this.props;
+                const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+                // if there is no cardId create card and save
+                // TODO: waiting for new seed mutation with title
+                // call this.createComment after saved cardId (recursive)
+                if (!cardId) {
+                    // create(collectionId)
+                    //     .then((res) => {
+                    //         console.log(res);
+                    //         // this.setState({ cardId: })
+                    //     })
+                    //     .catch(err => console.log(err));
+                }
+                createComment(cardId, content)
+                    .then(() => data && data.refetch())
+                    .catch(err => console.log(err));
             }
             render() {
-                const { cardId, isLoading, showComments, content, collectionId, labels } = this.state;
+                const { cardId, isLoading, showComments, content, collectionId, labels, comments } = this.state;
                 const { router } = this.props;
                 return (
                     <CardDetail
@@ -122,6 +163,8 @@ export default (CardDetail:Function) => {
                         goBack={() => router.goBack()}
                         collectionId={collectionId}
                         labels={labels}
+                        comments={comments}
+                        createComment={this.createComment}
                     />
                 );
             }

@@ -10,8 +10,12 @@ const getCard = gql`
             content
             labels {
                 id
-                name
-                color
+            }
+            comments {
+                id
+                text
+                creatorId
+                createdAt
             }
         }
     }
@@ -47,6 +51,17 @@ const removeSeedLabel = gql`
     }
 `;
 
+const createComment = gql`
+    mutation createComment($id: ID!, $text: String!) {
+        createComment(seedId: $id, text: $text) {
+            id
+            text
+            creatorId
+            createdAt
+        }
+    }
+`;
+
 export default compose(
     graphql(getCard, {
         name: 'data',
@@ -71,6 +86,11 @@ export default compose(
     graphql(removeSeedLabel, {
         props: ({ mutate }) => ({
             removeLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
+        })
+    }),
+    graphql(createComment, {
+        props: ({ mutate }) => ({
+            createComment: (id:string, text:string) => mutate({ variables: { id, text } })
         })
     })
 )(CardDetail);

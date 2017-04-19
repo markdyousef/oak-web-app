@@ -1,9 +1,8 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import Editor from 'draft-js-plugins-editor';
-import { EditorState, convertFromRaw } from 'draft-js';
+import { EditorState, Editor } from 'draft-js';
 import colors from '../../styles/colors';
 
 const Container = styled.div`
@@ -55,43 +54,27 @@ const Header = styled.div`
     }
 `;
 
-export default class Comment extends Component {
-    static propTypes = {
-        text: PropTypes.shape({
-            blocks: PropTypes.arrayOf(PropTypes.object),
-            entityMap: PropTypes.object
-        }).isRequired,
-        createdAt: PropTypes.string.isRequired,
-        creatorId: PropTypes.string.isRequired
-    }
-    static defaultProps = {
-        type: 'string'
-    }
-    constructor(props) {
-        super(props);
-        this.state = {
-            editorState: EditorState.createWithContent(convertFromRaw(props.text))
-        }
-    }
-    render() {
-        const { createdAt, creatorId } = this.props;
-        const { editorState } = this.state;
-        return (
-            <Container>
-                <Profile />
-                <MessageContainer>
-                    <Header>
-                        <h3>{creatorId}</h3>
-                        {/* <a>{creatorId}</a> */}
-                        <h5>{moment(createdAt).fromNow()}</h5>
-                    </Header>
-                    <Editor
-                        editorState={editorState}
-                        readOnly
-                        onChange={() => {}}
-                    />
-                </MessageContainer>
-            </Container>
-        );
-    }
+type Props = {
+    createdAt: string,
+    creatorId: string,
+    text: EditorState
 }
+
+export default ({ createdAt, creatorId, text }: Props) => {
+    return (
+        <Container>
+            <Profile />
+            <MessageContainer>
+                <Header>
+                    <h3>{creatorId}</h3>
+                    <h5>{moment(createdAt).fromNow()}</h5>
+                </Header>
+                <Editor
+                    editorState={text}
+                    readOnly
+                    onChange={() => {}}
+                />
+            </MessageContainer>
+        </Container>
+    );
+};

@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CommentBox from './CommentBox';
@@ -25,66 +25,32 @@ const CommentsInput = styled.div`
     bottom: 0;
 `;
 
-export default class Comments extends Component {
-    static propTypes = {
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            seed: PropTypes.object
-        }).isRequired,
-        create: PropTypes.func.isRequired,
-        cardId: PropTypes.string.isRequired
-    };
-    constructor() {
-        super();
-        this.state = {}
-    }
-    createComment = (comment:Object) => {
-        const { create, cardId, data } = this.props;
-
-        create(cardId, JSON.stringify(comment))
-            .then(() => data.refetch())
-            .catch(err => console.log(err));
-    }
-    renderComments = () => {
-        const { data } = this.props;
-
-        if (data.loading) return null;
-
-        const { comments } = data.seed;
-        if (comments.length > 0) {
-            return comments.map((comment) => {
-                // TODO: improve this
-                // currently both normal text string and draft-js content
-                // is used for comments
-                let text = null;
-                try {
-                    text = JSON.parse(comment.text);
-                } catch (e) {
-                    return null;
-                }
-                return (
-                    <Comment
-                        key={comment.id}
-                        {...comment}
-                        text={text}
-                    />
-                );
-            });
-        }
-        return <NoComments />;
-    }
-    render() {
-        return (
-            <Container>
-                <CommentsPanel>
-                    {this.renderComments()}
-                </CommentsPanel>
-                <CommentsInput>
-                    <CommentBox
-                        createComment={this.createComment}
-                    />
-                </CommentsInput>
-            </Container>
-        );
-    }
+type Props = {
+    comments: Array<Object>,
+    create: Function
 }
+
+export default ({ comments, create }:Props) => {
+    return (
+        <Container>
+            <CommentsPanel>
+                {(() => {
+                    if (comments.length > 0) {
+                        return comments.map(comment => (
+                            <Comment
+                                key={comment.id}
+                                {...comment}
+                            />
+                        ));
+                    }
+                    return <NoComments />;
+                })()}
+            </CommentsPanel>
+            <CommentsInput>
+                <CommentBox
+                    createComment={create}
+                />
+            </CommentsInput>
+        </Container>
+    );
+};

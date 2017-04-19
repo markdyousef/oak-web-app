@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { EditorState } from 'draft-js';
 import Editor from 'zen-editor';
 import TopBar from './TopBar';
-import Comments from '../../containers/CommentsContainer';
+import Comments from '../Comments';
 import wrapper from './CardDetailWrapper';
 import { Container, Main, CommentsContainer, EditorContainer } from './styles';
 
@@ -17,7 +17,9 @@ type Props = {
     onSave: Function,
     collectionId: string,
     labels: Array<Object>,
-    changeCardLabel: Function
+    changeCardLabel: Function,
+    comments: Array<Object>,
+    createComment: Function
 }
 
 type State = {
@@ -43,21 +45,9 @@ class CardDetail extends Component<DefaultProps, Props, State> {
         };
     }
     onChange = (editorState:EditorState) => this.setState({ editorState });
-    // TODO: fix this
-    // renderComments = () => {
-    //     const { showComments } = this.state;
-    //
-    //     if (!showComments) return null;
-    //
-    //     return (
-    //         <CommentsContainer>
-    //             <Comments cardId={this.cardId} />
-    //         </CommentsContainer>
-    //     );
-    // }
     render() {
         const { showEdit, editorState, showComments } = this.state;
-        const { goBack, onSave, collectionId, changeCardLabel, labels } = this.props;
+        const { goBack, onSave, collectionId, changeCardLabel, labels, comments, createComment } = this.props;
         return (
             <Container>
                 <TopBar
@@ -78,7 +68,14 @@ class CardDetail extends Component<DefaultProps, Props, State> {
                             onChange={this.onChange}
                         />
                     </EditorContainer>
-                    {/* {this.renderComments()} */}
+                    {showComments &&
+                        <CommentsContainer>
+                            <Comments
+                                comments={comments}
+                                create={createComment}
+                            />
+                        </CommentsContainer>
+                    }
                 </Main>
             </Container>
         );

@@ -1,25 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import Editor from 'draft-js-plugins-editor';
-import { EditorState, getDefaultKeyBinding, KeyBindingUtil, convertToRaw } from 'draft-js';
+// @flow
+import React, { Component } from 'react';
+import { EditorState, getDefaultKeyBinding, Editor } from 'draft-js';
 import styled from 'styled-components';
-import createEmojiPlugin from 'draft-js-emoji-plugin';
 import colors from '../../styles/colors';
-import emojiStyles from './emojiStyles.css';
-
-const emojiPlugin = createEmojiPlugin({
-    theme: {
-        emoji: emojiStyles.emoji,
-        emojiSuggestions: emojiStyles.suggestions,
-        emojiSuggestionsEntry: emojiStyles.suggestionsEntry,
-        emojiSuggestionsEntryFocused: emojiStyles.suggestionsEntryFocused,
-        emojiSuggestionsEntryText: emojiStyles.suggestionsEntryText,
-        emojiSuggestionsEntryIcon: emojiStyles.suggestionsEntryIcon,
-        emojiSuggestionsEntryAvatar: emojiStyles.suggestionsEntryAvatar
-    }
-});
-const { EmojiSuggestions } = emojiPlugin;
-const plugins = [emojiPlugin];
-const { hasCommandModifier } = KeyBindingUtil;
 
 const Container = styled.div`
     background: ${colors.white};
@@ -34,30 +17,40 @@ const Input = styled.div`
     border-radius: 3px;
 `;
 
-export default class CommentBox extends Component {
-    static propTypes = {
-        createComment: PropTypes.func.isRequired
-    }
+type DefaultProps = {}
+
+type Props = {
+    createComment: Function
+}
+
+type State = {
+    editorState: EditorState
+}
+
+export default class CommentBox extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
+    editor: Editor;
     constructor() {
         super();
         this.state = {
             editorState: EditorState.createEmpty()
         };
     }
-    onChange = editorState => this.setState({ editorState });
+    onChange = (editorState: EditorState) => this.setState({ editorState });
     focus = () => this.editor.focus();
-    keyBinding = (event) => {
+    keyBinding = (event: Object) => {
         if (event.keyCode === 13) {
             return 'send-message';
         }
         return getDefaultKeyBinding(event);
     }
-    handleKeyCommand = (command) => {
+    handleKeyCommand = (command:string) => {
         if (command === 'send-message') {
             const { createComment } = this.props;
             const { editorState } = this.state;
-            const raw = convertToRaw(editorState.getCurrentContent());
-            createComment(raw);
+            createComment(editorState);
             this.setState({ editorState: EditorState.createEmpty() });
             return 'handled';
         }
@@ -67,12 +60,10 @@ export default class CommentBox extends Component {
         const { editorState } = this.state;
         return (
             <Container>
-                <EmojiSuggestions />
                 <Input onClick={this.focus}>
                     <Editor
                         editorState={editorState}
                         onChange={this.onChange}
-                        plugins={plugins}
                         ref={(element) => { this.editor = element; }}
                         handleKeyCommand={this.handleKeyCommand}
                         keyBindingFn={this.keyBinding}
