@@ -61,23 +61,26 @@ class AddLabels extends Component {
     }
     renderLabels = () => {
         const { collectionLabels, cardLabels, onSelect } = this.props;
-        return (
-            <LabelsSection>
-                {collectionLabels.map((label) => {
-                    const isActive = cardLabels.findIndex(id => id === label.id) > -1;
-                    return (
-                        <Label
-                            key={label.index + label.name}
-                            onClick={() => onSelect(label.id)}
-                            style={{ backgroundColor: label.color }}
-                        >
-                            {label.name}
-                            {isActive && <CheckIcon />}
-                        </Label>
-                    );
-                })}
-            </LabelsSection>
-        );
+        if (cardLabels.length > 0) {
+            return (
+                <LabelsSection>
+                    {collectionLabels.map((label) => {
+                        const isActive = cardLabels.findIndex(id => id === label.id) > -1;
+                        return (
+                            <Label
+                                key={label.index + label.name}
+                                onClick={() => onSelect(label.id)}
+                                style={{ backgroundColor: label.color }}
+                            >
+                                {label.name}
+                                {isActive && <CheckIcon />}
+                            </Label>
+                        );
+                    })}
+                </LabelsSection>
+            );
+        }
+        return <LabelsSection>No labels...</LabelsSection>
     }
     render() {
         const { onChange } = this.props;

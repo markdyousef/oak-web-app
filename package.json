@@ -51,7 +51,8 @@
     "remarkable": "^1.7.1",
     "save": "^2.3.0",
     "styled-components": "^1.4.4",
-    "whatwg-fetch": "2.0.1"
+    "whatwg-fetch": "2.0.1",
+    "zen-editor": "^0.1.6"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",

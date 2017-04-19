@@ -92,14 +92,13 @@ class Login extends Component {
     };
     constructor() {
         super();
-        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             email: '',
             password: '',
             message: null
         };
     }
-    onSubmit() {
+    onSubmit = () => {
         const { loginUser, router } = this.props;
         const { email, password } = this.state;
 
@@ -123,7 +122,7 @@ class Login extends Component {
                 });
                 window.location.reload();
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
     render() {
         const { email, password, message } = this.state;

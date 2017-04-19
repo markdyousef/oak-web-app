@@ -35,8 +35,11 @@ class TopBar extends Component {
         edit: PropTypes.func.isRequired,
         showComments: PropTypes.func.isRequired,
         collectionId: PropTypes.string.isRequired,
-        cardId: PropTypes.string.isRequired
+        cardId: PropTypes.string
     };
+    static defaultProps = {
+        cardId: null
+    }
     constructor() {
         super();
         this.state = {

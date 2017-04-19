@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import CardDetail from '../components/CardDetail';
 
 const getCard = gql`
-    query card($id: ID!) {
+    query getCard($id: ID!) {
         seed(id: $id) {
             id
             content
@@ -30,15 +30,15 @@ const updateSeed = gql`
     }
 `;
 
-
 export default compose(
     graphql(getCard, {
         name: 'data',
-        options: ownProps => ({ variables: { id: ownProps.params.cardId } })
+        skip: props => !props.params.cardId,
+        options: props => ({ variables: { id: props.params.cardId } })
     }),
     graphql(createSeed, {
         props: ({ mutate }) => ({
-            create: (groveId: String, content: String) => mutate({ variables: { groveId, content } })
+            create: (groveId: string, content: string) => mutate({ variables: { groveId, content } })
         })
     }),
     graphql(updateSeed, {

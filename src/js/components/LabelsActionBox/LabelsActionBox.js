@@ -72,7 +72,7 @@ class LabelsActionBox extends Component {
                         this.setState({ cardLabels: labels });
                     }
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         } else {
             addLabel(cardId, id)
                 .then((res) => {
@@ -81,9 +81,8 @@ class LabelsActionBox extends Component {
                         this.setState({ cardLabels });
                     }
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         }
-
     }
     renderLabels = () => {
         const { close, collection, card } = this.props;

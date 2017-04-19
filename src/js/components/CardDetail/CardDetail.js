@@ -1,37 +1,10 @@
 
 import React, { Component, PropTypes } from 'react';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import styled from 'styled-components';
-import colors from '../../styles/colors';
+import Editor from 'zen-editor';
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
-import Editor from '../Editor';
-
-const Container = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: ${colors.white};
-    top: 0;
-`;
-
-const Main = styled.section`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-`;
-
-const CommentsContainer = styled.div`
-    width: 300px;
-    height: 80%;
-    position: absolute;
-    right: 0;
-`;
-
-const EditorContainer = styled.div`
-    padding-top: 20px;
-    width: 100%;
-`;
+import { Container, Main, CommentsContainer, EditorContainer } from './styles';
 
 class CardDetail extends Component {
     static propTypes = {
@@ -43,17 +16,20 @@ class CardDetail extends Component {
         data: PropTypes.shape({
             loading: PropTypes.bool,
             seed: PropTypes.object
-        }).isRequired,
+        }),
         create: PropTypes.func.isRequired,
         update: PropTypes.func.isRequired,
         router: PropTypes.shape({
             goBack: PropTypes.func.isRequired
         }).isRequired
     }
+    static defaultProps = {
+        data: {}
+    }
     constructor(props) {
         super(props);
-        this.cardId = props.params.cardId,
-        this.collectionId = props.params.collectionId
+        this.cardId = props.params.cardId;
+        this.collectionId = props.params.collectionId;
         this.state = {
             showEdit: false,
             message: null,
@@ -70,14 +46,18 @@ class CardDetail extends Component {
     }
     componentWillReceiveProps(nextProps) {
         const { data } = nextProps;
+
         if (data.loading) return;
         if (data.seed && data.seed.content) {
             const content = JSON.parse(data.seed.content);
             if (content !== null && typeof content === 'object') {
                 const state = convertFromRaw(content);
-                console.log(state);
                 this.setState({ editorState: EditorState.createWithContent(state) });
             }
+        } else {
+            // new card - save to get cardId
+            this.setState({ showEdit: true })
+            this.onSave();
         }
     }
     onChange = (editorState:EditorState) => {
@@ -92,20 +72,16 @@ class CardDetail extends Component {
         if (!this.cardId && this.collectionId) {
             create(this.collectionId, content)
                 .then((res) => {
-                    console.log(res);
                     this.cardId = res.data.createSeed.id;
                     this.setState({
-                        showEdit: false,
                         isSaved: true,
                         message: { type: 'success', text: 'Saved!' }
                     });
-                    data.refetch();
                 })
                 .catch(err => console.log(err));
         } else if (this.cardId && this.collectionId) {
             update(this.cardId, content)
                 .then((res) => {
-                    data.refetch();
                     console.log(this.state.editorState);
                     this.setState({
                         showEdit: false,
@@ -120,10 +96,10 @@ class CardDetail extends Component {
         const { router } = this.props;
         const { showEdit, isSaved, showComments } = this.state;
 
-        // // if no cardId, save to get cardId
-        // if (!this.cardId && !isSaved) {
-        //     this.onSave();
-        // }
+        // if no cardId, save to get cardId
+        if (!!this.cardId && !isSaved) {
+            this.onSave();
+        }
         return (
             <TopBar
                 close={() => router.goBack()}
