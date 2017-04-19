@@ -39,7 +39,7 @@ type Props = {
     changeCardLabel: Function,
     createLabel: Function,
     data: Data,
-    labels: Array<Object>
+    labels: Array<string>
 };
 
 type State = {
@@ -61,7 +61,7 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
             selectedColor: COLORS[0],
             showCreate: false,
             collectionLabels: [],
-            cardLabels: props.labels.map(label => label.id)
+            cardLabels: props.labels
         };
     }
     componentWillReceiveProps(nextProps:Props) {

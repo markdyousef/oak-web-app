@@ -35,7 +35,7 @@ type Props = {
     showComments: Function,
     collectionId: string,
     changeCardLabel: Function,
-    labels: Array<Object>
+    labels: Array<string>
 };
 type State = {
     showLabels: bool

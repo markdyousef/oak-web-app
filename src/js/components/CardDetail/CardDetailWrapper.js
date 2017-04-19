@@ -90,13 +90,22 @@ export default (CardDetail:Function) => {
             }
             onSave = (editorState: EditorState) => {
                 const { cardId, collectionId } = this.state;
-                const { create, update } = this.props;
+                const { create, update, data } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+                console.log(content);
                 // existing cards has a cardId
-                if (cardId) return update(cardId, content);
-                return create(collectionId, content);
+                if (cardId) {
+                    update(cardId, content)
+                    .then(() => data && data.refetch())
+                    .catch(err => console.log(err));
+                    return;
+                }
+                create(collectionId, content)
+                    .then(() => data && data.refetch())
+                    .catch(err => console.log(err));
             }
             changeCardLabel = (labelId:string) => {
+                console.log(labelId);
                 const { create, removeLabel, addLabel } = this.props;
                 const { cardId, collectionId, labels } = this.state;
                 // if there is no cardId create card and save

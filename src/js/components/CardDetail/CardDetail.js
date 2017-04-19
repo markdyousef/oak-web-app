@@ -16,7 +16,7 @@ type Props = {
     goBack: Function,
     onSave: Function,
     collectionId: string,
-    labels: Array<Object>,
+    labels: Array<string>,
     changeCardLabel: Function,
     comments: Array<Object>,
     createComment: Function
@@ -63,7 +63,7 @@ class CardDetail extends Component<DefaultProps, Props, State> {
                 <Main>
                     <EditorContainer>
                         <Editor
-                            canEdit={showEdit}
+                            readOnly={!showEdit}
                             editorState={editorState}
                             onChange={this.onChange}
                         />
