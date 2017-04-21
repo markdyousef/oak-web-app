@@ -6,6 +6,7 @@ import Input from '../shared/Input';
 import { saveToken } from '../../utils';
 import colors from '../../styles/colors';
 import Arrow from '../../icons/rightArrow';
+import { NextButton } from '../shared/Button';
 
 const Container = styled.section`
     width: 100%;
@@ -31,35 +32,6 @@ const Box = styled.div`
         margin-top: 15px;
     }
 `;
-
-const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: ${colors.green};
-    border-radius: 3px;
-    border: 1px solid ${colors.green};
-    color: ${colors.white};
-    font-size: 15px;
-    font-weight: bold;
-    font-family: 'Proxima Nova';
-    padding: 12px;
-    cursor: pointer;
-    &:hover {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
-    }
-    &:after {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
-    }
-    & svg {
-        fill: ${colors.white};
-        margin-left: 5px;
-    }
-`;
-
 
 const ErrorMessage = styled.div`
     width: 100%;
@@ -152,12 +124,11 @@ class Login extends Component {
                         />
                     </div>
                     <div>
-                        <Button
+                        <NextButton
                             onClick={this.onSubmit}
-                        >
-                            Sign in
-                            <Arrow />
-                        </Button>
+                            icon={<Arrow />}
+                            text="Sign in"
+                        />
                     </div>
                     <div>
                         {message &&
