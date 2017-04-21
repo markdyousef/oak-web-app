@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { requireAuth, requireTeam } from './utils';
@@ -54,7 +54,7 @@ const client = new ApolloClient({
 
 const routes = (
     <ApolloProvider client={client}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
