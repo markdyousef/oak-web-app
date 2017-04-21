@@ -1,17 +1,20 @@
+// @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
 import LabelsActionBox from './LabelsActionBox';
 
 it('renders correctly', () => {
     const props = {
-        close: () => {},
-        createLabel: () => {},
-        addLabel: () => {},
-        removeLabel: () => {},
+        changeCardLabel: () => {},
         collectionId: '1',
-        cardId: '2',
-        collection: {},
-        card: {}
+        createLabel: () => {},
+        data: {
+            loading: true,
+            refetch: () => {}
+        },
+        labels: [],
+        onClose: () => {}
+
     };
     const component = renderer.create(
         <LabelsActionBox {...props} />

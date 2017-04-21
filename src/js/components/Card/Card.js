@@ -118,34 +118,34 @@ const Settings = styled.div`
     z-index: 99;
 `;
 
-export default class Card extends Component {
-    static propTypes = {
-        content: PropTypes.shape({
-            blocks: PropTypes.arrayOf(PropTypes.object),
-            entityMap: PropTypes.object
-        }),
-        creator: PropTypes.shape({
-            name: PropTypes.string,
-            username: PropTypes.string,
-            avatar: PropTypes.object
-        }).isRequired,
-        labels: PropTypes.arrayOf(PropTypes.object),
-        comments: PropTypes.arrayOf(PropTypes.object),
-        updatedAt: PropTypes.string.isRequired,
-        onShow: PropTypes.func.isRequired,
-        onRemove: PropTypes.func.isRequired,
-        onLike: PropTypes.func.isRequired,
-        showComments: PropTypes.func.isRequired,
-        likes: PropTypes.number,
-        isLiked: PropTypes.bool.isRequired
-    }
-    static defaultProps = {
-        title: null,
-        content: null,
-        labels: [],
-        comments: [],
-        likes: 0
-    }
+type DefaultProps = {
+    title: null,
+    content: null,
+    labels: [],
+    comments: [],
+    likes: 0
+};
+type Props = {
+    content: Object,
+    creator: Object,
+    labels: ?Array<Object>,
+    comments: ?Array<Object>,
+    updatedAt: string,
+    onShow: Function,
+    onRemove: Function,
+    onLike: Function,
+    showComments: Function,
+    likes: number,
+    isLiked: bool
+};
+type State = {
+    showOptions: bool
+};
+
+export default class Card extends Component<DefaultProps, Props, State> {
+    static defaultProps:DefaultProps;
+    state: State;
+    props: Props;
     constructor() {
         super();
         this.state = {
@@ -165,7 +165,7 @@ export default class Card extends Component {
         return (
             <Header>
                 <div>
-                    {labels.map((label, index) => {
+                    {labels && labels.map((label, index) => {
                         const right = 16 + (index * 12);
                         return (
                             <Label
@@ -204,7 +204,7 @@ export default class Card extends Component {
                 <div>
                     <Icon onClick={showComments}>
                         <CommentsIcon />
-                        <span>{comments.length}</span>
+                        <span>{(comments) ? comments.length : 0}</span>
                     </Icon>
                     <Icon onClick={onLike}>
                         <LikesIcon isLiked={isLiked} />

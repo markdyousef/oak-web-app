@@ -57,7 +57,6 @@ type Props = {
 }
 
 export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) => {
-    console.log(cardLabels);
     return (
         <div>
             <Section>

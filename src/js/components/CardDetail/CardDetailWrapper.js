@@ -19,7 +19,7 @@ type Props = {
     addLabel: Function,
     removeLabel: Function,
     params: Object,
-    data: ?Data,
+    data?: Data,
     router: Object,
     createComment: Function
 }

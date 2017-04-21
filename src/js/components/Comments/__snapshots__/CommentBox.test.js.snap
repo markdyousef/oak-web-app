@@ -1,0 +1,758 @@
+exports[`test renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <styled.div>
+    <styled.div
+        onClick={[Function]}>
+        <DraftEditor
+            blockRenderMap={
+                Object {
+                    "atomic": Object {
+                      "element": "figure",
+                    },
+                    "blockquote": Object {
+                      "element": "blockquote",
+                    },
+                    "code-block": Object {
+                      "element": "pre",
+                      "wrapper": <pre
+                        className="public-DraftStyleDefault-pre" />,
+                    },
+                    "header-five": Object {
+                      "element": "h5",
+                    },
+                    "header-four": Object {
+                      "element": "h4",
+                    },
+                    "header-one": Object {
+                      "element": "h1",
+                    },
+                    "header-six": Object {
+                      "element": "h6",
+                    },
+                    "header-three": Object {
+                      "element": "h3",
+                    },
+                    "header-two": Object {
+                      "element": "h2",
+                    },
+                    "ordered-list-item": Object {
+                      "element": "li",
+                      "wrapper": <ol
+                        className="public-DraftStyleDefault-ol" />,
+                    },
+                    "unordered-list-item": Object {
+                      "element": "li",
+                      "wrapper": <ul
+                        className="public-DraftStyleDefault-ul" />,
+                    },
+                    "unstyled": Object {
+                      "aliasedElements": Array [
+                        "p",
+                      ],
+                      "element": "div",
+                    },
+                  }
+            }
+            blockRendererFn={[Function]}
+            blockStyleFn={[Function]}
+            editorState={
+                EditorState {
+                    "_immutable": Object {
+                      "allowUndo": true,
+                      "currentContent": Object {
+                        "blockMap": Object {
+                          "123": Object {
+                            "characterList": Array [],
+                            "data": Object {},
+                            "depth": 0,
+                            "key": "123",
+                            "text": "",
+                            "type": "unstyled",
+                          },
+                        },
+                        "entityMap": Object {
+                          "__add": [Function],
+                          "__create": [Function],
+                          "__get": [Function],
+                          "__getLastCreatedEntityKey": [Function],
+                          "__mergeData": [Function],
+                          "__replaceData": [Function],
+                          "add": [Function],
+                          "create": [Function],
+                          "get": [Function],
+                          "getLastCreatedEntityKey": [Function],
+                          "mergeData": [Function],
+                          "replaceData": [Function],
+                        },
+                        "selectionAfter": Object {
+                          "anchorKey": "123",
+                          "anchorOffset": 0,
+                          "focusKey": "123",
+                          "focusOffset": 0,
+                          "hasFocus": false,
+                          "isBackward": false,
+                        },
+                        "selectionBefore": Object {
+                          "anchorKey": "123",
+                          "anchorOffset": 0,
+                          "focusKey": "123",
+                          "focusOffset": 0,
+                          "hasFocus": false,
+                          "isBackward": false,
+                        },
+                      },
+                      "decorator": null,
+                      "directionMap": Object {
+                        "123": "LTR",
+                      },
+                      "forceSelection": false,
+                      "inCompositionMode": false,
+                      "inlineStyleOverride": null,
+                      "lastChangeType": null,
+                      "nativelyRenderedContent": null,
+                      "redoStack": Array [],
+                      "selection": Object {
+                        "anchorKey": "123",
+                        "anchorOffset": 0,
+                        "focusKey": "123",
+                        "focusOffset": 0,
+                        "hasFocus": false,
+                        "isBackward": false,
+                      },
+                      "treeMap": Object {
+                        "123": Array [
+                          Object {
+                            "decoratorKey": null,
+                            "end": 0,
+                            "leaves": Array [
+                              Object {
+                                "end": 0,
+                                "start": 0,
+                              },
+                            ],
+                            "start": 0,
+                          },
+                        ],
+                      },
+                      "undoStack": Array [],
+                    },
+                  }
+            }
+            handleKeyCommand={[Function]}
+            keyBindingFn={[Function]}
+            onChange={[Function]}
+            readOnly={false}
+            spellCheck={false}
+            stripPastedStyles={false} />
+    </styled.div>
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div
+            onClick={[Function]}>
+            <DraftEditor
+                  blockRenderMap={
+                        Object {
+                              "atomic": Object {
+                                "element": "figure",
+                              },
+                              "blockquote": Object {
+                                "element": "blockquote",
+                              },
+                              "code-block": Object {
+                                "element": "pre",
+                                "wrapper": <pre
+                                  className="public-DraftStyleDefault-pre" />,
+                              },
+                              "header-five": Object {
+                                "element": "h5",
+                              },
+                              "header-four": Object {
+                                "element": "h4",
+                              },
+                              "header-one": Object {
+                                "element": "h1",
+                              },
+                              "header-six": Object {
+                                "element": "h6",
+                              },
+                              "header-three": Object {
+                                "element": "h3",
+                              },
+                              "header-two": Object {
+                                "element": "h2",
+                              },
+                              "ordered-list-item": Object {
+                                "element": "li",
+                                "wrapper": <ol
+                                  className="public-DraftStyleDefault-ol" />,
+                              },
+                              "unordered-list-item": Object {
+                                "element": "li",
+                                "wrapper": <ul
+                                  className="public-DraftStyleDefault-ul" />,
+                              },
+                              "unstyled": Object {
+                                "aliasedElements": Array [
+                                  "p",
+                                ],
+                                "element": "div",
+                              },
+                            }
+                  }
+                  blockRendererFn={[Function]}
+                  blockStyleFn={[Function]}
+                  editorState={
+                        EditorState {
+                              "_immutable": Object {
+                                "allowUndo": true,
+                                "currentContent": Object {
+                                  "blockMap": Object {
+                                    "123": Object {
+                                      "characterList": Array [],
+                                      "data": Object {},
+                                      "depth": 0,
+                                      "key": "123",
+                                      "text": "",
+                                      "type": "unstyled",
+                                    },
+                                  },
+                                  "entityMap": Object {
+                                    "__add": [Function],
+                                    "__create": [Function],
+                                    "__get": [Function],
+                                    "__getLastCreatedEntityKey": [Function],
+                                    "__mergeData": [Function],
+                                    "__replaceData": [Function],
+                                    "add": [Function],
+                                    "create": [Function],
+                                    "get": [Function],
+                                    "getLastCreatedEntityKey": [Function],
+                                    "mergeData": [Function],
+                                    "replaceData": [Function],
+                                  },
+                                  "selectionAfter": Object {
+                                    "anchorKey": "123",
+                                    "anchorOffset": 0,
+                                    "focusKey": "123",
+                                    "focusOffset": 0,
+                                    "hasFocus": false,
+                                    "isBackward": false,
+                                  },
+                                  "selectionBefore": Object {
+                                    "anchorKey": "123",
+                                    "anchorOffset": 0,
+                                    "focusKey": "123",
+                                    "focusOffset": 0,
+                                    "hasFocus": false,
+                                    "isBackward": false,
+                                  },
+                                },
+                                "decorator": null,
+                                "directionMap": Object {
+                                  "123": "LTR",
+                                },
+                                "forceSelection": false,
+                                "inCompositionMode": false,
+                                "inlineStyleOverride": null,
+                                "lastChangeType": null,
+                                "nativelyRenderedContent": null,
+                                "redoStack": Array [],
+                                "selection": Object {
+                                  "anchorKey": "123",
+                                  "anchorOffset": 0,
+                                  "focusKey": "123",
+                                  "focusOffset": 0,
+                                  "hasFocus": false,
+                                  "isBackward": false,
+                                },
+                                "treeMap": Object {
+                                  "123": Array [
+                                    Object {
+                                      "decoratorKey": null,
+                                      "end": 0,
+                                      "leaves": Array [
+                                        Object {
+                                          "end": 0,
+                                          "start": 0,
+                                        },
+                                      ],
+                                      "start": 0,
+                                    },
+                                  ],
+                                },
+                                "undoStack": Array [],
+                              },
+                            }
+                  }
+                  handleKeyCommand={[Function]}
+                  keyBindingFn={[Function]}
+                  onChange={[Function]}
+                  readOnly={false}
+                  spellCheck={false}
+                  stripPastedStyles={false} />
+      </styled.div>
+</styled.div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <CommentBox
+        data={
+                Object {
+                        "loading": true,
+                      }
+        }
+        likeCard={[Function]}
+        params={Object {}}
+        removeCard={[Function]}
+        router={Object {}}
+        unlikeCard={[Function]} />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": CommentBox {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "focus": [Function],
+        "handleKeyCommand": [Function],
+        "keyBinding": [Function],
+        "onChange": [Function],
+        "props": Object {
+          "data": Object {
+            "loading": true,
+          },
+          "likeCard": [Function],
+          "params": Object {},
+          "removeCard": [Function],
+          "router": Object {},
+          "unlikeCard": [Function],
+        },
+        "refs": Object {},
+        "state": Object {
+          "editorState": EditorState {
+            "_immutable": Object {
+              "allowUndo": true,
+              "currentContent": Object {
+                "blockMap": Object {
+                  "123": Object {
+                    "characterList": Array [],
+                    "data": Object {},
+                    "depth": 0,
+                    "key": "123",
+                    "text": "",
+                    "type": "unstyled",
+                  },
+                },
+                "entityMap": Object {
+                  "__add": [Function],
+                  "__create": [Function],
+                  "__get": [Function],
+                  "__getLastCreatedEntityKey": [Function],
+                  "__mergeData": [Function],
+                  "__replaceData": [Function],
+                  "add": [Function],
+                  "create": [Function],
+                  "get": [Function],
+                  "getLastCreatedEntityKey": [Function],
+                  "mergeData": [Function],
+                  "replaceData": [Function],
+                },
+                "selectionAfter": Object {
+                  "anchorKey": "123",
+                  "anchorOffset": 0,
+                  "focusKey": "123",
+                  "focusOffset": 0,
+                  "hasFocus": false,
+                  "isBackward": false,
+                },
+                "selectionBefore": Object {
+                  "anchorKey": "123",
+                  "anchorOffset": 0,
+                  "focusKey": "123",
+                  "focusOffset": 0,
+                  "hasFocus": false,
+                  "isBackward": false,
+                },
+              },
+              "decorator": null,
+              "directionMap": Object {
+                "123": "LTR",
+              },
+              "forceSelection": false,
+              "inCompositionMode": false,
+              "inlineStyleOverride": null,
+              "lastChangeType": null,
+              "nativelyRenderedContent": null,
+              "redoStack": Array [],
+              "selection": Object {
+                "anchorKey": "123",
+                "anchorOffset": 0,
+                "focusKey": "123",
+                "focusOffset": 0,
+                "hasFocus": false,
+                "isBackward": false,
+              },
+              "treeMap": Object {
+                "123": Array [
+                  Object {
+                    "decoratorKey": null,
+                    "end": 0,
+                    "leaves": Array [
+                      Object {
+                        "end": 0,
+                        "start": 0,
+                      },
+                    ],
+                    "start": 0,
+                  },
+                ],
+              },
+              "undoStack": Array [],
+            },
+          },
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <styled.div>
+          <styled.div
+                    onClick={[Function]}>
+                    <DraftEditor
+                              blockRenderMap={
+                                        Object {
+                                                  "atomic": Object {
+                                                    "element": "figure",
+                                                  },
+                                                  "blockquote": Object {
+                                                    "element": "blockquote",
+                                                  },
+                                                  "code-block": Object {
+                                                    "element": "pre",
+                                                    "wrapper": <pre
+                                                      className="public-DraftStyleDefault-pre" />,
+                                                  },
+                                                  "header-five": Object {
+                                                    "element": "h5",
+                                                  },
+                                                  "header-four": Object {
+                                                    "element": "h4",
+                                                  },
+                                                  "header-one": Object {
+                                                    "element": "h1",
+                                                  },
+                                                  "header-six": Object {
+                                                    "element": "h6",
+                                                  },
+                                                  "header-three": Object {
+                                                    "element": "h3",
+                                                  },
+                                                  "header-two": Object {
+                                                    "element": "h2",
+                                                  },
+                                                  "ordered-list-item": Object {
+                                                    "element": "li",
+                                                    "wrapper": <ol
+                                                      className="public-DraftStyleDefault-ol" />,
+                                                  },
+                                                  "unordered-list-item": Object {
+                                                    "element": "li",
+                                                    "wrapper": <ul
+                                                      className="public-DraftStyleDefault-ul" />,
+                                                  },
+                                                  "unstyled": Object {
+                                                    "aliasedElements": Array [
+                                                      "p",
+                                                    ],
+                                                    "element": "div",
+                                                  },
+                                                }
+                              }
+                              blockRendererFn={[Function]}
+                              blockStyleFn={[Function]}
+                              editorState={
+                                        EditorState {
+                                                  "_immutable": Object {
+                                                    "allowUndo": true,
+                                                    "currentContent": Object {
+                                                      "blockMap": Object {
+                                                        "123": Object {
+                                                          "characterList": Array [],
+                                                          "data": Object {},
+                                                          "depth": 0,
+                                                          "key": "123",
+                                                          "text": "",
+                                                          "type": "unstyled",
+                                                        },
+                                                      },
+                                                      "entityMap": Object {
+                                                        "__add": [Function],
+                                                        "__create": [Function],
+                                                        "__get": [Function],
+                                                        "__getLastCreatedEntityKey": [Function],
+                                                        "__mergeData": [Function],
+                                                        "__replaceData": [Function],
+                                                        "add": [Function],
+                                                        "create": [Function],
+                                                        "get": [Function],
+                                                        "getLastCreatedEntityKey": [Function],
+                                                        "mergeData": [Function],
+                                                        "replaceData": [Function],
+                                                      },
+                                                      "selectionAfter": Object {
+                                                        "anchorKey": "123",
+                                                        "anchorOffset": 0,
+                                                        "focusKey": "123",
+                                                        "focusOffset": 0,
+                                                        "hasFocus": false,
+                                                        "isBackward": false,
+                                                      },
+                                                      "selectionBefore": Object {
+                                                        "anchorKey": "123",
+                                                        "anchorOffset": 0,
+                                                        "focusKey": "123",
+                                                        "focusOffset": 0,
+                                                        "hasFocus": false,
+                                                        "isBackward": false,
+                                                      },
+                                                    },
+                                                    "decorator": null,
+                                                    "directionMap": Object {
+                                                      "123": "LTR",
+                                                    },
+                                                    "forceSelection": false,
+                                                    "inCompositionMode": false,
+                                                    "inlineStyleOverride": null,
+                                                    "lastChangeType": null,
+                                                    "nativelyRenderedContent": null,
+                                                    "redoStack": Array [],
+                                                    "selection": Object {
+                                                      "anchorKey": "123",
+                                                      "anchorOffset": 0,
+                                                      "focusKey": "123",
+                                                      "focusOffset": 0,
+                                                      "hasFocus": false,
+                                                      "isBackward": false,
+                                                    },
+                                                    "treeMap": Object {
+                                                      "123": Array [
+                                                        Object {
+                                                          "decoratorKey": null,
+                                                          "end": 0,
+                                                          "leaves": Array [
+                                                            Object {
+                                                              "end": 0,
+                                                              "start": 0,
+                                                            },
+                                                          ],
+                                                          "start": 0,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "undoStack": Array [],
+                                                  },
+                                                }
+                              }
+                              handleKeyCommand={[Function]}
+                              keyBindingFn={[Function]}
+                              onChange={[Function]}
+                              readOnly={false}
+                              spellCheck={false}
+                              stripPastedStyles={false} />
+          </styled.div>
+</styled.div>,
+        "_debugID": 2,
+        "_renderedOutput": <styled.div>
+          <styled.div
+                    onClick={[Function]}>
+                    <DraftEditor
+                              blockRenderMap={
+                                        Object {
+                                                  "atomic": Object {
+                                                    "element": "figure",
+                                                  },
+                                                  "blockquote": Object {
+                                                    "element": "blockquote",
+                                                  },
+                                                  "code-block": Object {
+                                                    "element": "pre",
+                                                    "wrapper": <pre
+                                                      className="public-DraftStyleDefault-pre" />,
+                                                  },
+                                                  "header-five": Object {
+                                                    "element": "h5",
+                                                  },
+                                                  "header-four": Object {
+                                                    "element": "h4",
+                                                  },
+                                                  "header-one": Object {
+                                                    "element": "h1",
+                                                  },
+                                                  "header-six": Object {
+                                                    "element": "h6",
+                                                  },
+                                                  "header-three": Object {
+                                                    "element": "h3",
+                                                  },
+                                                  "header-two": Object {
+                                                    "element": "h2",
+                                                  },
+                                                  "ordered-list-item": Object {
+                                                    "element": "li",
+                                                    "wrapper": <ol
+                                                      className="public-DraftStyleDefault-ol" />,
+                                                  },
+                                                  "unordered-list-item": Object {
+                                                    "element": "li",
+                                                    "wrapper": <ul
+                                                      className="public-DraftStyleDefault-ul" />,
+                                                  },
+                                                  "unstyled": Object {
+                                                    "aliasedElements": Array [
+                                                      "p",
+                                                    ],
+                                                    "element": "div",
+                                                  },
+                                                }
+                              }
+                              blockRendererFn={[Function]}
+                              blockStyleFn={[Function]}
+                              editorState={
+                                        EditorState {
+                                                  "_immutable": Object {
+                                                    "allowUndo": true,
+                                                    "currentContent": Object {
+                                                      "blockMap": Object {
+                                                        "123": Object {
+                                                          "characterList": Array [],
+                                                          "data": Object {},
+                                                          "depth": 0,
+                                                          "key": "123",
+                                                          "text": "",
+                                                          "type": "unstyled",
+                                                        },
+                                                      },
+                                                      "entityMap": Object {
+                                                        "__add": [Function],
+                                                        "__create": [Function],
+                                                        "__get": [Function],
+                                                        "__getLastCreatedEntityKey": [Function],
+                                                        "__mergeData": [Function],
+                                                        "__replaceData": [Function],
+                                                        "add": [Function],
+                                                        "create": [Function],
+                                                        "get": [Function],
+                                                        "getLastCreatedEntityKey": [Function],
+                                                        "mergeData": [Function],
+                                                        "replaceData": [Function],
+                                                      },
+                                                      "selectionAfter": Object {
+                                                        "anchorKey": "123",
+                                                        "anchorOffset": 0,
+                                                        "focusKey": "123",
+                                                        "focusOffset": 0,
+                                                        "hasFocus": false,
+                                                        "isBackward": false,
+                                                      },
+                                                      "selectionBefore": Object {
+                                                        "anchorKey": "123",
+                                                        "anchorOffset": 0,
+                                                        "focusKey": "123",
+                                                        "focusOffset": 0,
+                                                        "hasFocus": false,
+                                                        "isBackward": false,
+                                                      },
+                                                    },
+                                                    "decorator": null,
+                                                    "directionMap": Object {
+                                                      "123": "LTR",
+                                                    },
+                                                    "forceSelection": false,
+                                                    "inCompositionMode": false,
+                                                    "inlineStyleOverride": null,
+                                                    "lastChangeType": null,
+                                                    "nativelyRenderedContent": null,
+                                                    "redoStack": Array [],
+                                                    "selection": Object {
+                                                      "anchorKey": "123",
+                                                      "anchorOffset": 0,
+                                                      "focusKey": "123",
+                                                      "focusOffset": 0,
+                                                      "hasFocus": false,
+                                                      "isBackward": false,
+                                                    },
+                                                    "treeMap": Object {
+                                                      "123": Array [
+                                                        Object {
+                                                          "decoratorKey": null,
+                                                          "end": 0,
+                                                          "leaves": Array [
+                                                            Object {
+                                                              "end": 0,
+                                                              "start": 0,
+                                                            },
+                                                          ],
+                                                          "start": 0,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "undoStack": Array [],
+                                                  },
+                                                }
+                              }
+                              handleKeyCommand={[Function]}
+                              keyBindingFn={[Function]}
+                              onChange={[Function]}
+                              readOnly={false}
+                              spellCheck={false}
+                              stripPastedStyles={false} />
+          </styled.div>
+</styled.div>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <CommentBox
+    data={
+        Object {
+            "loading": true,
+          }
+    }
+    likeCard={[Function]}
+    params={Object {}}
+    removeCard={[Function]}
+    router={Object {}}
+    unlikeCard={[Function]} />,
+}
+`;

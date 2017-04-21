@@ -1,0 +1,51 @@
+exports[`test renders correctly 1`] = `
+<div>
+  <button
+    className="gMyAru"
+    onClick={[Function]}>
+    <svg
+      height="16"
+      viewBox="0 0 16 16"
+      width="16">
+      <g>
+        <path
+          d="M5.09,13.19L0.26,8.35C0.16,8.26,0.11,8.13,0.11,8s0.05-0.26,0.15-0.35l4.83-4.84c0.2-0.19,0.51-0.19,0.71,0 c0.19,0.2,0.19,0.51,0,0.71L1.81,7.5h13.58c0.27,0,0.5,0.22,0.5,0.5s-0.23,0.5-0.5,0.5H1.81l3.99,3.98c0.19,0.19,0.19,0.51,0,0.71 C5.6,13.38,5.29,13.38,5.09,13.19z" />
+      </g>
+    </svg>
+    Back
+  </button>
+  <section
+    className="cvDkeG">
+    <div>
+      <h5
+        className="eKaiQM">
+        NAME
+      </h5>
+      <input
+        className="bwXyts"
+        onChange={[Function]}
+        onKeyDown={null}
+        placeholder="Label name"
+        type="text"
+        value="" />
+    </div>
+  </section>
+  <section
+    className="cvDkeG">
+    <h5>
+      SELECT COLOR: 
+    </h5>
+    <div
+      className="huwVrA" />
+  </section>
+  <section
+    className="txchV">
+    <button
+      className="iZsHgX"
+      onClick={[Function]}
+      type="primary">
+      CREATE
+    </button>
+  </section>
+</div>
+`;

@@ -28,7 +28,7 @@ const Container = styled.div`
 type Data = {
     loading: bool,
     refetch: Function,
-    grove: {
+    grove?: {
         labels: Array<Object>
     }
 }

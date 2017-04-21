@@ -1,20 +1,20 @@
 // @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardDetail from './CardDetail';
+import CreateLabels from './CreateLabels';
 
 it('renders correctly', () => {
     const props = {
-        addLabel: () => {},
-        createComment: () => {},
-        create: () => {},
-        removeLabel: () => {},
-        update: () => {},
-        params: {},
-        router: {}
+        changePage: () => {},
+        labelColors: [],
+        labelName: '',
+        onChange: () => {},
+        onCreate: () => {},
+        selectedColor: '#000'
+
     };
     const component = renderer.create(
-        <CardDetail {...props} />
+        <CreateLabels {...props} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

@@ -19,7 +19,9 @@ exports[`test renders correctly 1`] = `
         <section
           className="llBzlB">
           <section
-            className="FPhLq" />
+            className="FPhLq">
+            No labels...
+          </section>
         </section>
         <section
           className="cDxvmS">

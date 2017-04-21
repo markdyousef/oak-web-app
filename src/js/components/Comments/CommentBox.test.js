@@ -1,15 +1,18 @@
 // @flow
 import React from 'react';
 import { shallow } from 'enzyme';
-import Comments from './Comments';
+// import jest from 'jest';
+import CommentBox from './CommentBox';
+
+// jest.mock('draft-js/lib/generateRandomKey', () => () => '123');
+
 
 it('renders correctly', () => {
     const props = {
-        comments: [],
-        create: () => {}
+        createComment: () => {}
     };
     const shallowComponent = shallow(
-        <Comments {...props} />
+        <CommentBox {...props} />
     );
     expect(shallowComponent).toMatchSnapshot();
 });

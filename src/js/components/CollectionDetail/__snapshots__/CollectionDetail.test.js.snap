@@ -24,6 +24,9 @@ ShallowWrapper {
                 type={null} />
         </styled.div>
     </styled.section>
+    <Toolbar
+        active="date"
+        onSelect={[Function]} />
     <div
         style={
             Object {
@@ -52,6 +55,9 @@ ShallowWrapper {
                         type={null} />
             </styled.div>
       </styled.section>
+      <Toolbar
+            active="date"
+            onSelect={[Function]} />
       <div
             style={
                   Object {
@@ -87,6 +93,7 @@ ShallowWrapper {
         "addCard": [Function],
         "context": Object {},
         "handleLike": [Function],
+        "onSortCards": [Function],
         "props": Object {
           "data": Object {
             "loading": true,
@@ -103,7 +110,9 @@ ShallowWrapper {
         "renderInfo": [Function],
         "showDialog": [Function],
         "state": Object {
+          "cards": Array [],
           "showEdit": false,
+          "sortKey": "date",
         },
         "updater": Object {
           "enqueueCallback": [Function],
@@ -141,6 +150,9 @@ ShallowWrapper {
                                         type={null} />
                     </styled.div>
           </styled.section>
+          <Toolbar
+                    active="date"
+                    onSelect={[Function]} />
           <div
                     style={
                               Object {
@@ -169,6 +181,9 @@ ShallowWrapper {
                                         type={null} />
                     </styled.div>
           </styled.section>
+          <Toolbar
+                    active="date"
+                    onSelect={[Function]} />
           <div
                     style={
                               Object {
