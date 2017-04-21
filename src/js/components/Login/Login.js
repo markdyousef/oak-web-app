@@ -1,10 +1,10 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
 import { saveToken } from '../../utils';
-import colors from '../../styles/colors';
+import { Box, ErrorMessage, ChangePage } from '../../styles';
 import Arrow from '../../icons/rightArrow';
 import { NextButton } from '../shared/Button';
 
@@ -12,56 +12,23 @@ const Container = styled.section`
     width: 100%;
 `;
 
-const Box = styled.div`
-    margin: auto;
-    margin-top: 125px;
-    width: 480px;
-    ${''/* height: 380px; */}
-    background-color: ${colors.white};
-    padding: 64px 100px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid ${colors.lightGrey};
-    border-radius: 3px;
-    & h1 {
-        font-size: 32px;
-        font-weight: bold;
-        text-align: center;
-    }
-    & div {
-        margin-top: 15px;
-    }
-`;
+type DefaultProps = {};
 
-const ErrorMessage = styled.div`
-    width: 100%;
-    background-color: ${colors.orange};
-    border-radius: 3px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${colors.white};
-`;
+type Props = {
+    loginUser: Function,
+    router: Object
+};
 
-const Forgot = styled.div`
-    max-width: 300px;
-    margin: auto;
-    margin-top: 32px;
-    color: ${colors.grey};
-    & a {
-        font-weight: bold;
-        color: ${colors.grey};
-    }
-`;
+type State = {
+    email: string,
+    password: string,
+    message: ?string
+};
 
-class Login extends Component {
-    static propTypes = {
-        loginUser: PropTypes.func.isRequired,
-        router: PropTypes.shape({
-            replace: PropTypes.func
-        }).isRequired
-    };
+class Login extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
         this.state = {
@@ -79,7 +46,7 @@ class Login extends Component {
 
         // email validation
         if (email.length < 6) {
-            return this.setState({ message: 'please provide a valid email'});
+            return this.setState({ message: 'please provide a valid email' });
         }
         // password validation
         if (password.length < 6) {
@@ -138,9 +105,9 @@ class Login extends Component {
                         }
                     </div>
                 </Box>
-                <Forgot>
+                <ChangePage>
                     <p>Forgot your password? <Link to="/forgot">Get a new one</Link></p>
-                </Forgot>
+                </ChangePage>
             </Container>
         );
     }

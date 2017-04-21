@@ -1,20 +1,36 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router';
 import Input from '../shared/Input';
-import Button from '../shared/Button';
+import { NextButton } from '../shared/Button';
+import { Box, ErrorMessage, ChangePage } from '../../styles';
+import arrowIcon from '../../icons/rightArrow';
 
-import css from './SignUp.css';
+const Container = styled.section`
+    width: 100%;
+`;
 
-class SignUp extends Component {
-    static propTypes = {
-        createUser: PropTypes.func.isRequired,
-        router: PropTypes.shape({
-            push: PropTypes.func
-        }).isRequired
-    };
+type DefaultProps = {};
+
+type Props = {
+    createUser: Function,
+    router: Object
+};
+
+type State = {
+    name: string,
+    email: string,
+    password: string,
+    message: ?string
+};
+
+class SignUp extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
-        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             name: '',
             email: '',
@@ -22,7 +38,7 @@ class SignUp extends Component {
             message: null
         };
     }
-    onSubmit() {
+    onSubmit = () => {
         const { createUser } = this.props;
         const { name, email, password } = this.state;
 
@@ -31,28 +47,28 @@ class SignUp extends Component {
 
         // name validation
         if (name.length < 2) {
-            return this.setState({ message: 'please provide a valid name'});
+            return this.setState({ message: 'please provide a valid name' });
         }
         // email validation
         if (email.length < 6) {
-            return this.setState({ message: 'please provide a valid email'});
+            return this.setState({ message: 'please provide a valid email' });
         }
         // password validation
         if (password.length < 6) {
             return this.setState({ message: 'your password should be at least 6 characters' });
         }
         return createUser(name, email, password)
-            .then(() => this.setState({ message: { type: 'success', text: 'Your account has been created ' } }))
-            .catch(err => this.setState({ message: { type: 'failed', text: 'Lame!' } }));
+            .then(() => this.setState({ message: 'Your account has been created ' }))
+            .catch(err => this.setState({ message: 'Lame!' }));
     }
     render() {
         const { name, email, password, message } = this.state;
         const { router } = this.props;
         return (
-            <div className={css.container}>
-                <div className={css.signup}>
+            <Container>
+                <Box>
                     <h1>Create Account</h1>
-                    <div className={css.inputs}>
+                    <div>
                         <Input
                             title="Name"
                             value={name}
@@ -75,27 +91,25 @@ class SignUp extends Component {
                             placeholder="Password"
                         />
                     </div>
-                    <div className={css.buttons}>
-                        <Button
-                            onClick={() => router.push('/')}
-                            text="Login"
-                            // type="transparent"
-                        />
-                        <Button
+                    <div>
+                        <NextButton
+                            text="Create"
+                            icon={arrowIcon}
                             onClick={this.onSubmit}
-                            text="Create Account"
-                            type="primary"
                         />
                     </div>
-                    <div className={css.message}>
+                    <div>
                         {message &&
-                            <div className={(message.type === 'success') ? css.success : null}>
-                                <h5>{message.text}</h5>
-                            </div>
+                            <ErrorMessage>
+                                <h5>{message}</h5>
+                            </ErrorMessage>
                         }
                     </div>
-                </div>
-            </div>
+                </Box>
+                <ChangePage>
+                    <p>Already have a user? <Link to="/login">Sign in!</Link></p>
+                </ChangePage>
+            </Container>
         );
     }
 }

@@ -33,7 +33,20 @@ const ErrorMessage = styled.div`
     color: ${colors.white};
 `;
 
+const ChangePage = styled.div`
+    max-width: 300px;
+    margin: auto;
+    margin-top: 32px;
+    color: ${colors.grey};
+    text-align: center;
+    & a {
+        font-weight: bold;
+        color: ${colors.grey};
+    }
+`;
+
 export default {
     Box,
-    ErrorMessage
+    ErrorMessage,
+    ChangePage
 };

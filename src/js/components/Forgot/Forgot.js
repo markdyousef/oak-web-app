@@ -3,102 +3,38 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
-import colors from '../../styles/colors';
+import { Box, ErrorMessage, ChangePage } from '../../styles';
+import { NextButton } from '../shared/Button';
 import Arrow from '../../icons/rightArrow';
 
 const Container = styled.section`
     width: 100%;
 `;
 
-const Box = styled.div`
-    margin: auto;
-    margin-top: 125px;
-    width: 480px;
-    ${''/* height: 380px; */}
-    background-color: ${colors.white};
-    padding: 45px 100px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid ${colors.lightGrey};
-    border-radius: 3px;
-    & h1 {
-        font-size: 32px;
-        font-weight: bold;
-        text-align: center;
-    }
-    & div {
-        margin-top: 15px;
-    }
-`;
+type Props = {
+    resetPassword: (email:string) => Object
+};
 
-const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: ${colors.green};
-    border-radius: 3px;
-    border: 1px solid ${colors.green};
-    color: ${colors.white};
-    font-size: 15px;
-    font-weight: bold;
-    font-family: 'Proxima Nova';
-    padding: 12px;
-    cursor: pointer;
-    &:hover {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
-    }
-    &:after {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
-    }
-    & svg {
-        fill: ${colors.white};
-        margin-left: 5px;
-    }
-`;
+type State = {
+    email: string,
+    message: ?string
+};
 
+type DefaultProps = {};
 
-const ErrorMessage = styled.div`
-    width: 100%;
-    background-color: ${colors.orange};
-    border-radius: 3px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${colors.white};
-`;
-
-const Forgot = styled.div`
-    max-width: 250px;
-    margin: auto;
-    margin-top: 32px;
-    color: ${colors.grey};
-    & a {
-        font-weight: bold;
-        color: ${colors.grey};
-    }
-`;
-
-class Login extends Component {
-    static propTypes = {
-        resetPassword: PropTypes.func.isRequired,
-        router: PropTypes.shape({
-            replace: PropTypes.func
-        }).isRequired
-    };
+export default class Login extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
-        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             email: '',
             message: null
         };
     }
-    onSubmit() {
-        const { resetPassword, router } = this.props;
+    onSubmit = () => {
+        const { resetPassword } = this.props;
         const { email } = this.state;
 
         // clear messsage
@@ -108,8 +44,7 @@ class Login extends Component {
             .catch(err => console.log(err))
     }
     render() {
-        const { email, password, message } = this.state;
-        const { router } = this.props;
+        const { email, message } = this.state;
         return (
             <Container>
                 <Box>
@@ -129,12 +64,11 @@ class Login extends Component {
                         />
                     </div>
                     <div>
-                        <Button
+                        <NextButton
                             onClick={this.onSubmit}
-                        >
-                            Reset password
-                            <Arrow />
-                        </Button>
+                            text="Reset password"
+                            icon={<Arrow />}
+                        />
                     </div>
                     <div>
                         {message &&
@@ -144,12 +78,10 @@ class Login extends Component {
                         }
                     </div>
                 </Box>
-                <Forgot>
+                <ChangePage>
                     <p>Remember your password? <Link to="/login">Sign in!</Link></p>
-                </Forgot>
+                </ChangePage>
             </Container>
         );
     }
 }
-
-export default Login;

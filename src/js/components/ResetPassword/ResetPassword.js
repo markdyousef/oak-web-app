@@ -3,23 +3,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
-import { Box, ErrorMessage, colors } from '../../styles';
+import { Box, ErrorMessage, ChangePage } from '../../styles';
 import { NextButton } from '../shared/Button';
 import Arrow from '../../icons/rightArrow';
 
 const Container = styled.section`
     width: 100%;
-`;
-
-const Remember = styled.div`
-    max-width: 350px;
-    margin: auto;
-    margin-top: 32px;
-    color: ${colors.grey};
-    & a {
-        font-weight: bold;
-        color: ${colors.grey};
-    }
 `;
 
 type Props = {
@@ -113,9 +102,9 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
                         }
                     </div>
                 </Box>
-                <Remember>
+                <ChangePage>
                     <p>Did you remember your old password? <Link to="/login">Sign in!</Link></p>
-                </Remember>
+                </ChangePage>
             </Container>
         );
     }
