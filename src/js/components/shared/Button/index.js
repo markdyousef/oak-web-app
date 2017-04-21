@@ -1,3 +1,11 @@
-import Button from './Button';
+import NextButton from './NextButton';
+import RoundButton from './RoundButton';
+import SquareButton from './SquareButton';
 
-export default Button;
+export {
+    NextButton,
+    RoundButton,
+    SquareButton
+};
+
+export default { SquareButton };
