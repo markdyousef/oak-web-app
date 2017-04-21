@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import colors from './colors';
 
+const Container = styled.section`
+    width: 100%;
+`;
+
 const Box = styled.div`
     margin: auto;
     margin-top: 125px;
@@ -45,8 +49,19 @@ const ChangePage = styled.div`
     }
 `;
 
+const Footer = styled.section`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: ${colors.white};
+    border-top: 1px solid ${colors.lightGrey};
+`;
+
 export default {
+    Container,
     Box,
     ErrorMessage,
-    ChangePage
+    ChangePage,
+    Footer
 };

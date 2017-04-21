@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import Input from '../../components/shared/Input';
-import Button from '../../components/shared/Button';
+import { SquareButton } from '../../components/shared/Button';
 
 const Container = styled.div`
     display: flex;
@@ -20,7 +20,7 @@ const CreateTeam = ({ teamName, onChange, onSubmit }:Object) => {
                     placeholder="Clai"
                     onChange={onChange}
                 />
-                <Button
+                <SquareButton
                     onClick={onSubmit}
                     text="Create"
                     type="primary"

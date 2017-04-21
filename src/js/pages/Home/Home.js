@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Collections from '../../containers/CollectionsContainer';
 
 import css from './Home.css';

@@ -22,10 +22,11 @@ const valid = (notValid) => {
 };
 
 const H5 = styled.h5`
-    font-size: 14px;
+    font-size: 12px;
     font-weight: lighter;
     color: ${colors.darkGrey};
     margin-bottom: 5px;
+    text-transform: uppercase;
 `;
 
 const Default = styled.input`

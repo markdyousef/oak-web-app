@@ -4,8 +4,8 @@ import gql from 'graphql-tag';
 import SignUp from '../components/SignUp';
 
 const createUser = gql`
-    mutation createUser($name: String!, $email: String!, $password: String!) {
-        createUser(name: $name, email: $email, password: $password) {
+    mutation createUser($name: String!, $email: String!, $password: String!, $inviteToken: String!) {
+        createUser(name: $name, email: $email, password: $password, inviteToken: $inviteToken) {
             id
         }
     }
@@ -14,7 +14,7 @@ const createUser = gql`
 export default compose(
     graphql(createUser, {
         props: ({ mutate }) => ({
-            createUser: (name, email, password) => mutate({ variables: { name, email, password } })
+            createUser: (name, email, password, inviteToken) => mutate({ variables: { name, email, password, inviteToken } })
         })
     })
 )(SignUp);

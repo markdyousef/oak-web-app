@@ -1,31 +1,26 @@
 // @flow
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
 import { NextButton } from '../shared/Button';
-import { Box, ErrorMessage, ChangePage } from '../../styles';
+import { Box, ErrorMessage, ChangePage, Container, Footer } from '../../styles';
 import arrowIcon from '../../icons/rightArrow';
-
-const Container = styled.section`
-    width: 100%;
-`;
 
 type DefaultProps = {};
 
 type Props = {
-    createUser: Function,
-    router: Object
+    createUser: (name: string, email: string, password: string, inviteToken: string) => Object,
 };
 
 type State = {
     name: string,
     email: string,
     password: string,
-    message: ?string
+    message: ?string,
+    token: string
 };
 
-class SignUp extends Component<DefaultProps, Props, State> {
+export default class SignUp extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     props: Props;
     state: State;
@@ -35,12 +30,17 @@ class SignUp extends Component<DefaultProps, Props, State> {
             name: '',
             email: '',
             password: '',
-            message: null
+            message: null,
+            token: ''
         };
+    }
+    componentWillMount() {
+        const token = new URLSearchParams(location.search).get('token');
+        this.setState({ token });
     }
     onSubmit = () => {
         const { createUser } = this.props;
-        const { name, email, password } = this.state;
+        const { name, email, password, token } = this.state;
 
         // clear messsage
         this.setState({ message: null });
@@ -57,13 +57,12 @@ class SignUp extends Component<DefaultProps, Props, State> {
         if (password.length < 6) {
             return this.setState({ message: 'your password should be at least 6 characters' });
         }
-        return createUser(name, email, password)
+        return createUser(name, email, password, token)
             .then(() => this.setState({ message: 'Your account has been created ' }))
             .catch(err => this.setState({ message: 'Lame!' }));
     }
     render() {
         const { name, email, password, message } = this.state;
-        const { router } = this.props;
         return (
             <Container>
                 <Box>
@@ -109,9 +108,8 @@ class SignUp extends Component<DefaultProps, Props, State> {
                 <ChangePage>
                     <p>Already have a user? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
+                <Footer />
             </Container>
         );
     }
 }
-
-export default SignUp;
