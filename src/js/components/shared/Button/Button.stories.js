@@ -1,23 +1,23 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import Button from './Button';
+import { SquareButton, RoundButton } from './index';
 
 storiesOf('Button', module)
     .add('Ghost Squared', () => (
-        <Button
+        <SquareButton
             onClick={action('Fuck Yeah!')}
             text="Cancel"
         />
     ))
     .add('Ghost Rounded', () => (
-        <Button
+        <RoundButton
             onClick={action('Clicked!')}
             text="Add Label"
             rounded
         />
     ))
     .add('Primary Rounded', () => (
-        <Button
+        <RoundButton
             onClick={action('Clicked!')}
             text="Share Card"
             rounded
@@ -25,14 +25,14 @@ storiesOf('Button', module)
         />
     ))
     .add('Primary Square', () => (
-        <Button
+        <SquareButton
             onClick={action('Clicked!')}
             text="Challenge"
             type="primary"
         />
     ))
     .add('Alarm Square', () => (
-        <Button
+        <SquareButton
             onClick={action('Clicked!')}
             text="Challenge"
             type="alarm"

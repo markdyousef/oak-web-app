@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
-import Button from '../shared/Button';
+import { SquareButton, RoundButton } from '../shared/Button';
 
 const Container = styled.nav`
     display: flex;
@@ -60,7 +60,7 @@ class TopBar extends Component<DefaultProps, Props, State> {
             return (
                 <EditNav>
                     <div>
-                        <Button
+                        <SquareButton
                             text="Add label"
                             onClick={() => this.setState({ showLabels: !showLabels })}
                         />
@@ -73,7 +73,7 @@ class TopBar extends Component<DefaultProps, Props, State> {
                             />
                         }
                     </div>
-                    <Button
+                    <SquareButton
                         text="Save card"
                         onClick={onSave}
                         type="primary"
@@ -81,7 +81,7 @@ class TopBar extends Component<DefaultProps, Props, State> {
                 </EditNav>
             );
         }
-        return <Button text="Edit card" type="secondaryAction" onClick={onEdit} />;
+        return <SquareButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
     }
     render() {
         const { onClose, showComments } = this.props;
@@ -89,15 +89,13 @@ class TopBar extends Component<DefaultProps, Props, State> {
             <Container>
                 <Right>
                     {this.renderButtons()}
-                    <Button
+                    <RoundButton
                         onClick={showComments}
                         text="Comments"
-                        rounded
                     />
-                    <Button
+                    <RoundButton
                         onClick={onClose}
                         text="X"
-                        rounded
                     />
                 </Right>
 

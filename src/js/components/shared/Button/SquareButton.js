@@ -11,12 +11,13 @@ const Squared = styled(Default)`
 
 type Props = {
     onClick: Function,
-    text: string
+    text: string,
+    type: ?string
 }
 
-export default ({ text, onClick }: Props) => {
+export default ({ text, onClick, type }: Props) => {
     return (
-        <Squared onClick={onClick}>
+        <Squared onClick={onClick} type={type}>
             {text}
         </Squared>
     );

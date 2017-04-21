@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from '../shared/Input';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import colors from '../../styles/colors';
 import BackIcon from '../../icons/back';
 
@@ -96,7 +96,7 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
                 </Grid>
             </Section>
             <ActionSection>
-                <Button
+                <SquareButton
                     onClick={() => onCreate(labelName, selectedColor)}
                     text="CREATE"
                     type="primary"

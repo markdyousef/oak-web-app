@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import Button from '../../components/shared/Button';
+import { SquareButton } from '../../components/shared/Button';
 
 const Container = styled.div`
     display: flex;
@@ -95,7 +95,7 @@ export default class ProfilePic extends Component {
                         Upload a clear frontal face picture of yourself
                         to give your teammates a more clear identification of you.
                     </p>
-                    <Button
+                    <SquareButton
                         text="Upload a file"
                         onClick={this.onClick}
                     />

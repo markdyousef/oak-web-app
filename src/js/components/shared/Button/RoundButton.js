@@ -11,12 +11,13 @@ const Rounded = styled(Default)`
 type Props = {
     onClick: Function,
     text: string,
-    icon: Function
+    icon: Function,
+    type: ?string
 }
 
-export default ({ onClick, text, icon }:Props) => {
+export default ({ onClick, text, icon, type }:Props) => {
     return (
-        <Rounded onClick={onClick}>
+        <Rounded onClick={onClick} type={type}>
             {text}
             {icon}
         </Rounded>

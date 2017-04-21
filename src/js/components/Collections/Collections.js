@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CollectionCard from '../CollectionCard';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import DotSpinner from '../../components/shared/DotSpinner';
 import NoCollections from './NoCollections';
@@ -145,7 +145,7 @@ class Collections extends Component {
                         </Stats> */}
                     </Info>
                     <ButtonGroup>
-                        <Button
+                        <SquareButton
                             onClick={() => this.setState({ showAdd: true })}
                             text="Add Collection"
                             type="primary"

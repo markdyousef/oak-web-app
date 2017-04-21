@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Input from '../shared/Input';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import SavedIcon from '../../icons/saved';
 
 const Container = styled.section`
@@ -140,7 +140,7 @@ export default class SettingsAccount extends Component {
                             Saved!
                         </Saved>
                         :
-                        <Button
+                        <SquareButton
                             onClick={this.onSave}
                             text="Save"
                             type="primary"

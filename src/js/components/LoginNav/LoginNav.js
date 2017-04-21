@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router';
 import name from '../../../img/cuest.png';
 import logo from '../../../img/cuest-logo.png';
 import colors from '../../styles/colors';
@@ -35,8 +36,10 @@ export default () => {
     return (
         <Container>
             <Left>
-                <img src={logo} alt="presentation" />
-                <img src={name} alt="presentation" />
+                <Link to="login">
+                    <img src={logo} alt="presentation" />
+                    <img src={name} alt="presentation" />
+                </Link>
             </Left>
             <Right>
             </Right>

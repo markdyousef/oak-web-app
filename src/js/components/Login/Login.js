@@ -1,16 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
 import { saveToken } from '../../utils';
-import { Box, ErrorMessage, ChangePage } from '../../styles';
+import { Box, ErrorMessage, ChangePage, Container, Footer } from '../../styles';
 import Arrow from '../../icons/rightArrow';
 import { NextButton } from '../shared/Button';
-
-const Container = styled.section`
-    width: 100%;
-`;
 
 type DefaultProps = {};
 
@@ -108,6 +103,7 @@ class Login extends Component<DefaultProps, Props, State> {
                 <ChangePage>
                     <p>Forgot your password? <Link to="/forgot">Get a new one</Link></p>
                 </ChangePage>
+                <Footer />
             </Container>
         );
     }

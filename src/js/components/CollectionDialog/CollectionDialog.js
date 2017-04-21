@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import Input from '../shared/Input';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
 import colors from '../../styles/colors';
 
@@ -220,7 +220,7 @@ class CollectionDialog extends Component {
                                 onChange={this.onChange}
                                 style={{ display: 'none' }}
                             />
-                            <Button
+                            <SquareButton
                                 text="Add Cover"
                                 onClick={this.onClick}
                             />
@@ -240,18 +240,18 @@ class CollectionDialog extends Component {
                     </Main>
                     <Buttons>
                         {(editMode) ?
-                            <Button
+                            <SquareButton
                                 onClick={this.onDelete}
                                 text="Delete"
                                 type="alarm"
                             />
                             :
-                            <Button
+                            <SquareButton
                                 onClick={close}
                                 text="Cancel"
                             />
                         }
-                        <Button
+                        <SquareButton
                             onClick={this.onSave}
                             text="Save"
                             type="primary"

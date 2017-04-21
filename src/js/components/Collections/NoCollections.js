@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import empty from '../../../img/collections-empty-state.svg';
 
 const Container = styled.div`
@@ -37,7 +37,7 @@ const Empty = ({ onClick }:Object) => {
             <h2>Collections</h2>
             <img src={empty} alt="empty state" />
             <p>You haven’t created any collections yet. Create your first collection by hitting the button below.</p>
-            <Button
+            <SquareButton
                 text="Create a card"
                 onClick={onClick}
             />

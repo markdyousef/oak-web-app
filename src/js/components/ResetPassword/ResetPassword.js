@@ -1,15 +1,10 @@
 // @flow
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router';
 import Input from '../shared/Input';
-import { Box, ErrorMessage, ChangePage } from '../../styles';
+import { Box, ErrorMessage, ChangePage, Container, Footer } from '../../styles';
 import { NextButton } from '../shared/Button';
 import Arrow from '../../icons/rightArrow';
-
-const Container = styled.section`
-    width: 100%;
-`;
 
 type Props = {
     resetPassword: (token: string, password: string) => Object
@@ -105,6 +100,7 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
                 <ChangePage>
                     <p>Did you remember your old password? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
+                <Footer />
             </Container>
         );
     }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import ProfilePic from '../../components/ProfilePic';
 import Input from '../shared/Input';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import SavedIcon from '../../icons/saved';
 
 const Container = styled.section`
@@ -151,7 +151,7 @@ export default class SettingsProfile extends Component {
                             Saved!
                         </Saved>
                         :
-                        <Button
+                        <SquareButton
                             onClick={this.onSave}
                             text="Save"
                             type="primary"
