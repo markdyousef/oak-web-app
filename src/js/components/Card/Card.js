@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
 import Dropdown from '../shared/Dropdown';

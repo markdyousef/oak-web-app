@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Card from '../Card';
 import Button from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
@@ -13,41 +13,46 @@ import {
     Stats,
     ButtonGroup,
     Grid
-} from './styles'
+} from './styles';
 
-class CollectionDetail extends Component {
-    static propTypes = {
-        params: PropTypes.shape({
-            collectionId: PropTypes.string
-        }).isRequired,
-        router: PropTypes.shape({
-            push: PropTypes.func
-        }).isRequired,
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            me: PropTypes.shape({
-                likedSeeds: PropTypes.arrayOf(PropTypes.object)
-            }),
-            grove: PropTypes.shape({
-                id: PropTypes.string,
-                name: PropTypes.string,
-                description: PropTypes.string,
-                cover: PropTypes.object,
-                stats: PropTypes.object
-            }),
-            seeds: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.string,
-                content: PropTypes.string,
-                creator: PropTypes.object,
-                labels: PropTypes.arrayOf(PropTypes.object),
-                comments: PropTypes.arrayOf(PropTypes.object),
-                updatedAt: PropTypes.string.isRequired
-            }))
-        }).isRequired,
-        removeCard: PropTypes.func.isRequired,
-        likeCard: PropTypes.func.isRequired,
-        unlikeCard: PropTypes.func.isRequired
-    }
+type Data = {
+    loading: bool,
+    refetch: Function,
+    me: {
+        likedSeeds: ?Array<Object>
+    },
+    grove: {
+        id: string,
+        name: string,
+        description: ?string,
+        cover: ?Object,
+        stats: Object
+    },
+    seeds: Array<Object>
+}
+type DefaultProps = {};
+type Props = {
+    params: {
+        collectionId: string
+    },
+    router: {
+        push: Function
+    },
+    data: Data,
+    removeCard: Function,
+    likeCard: Function,
+    unlikeCard: Function
+};
+type State = {
+    showEdit: bool,
+    cards: Array<Object>,
+    sortKey: string
+};
+
+class CollectionDetail extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
         this.state = {
@@ -56,7 +61,7 @@ class CollectionDetail extends Component {
             sortKey: 'date'
         };
     }
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps:Props) {
         const { data } = nextProps;
 
         if (data.loading) return;
@@ -68,7 +73,7 @@ class CollectionDetail extends Component {
     onSortCards = (key: string) => {
         const { data: { seeds } } = this.props;
         const { cards } = this.state;
-        let sortedCards = Object.assign([], cards);
+        let sortedCards = cards;
         if (key === 'comments' || key === 'likes') {
             sortedCards.sort((a, b) => {
                 if (a[key].length > b[key].length) {
@@ -88,19 +93,19 @@ class CollectionDetail extends Component {
         const { removeCard, data } = this.props;
         removeCard(cardId)
             .then(() => data.refetch())
-            .catch(err => console.log(err))
+            .catch((err) => { throw err; });
     }
     handleLike = (cardId: String) => {
-        const { likeCard, unlikeCard, data } = this.props;
-        const isLiked = data.me.likedSeeds.findIndex(item => item.id === cardId) > -1;
+        const { likeCard, unlikeCard, data: { me, refetch } } = this.props;
+        const isLiked = me.likedSeeds && me.likedSeeds.findIndex(item => item.id === cardId) > -1;
         if (isLiked) {
             unlikeCard(cardId)
-                .then(() => data.refetch())
-                .catch(err => console.log(err))
+                .then(() => refetch())
+                .catch((err) => { throw err; });
         } else {
             likeCard(cardId)
-                .then(() => data.refetch())
-                .catch(err => console.log(err));
+                .then(() => refetch())
+                .catch((err) => { throw err; });
         }
     }
     addCard = () => this.props.router.push(`collection/${this.props.params.collectionId}/card`)
@@ -117,7 +122,7 @@ class CollectionDetail extends Component {
                 <CollectionDialog
                     close={() => {
                         data.refetch();
-                        this.setState({ showEdit: false })
+                        this.setState({ showEdit: false });
                     }}
                     name={data.grove.name}
                     description={data.grove.description}
@@ -132,16 +137,16 @@ class CollectionDetail extends Component {
         return null;
     }
     renderCards = () => {
-        const { data, router, params } = this.props;
+        const { data: { me, loading }, router, params } = this.props;
         const { cards } = this.state;
 
-        if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
+        if (loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
         if (cards.length > 0) {
             return (
                 <Grid>
                     {cards.map((item) => {
-                        const isLiked = data.me.likedSeeds.findIndex(card => card.id === item.id) > -1;
+                        const isLiked = me.likedSeeds && me.likedSeeds.findIndex(card => card.id === item.id) > -1;
                         return (
                             <Card
                                 key={item.id}
