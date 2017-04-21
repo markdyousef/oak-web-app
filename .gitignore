@@ -1,6 +1,8 @@
 .DS_Store
 node_modules/
 build/
+coverage/
 release/
+
 npm-debug.log
 flow-typed
