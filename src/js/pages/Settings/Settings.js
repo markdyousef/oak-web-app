@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import Navigation from './Navigation';
@@ -43,8 +43,6 @@ const MainContainer = styled.div`
 `;
 
 class Settings extends Component {
-    static propTypes = {
-    }
     constructor() {
         super();
         this.state = {

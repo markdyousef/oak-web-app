@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
@@ -58,23 +59,35 @@ const Logout = styled.div`
     margin-top: 10px;
 `;
 
+type DefaultProps = {
+    team: null,
+    router: {}
+};
+type Props = {
+    team: ?bool,
+    router: {
+        replace: Function
+    },
+    data: {
+        loading: bool,
+        me: {
+            avatar: ?{
+                urlThumb64: ?string
+            },
+            gravatar: ?string
+        }
+    }
+};
+type State = {
+    isOpen: bool
+};
+
 
 const IMG = '//style.anu.edu.au/_anu/4/images/placeholders/person.png';
-class TopNav extends Component {
-    static propTypes = {
-        router: PropTypes.shape({
-            replace: PropTypes.func
-        }),
-        team: PropTypes.bool,
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            me: PropTypes.object
-        }).isRequired
-    }
-    static defaultProps = {
-        team: null,
-        router: null
-    }
+class TopNav extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
         this.state = {
@@ -82,27 +95,24 @@ class TopNav extends Component {
             picture: IMG
         };
     }
-    componentWillReceiveProps(nextProps) {
-        const { data } = nextProps;
-
-        if (data.loading || !data.me) return;
-        const { avatar } = data.me;
-        const picture = (avatar.urlThumb64) ? avatar.urlThumb64 : IMG;
-        this.setState({ picture });
-    }
     signOut = () => {
         const { router } = this.props;
         signOut();
         router.replace({
             pathname: '/login'
-        })
+        });
     }
     render() {
-        const { team } = this.props;
-        const { isOpen, picture } = this.state;
+        const { team, data: { me } } = this.props;
+        const { isOpen } = this.state;
         // differ between routes inside team and outside
         const settingsRoute = (team) ? '/my-settings' : 'settings';
         // const profileRoute = (team) ? '/my-profile' : 'profile';
+        let picture;
+        // prefer avatar over gravatar
+        if (me && me.gravatar) picture = me.gravatar;
+        if (me && me.avatar) picture = me.avatar.urlThumb64;
+
         return (
             <Container>
                 <NavLeft>
