@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+// @flow
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import ProfilePic from '../../components/ProfilePic';
@@ -51,15 +52,37 @@ const Saved = styled.div`
     }
 `;
 
-export default class SettingsProfile extends Component {
-    static propTypes = {
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            me: PropTypes.object
-        }).isRequired,
-        updateUser: PropTypes.func.isRequired
+type DefaultProps = {};
+
+type Props = {
+    updateUser: (name: string, username: string, avatarId: ?string) => Object,
+    data: {
+        loading: bool,
+        me: ?{
+            id: string,
+            name: string,
+            username: string,
+            gravatar: ?string,
+            avatar: ?{
+                id: string,
+                urlThumb512: string
+            }
+        }
     }
-    constructor(props) {
+};
+
+type State = {
+    name: string,
+    username: string,
+    errorMessage: ?string,
+    avatar: Object,
+    isSaved: bool
+};
+
+export default class SettingsProfile extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    state: State;
+    constructor(props:Props) {
         super(props);
         this.state = {
             name: '',
@@ -69,15 +92,17 @@ export default class SettingsProfile extends Component {
             isSaved: false
         };
     }
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps:Props) {
         const { data } = nextProps;
 
-        if (data.loading) return;
-        const { name, username, avatar } = data.me;
-
-        const picture = (avatar.urlThumb512) ?
-            { id: avatar.id, url: avatar.urlThumb512 }
-            : null;
+        if (data.loading || !data.me) return;
+        const { name, username, avatar, gravatar } = data.me;
+        let picture;
+        // avatar overrules gravatar
+        if (gravatar) picture = { url: gravatar };
+        if (avatar && avatar.urlThumb512) {
+            picture = { id: avatar.id, url: avatar.urlThumb512 }
+        }
 
         this.setState({
             name,
@@ -95,7 +120,7 @@ export default class SettingsProfile extends Component {
             .then(res => this.setState({ isSaved: true }))
             .catch(err => console.log(err));
     }
-    changeField = (key, value) => {
+    changeField = (key: string, value: string | Object) => {
         switch (key) {
         case 'name':
             this.setState({ name: value });
@@ -109,7 +134,7 @@ export default class SettingsProfile extends Component {
         default:
             break;
         }
-        this.setState({ isSaved: false, errorMessage: false });
+        this.setState({ isSaved: false, errorMessage: null });
     }
     render() {
         const { name, username, avatar, errorMessage, isSaved } = this.state;

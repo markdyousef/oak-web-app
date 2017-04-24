@@ -60,8 +60,8 @@ type Props = {
     creator: {
         name: string,
         username: string,
-        avatar: {
-            urlThumb64: ?string
+        avatar: ?{
+            urlThumb64: string
         },
         gravatar: ?string
     }
@@ -72,7 +72,7 @@ export default ({ createdAt, text, creator }: Props) => {
     let picture;
     // custom avatar overrules gravatar
     if (gravatar) picture = gravatar;
-    if (avatar.urlThumb64) picture = avatar.urlThumb64;
+    if (avatar && avatar.urlThumb64) picture = avatar.urlThumb64;
     return (
         <Container>
             <Profile src={picture} />

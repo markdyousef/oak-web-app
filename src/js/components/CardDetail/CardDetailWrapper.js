@@ -70,7 +70,12 @@ export default (CardDetail:Function) => {
                 const { seed } = data;
                 if (seed.content) {
                     // create editorstate based on content (string)
-                    const content = JSON.parse(seed.content);
+                    let content;
+                    try {
+                        content = JSON.parse(seed.content);
+                    } catch (e) {
+                        content = null;
+                    }
                     if (content !== null && typeof content === 'object') {
                         const state = convertFromRaw(content);
                         this.setState({ editorState: EditorState.createWithContent(state) });

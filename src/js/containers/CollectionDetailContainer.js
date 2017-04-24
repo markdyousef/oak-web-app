@@ -31,6 +31,7 @@ const getCollection = gql`
                 avatar {
                     urlThumb64
                 }
+                gravatar
             }
             updatedAt
             likes
