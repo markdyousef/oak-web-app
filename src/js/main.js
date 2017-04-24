@@ -37,17 +37,16 @@ const networkInterface = createNetworkInterface({
     }
 });
 
-// set header with token from localStorage
-// networkInterface.use([{
-//     applyMiddleware(req, next) {
-//         if (!req.options.headers) {
-//             req.options.headers = {};
-//         }
-//         const token = localStorage.getItem('authToken');
-//         req.options.headers.authorization = token ? `${token}` : null;
-//         next();
-//     }
-// }]);
+// set header X-Requested-With header
+networkInterface.use([{
+    applyMiddleware(req, next) {
+        if (!req.options.headers) {
+            req.options.headers = {};
+        }
+        req.options.headers = { 'X-Requested-With': "badun" }
+        next();
+    }
+}]);
 
 const client = new ApolloClient({
     networkInterface,
