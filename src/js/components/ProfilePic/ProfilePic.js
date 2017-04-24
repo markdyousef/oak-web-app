@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import { SquareButton } from '../../components/shared/Button';
+import { uploadImg } from '../../utils';
 
 const Container = styled.div`
     display: flex;
@@ -34,8 +35,6 @@ const Upload = styled.div`
     }
 `;
 
-const URL = 'https://empress.clai.io/files/upload';
-
 export default class ProfilePic extends Component {
     static propTypes = {
         picture: PropTypes.string,
@@ -61,27 +60,9 @@ export default class ProfilePic extends Component {
         const file = e.target.files[0];
         const url = window.URL.createObjectURL(file);
         // // check file type
-        if (file.type.indexOf('image/') === 0) {
-            const body = new FormData();
-            body.append('file', file);
-            body.append('type', 'avatar');
-            const token = localStorage.authToken;
-            // const src = URL.createObjectURL(file);
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                    // 'Content-Type': 'multipart/form-data'
-                },
-                body
-            };
-            fetch(URL, options)
-                .then(res => res.json())
-                .then((res) => {
-                    onChange('avatar', { id: res.id, url })
-                })
-                .catch(err => console.log(err));
-        }
+        uploadImg(file, 'avatar')
+            .then(id => onChange('avatar', { id, url }))
+            .catch(err => console.log(err));
     }
     render() {
         const { picture } = this.props;

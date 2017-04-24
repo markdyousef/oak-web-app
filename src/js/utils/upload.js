@@ -8,13 +8,14 @@ export const uploadImg = (file: Object, type: ImgType, id?:string):Promise<*> =>
             const body = new FormData();
             body.append('file', file);
             body.append('type', type);
+
             if (type === 'grove') body.append('groveId', id);
-            const token = localStorage.authToken;
+
             const options = {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
-                    Authorization: `Bearer ${token}`
-                    // 'X-Requested-With': 'badun'
+                    'X-Requested-With': 'badun'
                 },
                 body
             };
