@@ -1,6 +1,6 @@
 
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import { EditorState } from 'draft-js';
 import Editor from 'zen-editor';
 import TopBar from './TopBar';
@@ -19,67 +19,61 @@ type Props = {
     labels: Array<string>,
     changeCardLabel: Function,
     comments: Array<Object>,
-    createComment: Function
-}
-
-type State = {
+    createComment: Function,
+    onChange: (editorState: EditorState) => void,
     showEdit: bool,
-    showComments: bool,
-    editorState: EditorState,
-    isLoading: bool
+    onEdit: () => void,
+    onShowComments: () => void
 }
 
-type DefaultProps = {}
+const CardDetail = ({ ...props }:Props) => {
+    const {
+        goBack,
+        onSave,
+        collectionId,
+        changeCardLabel,
+        labels,
+        comments,
+        createComment,
+        editorState,
+        onChange,
+        showEdit,
+        showComments,
+        onEdit,
+        onShowComments
+    } = props;
 
-class CardDetail extends Component<DefaultProps, Props, State> {
-    static defaultProps = {};
-    state: State;
-    constructor(props:Props) {
-        super(props);
-        this.state = {
-            showEdit: !props.cardId,
-            message: null,
-            showComments: props.showComments,
-            editorState: props.editorState,
-            isLoading: props.isLoading
-        };
-    }
-    onChange = (editorState:EditorState) => this.setState({ editorState });
-    render() {
-        const { showEdit, editorState, showComments } = this.state;
-        const { goBack, onSave, collectionId, changeCardLabel, labels, comments, createComment } = this.props;
-        return (
-            <Container>
-                <TopBar
-                    onClose={goBack}
-                    onSave={() => onSave(editorState)}
-                    showEdit={showEdit}
-                    onEdit={() => this.setState({ showEdit: true })}
-                    showComments={() => this.setState({ showComments: !showComments })}
-                    collectionId={collectionId}
-                    changeCardLabel={changeCardLabel}
-                    labels={labels}
-                />
-                <Main>
-                    <EditorContainer>
-                        <Editor
-                            readOnly={!showEdit}
-                            editorState={editorState}
-                            onChange={this.onChange}
+    return (
+        <Container>
+            <TopBar
+                onClose={goBack}
+                onSave={onSave}
+                showEdit={showEdit}
+                onEdit={onEdit}
+                showComments={onShowComments}
+                collectionId={collectionId}
+                changeCardLabel={changeCardLabel}
+                labels={labels}
+            />
+            <Main>
+                <EditorContainer>
+                    <Editor
+                        readOnly={!showEdit}
+                        editorState={editorState}
+                        onChange={onChange}
+                    />
+                </EditorContainer>
+                {showComments &&
+                    <CommentsContainer>
+                        <Comments
+                            comments={comments}
+                            create={createComment}
                         />
-                    </EditorContainer>
-                    {showComments &&
-                        <CommentsContainer>
-                            <Comments
-                                comments={comments}
-                                create={createComment}
-                            />
-                        </CommentsContainer>
-                    }
-                </Main>
-            </Container>
-        );
-    }
-}
+                    </CommentsContainer>
+                }
+            </Main>
+        </Container>
+    );
+};
 
 export default wrapper(CardDetail);

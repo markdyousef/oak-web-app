@@ -29,9 +29,11 @@ type State = {
     collectionId: string,
     isLoading: bool,
     showComments: bool,
-    content: EditorState,
+    editorState: ?EditorState,
     labels: Array<string>,
-    comments: Array<Object>
+    comments: Array<Object>,
+    message: ?string,
+    showEdit: bool
 }
 
 type DefaultProps = {}
@@ -47,10 +49,12 @@ export default (CardDetail:Function) => {
                     cardId: props.params.cardId,
                     collectionId: props.params.collectionId,
                     showComments: !!props.params.comments,
+                    showEdit: !props.params.cardId,
                     isLoading: false,
-                    content: EditorState.createEmpty(),
+                    editorState: EditorState.createEmpty(),
                     labels: [],
-                    comments: []
+                    comments: [],
+                    message: null
                 };
             }
             componentWillReceiveProps(nextProps:Props) {
@@ -66,7 +70,7 @@ export default (CardDetail:Function) => {
                     const content = JSON.parse(seed.content);
                     if (content !== null && typeof content === 'object') {
                         const state = convertFromRaw(content);
-                        this.setState({ content: EditorState.createWithContent(state) });
+                        this.setState({ editorState: EditorState.createWithContent(state) });
                     }
                 }
                 if (seed.comments) {
@@ -88,11 +92,10 @@ export default (CardDetail:Function) => {
                     labels: seed.labels.map(label => label.id)
                 });
             }
-            onSave = (editorState: EditorState) => {
-                const { cardId, collectionId } = this.state;
+            onSave = () => {
+                const { cardId, collectionId, editorState } = this.state;
                 const { create, update, data } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-                console.log(content);
                 // existing cards has a cardId
                 if (cardId) {
                     update(cardId, content)
@@ -158,22 +161,22 @@ export default (CardDetail:Function) => {
                     .then(() => data && data.refetch())
                     .catch(err => console.log(err));
             }
+            onChange = (editorState:EditorState) => this.setState({ editorState })
+            onEdit = (showEdit: bool) => this.setState({ showEdit })
+            onShowComments = (showComments: bool) => this.setState({ showComments })
             render() {
-                const { cardId, isLoading, showComments, content, collectionId, labels, comments } = this.state;
                 const { router } = this.props;
+
                 return (
                     <CardDetail
                         onSave={this.onSave}
-                        cardId={cardId}
-                        isLoading={isLoading}
-                        showComments={showComments}
-                        editorState={content}
                         changeCardLabel={this.changeCardLabel}
                         goBack={() => router.goBack()}
-                        collectionId={collectionId}
-                        labels={labels}
-                        comments={comments}
                         createComment={this.createComment}
+                        onChange={this.onChange}
+                        onEdit={this.onEdit}
+                        onShowComments={this.onShowComments}
+                        {...this.state}
                     />
                 );
             }

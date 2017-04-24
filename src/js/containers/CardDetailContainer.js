@@ -14,7 +14,9 @@ const getCard = gql`
             comments {
                 id
                 text
-                creatorId
+                creator {
+                    username
+                }
                 createdAt
             }
         }
@@ -22,7 +24,7 @@ const getCard = gql`
 `;
 
 const createSeed = gql`
-    mutation createSeed($groveId: ID!, $content: String) {
+    mutation createSeed($groveId: ID!, $content: String!) {
         createSeed(groveId: $groveId, content: $content) {
             id
             content
