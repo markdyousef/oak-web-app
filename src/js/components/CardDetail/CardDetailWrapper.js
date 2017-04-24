@@ -29,11 +29,12 @@ type State = {
     collectionId: string,
     isLoading: bool,
     showComments: bool,
-    editorState: ?EditorState,
+    editorState: EditorState,
     labels: Array<string>,
     comments: Array<Object>,
     message: ?string,
-    showEdit: bool
+    showEdit: bool,
+    name: string
 }
 
 type DefaultProps = {}
@@ -54,7 +55,8 @@ export default (CardDetail:Function) => {
                     editorState: EditorState.createEmpty(),
                     labels: [],
                     comments: [],
-                    message: null
+                    message: null,
+                    name: ''
                 };
             }
             componentWillReceiveProps(nextProps:Props) {
@@ -93,7 +95,7 @@ export default (CardDetail:Function) => {
                 });
             }
             onSave = () => {
-                const { cardId, collectionId, editorState } = this.state;
+                const { cardId, collectionId, editorState, name } = this.state;
                 const { create, update, data } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
                 // existing cards has a cardId
@@ -103,24 +105,22 @@ export default (CardDetail:Function) => {
                     .catch(err => console.log(err));
                     return;
                 }
-                create(collectionId, content)
+                create(collectionId, name, content)
                     .then(() => data && data.refetch())
                     .catch(err => console.log(err));
             }
             changeCardLabel = (labelId:string) => {
-                console.log(labelId);
                 const { create, removeLabel, addLabel } = this.props;
-                const { cardId, collectionId, labels } = this.state;
-                // if there is no cardId create card and save
-                // TODO: waiting for new seed mutation with title
-                // call this.changeCardLabel after saved cardId (recursive)
+                const { cardId, collectionId, labels, name } = this.state;
                 if (!cardId) {
-                    // create(collectionId)
-                    //     .then((res) => {
-                    //         console.log(res);
-                    //         // this.setState({ cardId: })
-                    //     })
-                    //     .catch(err => console.log(err));
+                    create(collectionId, name)
+                        .then((res) => {
+                            const id = res.data.createSeed.id;
+                            this.setState({ cardId: id });
+                            this.changeCardLabel(labelId);
+                        })
+                        .catch(err => console.log(err));
+                    return;
                 }
                 const labelExist = labels.findIndex(id => id === labelId) > -1;
                 if (labelExist) {
@@ -143,19 +143,18 @@ export default (CardDetail:Function) => {
                 }
             }
             createComment = (editorState:EditorState) => {
-                const { cardId } = this.state;
-                const { createComment, data } = this.props;
+                const { cardId, collectionId, name } = this.state;
+                const { createComment, data, create } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-                // if there is no cardId create card and save
-                // TODO: waiting for new seed mutation with title
-                // call this.createComment after saved cardId (recursive)
                 if (!cardId) {
-                    // create(collectionId)
-                    //     .then((res) => {
-                    //         console.log(res);
-                    //         // this.setState({ cardId: })
-                    //     })
-                    //     .catch(err => console.log(err));
+                    create(collectionId, name)
+                        .then((res) => {
+                            const id = res.data.createSeed.id;
+                            this.setState({ cardId: id });
+                            this.createComment(editorState);
+                        })
+                        .catch(err => console.log(err));
+                    return;
                 }
                 createComment(cardId, content)
                     .then(() => data && data.refetch())
