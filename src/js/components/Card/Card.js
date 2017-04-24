@@ -127,7 +127,14 @@ type DefaultProps = {
 };
 type Props = {
     content: Object,
-    creator: Object,
+    creator: {
+        name: string,
+        username: string,
+        gravatar: ?string,
+        avatar: ?{
+            urlThumb64: ?string
+        }
+    },
     labels: ?Array<Object>,
     comments: ?Array<Object>,
     updatedAt: string,
@@ -161,7 +168,11 @@ export default class Card extends Component<DefaultProps, Props, State> {
         );
     }
     renderHeader = () => {
-        const { creator, labels } = this.props;
+        const { creator: { name, username, avatar, gravatar }, labels } = this.props;
+        let picture;
+        // prefer avatar over gravatar
+        if (gravatar) picture = gravatar;
+        if (avatar) picture = avatar.urlThumb64;
         return (
             <Header>
                 <div>
@@ -176,10 +187,10 @@ export default class Card extends Component<DefaultProps, Props, State> {
                     })}
                 </div>
                 <User>
-                    <img src={creator.avatar.urlThumb64} alt="avatar" />
+                    <img src={picture} alt="avatar" />
                     <div>
-                        <h4>{creator.name}</h4>
-                        <h5>@{creator.username}</h5>
+                        <h4>{name}</h4>
+                        <h5>@{username}</h5>
                     </div>
                 </User>
             </Header>

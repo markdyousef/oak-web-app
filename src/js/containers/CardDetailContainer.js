@@ -65,8 +65,14 @@ const createComment = gql`
             text
             createdAt
             creator {
+                name
                 username
+                avatar {
+                    urlThumb64
+                }
+                gravatar
             }
+            createdAt
         }
     }
 `;
