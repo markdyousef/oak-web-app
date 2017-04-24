@@ -43,7 +43,7 @@ networkInterface.use([{
         if (!req.options.headers) {
             req.options.headers = {};
         }
-        req.options.headers = { 'X-Requested-With': "badun" }
+        req.options.headers = { 'X-Requested-With': 'badun' }
         next();
     }
 }]);

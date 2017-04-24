@@ -64,10 +64,20 @@ export const ButtonGroup = styled.div`
     }
 `;
 
+export const masonStyles = {
+};
+
 export const Grid = styled.section`
-    width: 100%;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin: 0 auto;
+    ${''/* width: 1200px; */}
+    ${''/* @media (min-width: 1200px) {
+        width: 1170px;
+    }
+    @media (min-width: 900px) {
+        width: 970px;
+    }
+    @media (min-width: 750px) {
+        width: 730px;
+    } */}
 `;

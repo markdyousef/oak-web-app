@@ -1,18 +1,21 @@
 // @flow
 import React, { Component } from 'react';
+import Masonry from 'react-masonry-component';
 import Card from '../Card';
-import Button from '../shared/Button';
+import { SquareButton } from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
+
 import {
     Container,
     Header,
     Info,
     Stats,
     ButtonGroup,
-    Grid
+    Grid,
+    masonStyles
 } from './styles';
 
 type Data = {
@@ -108,7 +111,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 .catch((err) => { throw err; });
         }
     }
-    addCard = () => this.props.router.push(`collection/${this.props.params.collectionId}/card`)
+    addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
         const { showEdit } = this.state;
         const { data, router } = this.props;
@@ -145,23 +148,33 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         if (cards.length > 0) {
             return (
                 <Grid>
-                    {cards.map((item) => {
-                        const isLiked = me.likedSeeds && me.likedSeeds.findIndex(card => card.id === item.id) > -1;
-                        return (
-                            <Card
-                                key={item.id}
-                                {...item}
-                                content={JSON.parse(item.content)}
-                                onShow={() => router.push(`collection/${params.collectionId}/card/${item.id}`)}
-                                onRemove={() => this.removeCard(item.id)}
-                                onLike={() => this.handleLike(item.id)}
-                                showComments={() => router.push(`collection/${params.collectionId}/card/${item.id}/comments`)}
-                                likes={item.likes.length}
-                                isLiked={isLiked}
-                            />
-                        );
-                    }
-                    )}
+                    <Masonry
+                        style={masonStyles}
+                    >
+                        {cards.map((item) => {
+                            const isLiked = me.likedSeeds && me.likedSeeds.findIndex(card => card.id === item.id) > -1;
+                            let content;
+                            try {
+                                content = JSON.parse(item.content)
+                            } catch (e) {
+                                content = null;
+                            }
+                            return (
+                                <Card
+                                    key={item.id}
+                                    {...item}
+                                    content={content}
+                                    onShow={() => router.push(`/collection/${params.collectionId}/card/${item.id}`)}
+                                    onRemove={() => this.removeCard(item.id)}
+                                    onLike={() => this.handleLike(item.id)}
+                                    showComments={() => router.push(`/collection/${params.collectionId}/card/${item.id}/comments`)}
+                                    likes={item.likes.length}
+                                    isLiked={isLiked}
+                                />
+                            );
+                        }
+                        )}
+                    </Masonry>
                 </Grid>
             );
         }
@@ -194,12 +207,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 <Header>
                     {this.renderInfo()}
                     <ButtonGroup>
-                        <Button
+                        <SquareButton
                             onClick={this.addCard}
                             text="Add Card"
                             type="primary"
                         />
-                        <Button
+                        <SquareButton
                             onClick={() => this.setState({ showEdit: true })}
                             text="Edit Collection"
                         />
