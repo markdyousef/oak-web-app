@@ -1,122 +1,57 @@
-import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
+// @flow
+import React, { Component } from 'react';
 import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
-import colors from '../../styles/colors';
+import { uploadImg } from '../../utils'
+import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles';
 
-const Container = styled.section`
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Modal = styled.div`
-    width: 400px;
-    ${''/* height: 350px; */}
-    background-color: #fff;
-    border-radius: 3px;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-`;
-
-const Header = styled.div`
-    width: 100%;
-    height: 60px;
-    border-bottom: 1px solid ${colors.lightGrey};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    & h1 {
-        font-size: 16px;
-        font-weight: bold;
-    }
-`;
-
-const Close = styled.button`
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    font-size: 14px;
-`;
-
-const Main = styled.div`
-    padding: 5px 20px;
-    width: 100%;
-    & div {
-        margin-top: 20px;
-    }
-`;
-
-const Upload = styled.div`
-    height: 100px;
-    border: 1px solid ${colors.lightGrey};
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    & div {
-        margin: 0;
-        height: 80px;
-        width: 100px;
-        background-color: ${colors.lightGrey};
-        border-radius: 3px;
-    }
-    & img {
-        height: 100%;
-        width: 100%;
-        border-radius: 3px;
-    }
-`;
-
-const Buttons = styled.div`
-    padding: 15px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-`;
 const URL = 'https://empress.clai.io/files/upload';
 
-class CollectionDialog extends Component {
-    static propTypes = {
-        close: PropTypes.func.isRequired,
-        create: PropTypes.func.isRequired,
-        update: PropTypes.func.isRequired,
-        remove: PropTypes.func.isRequired,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        editMode: PropTypes.bool,
-        id: PropTypes.string,
-        picture: PropTypes.string,
-        pictureId: PropTypes.string,
-        router: PropTypes.shape({
-            replace: PropTypes.func
-        })
+type DefaultProps = {
+    name: '',
+    description: '',
+    editMode: false,
+    id: null,
+    router: null,
+    picture: null,
+    pictureId: null
+};
+
+type Props = {
+    close: () => void,
+    create: (name: string, description: ?string) => Object,
+    update: (id: string, name: ?string, description: ?string, coverId: ?string) => Object,
+    remove: (id: string) => Object,
+    name: ?string,
+    description: ?string,
+    editMode: ?bool,
+    id: ?string,
+    picture: ?string,
+    pictureId: ?string,
+    router: {
+        replace: Function
     }
-    static defaultProps = {
-        name: '',
-        description: '',
-        editMode: false,
-        id: null,
-        router: null,
-        picture: null,
-        pictureId: null
-    }
-    constructor(props) {
+};
+
+type State = {
+    id: ?string,
+    name: string,
+    description: string,
+    picture: ?string,
+    message: ?string,
+    file: ?Object,
+    editMode: ?bool,
+    pictureId: ?string,
+    didUpload: bool,
+    isLoading: bool
+};
+
+class CollectionDialog extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    state: State;
+    input: HTMLInputElement;
+    constructor(props: Props) {
         super(props);
         this.state = {
             id: props.id,
@@ -126,14 +61,26 @@ class CollectionDialog extends Component {
             message: '',
             file: null,
             editMode: props.editMode,
-            pictureId: props.pictureId
+            pictureId: props.pictureId,
+            didUpload: false,
+            isLoading: false
         };
     }
     onSave = () => {
-        const { id, name, description, file, editMode, pictureId } = this.state;
+        const { id, name, description, file, editMode, pictureId, didUpload } = this.state;
         const { create, update, close } = this.props;
 
-        if (editMode) {
+        // handle file-upload for existing collection
+        if (file && id && !didUpload) {
+            uploadImg(file, 'grove', id)
+                .then((picId) => {
+                    this.setState({ pictureId: picId, didUpload: true });
+                    this.onSave();
+                })
+                .catch(err => console.log(err));
+            return;
+        }
+        if (editMode && id) {
             update(id, name, description, pictureId)
                 .then(() => close())
                 .catch(err => console.log(err));
@@ -142,8 +89,8 @@ class CollectionDialog extends Component {
                 .then((res) => {
                     if (file) {
                         const { createGrove } = res.data;
-                        this.onUpload(createGrove.id, file, true);
                         this.setState({ editMode: true, id: createGrove.id });
+                        this.onSave();
                     } else {
                         close()
                     }
@@ -153,50 +100,21 @@ class CollectionDialog extends Component {
     }
     onDelete = () => {
         const { id, remove, router } = this.props;
-
-        remove(id)
-            .then(() => router.replace('/'))
-            .catch(err => console.log(err));
+        if (id) {
+            remove(id)
+                .then(() => router.replace('/'))
+                .catch(err => console.log(err));
+        }
     }
     onClick = () => {
-        this.input.value = null;
+        this.input.value = '';
         this.input.click();
     }
-    onChange = (e) => {
-        const { editMode, id } = this.props;
+    onChange = (e: Event) => {
         e.preventDefault();
         const file = e.target.files[0];
         const url = window.URL.createObjectURL(file);
         this.setState({ picture: url, file });
-
-        // if collection alrady exists
-        if (editMode) {
-            this.onUpload(id, file);
-        }
-    }
-    onUpload = (id, file, save) => {
-        // // check file type
-        if (file.type.indexOf('image/') === 0) {
-            const body = new FormData();
-            body.append('file', file);
-            body.append('type', 'grove');
-            body.append('groveId', id);
-            const token = localStorage.authToken;
-            const options = {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body
-            };
-            fetch(URL, options)
-                .then(res => res.json())
-                .then(res => this.setState({ pictureId: res.id }))
-                .then(() => {
-                    if (save) this.onSave();
-                })
-                .catch(err => console.log(err));
-        }
     }
     render() {
         const { close, editMode } = this.props;
