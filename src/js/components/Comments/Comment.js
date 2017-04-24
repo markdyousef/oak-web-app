@@ -56,17 +56,30 @@ const Header = styled.div`
 
 type Props = {
     createdAt: string,
-    creatorId: string,
-    text: EditorState
+    text: EditorState,
+    creator: {
+        name: string,
+        username: string,
+        avatar: {
+            urlThumb64: ?string
+        },
+        gravatar: ?string
+    }
 }
 
-export default ({ createdAt, creatorId, text }: Props) => {
+export default ({ createdAt, text, creator }: Props) => {
+    const { name, username, avatar, gravatar } = creator;
+    let picture;
+    // custom avatar overrules gravatar
+    if (gravatar) picture = gravatar;
+    if (avatar.urlThumb64) picture = avatar.urlThumb64;
     return (
         <Container>
-            <Profile />
+            <Profile src={picture} />
             <MessageContainer>
                 <Header>
-                    <h3>{creatorId}</h3>
+                    <h3>{name}</h3>
+                    <a>{username}</a>
                     <h5>{moment(createdAt).fromNow()}</h5>
                 </Header>
                 <Editor

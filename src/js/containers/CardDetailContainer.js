@@ -15,7 +15,12 @@ const getCard = gql`
                 id
                 text
                 creator {
+                    name
                     username
+                    avatar {
+                        urlThumb64
+                    }
+                    gravatar
                 }
                 createdAt
             }
@@ -59,6 +64,9 @@ const createComment = gql`
             id
             text
             createdAt
+            creator {
+                username
+            }
         }
     }
 `;

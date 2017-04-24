@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
+import { parseComments } from '../../utils/editor';
 
 type Data = {
     refetch: Function,
@@ -76,16 +77,7 @@ export default (CardDetail:Function) => {
                     }
                 }
                 if (seed.comments) {
-                    const comments = seed.comments.map((item) => {
-                        try {
-                            let { text } = item;
-                            text = JSON.parse(text);
-                            text = EditorState.createWithContent(convertFromRaw(text));
-                            return { ...item, text };
-                        } catch (e) {
-                            return null;
-                        }
-                    }).filter(Boolean);
+                    const comments = parseComments(seed.comments)
                     this.setState({ comments });
                 }
 
@@ -143,8 +135,8 @@ export default (CardDetail:Function) => {
                 }
             }
             createComment = (editorState:EditorState) => {
-                const { cardId, collectionId, name } = this.state;
-                const { createComment, data, create } = this.props;
+                const { cardId, collectionId, name, comments } = this.state;
+                const { createComment, create } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
                 if (!cardId) {
                     create(collectionId, name)
@@ -157,15 +149,17 @@ export default (CardDetail:Function) => {
                     return;
                 }
                 createComment(cardId, content)
-                    .then(() => data && data.refetch())
+                    .then((res) => {
+                        let comment = res.data.createComment;
+                        comment = parseComments([comment])[0];
+                        comments.push(comment);
+                        this.setState({ comments });
+                    })
                     .catch(err => console.log(err));
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
-            onEdit = (showEdit: bool) => this.setState({ showEdit })
-            onShowComments = (showComments: bool) => this.setState({ showComments })
             render() {
                 const { router } = this.props;
-
                 return (
                     <CardDetail
                         onSave={this.onSave}
@@ -173,8 +167,8 @@ export default (CardDetail:Function) => {
                         goBack={() => router.goBack()}
                         createComment={this.createComment}
                         onChange={this.onChange}
-                        onEdit={this.onEdit}
-                        onShowComments={this.onShowComments}
+                        onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
+                        onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         {...this.state}
                     />
                 );
