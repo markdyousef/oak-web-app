@@ -20,6 +20,9 @@ export const Header = styled.section`
 
 export const Info = styled.div`
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     & h1 {
         font-size: 24px;
         font-weight: bold;
