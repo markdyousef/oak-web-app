@@ -1,122 +1,21 @@
 // @flow
 import React, { Component } from 'react';
 import moment from 'moment';
-import styled from 'styled-components';
 import Dropdown from '../shared/Dropdown';
-import colors from '../../styles/colors';
 import CommentsIcon from '../../icons/comments';
 import LikesIcon from '../../icons/likes';
 import DotsIcon from '../../icons/dots';
-
-const button = () => {
-    return `
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        padding: 0
-    `;
-};
-
-const Container = styled.div`
-    width: 320px;
-    background-color: ${colors.white};
-    border: 1px solid ${colors.lightGrey};
-    border-radius: 3px;
-    padding: 16px;
-    margin: 5px;
-    position: relative;
-`;
-
-const Header = styled.div`
-    width: 100%;
-    display: flex;
-`;
-
-const User = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    & img {
-        height: 25px;
-        width: 25px;
-        border-radius: 999em;
-        margin-right: 5px;
-        border: 1px solid ${colors.lightGrey}
-    }
-    & h4 {
-        font-size: 14px;
-        font-weight: bold;
-        color: ${colors.black}
-    }
-    & h5 {
-        font-size: 14px;
-        font-weight: normal;
-        color: ${colors.grey}
-    }
-`;
-
-const Label = styled.div`
-    width: 10px;
-    height: 20px;
-    line-height: 1.54;
-    position: absolute;
-    top: 0;
-`;
-
-const Main = styled.div`
-    margin-bottom: 16px;
-    text-align: left;
-    & img {
-        max-width: 288px;
-        width: 100%;
-        margin-bottom: 16px;
-        height: 100px;
-    }
-    & button {
-        margin-top: 16px;
-        ${button()};
-        color: ${colors.grey}
-    }
-`;
-
-const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    & div {
-        display: flex;
-    }
-`;
-
-const Time = styled.span`
-    font-size: 11px;
-    color: ${colors.grey}
-`;
-
-const Icon = styled.div`
-    height: 18px;
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    cursor: pointer;
-    & span {
-        color: ${colors.grey};
-        font-size: 14px;
-    }
-    & svg {
-        height: 100%;
-        width: 18px;
-        margin-right: 3px;
-    }
-`;
-
-const Settings = styled.div`
-    position: absolute;
-    width: 100px;
-    bottom: -55px;
-    left: 82px;
-    z-index: 99;
-`;
+import {
+    Container,
+    Header,
+    User,
+    Label,
+    Main,
+    Bottom,
+    Time,
+    Icon,
+    Settings
+} from './styles';
 
 type DefaultProps = {
     title: null,
@@ -197,18 +96,19 @@ export default class Card extends Component<DefaultProps, Props, State> {
         );
     }
     renderContent = () => {
-        const { content, onShow } = this.props;
-
+        const { content, onShow, cover } = this.props;
+        let coverImg;
+        if (cover && cover.urlThumb512) coverImg = cover.urlThumb512;
         return (
             <Main>
-                <img alt="card" src={null} />
+                <img alt="card" src={coverImg} />
                 {content && this.formatContent(content)}
                 <button onClick={onShow}>Read more</button>
             </Main>
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked } = this.props;
+        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked, cover } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
