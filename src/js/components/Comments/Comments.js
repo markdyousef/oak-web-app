@@ -7,11 +7,17 @@ import Comment from './Comment';
 import NoComments from './NoComments';
 
 const Container = styled.section`
-    height: 100%;
-    width: 100%;
-    max-width: 400px;
-    border: 1px solid ${colors.lightGrey};
     position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 1px;
+    max-width: 350px;
+    height: calc(100vh - 60px);
+    border-left: 1px solid ${colors.lightGrey};
+    background-color: ${colors.white}
+    z-index: 999;
 `;
 
 const CommentsPanel = styled.div`
@@ -21,8 +27,8 @@ const CommentsPanel = styled.div`
 
 const CommentsInput = styled.div`
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    ${''/* position: absolute;
+    bottom: 0; */}
 `;
 
 type Props = {

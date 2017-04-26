@@ -2,11 +2,11 @@
 // @flow
 import React from 'react';
 import { EditorState } from 'draft-js';
-import Editor from 'zen-editor';
+import { Editor } from 'zen-editor';
 import TopBar from './TopBar';
 import Comments from '../Comments';
 import wrapper from './CardDetailWrapper';
-import { Container, Main, CommentsContainer, EditorContainer } from './styles';
+import { Container, ContainerInner, Main, EditorContainer } from './styles';
 
 type Props = {
     cardId: ?string,
@@ -23,7 +23,8 @@ type Props = {
     onChange: (editorState: EditorState) => void,
     showEdit: bool,
     onEdit: () => void,
-    onShowComments: () => void
+    onShowComments: () => void,
+    addFile: (file: Object) => void
 }
 
 const CardDetail = ({ ...props }:Props) => {
@@ -40,7 +41,8 @@ const CardDetail = ({ ...props }:Props) => {
         showEdit,
         showComments,
         onEdit,
-        onShowComments
+        onShowComments,
+        addFile
     } = props;
 
     return (
@@ -55,23 +57,24 @@ const CardDetail = ({ ...props }:Props) => {
                 changeCardLabel={changeCardLabel}
                 labels={labels}
             />
-            <Main>
-                <EditorContainer>
-                    <Editor
-                        readOnly={!showEdit}
-                        editorState={editorState}
-                        onChange={onChange}
-                    />
-                </EditorContainer>
-                {showComments &&
-                    <CommentsContainer>
+            <ContainerInner>
+                <Main>
+                    <EditorContainer>
+                        <Editor
+                            readOnly={!showEdit}
+                            editorState={editorState}
+                            onChange={onChange}
+                            addFile={addFile}
+                        />
+                    </EditorContainer>
+                    {showComments &&
                         <Comments
                             comments={comments}
                             create={createComment}
                         />
-                    </CommentsContainer>
-                }
-            </Main>
+                    }
+                </Main>
+            </ContainerInner>
         </Container>
     );
 };

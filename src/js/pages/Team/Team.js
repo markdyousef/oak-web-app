@@ -21,9 +21,8 @@ const Main = styled.section`
     display: flex;
     position: relative;
     flex-direction: column;
-    flex-basis: 100%;
-    min-width: 1em;
-    max-width: 100%;
+    flex-grow: 1;
+    min-width: 1px;
 `;
 
 const MainInner = styled.div`
