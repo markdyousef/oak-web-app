@@ -2,14 +2,14 @@ exports[`test renders correctly 1`] = `
 <section
   className="gmuKOB">
   <div
-    className="cLCUiA">
+    className="khSIyb">
     <h1>
       Reset password
     </h1>
     <div>
       <div>
         <h5
-          className="eKaiQM">
+          className="invXpW">
           EMAIL
         </h5>
         <input
@@ -23,7 +23,7 @@ exports[`test renders correctly 1`] = `
     </div>
     <div>
       <button
-        className="hSocsG"
+        className="hvOYvT"
         onClick={[Function]}>
         Reset password
         <svg
@@ -40,7 +40,7 @@ exports[`test renders correctly 1`] = `
     <div />
   </div>
   <div
-    className="hpFZMc">
+    className="iJtnyx">
     <p>
       Remember your password? 
       <a
@@ -50,5 +50,7 @@ exports[`test renders correctly 1`] = `
       </a>
     </p>
   </div>
+  <section
+    className="fYstbg" />
 </section>
 `;

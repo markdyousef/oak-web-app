@@ -11,7 +11,7 @@ const getUser = gql`
             username
             gravatar
             avatar {
-                urlThumb512
+                urlThumb256
             }
         }
     }

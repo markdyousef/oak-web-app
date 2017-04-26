@@ -51,9 +51,8 @@ ShallowWrapper {
     </styled.div>
     <styled.div />
     <styled.div>
-        <Button
+        <Unknown
             onClick={[Function]}
-            rounded={false}
             text="Save"
             type="primary" />
     </styled.div>
@@ -104,9 +103,8 @@ ShallowWrapper {
       </styled.div>
       <styled.div />
       <styled.div>
-            <Button
+            <Unknown
                   onClick={[Function]}
-                  rounded={false}
                   text="Save"
                   type="primary" />
       </styled.div>
@@ -203,9 +201,8 @@ ShallowWrapper {
           </styled.div>
           <styled.div />
           <styled.div>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
                               text="Save"
                               type="primary" />
           </styled.div>
@@ -256,9 +253,8 @@ ShallowWrapper {
           </styled.div>
           <styled.div />
           <styled.div>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
                               text="Save"
                               type="primary" />
           </styled.div>

@@ -12,7 +12,7 @@ exports[`test renders TopNav 1`] = `
         className={undefined}>
         <img
           alt="profile"
-          src="//style.anu.edu.au/_anu/4/images/placeholders/person.png" />
+          src={null} />
       </div>
     </button>
   </div>

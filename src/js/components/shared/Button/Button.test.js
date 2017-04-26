@@ -1,15 +1,15 @@
 // @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Button from './Button';
+import { SquareButton } from './index';
 
-test('renders Button', () => {
+test('renders SquareButton', () => {
     const props = {
         onClick: () => {},
         text: 'Hello'
     };
     const component = renderer.create(
-        <Button {...props} />
+        <SquareButton {...props} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

@@ -1,16 +1,15 @@
 exports[`test renders correctly 1`] = `
-<div
-  className={undefined}>
+<section
+  className="gmuKOB">
   <div
-    className={undefined}>
+    className="khSIyb">
     <h1>
       Create Account
     </h1>
-    <div
-      className={undefined}>
+    <div>
       <div>
         <h5
-          className="eKaiQM">
+          className="invXpW">
           Name
         </h5>
         <input
@@ -23,7 +22,7 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="eKaiQM">
+          className="invXpW">
           Email
         </h5>
         <input
@@ -36,7 +35,7 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="eKaiQM">
+          className="invXpW">
           Password
         </h5>
         <input
@@ -48,23 +47,27 @@ exports[`test renders correctly 1`] = `
           value="" />
       </div>
     </div>
-    <div
-      className={undefined}>
+    <div>
       <button
-        className="bBPMRg"
-        onClick={[Function]}
-        type={null}>
-        Login
-      </button>
-      <button
-        className="iZsHgX"
-        onClick={[Function]}
-        type="primary">
-        Create Account
+        className="hvOYvT"
+        onClick={[Function]}>
+        Create
       </button>
     </div>
-    <div
-      className={undefined} />
+    <div />
   </div>
-</div>
+  <div
+    className="iJtnyx">
+    <p>
+      Already have a user? 
+      <a
+        onClick={[Function]}
+        style={Object {}}>
+        Sign in!
+      </a>
+    </p>
+  </div>
+  <section
+    className="fYstbg" />
+</section>
 `;

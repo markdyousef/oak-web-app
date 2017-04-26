@@ -10,7 +10,7 @@ ShallowWrapper {
     <styled.div>
         <Apollo(SideNav) />
         <styled.section>
-            <Apollo(TopNav)
+            <Apollo(Apollo(TopNav))
                 router={undefined}
                 team={true} />
             <styled.div />
@@ -22,7 +22,7 @@ ShallowWrapper {
       <styled.div>
             <Apollo(SideNav) />
             <styled.section>
-                  <Apollo(TopNav)
+                  <Apollo(Apollo(TopNav))
                         router={undefined}
                         team={true} />
                   <styled.div />
@@ -70,7 +70,7 @@ ShallowWrapper {
           <styled.div>
                     <Apollo(SideNav) />
                     <styled.section>
-                              <Apollo(TopNav)
+                              <Apollo(Apollo(TopNav))
                                         router={undefined}
                                         team={true} />
                               <styled.div />
@@ -82,7 +82,7 @@ ShallowWrapper {
           <styled.div>
                     <Apollo(SideNav) />
                     <styled.section>
-                              <Apollo(TopNav)
+                              <Apollo(Apollo(TopNav))
                                         router={undefined}
                                         team={true} />
                               <styled.div />

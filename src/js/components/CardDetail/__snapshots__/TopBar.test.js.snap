@@ -8,41 +8,31 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.nav>
     <styled.div>
-        <Button
+        <Unknown
             onClick={[Function]}
-            rounded={false}
             text="Edit card"
             type="secondaryAction" />
-        <Button
+        <Unknown
             onClick={[Function]}
-            rounded={true}
-            text="Comments"
-            type={null} />
-        <Button
+            text="Comments" />
+        <Unknown
             onClick={[Function]}
-            rounded={true}
-            text="X"
-            type={null} />
+            text="X" />
     </styled.div>
 </styled.nav>,
   "nodes": Array [
     <styled.nav>
       <styled.div>
-            <Button
+            <Unknown
                   onClick={[Function]}
-                  rounded={false}
                   text="Edit card"
                   type="secondaryAction" />
-            <Button
+            <Unknown
                   onClick={[Function]}
-                  rounded={true}
-                  text="Comments"
-                  type={null} />
-            <Button
+                  text="Comments" />
+            <Unknown
                   onClick={[Function]}
-                  rounded={true}
-                  text="X"
-                  type={null} />
+                  text="X" />
       </styled.div>
 </styled.nav>,
   ],
@@ -102,41 +92,31 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.nav>
           <styled.div>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
                               text="Edit card"
                               type="secondaryAction" />
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={true}
-                              text="Comments"
-                              type={null} />
-                    <Button
+                              text="Comments" />
+                    <Unknown
                               onClick={[Function]}
-                              rounded={true}
-                              text="X"
-                              type={null} />
+                              text="X" />
           </styled.div>
 </styled.nav>,
         "_debugID": 2,
         "_renderedOutput": <styled.nav>
           <styled.div>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
                               text="Edit card"
                               type="secondaryAction" />
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={true}
-                              text="Comments"
-                              type={null} />
-                    <Button
+                              text="Comments" />
+                    <Unknown
                               onClick={[Function]}
-                              rounded={true}
-                              text="X"
-                              type={null} />
+                              text="X" />
           </styled.div>
 </styled.nav>,
       },

@@ -36,7 +36,7 @@ exports[`test renders correctly 1`] = `
     <button
       className="bBPMRg"
       onClick={[Function]}
-      type={null}>
+      type={undefined}>
       Create a card
     </button>
   </div>

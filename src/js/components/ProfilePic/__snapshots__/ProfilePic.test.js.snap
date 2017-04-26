@@ -16,11 +16,9 @@ ShallowWrapper {
         <p>
             Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
         </p>
-        <Button
+        <Unknown
             onClick={[Function]}
-            rounded={false}
-            text="Upload a file"
-            type={null} />
+            text="Upload a file" />
         <input
             accept="image/*"
             onChange={[Function]}
@@ -43,11 +41,9 @@ ShallowWrapper {
             <p>
                   Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
             </p>
-            <Button
+            <Unknown
                   onClick={[Function]}
-                  rounded={false}
-                  text="Upload a file"
-                  type={null} />
+                  text="Upload a file" />
             <input
                   accept="image/*"
                   onChange={[Function]}
@@ -113,11 +109,9 @@ ShallowWrapper {
                     <p>
                               Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
                     </p>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
-                              text="Upload a file"
-                              type={null} />
+                              text="Upload a file" />
                     <input
                               accept="image/*"
                               onChange={[Function]}
@@ -140,11 +134,9 @@ ShallowWrapper {
                     <p>
                               Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
                     </p>
-                    <Button
+                    <Unknown
                               onClick={[Function]}
-                              rounded={false}
-                              text="Upload a file"
-                              type={null} />
+                              text="Upload a file" />
                     <input
                               accept="image/*"
                               onChange={[Function]}

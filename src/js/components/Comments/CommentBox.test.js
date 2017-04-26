@@ -1,10 +1,9 @@
 // @flow
 import React from 'react';
 import { shallow } from 'enzyme';
-// import jest from 'jest';
 import CommentBox from './CommentBox';
 
-// jest.mock('draft-js/lib/generateRandomKey', () => () => '123');
+jest.mock('draft-js/lib/generateRandomKey', () => () => '123');
 
 
 it('renders correctly', () => {

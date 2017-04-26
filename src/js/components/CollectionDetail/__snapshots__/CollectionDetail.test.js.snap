@@ -12,16 +12,13 @@ ShallowWrapper {
             Loading 
         </div>
         <styled.div>
-            <Button
+            <Unknown
                 onClick={[Function]}
-                rounded={false}
                 text="Add Card"
                 type="primary" />
-            <Button
+            <Unknown
                 onClick={[Function]}
-                rounded={false}
-                text="Edit Collection"
-                type={null} />
+                text="Edit Collection" />
         </styled.div>
     </styled.section>
     <Toolbar
@@ -43,16 +40,13 @@ ShallowWrapper {
                   Loading 
             </div>
             <styled.div>
-                  <Button
+                  <Unknown
                         onClick={[Function]}
-                        rounded={false}
                         text="Add Card"
                         type="primary" />
-                  <Button
+                  <Unknown
                         onClick={[Function]}
-                        rounded={false}
-                        text="Edit Collection"
-                        type={null} />
+                        text="Edit Collection" />
             </styled.div>
       </styled.section>
       <Toolbar
@@ -138,16 +132,13 @@ ShallowWrapper {
                               Loading 
                     </div>
                     <styled.div>
-                              <Button
+                              <Unknown
                                         onClick={[Function]}
-                                        rounded={false}
                                         text="Add Card"
                                         type="primary" />
-                              <Button
+                              <Unknown
                                         onClick={[Function]}
-                                        rounded={false}
-                                        text="Edit Collection"
-                                        type={null} />
+                                        text="Edit Collection" />
                     </styled.div>
           </styled.section>
           <Toolbar
@@ -169,16 +160,13 @@ ShallowWrapper {
                               Loading 
                     </div>
                     <styled.div>
-                              <Button
+                              <Unknown
                                         onClick={[Function]}
-                                        rounded={false}
                                         text="Add Card"
                                         type="primary" />
-                              <Button
+                              <Unknown
                                         onClick={[Function]}
-                                        rounded={false}
-                                        text="Edit Collection"
-                                        type={null} />
+                                        text="Edit Collection" />
                     </styled.div>
           </styled.section>
           <Toolbar

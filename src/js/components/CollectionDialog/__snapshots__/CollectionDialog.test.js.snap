@@ -31,13 +31,13 @@ exports[`test renders correctly 1`] = `
         <button
           className="bBPMRg"
           onClick={[Function]}
-          type={null}>
+          type={undefined}>
           Add Cover
         </button>
       </div>
       <div>
         <h5
-          className="eKaiQM">
+          className="invXpW">
           NAME
         </h5>
         <input
@@ -65,7 +65,7 @@ exports[`test renders correctly 1`] = `
       <button
         className="bBPMRg"
         onClick={[Function]}
-        type={null}>
+        type={undefined}>
         Cancel
       </button>
       <button

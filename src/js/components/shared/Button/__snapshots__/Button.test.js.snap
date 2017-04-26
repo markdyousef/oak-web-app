@@ -1,8 +1,8 @@
-exports[`test renders Button 1`] = `
+exports[`test renders SquareButton 1`] = `
 <button
   className="bBPMRg"
   onClick={[Function]}
-  type={null}>
+  type={undefined}>
   Hello
 </button>
 `;

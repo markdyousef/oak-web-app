@@ -7,8 +7,9 @@ import SettingsAccount from '../../containers/SettingsAccountContainer';
 
 const Container = styled.div`
     width: 100%;
-    padding: 80px 0 40px;
+    padding: 20px 0;
     background-color: #fff;
+    height: calc(100vh - 60px);
 `;
 
 const Content = styled.div`
