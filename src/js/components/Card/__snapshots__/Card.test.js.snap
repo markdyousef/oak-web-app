@@ -18,10 +18,7 @@ exports[`test renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="ewliVH">
-    <img
-      alt="card"
-      src={undefined} />
+    className="gxbcWz">
     <button
       onClick={[Function]}>
       Read more

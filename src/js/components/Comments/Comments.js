@@ -23,6 +23,9 @@ const Container = styled.section`
 const CommentsPanel = styled.div`
     padding: 16px 16px 4px;
     background: ${colors.white};
+    height: 100%;
+    min-height: 200px;
+    overflow-x: auto;
 `;
 
 const CommentsInput = styled.div`
