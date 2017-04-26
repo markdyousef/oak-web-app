@@ -59,6 +59,22 @@ export const Label = styled.div`
 export const Main = styled.div`
     margin-bottom: 16px;
     text-align: left;
+    & h1 {
+        font-size: 32px;
+        color: ${colors.black};
+        letter-spacing: -0.12px;
+        padding-bottom: 16px;
+    }
+    & h2 {
+        font-size: 22px;
+        color: ${colors.grey};
+        letter-spacing: -0.08px;
+        padding-bottom: 24px;
+    }
+    & p {
+        font-size: 16px;
+        color: ${colors.black};
+    }
     & img {
         max-width: 288px;
         width: 100%;

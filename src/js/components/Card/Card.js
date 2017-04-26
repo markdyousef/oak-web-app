@@ -26,6 +26,9 @@ type DefaultProps = {
 };
 type Props = {
     content: Object,
+    cover: ?{
+        urlThumb512: string
+    },
     creator: {
         name: string,
         username: string,
@@ -62,7 +65,16 @@ export default class Card extends Component<DefaultProps, Props, State> {
         const { blocks } = content;
         return (
             <div>
-                {blocks.map(block => <p key={block.key}>{block.text}</p>)}
+                {blocks.map((block) => {
+                    switch (block.type) {
+                    case 'header-one':
+                        return <h1 key={block.key}>{block.text}</h1>;
+                    case 'header-two':
+                        return <h2 key={block.key}>{block.text}</h2>;
+                    default:
+                        return <p key={block.key}>{block.text}</p>;
+                    }
+                })}
             </div>
         );
     }
@@ -101,7 +113,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
         if (cover && cover.urlThumb512) coverImg = cover.urlThumb512;
         return (
             <Main>
-                <img alt="card" src={coverImg} />
+                {coverImg && <img alt="card" src={coverImg} />}
                 {content && this.formatContent(content)}
                 <button onClick={onShow}>Read more</button>
             </Main>

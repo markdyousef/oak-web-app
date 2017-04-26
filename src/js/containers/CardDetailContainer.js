@@ -85,7 +85,7 @@ export default compose(
     }),
     graphql(createSeed, {
         props: ({ mutate }) => ({
-            create: (groveId: string, name: string, content: string, coverId) => mutate({ variables: { groveId, name, content, coverId } })
+            create: (groveId, name, content, coverId) => mutate({ variables: { groveId, name, content, coverId } })
         })
     }),
     graphql(updateSeed, {

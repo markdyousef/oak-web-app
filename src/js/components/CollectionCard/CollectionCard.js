@@ -26,17 +26,23 @@ const Image = styled.div`
 const Name = styled.h3`
     font-size: 15px;
     font-weight: normal;
-    line-height: 1.48px;
+    line-height: 1.48em;
     margin-bottom: 12px;
-    color: ${colors.black}
+    color: ${colors.black};
     margin: 16px 0 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const Description = styled.p`
     font-size: 14px;
     color: ${colors.black};
     font-weight: 300;
-    line-height: 1.54px;
+    line-height: 1.54em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const CollectionCard = ({ name, description, picture }:Object) => {
