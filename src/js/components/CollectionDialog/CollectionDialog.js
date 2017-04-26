@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
-import { uploadImg } from '../../utils'
+import { uploadImage } from '../../utils'
 import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles';
-
-const URL = 'https://empress.clai.io/files/upload';
 
 type DefaultProps = {
     name: '',
@@ -72,7 +70,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
 
         // handle file-upload for existing collection
         if (file && id && !didUpload) {
-            uploadImg(file, 'grove', id)
+            uploadImage(file, 'grove', id)
                 .then((picId) => {
                     this.setState({ pictureId: picId, didUpload: true });
                     this.onSave();
@@ -85,7 +83,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                 .then(() => close())
                 .catch(err => console.log(err));
         } else {
-            create(name, description)
+            create(name, description, pictureId)
                 .then((res) => {
                     if (file) {
                         const { createGrove } = res.data;
