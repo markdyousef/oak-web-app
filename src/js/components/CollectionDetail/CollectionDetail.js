@@ -170,6 +170,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     showComments={() => router.push(`/collection/${params.collectionId}/card/${item.id}/comments`)}
                                     likes={item.likes.length}
                                     isLiked={isLiked}
+                                    cover={item.cover}
                                 />
                             );
                         }

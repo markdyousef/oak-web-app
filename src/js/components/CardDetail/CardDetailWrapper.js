@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react';
+import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { parseComments } from '../../utils/editor';
+import { parseComments, uploadImage } from '../../utils';
 
 type Data = {
     refetch: Function,
@@ -35,7 +36,8 @@ type State = {
     comments: Array<Object>,
     message: ?string,
     showEdit: bool,
-    name: string
+    name: string,
+    images: Array<number>
 }
 
 type DefaultProps = {}
@@ -53,9 +55,10 @@ export default (CardDetail:Function) => {
                     showComments: !!props.params.comments,
                     showEdit: !props.params.cardId,
                     isLoading: false,
-                    editorState: EditorState.createEmpty(),
+                    editorState: EditorState.createEmpty(decorator),
                     labels: [],
                     comments: [],
+                    images: [],
                     message: null,
                     name: ''
                 };
@@ -78,7 +81,7 @@ export default (CardDetail:Function) => {
                     }
                     if (content !== null && typeof content === 'object') {
                         const state = convertFromRaw(content);
-                        this.setState({ editorState: EditorState.createWithContent(state) });
+                        this.setState({ editorState: EditorState.createWithContent(state, decorator) });
                     }
                 }
                 if (seed.comments) {
@@ -92,12 +95,13 @@ export default (CardDetail:Function) => {
                 });
             }
             onSave = () => {
-                const { cardId, collectionId, editorState, name } = this.state;
+                const { cardId, collectionId, editorState, name, images } = this.state;
                 const { create, update, data } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+                const cover = images[0];
                 // existing cards has a cardId
                 if (cardId) {
-                    update(cardId, content)
+                    update(cardId, content, cover)
                     .then(() => data && data.refetch())
                     .catch(err => console.log(err));
                     return;
@@ -162,6 +166,15 @@ export default (CardDetail:Function) => {
                     })
                     .catch(err => console.log(err));
             }
+            addFile = (file: Object) => {
+                const { images } = this.state;
+                uploadImage(file)
+                    .then((id) => {
+                        images.push(id);
+                        this.setState({ images });
+                    })
+                    .catch(err => console.log(err));
+            }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
                 const { router } = this.props;
@@ -172,6 +185,7 @@ export default (CardDetail:Function) => {
                         goBack={() => router.goBack()}
                         createComment={this.createComment}
                         onChange={this.onChange}
+                        addFile={this.addFile}
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         {...this.state}

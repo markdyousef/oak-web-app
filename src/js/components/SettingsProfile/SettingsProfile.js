@@ -65,7 +65,7 @@ type Props = {
             gravatar: ?string,
             avatar: ?{
                 id: string,
-                urlThumb512: string
+                urlThumb256: string
             }
         }
     }
@@ -100,8 +100,8 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
         let picture;
         // avatar overrules gravatar
         if (gravatar) picture = { url: gravatar };
-        if (avatar && avatar.urlThumb512) {
-            picture = { id: avatar.id, url: avatar.urlThumb512 }
+        if (avatar && avatar.urlThumb256) {
+            picture = { id: avatar.id, url: avatar.urlThumb256 }
         }
 
         this.setState({

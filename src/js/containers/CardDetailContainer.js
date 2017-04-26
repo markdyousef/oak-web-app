@@ -29,8 +29,8 @@ const getCard = gql`
 `;
 
 const createSeed = gql`
-    mutation createSeed($groveId: ID!, $name: String!, $content: String) {
-        createSeed(groveId: $groveId, name: $name, content: $content) {
+    mutation createSeed($groveId: ID!, $name: String!, $content: String, $coverId: ID) {
+        createSeed(groveId: $groveId, name: $name, content: $content, coverId: $coverId) {
             id
             content
         }
@@ -85,7 +85,7 @@ export default compose(
     }),
     graphql(createSeed, {
         props: ({ mutate }) => ({
-            create: (groveId: string, name: string, content: string) => mutate({ variables: { groveId, name, content } })
+            create: (groveId: string, name: string, content: string, coverId) => mutate({ variables: { groveId, name, content, coverId } })
         })
     }),
     graphql(updateSeed, {
