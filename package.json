@@ -115,6 +115,10 @@
     "webpack-target-electron-renderer": "0.4.0"
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/tools/tests/mocks/localStorage.js",
+      "<rootDir>/tools/tests/mocks/url.js"
+    ],
     "moduleNameMapper": {
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/tests/mocks/fileMock.js",
       "^.+\\.(css|less)$": "<rootDir>/tools/tests/mocks/styleMock.js"

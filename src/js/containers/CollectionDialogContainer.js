@@ -5,8 +5,8 @@ import CollectionDialog from '../components/CollectionDialog';
 import { getTeam } from '../utils';
 
 const createGrove = gql`
-    mutation createGrove($teamId: ID!, $name: String!, $description: String) {
-        createGrove(teamId: $teamId, name: $name, description: $description) {
+    mutation createGrove($teamId: ID!, $name: String!, $description: String, $coverId: ID) {
+        createGrove(teamId: $teamId, name: $name, description: $description, coverId: $coverId) {
             id
         }
     }
@@ -29,7 +29,7 @@ const removeGrove = gql`
 export default compose(
     graphql(createGrove, {
         props: ({ mutate }) => ({
-            create: (name, description) => mutate({ variables: { teamId: getTeam(), name, description } })
+            create: (name, description, coverId) => mutate({ variables: { teamId: getTeam(), name, description, coverId } })
         })
     }),
     graphql(updateGrove, {
