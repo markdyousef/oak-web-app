@@ -65,6 +65,7 @@ type DefaultProps = {
 };
 type Props = {
     team: ?bool,
+    logout: Function,
     router: {
         replace: Function
     },
@@ -96,11 +97,15 @@ class TopNav extends Component<DefaultProps, Props, State> {
         };
     }
     signOut = () => {
-        const { router } = this.props;
-        signOut();
-        router.replace({
-            pathname: '/login'
-        });
+        const { router, logout } = this.props;
+        logout()
+            .then(() => {
+                signOut();
+                router.replace({
+                    pathname: '/login'
+                });
+            })
+            .catch(err => console.log(err));
     }
     render() {
         const { team, data: { me } } = this.props;

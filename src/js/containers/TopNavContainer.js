@@ -13,6 +13,17 @@ const getUser = gql`
     }
 `;
 
+const logout = gql`
+    mutation logoutUser {
+        logoutUser
+    }
+`;
+
 export default compose(
-    graphql(getUser)
+    graphql(getUser),
+    graphql(logout, {
+        props: ({ mutate }) => ({
+            logout: () => mutate()
+        })
+    })
 )(TopNav);

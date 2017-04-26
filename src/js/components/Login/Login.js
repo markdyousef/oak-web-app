@@ -56,7 +56,7 @@ class Login extends Component<DefaultProps, Props, State> {
                 });
                 window.location.reload();
             })
-            .catch(err => console.log(err));
+            .catch(err => this.setState({ message: err.graphQLErrors[0].message }));
     }
     render() {
         const { email, password, message } = this.state;
