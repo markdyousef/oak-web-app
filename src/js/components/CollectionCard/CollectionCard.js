@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import placeholder from '../../../img/collections-placeholder.svg';
 
 const Container = styled.div`
     width: 320px;
@@ -49,7 +50,7 @@ const CollectionCard = ({ name, description, picture }:Object) => {
     return (
         <Container>
             <Image>
-                <img src={picture} alt="cover" />
+                <img src={picture || placeholder} alt="cover" />
             </Image>
             <Name>{name}</Name>
             <Description>{description}</Description>

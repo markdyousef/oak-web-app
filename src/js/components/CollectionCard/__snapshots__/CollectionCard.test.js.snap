@@ -5,13 +5,13 @@ exports[`test renders correctly 1`] = `
     className="gqgaML">
     <img
       alt="cover"
-      src={null} />
+      src="test-file-stub" />
   </div>
   <h3
-    className="hXEwwP">
+    className="inVPqc">
     collection
   </h3>
   <p
-    className="hsPFOR" />
+    className="bXQudf" />
 </div>
 `;
