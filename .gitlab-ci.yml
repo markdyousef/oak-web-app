@@ -25,7 +25,7 @@ variables:
   S3_BUCKET_NAME: "dev.clai.io/culture-web-app/"
 deploy_job:
   image: python:latest
-  state: deploy
+  stage: deploy
   script:
     - npm install
     - npm build
