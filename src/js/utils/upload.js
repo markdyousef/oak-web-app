@@ -1,14 +1,21 @@
 // @flow
 type ImgType = 'avatar' | 'grove' | 'seed';
-const URL = 'https://empress.clai.io/files/upload';
+const FILE = 'https://empress.clai.io/files/upload';
+const AVATAR = 'https://empress.clai.io/avatars/upload';
 
-export const uploadImg = (file: Object, type: ImgType, id?:string):Promise<*> =>
+const teamId = localStorage.team;
+
+export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*> => (
     new Promise((resolve, reject) => {
         if (file.type.indexOf('image/') === 0) {
+            let url = FILE;
             const body = new FormData();
             body.append('file', file);
-            body.append('type', type);
-
+            body.append('teamId', teamId);
+            if (type === 'avatar') {
+                body.append('type', type);
+                url = AVATAR;
+            }
             if (type === 'grove') body.append('groveId', id);
 
             const options = {
@@ -19,7 +26,7 @@ export const uploadImg = (file: Object, type: ImgType, id?:string):Promise<*> =>
                 },
                 body
             };
-            fetch(URL, options)
+            fetch(url, options)
                 .then(res => res.json())
                 .then(res => resolve(res.id))
                 .catch(err => reject(err));
@@ -27,4 +34,4 @@ export const uploadImg = (file: Object, type: ImgType, id?:string):Promise<*> =>
             reject('not a valid image');
         }
     })
-;
+);

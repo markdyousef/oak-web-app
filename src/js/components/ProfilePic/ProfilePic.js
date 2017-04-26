@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import { SquareButton } from '../../components/shared/Button';
-import { uploadImg } from '../../utils';
+import { uploadImage } from '../../utils';
 
 const Container = styled.div`
     display: flex;
@@ -60,7 +60,7 @@ export default class ProfilePic extends Component {
         const file = e.target.files[0];
         const url = window.URL.createObjectURL(file);
         // // check file type
-        uploadImg(file, 'avatar')
+        uploadImage(file, 'avatar')
             .then(id => onChange('avatar', { id, url }))
             .catch(err => console.log(err));
     }
