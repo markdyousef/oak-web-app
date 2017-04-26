@@ -1,4 +1,4 @@
-image: docker:latest
+image: node:6.9.4
 
 cache:
   paths:
@@ -24,7 +24,6 @@ test_job:
 variables:
   S3_BUCKET_NAME: "dev.clai.io/culture-web-app/"
 deploy_job:
-  image: python:latest
   stage: deploy
   script:
     - npm install
