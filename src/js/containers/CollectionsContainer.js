@@ -11,6 +11,7 @@ const getCollections = gql`
             name,
             description,
             cover {
+                id
                 urlThumb512
             }
         }

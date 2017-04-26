@@ -38,8 +38,8 @@ const createSeed = gql`
 `;
 
 const updateSeed = gql`
-    mutation updateSeed($id: ID!, $content: String!) {
-        updateSeed(id: $id, content: $content) {
+    mutation updateSeed($id: ID!, $content: String!, $coverId: ID) {
+        updateSeed(id: $id, content: $content, coverId: $coverId) {
             id
             content
         }
@@ -90,7 +90,7 @@ export default compose(
     }),
     graphql(updateSeed, {
         props: ({ mutate }) => ({
-            update: (id:string, content:string) => mutate({ variables: { id, content } })
+            update: (id:string, content:string, coverId:string) => mutate({ variables: { id, content, coverId } })
         })
     }),
     graphql(addSeedLabel, {

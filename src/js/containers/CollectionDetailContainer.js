@@ -25,6 +25,10 @@ const getCollection = gql`
         seeds(groveId: $groveId) {
             id
             content
+            cover {
+                id
+                urlThumb512
+            }
             creator {
                 name
                 username
