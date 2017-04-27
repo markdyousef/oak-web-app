@@ -1,4 +1,4 @@
-image: docker:latest
+image: nodejs-python:latest
 
 cache:
   paths:
