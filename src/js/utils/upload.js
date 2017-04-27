@@ -28,7 +28,12 @@ export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*>
             };
             fetch(url, options)
                 .then(res => res.json())
-                .then(res => resolve(res.id))
+                .then((res) => {
+                    const bucket = res.s3Bucket;
+                    const key = res.s3Key512;
+                    const fileUrl = `https://s3-eu-west-1.amazonaws.com/${bucket}/${key}`;
+                    resolve({ id: res.id, url: fileUrl });
+                })
                 .catch(err => reject(err));
         } else {
             reject('not a valid image');

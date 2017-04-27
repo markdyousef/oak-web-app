@@ -37,7 +37,7 @@ type State = {
     message: ?string,
     showEdit: bool,
     name: string,
-    images: Array<number>
+    images: Array<Object>
 }
 
 type DefaultProps = {}
@@ -98,17 +98,20 @@ export default (CardDetail:Function) => {
                 const { cardId, collectionId, editorState, name, images } = this.state;
                 const { create, update, data } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-                const cover = images[0];
+                const cover = images[0] && images[0].id;
                 // existing cards has a cardId
                 if (cardId) {
                     update(cardId, content, cover)
                     .then(() => data && data.refetch())
                     .catch(err => console.log(err));
-                    return;
+                } else {
+                    create(collectionId, name, content, cover)
+                        .then((res) => {
+                            console.log(res);
+                            if (data) data.refetch();
+                        })
+                        .catch(err => console.log(err));
                 }
-                create(collectionId, name, content)
-                    .then(() => data && data.refetch())
-                    .catch(err => console.log(err));
             }
             changeCardLabel = (labelId:string) => {
                 const { create, removeLabel, addLabel } = this.props;
@@ -169,8 +172,8 @@ export default (CardDetail:Function) => {
             addFile = (file: Object) => {
                 const { images } = this.state;
                 uploadImage(file)
-                    .then((id) => {
-                        images.push(id);
+                    .then((res) => {
+                        images.push(res);
                         this.setState({ images });
                     })
                     .catch(err => console.log(err));
