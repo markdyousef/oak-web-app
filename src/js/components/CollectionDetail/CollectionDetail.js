@@ -7,7 +7,6 @@ import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
-import Toast from '../shared/Toast';
 
 import {
     Container,
@@ -78,16 +77,20 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     }
     componentWillReceiveProps(nextProps:Props) {
         const { data } = nextProps;
+        const { sortKey } = this.state;
 
         if (data.loading) return;
 
         if (data.seeds) {
             this.setState({ cards: data.seeds });
         }
+        if (sortKey !== 'date') {
+            this.onSortCards(sortKey, data.seeds);
+        }
     }
-    onSortCards = (key: string) => {
+    onSortCards = (key: string, items?: Array<Object>) => {
         const { data: { seeds } } = this.props;
-        const { cards } = this.state;
+        const cards = (items) || this.state.cards;
         let sortedCards = [...cards];
         if (key === 'comments' || key === 'likes') {
             sortedCards.sort((a, b) => {
