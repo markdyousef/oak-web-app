@@ -121,7 +121,7 @@ ShallowWrapper {
         },
         "refs": Object {},
         "state": Object {
-          "avatar": Object {},
+          "avatar": null,
           "errorMessage": null,
           "isSaved": false,
           "name": "",

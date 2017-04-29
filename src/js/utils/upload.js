@@ -1,4 +1,6 @@
 // @flow
+import { EditorState, } from 'draft-js';
+
 type ImgType = 'avatar' | 'grove' | 'seed';
 const FILE = 'https://empress.clai.io/files/upload';
 const AVATAR = 'https://empress.clai.io/avatars/upload';
@@ -29,9 +31,7 @@ export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*>
             fetch(url, options)
                 .then(res => res.json())
                 .then((res) => {
-                    const bucket = res.s3Bucket;
-                    const key = res.s3Key512;
-                    const fileUrl = `https://s3-eu-west-1.amazonaws.com/${bucket}/${key}`;
+                    const fileUrl = res.urlOriginal;
                     resolve({ id: res.id, url: fileUrl });
                 })
                 .catch(err => reject(err));
@@ -40,3 +40,30 @@ export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*>
         }
     })
 );
+
+export const changeUrls = (editorState: EditorState, images: Array<Object>): EditorState => {
+    const newBlockMap =
+        editorState
+            .getCurrentContent()
+            .getBlockMap()
+            .map((block) => {
+                if (block.hasIn(['data', 'src'])) {
+                    // if block name is in image list
+                    const index = images
+                        .findIndex(image => image.name === block.getIn(['data', 'name']));
+
+                    if (index > -1) {
+                        return block.setIn(['data', 'src'], images[index].url);
+                    }
+                }
+                return block;
+            });
+    const newContentState =
+        editorState
+        .getCurrentContent()
+        .merge({
+            blockMap: newBlockMap
+        });
+
+    return EditorState.push(editorState, newContentState, 'change-block-data');
+};

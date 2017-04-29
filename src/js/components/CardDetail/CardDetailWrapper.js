@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { parseComments, uploadImage } from '../../utils';
+import { parseComments, uploadImage, changeUrls } from '../../utils';
 
 type Data = {
     refetch: Function,
@@ -97,7 +97,9 @@ export default (CardDetail:Function) => {
             onSave = () => {
                 const { cardId, collectionId, editorState, name, images } = this.state;
                 const { create, update, data } = this.props;
-                const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+                const newEditorState = changeUrls(editorState, images);
+                console.log(newEditorState);
+                const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
                 // existing cards has a cardId
                 if (cardId) {
@@ -171,9 +173,10 @@ export default (CardDetail:Function) => {
             }
             addFile = (file: Object) => {
                 const { images } = this.state;
+                // TODO: add loading state
                 uploadImage(file)
                     .then((res) => {
-                        images.push(res);
+                        images.push({ ...res, name: file.name });
                         this.setState({ images });
                     })
                     .catch(err => console.log(err));

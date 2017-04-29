@@ -61,7 +61,7 @@ export default class ProfilePic extends Component {
         const url = window.URL.createObjectURL(file);
         // // check file type
         uploadImage(file, 'avatar')
-            .then(id => onChange('avatar', { id, url }))
+            .then(res => onChange('avatar', { id: res.id, url }))
             .catch(err => console.log(err));
     }
     render() {

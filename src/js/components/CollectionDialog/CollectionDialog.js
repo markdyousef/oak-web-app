@@ -71,8 +71,8 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
         // handle file-upload for existing collection
         if (file && id && !didUpload) {
             uploadImage(file, 'grove', id)
-                .then((picId) => {
-                    this.setState({ pictureId: picId, didUpload: true });
+                .then((res) => {
+                    this.setState({ pictureId: res.id, didUpload: true });
                     this.onSave();
                 })
                 .catch(err => console.log(err));

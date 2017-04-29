@@ -75,7 +75,10 @@ type State = {
     name: string,
     username: string,
     errorMessage: ?string,
-    avatar: Object,
+    avatar: ?{
+        url: string,
+        id: ?string
+    },
     isSaved: bool
 };
 
@@ -88,7 +91,7 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
             name: '',
             username: '',
             errorMessage: null,
-            avatar: {},
+            avatar: null,
             isSaved: false
         };
     }
@@ -99,9 +102,9 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
         const { name, username, avatar, gravatar } = data.me;
         let picture;
         // avatar overrules gravatar
-        if (gravatar) picture = { url: gravatar };
+        if (gravatar) picture = { url: gravatar, id: null };
         if (avatar && avatar.urlThumb256) {
-            picture = { id: avatar.id, url: avatar.urlThumb256 }
+            picture = { id: avatar.id, url: avatar.urlThumb256 };
         }
 
         this.setState({
@@ -114,13 +117,15 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
         const { updateUser } = this.props;
         const { name, username, avatar } = this.state;
 
-        const avatarId = (avatar.id) ? avatar.id : null;
-
+        console.log(avatar);
+        const avatarId = (avatar && avatar.id) ? avatar.id : null;
+        console.log(avatarId);
         updateUser(name, username, avatarId)
             .then(res => this.setState({ isSaved: true }))
             .catch(err => console.log(err));
     }
     changeField = (key: string, value: string | Object) => {
+        console.log(value)
         switch (key) {
         case 'name':
             this.setState({ name: value });
@@ -142,7 +147,7 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
             <Container>
                 <h1>Profile</h1>
                 <ProfilePic
-                    picture={avatar.url}
+                    picture={avatar && avatar.url}
                     onChange={this.changeField}
                 />
                 <InputContainer>
