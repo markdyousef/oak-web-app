@@ -25,7 +25,14 @@ type Props = {
     onEdit: () => void,
     onShowComments: () => void,
     addFile: (file: Object) => void,
-    isLoading: bool
+    isLoading: bool,
+    failedComment: ?EditorState,
+    creator: ?{
+        name: string,
+        username: string,
+        avatar: Object,
+        gravatar: string
+    }
 }
 
 const CardDetail = ({ ...props }:Props) => {
@@ -44,7 +51,9 @@ const CardDetail = ({ ...props }:Props) => {
         onEdit,
         onShowComments,
         addFile,
-        isLoading
+        isLoading,
+        failedComment,
+        creator
     } = props;
 
     return (
@@ -72,8 +81,10 @@ const CardDetail = ({ ...props }:Props) => {
                     </EditorContainer>
                     {showComments &&
                         <Comments
+                            failedComment={failedComment}
                             comments={comments}
                             create={createComment}
+                            creator={creator}
                         />
                     }
                 </Main>

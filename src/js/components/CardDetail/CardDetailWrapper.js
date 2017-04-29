@@ -7,6 +7,13 @@ import { parseComments, uploadImage, changeUrls } from '../../utils';
 type Data = {
     refetch: Function,
     loading: bool,
+    me: ?{
+        name: string,
+        username: string,
+        avatar: Object,
+        gravatar: string
+
+    },
     seed: {
         id: string,
         content: ?string,
@@ -37,7 +44,14 @@ type State = {
     message: ?string,
     showEdit: bool,
     name: string,
-    images: Array<Object>
+    images: Array<Object>,
+    failedComment: ?EditorState,
+    creator: ?{
+        name: string,
+        username: string,
+        avatar: Object,
+        gravatar: string
+    }
 }
 
 type DefaultProps = {}
@@ -60,7 +74,9 @@ export default (CardDetail:Function) => {
                     comments: [],
                     images: [],
                     message: null,
-                    name: ''
+                    name: '',
+                    failedComment: null,
+                    creator: null
                 };
             }
             componentWillReceiveProps(nextProps:Props) {
@@ -91,7 +107,8 @@ export default (CardDetail:Function) => {
 
                 this.setState({
                     isLoading: false,
-                    labels: seed.labels.map(label => label.id)
+                    labels: seed.labels.map(label => label.id),
+                    creator: data.me
                 });
             }
             onSave = () => {
@@ -159,10 +176,10 @@ export default (CardDetail:Function) => {
                     create(collectionId, name)
                         .then((res) => {
                             const id = res.data.createSeed.id;
-                            this.setState({ cardId: id });
+                            this.setState({ cardId: id, failedComment: null });
                             this.createComment(editorState);
                         })
-                        .catch(err => console.log(err));
+                        .catch(() => this.setState({ failedComment: editorState }));
                     return;
                 }
                 createComment(cardId, content)
@@ -170,9 +187,12 @@ export default (CardDetail:Function) => {
                         let comment = res.data.createComment;
                         comment = parseComments([comment])[0];
                         comments.push(comment);
-                        this.setState({ comments });
+                        this.setState({ comments, failedComment: null });
                     })
-                    .catch(err => console.log(err));
+                    .catch(() => this.setState({ failedComment: editorState }));
+
+                // TODO: remove this
+                this.setState({ failedComment: null })
             }
             addFile = (file: Object) => {
                 const { images } = this.state;

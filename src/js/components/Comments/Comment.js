@@ -7,7 +7,7 @@ import colors from '../../styles/colors';
 
 const Container = styled.div`
     width: 100%;
-    height: 50px;
+    min-height: 60px;
     display: flex;
     flex-wrap: wrap;
 `;
@@ -55,7 +55,7 @@ const Header = styled.div`
 `;
 
 type Props = {
-    createdAt: string,
+    createdAt?: string,
     text: EditorState,
     creator: {
         name: string,

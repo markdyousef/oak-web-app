@@ -88,7 +88,7 @@ export const Grid = styled.section`
 `;
 
 export const Loading = styled.div`
-    background-color: ${colors.lightGrey};
+    background-color: #393F43;
     height: 20px;
     width: 100%;
     border-radius: 3px;

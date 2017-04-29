@@ -5,6 +5,7 @@ import TopNav from '../components/TopNav';
 const getUser = gql`
     query me {
         me {
+            id
             avatar {
                 urlThumb64
             }

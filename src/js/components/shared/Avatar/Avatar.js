@@ -5,7 +5,7 @@ import css from './Avatar.css';
 
 const Avatar = ({ img }:Object) => (
     <div className={css.avatar}>
-        <img src={img} alt="profile" />
+        {img && <img src={img} alt="profile" />}
     </div>
 );
 

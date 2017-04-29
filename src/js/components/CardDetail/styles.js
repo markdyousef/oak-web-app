@@ -26,9 +26,15 @@ export const Main = styled.section`
 
 export const EditorContainer = styled.div`
     position: relative;
+    width: 100%;
     display: flex;
     flex: 1;
-    min-width: 1px;
+    height: 100%;
+    overflow: auto;
+    height: 100vh;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     & div {
         width: 100%;
     }

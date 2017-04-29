@@ -9,11 +9,7 @@ exports[`test renders TopNav 1`] = `
       className="bkZCfp"
       onClick={[Function]}>
       <div
-        className={undefined}>
-        <img
-          alt="profile"
-          src={null} />
-      </div>
+        className={undefined} />
     </button>
   </div>
 </nav>

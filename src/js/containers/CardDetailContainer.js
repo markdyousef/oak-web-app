@@ -5,6 +5,15 @@ import CardDetail from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
+        me {
+            id
+            name
+            username
+            avatar {
+                urlThumb64
+            }
+            gravatar
+        }
         seed(id: $id) {
             id
             content

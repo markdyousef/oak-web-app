@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
+import { EditorState } from 'draft-js';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import CommentBox from './CommentBox';
 import Comment from './Comment';
 import NoComments from './NoComments';
+import FailedComment from './FailedComment';
 
 const Container = styled.section`
     position: relative;
@@ -28,6 +30,15 @@ const CommentsPanel = styled.div`
     overflow-x: auto;
 `;
 
+const Comments = styled.div`
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    ${''/* display: flex;
+    flex-direction: column;
+    justify-content: flex-end; */}
+`;
+
 const CommentsInput = styled.div`
     width: 100%;
     ${''/* position: absolute;
@@ -36,28 +47,47 @@ const CommentsInput = styled.div`
 
 type Props = {
     comments: Array<Object>,
-    create: Function
+    create: Function,
+    failedComment: ?EditorState,
+    creator: ?{
+        name: string,
+        username: string,
+        avatar: ?{
+            urlThumb64: string
+        },
+        gravatar: ?string
+    }
 }
 
-export default ({ comments, create }:Props) => {
+export default ({ comments, create, failedComment, creator }:Props) => {
     return (
         <Container>
             <CommentsPanel>
-                {(() => {
-                    if (comments.length > 0) {
-                        return comments.map(comment => (
-                            <Comment
-                                key={comment.id}
-                                {...comment}
-                            />
-                        ));
+                <Comments>
+                    {(() => {
+                        if (comments.length > 0) {
+                            return comments.map(comment => (
+                                <Comment
+                                    key={comment.id}
+                                    {...comment}
+                                />
+                            ));
+                        }
+                        return <NoComments />;
+                    })()}
+                    {failedComment && creator &&
+                        <FailedComment
+                            failedComment={failedComment}
+                            creator={creator}
+                            onResend={create}
+                        />
                     }
-                    return <NoComments />;
-                })()}
+                </Comments>
             </CommentsPanel>
             <CommentsInput>
                 <CommentBox
                     createComment={create}
+                    creator={creator}
                 />
             </CommentsInput>
         </Container>

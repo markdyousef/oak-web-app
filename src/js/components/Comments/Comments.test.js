@@ -6,7 +6,9 @@ import Comments from './Comments';
 it('renders correctly', () => {
     const props = {
         comments: [],
-        create: () => {}
+        create: () => {},
+        creator: null,
+        failedComment: null
     };
     const shallowComponent = shallow(
         <Comments {...props} />

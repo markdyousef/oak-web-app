@@ -6,6 +6,7 @@ import CollectionDetail from '../components/CollectionDetail';
 const getCollection = gql`
     query collection($groveId: ID!) {
         me {
+            id
             likedSeeds {
                 id
             }
