@@ -24,6 +24,7 @@ const getCard = gql`
                 id
                 text
                 creator {
+                    id
                     name
                     username
                     avatar {

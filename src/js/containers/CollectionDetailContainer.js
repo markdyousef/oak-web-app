@@ -31,6 +31,7 @@ const getCollection = gql`
                 urlThumb512
             }
             creator {
+                id
                 name
                 username
                 avatar {
