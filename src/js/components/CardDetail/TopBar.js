@@ -27,6 +27,14 @@ const EditNav = styled.div`
     display: flex;
 `;
 
+export const Close = styled.button`
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    font-size: 30px;
+    font-weight: normal;
+`;
+
 type Props = {
     onClose: Function,
     onSave: Function,
@@ -95,10 +103,9 @@ class TopBar extends Component<DefaultProps, Props, State> {
                         onClick={showComments}
                         text="Comments"
                     />
-                    <RoundButton
-                        onClick={onClose}
-                        text="X"
-                    />
+                    <Close onClick={onClose}>
+                        &times;
+                    </Close>
                 </Right>
 
             </Container>

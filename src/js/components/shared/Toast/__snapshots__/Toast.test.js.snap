@@ -7,28 +7,36 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.section>
-    <styled.div>
+    <styled.div
+        error={false}>
         <styled.div>
-            <Empty />
+            <h3 />
+            <button
+                onClick={undefined}>
+                Try again...
+            </button>
         </styled.div>
-    </styled.div>
-    <styled.div>
-        <CommentBox
-            createComment={[Function]}
-            creator={null} />
+        <styled.div
+            onClick={undefined}>
+            ×
+        </styled.div>
     </styled.div>
 </styled.section>,
   "nodes": Array [
     <styled.section>
-      <styled.div>
+      <styled.div
+            error={false}>
             <styled.div>
-                  <Empty />
+                  <h3 />
+                  <button
+                        onClick={undefined}>
+                        Try again...
+                  </button>
             </styled.div>
-      </styled.div>
-      <styled.div>
-            <CommentBox
-                  createComment={[Function]}
-                  creator={null} />
+            <styled.div
+                  onClick={undefined}>
+                  ×
+            </styled.div>
       </styled.div>
 </styled.section>,
   ],
@@ -36,27 +44,21 @@ ShallowWrapper {
   "renderer": ReactShallowRenderer {
     "_instance": ShallowComponentWrapper {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
+      "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Unknown
-        comments={Array []}
-        create={[Function]}
-        creator={null}
-        failedComment={null} />,
+      "_currentElement": <Toast
+        message={Object {}} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StatelessComponent {
+      "_instance": Toast {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "comments": Array [],
-          "create": [Function],
-          "creator": null,
-          "failedComment": null,
+          "message": Object {},
         },
         "refs": Object {},
-        "state": null,
+        "state": Object {},
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -76,28 +78,36 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.section>
-          <styled.div>
+          <styled.div
+                    error={false}>
                     <styled.div>
-                              <Empty />
+                              <h3 />
+                              <button
+                                        onClick={undefined}>
+                                        Try again...
+                              </button>
                     </styled.div>
-          </styled.div>
-          <styled.div>
-                    <CommentBox
-                              createComment={[Function]}
-                              creator={null} />
+                    <styled.div
+                              onClick={undefined}>
+                              ×
+                    </styled.div>
           </styled.div>
 </styled.section>,
         "_debugID": 2,
         "_renderedOutput": <styled.section>
-          <styled.div>
+          <styled.div
+                    error={false}>
                     <styled.div>
-                              <Empty />
+                              <h3 />
+                              <button
+                                        onClick={undefined}>
+                                        Try again...
+                              </button>
                     </styled.div>
-          </styled.div>
-          <styled.div>
-                    <CommentBox
-                              createComment={[Function]}
-                              creator={null} />
+                    <styled.div
+                              onClick={undefined}>
+                              ×
+                    </styled.div>
           </styled.div>
 </styled.section>,
       },
@@ -111,10 +121,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown
-    comments={Array []}
-    create={[Function]}
-    creator={null}
-    failedComment={null} />,
+  "unrendered": <Toast
+    message={Object {}} />,
 }
 `;

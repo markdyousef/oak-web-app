@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
-import { uploadImage } from '../../utils'
-import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles';
+import { uploadImage } from '../../utils';
+import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles'
+import Toast from '../shared/Toast';
 
 type DefaultProps = {
     name: '',
@@ -121,7 +122,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                 <Modal>
                     <Header>
                         <h1>Add/Edit collection: </h1>
-                        <Close onClick={close}>X</Close>
+                        <Close onClick={close}>&times;</Close>
                     </Header>
                     <Main>
                         <Upload>

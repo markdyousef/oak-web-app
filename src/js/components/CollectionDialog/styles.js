@@ -46,7 +46,7 @@ export const Close = styled.button`
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    font-size: 14px;
+    font-size: 25px;
 `;
 
 export const Main = styled.div`

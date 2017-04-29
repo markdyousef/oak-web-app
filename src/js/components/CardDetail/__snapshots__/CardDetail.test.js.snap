@@ -13,6 +13,7 @@ ShallowWrapper {
     collectionId={undefined}
     comments={Array []}
     createComment={[Function]}
+    creator={null}
     editorState={
         EditorState {
             "_immutable": Object {
@@ -111,6 +112,7 @@ ShallowWrapper {
             },
           }
     }
+    failedComment={null}
     goBack={[Function]}
     images={Array []}
     isLoading={false}
@@ -118,6 +120,7 @@ ShallowWrapper {
     message={null}
     name=""
     onChange={[Function]}
+    onCloseError={[Function]}
     onEdit={[Function]}
     onSave={[Function]}
     onShowComments={[Function]}
@@ -131,6 +134,7 @@ ShallowWrapper {
       collectionId={undefined}
       comments={Array []}
       createComment={[Function]}
+      creator={null}
       editorState={
             EditorState {
                   "_immutable": Object {
@@ -229,6 +233,7 @@ ShallowWrapper {
                   },
                 }
       }
+      failedComment={null}
       goBack={[Function]}
       images={Array []}
       isLoading={false}
@@ -236,6 +241,7 @@ ShallowWrapper {
       message={null}
       name=""
       onChange={[Function]}
+      onCloseError={[Function]}
       onEdit={[Function]}
       onSave={[Function]}
       onShowComments={[Function]}
@@ -281,6 +287,7 @@ ShallowWrapper {
           "cardId": undefined,
           "collectionId": undefined,
           "comments": Array [],
+          "creator": null,
           "editorState": EditorState {
             "_immutable": Object {
               "allowUndo": true,
@@ -377,6 +384,7 @@ ShallowWrapper {
               "undoStack": Array [],
             },
           },
+          "failedComment": null,
           "images": Array [],
           "isLoading": false,
           "labels": Array [],
@@ -410,6 +418,7 @@ ShallowWrapper {
           collectionId={undefined}
           comments={Array []}
           createComment={[Function]}
+          creator={null}
           editorState={
                     EditorState {
                               "_immutable": Object {
@@ -508,6 +517,7 @@ ShallowWrapper {
                               },
                             }
           }
+          failedComment={null}
           goBack={[Function]}
           images={Array []}
           isLoading={false}
@@ -515,6 +525,7 @@ ShallowWrapper {
           message={null}
           name=""
           onChange={[Function]}
+          onCloseError={[Function]}
           onEdit={[Function]}
           onSave={[Function]}
           onShowComments={[Function]}
@@ -528,6 +539,7 @@ ShallowWrapper {
           collectionId={undefined}
           comments={Array []}
           createComment={[Function]}
+          creator={null}
           editorState={
                     EditorState {
                               "_immutable": Object {
@@ -626,6 +638,7 @@ ShallowWrapper {
                               },
                             }
           }
+          failedComment={null}
           goBack={[Function]}
           images={Array []}
           isLoading={false}
@@ -633,6 +646,7 @@ ShallowWrapper {
           message={null}
           name=""
           onChange={[Function]}
+          onCloseError={[Function]}
           onEdit={[Function]}
           onSave={[Function]}
           onShowComments={[Function]}

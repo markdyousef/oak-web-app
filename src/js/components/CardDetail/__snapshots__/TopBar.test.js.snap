@@ -15,9 +15,10 @@ ShallowWrapper {
         <Unknown
             onClick={[Function]}
             text="Comments" />
-        <Unknown
-            onClick={[Function]}
-            text="X" />
+        <styled.button
+            onClick={[Function]}>
+            ×
+        </styled.button>
     </styled.div>
 </styled.nav>,
   "nodes": Array [
@@ -30,9 +31,10 @@ ShallowWrapper {
             <Unknown
                   onClick={[Function]}
                   text="Comments" />
-            <Unknown
-                  onClick={[Function]}
-                  text="X" />
+            <styled.button
+                  onClick={[Function]}>
+                  ×
+            </styled.button>
       </styled.div>
 </styled.nav>,
   ],
@@ -101,9 +103,10 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Comments" />
-                    <Unknown
-                              onClick={[Function]}
-                              text="X" />
+                    <styled.button
+                              onClick={[Function]}>
+                              ×
+                    </styled.button>
           </styled.div>
 </styled.nav>,
         "_debugID": 2,
@@ -116,9 +119,10 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Comments" />
-                    <Unknown
-                              onClick={[Function]}
-                              text="X" />
+                    <styled.button
+                              onClick={[Function]}>
+                              ×
+                    </styled.button>
           </styled.div>
 </styled.nav>,
       },

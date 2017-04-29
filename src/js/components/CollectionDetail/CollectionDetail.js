@@ -7,6 +7,7 @@ import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
+import Toast from '../shared/Toast';
 
 import {
     Container,

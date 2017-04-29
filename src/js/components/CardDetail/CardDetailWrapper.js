@@ -41,7 +41,11 @@ type State = {
     editorState: EditorState,
     labels: Array<string>,
     comments: Array<Object>,
-    message: ?string,
+    message: ?{
+        type: string,
+        message: string,
+        onClick?: Function
+    },
     showEdit: bool,
     name: string,
     images: Array<Object>,
@@ -122,17 +126,31 @@ export default (CardDetail:Function) => {
                 if (cardId) {
                     update(cardId, content, cover)
                     .then(() => {
-                        data && data.refetch()
-                        this.setState({ isLoading: false });
+                        if (data) data.refetch();
+                        this.setState({ isLoading: false, message: null });
                     })
-                    .catch(err => console.log(err));
+                    .catch(() => {
+                        const message = {
+                            type: 'error',
+                            message: "We couldn't update your card",
+                            onClick: this.onSave
+                        };
+                        this.setState({ message, isLoading: false });
+                    });
                 } else {
                     create(collectionId, name, content, cover)
                         .then(() => {
-                            this.setState({ isLoading: false });
+                            this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
                         })
-                        .catch(err => console.log(err));
+                        .catch(() => {
+                            const message = {
+                                type: 'error',
+                                message: "We couldn't create your card",
+                                onSave: this.onSave
+                            };
+                            this.setState({ message, isLoading: false });
+                        });
                 }
             }
             changeCardLabel = (labelId:string) => {
@@ -142,10 +160,17 @@ export default (CardDetail:Function) => {
                     create(collectionId, name)
                         .then((res) => {
                             const id = res.data.createSeed.id;
-                            this.setState({ cardId: id });
+                            this.setState({ cardId: id, message: null });
                             this.changeCardLabel(labelId);
                         })
-                        .catch(err => console.log(err));
+                        .catch(() => {
+                            const message = {
+                                type: 'error',
+                                message: "We couldn't create your label",
+                                onSave: () => this.changeCardLabel(labelId)
+                            };
+                            this.setState({ message });
+                        });
                     return;
                 }
                 const labelExist = labels.findIndex(id => id === labelId) > -1;
@@ -156,7 +181,14 @@ export default (CardDetail:Function) => {
                                 this.setState({ labels: labels.filter(id => id !== labelId) });
                             }
                         })
-                        .catch(err => console.log(err));
+                        .catch(() => {
+                            const message = {
+                                type: 'error',
+                                message: "We couldn't remove your label",
+                                onSave: () => this.changeCardLabel(labelId)
+                            };
+                            this.setState({ message });
+                        });
                 } else {
                     addLabel(cardId, labelId)
                         .then((res) => {
@@ -165,7 +197,14 @@ export default (CardDetail:Function) => {
                                 this.setState({ labels });
                             }
                         })
-                        .catch(err => console.log(err));
+                        .catch(() => {
+                            const message = {
+                                type: 'error',
+                                message: "We couldn't add your label",
+                                onSave: () => this.changeCardLabel(labelId)
+                            };
+                            this.setState({ message });
+                        });
                 }
             }
             createComment = (editorState:EditorState) => {
@@ -192,7 +231,7 @@ export default (CardDetail:Function) => {
                     .catch(() => this.setState({ failedComment: editorState }));
 
                 // TODO: remove this
-                this.setState({ failedComment: null })
+                this.setState({ failedComment: null });
             }
             addFile = (file: Object) => {
                 const { images } = this.state;
@@ -202,7 +241,14 @@ export default (CardDetail:Function) => {
                         images.push({ ...res, name: file.name });
                         this.setState({ images });
                     })
-                    .catch(err => console.log(err));
+                    .catch(() => {
+                        const message = {
+                            type: 'error',
+                            message: "File couldn't be added",
+                            onClick: () => this.addFile(file)
+                        };
+                        this.setState({ message });
+                    });
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
@@ -217,6 +263,7 @@ export default (CardDetail:Function) => {
                         addFile={this.addFile}
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
+                        onCloseError={() => this.setState({ message: null })}
                         {...this.state}
                     />
                 );

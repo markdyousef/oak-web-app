@@ -7,6 +7,7 @@ import TopBar from './TopBar';
 import Comments from '../Comments';
 import wrapper from './CardDetailWrapper';
 import { Container, ContainerInner, Main, EditorContainer } from './styles';
+import Toast from '../shared/Toast';
 
 type Props = {
     cardId: ?string,
@@ -32,7 +33,13 @@ type Props = {
         username: string,
         avatar: Object,
         gravatar: string
-    }
+    },
+    message: ?{
+        type: string,
+        message: string,
+        onClick: Function
+    },
+    onCloseError: Function
 }
 
 const CardDetail = ({ ...props }:Props) => {
@@ -53,7 +60,9 @@ const CardDetail = ({ ...props }:Props) => {
         addFile,
         isLoading,
         failedComment,
-        creator
+        creator,
+        message,
+        onCloseError
     } = props;
 
     return (
@@ -69,6 +78,10 @@ const CardDetail = ({ ...props }:Props) => {
                 labels={labels}
                 isLoading={isLoading}
             />
+            {message && <Toast
+                message={message}
+                onClose={onCloseError}
+            />}
             <ContainerInner>
                 <Main>
                     <EditorContainer>

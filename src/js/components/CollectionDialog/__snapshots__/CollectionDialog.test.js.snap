@@ -9,9 +9,9 @@ exports[`test renders correctly 1`] = `
         Add/Edit collection: 
       </h1>
       <button
-        className="hesdTb"
+        className="gxoqIZ"
         onClick={[Function]}>
-        X
+        ×
       </button>
     </div>
     <div
