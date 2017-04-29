@@ -67,9 +67,10 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
     onSave = () => {
         const { id, name, description, file, editMode, pictureId, didUpload } = this.state;
         const { create, update, close } = this.props;
+        this.setState({ isLoading: true })
 
         // handle file-upload for existing collection
-        if (file && id && !didUpload) {
+        if (file && !didUpload) {
             uploadImage(file, 'grove', id)
                 .then((res) => {
                     this.setState({ pictureId: res.id, didUpload: true });
@@ -80,18 +81,16 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
         }
         if (editMode && id) {
             update(id, name, description, pictureId)
-                .then(() => close())
+                .then(() => {
+                    this.setState({ isLoading: false })
+                    close();
+                })
                 .catch(err => console.log(err));
         } else {
             create(name, description, pictureId)
-                .then((res) => {
-                    if (file) {
-                        const { createGrove } = res.data;
-                        this.setState({ editMode: true, id: createGrove.id });
-                        this.onSave();
-                    } else {
-                        close()
-                    }
+                .then(() => {
+                    this.setState({ isLoading: false })
+                    close()
                 })
                 .catch(err => console.log(err));
         }
@@ -116,7 +115,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
     }
     render() {
         const { close, editMode } = this.props;
-        const { name, description, picture } = this.state;
+        const { name, description, picture, isLoading } = this.state;
         return (
             <Container>
                 <Modal>

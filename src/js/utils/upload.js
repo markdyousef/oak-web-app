@@ -18,7 +18,7 @@ export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*>
                 body.append('type', type);
                 url = AVATAR;
             }
-            if (type === 'grove') body.append('groveId', id);
+            // if (type === 'grove') body.append('groveId', id);
 
             const options = {
                 method: 'POST',
