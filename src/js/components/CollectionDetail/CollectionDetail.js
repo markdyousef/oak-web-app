@@ -18,6 +18,16 @@ import {
     masonStyles
 } from './styles';
 
+type Seed = {
+    id: string,
+    content: string,
+    cover: Object,
+    creator: Object,
+    labels: Array <Object>,
+    likes: Array<number>,
+    comments: Array<Object>
+}
+
 type Data = {
     loading: bool,
     refetch: Function,
@@ -31,7 +41,7 @@ type Data = {
         cover: ?Object,
         stats: Object
     },
-    seeds: Array<Object>
+    seeds: Array<Seed>
 }
 type DefaultProps = {};
 type Props = {
@@ -48,7 +58,7 @@ type Props = {
 };
 type State = {
     showEdit: bool,
-    cards: Array<Object>,
+    cards: Array<Seed>,
     sortKey: string
 };
 
@@ -76,7 +86,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     onSortCards = (key: string) => {
         const { data: { seeds } } = this.props;
         const { cards } = this.state;
-        let sortedCards = cards;
+        let sortedCards = [...cards];
         if (key === 'comments' || key === 'likes') {
             sortedCards.sort((a, b) => {
                 if (a[key].length > b[key].length) {
@@ -92,13 +102,13 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         }
         this.setState({ cards: sortedCards, sortKey: key });
     }
-    removeCard = (cardId:String) => {
+    removeCard = (cardId:string) => {
         const { removeCard, data } = this.props;
         removeCard(cardId)
             .then(() => data.refetch())
             .catch((err) => { throw err; });
     }
-    handleLike = (cardId: String) => {
+    handleLike = (cardId: string) => {
         const { likeCard, unlikeCard, data: { me, refetch } } = this.props;
         const isLiked = me.likedSeeds && me.likedSeeds.findIndex(item => item.id === cardId) > -1;
         if (isLiked) {

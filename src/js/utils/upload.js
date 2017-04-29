@@ -1,5 +1,5 @@
 // @flow
-import { EditorState, } from 'draft-js';
+import { EditorState } from 'draft-js';
 
 type ImgType = 'avatar' | 'grove' | 'seed';
 const FILE = 'https://empress.clai.io/files/upload';
