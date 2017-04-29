@@ -24,7 +24,8 @@ type Props = {
     showEdit: bool,
     onEdit: () => void,
     onShowComments: () => void,
-    addFile: (file: Object) => void
+    addFile: (file: Object) => void,
+    isLoading: bool
 }
 
 const CardDetail = ({ ...props }:Props) => {
@@ -42,7 +43,8 @@ const CardDetail = ({ ...props }:Props) => {
         showComments,
         onEdit,
         onShowComments,
-        addFile
+        addFile,
+        isLoading
     } = props;
 
     return (
@@ -56,6 +58,7 @@ const CardDetail = ({ ...props }:Props) => {
                 collectionId={collectionId}
                 changeCardLabel={changeCardLabel}
                 labels={labels}
+                isLoading={isLoading}
             />
             <ContainerInner>
                 <Main>

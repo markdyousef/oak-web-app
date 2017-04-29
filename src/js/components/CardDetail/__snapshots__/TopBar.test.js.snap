@@ -45,6 +45,7 @@ ShallowWrapper {
       "_currentElement": <TopBar
         changeCardLabel={[Function]}
         collectionId="1"
+        isLoading={false}
         labels={Array []}
         onClose={[Function]}
         onEdit={[Function]}
@@ -60,6 +61,7 @@ ShallowWrapper {
         "props": Object {
           "changeCardLabel": [Function],
           "collectionId": "1",
+          "isLoading": false,
           "labels": Array [],
           "onClose": [Function],
           "onEdit": [Function],
@@ -133,6 +135,7 @@ ShallowWrapper {
   "unrendered": <TopBar
     changeCardLabel={[Function]}
     collectionId="1"
+    isLoading={false}
     labels={Array []}
     onClose={[Function]}
     onEdit={[Function]}

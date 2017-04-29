@@ -42,6 +42,7 @@ const TeamName = styled.h1`
 
 const Nav = styled.section`
     margin-top: 24px;
+    width: 100%;
 `;
 const StyledLink = styled(Link)`
     display: block;
@@ -64,32 +65,61 @@ const LinkWrapper = styled.div`
 const SubLink = styled(StyledLink)`
     margin: 14px;
     padding-left: 35px !important;
+    width: 100%;
 `;
 
-class SideNav extends Component {
-    static propTypes = {
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            groves: PropTypes.arrayOf(PropTypes.shape({
-                name: PropTypes.string.isRequired,
-                id: PropTypes.string.isRequired
-            }))
-        }).isRequired
-    };
-    static defaultProps = {};
+export const Loading = styled.div`
+    background-color: #393F43;
+    height: 12px;
+    width: ${props => props.width}%;
+    border-radius: 2px;
+`;
+
+type Grove = {
+    name: string,
+    id: string
+}
+type DefaultProps = {};
+type Props = {
+    data: {
+        loading: bool,
+        groves?: Array<Grove>
+    }
+};
+type State = {};
+
+class SideNav extends Component<DefaultProps, Props, State> {
+    static defaultProps:DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
         this.state = {};
     }
     renderSubCategories = () => {
-        const { data } = this.props;
+        const { data: { loading, groves } } = this.props;
+        const loadingCategories = 6;
 
-        if (data.loading) return null;
-
-        if (!data.loading && data.groves) {
+        if (loading) {
             return (
                 <div>
-                    {data.groves.map(category => (
+                    {[...Array(loadingCategories).keys()]
+                        .map(item => (
+                            <SubLink key={item + 'loading'}>
+                                <Loading
+                                    width={(Math.random() * (80 - 50)) + 50}
+                                />
+                            </SubLink>
+                        ))
+                    }
+                </div>
+            );
+        }
+
+        if (!loading && groves) {
+            return (
+                <div>
+                    {groves.map(category => (
                         <div key={category.id}>
                             <SubLink
                                 to={`collection/${category.id}`}

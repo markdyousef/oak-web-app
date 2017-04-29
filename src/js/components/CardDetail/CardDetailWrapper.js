@@ -85,7 +85,7 @@ export default (CardDetail:Function) => {
                     }
                 }
                 if (seed.comments) {
-                    const comments = parseComments(seed.comments)
+                    const comments = parseComments(seed.comments);
                     this.setState({ comments });
                 }
 
@@ -98,18 +98,21 @@ export default (CardDetail:Function) => {
                 const { cardId, collectionId, editorState, name, images } = this.state;
                 const { create, update, data } = this.props;
                 const newEditorState = changeUrls(editorState, images);
-                console.log(newEditorState);
                 const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
                 // existing cards has a cardId
+                this.setState({ isLoading: true });
                 if (cardId) {
                     update(cardId, content, cover)
-                    .then(() => data && data.refetch())
+                    .then(() => {
+                        data && data.refetch()
+                        this.setState({ isLoading: false });
+                    })
                     .catch(err => console.log(err));
                 } else {
                     create(collectionId, name, content, cover)
-                        .then((res) => {
-                            console.log(res);
+                        .then(() => {
+                            this.setState({ isLoading: false });
                             if (data) data.refetch();
                         })
                         .catch(err => console.log(err));

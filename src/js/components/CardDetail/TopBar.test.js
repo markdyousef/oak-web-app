@@ -12,7 +12,8 @@ it('renders correctly', () => {
         onEdit: () => {},
         onSave: () => {},
         showComments: () => {},
-        showEdit: false
+        showEdit: false,
+        isLoading: false
     };
     const shallowComponent = shallow(
         <TopBar {...props} />

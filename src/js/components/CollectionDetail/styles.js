@@ -20,6 +20,7 @@ export const Header = styled.section`
 
 export const Info = styled.div`
     max-width: 500px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,7 +31,7 @@ export const Info = styled.div`
         display: block;
         letter-spacing: -.04em;
     }
-    & p {
+    & h3 {
         font-size: 18px;
         font-weight: normal;
         padding-bottom: 40px;
@@ -43,6 +44,7 @@ export const Stats = styled.div`
     & div {
         display: inline-block;
         margin-right: 20px;
+        min-width: 50px;
     }
     & h3 {
         font-size: 20px;
@@ -83,4 +85,11 @@ export const Grid = styled.section`
     @media (min-width: 750px) {
         width: 730px;
     } */}
+`;
+
+export const Loading = styled.div`
+    background-color: ${colors.lightGrey};
+    height: 20px;
+    width: 100%;
+    border-radius: 3px;
 `;

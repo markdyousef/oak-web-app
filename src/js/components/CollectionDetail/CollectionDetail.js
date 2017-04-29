@@ -15,7 +15,8 @@ import {
     Stats,
     ButtonGroup,
     Grid,
-    masonStyles
+    masonStyles,
+    Loading
 } from './styles';
 
 type Seed = {
@@ -31,17 +32,17 @@ type Seed = {
 type Data = {
     loading: bool,
     refetch: Function,
-    me: {
+    me?: {
         likedSeeds: ?Array<Object>
     },
-    grove: {
+    grove?: {
         id: string,
         name: string,
         description: ?string,
         cover: ?Object,
-        stats: Object
+        stats: ?Object
     },
-    seeds: Array<Seed>
+    seeds?: Array<Seed>
 }
 type DefaultProps = {};
 type Props = {
@@ -110,7 +111,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     }
     handleLike = (cardId: string) => {
         const { likeCard, unlikeCard, data: { me, refetch } } = this.props;
-        const isLiked = me.likedSeeds && me.likedSeeds.findIndex(item => item.id === cardId) > -1;
+        const isLiked = me && me.likedSeeds && me.likedSeeds.findIndex(item => item.id === cardId) > -1;
         if (isLiked) {
             unlikeCard(cardId)
                 .then(() => refetch())
@@ -126,7 +127,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const { showEdit } = this.state;
         const { data, router } = this.props;
 
-        if (data.loading) return null;
+        if (data.loading || !data.grove) return null;
         const { grove } = data;
         const cover = (grove.cover && grove.cover.urlThumb512) ? grove.cover : {};
 
@@ -153,7 +154,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const { data: { me, loading }, router, params } = this.props;
         const { cards } = this.state;
 
-        if (loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
+        if (loading || !me) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
         if (cards.length > 0) {
             return (
@@ -192,20 +193,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         return <NoCards onClick={this.addCard} />;
     }
     renderInfo = () => {
-        const { data } = this.props;
-
-        if (data.loading) return <div>Loading </div>;
-
-        const { name, description, stats } = data.grove;
-
+        const { data: { loading, grove } } = this.props;
+        const info = Object.assign({}, grove);
         return (
             <Info>
-                <h1>{name}</h1>
-                <p>{description}</p>
+                <h1>{(loading) ? <Loading /> : info.name}</h1>
+                <h3>{(loading) ? <Loading /> : info.description}</h3>
                 <Stats>
                     <div>
-                        <h3>{stats.seeds}</h3>
-                        <h5>Cards</h5>
+                        <h3>{(loading) ? <Loading /> : info.stats && info.stats.seeds}</h3>
+                        <h5>{(loading) ? <Loading /> : 'Cards'}</h5>
                     </div>
                 </Stats>
             </Info>

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import DotSpinner from '../DotSpinner';
 import { Default, style } from './styles';
 
 const Squared = styled(Default)`
@@ -12,13 +13,14 @@ const Squared = styled(Default)`
 type Props = {
     onClick: Function,
     text: string,
-    type: ?string
+    type: ?string,
+    isLoading: bool
 }
 
-export default ({ text, onClick, type }: Props) => {
+export default ({ text, onClick, type, isLoading }: Props) => {
     return (
         <Squared onClick={onClick} type={type}>
-            {text}
+            {(isLoading) ? <DotSpinner /> : text}
         </Squared>
     );
 };

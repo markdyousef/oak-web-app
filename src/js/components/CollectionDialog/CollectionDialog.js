@@ -170,6 +170,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                             onClick={this.onSave}
                             text="Save"
                             type="primary"
+                            isLoading={isLoading}
                         />
                     </Buttons>
                 </Modal>

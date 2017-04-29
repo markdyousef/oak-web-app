@@ -35,7 +35,8 @@ type Props = {
     showComments: Function,
     collectionId: string,
     changeCardLabel: Function,
-    labels: Array<string>
+    labels: Array<string>,
+    isLoading: bool
 };
 type State = {
     showLabels: bool
@@ -53,7 +54,7 @@ class TopBar extends Component<DefaultProps, Props, State> {
         };
     }
     renderButtons = () => {
-        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel } = this.props;
+        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading } = this.props;
         const { showLabels } = this.state;
 
         if (showEdit) {
@@ -77,6 +78,7 @@ class TopBar extends Component<DefaultProps, Props, State> {
                         text="Save card"
                         onClick={onSave}
                         type="primary"
+                        isLoading={isLoading}
                     />
                 </EditNav>
             );
