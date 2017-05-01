@@ -1,4 +1,4 @@
-// flow-typed signature: 08e400fe4c778782a726ba7dc40d6859
+// flow-typed signature: baf4ba736c61e426a9bca0531dc8b7bc
 // flow-typed version: <<STUB>>/history_v4.5.1/flow_v0.37.4
 
 /**
@@ -22,22 +22,6 @@ declare module 'history' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'history/createBrowserHistory' {
-  declare module.exports: any;
-}
-
-declare module 'history/createHashHistory' {
-  declare module.exports: any;
-}
-
-declare module 'history/createMemoryHistory' {
-  declare module.exports: any;
-}
-
-declare module 'history/createTransitionManager' {
-  declare module.exports: any;
-}
-
 declare module 'history/DOMUtils' {
   declare module.exports: any;
 }
@@ -54,6 +38,22 @@ declare module 'history/PathUtils' {
   declare module.exports: any;
 }
 
+declare module 'history/createBrowserHistory' {
+  declare module.exports: any;
+}
+
+declare module 'history/createHashHistory' {
+  declare module.exports: any;
+}
+
+declare module 'history/createMemoryHistory' {
+  declare module.exports: any;
+}
+
+declare module 'history/createTransitionManager' {
+  declare module.exports: any;
+}
+
 declare module 'history/umd/history' {
   declare module.exports: any;
 }
@@ -63,6 +63,18 @@ declare module 'history/umd/history.min' {
 }
 
 // Filename aliases
+declare module 'history/DOMUtils.js' {
+  declare module.exports: $Exports<'history/DOMUtils'>;
+}
+declare module 'history/ExecutionEnvironment.js' {
+  declare module.exports: $Exports<'history/ExecutionEnvironment'>;
+}
+declare module 'history/LocationUtils.js' {
+  declare module.exports: $Exports<'history/LocationUtils'>;
+}
+declare module 'history/PathUtils.js' {
+  declare module.exports: $Exports<'history/PathUtils'>;
+}
 declare module 'history/createBrowserHistory.js' {
   declare module.exports: $Exports<'history/createBrowserHistory'>;
 }
@@ -75,23 +87,11 @@ declare module 'history/createMemoryHistory.js' {
 declare module 'history/createTransitionManager.js' {
   declare module.exports: $Exports<'history/createTransitionManager'>;
 }
-declare module 'history/DOMUtils.js' {
-  declare module.exports: $Exports<'history/DOMUtils'>;
-}
-declare module 'history/ExecutionEnvironment.js' {
-  declare module.exports: $Exports<'history/ExecutionEnvironment'>;
-}
 declare module 'history/index' {
   declare module.exports: $Exports<'history'>;
 }
 declare module 'history/index.js' {
   declare module.exports: $Exports<'history'>;
-}
-declare module 'history/LocationUtils.js' {
-  declare module.exports: $Exports<'history/LocationUtils'>;
-}
-declare module 'history/PathUtils.js' {
-  declare module.exports: $Exports<'history/PathUtils'>;
 }
 declare module 'history/umd/history.js' {
   declare module.exports: $Exports<'history/umd/history'>;

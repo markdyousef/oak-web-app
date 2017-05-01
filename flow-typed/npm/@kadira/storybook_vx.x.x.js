@@ -1,4 +1,4 @@
-// flow-typed signature: 026514e3133202c6f1e6ac76f2c1713a
+// flow-typed signature: e0697bb0fda10c30be8514ded3e639cb
 // flow-typed version: <<STUB>>/@kadira/storybook_v^2.35.3/flow_v0.37.4
 
 /**
@@ -94,6 +94,10 @@ declare module '@kadira/storybook/dist/server/config' {
   declare module.exports: any;
 }
 
+declare module '@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin' {
+  declare module.exports: any;
+}
+
 declare module '@kadira/storybook/dist/server/config/babel' {
   declare module.exports: any;
 }
@@ -115,10 +119,6 @@ declare module '@kadira/storybook/dist/server/config/polyfills' {
 }
 
 declare module '@kadira/storybook/dist/server/config/utils' {
-  declare module.exports: any;
-}
-
-declare module '@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin' {
   declare module.exports: any;
 }
 
@@ -213,6 +213,9 @@ declare module '@kadira/storybook/dist/server/build.js' {
 declare module '@kadira/storybook/dist/server/config.js' {
   declare module.exports: $Exports<'@kadira/storybook/dist/server/config'>;
 }
+declare module '@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin.js' {
+  declare module.exports: $Exports<'@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin'>;
+}
 declare module '@kadira/storybook/dist/server/config/babel.js' {
   declare module.exports: $Exports<'@kadira/storybook/dist/server/config/babel'>;
 }
@@ -230,9 +233,6 @@ declare module '@kadira/storybook/dist/server/config/polyfills.js' {
 }
 declare module '@kadira/storybook/dist/server/config/utils.js' {
   declare module.exports: $Exports<'@kadira/storybook/dist/server/config/utils'>;
-}
-declare module '@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin.js' {
-  declare module.exports: $Exports<'@kadira/storybook/dist/server/config/WatchMissingNodeModulesPlugin'>;
 }
 declare module '@kadira/storybook/dist/server/config/webpack.config.js' {
   declare module.exports: $Exports<'@kadira/storybook/dist/server/config/webpack.config'>;

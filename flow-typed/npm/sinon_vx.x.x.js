@@ -1,4 +1,4 @@
-// flow-typed signature: f7f935a010dd090761d1fd521d4cd5b0
+// flow-typed signature: bbd4b5bde8190fcfe71671260bd35139
 // flow-typed version: <<STUB>>/sinon_v1.17.6/flow_v0.37.4
 
 /**
@@ -74,11 +74,11 @@ declare module 'sinon/lib/sinon/stub' {
   declare module.exports: any;
 }
 
-declare module 'sinon/lib/sinon/test_case' {
+declare module 'sinon/lib/sinon/test' {
   declare module.exports: any;
 }
 
-declare module 'sinon/lib/sinon/test' {
+declare module 'sinon/lib/sinon/test_case' {
   declare module.exports: any;
 }
 
@@ -98,11 +98,11 @@ declare module 'sinon/lib/sinon/util/event' {
   declare module.exports: any;
 }
 
-declare module 'sinon/lib/sinon/util/fake_server_with_clock' {
+declare module 'sinon/lib/sinon/util/fake_server' {
   declare module.exports: any;
 }
 
-declare module 'sinon/lib/sinon/util/fake_server' {
+declare module 'sinon/lib/sinon/util/fake_server_with_clock' {
   declare module.exports: any;
 }
 
@@ -198,11 +198,11 @@ declare module 'sinon/lib/sinon/spy.js' {
 declare module 'sinon/lib/sinon/stub.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/stub'>;
 }
-declare module 'sinon/lib/sinon/test_case.js' {
-  declare module.exports: $Exports<'sinon/lib/sinon/test_case'>;
-}
 declare module 'sinon/lib/sinon/test.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/test'>;
+}
+declare module 'sinon/lib/sinon/test_case.js' {
+  declare module.exports: $Exports<'sinon/lib/sinon/test_case'>;
 }
 declare module 'sinon/lib/sinon/times_in_words.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/times_in_words'>;
@@ -216,11 +216,11 @@ declare module 'sinon/lib/sinon/util/core.js' {
 declare module 'sinon/lib/sinon/util/event.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/util/event'>;
 }
-declare module 'sinon/lib/sinon/util/fake_server_with_clock.js' {
-  declare module.exports: $Exports<'sinon/lib/sinon/util/fake_server_with_clock'>;
-}
 declare module 'sinon/lib/sinon/util/fake_server.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/util/fake_server'>;
+}
+declare module 'sinon/lib/sinon/util/fake_server_with_clock.js' {
+  declare module.exports: $Exports<'sinon/lib/sinon/util/fake_server_with_clock'>;
 }
 declare module 'sinon/lib/sinon/util/fake_timers.js' {
   declare module.exports: $Exports<'sinon/lib/sinon/util/fake_timers'>;

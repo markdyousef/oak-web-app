@@ -1,4 +1,4 @@
-// flow-typed signature: 974a529062530f35fa4a84bc2c6bd7f3
+// flow-typed signature: d873fa1a58565372f01e65018fbc6900
 // flow-typed version: <<STUB>>/eslint-plugin-import_v2.2.0/flow_v0.37.4
 
 /**
@@ -50,15 +50,15 @@ declare module 'eslint-plugin-import/config/warnings' {
   declare module.exports: any;
 }
 
+declare module 'eslint-plugin-import/lib/ExportMap' {
+  declare module.exports: any;
+}
+
 declare module 'eslint-plugin-import/lib/core/importType' {
   declare module.exports: any;
 }
 
 declare module 'eslint-plugin-import/lib/core/staticRequire' {
-  declare module.exports: any;
-}
-
-declare module 'eslint-plugin-import/lib/ExportMap' {
   declare module.exports: any;
 }
 
@@ -216,14 +216,14 @@ declare module 'eslint-plugin-import/config/stage-0.js' {
 declare module 'eslint-plugin-import/config/warnings.js' {
   declare module.exports: $Exports<'eslint-plugin-import/config/warnings'>;
 }
+declare module 'eslint-plugin-import/lib/ExportMap.js' {
+  declare module.exports: $Exports<'eslint-plugin-import/lib/ExportMap'>;
+}
 declare module 'eslint-plugin-import/lib/core/importType.js' {
   declare module.exports: $Exports<'eslint-plugin-import/lib/core/importType'>;
 }
 declare module 'eslint-plugin-import/lib/core/staticRequire.js' {
   declare module.exports: $Exports<'eslint-plugin-import/lib/core/staticRequire'>;
-}
-declare module 'eslint-plugin-import/lib/ExportMap.js' {
-  declare module.exports: $Exports<'eslint-plugin-import/lib/ExportMap'>;
 }
 declare module 'eslint-plugin-import/lib/importDeclaration.js' {
   declare module.exports: $Exports<'eslint-plugin-import/lib/importDeclaration'>;

@@ -1,4 +1,4 @@
-// flow-typed signature: 091185c6accb37c1a6061ea308cc998c
+// flow-typed signature: 54b2e3a11d2516d12d9dd616ff3bc398
 // flow-typed version: <<STUB>>/style-loader_v0.13.1/flow_v0.37.4
 
 /**
@@ -22,11 +22,11 @@ declare module 'style-loader' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'style-loader/addStyles' {
+declare module 'style-loader/addStyleUrl' {
   declare module.exports: any;
 }
 
-declare module 'style-loader/addStyleUrl' {
+declare module 'style-loader/addStyles' {
   declare module.exports: any;
 }
 
@@ -39,11 +39,11 @@ declare module 'style-loader/useable' {
 }
 
 // Filename aliases
-declare module 'style-loader/addStyles.js' {
-  declare module.exports: $Exports<'style-loader/addStyles'>;
-}
 declare module 'style-loader/addStyleUrl.js' {
   declare module.exports: $Exports<'style-loader/addStyleUrl'>;
+}
+declare module 'style-loader/addStyles.js' {
+  declare module.exports: $Exports<'style-loader/addStyles'>;
 }
 declare module 'style-loader/index' {
   declare module.exports: $Exports<'style-loader'>;
