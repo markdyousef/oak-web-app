@@ -222,7 +222,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
             return (
                 <DropdownContainer>
                     <Dropdown>
-                        <Menu>
+                        <Menu onClose={() => this.setState({ showEdit: false })}>
                             <MenuItem
                                 onClick={() => this.setState({
                                     showDetail: true,

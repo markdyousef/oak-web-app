@@ -1,5 +1,6 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const Arrow = styled.div`
@@ -31,37 +32,59 @@ const Menu = styled.div`
     }
 `;
 
-const Dropdown = ({ children, arrowPos }:Object) => {
-    let style;
-    switch (arrowPos) {
-    case 'left':
-        style = { left: '25px' };
-        break;
-    case 'none':
-        style = { display: 'none' };
-        break;
-    default:
-        style = { right: '25px' };
-        break;
+type DefaultProps = {}
+
+type Props = {
+    children?: Object,
+    arrowPos?: string,
+    onClose?: () => void
+}
+
+type State = {}
+
+export default class Dropdown extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps;
+    state: State;
+    node: Object
+    constructor(props: Props) {
+        super(props);
+        this.state = {};
     }
-    return (
-        <div>
-            <Arrow style={style} />
-            <Menu>
-                {children}
-            </Menu>
-        </div>
-    );
-};
+    componentDidMount() {
+        document.addEventListener('click', this.handleClickEvent, true)
+    }
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickEvent, true)
+    }
+    handleClickEvent = (event: Event) => {
+        const { onClose } = this.props;
+        const domNode = ReactDOM.findDOMNode(this);
 
-Dropdown.propTypes = {
-    children: PropTypes.node,
-    arrowPos: PropTypes.string
-};
-
-Dropdown.defaultProps = {
-    children: null,
-    arrowPos: null
-};
-
-export default Dropdown;
+        if (!domNode || !domNode.contains(event.target)) {
+            if (onClose) onClose();
+        }
+    }
+    render() {
+        const { children, arrowPos } = this.props;
+        let style;
+        switch (arrowPos) {
+        case 'left':
+            style = { left: '25px' };
+            break;
+        case 'none':
+            style = { display: 'none' };
+            break;
+        default:
+            style = { right: '25px' };
+            break;
+        }
+        return (
+            <div>
+                <Arrow style={style} />
+                <Menu>
+                    {children}
+                </Menu>
+            </div>
+        );
+    }
+}

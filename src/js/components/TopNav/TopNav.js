@@ -53,7 +53,6 @@ const Dropdown = styled.div`
 
 const Logout = styled.div`
     width: 100%;
-    border-top: 1px solid #efefef;
     cursor: pointer;
     padding-top: 5px;
     margin-top: 10px;
@@ -107,11 +106,18 @@ class TopNav extends Component<DefaultProps, Props, State> {
             })
             .catch(err => console.log(err));
     }
+    onClose = (close: bool = false) => {
+        this.setState({ isOpen: close });
+    }
+    toSettings = () => {
+        const { router } = this.props;
+        this.onClose();
+        router.push('/my-settings');
+    }
     render() {
-        const { team, data: { me } } = this.props;
+        const { data: { me } } = this.props;
         const { isOpen } = this.state;
         // differ between routes inside team and outside
-        const settingsRoute = (team) ? '/my-settings' : 'settings';
         // const profileRoute = (team) ? '/my-profile' : 'profile';
         let picture;
         // prefer avatar over gravatar
@@ -124,19 +130,14 @@ class TopNav extends Component<DefaultProps, Props, State> {
                     {/* TODO: Search */}
                 </NavLeft>
                 <NavRight>
-                    <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
+                    <Profile onClick={() => this.onClose(!isOpen)}>
                         <Avatar img={picture} />
                     </Profile>
                 </NavRight>
                 {isOpen &&
                     <Dropdown>
-                        <Menu>
-                            {/* <Link to={profileRoute}>
-                                Profile
-                            </Link> */}
-                            <Link to={settingsRoute}>
-                                Settings
-                            </Link>
+                        <Menu onClose={this.onClose}>
+                            <Logout onClick={this.toSettings}>Settings</Logout>
                             <Logout onClick={this.signOut}>Logout</Logout>
                         </Menu>
                     </Dropdown>

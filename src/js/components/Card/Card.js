@@ -138,7 +138,10 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         <DotsIcon />
                         {showOptions &&
                             <Settings>
-                                <Dropdown arrowPos="left">
+                                <Dropdown
+                                    arrowPos="left"
+                                    onClose={() => this.setState({ showOptions: false })}
+                                >
                                     <Icon onClick={onRemove}>Delete</Icon>
                                 </Dropdown>
                             </Settings>
