@@ -19,7 +19,7 @@ type State = {
     failedComment: Object,
 };
 
-type Action = {
+export type Action = {
     type?: string,
     data?: Object
 };
@@ -38,7 +38,7 @@ export default(state:State = initialState, action: Action):State => {
     case types.COMMENTS_STATE: {
         if (action.data && action.data.field) {
             const { data: { field } } = action;
-            return state.set(field.key, field.value);
+            return state.set(field.key, fromJS(field.value));
         }
         return state;
     }

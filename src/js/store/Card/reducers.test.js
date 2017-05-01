@@ -1,15 +1,14 @@
 // @flow
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 import reducer from './reducers';
 import * as types from '../constants/ActionTypes';
 
 const initialState = Map({
-    comments: List([]),
-    failedComment: Map({}),
-    message: null,
-    showComments: false,
     isLoading: false,
-    creator: null
+    shouldUpdate: false,
+    cardId: null,
+    collectionId: null,
+    message: null
 });
 
 describe('comments reducer', () => {
@@ -19,7 +18,7 @@ describe('comments reducer', () => {
     });
     it('should set field an return new state', () => {
         const action = {
-            type: types.COMMENTS_STATE,
+            type: types.CARD_STATE,
             data: {
                 field: {
                     key: 'isLoading',

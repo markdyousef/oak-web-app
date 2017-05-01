@@ -1,5 +1,5 @@
 // @flow
-import * as type from 'immutable';
+import * as types from '../constants/ActionTypes';
 import type { Action } from './reducers';
 
 type Field = {
@@ -9,9 +9,9 @@ type Field = {
 
 export const setState = (field: Field): Action => (
     {
-        type: type.COMMENT_STATE,
+        type: types.COMMENTS_STATE,
         data: {
             payload: field
         }
     }
-)
+);
