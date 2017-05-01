@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import withLayer from '../Layer';
 
 const Arrow = styled.div`
     height: 14px;
@@ -32,59 +33,32 @@ const Menu = styled.div`
     }
 `;
 
-type DefaultProps = {}
-
 type Props = {
     children?: Object,
     arrowPos?: string,
     onClose?: () => void
 }
 
-type State = {}
 
-export default class Dropdown extends Component<DefaultProps, Props, State> {
-    static defaultProps: DefaultProps;
-    state: State;
-    node: Object
-    constructor(props: Props) {
-        super(props);
-        this.state = {};
+export default withLayer(({ children, arrowPos }: Props) => {
+    let style;
+    switch (arrowPos) {
+    case 'left':
+        style = { left: '25px' };
+        break;
+    case 'none':
+        style = { display: 'none' };
+        break;
+    default:
+        style = { right: '25px' };
+        break;
     }
-    componentDidMount() {
-        document.addEventListener('click', this.handleClickEvent, true)
-    }
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickEvent, true)
-    }
-    handleClickEvent = (event: Event) => {
-        const { onClose } = this.props;
-        const domNode = ReactDOM.findDOMNode(this);
-
-        if (!domNode || !domNode.contains(event.target)) {
-            if (onClose) onClose();
-        }
-    }
-    render() {
-        const { children, arrowPos } = this.props;
-        let style;
-        switch (arrowPos) {
-        case 'left':
-            style = { left: '25px' };
-            break;
-        case 'none':
-            style = { display: 'none' };
-            break;
-        default:
-            style = { right: '25px' };
-            break;
-        }
-        return (
-            <div>
-                <Arrow style={style} />
-                <Menu>
-                    {children}
-                </Menu>
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <Arrow style={style} />
+            <Menu>
+                {children}
+            </Menu>
+        </div>
+    );
+})
