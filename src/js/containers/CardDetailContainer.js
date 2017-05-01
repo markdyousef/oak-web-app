@@ -10,6 +10,7 @@ const getCard = gql`
             name
             username
             avatar {
+                id
                 urlThumb64
             }
             gravatar
@@ -28,6 +29,7 @@ const getCard = gql`
                     name
                     username
                     avatar {
+                        id
                         urlThumb64
                     }
                     gravatar
@@ -78,6 +80,7 @@ const createComment = gql`
                 name
                 username
                 avatar {
+                    id
                     urlThumb64
                 }
                 gravatar

@@ -12,7 +12,6 @@ ShallowWrapper {
         <span>
             Sort by
         </span>
-        date
     </styled.div>
 </styled.div>,
   "nodes": Array [
@@ -22,7 +21,6 @@ ShallowWrapper {
             <span>
                   Sort by
             </span>
-            date
       </styled.div>
 </styled.div>,
   ],
@@ -32,21 +30,17 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Toolbar
-        active="date"
-        onSelect={[Function]} />,
+      "_currentElement": <Toolbar />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": Toolbar {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "active": "date",
-          "onSelect": [Function],
-        },
+        "props": Object {},
         "refs": Object {},
-        "renderMenuItems": [Function],
+        "renderFilterItems": [Function],
+        "renderSortItems": [Function],
         "state": Object {
           "isOpen": false,
         },
@@ -74,7 +68,6 @@ ShallowWrapper {
                     <span>
                               Sort by
                     </span>
-                    date
           </styled.div>
 </styled.div>,
         "_debugID": 2,
@@ -84,7 +77,6 @@ ShallowWrapper {
                     <span>
                               Sort by
                     </span>
-                    date
           </styled.div>
 </styled.div>,
       },
@@ -98,8 +90,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Toolbar
-    active="date"
-    onSelect={[Function]} />,
+  "unrendered": <Toolbar />,
 }
 `;

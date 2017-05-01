@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Dropdown from '../shared/Dropdown';
 import colors from '../../styles/colors';
+import { Chip as Label } from '../shared/Label';
 
 const Container = styled.div`
     width: 100%;
@@ -40,26 +41,36 @@ const MenuItem = styled.div`
     font-weight: ${props => props.active ? 'bolder' : 'normal'}
 `;
 
+const LabelContainer = styled.div`
+    max-height: 150px;
+    overflow: auto;
+`;
+
+
+type DefaultProps = {};
+type Props = {
+    active: string,
+    onSort: () => void,
+    labels: Array<Object>,
+    filters: Array<string>,
+    onFilter: (key:string) => void
+};
+type State = {
+    isOpen: bool
+};
+
 export default class Toolbar extends Component {
-    state: {
-        isOpen: boolean
-    }
-    props: {
-        active: ?string,
-        // onSelect: void
-    }
-    static defaultProps = {
-        active: 'date',
-        onSelect: () => {}
-    }
+    static defaultProps: DefaultProps;
+    props: Props;
+    state: State;
     constructor() {
         super();
         this.state = {
             isOpen: false
         };
     }
-    renderMenuItems = () => {
-        const { active, onSelect } = this.props;
+    renderSortItems = () => {
+        const { active, onSort } = this.props;
         const sortItems = [
             { name: 'date' },
             { name: 'likes' },
@@ -71,13 +82,32 @@ export default class Toolbar extends Component {
                 key={item.name}
                 active={item.name === active}
                 onClick={() => {
-                    onSelect(item.name);
+                    onSort(item.name);
                     this.setState({ isOpen: false });
                 }}
             >
                 {item.name}
             </MenuItem>
         ));
+    }
+    renderFilterItems = () => {
+        const { labels, filters, onFilter } = this.props;
+        return (
+            <LabelContainer>
+                {labels.map((label) => {
+                    const isActive = filters.indexOf(label.id) > -1;
+                    return (
+                        <Label
+                            key={label.id}
+                            onClick={() => onFilter(label.id)}
+                            style={{ backgroundColor: label.color }}
+                            name={label.name}
+                            isActive={isActive}
+                        />
+                    );
+                })}
+            </LabelContainer>
+        );
     }
     render() {
         const { isOpen } = this.state;
@@ -91,7 +121,8 @@ export default class Toolbar extends Component {
                 {isOpen &&
                     <DropdownContainer>
                         <Dropdown arrowPos="none">
-                            {this.renderMenuItems()}
+                            {this.renderSortItems()}
+                            {this.renderFilterItems()}
                         </Dropdown>
                     </DropdownContainer>
                 }

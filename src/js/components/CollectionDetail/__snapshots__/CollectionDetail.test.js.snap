@@ -38,7 +38,10 @@ ShallowWrapper {
     </styled.section>
     <Toolbar
         active="date"
-        onSelect={[Function]} />
+        filters={Array []}
+        labels={Array []}
+        onFilter={[Function]}
+        onSort={[Function]} />
     <div
         style={
             Object {
@@ -81,7 +84,10 @@ ShallowWrapper {
       </styled.section>
       <Toolbar
             active="date"
-            onSelect={[Function]} />
+            filters={Array []}
+            labels={Array []}
+            onFilter={[Function]}
+            onSort={[Function]} />
       <div
             style={
                   Object {
@@ -117,6 +123,7 @@ ShallowWrapper {
         "addCard": [Function],
         "context": Object {},
         "handleLike": [Function],
+        "onFilter": [Function],
         "onSortCards": [Function],
         "props": Object {
           "data": Object {
@@ -135,6 +142,8 @@ ShallowWrapper {
         "showDialog": [Function],
         "state": Object {
           "cards": Array [],
+          "filterVals": Array [],
+          "labels": Array [],
           "showEdit": false,
           "sortKey": "date",
         },
@@ -188,7 +197,10 @@ ShallowWrapper {
           </styled.section>
           <Toolbar
                     active="date"
-                    onSelect={[Function]} />
+                    filters={Array []}
+                    labels={Array []}
+                    onFilter={[Function]}
+                    onSort={[Function]} />
           <div
                     style={
                               Object {
@@ -231,7 +243,10 @@ ShallowWrapper {
           </styled.section>
           <Toolbar
                     active="date"
-                    onSelect={[Function]} />
+                    filters={Array []}
+                    labels={Array []}
+                    onFilter={[Function]}
+                    onSort={[Function]} />
           <div
                     style={
                               Object {

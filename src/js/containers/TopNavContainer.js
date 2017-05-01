@@ -7,6 +7,7 @@ const getUser = gql`
         me {
             id
             avatar {
+                id
                 urlThumb64
             }
             gravatar

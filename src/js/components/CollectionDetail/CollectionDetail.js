@@ -40,7 +40,8 @@ type Data = {
         name: string,
         description: ?string,
         cover: ?Object,
-        stats: ?Object
+        stats: ?Object,
+        labels: ?Array<Object>
     },
     seeds?: Array<Seed>
 }
@@ -60,7 +61,9 @@ type Props = {
 type State = {
     showEdit: bool,
     cards: Array<Seed>,
-    sortKey: string
+    sortKey: string,
+    labels: Array<Object>,
+    filterVals: Array<string>
 };
 
 class CollectionDetail extends Component<DefaultProps, Props, State> {
@@ -72,21 +75,50 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         this.state = {
             showEdit: false,
             cards: [],
-            sortKey: 'date'
+            sortKey: 'date',
+            labels: [],
+            filterVals: []
         };
     }
     componentWillReceiveProps(nextProps:Props) {
-        const { data } = nextProps;
-        const { sortKey } = this.state;
+        const { data: { loading, seeds, grove } } = nextProps;
 
-        if (data.loading) return;
+        if (loading) return;
 
-        if (data.seeds) {
-            this.setState({ cards: data.seeds });
+        if (seeds) {
+            this.setState({ cards: seeds, sortKey: 'date' });
         }
-        if (sortKey !== 'date') {
-            this.onSortCards(sortKey, data.seeds);
+        if (grove && grove.labels) {
+            this.setState({ labels: grove.labels });
         }
+    }
+    onFilter = (key:string) => {
+        const { filterVals, cards } = this.state;
+        const { seeds } = this.props.data;
+        let newFilters = filterVals;
+        const active = filterVals.indexOf(key);
+        if (active > -1) {
+            newFilters = filterVals.filter(id => id !== key);
+        } else {
+            newFilters.push(key);
+        }
+        let filteredCards = seeds;
+        if (newFilters.length > 0) {
+            filteredCards = cards
+                .filter((card) => {
+                    if (card.labels) {
+                        const hasLabel = card.labels.findIndex(label => label.id === key) > -1;
+                        if (hasLabel) return card;
+                    }
+                    return null;
+                })
+                .filter(Boolean);
+        }
+
+        this.setState({
+            filterVals: newFilters,
+            cards: filteredCards
+        });
     }
     onSortCards = (key: string, items?: Array<Object>) => {
         const { data: { seeds } } = this.props;
@@ -213,7 +245,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         );
     }
     render() {
-        const { sortKey } = this.state;
+        const { sortKey, labels, filterVals } = this.state;
         return (
             <Container>
                 <Header>
@@ -231,7 +263,13 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                         {this.showDialog()}
                     </ButtonGroup>
                 </Header>
-                <CollectionToolbar onSelect={this.onSortCards} active={sortKey} />
+                <CollectionToolbar
+                    onSort={this.onSortCards}
+                    onFilter={this.onFilter}
+                    active={sortKey}
+                    labels={labels}
+                    filters={filterVals}
+                />
                 {this.renderCards()}
             </Container>
         );

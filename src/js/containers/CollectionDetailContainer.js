@@ -15,6 +15,11 @@ const getCollection = gql`
             id
             name
             description
+            labels {
+                id
+                name
+                color
+            }
             cover {
                 id
                 urlThumb512
@@ -35,6 +40,7 @@ const getCollection = gql`
                 name
                 username
                 avatar {
+                    id
                     urlThumb64
                 }
                 gravatar

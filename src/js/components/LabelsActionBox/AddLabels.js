@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import CheckIcon from '../../icons/checkmark';
+import { Chip as Label } from '../shared/Label'
 
 const Section = styled.section`
     margin: 20px 0;
@@ -29,26 +29,6 @@ const AddButton = styled.button`
     font-weight: bold;
 `;
 
-const Label = styled.div`
-    width: 100%;
-    height: 30px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 1px;
-    font-size: 14px;
-    color: #fff;
-    word-wrap: break-word;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-top: 5px;
-    cursor: pointer;
-    & svg {
-        fill: ${colors.white}
-    }
-`;
-
 type Props = {
     cardLabels: Array<string>,
     collectionLabels: Array<Object>,
@@ -72,10 +52,9 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) =
                                     key={label.index + label.name}
                                     onClick={() => onSelect(label.id)}
                                     style={{ backgroundColor: label.color }}
-                                >
-                                    {label.name}
-                                    {isActive && <CheckIcon />}
-                                </Label>
+                                    name={label.name}
+                                    isActive={isActive}
+                                />
                             );
                         })}
                     </LabelsSection>
