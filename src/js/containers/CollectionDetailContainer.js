@@ -1,7 +1,9 @@
 // @flow
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
+import { connect } from 'react-redux';
 import CollectionDetail from '../components/CollectionDetail';
+import { collections } from '../store/actions';
 
 const getCollection = gql`
     query collection($groveId: ID!) {
@@ -77,6 +79,19 @@ const unlikeSeed = gql`
     }
 `;
 
+const removeGrove = gql`
+    mutation removeGrove($id: ID!) {
+        removeGrove(id: $id)
+    }
+`;
+
+const mapDispatchToProps = (dispatch: Function) => (
+    {
+        setUpdate: (shouldUpdate: bool) =>
+            dispatch(collections.setUpdate(shouldUpdate))
+    }
+);
+
 export default compose(
     graphql(getCollection, {
         name: 'data',
@@ -96,5 +111,11 @@ export default compose(
         props: ({ mutate }) => ({
             unlikeCard: (id:String) => mutate({ variables: { id } })
         })
-    })
+    }),
+    graphql(removeGrove, {
+        props: ({ mutate }) => ({
+            remove: id => mutate({ variables: { id } })
+        })
+    }),
+    connect(null, mapDispatchToProps)
 )(CollectionDetail);

@@ -93,3 +93,21 @@ export const Loading = styled.div`
     width: 100%;
     border-radius: 3px;
 `;
+
+export const DropdownContainer = styled.div`
+    position: relative;
+`;
+
+export const Dropdown = styled.div`
+    top: 10px;
+    right: 0;
+    width: 160px;
+    position: absolute;
+    z-index: 99999;
+    font-size: 14px;
+`;
+
+export const MenuItem = styled.div`
+    margin-top: 10px;
+    cursor: pointer;
+`;
