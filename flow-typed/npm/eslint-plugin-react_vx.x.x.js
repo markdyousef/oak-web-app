@@ -1,4 +1,4 @@
-// flow-typed signature: f924816d588a7c48016a3d4d83b26c94
+// flow-typed signature: aafd1338713595cc6a1d46df705d3f3c
 // flow-typed version: <<STUB>>/eslint-plugin-react_v6.9.0/flow_v0.37.4
 
 /**
@@ -254,11 +254,11 @@ declare module 'eslint-plugin-react/lib/rules/wrap-multilines' {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-react/lib/util/annotations' {
+declare module 'eslint-plugin-react/lib/util/Components' {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-react/lib/util/Components' {
+declare module 'eslint-plugin-react/lib/util/annotations' {
   declare module.exports: any;
 }
 
@@ -459,11 +459,11 @@ declare module 'eslint-plugin-react/lib/rules/style-prop-object.js' {
 declare module 'eslint-plugin-react/lib/rules/wrap-multilines.js' {
   declare module.exports: $Exports<'eslint-plugin-react/lib/rules/wrap-multilines'>;
 }
-declare module 'eslint-plugin-react/lib/util/annotations.js' {
-  declare module.exports: $Exports<'eslint-plugin-react/lib/util/annotations'>;
-}
 declare module 'eslint-plugin-react/lib/util/Components.js' {
   declare module.exports: $Exports<'eslint-plugin-react/lib/util/Components'>;
+}
+declare module 'eslint-plugin-react/lib/util/annotations.js' {
+  declare module.exports: $Exports<'eslint-plugin-react/lib/util/annotations'>;
 }
 declare module 'eslint-plugin-react/lib/util/getTokenBeforeClosingBracket.js' {
   declare module.exports: $Exports<'eslint-plugin-react/lib/util/getTokenBeforeClosingBracket'>;

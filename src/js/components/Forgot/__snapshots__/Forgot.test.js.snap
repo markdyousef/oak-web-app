@@ -9,7 +9,7 @@ exports[`test renders correctly 1`] = `
     <div>
       <div>
         <h5
-          className="invXpW">
+          className="dRMKoo">
           EMAIL
         </h5>
         <input

@@ -7,6 +7,7 @@ import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
+import Menu from '../shared/Dropdown';
 
 import {
     Container,
@@ -16,7 +17,10 @@ import {
     ButtonGroup,
     Grid,
     masonStyles,
-    Loading
+    Loading,
+    DropdownContainer,
+    Dropdown,
+    MenuItem
 } from './styles';
 
 type Seed = {
@@ -51,15 +55,19 @@ type Props = {
         collectionId: string
     },
     router: {
-        push: Function
+        push: Function,
+        replace: Function
     },
     data: Data,
+    remove: Function,
     removeCard: Function,
     likeCard: Function,
-    unlikeCard: Function
+    unlikeCard: Function,
+    setUpdate: (update: bool) => void
 };
 type State = {
     showEdit: bool,
+    showDetail: bool,
     cards: Array<Seed>,
     sortKey: string,
     labels: Array<Object>,
@@ -74,6 +82,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         super();
         this.state = {
             showEdit: false,
+            showDetail: false,
             cards: [],
             sortKey: 'date',
             labels: [],
@@ -158,21 +167,32 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 .catch((err) => { throw err; });
         }
     }
+    onDelete = () => {
+        const { data: { grove }, remove, router, setUpdate } = this.props;
+        if (grove && grove.id) {
+            remove(grove.id)
+                .then(() => {
+                    setUpdate(true);
+                    router.replace('/');
+                })
+                .catch(err => console.log(err));
+        }
+    }
     addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
-        const { showEdit } = this.state;
+        const { showDetail } = this.state;
         const { data, router } = this.props;
 
         if (data.loading || !data.grove) return null;
         const { grove } = data;
         const cover = (grove.cover && grove.cover.urlThumb512) ? grove.cover : {};
 
-        if (showEdit) {
+        if (showDetail) {
             return (
                 <CollectionDialog
                     close={() => {
                         data.refetch();
-                        this.setState({ showEdit: false });
+                        this.setState({ showDetail: false });
                     }}
                     name={data.grove.name}
                     description={data.grove.description}
@@ -182,6 +202,34 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                     picture={cover.urlThumb512}
                     pictureId={cover.id}
                 />
+            );
+        }
+        return null;
+    }
+    showEdit = () => {
+        const { showEdit } = this.state;
+
+        if (showEdit) {
+            return (
+                <DropdownContainer>
+                    <Dropdown>
+                        <Menu>
+                            <MenuItem
+                                onClick={() => this.setState({
+                                    showDetail: true,
+                                    showEdit: false
+                                })}
+                            >
+                                Update Collection
+                            </MenuItem>
+                            <MenuItem
+                                onClick={this.onDelete}
+                            >
+                                Delete Collection
+                            </MenuItem>
+                        </Menu>
+                    </Dropdown>
+                </DropdownContainer>
             );
         }
         return null;
@@ -202,7 +250,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                             const isLiked = me.likedSeeds && me.likedSeeds.findIndex(card => card.id === item.id) > -1;
                             let content;
                             try {
-                                content = JSON.parse(item.content)
+                                content = JSON.parse(item.content);
                             } catch (e) {
                                 content = null;
                             }
@@ -261,6 +309,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                             text="Edit Collection"
                         />
                         {this.showDialog()}
+                        {this.showEdit()}
                     </ButtonGroup>
                 </Header>
                 <CollectionToolbar
