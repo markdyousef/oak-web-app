@@ -63,7 +63,8 @@ type Props = {
     removeCard: Function,
     likeCard: Function,
     unlikeCard: Function,
-    setUpdate: (update: bool) => void
+    setUpdate: (type: string, update: bool) => void,
+    shouldUpdate: bool
 };
 type State = {
     showEdit: bool,
@@ -90,7 +91,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         };
     }
     componentWillReceiveProps(nextProps:Props) {
-        const { data: { loading, seeds, grove } } = nextProps;
+        const {
+            shouldUpdate,
+            setUpdate,
+            data: { loading, seeds, grove, refetch }
+        } = nextProps;
+        console.log(shouldUpdate);
+        if (shouldUpdate) {
+            refetch();
+            setUpdate('card', false);
+        }
 
         if (loading) return;
 
@@ -172,7 +182,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         if (grove && grove.id) {
             remove(grove.id)
                 .then(() => {
-                    setUpdate(true);
+                    setUpdate('collections', true);
                     router.replace('/');
                 })
                 .catch(err => console.log(err));

@@ -30,7 +30,8 @@ type Props = {
     params: Object,
     data?: Data,
     router: Object,
-    createComment: Function
+    createComment: Function,
+    setUpdate: (update: bool) => void
 }
 
 type State = {
@@ -117,7 +118,7 @@ export default (CardDetail:Function) => {
             }
             onSave = () => {
                 const { cardId, collectionId, editorState, name, images } = this.state;
-                const { create, update, data } = this.props;
+                const { create, update, data, setUpdate } = this.props;
                 const newEditorState = changeUrls(editorState, images);
                 const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
@@ -128,6 +129,7 @@ export default (CardDetail:Function) => {
                     .then(() => {
                         if (data) data.refetch();
                         this.setState({ isLoading: false, message: null });
+                        setUpdate(true);
                     })
                     .catch(() => {
                         const message = {
@@ -142,6 +144,7 @@ export default (CardDetail:Function) => {
                         .then(() => {
                             this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
+                            setUpdate(true);
                         })
                         .catch(() => {
                             const message = {

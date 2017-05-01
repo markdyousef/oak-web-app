@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 import CollectionDetail from '../components/CollectionDetail';
-import { collections } from '../store/actions';
+import { collections, card } from '../store/actions';
 
 const getCollection = gql`
     query collection($groveId: ID!) {
@@ -85,10 +85,22 @@ const removeGrove = gql`
     }
 `;
 
+const mapStateToProps = (state:Object) => (
+    {
+        shouldUpdate: state.card.get('shouldUpdate')
+    }
+);
+
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        setUpdate: (shouldUpdate: bool) =>
-            dispatch(collections.setUpdate(shouldUpdate))
+        setUpdate: (type: 'card' | 'collection', shouldUpdate:bool) => {
+            if (type === 'collection') {
+                dispatch(collections.setUpdate(shouldUpdate));
+            }
+            if (type === 'card') {
+                dispatch(card.setUpdate(shouldUpdate));
+            }
+        }
     }
 );
 
@@ -117,5 +129,5 @@ export default compose(
             remove: id => mutate({ variables: { id } })
         })
     }),
-    connect(null, mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(CollectionDetail);
