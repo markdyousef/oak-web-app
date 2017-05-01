@@ -123,6 +123,7 @@ ShallowWrapper {
         "addCard": [Function],
         "context": Object {},
         "handleLike": [Function],
+        "onDelete": [Function],
         "onFilter": [Function],
         "onSortCards": [Function],
         "props": Object {
@@ -140,10 +141,12 @@ ShallowWrapper {
         "renderCards": [Function],
         "renderInfo": [Function],
         "showDialog": [Function],
+        "showEdit": [Function],
         "state": Object {
           "cards": Array [],
           "filterVals": Array [],
           "labels": Array [],
+          "showDetail": false,
           "showEdit": false,
           "sortKey": "date",
         },
