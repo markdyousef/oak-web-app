@@ -65,7 +65,7 @@ const LinkWrapper = styled.div`
 const SubLink = styled(StyledLink)`
     margin: 14px;
     padding-left: 35px !important;
-    width: 100%;
+    /*width: 100%;*/
 `;
 
 export const Loading = styled.div`
