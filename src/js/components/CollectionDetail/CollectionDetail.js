@@ -96,7 +96,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
             setUpdate,
             data: { loading, seeds, grove, refetch }
         } = nextProps;
-        console.log(shouldUpdate);
         if (shouldUpdate) {
             refetch();
             setUpdate('card', false);
@@ -303,7 +302,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         );
     }
     render() {
-        const { sortKey, labels, filterVals } = this.state;
+        const { sortKey, labels, filterVals, showEdit } = this.state;
         return (
             <Container>
                 <Header>
@@ -315,7 +314,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                             type="primary"
                         />
                         <SquareButton
-                            onClick={() => this.setState({ showEdit: true })}
+                            onClick={() => this.setState({ showEdit: !showEdit })}
                             text="Edit Collection"
                         />
                         {this.showDialog()}
