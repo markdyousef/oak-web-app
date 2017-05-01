@@ -55,7 +55,9 @@ export const Labels = styled.div`
     height: 20px;
     width: 50%;
     overflow: hidden;
-    ${''/* display: flex; */}
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-end;
 `;
 
 export const Label = styled.div`
