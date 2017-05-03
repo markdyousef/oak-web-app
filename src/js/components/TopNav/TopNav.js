@@ -1,62 +1,23 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import styled from 'styled-components';
-import colors from '../../styles/colors';
 import Avatar from '../shared/Avatar';
 import Menu from '../shared/Dropdown';
 import { signOut } from '../../utils';
-
-const Container = styled.nav`
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
-    border-bottom: 1px solid ${colors.lightGrey};
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    flex-shrink: 0;
-`;
-
-const Profile = styled.button`
-    height: 32px;
-    width: 32px;
-    border-radius: 999em;
-    border: 1px solid #E5E5E5;
-    margin-left: 5px;
-    padding: 0;
-`;
-
-const NavRight = styled.div`
-    height: 100%;
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    padding-right: 20px;
-`;
-
-const NavLeft = styled.div`
-    margin-left: 20px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 100px;
-`;
-
-const Dropdown = styled.div`
-    top: 60px;
-    right: 5px;
-    position: absolute;
-    width: 200px;
-    z-index: 99;
-`;
-
-const Logout = styled.div`
-    width: 100%;
-    cursor: pointer;
-    padding-top: 5px;
-    margin-top: 10px;
-`;
+import logo from '../../../img/cuest-logo.png';
+import CollectionIcon from '../../icons/collections';
+import {
+    Container,
+    Profile,
+    NavRight,
+    NavLeft,
+    NavCenter,
+    Dropdown,
+    Collections,
+    Item,
+    ItemTitle,
+    All,
+    Add
+} from './styles';
 
 type DefaultProps = {
     team: null,
@@ -79,7 +40,8 @@ type Props = {
     }
 };
 type State = {
-    isOpen: bool
+    showSettings: bool,
+    showCollections: bool
 };
 
 
@@ -91,7 +53,8 @@ class TopNav extends Component<DefaultProps, Props, State> {
     constructor() {
         super();
         this.state = {
-            isOpen: false,
+            showSettings: false,
+            showCollections: false,
             picture: IMG
         };
     }
@@ -106,17 +69,21 @@ class TopNav extends Component<DefaultProps, Props, State> {
             })
             .catch(err => console.log(err));
     }
-    onClose = (close: bool = false) => {
-        this.setState({ isOpen: close });
+    onShow = (close: bool = false, menu?: string) => {
+        if (menu === 'collections') {
+            this.setState({ showCollections: close });
+            return;
+        }
+        this.setState({ showSettings: close });
     }
     toSettings = () => {
         const { router } = this.props;
-        this.onClose();
+        this.onShow();
         router.push('/my-settings');
     }
     render() {
-        const { data: { me } } = this.props;
-        const { isOpen } = this.state;
+        const { data: { me }, router } = this.props;
+        const { showSettings, showCollections } = this.state;
         // differ between routes inside team and outside
         // const profileRoute = (team) ? '/my-profile' : 'profile';
         let picture;
@@ -127,21 +94,42 @@ class TopNav extends Component<DefaultProps, Props, State> {
         return (
             <Container>
                 <NavLeft>
-                    {/* TODO: Search */}
+                    <CollectionIcon />
+                    <Collections onClick={() => this.onShow(!showCollections, 'collections')}>
+                        Collections
+                    </Collections>
+                    {showCollections &&
+                        <Dropdown style={{ left: '5px' }}>
+                            <Menu onClose={() => this.onShow(false, 'collections')} arrowPos="left">
+                                <ItemTitle>YOUR TOP COLLECTIONS</ItemTitle>
+                                <Item>Collection</Item>
+                                <Item>Collection</Item>
+                                <Item>Collection</Item>
+                                <All>View All Collections</All>
+                                <Add>Add a Collection</Add>
+                            </Menu>
+                        </Dropdown>
+                    }
                 </NavLeft>
+                <NavCenter onClick={() => router.push('/')}>
+                    <img
+                        alt="logo"
+                        src={logo}
+                    />
+                </NavCenter>
                 <NavRight>
-                    <Profile onClick={() => this.onClose(!isOpen)}>
+                    <Profile onClick={() => this.onShow(!showSettings, 'settings')}>
                         <Avatar img={picture} />
                     </Profile>
+                    {showSettings &&
+                        <Dropdown style={{ right: '5px' }}>
+                            <Menu onClose={this.onShow}>
+                                <Item onClick={this.toSettings}>Settings</Item>
+                                <Item onClick={this.signOut}>Logout</Item>
+                            </Menu>
+                        </Dropdown>
+                    }
                 </NavRight>
-                {isOpen &&
-                    <Dropdown>
-                        <Menu onClose={this.onClose}>
-                            <Logout onClick={this.toSettings}>Settings</Logout>
-                            <Logout onClick={this.signOut}>Logout</Logout>
-                        </Menu>
-                    </Dropdown>
-                }
             </Container>
         );
     }
