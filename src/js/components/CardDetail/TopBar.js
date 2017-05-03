@@ -15,6 +15,7 @@ const Container = styled.nav`
 `;
 
 const Right = styled.div`
+    position: fixed;
     display: flex;
     align-items: center;
     padding-right: 30px;
