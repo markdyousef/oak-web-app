@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import { Chip as Label } from '../shared/Label'
+import { Chip as Label } from '../shared/Label';
 
 const Section = styled.section`
     margin: 20px 0;
