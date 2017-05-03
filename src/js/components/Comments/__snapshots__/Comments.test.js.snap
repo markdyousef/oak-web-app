@@ -8,7 +8,8 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.section>
     <styled.div>
-        <styled.div>
+        <styled.div
+            className="comments-panel">
             <Empty />
         </styled.div>
     </styled.div>
@@ -21,7 +22,8 @@ ShallowWrapper {
   "nodes": Array [
     <styled.section>
       <styled.div>
-            <styled.div>
+            <styled.div
+                  className="comments-panel">
                   <Empty />
             </styled.div>
       </styled.div>
@@ -77,7 +79,8 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.section>
           <styled.div>
-                    <styled.div>
+                    <styled.div
+                              className="comments-panel">
                               <Empty />
                     </styled.div>
           </styled.div>
@@ -90,7 +93,8 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.section>
           <styled.div>
-                    <styled.div>
+                    <styled.div
+                              className="comments-panel">
                               <Empty />
                     </styled.div>
           </styled.div>

@@ -1,6 +1,8 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import withLayer from '../Layer';
 
 const Arrow = styled.div`
     height: 14px;
@@ -31,7 +33,14 @@ const Menu = styled.div`
     }
 `;
 
-const Dropdown = ({ children, arrowPos }:Object) => {
+type Props = {
+    children?: Object,
+    arrowPos?: string,
+    onClose?: () => void
+}
+
+
+export default withLayer(({ children, arrowPos }: Props) => {
     let style;
     switch (arrowPos) {
     case 'left':
@@ -52,16 +61,4 @@ const Dropdown = ({ children, arrowPos }:Object) => {
             </Menu>
         </div>
     );
-};
-
-Dropdown.propTypes = {
-    children: PropTypes.node,
-    arrowPos: PropTypes.string
-};
-
-Dropdown.defaultProps = {
-    children: null,
-    arrowPos: null
-};
-
-export default Dropdown;
+})

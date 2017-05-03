@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { requireAuth, requireTeam } from './utils';
+import initStore from './store/configureStore';
 
 // Components
 import App from './containers/AppContainer';
@@ -30,7 +31,7 @@ import '../css/app.css';
 
 
 const networkInterface = createNetworkInterface({
-    uri: 'http://empress.clai.io/graphql',
+    uri: 'https://empress.clai.io/graphql',
     // send cookies in request header
     opts: {
         credentials: 'include'
@@ -58,8 +59,10 @@ const client = new ApolloClient({
     }
 });
 
+const store = initStore();
+
 const routes = (
-    <ApolloProvider client={client}>
+    <ApolloProvider store={store} client={client}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>

@@ -9,6 +9,7 @@ import {
     Container,
     Header,
     User,
+    Labels,
     Label,
     Main,
     Bottom,
@@ -86,7 +87,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
         if (avatar) picture = avatar.urlThumb64;
         return (
             <Header>
-                <div>
+                <Labels>
                     {labels && labels.map((label, index) => {
                         const right = 16 + (index * 12);
                         return (
@@ -95,8 +96,8 @@ export default class Card extends Component<DefaultProps, Props, State> {
                                 style={{ background: label.color, right }}
                             />
                         );
-                    })}
-                </div>
+                    }).reverse()}
+                </Labels>
                 <User>
                     <img src={picture} alt="avatar" />
                     <div>
@@ -120,7 +121,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked, cover } = this.props;
+        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked } = this.props;
         const { showOptions } = this.state;
         return (
             <Bottom>
@@ -137,7 +138,10 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         <DotsIcon />
                         {showOptions &&
                             <Settings>
-                                <Dropdown arrowPos="left">
+                                <Dropdown
+                                    arrowPos="left"
+                                    onClose={() => this.setState({ showOptions: false })}
+                                >
                                     <Icon onClick={onRemove}>Delete</Icon>
                                 </Dropdown>
                             </Settings>

@@ -65,7 +65,7 @@ const LinkWrapper = styled.div`
 const SubLink = styled(StyledLink)`
     margin: 14px;
     padding-left: 35px !important;
-    width: 100%;
+    /*width: 100%;*/
 `;
 
 export const Loading = styled.div`
@@ -81,9 +81,12 @@ type Grove = {
 }
 type DefaultProps = {};
 type Props = {
+    setUpdate: (update: bool) => void,
+    shouldUpdate: bool,
     data: {
         loading: bool,
-        groves?: Array<Grove>
+        groves?: Array<Grove>,
+        refetch: Function
     }
 };
 type State = {};
@@ -95,6 +98,13 @@ class SideNav extends Component<DefaultProps, Props, State> {
     constructor() {
         super();
         this.state = {};
+    }
+    componentWillReceiveProps(nextProps: Props) {
+        const { data } = this.props;
+        if (nextProps.shouldUpdate && !data.loading) {
+            data.refetch();
+            nextProps.setUpdate(false);
+        }
     }
     renderSubCategories = () => {
         const { data: { loading, groves } } = this.props;

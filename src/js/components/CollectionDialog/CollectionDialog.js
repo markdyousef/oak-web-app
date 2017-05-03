@@ -117,6 +117,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
     render() {
         const { close, editMode } = this.props;
         const { name, description, picture, isLoading } = this.state;
+        console.log(this.props);
         return (
             <Container>
                 <Modal>

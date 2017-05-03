@@ -10,6 +10,7 @@ import FailedComment from './FailedComment';
 
 const Container = styled.section`
     position: relative;
+    height: 100%;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -18,25 +19,25 @@ const Container = styled.section`
     max-width: 350px;
     height: calc(100vh - 60px);
     border-left: 1px solid ${colors.lightGrey};
-    background-color: ${colors.white}
+    background-color: ${colors.white};
     z-index: 999;
 `;
 
 const CommentsPanel = styled.div`
     padding: 16px 16px 4px;
     background: ${colors.white};
-    height: 100%;
-    min-height: 200px;
-    overflow-x: auto;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    ${''/* display: flex;
+    flex-direction: column-reverse; */}
 `;
 
 const Comments = styled.div`
     height: 100%;
-    min-height: 400px;
+    ${''/* min-height: 400px; */}
     width: 100%;
-    ${''/* display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: flex-end; */}
 `;
 
 const CommentsInput = styled.div`
@@ -63,7 +64,7 @@ export default ({ comments, create, failedComment, creator }:Props) => {
     return (
         <Container>
             <CommentsPanel>
-                <Comments>
+                <Comments className="comments-panel">
                     {(() => {
                         if (comments.length > 0) {
                             return comments.map(comment => (

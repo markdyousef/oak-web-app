@@ -48,12 +48,24 @@ export const User = styled.div`
     }
 `;
 
+export const Labels = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 50%;
+    overflow: hidden;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-end;
+`;
+
 export const Label = styled.div`
     width: 10px;
     height: 20px;
     line-height: 1.54;
-    position: absolute;
-    top: 0;
+    display: inline-block;
+    margin-right: 2px;
 `;
 
 export const Main = styled.div`

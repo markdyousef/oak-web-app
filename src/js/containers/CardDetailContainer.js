@@ -1,6 +1,8 @@
 // @flow
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
+import { connect } from 'react-redux';
+import { card } from '../store/actions';
 import CardDetail from '../components/CardDetail';
 
 const getCard = gql`
@@ -90,6 +92,13 @@ const createComment = gql`
     }
 `;
 
+const mapDispatchToProps = (dispatch: Function) => (
+    {
+        setUpdate: (shouldUpdate: bool) =>
+            dispatch(card.setUpdate(shouldUpdate))
+    }
+);
+
 export default compose(
     graphql(getCard, {
         name: 'data',
@@ -120,5 +129,6 @@ export default compose(
         props: ({ mutate }) => ({
             createComment: (id:string, text:string) => mutate({ variables: { id, text } })
         })
-    })
+    }),
+    connect(null, mapDispatchToProps)
 )(CardDetail);

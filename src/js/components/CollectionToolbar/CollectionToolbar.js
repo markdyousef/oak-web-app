@@ -120,7 +120,10 @@ export default class Toolbar extends Component {
                 </ActionMenu>
                 {isOpen &&
                     <DropdownContainer>
-                        <Dropdown arrowPos="none">
+                        <Dropdown
+                            arrowPos="none"
+                            onClose={() => this.setState({ isOpen: false })}
+                        >
                             {this.renderSortItems()}
                             {this.renderFilterItems()}
                         </Dropdown>

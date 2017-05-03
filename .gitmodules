@@ -1,0 +1,3 @@
+[submodule "src/js/components/Editor"]
+	path = src/js/components/Editor
+	url = https://github.com/markdyousef/zen-editor.git

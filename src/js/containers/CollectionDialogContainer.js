@@ -41,5 +41,5 @@ export default compose(
         props: ({ mutate }) => ({
             remove: id => mutate({ variables: { id } })
         })
-    })
+    }),
 )(CollectionDialog);

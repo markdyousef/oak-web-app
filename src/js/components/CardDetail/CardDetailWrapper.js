@@ -30,7 +30,8 @@ type Props = {
     params: Object,
     data?: Data,
     router: Object,
-    createComment: Function
+    createComment: Function,
+    setUpdate: (update: bool) => void
 }
 
 type State = {
@@ -117,7 +118,7 @@ export default (CardDetail:Function) => {
             }
             onSave = () => {
                 const { cardId, collectionId, editorState, name, images } = this.state;
-                const { create, update, data } = this.props;
+                const { create, update, data, setUpdate } = this.props;
                 const newEditorState = changeUrls(editorState, images);
                 const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
@@ -128,6 +129,7 @@ export default (CardDetail:Function) => {
                     .then(() => {
                         if (data) data.refetch();
                         this.setState({ isLoading: false, message: null });
+                        setUpdate(true);
                     })
                     .catch(() => {
                         const message = {
@@ -142,6 +144,7 @@ export default (CardDetail:Function) => {
                         .then(() => {
                             this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
+                            setUpdate(true);
                         })
                         .catch(() => {
                             const message = {
@@ -154,7 +157,7 @@ export default (CardDetail:Function) => {
                 }
             }
             changeCardLabel = (labelId:string) => {
-                const { create, removeLabel, addLabel } = this.props;
+                const { create, removeLabel, addLabel, setUpdate } = this.props;
                 const { cardId, collectionId, labels, name } = this.state;
                 if (!cardId) {
                     create(collectionId, name)
@@ -180,6 +183,7 @@ export default (CardDetail:Function) => {
                             if (res.data.removeSeedLabel) {
                                 this.setState({ labels: labels.filter(id => id !== labelId) });
                             }
+                            setUpdate(true);
                         })
                         .catch(() => {
                             const message = {
@@ -196,6 +200,7 @@ export default (CardDetail:Function) => {
                                 labels.push(labelId);
                                 this.setState({ labels });
                             }
+                            setUpdate(true);
                         })
                         .catch(() => {
                             const message = {
@@ -209,7 +214,7 @@ export default (CardDetail:Function) => {
             }
             createComment = (editorState:EditorState) => {
                 const { cardId, collectionId, name, comments } = this.state;
-                const { createComment, create } = this.props;
+                const { createComment, create, setUpdate } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
                 if (!cardId) {
                     create(collectionId, name)
@@ -227,11 +232,9 @@ export default (CardDetail:Function) => {
                         comment = parseComments([comment])[0];
                         comments.push(comment);
                         this.setState({ comments, failedComment: null });
+                        setUpdate(true);
                     })
                     .catch(() => this.setState({ failedComment: editorState }));
-
-                // TODO: remove this
-                this.setState({ failedComment: null });
             }
             addFile = (file: Object) => {
                 const { images } = this.state;

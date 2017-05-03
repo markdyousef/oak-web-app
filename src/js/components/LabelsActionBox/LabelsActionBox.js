@@ -117,9 +117,10 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
         );
     }
     render() {
+        const { onClose } = this.props;
         return (
             <Container>
-                <Dropdown arrowPos="left">
+                <Dropdown arrowPos="left" onClose={onClose}>
                     {this.renderLabels()}
                 </Dropdown>
             </Container>
