@@ -19,6 +19,7 @@ export const Profile = styled.button`
     border: 1px solid #E5E5E5;
     margin-left: 5px;
     padding: 0;
+    margin-left: 15px;
 `;
 
 export const NavRight = styled.div`
@@ -27,7 +28,7 @@ export const NavRight = styled.div`
     align-items: center;
     justify-content: flex-end;
     margin-right: 25px;
-    width: 100px;
+    width: 200px;
 `;
 
 export const NavLeft = styled.div`
@@ -35,7 +36,7 @@ export const NavLeft = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    width: 100px;
+    width: 200px;
 `;
 
 export const NavCenter = styled.div`
@@ -58,7 +59,8 @@ export const Collections = styled.button`
     background-color: #fff;
     font-size: 15px;
     margin-left: 7px;
-    font-family: 'Proxima-Nova'
+    font-family: 'Proxima-Nova';
+    cursor: pointer;
 `;
 
 export const Item = styled.div`

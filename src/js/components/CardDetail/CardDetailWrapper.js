@@ -256,6 +256,7 @@ export default (CardDetail:Function) => {
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
                 const { router } = this.props;
+                const { cardId } = this.state;
                 return (
                     <CardDetail
                         onSave={this.onSave}
@@ -267,6 +268,7 @@ export default (CardDetail:Function) => {
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         onCloseError={() => this.setState({ message: null })}
+                        existingCard={!!cardId}
                         {...this.state}
                     />
                 );

@@ -5,6 +5,7 @@ import Menu from '../shared/Dropdown';
 import { signOut } from '../../utils';
 import logo from '../../../img/cuest-logo.png';
 import CollectionIcon from '../../icons/collections';
+import { RoundButton } from '../shared/Button';
 import {
     Container,
     Profile,
@@ -118,6 +119,11 @@ class TopNav extends Component<DefaultProps, Props, State> {
                     />
                 </NavCenter>
                 <NavRight>
+                    <RoundButton
+                        onClick={() => {}}
+                        text="Create Card"
+                        type="secondary"
+                    />
                     <Profile onClick={() => this.onShow(!showSettings, 'settings')}>
                         <Avatar img={picture} />
                     </Profile>

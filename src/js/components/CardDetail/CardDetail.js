@@ -16,6 +16,7 @@ type Props = {
     showComments: bool,
     editorState: EditorState,
     isLoading: bool,
+    existingCard: bool,
     goBack: Function,
     onSave: Function,
     collectionId: string,
@@ -64,7 +65,8 @@ const CardDetail = ({ ...props }:Props) => {
         failedComment,
         creator,
         message,
-        onCloseError
+        onCloseError,
+        existingCard
     } = props;
 
     return (
@@ -79,6 +81,7 @@ const CardDetail = ({ ...props }:Props) => {
                 changeCardLabel={changeCardLabel}
                 labels={labels}
                 isLoading={isLoading}
+                existingCard={existingCard}
             />
             {message && <Toast
                 message={message}

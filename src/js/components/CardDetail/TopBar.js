@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
-import { SquareButton, RoundButton } from '../shared/Button';
+import { RoundButton } from '../shared/Button';
 
 const Container = styled.nav`
     display: flex;
@@ -15,7 +15,7 @@ const Container = styled.nav`
 `;
 
 const Right = styled.div`
-    position: fixed;
+    ${''/* position: fixed; */}
     display: flex;
     align-items: center;
     padding-right: 30px;
@@ -45,7 +45,8 @@ type Props = {
     collectionId: string,
     changeCardLabel: Function,
     labels: Array<string>,
-    isLoading: bool
+    isLoading: bool,
+    existingCard: bool
 };
 type State = {
     showLabels: bool
@@ -63,14 +64,14 @@ class TopBar extends Component<DefaultProps, Props, State> {
         };
     }
     renderButtons = () => {
-        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading } = this.props;
+        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading, existingCard } = this.props;
         const { showLabels } = this.state;
 
         if (showEdit) {
             return (
                 <EditNav>
                     <div>
-                        <SquareButton
+                        <RoundButton
                             text="Add label"
                             onClick={() => this.setState({ showLabels: !showLabels })}
                         />
@@ -83,27 +84,28 @@ class TopBar extends Component<DefaultProps, Props, State> {
                             />
                         }
                     </div>
-                    <SquareButton
+                    <RoundButton
                         text="Save card"
                         onClick={onSave}
-                        type="primary"
+                        type={(existingCard) ? 'primary' : 'secondary'}
                         isLoading={isLoading}
                     />
                 </EditNav>
             );
         }
-        return <SquareButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
+        return <RoundButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
     }
     render() {
         const { onClose, showComments } = this.props;
         return (
             <Container>
                 <Right>
-                    {this.renderButtons()}
                     <RoundButton
                         onClick={showComments}
                         text="Comments"
+                        type="transparent"
                     />
+                    {this.renderButtons()}
                     <Close onClick={onClose}>
                         &times;
                     </Close>
