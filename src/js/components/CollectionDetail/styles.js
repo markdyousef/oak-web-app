@@ -73,7 +73,7 @@ export const masonStyles = {
 };
 
 export const Grid = styled.section`
-    padding: 20px;
+    width: 90%;
     margin: 0 auto;
     ${''/* width: 1200px; */}
     ${''/* @media (min-width: 1200px) {

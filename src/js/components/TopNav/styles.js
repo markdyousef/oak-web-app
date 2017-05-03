@@ -81,9 +81,11 @@ export const All = styled.div`
     color: ${colors.grey};
     font-size: 15px;
     border-bottom: 1px solid ${colors.lightGrey};
+    cursor: pointer;
 `;
 
 export const Add = styled.div`
     display: flex;
     margin-top: 16px;
+    cursor: pointer;
 `;

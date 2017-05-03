@@ -10,6 +10,7 @@ const Container = styled.div`
     padding: 16px;
     border: 1px solid ${colors.lightGrey};
     border-radius: 3px;
+    height: 300px;
 `;
 
 const Image = styled.div`

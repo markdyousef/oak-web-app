@@ -122,10 +122,7 @@ export default class Toolbar extends Component {
                     return (
                         <Label
                             key={label.id}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                onFilter(label.id);
-                            }}
+                            onClick={() => onFilter(label.id)}
                             style={{ backgroundColor: label.color }}
                             name={label.name}
                             isActive={isActive}
@@ -136,14 +133,14 @@ export default class Toolbar extends Component {
         );
     }
     renderLabels = () => {
-        const { labels, filters } = this.props;
+        const { labels, filters, onFilter } = this.props;
         return labels.map((label) => {
             const exists = filters.indexOf(label.id);
             if (exists > -1) {
                 return (
                     <Chip
                         key={label.id}
-                        onClick={() => {}}
+                        onClick={() => onFilter(label.id)}
                         style={{ backgroundColor: label.color }}
                         name={label.name}
                     />
@@ -154,9 +151,7 @@ export default class Toolbar extends Component {
     }
     render() {
         const { showSort, showFilter } = this.state;
-        const { filters } = this.props;
-        const { active } = this.props;
-        console.log(filters.length)
+        const { filters, active } = this.props;
         return (
             <Container>
                 <div>

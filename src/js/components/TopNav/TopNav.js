@@ -82,6 +82,11 @@ class TopNav extends Component<DefaultProps, Props, State> {
         this.onShow();
         router.push('/my-settings');
     }
+    toCollections = () => {
+        const { router } = this.props;
+        this.onShow(false, 'collections');
+        router.push('/');
+    }
     render() {
         const { data: { me }, router } = this.props;
         const { showSettings, showCollections } = this.state;
@@ -106,13 +111,13 @@ class TopNav extends Component<DefaultProps, Props, State> {
                                 <Item>Collection</Item>
                                 <Item>Collection</Item>
                                 <Item>Collection</Item>
-                                <All>View All Collections</All>
+                                <All onClick={this.toCollections}>View All Collections</All>
                                 <Add>Add a Collection</Add>
                             </Menu>
                         </Dropdown>
                     }
                 </NavLeft>
-                <NavCenter onClick={() => router.push('/')}>
+                <NavCenter onClick={this.toCollections}>
                     <img
                         alt="logo"
                         src={logo}
