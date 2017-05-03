@@ -38,7 +38,7 @@ type State = {
     name: string,
     description: string,
     picture: ?string,
-    message: ?string,
+    message: ?Object,
     file: ?Object,
     editMode: ?bool,
     pictureId: ?string,
@@ -57,7 +57,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
             name: props.name || '',
             description: props.description || '',
             picture: props.picture,
-            message: '',
+            message: null,
             file: null,
             editMode: props.editMode,
             pictureId: props.pictureId,
@@ -68,8 +68,20 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
     onSave = () => {
         const { id, name, description, file, editMode, pictureId, didUpload } = this.state;
         const { create, update, close } = this.props;
-        this.setState({ isLoading: true })
 
+        if (name.length < 1) {
+            this.setState({
+                isLoading: false,
+                message: {
+                    type: 'error',
+                    message: 'Remember to name your collection',
+                    onClick: this.onSave
+                }
+            });
+            return;
+        }
+
+        this.setState({ isLoading: true });
         // handle file-upload for existing collection
         if (file && !didUpload) {
             uploadImage(file, 'grove', id)
@@ -77,31 +89,50 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                     this.setState({ pictureId: res.id, didUpload: true });
                     this.onSave();
                 })
-                .catch(err => console.log(err));
+                .catch(() => {
+                    this.setState({
+                        message: {
+                            type: 'error',
+                            message: "Sorry, we couldn't upload your image",
+                            onClick: this.onSave
+                        },
+                        isLoading: false
+                    })
+                });
             return;
         }
         if (editMode && id) {
             update(id, name, description, pictureId)
                 .then(() => {
-                    this.setState({ isLoading: false })
+                    this.setState({ isLoading: false });
                     close();
                 })
-                .catch(err => console.log(err));
+                .catch(() => {
+                    this.setState({
+                        message: {
+                            type: 'error',
+                            message: "Sorry, we couldn't save your collection",
+                            onClick: this.onSave
+                        },
+                        isLoading: false
+                    })
+                });
         } else {
             create(name, description, pictureId)
                 .then(() => {
                     this.setState({ isLoading: false })
                     close()
                 })
-                .catch(err => console.log(err));
-        }
-    }
-    onDelete = () => {
-        const { id, remove, router } = this.props;
-        if (id) {
-            remove(id)
-                .then(() => router.replace('/'))
-                .catch(err => console.log(err));
+                .catch(() => {
+                    this.setState({
+                        message: {
+                            type: 'error',
+                            message: "Sorry, we couldn't save your collection",
+                            onClick: this.onSave
+                        },
+                        isLoading: false
+                    })
+                });
         }
     }
     onClick = () => {
@@ -115,9 +146,8 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
         this.setState({ picture: url, file });
     }
     render() {
-        const { close, editMode } = this.props;
-        const { name, description, picture, isLoading } = this.state;
-        console.log(this.props);
+        const { close } = this.props;
+        const { name, description, picture, isLoading, message } = this.state;
         return (
             <Container>
                 <Modal>
@@ -125,6 +155,11 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                         <h1>Add/Edit collection: </h1>
                         <Close onClick={close}>&times;</Close>
                     </Header>
+                    {message && <Toast
+                        message={message}
+                        style={{ width: '150px' }}
+                        onClose={() => this.setState({ message: null })}
+                    />}
                     <Main>
                         <Upload>
                             <div>
@@ -156,18 +191,10 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                         />
                     </Main>
                     <Buttons>
-                        {(editMode) ?
-                            <SquareButton
-                                onClick={this.onDelete}
-                                text="Delete"
-                                type="alarm"
-                            />
-                            :
-                            <SquareButton
-                                onClick={close}
-                                text="Cancel"
-                            />
-                        }
+                        <SquareButton
+                            onClick={close}
+                            text="Cancel"
+                        />
                         <SquareButton
                             onClick={this.onSave}
                             text="Save"

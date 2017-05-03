@@ -50,6 +50,7 @@ export const Close = styled.button`
 `;
 
 export const Main = styled.div`
+    margin-top: 20px;
     padding: 5px 20px;
     width: 100%;
     & div {
