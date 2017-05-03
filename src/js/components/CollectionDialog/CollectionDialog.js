@@ -6,6 +6,7 @@ import TextField from '../shared/TextField';
 import { uploadImage } from '../../utils';
 import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles'
 import Toast from '../shared/Toast';
+import placeholder from '../../../img/collections-placeholder.svg';
 
 type DefaultProps = {
     name: '',
@@ -161,10 +162,8 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                         onClose={() => this.setState({ message: null })}
                     />}
                     <Main>
-                        <Upload>
-                            <div>
-                                {picture && <img src={picture} alt="cover" />}
-                            </div>
+                        <Upload onClick={this.onClick}>
+                            <img src={picture || placeholder} alt="cover" />
                             <input
                                 type="file"
                                 accept="image/*"
@@ -172,22 +171,18 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                                 onChange={this.onChange}
                                 style={{ display: 'none' }}
                             />
-                            <SquareButton
-                                text="Add Cover"
-                                onClick={this.onClick}
-                            />
                         </Upload>
                         <Input
-                            title="NAME"
+                            // title="NAME"
                             value={name}
                             onChange={value => this.setState({ name: value })}
-                            placeholder="Name"
+                            placeholder="Name your collection"
                         />
                         <TextField
-                            title="DESCRIPTION"
+                            // title="DESCRIPTION"
                             value={description}
                             onChange={value => this.setState({ description: value })}
-                            placeholder="Description"
+                            placeholder="Add a description..."
                         />
                     </Main>
                     <Buttons>

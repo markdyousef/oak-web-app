@@ -59,20 +59,15 @@ export const Main = styled.div`
 `;
 
 export const Upload = styled.div`
-    height: 100px;
+    height: 210px;
     border: 1px solid ${colors.lightGrey};
-    border-radius: 3px;
+    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    & div {
-        margin: 0;
-        height: 80px;
-        width: 100px;
-        background-color: ${colors.lightGrey};
-        border-radius: 3px;
-    }
+    background-color: ${colors.lightGrey};
+    cursor: pointer;
     & img {
         height: 100%;
         width: 100%;
