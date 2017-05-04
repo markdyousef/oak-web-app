@@ -38,7 +38,7 @@ export default (WrappedComponent: Function) => {
             render() {
                 const { children } = this.props;
                 return (
-                    <WrappedComponent>
+                    <WrappedComponent {...this.props}>
                         {children && children}
                     </WrappedComponent>
                 );

@@ -91,7 +91,7 @@ export const Main = styled.div`
         max-width: 288px;
         width: 100%;
         margin-bottom: 16px;
-        height: 100px;
+        ${''/* height: 100px; */}
     }
     & button {
         margin-top: 16px;

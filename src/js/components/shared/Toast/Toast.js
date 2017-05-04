@@ -57,6 +57,7 @@ type Props = {
         message?: string,
         onClick?: () => void
     },
+    style?: Object,
     onClose: () => void
 };
 
@@ -73,10 +74,13 @@ export default class Toast extends Component<DefaultProps, Props, State> {
         this.state = {};
     }
     render() {
-        const { message: { type, message, onClick }, onClose } = this.props;
+        const { message: { type, message, onClick }, onClose, style } = this.props;
         return (
             <Container>
-                <Bar error={(type === 'error')}>
+                <Bar
+                    error={(type === 'error')}
+                    style={style}
+                >
                     <Message>
                         <h3>{message}</h3>
                         <button onClick={onClick}>

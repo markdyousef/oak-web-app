@@ -3,25 +3,38 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Dropdown from '../shared/Dropdown';
 import colors from '../../styles/colors';
-import { Chip as Label } from '../shared/Label';
+import { Box as Label, Chip } from '../shared/Label';
 
 const Container = styled.div`
     width: 100%;
     height: 60px;
-    background-color: ${colors.white};
-    border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 60px;
+    padding: 0 20px;
     position: relative;
 `;
 
 const ActionMenu = styled.div`
     font-size: 14px;
+    margin-left: 10px;
     color: ${colors.black};
     font-weight: bold;
     cursor: pointer;
+    align-items: center;
+    & span {
+        color: ${colors.grey};
+        margin-right: 5px;
+    }
+`;
+
+const LabelsMenu = styled.div`
+    font-size: 14px;
+    margin-left: 10px;
+    color: ${colors.black};
+    font-weight: bold;
+    cursor: pointer;
+    ${''/* display: flex;
+    align-items: center; */}
     & span {
         color: ${colors.grey};
         margin-right: 5px;
@@ -46,6 +59,14 @@ const LabelContainer = styled.div`
     overflow: auto;
 `;
 
+const Labels = styled.div`
+    display: flex;
+    margin-left: 10px;
+    & div {
+        margin-right: 5px;
+    }
+`;
+
 
 type DefaultProps = {};
 type Props = {
@@ -56,7 +77,8 @@ type Props = {
     onFilter: (key:string) => void
 };
 type State = {
-    isOpen: bool
+    showSort: bool,
+    showFilter: bool
 };
 
 export default class Toolbar extends Component {
@@ -66,7 +88,8 @@ export default class Toolbar extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false
+            showSort: false,
+            showFilter: false
         };
     }
     renderSortItems = () => {
@@ -83,7 +106,7 @@ export default class Toolbar extends Component {
                 active={item.name === active}
                 onClick={() => {
                     onSort(item.name);
-                    this.setState({ isOpen: false });
+                    this.setState({ showSort: false });
                 }}
             >
                 {item.name}
@@ -109,26 +132,67 @@ export default class Toolbar extends Component {
             </LabelContainer>
         );
     }
+    renderLabels = () => {
+        const { labels, filters, onFilter } = this.props;
+        return labels.map((label) => {
+            const exists = filters.indexOf(label.id);
+            if (exists > -1) {
+                return (
+                    <Chip
+                        key={label.id}
+                        onClick={() => onFilter(label.id)}
+                        style={{ backgroundColor: label.color }}
+                        name={label.name}
+                    />
+                );
+            }
+            return null;
+        }).filter(Boolean);
+    }
     render() {
-        const { isOpen } = this.state;
-        const { active } = this.props;
+        const { showSort, showFilter } = this.state;
+        const { filters, active } = this.props;
         return (
             <Container>
-                <ActionMenu onClick={() => this.setState({ isOpen: !isOpen })}>
-                    <span>Sort by</span>
-                    {active}
-                </ActionMenu>
-                {isOpen &&
-                    <DropdownContainer>
-                        <Dropdown
-                            arrowPos="none"
-                            onClose={() => this.setState({ isOpen: false })}
-                        >
-                            {this.renderSortItems()}
-                            {this.renderFilterItems()}
-                        </Dropdown>
-                    </DropdownContainer>
-                }
+                <div>
+                    <ActionMenu onClick={() => this.setState({ showSort: !showSort })}>
+                        <span>
+                            Sort by
+                        </span>
+                        {active}
+                    </ActionMenu>
+                    {showSort &&
+                        <DropdownContainer>
+                            <Dropdown
+                                arrowPos="left"
+                                onClose={() => this.setState({ showSort: false })}
+                            >
+                                {this.renderSortItems()}
+                            </Dropdown>
+                            </DropdownContainer>
+                        }
+                </div>
+                <div>
+                    <LabelsMenu onClick={() => this.setState({ showFilter: !showFilter })}>
+                        <span>
+                            Filter by
+                        </span>
+                        {(filters.length < 1) && 'labels'}
+                    </LabelsMenu>
+                    {showFilter &&
+                        <DropdownContainer>
+                            <Dropdown
+                                arrowPos="left"
+                                onClose={() => this.setState({ showFilter: false })}
+                            >
+                                {this.renderFilterItems()}
+                            </Dropdown>
+                            </DropdownContainer>
+                        }
+                </div>
+                <Labels>
+                    {this.renderLabels()}
+                </Labels>
             </Container>
         );
     }

@@ -35,7 +35,7 @@ export const EditorContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-    & div {
+    & div:first-child {
         width: 100%;
     }
 `;

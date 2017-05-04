@@ -38,11 +38,11 @@ const Empty = ({ onClick }:Object) => {
             <img src={empty} alt="empty state" />
             <p>You haven’t created any collections yet. Create your first collection by hitting the button below.</p>
             <SquareButton
-                text="Create a card"
+                text="Create Collection"
                 onClick={onClick}
             />
         </Container>
     );
-}
+};
 
 export default Empty;

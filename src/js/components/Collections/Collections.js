@@ -16,11 +16,12 @@ const Container = styled.div`
 const Header = styled.section`
     width: 100%;
     background-color: ${colors.white};
-    padding: 48px 72px;
+    padding: 40px 40px;
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: 220px;
 `;
 
 const Info = styled.div`
@@ -28,14 +29,14 @@ const Info = styled.div`
     & h1 {
         font-size: 24px;
         font-weight: bold;
-        padding-bottom: 24px;
+        padding-bottom: 16px;
         display: block;
         letter-spacing: -.04em;
     }
     & p {
         font-size: 18px;
         font-weight: normal;
-        padding-bottom: 40px;
+        padding-bottom: 24px;
         display: block;
         line-height: 1.48;
     }
@@ -47,13 +48,13 @@ const Stats = styled.div`
         margin-right: 20px;
     }
     & h3 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
         padding-bottom: 8px;
         display: block;
     }
     & h5 {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
         text-transform: uppercase;
         padding-bottom: 8px;
@@ -129,20 +130,12 @@ class Collections extends Component {
                     <Info>
                         <h1>Collections</h1>
                         <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
-                        {/* <Stats>
+                        <Stats>
                             <div>
-                                <h3>{collections}</h3>
+                                <h3>{data.groves && data.groves.length}</h3>
                                 <h5>Collections</h5>
                             </div>
-                            <div>
-                                <h3>{cards}</h3>
-                                <h5>Cards</h5>
-                            </div>
-                            <div>
-                                <h3>{collections}</h3>
-                                <h5>Teammates</h5>
-                            </div>
-                        </Stats> */}
+                        </Stats>
                     </Info>
                     <ButtonGroup>
                         <SquareButton

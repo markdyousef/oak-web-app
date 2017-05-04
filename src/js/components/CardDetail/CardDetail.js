@@ -1,8 +1,10 @@
-
 // @flow
 import React from 'react';
 import { EditorState } from 'draft-js';
-import { Editor } from 'zen-editor';
+// TODO: change back to distributed npm package
+// import { Editor } from 'zen-editor';
+import Editor from '../Editor/src/components/Editor';
+
 import TopBar from './TopBar';
 import Comments from '../Comments';
 import wrapper from './CardDetailWrapper';
@@ -14,6 +16,7 @@ type Props = {
     showComments: bool,
     editorState: EditorState,
     isLoading: bool,
+    existingCard: bool,
     goBack: Function,
     onSave: Function,
     collectionId: string,
@@ -62,7 +65,8 @@ const CardDetail = ({ ...props }:Props) => {
         failedComment,
         creator,
         message,
-        onCloseError
+        onCloseError,
+        existingCard
     } = props;
 
     return (
@@ -77,6 +81,7 @@ const CardDetail = ({ ...props }:Props) => {
                 changeCardLabel={changeCardLabel}
                 labels={labels}
                 isLoading={isLoading}
+                existingCard={existingCard}
             />
             {message && <Toast
                 message={message}

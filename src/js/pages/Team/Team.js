@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import SideNav from '../../containers/SideNavContainer';
+// import SideNav from '../../containers/SideNavContainer';
 import TopNav from '../../containers/TopNavContainer';
 
 const Container = styled.div`
@@ -36,7 +36,7 @@ const MainInner = styled.div`
 export default ({ children, router }:Object) => (
     <Container>
         <InnerContainer>
-            <SideNav />
+            {/* <SideNav /> */}
             <Main>
                 <TopNav team router={router} />
                 <MainInner>
