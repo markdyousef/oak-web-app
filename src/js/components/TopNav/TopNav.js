@@ -6,6 +6,7 @@ import { signOut } from '../../utils';
 import logo from '../../../img/cuest-logo.png';
 import CollectionIcon from '../../icons/collections';
 import { RoundButton } from '../shared/Button';
+import CollectionDialog from '../../containers/CollectionDialogContainer';
 import {
     Container,
     Profile,
@@ -19,32 +20,7 @@ import {
     All,
     Add
 } from './styles';
-
-type DefaultProps = {
-    team: null,
-    router: {}
-};
-type Props = {
-    team: ?bool,
-    logout: Function,
-    router: {
-        replace: Function
-    },
-    data: {
-        loading: bool,
-        me: {
-            avatar: ?{
-                urlThumb64: ?string
-            },
-            gravatar: ?string
-        }
-    }
-};
-type State = {
-    showSettings: bool,
-    showCollections: bool
-};
-
+import type { DefaultProps, Props, State } from './types';
 
 const IMG = '//style.anu.edu.au/_anu/4/images/placeholders/person.png';
 class TopNav extends Component<DefaultProps, Props, State> {
@@ -56,19 +32,22 @@ class TopNav extends Component<DefaultProps, Props, State> {
         this.state = {
             showSettings: false,
             showCollections: false,
-            picture: IMG
+            picture: IMG,
+            showDialog: false
         };
     }
     signOut = () => {
         const { router, logout } = this.props;
-        logout()
-            .then(() => {
-                signOut();
-                router.replace({
-                    pathname: '/login'
-                });
-            })
-            .catch(err => console.log(err));
+        if (logout) {
+            logout()
+                .then(() => {
+                    signOut();
+                    router.replace({
+                        pathname: '/login'
+                    });
+                })
+                .catch(err => console.log(err));
+        }
     }
     onShow = (close: bool = false, menu?: string) => {
         if (menu === 'collections') {
@@ -87,9 +66,26 @@ class TopNav extends Component<DefaultProps, Props, State> {
         this.onShow(false, 'collections');
         router.push('/');
     }
+    renderCollections = () => {
+        const { data: { groves, loading }, router } = this.props;
+
+        if (loading || !groves) return null;
+
+        // TODO: improve this later with better
+        // recommendation e.g. created by
+        // user
+        return groves.map(collection =>
+            <Item
+                key={collection.id}
+                onClick={() => router.push(`collection/${collection.id}`)}
+            >
+                {collection.name}
+            </Item>
+        ).slice(0, 3);
+    }
     render() {
-        const { data: { me }, router } = this.props;
-        const { showSettings, showCollections } = this.state;
+        const { data: { me } } = this.props;
+        const { showSettings, showCollections, showDialog } = this.state;
         // differ between routes inside team and outside
         // const profileRoute = (team) ? '/my-profile' : 'profile';
         let picture;
@@ -108,11 +104,20 @@ class TopNav extends Component<DefaultProps, Props, State> {
                         <Dropdown style={{ left: '5px' }}>
                             <Menu onClose={() => this.onShow(false, 'collections')} arrowPos="left">
                                 <ItemTitle>YOUR TOP COLLECTIONS</ItemTitle>
-                                <Item>Collection</Item>
-                                <Item>Collection</Item>
-                                <Item>Collection</Item>
-                                <All onClick={this.toCollections}>View All Collections</All>
-                                <Add>Add a Collection</Add>
+                                {this.renderCollections()}
+                                <All
+                                    onClick={this.toCollections}
+                                >
+                                    View All Collections
+                                </All>
+                                <Add
+                                    onClick={() => this.setState({
+                                        showDialog: true,
+                                        showCollections: false
+                                    })}
+                                >
+                                    Add a Collection
+                                </Add>
                             </Menu>
                         </Dropdown>
                     }
@@ -141,6 +146,11 @@ class TopNav extends Component<DefaultProps, Props, State> {
                         </Dropdown>
                     }
                 </NavRight>
+                {showDialog &&
+                    <CollectionDialog
+                        close={() => this.setState({ showDialog: false })}
+                    />
+                }
             </Container>
         );
     }

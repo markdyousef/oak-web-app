@@ -1,9 +1,14 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
+import { getTeam } from '../utils';
 import TopNav from '../components/TopNav';
 
-const getUser = gql`
-    query me {
+const getTopNav = gql`
+    query topNav($teamId: ID!) {
+        groves(teamId: $teamId) {
+            id
+            name
+        }
         me {
             id
             avatar {
@@ -22,7 +27,10 @@ const logout = gql`
 `;
 
 export default compose(
-    graphql(getUser),
+    graphql(getTopNav, {
+        name: 'data',
+        options: () => ({ variables: { teamId: getTeam() } })
+    }),
     graphql(logout, {
         props: ({ mutate }) => ({
             logout: () => mutate()
