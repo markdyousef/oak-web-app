@@ -10,11 +10,12 @@ ShallowWrapper {
     <styled.div>
         <Unknown
             onClick={[Function]}
-            text="Edit card"
-            type="secondaryAction" />
+            text="Comments"
+            type="transparent" />
         <Unknown
             onClick={[Function]}
-            text="Comments" />
+            text="Edit card"
+            type="secondaryAction" />
         <styled.button
             onClick={[Function]}>
             ×
@@ -26,11 +27,12 @@ ShallowWrapper {
       <styled.div>
             <Unknown
                   onClick={[Function]}
-                  text="Edit card"
-                  type="secondaryAction" />
+                  text="Comments"
+                  type="transparent" />
             <Unknown
                   onClick={[Function]}
-                  text="Comments" />
+                  text="Edit card"
+                  type="secondaryAction" />
             <styled.button
                   onClick={[Function]}>
                   ×
@@ -98,11 +100,12 @@ ShallowWrapper {
           <styled.div>
                     <Unknown
                               onClick={[Function]}
-                              text="Edit card"
-                              type="secondaryAction" />
+                              text="Comments"
+                              type="transparent" />
                     <Unknown
                               onClick={[Function]}
-                              text="Comments" />
+                              text="Edit card"
+                              type="secondaryAction" />
                     <styled.button
                               onClick={[Function]}>
                               ×
@@ -114,11 +117,12 @@ ShallowWrapper {
           <styled.div>
                     <Unknown
                               onClick={[Function]}
-                              text="Edit card"
-                              type="secondaryAction" />
+                              text="Comments"
+                              type="transparent" />
                     <Unknown
                               onClick={[Function]}
-                              text="Comments" />
+                              text="Edit card"
+                              type="secondaryAction" />
                     <styled.button
                               onClick={[Function]}>
                               ×

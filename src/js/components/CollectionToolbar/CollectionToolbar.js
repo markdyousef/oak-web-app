@@ -134,20 +134,23 @@ export default class Toolbar extends Component {
     }
     renderLabels = () => {
         const { labels, filters, onFilter } = this.props;
-        return labels.map((label) => {
-            const exists = filters.indexOf(label.id);
-            if (exists > -1) {
-                return (
-                    <Chip
-                        key={label.id}
-                        onClick={() => onFilter(label.id)}
-                        style={{ backgroundColor: label.color }}
-                        name={label.name}
-                    />
-                );
-            }
-            return null;
-        }).filter(Boolean);
+        if (labels) {
+            return labels.map((label) => {
+                const exists = filters.indexOf(label.id);
+                if (exists > -1) {
+                    return (
+                        <Chip
+                            key={label.id}
+                            onClick={() => onFilter(label.id)}
+                            style={{ backgroundColor: label.color }}
+                            name={label.name}
+                        />
+                    );
+                }
+                return null;
+            }).filter(Boolean);
+        }
+        return null;
     }
     render() {
         const { showSort, showFilter } = this.state;
@@ -177,7 +180,7 @@ export default class Toolbar extends Component {
                         <span>
                             Filter by
                         </span>
-                        {(filters.length < 1) && 'labels'}
+                        {(filters && filters.length < 1) && 'labels'}
                     </LabelsMenu>
                     {showFilter &&
                         <DropdownContainer>

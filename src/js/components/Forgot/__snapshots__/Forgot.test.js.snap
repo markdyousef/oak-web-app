@@ -23,7 +23,7 @@ exports[`test renders correctly 1`] = `
     </div>
     <div>
       <button
-        className="hvOYvT"
+        className="exnCOy"
         onClick={[Function]}>
         Reset password
         <svg

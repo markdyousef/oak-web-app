@@ -112,6 +112,7 @@ ShallowWrapper {
             },
           }
     }
+    existingCard={false}
     failedComment={null}
     goBack={[Function]}
     images={Array []}
@@ -233,6 +234,7 @@ ShallowWrapper {
                   },
                 }
       }
+      existingCard={false}
       failedComment={null}
       goBack={[Function]}
       images={Array []}
@@ -517,6 +519,7 @@ ShallowWrapper {
                               },
                             }
           }
+          existingCard={false}
           failedComment={null}
           goBack={[Function]}
           images={Array []}
@@ -638,6 +641,7 @@ ShallowWrapper {
                               },
                             }
           }
+          existingCard={false}
           failedComment={null}
           goBack={[Function]}
           images={Array []}

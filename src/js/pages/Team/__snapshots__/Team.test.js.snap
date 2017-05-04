@@ -9,7 +9,7 @@ ShallowWrapper {
   "node": <styled.div>
     <styled.div>
         <styled.section>
-            <Apollo(Apollo(TopNav))
+            <Apollo(Apollo(withRouter(TopNav)))
                 router={undefined}
                 team={true} />
             <styled.div />
@@ -20,7 +20,7 @@ ShallowWrapper {
     <styled.div>
       <styled.div>
             <styled.section>
-                  <Apollo(Apollo(TopNav))
+                  <Apollo(Apollo(withRouter(TopNav)))
                         router={undefined}
                         team={true} />
                   <styled.div />
@@ -67,7 +67,7 @@ ShallowWrapper {
         "_currentElement": <styled.div>
           <styled.div>
                     <styled.section>
-                              <Apollo(Apollo(TopNav))
+                              <Apollo(Apollo(withRouter(TopNav)))
                                         router={undefined}
                                         team={true} />
                               <styled.div />
@@ -78,7 +78,7 @@ ShallowWrapper {
         "_renderedOutput": <styled.div>
           <styled.div>
                     <styled.section>
-                              <Apollo(Apollo(TopNav))
+                              <Apollo(Apollo(withRouter(TopNav)))
                                         router={undefined}
                                         team={true} />
                               <styled.div />
