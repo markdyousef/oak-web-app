@@ -38,10 +38,14 @@ const Footer = styled.div`
 type DefaultProps = {};
 
 type Props = {
-    collectionId: ?string
+    collectionId?: string,
+    collections?: Array<Object>,
+    addCard?: Function
 };
 
-type State = {};
+type State = {
+    collection: ?string
+};
 
 export default class CreateCard extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
@@ -52,6 +56,13 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
         this.state = {
             collection: props.collectionId || null
         };
+    }
+    addCard = () => {
+        const { collection } = this.state;
+        const { addCard } = this.props;
+        if (addCard) {
+            addCard(collection);
+        }
     }
     render() {
         const { collections, addCard } = this.props;
@@ -64,7 +75,7 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                     onChange={event => this.setState({ collection: event.target.value })}
                 >
                     <option value="" selected>Select Collection</option>
-                    {collections.map(item =>
+                    {collections && collections.map(item =>
                         <option
                             key={item.id}
                             value={item.id}
@@ -75,7 +86,7 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                 </Select>
                 <Footer>
                     {collection &&
-                    <button onClick={addCard}>
+                    <button onClick={this.addCard}>
                         Start Creating
                     </button>}
                 </Footer>

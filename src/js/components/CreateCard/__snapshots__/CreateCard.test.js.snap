@@ -6,9 +6,37 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": null,
+  "node": <styled.div>
+    <h3>
+        Create Card in:
+    </h3>
+    <styled.select
+        onChange={[Function]}
+        value="">
+        <option
+            selected={true}
+            value="">
+            Select Collection
+        </option>
+    </styled.select>
+    <styled.div />
+</styled.div>,
   "nodes": Array [
-    null,
+    <styled.div>
+      <h3>
+            Create Card in:
+      </h3>
+      <styled.select
+            onChange={[Function]}
+            value="">
+            <option
+                  selected={true}
+                  value="">
+                  Select Collection
+            </option>
+      </styled.select>
+      <styled.div />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -46,11 +74,39 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": null,
+        "_currentElement": <styled.div>
+          <h3>
+                    Create Card in:
+          </h3>
+          <styled.select
+                    onChange={[Function]}
+                    value="">
+                    <option
+                              selected={true}
+                              value="">
+                              Select Collection
+                    </option>
+          </styled.select>
+          <styled.div />
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": null,
+        "_renderedOutput": <styled.div>
+          <h3>
+                    Create Card in:
+          </h3>
+          <styled.select
+                    onChange={[Function]}
+                    value="">
+                    <option
+                              selected={true}
+                              value="">
+                              Select Collection
+                    </option>
+          </styled.select>
+          <styled.div />
+</styled.div>,
       },
-      "_renderedNodeType": 2,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

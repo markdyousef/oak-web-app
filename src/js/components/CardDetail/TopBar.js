@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
 import { RoundButton } from '../shared/Button';
+import logo from '../../../img/cuest-logo.png';
 
 const Container = styled.nav`
     display: flex;
@@ -11,17 +12,33 @@ const Container = styled.nav`
     border-bottom: 1px solid ${colors.lightGrey};
     height: 60px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 `;
 
 const Right = styled.div`
     ${''/* position: fixed; */}
     display: flex;
     align-items: center;
-    padding-right: 30px;
+    margin-right: 25px;
     & button {
         margin: 0 2px;
     }
+`;
+
+const Center = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+
+const Left = styled.div`
+    margin-left: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 200px;
 `;
 
 const EditNav = styled.div`
@@ -96,21 +113,28 @@ class TopBar extends Component<DefaultProps, Props, State> {
         return <RoundButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
     }
     render() {
-        const { onClose, showComments } = this.props;
+        const { onClose, showComments, existingCard } = this.props;
         return (
             <Container>
+                <Left>
+                    Writing in CollectionName
+                </Left>
+                <Center>
+                    <img src={logo} alt="logo" />
+                </Center>
                 <Right>
-                    <RoundButton
-                        onClick={showComments}
-                        text="Comments"
-                        type="transparent"
-                    />
+                    {existingCard &&
+                        <RoundButton
+                            onClick={showComments}
+                            text="Comments"
+                            type="transparent"
+                        />
+                    }
                     {this.renderButtons()}
                     <Close onClick={onClose}>
                         &times;
                     </Close>
                 </Right>
-
             </Container>
         );
     }
