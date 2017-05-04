@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import Avatar from '../shared/Avatar';
 import Menu from '../shared/Dropdown';
 import { signOut } from '../../utils';
@@ -83,6 +84,12 @@ class TopNav extends Component<DefaultProps, Props, State> {
             </Item>
         ).slice(0, 3);
     }
+    addCard = () => {
+        const { router, params } = this.props;
+        const collectionId = params.collectionId || null;
+        if (!collectionId) return router.push('/collection/card');
+        return router.push(`/collection/${collectionId}/card`);
+    }
     render() {
         const { data: { me } } = this.props;
         const { showSettings, showCollections, showDialog } = this.state;
@@ -130,7 +137,7 @@ class TopNav extends Component<DefaultProps, Props, State> {
                 </NavCenter>
                 <NavRight>
                     <RoundButton
-                        onClick={() => {}}
+                        onClick={this.addCard}
                         text="Create Card"
                         type="secondary"
                     />
@@ -156,4 +163,4 @@ class TopNav extends Component<DefaultProps, Props, State> {
     }
 }
 
-export default TopNav;
+export default withRouter(TopNav);

@@ -10,6 +10,9 @@ export type Props = {
         replace: Function,
         push: Function
     },
+    params: {
+        collectionId?: string
+    },
     data: {
         loading: bool,
         me: {
