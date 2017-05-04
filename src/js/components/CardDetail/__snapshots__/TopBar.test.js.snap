@@ -8,10 +8,14 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.nav>
     <styled.div>
-        <Unknown
-            onClick={[Function]}
-            text="Comments"
-            type="transparent" />
+        Writing in CollectionName
+    </styled.div>
+    <styled.div>
+        <img
+            alt="logo"
+            src="test-file-stub" />
+    </styled.div>
+    <styled.div>
         <Unknown
             onClick={[Function]}
             text="Edit card"
@@ -25,10 +29,14 @@ ShallowWrapper {
   "nodes": Array [
     <styled.nav>
       <styled.div>
-            <Unknown
-                  onClick={[Function]}
-                  text="Comments"
-                  type="transparent" />
+            Writing in CollectionName
+      </styled.div>
+      <styled.div>
+            <img
+                  alt="logo"
+                  src="test-file-stub" />
+      </styled.div>
+      <styled.div>
             <Unknown
                   onClick={[Function]}
                   text="Edit card"
@@ -98,10 +106,14 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.nav>
           <styled.div>
-                    <Unknown
-                              onClick={[Function]}
-                              text="Comments"
-                              type="transparent" />
+                    Writing in CollectionName
+          </styled.div>
+          <styled.div>
+                    <img
+                              alt="logo"
+                              src="test-file-stub" />
+          </styled.div>
+          <styled.div>
                     <Unknown
                               onClick={[Function]}
                               text="Edit card"
@@ -115,10 +127,14 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.nav>
           <styled.div>
-                    <Unknown
-                              onClick={[Function]}
-                              text="Comments"
-                              type="transparent" />
+                    Writing in CollectionName
+          </styled.div>
+          <styled.div>
+                    <img
+                              alt="logo"
+                              src="test-file-stub" />
+          </styled.div>
+          <styled.div>
                     <Unknown
                               onClick={[Function]}
                               text="Edit card"
