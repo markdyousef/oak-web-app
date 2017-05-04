@@ -8,6 +8,7 @@ import logo from '../../../img/cuest-logo.png';
 import CollectionIcon from '../../icons/collections';
 import { RoundButton } from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
+import CreateCard from '../CreateCard';
 import {
     Container,
     Profile,
@@ -33,9 +34,20 @@ class TopNav extends Component<DefaultProps, Props, State> {
         this.state = {
             showSettings: false,
             showCollections: false,
+            showAdd: false,
             picture: IMG,
-            showDialog: false
+            showDialog: false,
+            collections: []
         };
+    }
+    componentWillReceiveProps(nextProps: Props) {
+        const { data: { groves, loading } } = nextProps;
+
+        if (loading || !groves) return;
+
+        this.setState({
+            collections: groves
+        });
     }
     signOut = () => {
         const { router, logout } = this.props;
@@ -67,15 +79,10 @@ class TopNav extends Component<DefaultProps, Props, State> {
         this.onShow(false, 'collections');
         router.push('/');
     }
-    renderCollections = () => {
-        const { data: { groves, loading }, router } = this.props;
-
-        if (loading || !groves) return null;
-
-        // TODO: improve this later with better
-        // recommendation e.g. created by
-        // user
-        return groves.map(collection =>
+    renderRecommended = () => {
+        const { router } = this.props;
+        const { collections } = this.state;
+        return collections.map(collection =>
             <Item
                 key={collection.id}
                 onClick={() => router.push(`collection/${collection.id}`)}
@@ -84,15 +91,14 @@ class TopNav extends Component<DefaultProps, Props, State> {
             </Item>
         ).slice(0, 3);
     }
-    addCard = () => {
-        const { router, params } = this.props;
-        const collectionId = params.collectionId || null;
-        if (!collectionId) return router.push('/collection/card');
+    addCard = (collectionId: string) => {
+        const { router } = this.props;
+        this.setState({ showAdd: false });
         return router.push(`/collection/${collectionId}/card`);
     }
     render() {
-        const { data: { me } } = this.props;
-        const { showSettings, showCollections, showDialog } = this.state;
+        const { data: { me }, params } = this.props;
+        const { showSettings, showCollections, showDialog, showAdd, collections } = this.state;
         // differ between routes inside team and outside
         // const profileRoute = (team) ? '/my-profile' : 'profile';
         let picture;
@@ -108,10 +114,10 @@ class TopNav extends Component<DefaultProps, Props, State> {
                         Collections
                     </Collections>
                     {showCollections &&
-                        <Dropdown style={{ left: '5px' }}>
+                        <Dropdown style={{ left: '10px' }}>
                             <Menu onClose={() => this.onShow(false, 'collections')} arrowPos="left">
                                 <ItemTitle>YOUR TOP COLLECTIONS</ItemTitle>
-                                {this.renderCollections()}
+                                {this.renderRecommended()}
                                 <All
                                     onClick={this.toCollections}
                                 >
@@ -137,15 +143,26 @@ class TopNav extends Component<DefaultProps, Props, State> {
                 </NavCenter>
                 <NavRight>
                     <RoundButton
-                        onClick={this.addCard}
+                        onClick={() => this.setState({ showAdd: !showAdd })}
                         text="Create Card"
                         type="secondary"
                     />
+                    {showAdd &&
+                        <Dropdown style={{ right: '10px' }}>
+                            <Menu onClose={() => this.setState({ showAdd: false })}>
+                                <CreateCard
+                                    collectionId={params.collectionId}
+                                    collections={collections}
+                                    addCard={collectionId => this.addCard(collectionId)}
+                                />
+                            </Menu>
+                        </Dropdown>
+                    }
                     <Profile onClick={() => this.onShow(!showSettings, 'settings')}>
                         <Avatar img={picture} />
                     </Profile>
                     {showSettings &&
-                        <Dropdown style={{ right: '5px' }}>
+                        <Dropdown style={{ right: '10px' }}>
                             <Menu onClose={this.onShow}>
                                 <Item onClick={this.toSettings}>Settings</Item>
                                 <Item onClick={this.signOut}>Logout</Item>

@@ -27,5 +27,7 @@ export type Props = {
 export type State = {
     showSettings: bool,
     showCollections: bool,
-    showDialog: bool
+    showDialog: bool,
+    showAdd: bool,
+    collections: Array<Object>
 };

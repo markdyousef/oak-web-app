@@ -61,7 +61,6 @@ type Props = {
 }
 
 export default ({ comments, create, failedComment, creator }:Props) => {
-    console.log(comments);
     return (
         <Container>
             <CommentsPanel>

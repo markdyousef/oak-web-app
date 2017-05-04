@@ -5,7 +5,7 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = Map({
     comments: List([]),
-    failedComment: Map({}),
+    failedComment: null,
     message: null,
     showComments: false,
     isLoading: false,
