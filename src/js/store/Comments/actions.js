@@ -7,11 +7,11 @@ type Field = {
     value: any
 }
 
-export const setState = (field: Field): Action => (
+export const updateComments = (field: Field): Action => (
     {
         type: types.COMMENTS_STATE,
         data: {
-            payload: field
+            field
         }
     }
 );

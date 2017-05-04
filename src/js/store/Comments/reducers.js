@@ -26,7 +26,7 @@ export type Action = {
 
 const initialState:State = Map({
     comments: List([]),
-    failedComment: Map({}),
+    failedComment: null,
     message: null,
     showComments: false,
     isLoading: false,

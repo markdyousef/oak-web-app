@@ -2,8 +2,8 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card } from '../store/actions';
-import CardDetail, { wrapper } from '../components/CardDetail';
+import { card, comments } from '../store/actions';
+import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
@@ -23,21 +23,7 @@ const getCard = gql`
             labels {
                 id
             }
-            comments {
-                id
-                text
-                creator {
-                    id
-                    name
-                    username
-                    avatar {
-                        id
-                        urlThumb64
-                    }
-                    gravatar
-                }
-                createdAt
-            }
+
         }
     }
 `;
@@ -72,25 +58,7 @@ const removeSeedLabel = gql`
     }
 `;
 
-const createComment = gql`
-    mutation createComment($id: ID!, $text: String!) {
-        createComment(seedId: $id, text: $text) {
-            id
-            text
-            createdAt
-            creator {
-                name
-                username
-                avatar {
-                    id
-                    urlThumb64
-                }
-                gravatar
-            }
-            createdAt
-        }
-    }
-`;
+
 type Field = {
     key: string,
     value: string
@@ -107,14 +75,17 @@ type OwnProps = {
 
 const mapStateToProps = (state: Object) => {
     return {
-        card: state.card
+        card: state.card,
+        comments: state.comments
     };
 };
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
         updateCard: (field:Field) =>
-            dispatch(card.updateCard(field))
+            dispatch(card.updateCard(field)),
+        updateComments: (field: Field) =>
+            dispatch(comments.updateComments(field))
     }
 );
 
@@ -144,11 +115,6 @@ export default compose(
     graphql(removeSeedLabel, {
         props: ({ mutate }) => ({
             removeLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
-        })
-    }),
-    graphql(createComment, {
-        props: ({ mutate }) => ({
-            createComment: (id:string, text:string) => mutate({ variables: { id, text } })
         })
     }),
     connect(mapStateToProps, mapDispatchToProps),

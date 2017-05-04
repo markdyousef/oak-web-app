@@ -13,21 +13,18 @@ export default (CardDetail:Function) => {
             constructor(props:Props) {
                 super(props);
                 this.state = {
-                    showComments: !!props.params.comments,
                     showEdit: !props.params.cardId,
                     isLoading: false,
                     editorState: EditorState.createEmpty(decorator),
                     labels: [],
-                    comments: [],
                     images: [],
                     message: null,
                     name: '',
-                    failedComment: null,
                     creator: null
                 };
             }
             componentWillMount() {
-                const { params, updateCard } = this.props;
+                const { params, updateCard, updateComments } = this.props;
                 if (params.collectionId) {
                     updateCard({
                         key: 'collectionId',
@@ -39,6 +36,12 @@ export default (CardDetail:Function) => {
                             value: params.cardId
                         });
                     }
+                }
+                if (params.comments) {
+                    updateComments({
+                        key: 'showComments',
+                        value: true
+                    });
                 }
             }
             componentWillReceiveProps(nextProps:Props) {
@@ -61,10 +64,6 @@ export default (CardDetail:Function) => {
                         const state = convertFromRaw(content);
                         this.setState({ editorState: EditorState.createWithContent(state, decorator) });
                     }
-                }
-                if (seed.comments) {
-                    const comments = parseComments(seed.comments);
-                    this.setState({ comments });
                 }
 
                 this.setState({
@@ -144,7 +143,10 @@ export default (CardDetail:Function) => {
                             if (res.data.removeSeedLabel) {
                                 this.setState({ labels: labels.filter(id => id !== labelId) });
                             }
-                            updateCard({ key: 'shouldUpdate', value: true });
+                            updateCard({
+                                key: 'shouldUpdate',
+                                value: true
+                            });
                         })
                         .catch(() => {
                             const message = {
@@ -161,7 +163,10 @@ export default (CardDetail:Function) => {
                                 labels.push(labelId);
                                 this.setState({ labels });
                             }
-                            updateCard({ key: 'shouldUpdate', value: true });
+                            updateCard({
+                                key: 'shouldUpdate',
+                                value: true
+                            });
                         })
                         .catch(() => {
                             const message = {
@@ -175,7 +180,7 @@ export default (CardDetail:Function) => {
             }
             createComment = (editorState:EditorState) => {
                 const { name, comments } = this.state;
-                const { createComment, create, updateCard, card } = this.props;
+                const { createComment, create, updateCard, card, updateComments } = this.props;
                 const cardId = card.get('cardId');
                 const collectionId = card.get('collectionId');
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
@@ -183,7 +188,8 @@ export default (CardDetail:Function) => {
                     create(collectionId, name)
                         .then((res) => {
                             const id = res.data.createSeed.id;
-                            this.setState({ cardId: id, failedComment: null });
+                            updateCard({ key: 'cardId', value: id });
+                            updateComments({ key: 'failedComment', value: null });
                             this.createComment(editorState);
                         })
                         .catch(() => this.setState({ failedComment: editorState }));
@@ -195,7 +201,10 @@ export default (CardDetail:Function) => {
                         comment = parseComments([comment])[0];
                         comments.push(comment);
                         this.setState({ comments, failedComment: null });
-                        updateCard(true);
+                        updateCard({
+                            key: 'shouldUpdate',
+                            value: true
+                        });
                     })
                     .catch(() => this.setState({ failedComment: editorState }));
             }
@@ -218,7 +227,7 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
-                const { router, card } = this.props;
+                const { router, card, comments } = this.props;
                 return (
                     <CardDetail
                         onSave={this.onSave}
@@ -231,6 +240,8 @@ export default (CardDetail:Function) => {
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         onCloseError={() => this.setState({ message: null })}
                         existingCard={!!card.get('cardId')}
+                        failedComment={comments.get('failedComment')}
+                        showComments={comments.get('showComments')}
                         {...this.state}
                     />
                 );
