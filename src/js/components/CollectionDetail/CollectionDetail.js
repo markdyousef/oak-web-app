@@ -43,12 +43,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     componentWillReceiveProps(nextProps:Props) {
         const {
             shouldUpdate,
-            setUpdate,
+            updateCard,
             data: { loading, seeds, grove, refetch }
         } = nextProps;
         if (shouldUpdate) {
             refetch();
-            setUpdate('card', false);
+            updateCard({ key: 'shouldUpdate', value: false });
         }
 
         if (loading) return;
@@ -127,11 +127,10 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         }
     }
     onDelete = () => {
-        const { data: { grove }, remove, router, setUpdate } = this.props;
+        const { data: { grove }, remove, router } = this.props;
         if (grove && grove.id) {
             remove(grove.id)
                 .then(() => {
-                    setUpdate('collections', true);
                     router.replace('/');
                 })
                 .catch(err => console.log(err));

@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
 import { card } from '../store/actions';
-import CardDetail from '../components/CardDetail';
+import CardDetail, { wrapper } from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
@@ -91,13 +91,34 @@ const createComment = gql`
         }
     }
 `;
+type Field = {
+    key: string,
+    value: string
+}
+
+type OwnProps = {
+    params: {
+        cardId? : string,
+        collectionId?: string
+    },
+    updateCard?: (field: Field) => void
+}
+
+
+const mapStateToProps = (state: Object) => {
+    return {
+        card: state.card
+    };
+};
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        setUpdate: (shouldUpdate: bool) =>
-            dispatch(card.setUpdate(shouldUpdate))
+        updateCard: (field:Field) =>
+            dispatch(card.updateCard(field))
     }
 );
+
+const WrappedCompoenent = wrapper(CardDetail);
 
 export default compose(
     graphql(getCard, {
@@ -130,5 +151,5 @@ export default compose(
             createComment: (id:string, text:string) => mutate({ variables: { id, text } })
         })
     }),
-    connect(null, mapDispatchToProps)
-)(CardDetail);
+    connect(mapStateToProps, mapDispatchToProps),
+)(WrappedCompoenent);

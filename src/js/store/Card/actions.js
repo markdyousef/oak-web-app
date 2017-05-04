@@ -7,11 +7,13 @@ type Field = {
     value: any
 }
 
-export const setState = (field: Field): Action => (
+export const updateCard = (field: Field): Action => {
+    return (
     {
         type: types.CARD_STATE,
         data: {
-            payload: field
+            field
         }
     }
-);
+    );
+};

@@ -7,7 +7,6 @@ import Editor from '../Editor/src/components/Editor';
 
 import TopBar from './TopBar';
 import Comments from '../Comments';
-import wrapper from './CardDetailWrapper';
 import { Container, ContainerInner, Main, EditorContainer } from './styles';
 import Toast from '../shared/Toast';
 
@@ -111,4 +110,4 @@ const CardDetail = ({ ...props }:Props) => {
     );
 };
 
-export default wrapper(CardDetail);
+export default CardDetail;

@@ -2,15 +2,15 @@ import * as actions from './actions';
 import * as types from '../constants/ActionTypes';
 
 describe('actions', () => {
-    it('should setState on card', () => {
+    it('should updateCard state', () => {
         const field = { key: 'isLoading', value: false };
         const expectedAction = {
             type: types.CARD_STATE,
             data: {
-                payload: field
+                field
             }
         };
 
-        expect(actions.setState(field)).toEqual(expectedAction);
+        expect(actions.updateCard(field)).toEqual(expectedAction);
     });
 });

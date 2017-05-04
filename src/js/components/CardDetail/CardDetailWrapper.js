@@ -3,63 +3,7 @@ import React, { Component } from 'react';
 import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
 import { parseComments, uploadImage, changeUrls } from '../../utils';
-
-type Data = {
-    refetch: Function,
-    loading: bool,
-    me: ?{
-        name: string,
-        username: string,
-        avatar: Object,
-        gravatar: string
-
-    },
-    seed: {
-        id: string,
-        content: ?string,
-        labels: Array<Object>,
-        comments: Array<Object>
-    }
-}
-
-type Props = {
-    create: Function,
-    update: Function,
-    addLabel: Function,
-    removeLabel: Function,
-    params: Object,
-    data?: Data,
-    router: Object,
-    createComment: Function,
-    setUpdate: (update: bool) => void
-}
-
-type State = {
-    cardId: ?string,
-    collectionId: string,
-    isLoading: bool,
-    showComments: bool,
-    editorState: EditorState,
-    labels: Array<string>,
-    comments: Array<Object>,
-    message: ?{
-        type: string,
-        message: string,
-        onClick?: Function
-    },
-    showEdit: bool,
-    name: string,
-    images: Array<Object>,
-    failedComment: ?EditorState,
-    creator: ?{
-        name: string,
-        username: string,
-        avatar: Object,
-        gravatar: string
-    }
-}
-
-type DefaultProps = {}
+import type { DefaultProps, State, Props } from './types';
 
 export default (CardDetail:Function) => {
     return (
@@ -69,8 +13,6 @@ export default (CardDetail:Function) => {
             constructor(props:Props) {
                 super(props);
                 this.state = {
-                    cardId: props.params.cardId,
-                    collectionId: props.params.collectionId,
                     showComments: !!props.params.comments,
                     showEdit: !props.params.cardId,
                     isLoading: false,
@@ -83,6 +25,21 @@ export default (CardDetail:Function) => {
                     failedComment: null,
                     creator: null
                 };
+            }
+            componentWillMount() {
+                const { params, updateCard } = this.props;
+                if (params.collectionId) {
+                    updateCard({
+                        key: 'collectionId',
+                        value: params.collectionId
+                    });
+                    if (params.cardId) {
+                        updateCard({
+                            key: 'cardId',
+                            value: params.cardId
+                        });
+                    }
+                }
             }
             componentWillReceiveProps(nextProps:Props) {
                 const { data } = nextProps;
@@ -117,8 +74,10 @@ export default (CardDetail:Function) => {
                 });
             }
             onSave = () => {
-                const { cardId, collectionId, editorState, name, images } = this.state;
-                const { create, update, data, setUpdate } = this.props;
+                const { editorState, name, images } = this.state;
+                const { create, update, data, updateCard, card } = this.props;
+                const cardId = card.get('cardId');
+                const collectionId = card.get('collectionId');
                 const newEditorState = changeUrls(editorState, images);
                 const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
@@ -129,7 +88,7 @@ export default (CardDetail:Function) => {
                     .then(() => {
                         if (data) data.refetch();
                         this.setState({ isLoading: false, message: null });
-                        setUpdate(true);
+                        updateCard({ key: 'shouldUpdate', value: true });
                     })
                     .catch(() => {
                         const message = {
@@ -144,7 +103,7 @@ export default (CardDetail:Function) => {
                         .then(() => {
                             this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
-                            setUpdate(true);
+                            updateCard({ key: 'shouldUpdate', value: true });
                         })
                         .catch(() => {
                             const message = {
@@ -157,8 +116,10 @@ export default (CardDetail:Function) => {
                 }
             }
             changeCardLabel = (labelId:string) => {
-                const { create, removeLabel, addLabel, setUpdate } = this.props;
-                const { cardId, collectionId, labels, name } = this.state;
+                const { create, removeLabel, addLabel, updateCard, card } = this.props;
+                const cardId = card.get('cardId');
+                const collectionId = card.get('collectionId');
+                const { labels, name } = this.state;
                 if (!cardId) {
                     create(collectionId, name)
                         .then((res) => {
@@ -183,7 +144,7 @@ export default (CardDetail:Function) => {
                             if (res.data.removeSeedLabel) {
                                 this.setState({ labels: labels.filter(id => id !== labelId) });
                             }
-                            setUpdate(true);
+                            updateCard({ key: 'shouldUpdate', value: true });
                         })
                         .catch(() => {
                             const message = {
@@ -200,7 +161,7 @@ export default (CardDetail:Function) => {
                                 labels.push(labelId);
                                 this.setState({ labels });
                             }
-                            setUpdate(true);
+                            updateCard({ key: 'shouldUpdate', value: true });
                         })
                         .catch(() => {
                             const message = {
@@ -213,8 +174,10 @@ export default (CardDetail:Function) => {
                 }
             }
             createComment = (editorState:EditorState) => {
-                const { cardId, collectionId, name, comments } = this.state;
-                const { createComment, create, setUpdate } = this.props;
+                const { name, comments } = this.state;
+                const { createComment, create, updateCard, card } = this.props;
+                const cardId = card.get('cardId');
+                const collectionId = card.get('collectionId');
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
                 if (!cardId) {
                     create(collectionId, name)
@@ -232,7 +195,7 @@ export default (CardDetail:Function) => {
                         comment = parseComments([comment])[0];
                         comments.push(comment);
                         this.setState({ comments, failedComment: null });
-                        setUpdate(true);
+                        updateCard(true);
                     })
                     .catch(() => this.setState({ failedComment: editorState }));
             }
@@ -255,8 +218,7 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
-                const { router } = this.props;
-                const { cardId } = this.state;
+                const { router, card } = this.props;
                 return (
                     <CardDetail
                         onSave={this.onSave}
@@ -268,7 +230,7 @@ export default (CardDetail:Function) => {
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         onCloseError={() => this.setState({ message: null })}
-                        existingCard={!!cardId}
+                        existingCard={!!card.get('cardId')}
                         {...this.state}
                     />
                 );
