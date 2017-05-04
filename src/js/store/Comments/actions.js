@@ -9,7 +9,7 @@ type Field = {
 
 export const setState = (field: Field): Action => (
     {
-        type: types.CARD_STATE,
+        type: types.COMMENTS_STATE,
         data: {
             payload: field
         }
