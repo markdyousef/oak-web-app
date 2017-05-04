@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
+import client from '../config/apollo';
 
-const middleware = applyMiddleware(thunk);
+const middleware = applyMiddleware(thunk, client.middleware());
 
 const isDev = process.env.NODE_ENV !== 'production';
 
