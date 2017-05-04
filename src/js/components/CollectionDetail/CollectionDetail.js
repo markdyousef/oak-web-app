@@ -137,7 +137,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 .catch(err => console.log(err));
         }
     }
-    addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
+    // addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
         const { showDetail } = this.state;
         const { data, router } = this.props;
@@ -258,11 +258,11 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 <Header>
                     {this.renderInfo()}
                     <ButtonGroup>
-                        <SquareButton
+                        {/* <SquareButton
                             onClick={this.addCard}
                             text="Add Card"
                             type="primary"
-                        />
+                        /> */}
                         <SquareButton
                             onClick={() => this.setState({ showEdit: !showEdit })}
                             text="Edit Collection"
