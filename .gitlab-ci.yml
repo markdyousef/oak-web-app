@@ -1,11 +1,6 @@
 image: node:7.10-alpine
 
-cache:
-  paths:
-  - node_modules/
-
 stages:
-  - build
   - test
   - deploy
 
@@ -13,7 +8,7 @@ variables:
   S3_BUCKET_NAME: "dev.clai.io/cuest-web/"
 
 build_job:
-  stage: build
+  stage: test
   script:
    - yarn install
    - yarn run build
@@ -26,6 +21,9 @@ test_job:
 
 deploy_job:
   stage: deploy
+  environment: production
+  only:
+    - master
   script:
     - which apk && apk update --quiet && apk upgrade --quiet && apk add --quiet py-pip
     - which pip && pip install --quiet awscli
