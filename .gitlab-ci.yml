@@ -1,4 +1,4 @@
-image: node:6.9.4
+image: node:7.10-alpine
 
 cache:
   paths:
@@ -9,25 +9,26 @@ stages:
   - test
   - deploy
 
+variables:
+  S3_BUCKET_NAME: "dev.clai.io/cuest-web/"
+
 build_job:
   stage: build
   script:
-   - npm install
-   - npm build
+   - yarn install
+   - yarn run build
 
 test_job:
   stage: test
   script:
-   - npm install
-   - npm test
+   - yarn install
+   - yarn run test
 
-variables:
-  S3_BUCKET_NAME: "dev.clai.io/cuest-web/"
 deploy_job:
   stage: deploy
   script:
-    - npm install
-    - npm build
-    - apt-get install python-pip
-    - pip install awscli
+    - which apk && apk update --quiet && apk upgrade --quiet && apk add --quiet py-pip
+    - which pip && pip install --quiet awscli
+    - yarn install
+    - yarn run build
     - aws s3 cp ./build s3://$S3_BUCKET_NAME --recursive
