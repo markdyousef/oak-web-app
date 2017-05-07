@@ -13,6 +13,8 @@ const Container = styled.nav`
     height: 60px;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    width: 100%;
 `;
 
 const Right = styled.div`

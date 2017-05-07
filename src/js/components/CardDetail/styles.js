@@ -19,6 +19,7 @@ export const ContainerInner = styled.div`
 `;
 
 export const Main = styled.section`
+    margin-top: 60px;
     overflow: hidden;
     display: flex;
     flex: 1;
