@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import CheckIcon from '../../../icons/checkmark';
 import { colors } from '../../../styles';
 
-const Label = styled.div`
-    width: 100%;
+const Chip = styled.div`
+    ${''/* width: 100%; */}
     height: 30px;
     padding: 0 10px;
     display: flex;
@@ -17,7 +17,6 @@ const Label = styled.div`
     word-wrap: break-word;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-top: 5px;
     cursor: pointer;
     & svg {
         fill: ${colors.white}
@@ -32,11 +31,11 @@ type Props = {
 }
 
 export default ({ onClick, style, name, isActive }: Props) => (
-    <Label
+    <Chip
         onClick={onClick}
         style={style}
     >
         {name}
         {isActive && <CheckIcon />}
-    </Label>
+    </Chip>
 );

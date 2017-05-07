@@ -9,6 +9,8 @@ import NoCards from './NoCards';
 import CollectionToolbar from '../CollectionToolbar';
 import Menu from '../shared/Dropdown';
 
+import type { DefaultProps, Props, State } from './types';
+
 import {
     Container,
     Header,
@@ -22,58 +24,6 @@ import {
     Dropdown,
     MenuItem
 } from './styles';
-
-type Seed = {
-    id: string,
-    content: string,
-    cover: Object,
-    creator: Object,
-    labels: Array <Object>,
-    likes: Array<number>,
-    comments: Array<Object>
-}
-
-type Data = {
-    loading: bool,
-    refetch: Function,
-    me?: {
-        likedSeeds: ?Array<Object>
-    },
-    grove?: {
-        id: string,
-        name: string,
-        description: ?string,
-        cover: ?Object,
-        stats: ?Object,
-        labels: ?Array<Object>
-    },
-    seeds?: Array<Seed>
-}
-type DefaultProps = {};
-type Props = {
-    params: {
-        collectionId: string
-    },
-    router: {
-        push: Function,
-        replace: Function
-    },
-    data: Data,
-    remove: Function,
-    removeCard: Function,
-    likeCard: Function,
-    unlikeCard: Function,
-    setUpdate: (type: string, update: bool) => void,
-    shouldUpdate: bool
-};
-type State = {
-    showEdit: bool,
-    showDetail: bool,
-    cards: Array<Seed>,
-    sortKey: string,
-    labels: Array<Object>,
-    filterVals: Array<string>
-};
 
 class CollectionDetail extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
@@ -93,12 +43,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     componentWillReceiveProps(nextProps:Props) {
         const {
             shouldUpdate,
-            setUpdate,
+            updateCard,
             data: { loading, seeds, grove, refetch }
         } = nextProps;
         if (shouldUpdate) {
             refetch();
-            setUpdate('card', false);
+            updateCard({ key: 'shouldUpdate', value: false });
         }
 
         if (loading) return;
@@ -177,17 +127,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         }
     }
     onDelete = () => {
-        const { data: { grove }, remove, router, setUpdate } = this.props;
+        const { data: { grove }, remove, router } = this.props;
         if (grove && grove.id) {
             remove(grove.id)
                 .then(() => {
-                    setUpdate('collections', true);
                     router.replace('/');
                 })
                 .catch(err => console.log(err));
         }
     }
-    addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
+    // addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
         const { showDetail } = this.state;
         const { data, router } = this.props;
@@ -308,11 +257,11 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 <Header>
                     {this.renderInfo()}
                     <ButtonGroup>
-                        <SquareButton
+                        {/* <SquareButton
                             onClick={this.addCard}
                             text="Add Card"
                             type="primary"
-                        />
+                        /> */}
                         <SquareButton
                             onClick={() => this.setState({ showEdit: !showEdit })}
                             text="Edit Collection"

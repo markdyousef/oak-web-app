@@ -93,14 +93,7 @@ const mapStateToProps = (state:Object) => (
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        setUpdate: (type: 'card' | 'collection', shouldUpdate:bool) => {
-            if (type === 'collection') {
-                dispatch(collections.setUpdate(shouldUpdate));
-            }
-            if (type === 'card') {
-                dispatch(card.setUpdate(shouldUpdate));
-            }
-        }
+        updateCard: (field:Object) => dispatch(card.updateCard(field))
     }
 );
 

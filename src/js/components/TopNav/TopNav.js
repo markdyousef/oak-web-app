@@ -1,87 +1,28 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import styled from 'styled-components';
-import colors from '../../styles/colors';
+import { withRouter } from 'react-router';
 import Avatar from '../shared/Avatar';
 import Menu from '../shared/Dropdown';
 import { signOut } from '../../utils';
-
-const Container = styled.nav`
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
-    border-bottom: 1px solid ${colors.lightGrey};
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    flex-shrink: 0;
-`;
-
-const Profile = styled.button`
-    height: 32px;
-    width: 32px;
-    border-radius: 999em;
-    border: 1px solid #E5E5E5;
-    margin-left: 5px;
-    padding: 0;
-`;
-
-const NavRight = styled.div`
-    height: 100%;
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    padding-right: 20px;
-`;
-
-const NavLeft = styled.div`
-    margin-left: 20px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 100px;
-`;
-
-const Dropdown = styled.div`
-    top: 60px;
-    right: 5px;
-    position: absolute;
-    width: 200px;
-    z-index: 99;
-`;
-
-const Logout = styled.div`
-    width: 100%;
-    cursor: pointer;
-    padding-top: 5px;
-    margin-top: 10px;
-`;
-
-type DefaultProps = {
-    team: null,
-    router: {}
-};
-type Props = {
-    team: ?bool,
-    logout: Function,
-    router: {
-        replace: Function
-    },
-    data: {
-        loading: bool,
-        me: {
-            avatar: ?{
-                urlThumb64: ?string
-            },
-            gravatar: ?string
-        }
-    }
-};
-type State = {
-    isOpen: bool
-};
-
+import logo from '../../../img/cuest-logo.png';
+import CollectionIcon from '../../icons/collections';
+import { RoundButton } from '../shared/Button';
+import CollectionDialog from '../../containers/CollectionDialogContainer';
+import CreateCard from '../CreateCard';
+import {
+    Container,
+    Profile,
+    NavRight,
+    NavLeft,
+    NavCenter,
+    Dropdown,
+    Collections,
+    Item,
+    ItemTitle,
+    All,
+    Add
+} from './styles';
+import type { DefaultProps, Props, State } from './types';
 
 const IMG = '//style.anu.edu.au/_anu/4/images/placeholders/person.png';
 class TopNav extends Component<DefaultProps, Props, State> {
@@ -91,32 +32,73 @@ class TopNav extends Component<DefaultProps, Props, State> {
     constructor() {
         super();
         this.state = {
-            isOpen: false,
-            picture: IMG
+            showSettings: false,
+            showCollections: false,
+            showAdd: false,
+            picture: IMG,
+            showDialog: false,
+            collections: []
         };
+    }
+    componentWillReceiveProps(nextProps: Props) {
+        const { data: { groves, loading } } = nextProps;
+
+        if (loading || !groves) return;
+
+        this.setState({
+            collections: groves
+        });
     }
     signOut = () => {
         const { router, logout } = this.props;
-        logout()
-            .then(() => {
-                signOut();
-                router.replace({
-                    pathname: '/login'
-                });
-            })
-            .catch(err => console.log(err));
+        if (logout) {
+            logout()
+                .then(() => {
+                    signOut();
+                    router.replace({
+                        pathname: '/login'
+                    });
+                })
+                .catch(err => console.log(err));
+        }
     }
-    onClose = (close: bool = false) => {
-        this.setState({ isOpen: close });
+    onShow = (close: bool = false, menu?: string) => {
+        if (menu === 'collections') {
+            this.setState({ showCollections: close });
+            return;
+        }
+        this.setState({ showSettings: close });
     }
     toSettings = () => {
         const { router } = this.props;
-        this.onClose();
+        this.onShow();
         router.push('/my-settings');
     }
+    toCollections = () => {
+        const { router } = this.props;
+        this.onShow(false, 'collections');
+        router.push('/');
+    }
+    renderRecommended = () => {
+        const { router } = this.props;
+        const { collections } = this.state;
+        return collections.map(collection =>
+            <Item
+                key={collection.id}
+                onClick={() => router.push(`collection/${collection.id}`)}
+            >
+                {collection.name}
+            </Item>
+        ).slice(0, 3);
+    }
+    addCard = (collectionId: string) => {
+        const { router } = this.props;
+        this.setState({ showAdd: false });
+        return router.push(`/collection/${collectionId}/card`);
+    }
     render() {
-        const { data: { me } } = this.props;
-        const { isOpen } = this.state;
+        const { data: { me }, params } = this.props;
+        const { showSettings, showCollections, showDialog, showAdd, collections } = this.state;
         // differ between routes inside team and outside
         // const profileRoute = (team) ? '/my-profile' : 'profile';
         let picture;
@@ -127,24 +109,75 @@ class TopNav extends Component<DefaultProps, Props, State> {
         return (
             <Container>
                 <NavLeft>
-                    {/* TODO: Search */}
+                    <CollectionIcon />
+                    <Collections onClick={() => this.onShow(!showCollections, 'collections')}>
+                        Collections
+                    </Collections>
+                    {showCollections &&
+                        <Dropdown style={{ left: '10px' }}>
+                            <Menu onClose={() => this.onShow(false, 'collections')} arrowPos="left">
+                                <ItemTitle>YOUR TOP COLLECTIONS</ItemTitle>
+                                {this.renderRecommended()}
+                                <All
+                                    onClick={this.toCollections}
+                                >
+                                    View All Collections
+                                </All>
+                                <Add
+                                    onClick={() => this.setState({
+                                        showDialog: true,
+                                        showCollections: false
+                                    })}
+                                >
+                                    Add a Collection
+                                </Add>
+                            </Menu>
+                        </Dropdown>
+                    }
                 </NavLeft>
+                <NavCenter onClick={this.toCollections}>
+                    <img
+                        alt="logo"
+                        src={logo}
+                    />
+                </NavCenter>
                 <NavRight>
-                    <Profile onClick={() => this.onClose(!isOpen)}>
+                    <RoundButton
+                        onClick={() => this.setState({ showAdd: !showAdd })}
+                        text="Create Card"
+                        type="secondary"
+                    />
+                    {showAdd &&
+                        <Dropdown style={{ right: '10px' }}>
+                            <Menu onClose={() => this.setState({ showAdd: false })}>
+                                <CreateCard
+                                    collectionId={params.collectionId}
+                                    collections={collections}
+                                    addCard={collectionId => this.addCard(collectionId)}
+                                />
+                            </Menu>
+                        </Dropdown>
+                    }
+                    <Profile onClick={() => this.onShow(!showSettings, 'settings')}>
                         <Avatar img={picture} />
                     </Profile>
+                    {showSettings &&
+                        <Dropdown style={{ right: '10px' }}>
+                            <Menu onClose={this.onShow}>
+                                <Item onClick={this.toSettings}>Settings</Item>
+                                <Item onClick={this.signOut}>Logout</Item>
+                            </Menu>
+                        </Dropdown>
+                    }
                 </NavRight>
-                {isOpen &&
-                    <Dropdown>
-                        <Menu onClose={this.onClose}>
-                            <Logout onClick={this.toSettings}>Settings</Logout>
-                            <Logout onClick={this.signOut}>Logout</Logout>
-                        </Menu>
-                    </Dropdown>
+                {showDialog &&
+                    <CollectionDialog
+                        close={() => this.setState({ showDialog: false })}
+                    />
                 }
             </Container>
         );
     }
 }
 
-export default TopNav;
+export default withRouter(TopNav);

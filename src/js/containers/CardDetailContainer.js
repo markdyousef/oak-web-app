@@ -2,8 +2,8 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card } from '../store/actions';
-import CardDetail from '../components/CardDetail';
+import { card, comments } from '../store/actions';
+import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
@@ -23,21 +23,7 @@ const getCard = gql`
             labels {
                 id
             }
-            comments {
-                id
-                text
-                creator {
-                    id
-                    name
-                    username
-                    avatar {
-                        id
-                        urlThumb64
-                    }
-                    gravatar
-                }
-                createdAt
-            }
+
         }
     }
 `;
@@ -72,32 +58,38 @@ const removeSeedLabel = gql`
     }
 `;
 
-const createComment = gql`
-    mutation createComment($id: ID!, $text: String!) {
-        createComment(seedId: $id, text: $text) {
-            id
-            text
-            createdAt
-            creator {
-                name
-                username
-                avatar {
-                    id
-                    urlThumb64
-                }
-                gravatar
-            }
-            createdAt
-        }
-    }
-`;
+
+type Field = {
+    key: string,
+    value: string
+}
+
+type OwnProps = {
+    params: {
+        cardId? : string,
+        collectionId?: string
+    },
+    updateCard?: (field: Field) => void
+}
+
+
+const mapStateToProps = (state: Object) => {
+    return {
+        card: state.card,
+        comments: state.comments
+    };
+};
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        setUpdate: (shouldUpdate: bool) =>
-            dispatch(card.setUpdate(shouldUpdate))
+        updateCard: (field:Field) =>
+            dispatch(card.updateCard(field)),
+        updateComments: (field: Field) =>
+            dispatch(comments.updateComments(field))
     }
 );
+
+const WrappedCompoenent = wrapper(CardDetail);
 
 export default compose(
     graphql(getCard, {
@@ -125,10 +117,5 @@ export default compose(
             removeLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
         })
     }),
-    graphql(createComment, {
-        props: ({ mutate }) => ({
-            createComment: (id:string, text:string) => mutate({ variables: { id, text } })
-        })
-    }),
-    connect(null, mapDispatchToProps)
-)(CardDetail);
+    connect(mapStateToProps, mapDispatchToProps),
+)(WrappedCompoenent);

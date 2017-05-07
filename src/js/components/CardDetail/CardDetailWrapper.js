@@ -2,64 +2,8 @@
 import React, { Component } from 'react';
 import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { parseComments, uploadImage, changeUrls } from '../../utils';
-
-type Data = {
-    refetch: Function,
-    loading: bool,
-    me: ?{
-        name: string,
-        username: string,
-        avatar: Object,
-        gravatar: string
-
-    },
-    seed: {
-        id: string,
-        content: ?string,
-        labels: Array<Object>,
-        comments: Array<Object>
-    }
-}
-
-type Props = {
-    create: Function,
-    update: Function,
-    addLabel: Function,
-    removeLabel: Function,
-    params: Object,
-    data?: Data,
-    router: Object,
-    createComment: Function,
-    setUpdate: (update: bool) => void
-}
-
-type State = {
-    cardId: ?string,
-    collectionId: string,
-    isLoading: bool,
-    showComments: bool,
-    editorState: EditorState,
-    labels: Array<string>,
-    comments: Array<Object>,
-    message: ?{
-        type: string,
-        message: string,
-        onClick?: Function
-    },
-    showEdit: bool,
-    name: string,
-    images: Array<Object>,
-    failedComment: ?EditorState,
-    creator: ?{
-        name: string,
-        username: string,
-        avatar: Object,
-        gravatar: string
-    }
-}
-
-type DefaultProps = {}
+import { uploadImage, changeUrls } from '../../utils';
+import type { DefaultProps, State, Props } from './types';
 
 export default (CardDetail:Function) => {
     return (
@@ -69,20 +13,35 @@ export default (CardDetail:Function) => {
             constructor(props:Props) {
                 super(props);
                 this.state = {
-                    cardId: props.params.cardId,
-                    collectionId: props.params.collectionId,
-                    showComments: !!props.params.comments,
                     showEdit: !props.params.cardId,
                     isLoading: false,
                     editorState: EditorState.createEmpty(decorator),
                     labels: [],
-                    comments: [],
                     images: [],
                     message: null,
-                    name: '',
-                    failedComment: null,
-                    creator: null
+                    name: ''
                 };
+            }
+            componentWillMount() {
+                const { params, updateCard, updateComments } = this.props;
+                if (params.collectionId) {
+                    updateCard({
+                        key: 'collectionId',
+                        value: params.collectionId
+                    });
+                    if (params.cardId) {
+                        updateCard({
+                            key: 'cardId',
+                            value: params.cardId
+                        });
+                    }
+                }
+                if (params.comments) {
+                    updateComments({
+                        key: 'showComments',
+                        value: true
+                    });
+                }
             }
             componentWillReceiveProps(nextProps:Props) {
                 const { data } = nextProps;
@@ -105,10 +64,6 @@ export default (CardDetail:Function) => {
                         this.setState({ editorState: EditorState.createWithContent(state, decorator) });
                     }
                 }
-                if (seed.comments) {
-                    const comments = parseComments(seed.comments);
-                    this.setState({ comments });
-                }
 
                 this.setState({
                     isLoading: false,
@@ -117,8 +72,10 @@ export default (CardDetail:Function) => {
                 });
             }
             onSave = () => {
-                const { cardId, collectionId, editorState, name, images } = this.state;
-                const { create, update, data, setUpdate } = this.props;
+                const { editorState, name, images } = this.state;
+                const { create, update, data, updateCard, card } = this.props;
+                const cardId = card.get('cardId');
+                const collectionId = card.get('collectionId');
                 const newEditorState = changeUrls(editorState, images);
                 const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
                 const cover = images[0] && images[0].id;
@@ -129,7 +86,7 @@ export default (CardDetail:Function) => {
                     .then(() => {
                         if (data) data.refetch();
                         this.setState({ isLoading: false, message: null });
-                        setUpdate(true);
+                        updateCard({ key: 'shouldUpdate', value: true });
                     })
                     .catch(() => {
                         const message = {
@@ -144,7 +101,7 @@ export default (CardDetail:Function) => {
                         .then(() => {
                             this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
-                            setUpdate(true);
+                            updateCard({ key: 'shouldUpdate', value: true });
                         })
                         .catch(() => {
                             const message = {
@@ -157,8 +114,10 @@ export default (CardDetail:Function) => {
                 }
             }
             changeCardLabel = (labelId:string) => {
-                const { create, removeLabel, addLabel, setUpdate } = this.props;
-                const { cardId, collectionId, labels, name } = this.state;
+                const { create, removeLabel, addLabel, updateCard, card } = this.props;
+                const cardId = card.get('cardId');
+                const collectionId = card.get('collectionId');
+                const { labels, name } = this.state;
                 if (!cardId) {
                     create(collectionId, name)
                         .then((res) => {
@@ -183,7 +142,10 @@ export default (CardDetail:Function) => {
                             if (res.data.removeSeedLabel) {
                                 this.setState({ labels: labels.filter(id => id !== labelId) });
                             }
-                            setUpdate(true);
+                            updateCard({
+                                key: 'shouldUpdate',
+                                value: true
+                            });
                         })
                         .catch(() => {
                             const message = {
@@ -200,7 +162,10 @@ export default (CardDetail:Function) => {
                                 labels.push(labelId);
                                 this.setState({ labels });
                             }
-                            setUpdate(true);
+                            updateCard({
+                                key: 'shouldUpdate',
+                                value: true
+                            });
                         })
                         .catch(() => {
                             const message = {
@@ -211,30 +176,6 @@ export default (CardDetail:Function) => {
                             this.setState({ message });
                         });
                 }
-            }
-            createComment = (editorState:EditorState) => {
-                const { cardId, collectionId, name, comments } = this.state;
-                const { createComment, create, setUpdate } = this.props;
-                const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-                if (!cardId) {
-                    create(collectionId, name)
-                        .then((res) => {
-                            const id = res.data.createSeed.id;
-                            this.setState({ cardId: id, failedComment: null });
-                            this.createComment(editorState);
-                        })
-                        .catch(() => this.setState({ failedComment: editorState }));
-                    return;
-                }
-                createComment(cardId, content)
-                    .then((res) => {
-                        let comment = res.data.createComment;
-                        comment = parseComments([comment])[0];
-                        comments.push(comment);
-                        this.setState({ comments, failedComment: null });
-                        setUpdate(true);
-                    })
-                    .catch(() => this.setState({ failedComment: editorState }));
             }
             addFile = (file: Object) => {
                 const { images } = this.state;
@@ -255,18 +196,20 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
-                const { router } = this.props;
+                const { router, card, comments } = this.props;
                 return (
                     <CardDetail
                         onSave={this.onSave}
                         changeCardLabel={this.changeCardLabel}
                         goBack={() => router.goBack()}
-                        createComment={this.createComment}
                         onChange={this.onChange}
                         addFile={this.addFile}
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         onCloseError={() => this.setState({ message: null })}
+                        existingCard={!!card.get('cardId')}
+                        showComments={comments.get('showComments')}
+                        collectionId={card.get('collectionId')}
                         {...this.state}
                     />
                 );

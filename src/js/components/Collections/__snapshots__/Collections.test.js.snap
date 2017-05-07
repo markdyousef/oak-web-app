@@ -2,20 +2,29 @@ exports[`test renders correctly 1`] = `
 <div
   className="gmuKOB">
   <section
-    className="koLVdi">
+    className="pjIGs">
     <div
-      className="MZKGO">
+      className="jtxdxF">
       <h1>
         Collections
       </h1>
       <p>
         A collection of useful articles, work, notes & anything else needed to stimulate collective learning.
       </p>
+      <div
+        className="dzrwBE">
+        <div>
+          <h3 />
+          <h5>
+            Collections
+          </h5>
+        </div>
+      </div>
     </div>
     <div
       className="cWGcft">
       <button
-        className="iZsHgX"
+        className="hQjvYS"
         onClick={[Function]}
         type="primary">
         Add Collection
@@ -34,10 +43,10 @@ exports[`test renders correctly 1`] = `
       You haven’t created any collections yet. Create your first collection by hitting the button below.
     </p>
     <button
-      className="bBPMRg"
+      className="jpCUHi"
       onClick={[Function]}
       type={undefined}>
-      Create a card
+      Create Collection
     </button>
   </div>
 </div>

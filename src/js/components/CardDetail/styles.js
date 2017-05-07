@@ -19,6 +19,7 @@ export const ContainerInner = styled.div`
 `;
 
 export const Main = styled.section`
+    margin-top: 60px;
     overflow: hidden;
     display: flex;
     flex: 1;
@@ -35,7 +36,7 @@ export const EditorContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-    & div {
+    & div:first-child {
         width: 100%;
     }
 `;

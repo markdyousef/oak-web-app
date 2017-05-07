@@ -15,10 +15,13 @@ exports[`test renders correctly 1`] = `
       </button>
     </div>
     <div
-      className="lbvwyG">
+      className="hbuMgW">
       <div
-        className="cAyAmI">
-        <div />
+        className="ztAri"
+        onClick={[Function]}>
+        <img
+          alt="cover"
+          src="test-file-stub" />
         <input
           accept="image/*"
           onChange={[Function]}
@@ -28,48 +31,40 @@ exports[`test renders correctly 1`] = `
             }
           }
           type="file" />
-        <button
-          className="bBPMRg"
-          onClick={[Function]}
-          type={undefined}>
-          Add Cover
-        </button>
       </div>
       <div>
         <h5
-          className="dRMKoo">
-          NAME
-        </h5>
+          className="dRMKoo" />
         <input
           className="bwXyts"
           onChange={[Function]}
           onKeyDown={null}
-          placeholder="Name"
+          placeholder="Name your collection"
           type="text"
           value="" />
       </div>
       <div>
         <h5
           className="eKaiQM">
-          DESCRIPTION
+          
         </h5>
         <textarea
           className="cVtAGf"
           onChange={[Function]}
-          placeholder="Description"
+          placeholder="Add a description..."
           value="" />
       </div>
     </div>
     <div
       className="kKvTgr">
       <button
-        className="bBPMRg"
+        className="jpCUHi"
         onClick={[Function]}
         type={undefined}>
         Cancel
       </button>
       <button
-        className="iZsHgX"
+        className="hQjvYS"
         onClick={[Function]}
         type="primary">
         Save

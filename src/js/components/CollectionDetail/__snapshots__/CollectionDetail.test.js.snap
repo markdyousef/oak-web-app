@@ -29,10 +29,6 @@ ShallowWrapper {
         <styled.div>
             <Unknown
                 onClick={[Function]}
-                text="Add Card"
-                type="primary" />
-            <Unknown
-                onClick={[Function]}
                 text="Edit Collection" />
         </styled.div>
     </styled.section>
@@ -73,10 +69,6 @@ ShallowWrapper {
                   </styled.div>
             </styled.div>
             <styled.div>
-                  <Unknown
-                        onClick={[Function]}
-                        text="Add Card"
-                        type="primary" />
                   <Unknown
                         onClick={[Function]}
                         text="Edit Collection" />
@@ -120,7 +112,6 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": CollectionDetail {
         "_reactInternalInstance": [Circular],
-        "addCard": [Function],
         "context": Object {},
         "handleLike": [Function],
         "onDelete": [Function],
@@ -191,10 +182,6 @@ ShallowWrapper {
                     <styled.div>
                               <Unknown
                                         onClick={[Function]}
-                                        text="Add Card"
-                                        type="primary" />
-                              <Unknown
-                                        onClick={[Function]}
                                         text="Edit Collection" />
                     </styled.div>
           </styled.section>
@@ -235,10 +222,6 @@ ShallowWrapper {
                               </styled.div>
                     </styled.div>
                     <styled.div>
-                              <Unknown
-                                        onClick={[Function]}
-                                        text="Add Card"
-                                        type="primary" />
                               <Unknown
                                         onClick={[Function]}
                                         text="Edit Collection" />
