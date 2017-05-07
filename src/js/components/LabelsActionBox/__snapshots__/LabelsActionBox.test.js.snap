@@ -6,7 +6,7 @@ exports[`test renders correctly 1`] = `
       className="hqCZJo"
       style={
         Object {
-          "right": "25px",
+          "left": "25px",
         }
       } />
     <div

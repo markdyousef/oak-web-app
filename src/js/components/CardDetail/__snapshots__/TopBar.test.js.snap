@@ -8,13 +8,18 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.nav>
     <styled.div>
+        Writing in CollectionName
+    </styled.div>
+    <styled.div>
+        <img
+            alt="logo"
+            src="test-file-stub" />
+    </styled.div>
+    <styled.div>
         <Unknown
             onClick={[Function]}
             text="Edit card"
             type="secondaryAction" />
-        <Unknown
-            onClick={[Function]}
-            text="Comments" />
         <styled.button
             onClick={[Function]}>
             ×
@@ -24,13 +29,18 @@ ShallowWrapper {
   "nodes": Array [
     <styled.nav>
       <styled.div>
+            Writing in CollectionName
+      </styled.div>
+      <styled.div>
+            <img
+                  alt="logo"
+                  src="test-file-stub" />
+      </styled.div>
+      <styled.div>
             <Unknown
                   onClick={[Function]}
                   text="Edit card"
                   type="secondaryAction" />
-            <Unknown
-                  onClick={[Function]}
-                  text="Comments" />
             <styled.button
                   onClick={[Function]}>
                   ×
@@ -96,13 +106,18 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.nav>
           <styled.div>
+                    Writing in CollectionName
+          </styled.div>
+          <styled.div>
+                    <img
+                              alt="logo"
+                              src="test-file-stub" />
+          </styled.div>
+          <styled.div>
                     <Unknown
                               onClick={[Function]}
                               text="Edit card"
                               type="secondaryAction" />
-                    <Unknown
-                              onClick={[Function]}
-                              text="Comments" />
                     <styled.button
                               onClick={[Function]}>
                               ×
@@ -112,13 +127,18 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.nav>
           <styled.div>
+                    Writing in CollectionName
+          </styled.div>
+          <styled.div>
+                    <img
+                              alt="logo"
+                              src="test-file-stub" />
+          </styled.div>
+          <styled.div>
                     <Unknown
                               onClick={[Function]}
                               text="Edit card"
                               type="secondaryAction" />
-                    <Unknown
-                              onClick={[Function]}
-                              text="Comments" />
                     <styled.button
                               onClick={[Function]}>
                               ×

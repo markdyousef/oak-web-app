@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
-import { SquareButton, RoundButton } from '../shared/Button';
+import { RoundButton } from '../shared/Button';
+import logo from '../../../img/cuest-logo.png';
 
 const Container = styled.nav`
     display: flex;
@@ -11,17 +12,35 @@ const Container = styled.nav`
     border-bottom: 1px solid ${colors.lightGrey};
     height: 60px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
 `;
 
 const Right = styled.div`
-    position: fixed;
+    ${''/* position: fixed; */}
     display: flex;
     align-items: center;
-    padding-right: 30px;
+    margin-right: 25px;
     & button {
         margin: 0 2px;
     }
+`;
+
+const Center = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+
+const Left = styled.div`
+    margin-left: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 200px;
 `;
 
 const EditNav = styled.div`
@@ -45,7 +64,8 @@ type Props = {
     collectionId: string,
     changeCardLabel: Function,
     labels: Array<string>,
-    isLoading: bool
+    isLoading: bool,
+    existingCard: bool
 };
 type State = {
     showLabels: bool
@@ -63,14 +83,14 @@ class TopBar extends Component<DefaultProps, Props, State> {
         };
     }
     renderButtons = () => {
-        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading } = this.props;
+        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading, existingCard } = this.props;
         const { showLabels } = this.state;
 
         if (showEdit) {
             return (
                 <EditNav>
                     <div>
-                        <SquareButton
+                        <RoundButton
                             text="Add label"
                             onClick={() => this.setState({ showLabels: !showLabels })}
                         />
@@ -83,32 +103,40 @@ class TopBar extends Component<DefaultProps, Props, State> {
                             />
                         }
                     </div>
-                    <SquareButton
+                    <RoundButton
                         text="Save card"
                         onClick={onSave}
-                        type="primary"
+                        type={(existingCard) ? 'primary' : 'secondary'}
                         isLoading={isLoading}
                     />
                 </EditNav>
             );
         }
-        return <SquareButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
+        return <RoundButton text="Edit card" type="secondaryAction" onClick={onEdit} />;
     }
     render() {
-        const { onClose, showComments } = this.props;
+        const { onClose, showComments, existingCard } = this.props;
         return (
             <Container>
+                <Left>
+                    Writing in CollectionName
+                </Left>
+                <Center>
+                    <img src={logo} alt="logo" />
+                </Center>
                 <Right>
+                    {existingCard &&
+                        <RoundButton
+                            onClick={showComments}
+                            text="Comments"
+                            type="transparent"
+                        />
+                    }
                     {this.renderButtons()}
-                    <RoundButton
-                        onClick={showComments}
-                        text="Comments"
-                    />
                     <Close onClick={onClose}>
                         &times;
                     </Close>
                 </Right>
-
             </Container>
         );
     }

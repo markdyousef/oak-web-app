@@ -8,9 +8,8 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <styled.div>
-        <Apollo(Connect(SideNav)) />
         <styled.section>
-            <Apollo(Apollo(TopNav))
+            <Apollo(Apollo(withRouter(TopNav)))
                 router={undefined}
                 team={true} />
             <styled.div />
@@ -20,9 +19,8 @@ ShallowWrapper {
   "nodes": Array [
     <styled.div>
       <styled.div>
-            <Apollo(Connect(SideNav)) />
             <styled.section>
-                  <Apollo(Apollo(TopNav))
+                  <Apollo(Apollo(withRouter(TopNav)))
                         router={undefined}
                         team={true} />
                   <styled.div />
@@ -68,9 +66,8 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <styled.div>
-                    <Apollo(Connect(SideNav)) />
                     <styled.section>
-                              <Apollo(Apollo(TopNav))
+                              <Apollo(Apollo(withRouter(TopNav)))
                                         router={undefined}
                                         team={true} />
                               <styled.div />
@@ -80,9 +77,8 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <styled.div>
-                    <Apollo(Connect(SideNav)) />
                     <styled.section>
-                              <Apollo(Apollo(TopNav))
+                              <Apollo(Apollo(withRouter(TopNav)))
                                         router={undefined}
                                         team={true} />
                               <styled.div />

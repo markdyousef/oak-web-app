@@ -7,21 +7,43 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <styled.div
-        onClick={[Function]}>
-        <span>
-            Sort by
-        </span>
-    </styled.div>
+    <div>
+        <styled.div
+            onClick={[Function]}>
+            <span>
+                Sort by
+            </span>
+        </styled.div>
+    </div>
+    <div>
+        <styled.div
+            onClick={[Function]}>
+            <span>
+                Filter by
+            </span>
+        </styled.div>
+    </div>
+    <styled.div />
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <styled.div
-            onClick={[Function]}>
-            <span>
-                  Sort by
-            </span>
-      </styled.div>
+      <div>
+            <styled.div
+                  onClick={[Function]}>
+                  <span>
+                        Sort by
+                  </span>
+            </styled.div>
+      </div>
+      <div>
+            <styled.div
+                  onClick={[Function]}>
+                  <span>
+                        Filter by
+                  </span>
+            </styled.div>
+      </div>
+      <styled.div />
 </styled.div>,
   ],
   "options": Object {},
@@ -40,9 +62,11 @@ ShallowWrapper {
         "props": Object {},
         "refs": Object {},
         "renderFilterItems": [Function],
+        "renderLabels": [Function],
         "renderSortItems": [Function],
         "state": Object {
-          "isOpen": false,
+          "showFilter": false,
+          "showSort": false,
         },
         "updater": Object {
           "enqueueCallback": [Function],
@@ -63,21 +87,43 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <styled.div
-                    onClick={[Function]}>
-                    <span>
-                              Sort by
-                    </span>
-          </styled.div>
+          <div>
+                    <styled.div
+                              onClick={[Function]}>
+                              <span>
+                                        Sort by
+                              </span>
+                    </styled.div>
+          </div>
+          <div>
+                    <styled.div
+                              onClick={[Function]}>
+                              <span>
+                                        Filter by
+                              </span>
+                    </styled.div>
+          </div>
+          <styled.div />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <styled.div
-                    onClick={[Function]}>
-                    <span>
-                              Sort by
-                    </span>
-          </styled.div>
+          <div>
+                    <styled.div
+                              onClick={[Function]}>
+                              <span>
+                                        Sort by
+                              </span>
+                    </styled.div>
+          </div>
+          <div>
+                    <styled.div
+                              onClick={[Function]}>
+                              <span>
+                                        Filter by
+                              </span>
+                    </styled.div>
+          </div>
+          <styled.div />
 </styled.div>,
       },
       "_renderedNodeType": 1,

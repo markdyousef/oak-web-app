@@ -41,7 +41,7 @@ exports[`test renders correctly 1`] = `
   <section
     className="txchV">
     <button
-      className="iZsHgX"
+      className="hQjvYS"
       onClick={[Function]}
       type="primary">
       CREATE

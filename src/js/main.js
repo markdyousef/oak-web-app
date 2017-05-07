@@ -3,9 +3,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { requireAuth, requireTeam } from './utils';
 import initStore from './store/configureStore';
+import client from './config/apollo';
 
 // Components
 import App from './containers/AppContainer';
@@ -30,34 +30,7 @@ import '../css/reset.css';
 import '../css/app.css';
 
 
-const networkInterface = createNetworkInterface({
-    uri: 'https://empress.clai.io/graphql',
-    // send cookies in request header
-    opts: {
-        credentials: 'include'
-    }
-});
 
-// set header X-Requested-With header
-networkInterface.use([{
-    applyMiddleware(req, next) {
-        if (!req.options.headers) {
-            req.options.headers = {};
-        }
-        req.options.headers = { 'X-Requested-With': 'badun' }
-        next();
-    }
-}]);
-
-const client = new ApolloClient({
-    networkInterface,
-    dataIdFromObject: (object) => {
-        if (object.__typename !== null && object.id !== null) {
-            return `${object.__typename}-${object.id}`;
-        }
-        return null;
-    }
-});
 
 const store = initStore();
 
@@ -82,6 +55,7 @@ const routes = (
                         <Route path="home" component={Home} />
                         <Route path="my-profile" component={Profile} />
                         <Route path="my-settings" component={Settings} />
+                        <Route path="collection/card" component={CardDetail} />
                         <Route path="collection/:collectionId/card(/:cardId)" component={CardDetail} />
                         <Route path="collection/:collectionId/card(/:cardId/:comments)" component={CardDetail} />
                         <Route path="collection/:collectionId" component={CollectionDetail} />

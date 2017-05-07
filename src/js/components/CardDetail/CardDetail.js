@@ -6,8 +6,7 @@ import { EditorState } from 'draft-js';
 import Editor from '../Editor/src/components/Editor';
 
 import TopBar from './TopBar';
-import Comments from '../Comments';
-import wrapper from './CardDetailWrapper';
+import Comments from '../../containers/CommentsContainer';
 import { Container, ContainerInner, Main, EditorContainer } from './styles';
 import Toast from '../shared/Toast';
 
@@ -16,6 +15,7 @@ type Props = {
     showComments: bool,
     editorState: EditorState,
     isLoading: bool,
+    existingCard: bool,
     goBack: Function,
     onSave: Function,
     collectionId: string,
@@ -51,8 +51,6 @@ const CardDetail = ({ ...props }:Props) => {
         collectionId,
         changeCardLabel,
         labels,
-        comments,
-        createComment,
         editorState,
         onChange,
         showEdit,
@@ -61,12 +59,10 @@ const CardDetail = ({ ...props }:Props) => {
         onShowComments,
         addFile,
         isLoading,
-        failedComment,
-        creator,
         message,
-        onCloseError
+        onCloseError,
+        existingCard
     } = props;
-
     return (
         <Container>
             <TopBar
@@ -79,6 +75,7 @@ const CardDetail = ({ ...props }:Props) => {
                 changeCardLabel={changeCardLabel}
                 labels={labels}
                 isLoading={isLoading}
+                existingCard={existingCard}
             />
             {message && <Toast
                 message={message}
@@ -95,12 +92,7 @@ const CardDetail = ({ ...props }:Props) => {
                         />
                     </EditorContainer>
                     {showComments &&
-                        <Comments
-                            failedComment={failedComment}
-                            comments={comments}
-                            create={createComment}
-                            creator={creator}
-                        />
+                        <Comments />
                     }
                 </Main>
             </ContainerInner>
@@ -108,4 +100,4 @@ const CardDetail = ({ ...props }:Props) => {
     );
 };
 
-export default wrapper(CardDetail);
+export default CardDetail;

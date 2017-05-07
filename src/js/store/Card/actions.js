@@ -1,10 +1,17 @@
 // @flow
+import * as types from '../constants/ActionTypes';
 import type { Action } from './reducers';
-import * as type from '../constants/ActionTypes';
 
-export const setUpdate = (shouldUpdate: bool):Action => {
-    return {
-        type: type.UPDATE_CARD,
-        shouldUpdate
-    };
+type Field = {
+    key: string,
+    value: any
+}
+
+export const updateCard = (field: Field): Action => {
+    return ({
+        type: types.CARD_STATE,
+        data: {
+            field
+        }
+    });
 };

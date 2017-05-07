@@ -26,7 +26,30 @@ export const style = (type) => {
                 border-color: #E87385
             }`;
     }
-    return null;
+    if (type === 'secondary') {
+        return `
+            background-color: ${colors.white};
+            border-color: ${colors.green};
+            color: ${colors.green};
+            &:active {
+                background-color: #57B188
+            }
+            &:hover {
+                border-color: ${colors.green}
+            }`;
+    }
+    if (type === 'transparent') {
+        return `
+            border: none;
+        `;
+    }
+    return `
+        &:active {
+            background-color: ${colors.lightGrey}
+        }
+        &:hover {
+            border-color: ${colors.grey}
+        }`;
 };
 
 export const Default = styled.button`
@@ -37,10 +60,4 @@ export const Default = styled.button`
     font-weight: bold;
     outline: none;
     cursor: pointer;
-    &:active {
-        background-color: ${colors.lightGrey}
-    }
-    &:hover {
-        border-color: ${colors.grey}
-    }
 `;
