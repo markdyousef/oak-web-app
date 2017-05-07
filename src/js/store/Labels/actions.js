@@ -7,9 +7,9 @@ type Field = {
     value: any
 }
 
-export const updateCard = (field: Field): Action => {
+export const updateLabels = (field: Field): Action => {
     return ({
-        type: types.CARD_STATE,
+        type: types.LABELS_STATE,
         data: {
             field
         }

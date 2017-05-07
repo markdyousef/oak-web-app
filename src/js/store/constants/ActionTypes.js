@@ -10,3 +10,6 @@ export const COMMENTS_STATE:string = 'comments/COMMENTS_STATE';
 
 // Card
 export const CARD_STATE:string = 'card/CARD_STATE';
+
+// Labels
+export const LABELS_STATE:string = 'card/LABELS_STATE';
