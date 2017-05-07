@@ -2,8 +2,8 @@
 import React from 'react';
 import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
-// import { Editor } from 'zen-editor';
-import Editor from '../Editor/src/components/Editor';
+import { Editor } from 'zen-editor';
+// import Editor from '../Editor/src/components/Editor';
 
 import TopBar from './TopBar';
 import Comments from '../Comments';
