@@ -1,14 +1,16 @@
 // @flow
-import { Map, fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import * as types from '../constants/ActionTypes';
 
-export type State = {
-    isLoading: bool,
-    shouldUpdate: bool,
-    cardId: ?string,
-    collectionId: ?string,
-    message: ?Object
-};
+// type State = {
+//     isLoading: bool,
+//     shouldUpdate: bool,
+//     cardId: ?string,
+//     collectionId: ?string,
+//     message: ?Map<string, string>
+// };
+
+type State = Map<string, Object>
 
 export type Action = {
     type?: string,
@@ -25,8 +27,8 @@ const initialState:State = Map({
 
 export default (state: State = initialState, action: Action): State => {
     switch (action.type) {
-    case types.UPDATE_CARD:
-        return state.set('shouldUpdate', action.shouldUpdate);
+    // case types.UPDATE_CARD:
+    //     return state.set('shouldUpdate', action.shouldUpdate);
     case types.CARD_STATE: {
         if (action.data && action.data.field) {
             const { data: { field } } = action;

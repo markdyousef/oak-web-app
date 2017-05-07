@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { parseComments, uploadImage, changeUrls } from '../../utils';
+import { uploadImage, changeUrls } from '../../utils';
 import type { DefaultProps, State, Props } from './types';
 
 export default (CardDetail:Function) => {
@@ -19,8 +19,7 @@ export default (CardDetail:Function) => {
                     labels: [],
                     images: [],
                     message: null,
-                    name: '',
-                    creator: null
+                    name: ''
                 };
             }
             componentWillMount() {
@@ -178,36 +177,6 @@ export default (CardDetail:Function) => {
                         });
                 }
             }
-            createComment = (editorState:EditorState) => {
-                const { name, comments } = this.state;
-                const { createComment, create, updateCard, card, updateComments } = this.props;
-                const cardId = card.get('cardId');
-                const collectionId = card.get('collectionId');
-                const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-                if (!cardId) {
-                    create(collectionId, name)
-                        .then((res) => {
-                            const id = res.data.createSeed.id;
-                            updateCard({ key: 'cardId', value: id });
-                            updateComments({ key: 'failedComment', value: null });
-                            this.createComment(editorState);
-                        })
-                        .catch(() => this.setState({ failedComment: editorState }));
-                    return;
-                }
-                createComment(cardId, content)
-                    .then((res) => {
-                        let comment = res.data.createComment;
-                        comment = parseComments([comment])[0];
-                        comments.push(comment);
-                        this.setState({ comments, failedComment: null });
-                        updateCard({
-                            key: 'shouldUpdate',
-                            value: true
-                        });
-                    })
-                    .catch(() => this.setState({ failedComment: editorState }));
-            }
             addFile = (file: Object) => {
                 const { images } = this.state;
                 // TODO: add loading state
@@ -233,15 +202,14 @@ export default (CardDetail:Function) => {
                         onSave={this.onSave}
                         changeCardLabel={this.changeCardLabel}
                         goBack={() => router.goBack()}
-                        createComment={this.createComment}
                         onChange={this.onChange}
                         addFile={this.addFile}
                         onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
                         onShowComments={() => this.setState({ showComments: !this.state.showComments })}
                         onCloseError={() => this.setState({ message: null })}
                         existingCard={!!card.get('cardId')}
-                        failedComment={comments.get('failedComment')}
                         showComments={comments.get('showComments')}
+                        collectionId={card.get('collectionId')}
                         {...this.state}
                     />
                 );
