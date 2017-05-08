@@ -11,14 +11,14 @@ export default {
 };
 
 export const labelColors = [
-    '#C1BD9D',
-    '#FEC288',
-    '#FFA489',
-    '#E87385',
-    '#EAABC8',
-    '#B5D3C9',
-    '#708680',
-    '#67B1B4',
-    '#6A76A7',
-    '#6E4B6E'
+    '#B0BAAA',
+    '#8BAFD6',
+    '#3F766C',
+    '#95CEB8',
+    '#133433',
+    '#80CECB',
+    '#D59BCA',
+    '#736188',
+    '#A78B83',
+    '#2D718E'
 ];

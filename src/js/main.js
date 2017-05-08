@@ -30,8 +30,6 @@ import '../css/reset.css';
 import '../css/app.css';
 
 
-
-
 const store = initStore();
 
 const routes = (
