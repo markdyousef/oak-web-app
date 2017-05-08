@@ -136,7 +136,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 .catch(err => console.log(err));
         }
     }
-    // addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
+    addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
         const { showDetail } = this.state;
         const { data, router } = this.props;

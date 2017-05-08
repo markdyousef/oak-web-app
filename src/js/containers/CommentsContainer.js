@@ -2,7 +2,7 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { comments } from '../store/actions';
+import { comments, card } from '../store/actions';
 import { Comments, wrapper } from '../components/Comments';
 
 
@@ -64,7 +64,9 @@ type Field = {
 const mapDispatchToProps = (dispatch: Function) => (
     {
         updateComments: (field: Field) =>
-            dispatch(comments.updateComments(field))
+            dispatch(comments.updateComments(field)),
+        updateCard: (field: Field) =>
+            dispatch(card.updateCard(field))
     }
 );
 
