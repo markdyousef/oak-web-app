@@ -26,6 +26,7 @@ type DefaultProps = {
     likes: 0
 };
 type Props = {
+    id: string,
     content: Object,
     cover: ?{
         urlThumb512: string
@@ -41,15 +42,19 @@ type Props = {
     labels: ?Array<Object>,
     comments: ?Array<Object>,
     updatedAt: string,
-    onShow: Function,
-    onRemove: Function,
-    onLike: Function,
-    showComments: Function,
-    likes: number,
-    isLiked: bool
+    likes: ?Array<string>,
+    removeCard: (id: string) => Promise<>,
+    likeCard: (id: string) => Promise<>,
+    unlikeCard: (id: string) => Promise<>,
+    isLiked: bool,
+    showComments: () => void,
+    onShow: () => void,
+    userId: string
 };
 type State = {
-    showOptions: bool
+    showOptions: bool,
+    likes: Array<string>,
+    isLiked: bool
 };
 
 export default class Card extends Component<DefaultProps, Props, State> {
@@ -59,8 +64,52 @@ export default class Card extends Component<DefaultProps, Props, State> {
     constructor() {
         super();
         this.state = {
-            showOptions: false
+            showOptions: false,
+            likes: [],
+            isLiked: false
         };
+    }
+    componentWillMount() {
+        const { likes, isLiked } = this.props;
+        this.setState({
+            likes: (likes) || [],
+            isLiked
+        });
+    }
+    removeCard = () => {
+        const { id, removeCard } = this.props;
+        removeCard(id)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    handleLike = () => {
+        const { likeCard, unlikeCard, id, userId } = this.props;
+        const { likes, isLiked } = this.state;
+
+        if (isLiked) {
+            unlikeCard(id)
+                .then(() => {
+                    this.setState({
+                        isLiked: false,
+                        likes: likes.filter(label => label !== userId)
+                    })
+                })
+                .catch((err) => console.log(err));
+        } else {
+            likeCard(id)
+                .then(() => {
+                    likes.push(userId);
+                    this.setState({
+                        isLiked: true,
+                        likes
+                    })
+                })
+                .catch((err) => { throw err; });
+        }
     }
     formatContent = (content: Object) => {
         const { blocks } = content;
@@ -121,7 +170,8 @@ export default class Card extends Component<DefaultProps, Props, State> {
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, onRemove, onLike, showComments, likes, isLiked } = this.props;
+        const { updatedAt, comments, showComments } = this.props;
+        const { likes, isLiked } = this.state;
         const { showOptions } = this.state;
         return (
             <Bottom>
@@ -130,9 +180,9 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         <CommentsIcon />
                         <span>{(comments) ? comments.length : 0}</span>
                     </Icon>
-                    <Icon onClick={onLike}>
+                    <Icon onClick={this.handleLike}>
                         <LikesIcon isLiked={isLiked} />
-                        <span>{likes}</span>
+                        <span>{likes.length}</span>
                     </Icon>
                     <Icon onClick={() => this.setState({ showOptions: !showOptions })}>
                         <DotsIcon />
@@ -142,7 +192,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
                                     arrowPos="left"
                                     onClose={() => this.setState({ showOptions: false })}
                                 >
-                                    <Icon onClick={onRemove}>Delete</Icon>
+                                    <Icon onClick={this.removeCard}>Delete</Icon>
                                 </Dropdown>
                             </Settings>
                         }
