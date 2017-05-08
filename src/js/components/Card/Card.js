@@ -49,7 +49,8 @@ type Props = {
     isLiked: bool,
     showComments: () => void,
     onShow: () => void,
-    userId: string
+    userId: string,
+    updateCard: (field:Object) => void
 };
 type State = {
     showOptions: bool,
@@ -77,10 +78,13 @@ export default class Card extends Component<DefaultProps, Props, State> {
         });
     }
     removeCard = () => {
-        const { id, removeCard } = this.props;
+        const { id, removeCard, updateCard } = this.props;
         removeCard(id)
-            .then((res) => {
-                console.log(res);
+            .then(() => {
+                updateCard({
+                    key: 'shouldUpdate',
+                    value: true
+                });
             })
             .catch((err) => {
                 console.log(err);
