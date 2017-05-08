@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-import { Chip as Label } from '../shared/Label';
+import { Box as Label } from '../shared/Label';
 
 const Section = styled.section`
     margin: 20px 0;
@@ -30,8 +30,8 @@ const AddButton = styled.button`
 `;
 
 type Props = {
-    cardLabels: Array<string>,
-    collectionLabels: Array<Object>,
+    cardLabels: ?Array<string>,
+    collectionLabels: ?Array<Object>,
     changePage: Function,
     onSelect: Function
 }
@@ -43,13 +43,15 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) =
                 Add label:
             </Section>
             <Section>
-                {(collectionLabels.length > 0) ?
+                {(collectionLabels && collectionLabels.length > 0) ?
                     <LabelsSection>
                         {collectionLabels.map((label) => {
-                            const isActive = cardLabels.findIndex(id => id === label.id) > -1;
+                            const isActive =
+                                cardLabels &&
+                                cardLabels.findIndex(id => id === label.id) > -1;
                             return (
                                 <Label
-                                    key={label.index + label.name}
+                                    key={label.id + label.name}
                                     onClick={() => onSelect(label.id)}
                                     style={{ backgroundColor: label.color }}
                                     name={label.name}

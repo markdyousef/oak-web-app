@@ -16,7 +16,6 @@ export default (CardDetail:Function) => {
                     showEdit: !props.params.cardId,
                     isLoading: false,
                     editorState: EditorState.createEmpty(decorator),
-                    labels: [],
                     images: [],
                     message: null,
                     name: ''
@@ -67,7 +66,6 @@ export default (CardDetail:Function) => {
 
                 this.setState({
                     isLoading: false,
-                    labels: seed.labels.map(label => label.id),
                     creator: data.me
                 });
             }
@@ -113,70 +111,11 @@ export default (CardDetail:Function) => {
                         });
                 }
             }
-            changeCardLabel = (labelId:string) => {
-                const { create, removeLabel, addLabel, updateCard, card } = this.props;
-                const cardId = card.get('cardId');
-                const collectionId = card.get('collectionId');
-                const { labels, name } = this.state;
-                if (!cardId) {
-                    create(collectionId, name)
-                        .then((res) => {
-                            const id = res.data.createSeed.id;
-                            this.setState({ cardId: id, message: null });
-                            this.changeCardLabel(labelId);
-                        })
-                        .catch(() => {
-                            const message = {
-                                type: 'error',
-                                message: "We couldn't create your label",
-                                onSave: () => this.changeCardLabel(labelId)
-                            };
-                            this.setState({ message });
-                        });
-                    return;
-                }
-                const labelExist = labels.findIndex(id => id === labelId) > -1;
-                if (labelExist) {
-                    removeLabel(cardId, labelId)
-                        .then((res) => {
-                            if (res.data.removeSeedLabel) {
-                                this.setState({ labels: labels.filter(id => id !== labelId) });
-                            }
-                            updateCard({
-                                key: 'shouldUpdate',
-                                value: true
-                            });
-                        })
-                        .catch(() => {
-                            const message = {
-                                type: 'error',
-                                message: "We couldn't remove your label",
-                                onSave: () => this.changeCardLabel(labelId)
-                            };
-                            this.setState({ message });
-                        });
-                } else {
-                    addLabel(cardId, labelId)
-                        .then((res) => {
-                            if (res.data.addSeedLabel) {
-                                labels.push(labelId);
-                                this.setState({ labels });
-                            }
-                            updateCard({
-                                key: 'shouldUpdate',
-                                value: true
-                            });
-                        })
-                        .catch(() => {
-                            const message = {
-                                type: 'error',
-                                message: "We couldn't add your label",
-                                onSave: () => this.changeCardLabel(labelId)
-                            };
-                            this.setState({ message });
-                        });
-                }
-            }
+            onShowLabels = (show?:bool) =>
+                this.props.updateLabels({
+                    key: 'showLabels',
+                    value: show
+                })
             addFile = (file: Object) => {
                 const { images } = this.state;
                 // TODO: add loading state
@@ -196,11 +135,10 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.setState({ editorState })
             render() {
-                const { router, card, comments } = this.props;
+                const { router, card, comments, showLabels } = this.props;
                 return (
                     <CardDetail
                         onSave={this.onSave}
-                        changeCardLabel={this.changeCardLabel}
                         goBack={() => router.goBack()}
                         onChange={this.onChange}
                         addFile={this.addFile}
@@ -210,6 +148,8 @@ export default (CardDetail:Function) => {
                         existingCard={!!card.get('cardId')}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}
+                        showLabels={showLabels}
+                        onShowLabels={this.onShowLabels}
                         {...this.state}
                     />
                 );

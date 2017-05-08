@@ -8,12 +8,11 @@ it('renders correctly', () => {
         changeCardLabel: () => {},
         collectionId: '1',
         createLabel: () => {},
+        updateLabels: () => {},
         data: {
             loading: true,
             refetch: () => {}
-        },
-        labels: [],
-        onClose: () => {}
+        }
 
     };
     const component = renderer.create(

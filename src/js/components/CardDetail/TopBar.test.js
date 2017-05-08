@@ -5,15 +5,15 @@ import TopBar from './TopBar';
 
 it('renders correctly', () => {
     const props = {
-        changeCardLabel: () => {},
-        collectionId: '1',
-        labels: [],
         onClose: () => {},
         onEdit: () => {},
         onSave: () => {},
         showComments: () => {},
         showEdit: false,
-        isLoading: false
+        isLoading: false,
+        existingCard: false,
+        onShowLabels: () => {},
+        showLabels: false
     };
     const shallowComponent = shallow(
         <TopBar {...props} />

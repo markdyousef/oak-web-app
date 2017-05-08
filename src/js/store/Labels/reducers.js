@@ -7,7 +7,8 @@ import * as types from '../constants/ActionTypes';
 export type StateShape = {
     showLabels: bool,
     isLoading: bool,
-    name: ?string,
+    didInitialize: bool,
+    labelName: ?string,
     message: ?Object,
     selectedColor: ?string,
     collectionLabels: List<Object>,
@@ -25,7 +26,8 @@ export type StateRecord = Record<StateShape>;
 export const State = defineRecord('State', ({
     showLabels: false,
     isLoading: false,
-    name: null,
+    didInitialize: false,
+    labelName: null,
     message: null,
     selectedColor: null,
     collectionLabels: List([]),
@@ -36,8 +38,9 @@ export const State = defineRecord('State', ({
 export const initialState: StateRecord = State({
     showLabels: false,
     isLoading: false,
+    didInitialize: false,
     message: null,
-    name: null,
+    labelName: null,
     selectedColor: null,
     collectionLabels: List([]),
     cardLabels: List([]),

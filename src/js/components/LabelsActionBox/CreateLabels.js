@@ -5,6 +5,7 @@ import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import colors from '../../styles/colors';
 import BackIcon from '../../icons/back';
+import CheckIcon from '../../icons/checkmark';
 
 const Grid = styled.div`
     display: flex;
@@ -18,6 +19,12 @@ const Label = styled.div`
     border-radius: 3px;
     cursor: pointer;
     margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & svg {
+        fill: ${colors.white}
+    }
 `;
 
 const Section = styled.section`
@@ -56,7 +63,7 @@ type Props = {
     onCreate: Function,
     onChange: Function,
     changePage: Function,
-    labelName: string,
+    labelName: ?string,
     selectedColor: string,
     labelColors: Array<string>
 }
@@ -71,7 +78,7 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
             <Section>
                 <Input
                     title="NAME"
-                    value={labelName}
+                    value={labelName || ''}
                     onChange={value => onChange('labelName', value)}
                     placeholder="Label name"
                 />
@@ -83,13 +90,12 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
                         const isSelected = (selectedColor === color);
                         return (
                             <Label
-                                style={{
-                                    backgroundColor: color,
-                                    border: (isSelected) ? `1px solid ${colors.grey}` : null
-                                }}
+                                style={{ backgroundColor: color }}
                                 key={color}
                                 onClick={() => onChange('selectedColor', color)}
-                            />
+                            >
+                                {isSelected && <CheckIcon />}
+                            </Label>
                         );
                     }
                     )}

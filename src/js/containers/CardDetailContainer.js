@@ -2,7 +2,7 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card, comments } from '../store/actions';
+import { card, comments, labels } from '../store/actions';
 import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
@@ -20,10 +20,6 @@ const getCard = gql`
         seed(id: $id) {
             id
             content
-            labels {
-                id
-            }
-
         }
     }
 `;
@@ -46,46 +42,26 @@ const updateSeed = gql`
     }
 `;
 
-const addSeedLabel = gql`
-    mutation addSeedLabel($seedId: ID!, $labelId: ID!) {
-        addSeedLabel(seedId: $seedId, labelId: $labelId)
-    }
-`;
-
-const removeSeedLabel = gql`
-    mutation removeSeedLabel($seedId: ID!, $labelId: ID!) {
-        removeSeedLabel(seedId: $seedId, labelId: $labelId)
-    }
-`;
-
+const mapStateToProps = (state: Object) => {
+    return {
+        card: state.card,
+        comments: state.comments,
+        showLabels: state.labels.get('showLabels')
+    };
+};
 
 type Field = {
     key: string,
     value: string
 }
-
-type OwnProps = {
-    params: {
-        cardId? : string,
-        collectionId?: string
-    },
-    updateCard?: (field: Field) => void
-}
-
-
-const mapStateToProps = (state: Object) => {
-    return {
-        card: state.card,
-        comments: state.comments
-    };
-};
-
 const mapDispatchToProps = (dispatch: Function) => (
     {
         updateCard: (field:Field) =>
             dispatch(card.updateCard(field)),
         updateComments: (field: Field) =>
-            dispatch(comments.updateComments(field))
+            dispatch(comments.updateComments(field)),
+        updateLabels: (field: Field) =>
+            dispatch(labels.updateLabels(field))
     }
 );
 
@@ -105,16 +81,6 @@ export default compose(
     graphql(updateSeed, {
         props: ({ mutate }) => ({
             update: (id:string, content:string, coverId:string) => mutate({ variables: { id, content, coverId } })
-        })
-    }),
-    graphql(addSeedLabel, {
-        props: ({ mutate }) => ({
-            addLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
-        })
-    }),
-    graphql(removeSeedLabel, {
-        props: ({ mutate }) => ({
-            removeLabel: (seedId:string, labelId:string) => mutate({ variables: { seedId, labelId } })
         })
     }),
     connect(mapStateToProps, mapDispatchToProps),

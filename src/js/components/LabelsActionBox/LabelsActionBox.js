@@ -4,19 +4,7 @@ import styled from 'styled-components';
 import CreateLabels from './CreateLabels';
 import AddLabels from './AddLabels';
 import Dropdown from '../shared/Dropdown';
-
-const COLORS = [
-    '#C1BD9D',
-    '#FEC288',
-    '#FFA489',
-    '#E87385',
-    '#EAABC8',
-    '#B5D3C9',
-    '#708680',
-    '#67B1B4',
-    '#6A76A7',
-    '#6E4B6E'
-];
+import { labelColors } from '../../styles';
 
 const Container = styled.div`
     position: absolute;
@@ -35,92 +23,178 @@ type Data = {
 
 type Props = {
     collectionId: string,
-    onClose: Function,
     changeCardLabel: Function,
     createLabel: Function,
-    data: Data,
-    labels: Array<string>
+    collection?: Data,
+    card?: Object,
+    labels?: Object,
+    updateLabels: (field:Object) => void
 };
 
-type State = {
-    showCreate: bool,
-    cardLabels: Array<string>,
-    collectionLabels: Array<Object>,
-    labelName: string,
-    selectedColor: string
-};
+type State = {};
 type DefaultProps = {};
 
 class LabelsActionBox extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     state: State;
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            labelName: '',
-            selectedColor: COLORS[0],
-            showCreate: false,
-            collectionLabels: [],
-            cardLabels: props.labels
-        };
-    }
     componentWillReceiveProps(nextProps:Props) {
-        const { data } = nextProps;
+        const { collection, card, labels } = nextProps;
+        const didInitialize = labels && labels.get('didInitialize');
 
-        if (data.loading) return;
-        const { grove } = data;
-        this.setState({
-            collectionLabels: (grove && grove.labels) ? grove.labels : []
-        });
+        // TODO: find a better way to load into redux
+        if (!collection || collection.loading) return;
+        if (!didInitialize) {
+            this.updateLabel('didInitialize', true);
+            // add collectionLabels to redux
+            if (collection.grove) {
+                const { grove } = collection;
+                this.updateLabel(
+                    'collectionLabels',
+                    (grove.labels) || []
+                );
+            }
+            // add cardLabels to redux
+            if (!card || card.loading) return;
+            if (card.seed) {
+                const { seed } = card;
+                this.updateLabel(
+                    'cardLabels',
+                    (seed.labels) || []
+                )
+            }
+        }
     }
-    createLabel = (name:string, color:string) => {
-        const { createLabel, data, collectionId } = this.props;
-        createLabel(collectionId, name, color)
-            .then(() => {
-                data.refetch();
-                this.setState({ labelName: '' });
+    createLabel = (labelName:string, labelColor:string) => {
+        const { createLabel, collectionId, create } = this.props;
+        createLabel(collectionId, labelName, labelColor)
+            .then((res) => {
+                const { name, color, id } = res.data.createLabel;
+                create({ name, color, id });
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                const message = {
+                    type: 'error',
+                    message: "We couldn't create your label",
+                    onSave: () => this.createLabel(labelName, labelColor)
+                };
+                this.updateLabel('message', message);
+            });
     }
-    // TODO: refactor to card detail wrapper
-    onChange = (key:string, value: string) => {
-        const stateKeys = Object.keys(this.state);
-        const newState = Object.assign(this.state);
-        if (stateKeys.indexOf(key) > -1) {
-            newState[key] = value;
-            this.setState(newState);
+    updateLabel = (key:string, value: any) => {
+        const { updateLabels } = this.props;
+        updateLabels({ key, value });
+    }
+    onClose = () => this.updateLabel('showLabels', false);
+    changePage = (page: string) => this.updateLabel('page', page);
+    changeCardLabel = (labelId: string) => {
+        const {
+            createCard,
+            removeLabel,
+            attach,
+            detach,
+            addLabel,
+            updateCard,
+            cardId,
+            collectionId,
+            labels
+        } = this.props;
+        if (!cardId) {
+            createCard(collectionId, '')
+                .then((res) => {
+                    const id = res.data.createSeed.id;
+                    updateCard({
+                        key: 'cardId',
+                        value: id
+                    });
+                    this.changeCardLabel(labelId);
+                })
+                .catch(() => {
+                    const message = {
+                        type: 'error',
+                        message: "We couldn't create your label",
+                        onSave: () => this.changeCardLabel(labelId)
+                    };
+                    this.updateLabel('message', message);
+                });
+            return;
+        }
+        const cardLabels = labels.get('cardLabels');
+        const labelExist = cardLabels.findIndex(id => id === labelId) > -1;
+        if (labelExist) {
+            removeLabel(cardId, labelId)
+                .then((res) => {
+                    if (res.data.removeSeedLabel) {
+                        detach(labelId);
+                    }
+                    updateCard({
+                        key: 'shouldUpdate',
+                        value: true
+                    });
+                })
+                .catch(() => {
+                    const message = {
+                        type: 'error',
+                        message: "We couldn't remove your label",
+                        onSave: () => this.changeCardLabel(labelId)
+                    };
+                    this.updateLabel('message', message);
+                });
+        } else {
+            addLabel(cardId, labelId)
+                .then((res) => {
+                    if (res.data.addSeedLabel) {
+                        attach(labelId);
+                    }
+                    updateCard({
+                        key: 'shouldUpdate',
+                        value: true
+                    });
+                })
+                .catch(() => {
+                    const message = {
+                        type: 'error',
+                        message: "We couldn't add your label",
+                        onSave: () => this.changeCardLabel(labelId)
+                    };
+                    this.updateLabel('message', message);
+                });
         }
     }
     renderLabels = () => {
-        const { showCreate, collectionLabels, cardLabels, labelName, selectedColor } = this.state;
-        const { changeCardLabel } = this.props;
+        const { labels } = this.props;
+        const labelsObj = (labels) ? labels.toJS() : {};
 
-        if (showCreate) {
+        switch (labelsObj.page) {
+        case 'CREATE':
             return (
                 <CreateLabels
                     onCreate={this.createLabel}
-                    changePage={() => this.setState({ showCreate: false })}
-                    onChange={this.onChange}
-                    labelName={labelName}
-                    selectedColor={selectedColor}
-                    labelColors={COLORS}
+                    changePage={() => this.changePage('ADD')}
+                    onChange={this.updateLabel}
+                    labelName={labelsObj.labelName}
+                    selectedColor={labelsObj.selectedColor}
+                    labelColors={labelColors}
                 />
             );
+        case 'ADD':
+            return (
+                <AddLabels
+                    changePage={() => this.changePage('CREATE')}
+                    collectionLabels={labelsObj.collectionLabels}
+                    cardLabels={labelsObj.cardLabels}
+                    onSelect={this.changeCardLabel}
+                />
+            );
+        case 'EDIT':
+            return null;
+        default:
+            return null;
         }
-        return (
-            <AddLabels
-                changePage={() => this.setState({ showCreate: !showCreate })}
-                collectionLabels={collectionLabels}
-                cardLabels={cardLabels}
-                onSelect={changeCardLabel}
-            />
-        );
     }
     render() {
-        const { onClose } = this.props;
         return (
             <Container>
-                <Dropdown arrowPos="left" onClose={onClose}>
+                <Dropdown arrowPos="left" onClose={this.onClose}>
                     {this.renderLabels()}
                 </Dropdown>
             </Container>
