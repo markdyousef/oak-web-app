@@ -14,12 +14,21 @@ const LabelsSection = styled(Section)`
     overflow-y: auto;
 `;
 
+const LabelContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    & span {
+
+    }
+`;
+
 const ActionSection = styled.section`
     border-top: 1px solid ${colors.lightGrey};
     height: 50px;
 `;
 
-const AddButton = styled.button`
+const Button = styled.button`
     background: transparent;
     padding: 0;
     border: none;
@@ -36,7 +45,7 @@ type Props = {
     onSelect: Function
 }
 
-export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) => {
+export default ({ cardLabels, collectionLabels, changePage, onSelect, showEdit }: Props) => {
     return (
         <div>
             <Section>
@@ -50,13 +59,19 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) =
                                 cardLabels &&
                                 cardLabels.findIndex(id => id === label.id) > -1;
                             return (
-                                <Label
+                                <LabelContainer
                                     key={label.id + label.name}
-                                    onClick={() => onSelect(label.id)}
-                                    style={{ backgroundColor: label.color }}
-                                    name={label.name}
-                                    isActive={isActive}
-                                />
+                                >
+                                    <Label
+                                        onClick={() => onSelect(label.id)}
+                                        style={{ backgroundColor: label.color }}
+                                        name={label.name}
+                                        isActive={isActive}
+                                    />
+                                    <Button onClick={() => showEdit(label)}>
+                                        Edit
+                                    </Button>
+                                </LabelContainer>
                             );
                         })}
                     </LabelsSection>
@@ -65,9 +80,9 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect }: Props) =
                 }
             </Section>
             <ActionSection>
-                <AddButton onClick={changePage}>
+                <Button onClick={changePage}>
                     Create a new label
-                </AddButton>
+                </Button>
             </ActionSection>
         </div>
     );

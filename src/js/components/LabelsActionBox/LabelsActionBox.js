@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import CreateLabels from './CreateLabels';
+import EditLabel from './EditLabel';
 import AddLabels from './AddLabels';
 import Dropdown from '../shared/Dropdown';
 import { labelColors } from '../../styles';
@@ -22,13 +22,19 @@ type Data = {
 }
 
 type Props = {
-    collectionId: string,
-    changeCardLabel: Function,
-    createLabel: Function,
     collection?: Data,
     card?: Object,
+    collectionId: string,
+    cardId: ?string,
     labels?: Object,
-    updateLabels: (field:Object) => void
+    updateCard: (field:Object) => void,
+    update: (field:Object) => void,
+    delete: (labelId: string) => void,
+    createLabel: Function,
+    updateLabels: (id: string, name: string, color: string) => Promise<>,
+    removeLabel: (id: string) => Promise<>,
+    createCard: (id: string, name: string) => Promise<>,
+    editLabel: (label: Object) => void
 };
 
 type State = {};
@@ -44,11 +50,11 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
         // TODO: find a better way to load into redux
         if (!collection || collection.loading) return;
         if (!didInitialize) {
-            this.updateLabel('didInitialize', true);
+            this.updateLabels('didInitialize', true);
             // add collectionLabels to redux
             if (collection.grove) {
                 const { grove } = collection;
-                this.updateLabel(
+                this.updateLabels(
                     'collectionLabels',
                     (grove.labels) || []
                 );
@@ -57,125 +63,59 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
             if (!card || card.loading) return;
             if (card.seed) {
                 const { seed } = card;
-                this.updateLabel(
+                this.updateLabels(
                     'cardLabels',
                     (seed.labels) || []
                 )
             }
         }
     }
-    createLabel = (labelName:string, labelColor:string) => {
-        const { createLabel, collectionId, create } = this.props;
-        createLabel(collectionId, labelName, labelColor)
-            .then((res) => {
-                const { name, color, id } = res.data.createLabel;
-                create({ name, color, id });
-            })
-            .catch(() => {
-                const message = {
-                    type: 'error',
-                    message: "We couldn't create your label",
-                    onSave: () => this.createLabel(labelName, labelColor)
-                };
-                this.updateLabel('message', message);
-            });
+    updateLabels = (key:string, value: any) => {
+        const { update } = this.props;
+        update({ key, value });
     }
-    updateLabel = (key:string, value: any) => {
-        const { updateLabels } = this.props;
-        updateLabels({ key, value });
-    }
-    onClose = () => this.updateLabel('showLabels', false);
-    changePage = (page: string) => this.updateLabel('page', page);
+    onClose = () => this.updateLabels('showLabels', false);
+    changePage = (page: string) => this.updateLabels('page', page);
     changeCardLabel = (labelId: string) => {
         const {
             createCard,
             removeLabel,
-            attach,
-            detach,
             addLabel,
-            updateCard,
             cardId,
             collectionId,
             labels
         } = this.props;
         if (!cardId) {
             createCard(collectionId, '')
-                .then((res) => {
-                    const id = res.data.createSeed.id;
-                    updateCard({
-                        key: 'cardId',
-                        value: id
-                    });
-                    this.changeCardLabel(labelId);
-                })
-                .catch(() => {
-                    const message = {
-                        type: 'error',
-                        message: "We couldn't create your label",
-                        onSave: () => this.changeCardLabel(labelId)
-                    };
-                    this.updateLabel('message', message);
-                });
+                .then(() => this.changeCardLabel(labelId));
             return;
         }
         const cardLabels = labels.get('cardLabels');
         const labelExist = cardLabels.findIndex(id => id === labelId) > -1;
         if (labelExist) {
-            removeLabel(cardId, labelId)
-                .then((res) => {
-                    if (res.data.removeSeedLabel) {
-                        detach(labelId);
-                    }
-                    updateCard({
-                        key: 'shouldUpdate',
-                        value: true
-                    });
-                })
-                .catch(() => {
-                    const message = {
-                        type: 'error',
-                        message: "We couldn't remove your label",
-                        onSave: () => this.changeCardLabel(labelId)
-                    };
-                    this.updateLabel('message', message);
-                });
+            removeLabel(cardId, labelId);
         } else {
-            addLabel(cardId, labelId)
-                .then((res) => {
-                    if (res.data.addSeedLabel) {
-                        attach(labelId);
-                    }
-                    updateCard({
-                        key: 'shouldUpdate',
-                        value: true
-                    });
-                })
-                .catch(() => {
-                    const message = {
-                        type: 'error',
-                        message: "We couldn't add your label",
-                        onSave: () => this.changeCardLabel(labelId)
-                    };
-                    this.updateLabel('message', message);
-                });
+            addLabel(cardId, labelId);
         }
     }
+    showEdit = (label: Object) => {
+        const { editLabel } = this.props;
+        const { id, name, color } = label;
+        editLabel({ id, name, color });
+    }
     renderLabels = () => {
-        const { labels } = this.props;
+        const {
+            labels,
+            updateLabel,
+            createLabel,
+            deleteLabel,
+            collectionId,
+            updateActiveLabel
+        } = this.props;
         const labelsObj = (labels) ? labels.toJS() : {};
+        const { id, name, color } = labelsObj.activeLabel;
 
         switch (labelsObj.page) {
-        case 'CREATE':
-            return (
-                <CreateLabels
-                    onCreate={this.createLabel}
-                    changePage={() => this.changePage('ADD')}
-                    onChange={this.updateLabel}
-                    labelName={labelsObj.labelName}
-                    selectedColor={labelsObj.selectedColor}
-                    labelColors={labelColors}
-                />
-            );
         case 'ADD':
             return (
                 <AddLabels
@@ -183,10 +123,32 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
                     collectionLabels={labelsObj.collectionLabels}
                     cardLabels={labelsObj.cardLabels}
                     onSelect={this.changeCardLabel}
+                    showEdit={this.showEdit}
+                />
+            );
+        case 'CREATE':
+            return (
+                <EditLabel
+                    onCreate={() => createLabel(collectionId, name, color)}
+                    changePage={() => this.changePage('ADD')}
+                    onChange={updateActiveLabel}
+                    labelName={name}
+                    selectedColor={color}
+                    labelColors={labelColors}
                 />
             );
         case 'EDIT':
-            return null;
+            return (
+                <EditLabel
+                    onDelete={() => deleteLabel(id)}
+                    onUpdate={() => updateLabel(id, name, color)}
+                    changePage={() => this.changePage('ADD')}
+                    onChange={updateActiveLabel}
+                    labelName={name}
+                    selectedColor={color}
+                    labelColors={labelColors}
+                />
+            );
         default:
             return null;
         }

@@ -15,7 +15,6 @@ const Container = styled.div`
     cursor: pointer;
     margin-top: 5px;
     & span {
-        height: 100%;
         font-size: 15px;
         font-weight: normal;
         color: #000 !important;
