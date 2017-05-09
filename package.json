@@ -33,6 +33,7 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "apollo-client": "^1.2.2",
     "draft-convert": "^1.4.2",
     "draft-js": "^0.10.0",
     "draft-js-emoji-plugin": "^2.0.0-beta10",
@@ -44,7 +45,7 @@
     "immutable": "^3.8.1",
     "moment": "^2.18.1",
     "react": "^15.4.2",
-    "react-apollo": "^1.0.0",
+    "react-apollo": "^1.2.0",
     "react-dom": "^15.4.2",
     "react-html-parser": "^1.0.3",
     "react-masonry-component": "^5.0.5",
