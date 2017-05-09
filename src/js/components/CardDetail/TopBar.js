@@ -15,24 +15,24 @@ const Container = styled.nav`
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    z-index: 9999999;
 `;
 
 const Right = styled.div`
     ${''/* position: fixed; */}
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-right: 25px;
+    width: 450px;
     & button {
         margin: 0 2px;
     }
 `;
 
 const Center = styled.div`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    position: relative;
+    margin: auto;
 `;
 
 const Left = styled.div`
@@ -40,7 +40,7 @@ const Left = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 450px;
 `;
 
 const EditNav = styled.div`
@@ -61,9 +61,8 @@ type Props = {
     onEdit: Function,
     showEdit: bool,
     showComments: Function,
-    collectionId: string,
-    changeCardLabel: Function,
-    labels: Array<string>,
+    onShowLabels: (show: bool) => void,
+    showLabels: bool,
     isLoading: bool,
     existingCard: bool
 };
@@ -76,15 +75,16 @@ class TopBar extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps
     state: State;
     props: Props;
-    constructor() {
-        super();
-        this.state = {
-            showLabels: false
-        };
-    }
     renderButtons = () => {
-        const { onSave, showEdit, onEdit, collectionId, labels, changeCardLabel, isLoading, existingCard } = this.props;
-        const { showLabels } = this.state;
+        const {
+            onSave,
+            showEdit,
+            onEdit,
+            isLoading,
+            existingCard,
+            showLabels,
+            onShowLabels
+        } = this.props;
 
         if (showEdit) {
             return (
@@ -92,15 +92,10 @@ class TopBar extends Component<DefaultProps, Props, State> {
                     <div>
                         <RoundButton
                             text="Add label"
-                            onClick={() => this.setState({ showLabels: !showLabels })}
+                            onClick={() => onShowLabels(!showLabels)}
                         />
                         {showLabels &&
-                            <LabelsActionBox
-                                onClose={() => this.setState({ showLabels: false })}
-                                collectionId={collectionId}
-                                labels={labels}
-                                changeCardLabel={changeCardLabel}
-                            />
+                            <LabelsActionBox />
                         }
                     </div>
                     <RoundButton

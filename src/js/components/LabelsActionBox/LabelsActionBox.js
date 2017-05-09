@@ -1,22 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import CreateLabels from './CreateLabels';
+import EditLabel from './EditLabel';
 import AddLabels from './AddLabels';
 import Dropdown from '../shared/Dropdown';
-
-const COLORS = [
-    '#C1BD9D',
-    '#FEC288',
-    '#FFA489',
-    '#E87385',
-    '#EAABC8',
-    '#B5D3C9',
-    '#708680',
-    '#67B1B4',
-    '#6A76A7',
-    '#6E4B6E'
-];
+import { labelColors } from '../../styles';
 
 const Container = styled.div`
     position: absolute;
@@ -34,93 +22,143 @@ type Data = {
 }
 
 type Props = {
-    collectionId: string,
-    onClose: Function,
-    changeCardLabel: Function,
+    collection?: Data,
+    card?: Object,
+    collectionId?: string,
+    cardId: ?string,
+    labels?: Object,
+    updateCard: (field:Object) => void,
+    update: (field:Object) => void,
+    delete: (labelId: string) => void,
     createLabel: Function,
-    data: Data,
-    labels: Array<string>
+    updateLabels: (id: string, name: string, color: string) => Promise<>,
+    removeLabel: (id: string) => Promise<>,
+    createCard: (id: string, name: string) => Promise<>,
+    editLabel?: (label: Object) => void
 };
 
-type State = {
-    showCreate: bool,
-    cardLabels: Array<string>,
-    collectionLabels: Array<Object>,
-    labelName: string,
-    selectedColor: string
-};
+type State = {};
 type DefaultProps = {};
 
 class LabelsActionBox extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     state: State;
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            labelName: '',
-            selectedColor: COLORS[0],
-            showCreate: false,
-            collectionLabels: [],
-            cardLabels: props.labels
-        };
-    }
     componentWillReceiveProps(nextProps:Props) {
-        const { data } = nextProps;
+        const { collection, card, labels } = nextProps;
+        const didInitialize = labels && labels.get('didInitialize');
 
-        if (data.loading) return;
-        const { grove } = data;
-        this.setState({
-            collectionLabels: (grove && grove.labels) ? grove.labels : []
-        });
-    }
-    createLabel = (name:string, color:string) => {
-        const { createLabel, data, collectionId } = this.props;
-        createLabel(collectionId, name, color)
-            .then(() => {
-                data.refetch();
-                this.setState({ labelName: '' });
-            })
-            .catch(err => console.log(err));
-    }
-    // TODO: refactor to card detail wrapper
-    onChange = (key:string, value: string) => {
-        const stateKeys = Object.keys(this.state);
-        const newState = Object.assign(this.state);
-        if (stateKeys.indexOf(key) > -1) {
-            newState[key] = value;
-            this.setState(newState);
+        // TODO: find a better way to load into redux
+        if (!collection || collection.loading) return;
+        if (!didInitialize) {
+            this.updateLabels('didInitialize', true);
+            // add collectionLabels to redux
+            if (collection.grove) {
+                const { grove } = collection;
+                this.updateLabels(
+                    'collectionLabels',
+                    (grove.labels) || []
+                );
+            }
+            // add cardLabels to redux
+            if (!card || card.loading) return;
+            if (card.seed) {
+                const { seed } = card;
+                this.updateLabels(
+                    'cardLabels',
+                    (seed.labels) || []
+                )
+            }
         }
+    }
+    updateLabels = (key:string, value: any) => {
+        const { update } = this.props;
+        update({ key, value });
+    }
+    onClose = () => this.updateLabels('showLabels', false);
+    changePage = (page: string) => this.updateLabels('page', page);
+    changeCardLabel = (labelId: string) => {
+        const {
+            createCard,
+            removeLabel,
+            addLabel,
+            cardId,
+            collectionId,
+            labels
+        } = this.props;
+        if (!cardId && collectionId) {
+            createCard(collectionId, '')
+                .then(() => this.changeCardLabel(labelId));
+            return;
+        }
+        if (!labels || !cardId) return;
+        const cardLabels = labels.get('cardLabels');
+        const labelExist = cardLabels.findIndex(id => id === labelId) > -1;
+        if (labelExist) {
+            removeLabel(cardId, labelId);
+        } else {
+            addLabel(cardId, labelId);
+        }
+    }
+    showEdit = (label: Object) => {
+        const { editLabel } = this.props;
+        const { id, name, color } = label;
+        if (editLabel) editLabel({ id, name, color });
     }
     renderLabels = () => {
-        const { showCreate, collectionLabels, cardLabels, labelName, selectedColor } = this.state;
-        const { changeCardLabel } = this.props;
+        const {
+            labels,
+            updateLabel,
+            createLabel,
+            deleteLabel,
+            collectionId,
+            updateActiveLabel
+        } = this.props;
+        if (!labels) return null;
+        const labelsObj = (labels) ? labels.toJS() : {};
+        const { id, name, color } = labelsObj.activeLabel;
 
-        if (showCreate) {
+        switch (labelsObj.page) {
+        case 'ADD':
             return (
-                <CreateLabels
-                    onCreate={this.createLabel}
-                    changePage={() => this.setState({ showCreate: false })}
-                    onChange={this.onChange}
-                    labelName={labelName}
-                    selectedColor={selectedColor}
-                    labelColors={COLORS}
+                <AddLabels
+                    changePage={() => this.changePage('CREATE')}
+                    collectionLabels={labelsObj.collectionLabels}
+                    cardLabels={labelsObj.cardLabels}
+                    onSelect={this.changeCardLabel}
+                    showEdit={this.showEdit}
                 />
             );
+        case 'CREATE':
+            return (
+                <EditLabel
+                    onCreate={() => createLabel(collectionId, name, color)}
+                    changePage={() => this.changePage('ADD')}
+                    onChange={updateActiveLabel}
+                    labelName={name}
+                    selectedColor={color}
+                    labelColors={labelColors}
+                />
+            );
+        case 'EDIT':
+            return (
+                <EditLabel
+                    onDelete={() => deleteLabel(id)}
+                    onUpdate={() => updateLabel(id, name, color)}
+                    changePage={() => this.changePage('ADD')}
+                    onChange={updateActiveLabel}
+                    labelName={name}
+                    selectedColor={color}
+                    labelColors={labelColors}
+                />
+            );
+        default:
+            return null;
         }
-        return (
-            <AddLabels
-                changePage={() => this.setState({ showCreate: !showCreate })}
-                collectionLabels={collectionLabels}
-                cardLabels={cardLabels}
-                onSelect={changeCardLabel}
-            />
-        );
     }
     render() {
-        const { onClose } = this.props;
         return (
             <Container>
-                <Dropdown arrowPos="left" onClose={onClose}>
+                <Dropdown arrowPos="left" onClose={this.onClose}>
                     {this.renderLabels()}
                 </Dropdown>
             </Container>

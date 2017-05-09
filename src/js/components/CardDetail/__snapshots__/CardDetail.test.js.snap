@@ -8,16 +8,15 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <TopBar
-        changeCardLabel={undefined}
-        collectionId={undefined}
         existingCard={undefined}
         isLoading={undefined}
-        labels={undefined}
         onClose={undefined}
         onEdit={undefined}
         onSave={undefined}
+        onShowLabels={undefined}
         showComments={undefined}
-        showEdit={undefined} />
+        showEdit={undefined}
+        showLabels={undefined} />
     <styled.div>
         <styled.section>
             <styled.div>
@@ -33,16 +32,15 @@ ShallowWrapper {
   "nodes": Array [
     <styled.div>
       <TopBar
-            changeCardLabel={undefined}
-            collectionId={undefined}
             existingCard={undefined}
             isLoading={undefined}
-            labels={undefined}
             onClose={undefined}
             onEdit={undefined}
             onSave={undefined}
+            onShowLabels={undefined}
             showComments={undefined}
-            showEdit={undefined} />
+            showEdit={undefined}
+            showLabels={undefined} />
       <styled.div>
             <styled.section>
                   <styled.div>
@@ -107,16 +105,15 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <TopBar
-                    changeCardLabel={undefined}
-                    collectionId={undefined}
                     existingCard={undefined}
                     isLoading={undefined}
-                    labels={undefined}
                     onClose={undefined}
                     onEdit={undefined}
                     onSave={undefined}
+                    onShowLabels={undefined}
                     showComments={undefined}
-                    showEdit={undefined} />
+                    showEdit={undefined}
+                    showLabels={undefined} />
           <styled.div>
                     <styled.section>
                               <styled.div>
@@ -132,16 +129,15 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <TopBar
-                    changeCardLabel={undefined}
-                    collectionId={undefined}
                     existingCard={undefined}
                     isLoading={undefined}
-                    labels={undefined}
                     onClose={undefined}
                     onEdit={undefined}
                     onSave={undefined}
+                    onShowLabels={undefined}
                     showComments={undefined}
-                    showEdit={undefined} />
+                    showEdit={undefined}
+                    showLabels={undefined} />
           <styled.div>
                     <styled.section>
                               <styled.div>

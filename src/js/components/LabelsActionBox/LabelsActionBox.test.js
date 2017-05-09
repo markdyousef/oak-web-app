@@ -8,12 +8,18 @@ it('renders correctly', () => {
         changeCardLabel: () => {},
         collectionId: '1',
         createLabel: () => {},
+        updateLabels: () => {},
+        update: () => {},
+        updateCard: () => {},
+        delete: () => {},
+        createCard: () => {},
+        editLabel: () => {},
+        removeLabel: () => {},
+        cardId: null,
         data: {
             loading: true,
             refetch: () => {}
-        },
-        labels: [],
-        onClose: () => {}
+        }
 
     };
     const component = renderer.create(

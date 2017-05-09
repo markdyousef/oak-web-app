@@ -9,7 +9,8 @@ type DefaultProps = {};
 type Props = {
     cardId: ?string,
     comments: Object,
-    updateComments: Function,
+    updateComments: (field: Object) => void,
+    updateCard: (field: Object) => void,
     createComment: Function,
     data: {
         loading: bool,
@@ -57,7 +58,7 @@ export default (Comments:Function) => {
             }
             createComment = (editorState:EditorState) => {
                 const { comments } = this.state;
-                const { createComment, cardId, updateComments, data } = this.props;
+                const { createComment, cardId, updateComments, updateCard } = this.props;
                 const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
                 if (cardId) {
                     createComment(cardId, content)
@@ -70,7 +71,7 @@ export default (Comments:Function) => {
                                 key: 'failedComment',
                                 value: null
                             });
-                            updateComments({
+                            updateCard({
                                 key: 'shouldUpdate',
                                 value: true
                             });

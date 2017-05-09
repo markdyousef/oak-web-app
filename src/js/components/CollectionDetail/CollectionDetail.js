@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
-import Card from '../Card';
+import Card from '../../containers/CardContainer';
 import { SquareButton } from '../shared/Button';
 import DotSpinner from '../shared/DotSpinner';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
@@ -107,25 +107,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         }
         this.setState({ cards: sortedCards, sortKey: key });
     }
-    removeCard = (cardId:string) => {
-        const { removeCard, data } = this.props;
-        removeCard(cardId)
-            .then(() => data.refetch())
-            .catch((err) => { throw err; });
-    }
-    handleLike = (cardId: string) => {
-        const { likeCard, unlikeCard, data: { me, refetch } } = this.props;
-        const isLiked = me && me.likedSeeds && me.likedSeeds.findIndex(item => item.id === cardId) > -1;
-        if (isLiked) {
-            unlikeCard(cardId)
-                .then(() => refetch())
-                .catch((err) => { throw err; });
-        } else {
-            likeCard(cardId)
-                .then(() => refetch())
-                .catch((err) => { throw err; });
-        }
-    }
     onDelete = () => {
         const { data: { grove }, remove, router } = this.props;
         if (grove && grove.id) {
@@ -136,7 +117,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 .catch(err => console.log(err));
         }
     }
-    // addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
+    addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
     showDialog = () => {
         const { showDetail } = this.state;
         const { data, router } = this.props;
@@ -218,12 +199,10 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     {...item}
                                     content={content}
                                     onShow={() => router.push(`/collection/${params.collectionId}/card/${item.id}`)}
-                                    onRemove={() => this.removeCard(item.id)}
-                                    onLike={() => this.handleLike(item.id)}
                                     showComments={() => router.push(`/collection/${params.collectionId}/card/${item.id}/comments`)}
-                                    likes={item.likes.length}
                                     isLiked={isLiked}
                                     cover={item.cover}
+                                    userId={me.id}
                                 />
                             );
                         }
