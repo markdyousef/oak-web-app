@@ -24,7 +24,7 @@ type Data = {
 type Props = {
     collection?: Data,
     card?: Object,
-    collectionId: string,
+    collectionId?: string,
     cardId: ?string,
     labels?: Object,
     updateCard: (field:Object) => void,
@@ -34,7 +34,7 @@ type Props = {
     updateLabels: (id: string, name: string, color: string) => Promise<>,
     removeLabel: (id: string) => Promise<>,
     createCard: (id: string, name: string) => Promise<>,
-    editLabel: (label: Object) => void
+    editLabel?: (label: Object) => void
 };
 
 type State = {};
@@ -85,11 +85,12 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
             collectionId,
             labels
         } = this.props;
-        if (!cardId) {
+        if (!cardId && collectionId) {
             createCard(collectionId, '')
                 .then(() => this.changeCardLabel(labelId));
             return;
         }
+        if (!labels || !cardId) return;
         const cardLabels = labels.get('cardLabels');
         const labelExist = cardLabels.findIndex(id => id === labelId) > -1;
         if (labelExist) {
@@ -101,7 +102,7 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
     showEdit = (label: Object) => {
         const { editLabel } = this.props;
         const { id, name, color } = label;
-        editLabel({ id, name, color });
+        if (editLabel) editLabel({ id, name, color });
     }
     renderLabels = () => {
         const {
@@ -112,6 +113,7 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
             collectionId,
             updateActiveLabel
         } = this.props;
+        if (!labels) return null;
         const labelsObj = (labels) ? labels.toJS() : {};
         const { id, name, color } = labelsObj.activeLabel;
 

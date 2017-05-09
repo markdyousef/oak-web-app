@@ -98,7 +98,6 @@ export default (state: StateRecord = initialState, action: Action): StateRecord 
     case types.UPDATE_COLLECTION_LABEL: {
         if (action.data && action.data.label) {
             const { data: { label } } = action;
-            console.log(label);
             return state.updateIn([
                 'collectionLabels',
                 state

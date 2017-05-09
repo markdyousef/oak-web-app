@@ -9,6 +9,13 @@ it('renders correctly', () => {
         collectionId: '1',
         createLabel: () => {},
         updateLabels: () => {},
+        update: () => {},
+        updateCard: () => {},
+        delete: () => {},
+        createCard: () => {},
+        editLabel: () => {},
+        removeLabel: () => {},
+        cardId: null,
         data: {
             loading: true,
             refetch: () => {}
