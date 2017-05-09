@@ -39,12 +39,11 @@ exports[`test renders correctly 1`] = `
       className="huwVrA" />
   </section>
   <section
-    className="txchV">
+    className="ecdMpA">
     <button
-      className="hQjvYS"
-      onClick={[Function]}
-      type="primary">
-      CREATE
+      className="iHaZMM"
+      onClick={[Function]}>
+      Save
     </button>
   </section>
 </div>

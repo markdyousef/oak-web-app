@@ -22,18 +22,17 @@ const Right = styled.div`
     ${''/* position: fixed; */}
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-right: 25px;
+    width: 450px;
     & button {
         margin: 0 2px;
     }
 `;
 
 const Center = styled.div`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    position: relative;
+    margin: auto;
 `;
 
 const Left = styled.div`
@@ -41,7 +40,7 @@ const Left = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 450px;
 `;
 
 const EditNav = styled.div`

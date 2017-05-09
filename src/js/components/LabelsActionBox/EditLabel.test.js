@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CreateLabels from './CreateLabels';
+import EditLabel from './EditLabel';
 
 it('renders correctly', () => {
     const props = {
@@ -14,7 +14,7 @@ it('renders correctly', () => {
 
     };
     const component = renderer.create(
-        <CreateLabels {...props} />
+        <EditLabel {...props} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

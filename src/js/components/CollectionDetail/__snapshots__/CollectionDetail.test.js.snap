@@ -112,8 +112,8 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": CollectionDetail {
         "_reactInternalInstance": [Circular],
+        "addCard": [Function],
         "context": Object {},
-        "handleLike": [Function],
         "onDelete": [Function],
         "onFilter": [Function],
         "onSortCards": [Function],
@@ -128,7 +128,6 @@ ShallowWrapper {
           "unlikeCard": [Function],
         },
         "refs": Object {},
-        "removeCard": [Function],
         "renderCards": [Function],
         "renderInfo": [Function],
         "showDialog": [Function],

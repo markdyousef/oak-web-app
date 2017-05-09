@@ -42,7 +42,7 @@ const ActionSection = styled.section`
     display: flex;
     height: 50px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 `;
 
 const Back = styled.button`
@@ -59,8 +59,20 @@ const Back = styled.button`
     }
 `;
 
+const Save = styled.button`
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    padding: 0;
+    font-size: 14px;
+`;
+
+const Delete = styled(Save)`
+    color: ${colors.red};
+`;
+
 type Props = {
-    onCreate: Function,
+    onCreate?: Function,
     onChange: Function,
     changePage: Function,
     labelName: ?string,
@@ -68,7 +80,17 @@ type Props = {
     labelColors: Array<string>
 }
 
-export default ({ onCreate, onChange, changePage, labelName, selectedColor, labelColors }:Props) => {
+export default ({ ...props }:Props) => {
+    const {
+        changePage,
+        labelName,
+        onChange,
+        labelColors,
+        selectedColor,
+        onCreate,
+        onUpdate,
+        onDelete
+    } = props;
     return (
         <div>
             <Back onClick={changePage}>
@@ -79,7 +101,7 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
                 <Input
                     title="NAME"
                     value={labelName || ''}
-                    onChange={value => onChange('labelName', value)}
+                    onChange={name => onChange({ name })}
                     placeholder="Label name"
                 />
             </Section>
@@ -92,7 +114,7 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
                             <Label
                                 style={{ backgroundColor: color }}
                                 key={color}
-                                onClick={() => onChange('selectedColor', color)}
+                                onClick={() => onChange({ color })}
                             >
                                 {isSelected && <CheckIcon />}
                             </Label>
@@ -102,11 +124,21 @@ export default ({ onCreate, onChange, changePage, labelName, selectedColor, labe
                 </Grid>
             </Section>
             <ActionSection>
-                <SquareButton
-                    onClick={() => onCreate(labelName, selectedColor)}
-                    text="CREATE"
-                    type="primary"
-                />
+                {onCreate &&
+                    <Save onClick={onCreate}>
+                        Save
+                    </Save>
+                }
+                {onUpdate &&
+                    <Save onClick={onUpdate}>
+                        Update
+                    </Save>
+                }
+                {onDelete &&
+                    <Delete onClick={onDelete}>
+                        Delete
+                    </Delete>
+                }
             </ActionSection>
         </div>
     );

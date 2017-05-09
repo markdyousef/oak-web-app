@@ -9,13 +9,12 @@ const Container = styled.div`
     ${''/* padding: 0 10px; */}
     display: flex;
     align-items: center;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow: hidden;
     cursor: pointer;
     margin-top: 5px;
     & span {
-        height: 100%;
+        width: 80%;
+        text-overflow: ellipsis;
+        overflow: hidden;
         font-size: 15px;
         font-weight: normal;
         color: #000 !important;

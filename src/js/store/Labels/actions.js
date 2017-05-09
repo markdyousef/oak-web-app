@@ -52,3 +52,30 @@ export const removeCollectionLabel = (labelId: string): Action => (
         }
     }
 );
+
+export const updateCollectionLabel = (label: Object): Action => (
+    {
+        type: types.UPDATE_COLLECTION_LABEL,
+        data: {
+            label
+        }
+    }
+);
+
+export const editCollectionLabel = (label: Object): Action => (
+    {
+        type: types.EDIT_COLLECTION_LABEL,
+        data: {
+            label
+        }
+    }
+);
+
+export const updateActiveLabel = (label: Object): Action => (
+    {
+        type: types.UPDATE_ACTIVE_LABEL,
+        data: {
+            label
+        }
+    }
+);
