@@ -17,9 +17,8 @@ const LabelsSection = styled(Section)`
 const LabelContainer = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
     & span {
-
+        max-width: 100px;
     }
 `;
 
