@@ -32,7 +32,7 @@ export const EditorContainer = styled.div`
     display: flex;
     flex: 1;
     height: 100%;
-    overflow: auto;
+    ${''/* overflow: auto; */}
     height: 100vh;
     &::-webkit-scrollbar {
         display: none;
