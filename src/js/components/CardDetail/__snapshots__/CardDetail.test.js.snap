@@ -26,12 +26,7 @@ ShallowWrapper {
                     onChange={undefined}
                     placeholder="Write something"
                     readOnly={true}
-                    showFAB={true}
-                    style={
-                        Object {
-                            "width": "100%",
-                          }
-                    } />
+                    showFAB={true} />
             </styled.div>
         </styled.section>
     </styled.div>
@@ -57,12 +52,7 @@ ShallowWrapper {
                               onChange={undefined}
                               placeholder="Write something"
                               readOnly={true}
-                              showFAB={true}
-                              style={
-                                    Object {
-                                          "width": "100%",
-                                        }
-                              } />
+                              showFAB={true} />
                   </styled.div>
             </styled.section>
       </styled.div>
@@ -137,12 +127,7 @@ ShallowWrapper {
                                                   onChange={undefined}
                                                   placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true}
-                                                  style={
-                                                            Object {
-                                                                      "width": "100%",
-                                                                    }
-                                                  } />
+                                                  showFAB={true} />
                               </styled.div>
                     </styled.section>
           </styled.div>
@@ -168,12 +153,7 @@ ShallowWrapper {
                                                   onChange={undefined}
                                                   placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true}
-                                                  style={
-                                                            Object {
-                                                                      "width": "100%",
-                                                                    }
-                                                  } />
+                                                  showFAB={true} />
                               </styled.div>
                     </styled.section>
           </styled.div>
