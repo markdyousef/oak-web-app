@@ -63,10 +63,11 @@ export default (CardDetail:Function) => {
                         this.setState({ editorState: EditorState.createWithContent(state, decorator) });
                     }
                 }
-
+                console.log(seed)
                 this.setState({
                     isLoading: false,
-                    creator: data.me
+                    creator: data.me,
+                    name: seed.name
                 });
             }
             updateCard = (key: string, value: any) => this.props.updateCard({ key, value })
@@ -80,6 +81,18 @@ export default (CardDetail:Function) => {
                 const cover = images[0] && images[0].id;
                 // existing cards has a cardId
                 this.setState({ isLoading: true });
+
+                // no card name
+                if (!name) {
+                    const message = {
+                        type: 'error',
+                        message: 'Please provide a name for your card',
+                        onClick: this.onSave
+                    }
+                    this.setState({ message, isLoading: false });
+                    return;
+                }
+
                 if (cardId) {
                     update(cardId, content, cover)
                     .then(() => {
@@ -153,6 +166,7 @@ export default (CardDetail:Function) => {
                         collectionId={card.get('collectionId')}
                         showLabels={showLabels}
                         onShowLabels={this.onShowLabels}
+                        changeName={name => this.setState({ name })}
                         {...this.state}
                     />
                 );

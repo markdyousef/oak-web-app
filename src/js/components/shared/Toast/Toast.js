@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import { colors } from '../../../styles';
 
 const Container = styled.section`
-    position: relative;
+    position: fixed;
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 60px;
+    z-index: 9999999;
 `;
 
 const Bar = styled.div`

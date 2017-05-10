@@ -4,10 +4,10 @@ import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
 // import { Editor } from 'zen-editor';
 import Editor from '../Editor/src/components/Editor';
-
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
-import { Container, ContainerInner, Main, EditorContainer, editorStyles } from './styles';
+import { Container, ContainerInner, Main, EditorContainer } from './styles';
+import Name from './Name';
 import Toast from '../shared/Toast';
 
 type Props = {
@@ -25,6 +25,7 @@ type Props = {
     addFile: (file: Object) => void,
     onShowLabels: (show:bool) => void,
     showLabels: bool,
+    changeName: (name: string) => void,
     message: ?{
         type: string,
         message: string,
@@ -34,6 +35,7 @@ type Props = {
 }
 
 const CardDetail = ({ ...props }:Props) => {
+    console.log(props.message);
     return (
         <Container>
             <TopBar
@@ -61,6 +63,11 @@ const CardDetail = ({ ...props }:Props) => {
                             addFile={props.addFile}
                             placeholder="Write something"
                             showFAB
+                            titel={<Name
+                                onChange={props.changeName}
+                                name={props.name}
+                                readOnly={!props.showEdit}
+                            />}
                         />
                     </EditorContainer>
                     {props.showComments &&
