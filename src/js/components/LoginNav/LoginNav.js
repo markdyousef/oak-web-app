@@ -22,6 +22,11 @@ const Container = styled.nav`
     }
 `;
 
+const StyledLink = styled(Link)`
+    display: flex;
+    align-items: center;
+`;
+
 const Left = styled.div`
     & img {
         margin-right: 5px;
@@ -36,10 +41,10 @@ export default () => {
     return (
         <Container>
             <Left>
-                <Link to="login">
+                <StyledLink to="login">
                     <img src={logo} alt="presentation" />
                     <img src={name} alt="presentation" />
-                </Link>
+                </StyledLink>
             </Left>
             <Right>
             </Right>

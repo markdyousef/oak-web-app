@@ -2,8 +2,8 @@
 import React from 'react';
 import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
-import { Editor } from 'zen-editor';
-// import Editor from '../Editor/src/components/Editor';
+// import { Editor } from 'zen-editor';
+import Editor from '../Editor/src/components/Editor';
 
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
@@ -59,6 +59,7 @@ const CardDetail = ({ ...props }:Props) => {
                             editorState={props.editorState}
                             onChange={props.onChange}
                             addFile={props.addFile}
+                            showFAB
                         />
                     </EditorContainer>
                     {props.showComments &&

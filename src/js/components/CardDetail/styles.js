@@ -11,8 +11,8 @@ export const Container = styled.div`
 `;
 
 export const ContainerInner = styled.div`
-    ${''/* position: relative;
-    display: flex;
+    position: relative;
+    ${''/* display: flex;
     flex-direction: column;
     flex-grow: 1;
     min-width: 1px; */}
@@ -27,6 +27,7 @@ export const Main = styled.section`
 
 export const EditorContainer = styled.div`
     position: relative;
+    margin: 50px 0 0 160px;
     width: 100%;
     display: flex;
     flex: 1;
@@ -35,8 +36,5 @@ export const EditorContainer = styled.div`
     height: 100vh;
     &::-webkit-scrollbar {
         display: none;
-    }
-    & div:first-child {
-        width: 100%;
     }
 `;
