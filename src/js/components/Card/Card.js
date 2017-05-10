@@ -96,23 +96,24 @@ export default class Card extends Component<DefaultProps, Props, State> {
     handleLike = () => {
         const { likeCard, unlikeCard, id, userId } = this.props;
         const { likes, isLiked } = this.state;
+        const newLikes = [...likes];
 
         if (isLiked) {
             unlikeCard(id)
                 .then(() => {
                     this.setState({
                         isLiked: false,
-                        likes: likes.filter(label => label !== userId)
+                        likes: newLikes.filter(label => label !== userId)
                     })
                 })
                 .catch((err) => console.log(err));
         } else {
             likeCard(id)
                 .then(() => {
-                    likes.push(userId);
+                    newLikes.push(userId);
                     this.setState({
                         isLiked: true,
-                        likes
+                        likes: newLikes
                     })
                 })
                 .catch((err) => { throw err; });
