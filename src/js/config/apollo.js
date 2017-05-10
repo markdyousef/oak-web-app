@@ -1,3 +1,4 @@
+// @flow
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { signOut } from '../utils';
 
@@ -10,7 +11,6 @@ const networkInterface = createNetworkInterface({
 });
 
 const checkAuth = (response) => {
-    console.log(response);
     // has to be cloned to not interrupt applyAfterware
     response.clone().json()
         .then((res) => {
@@ -18,11 +18,15 @@ const checkAuth = (response) => {
                 const errors = res.errors;
                 const unauthorized = errors.findIndex(error => error.message === 'UNAUTHORIZED') > -1;
                 if (unauthorized) {
-                    console.log('doom');
                     signOut();
+                    document.cookie.split(";")
+                        .forEach(function(c) {
+                            document.cookie =
+                                c.replace(/^ +/, "")
+                                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
                 }
             }
-            console.log('valid');
+            // console.log('valid');
         })
         .catch(err => console.log(err));
 };

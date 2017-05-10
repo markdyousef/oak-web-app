@@ -69,6 +69,7 @@ export default (CardDetail:Function) => {
                     creator: data.me
                 });
             }
+            updateCard = (key: string, value: any) => this.props.updateCard({ key, value })
             onSave = () => {
                 const { editorState, name, images } = this.state;
                 const { create, update, data, updateCard, card } = this.props;
@@ -84,7 +85,7 @@ export default (CardDetail:Function) => {
                     .then(() => {
                         if (data) data.refetch();
                         this.setState({ isLoading: false, message: null });
-                        updateCard({ key: 'shouldUpdate', value: true });
+                        this.updateCard('shouldUpdate', true);
                     })
                     .catch(() => {
                         const message = {
@@ -96,10 +97,12 @@ export default (CardDetail:Function) => {
                     });
                 } else {
                     create(collectionId, name, content, cover)
-                        .then(() => {
+                        .then((res) => {
+                            const id = res.data.createSeed.id;
                             this.setState({ isLoading: false, message: null });
                             if (data) data.refetch();
-                            updateCard({ key: 'shouldUpdate', value: true });
+                            this.updateCard('shouldUpdate', true);
+                            this.updateCard('cardId', id)
                         })
                         .catch(() => {
                             const message = {

@@ -24,8 +24,14 @@ ShallowWrapper {
                     addFile={undefined}
                     editorState={undefined}
                     onChange={undefined}
+                    placeholder="Write something"
                     readOnly={true}
-                    showFAB={true} />
+                    showFAB={true}
+                    style={
+                        Object {
+                            "width": "100%",
+                          }
+                    } />
             </styled.div>
         </styled.section>
     </styled.div>
@@ -49,8 +55,14 @@ ShallowWrapper {
                               addFile={undefined}
                               editorState={undefined}
                               onChange={undefined}
+                              placeholder="Write something"
                               readOnly={true}
-                              showFAB={true} />
+                              showFAB={true}
+                              style={
+                                    Object {
+                                          "width": "100%",
+                                        }
+                              } />
                   </styled.div>
             </styled.section>
       </styled.div>
@@ -123,8 +135,14 @@ ShallowWrapper {
                                                   addFile={undefined}
                                                   editorState={undefined}
                                                   onChange={undefined}
+                                                  placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true} />
+                                                  showFAB={true}
+                                                  style={
+                                                            Object {
+                                                                      "width": "100%",
+                                                                    }
+                                                  } />
                               </styled.div>
                     </styled.section>
           </styled.div>
@@ -148,8 +166,14 @@ ShallowWrapper {
                                                   addFile={undefined}
                                                   editorState={undefined}
                                                   onChange={undefined}
+                                                  placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true} />
+                                                  showFAB={true}
+                                                  style={
+                                                            Object {
+                                                                      "width": "100%",
+                                                                    }
+                                                  } />
                               </styled.div>
                     </styled.section>
           </styled.div>

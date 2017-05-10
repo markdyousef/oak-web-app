@@ -55,10 +55,12 @@ const CardDetail = ({ ...props }:Props) => {
                 <Main>
                     <EditorContainer>
                         <Editor
+                            style={{ width: '100%' }}
                             readOnly={!props.showEdit}
                             editorState={props.editorState}
                             onChange={props.onChange}
                             addFile={props.addFile}
+                            placeholder="Write something"
                             showFAB
                         />
                     </EditorContainer>
