@@ -8,6 +8,11 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   S3_BUCKET_NAME: "dev.clai.io/cuest-web/"
 
+before_script:
+   - which apk && apk update --quiet && apk upgrade --quiet && apk add --quiet git
+   - git submodule sync --recursive
+   - git submodule update --init --recursive
+
 build_job:
   stage: test
   script:
@@ -26,7 +31,7 @@ deploy_job:
   only:
     - master
   script:
-    - which apk && apk update --quiet && apk upgrade --quiet && apk add --quiet py-pip
+    - which apk && apk add --quiet py-pip
     - which pip && pip install --quiet awscli
     - yarn install
     - yarn run build
