@@ -26,7 +26,13 @@ ShallowWrapper {
                     onChange={undefined}
                     placeholder="Write something"
                     readOnly={true}
-                    showFAB={true} />
+                    showFAB={true}
+                    titel={
+                        <Unknown
+                            name={undefined}
+                            onChange={undefined}
+                            readOnly={true} />
+                    } />
             </styled.div>
         </styled.section>
     </styled.div>
@@ -52,7 +58,13 @@ ShallowWrapper {
                               onChange={undefined}
                               placeholder="Write something"
                               readOnly={true}
-                              showFAB={true} />
+                              showFAB={true}
+                              titel={
+                                    <Unknown
+                                          name={undefined}
+                                          onChange={undefined}
+                                          readOnly={true} />
+                              } />
                   </styled.div>
             </styled.section>
       </styled.div>
@@ -127,7 +139,13 @@ ShallowWrapper {
                                                   onChange={undefined}
                                                   placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true} />
+                                                  showFAB={true}
+                                                  titel={
+                                                            <Unknown
+                                                                      name={undefined}
+                                                                      onChange={undefined}
+                                                                      readOnly={true} />
+                                                  } />
                               </styled.div>
                     </styled.section>
           </styled.div>
@@ -153,7 +171,13 @@ ShallowWrapper {
                                                   onChange={undefined}
                                                   placeholder="Write something"
                                                   readOnly={true}
-                                                  showFAB={true} />
+                                                  showFAB={true}
+                                                  titel={
+                                                            <Unknown
+                                                                      name={undefined}
+                                                                      onChange={undefined}
+                                                                      readOnly={true} />
+                                                  } />
                               </styled.div>
                     </styled.section>
           </styled.div>
