@@ -20,7 +20,7 @@ const Container = styled.section`
     height: calc(100vh - 60px);
     border-left: 1px solid ${colors.lightGrey};
     background-color: ${colors.white};
-    z-index: 999;
+    z-index: 999999999999;
 `;
 
 const CommentsPanel = styled.div`
