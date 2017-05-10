@@ -26,7 +26,7 @@ const checkAuth = (response) => {
                                 .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
                 }
             }
-            console.log('valid');
+            // console.log('valid');
         })
         .catch(err => console.log(err));
 };
