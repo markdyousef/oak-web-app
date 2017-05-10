@@ -16,6 +16,7 @@ build_job:
 test_job:
   stage: test
   script:
+   - git submodule update --recursive --remote
    - yarn install
    - yarn run test
 
@@ -25,6 +26,7 @@ deploy_job:
   only:
     - master
   script:
+    - git submodule update --recursive --remote
     - which apk && apk update --quiet && apk upgrade --quiet && apk add --quiet py-pip
     - which pip && pip install --quiet awscli
     - yarn install
