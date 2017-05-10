@@ -15,7 +15,10 @@ import {
     Bottom,
     Time,
     Icon,
-    Settings
+    Settings,
+    H1,
+    H2,
+    P
 } from './styles';
 
 type DefaultProps = {
@@ -122,11 +125,11 @@ export default class Card extends Component<DefaultProps, Props, State> {
                 {blocks.map((block) => {
                     switch (block.type) {
                     case 'header-one':
-                        return <h1 key={block.key}>{block.text}</h1>;
+                        return <H1 key={block.key}>{block.text}</H1>;
                     case 'header-two':
-                        return <h2 key={block.key}>{block.text}</h2>;
+                        return <H2 key={block.key}>{block.text}</H2>;
                     default:
-                        return <p key={block.key}>{block.text}</p>;
+                        return <P key={block.key}>{block.text}</P>;
                     }
                 })}
             </div>

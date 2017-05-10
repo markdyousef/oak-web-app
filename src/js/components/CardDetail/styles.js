@@ -1,3 +1,4 @@
+// @flow
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
@@ -27,13 +28,18 @@ export const Main = styled.section`
 
 export const EditorContainer = styled.div`
     position: relative;
-    margin: 50px 0 0 160px;
+    margin: 0 auto;
+    max-width: 1000px;
     width: 100%;
     display: flex;
     flex: 1;
     height: 100%;
     ${''/* overflow: auto; */}
     height: 100vh;
+    padding: 50px 0 30px 0;
+    @media (max-width: 1200px) {
+        padding: 50px 40px 30px 160px;
+    }
     &::-webkit-scrollbar {
         display: none;
     }

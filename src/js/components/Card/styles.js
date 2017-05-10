@@ -138,3 +138,22 @@ export const Settings = styled.div`
     left: 82px;
     z-index: 99;
 `;
+
+export const H1 = styled.h1`
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+`;
+
+export const H2 = styled.h2`
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+`;
+
+export const P = styled.p`
+    width: 100%;
+    text-overflow: ellipsis;
+    max-height: 32px;
+    overflow: hidden;
+`;

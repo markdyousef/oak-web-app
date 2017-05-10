@@ -25,7 +25,9 @@ const Right = styled.div`
     align-items: center;
     justify-content: flex-end;
     margin-right: 25px;
-    width: 450px;
+    max-width: 450px;
+    @media(min-width: 900px) {
+    }
     & button {
         margin: 0 2px;
     }
@@ -41,7 +43,7 @@ const Left = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    width: 450px;
+    max-width: 450px;
 `;
 
 const EditNav = styled.div`
