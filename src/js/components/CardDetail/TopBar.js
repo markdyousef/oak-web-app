@@ -16,6 +16,7 @@ const Container = styled.nav`
     position: fixed;
     width: 100%;
     z-index: 9999999;
+    top: 0;
 `;
 
 const Right = styled.div`
