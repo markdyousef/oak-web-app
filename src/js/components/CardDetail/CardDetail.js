@@ -7,7 +7,7 @@ import Editor from '../Editor/src/components/Editor';
 
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
-import { Container, ContainerInner, Main, EditorContainer } from './styles';
+import { Container, ContainerInner, Main, EditorContainer, editorStyles } from './styles';
 import Toast from '../shared/Toast';
 
 type Props = {
@@ -55,7 +55,6 @@ const CardDetail = ({ ...props }:Props) => {
                 <Main>
                     <EditorContainer>
                         <Editor
-                            style={{ width: '100%' }}
                             readOnly={!props.showEdit}
                             editorState={props.editorState}
                             onChange={props.onChange}
