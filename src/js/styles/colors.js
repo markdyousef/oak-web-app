@@ -7,7 +7,7 @@ export default {
     extraLightGrey: '#F9FAFB',
     white: '#FFFFFF',
     red: '#E87385',
-    orange: '#FEC288'
+    orange: '#F0BB37'
 };
 
 export const labelColors = [

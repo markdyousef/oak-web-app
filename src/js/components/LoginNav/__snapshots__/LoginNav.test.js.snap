@@ -4,6 +4,7 @@ exports[`test renders correctly 1`] = `
   <div
     className="kgftmh">
     <a
+      className="jmaJYZ"
       onClick={[Function]}
       style={Object {}}>
       <img
