@@ -15,3 +15,9 @@ export const updateCard = (field: Field): Action => {
         }
     });
 };
+
+export const clearCard = () => (
+    {
+        type: types.CLEAR_CARD
+    }
+);

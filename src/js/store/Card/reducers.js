@@ -36,6 +36,8 @@ export default (state: State = initialState, action: Action): State => {
         }
         return state;
     }
+    case types.CLEAR_CARD:
+        return initialState;
     default:
         return state;
     }

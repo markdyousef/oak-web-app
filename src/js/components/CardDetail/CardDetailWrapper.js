@@ -70,6 +70,10 @@ export default (CardDetail:Function) => {
                     name: seed.name
                 });
             }
+            componentWillUnmount() {
+                const { clearCard } = this.props;
+                clearCard();
+            }
             updateCard = (key: string, value: any) => this.props.updateCard({ key, value })
             onSave = () => {
                 const { editorState, name, images } = this.state;

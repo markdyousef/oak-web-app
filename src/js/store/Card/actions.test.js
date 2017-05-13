@@ -1,3 +1,4 @@
+// @flow
 import * as actions from './actions';
 import * as types from '../constants/ActionTypes';
 
@@ -10,7 +11,12 @@ describe('actions', () => {
                 field
             }
         };
-
         expect(actions.updateCard(field)).toEqual(expectedAction);
+    });
+    it('should reset Card state', () => {
+        const expectedAction = {
+            type: types.CLEAR_CARD
+        };
+        expect(actions.clearCard()).toEqual(expectedAction)
     });
 });

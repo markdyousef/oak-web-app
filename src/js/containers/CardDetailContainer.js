@@ -59,6 +59,8 @@ const mapDispatchToProps = (dispatch: Function) => (
     {
         updateCard: (field:Field) =>
             dispatch(card.updateCard(field)),
+        clearCard: () =>
+            dispatch(card.clearCard()),
         updateComments: (field: Field) =>
             dispatch(comments.updateComments(field)),
         updateLabels: (field: Field) =>
