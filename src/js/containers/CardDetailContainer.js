@@ -19,7 +19,7 @@ const getCard = gql`
         }
         seed(id: $id) {
             id
-            # name
+            name
             content
         }
     }

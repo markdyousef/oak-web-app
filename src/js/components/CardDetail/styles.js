@@ -34,7 +34,7 @@ export const EditorContainer = styled.div`
     display: flex;
     flex: 1;
     height: 100%;
-    ${''/* overflow: auto; */}
+    overflow: scroll;
     height: 100vh;
     padding: 50px 0 30px 0;
     @media (max-width: 1200px) {
