@@ -1,0 +1,4 @@
+exports[`test renders TopBar 1`] = `
+<nav
+  className="iaCmgk" />
+`;

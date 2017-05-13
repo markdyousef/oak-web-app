@@ -2,7 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 // import SideNav from '../../containers/SideNavContainer';
-import TopNav from '../../containers/TopNavContainer';
+// import TopNav from '../../containers/TopNavContainer';
+import TopBar from '../../components/TopBar';
 
 const Container = styled.div`
     display: flex;
@@ -38,7 +39,7 @@ export default ({ children, router }:Object) => (
         <InnerContainer>
             {/* <SideNav /> */}
             <Main>
-                <TopNav team router={router} />
+                <TopBar />
                 <MainInner>
                     {children}
                 </MainInner>
