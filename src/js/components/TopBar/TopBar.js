@@ -1,6 +1,10 @@
 // @flow
 import React from 'react';
-import { MainNavContainer, ActionBar, Settings } from './index';
+import {
+    MainNavContainer,
+    ActionBar,
+    SettingsContainer
+} from './index';
 import { Container } from './styles';
 
 export default () => {
@@ -8,7 +12,7 @@ export default () => {
         <Container>
             <MainNavContainer />
             {/* <ActionBar /> */}
-            {/* <Settings /> */}
+            <SettingsContainer />
         </Container>
     );
 }

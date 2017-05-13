@@ -73,3 +73,22 @@ export const ActiveMenu = styled.span`
     font-weight: bold;
     margin-left: 10px;
 `;
+
+// Navigation Right
+export const NavRight = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 25px;
+`;
+
+export const Profile = styled.button`
+    height: 32px;
+    width: 32px;
+    border-radius: 999em;
+    border: 1px solid #E5E5E5;
+    margin-left: 5px;
+    padding: 0;
+    margin-left: 15px;
+`;

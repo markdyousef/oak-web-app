@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import CollectionDialog from '../../containers/CollectionDialogContainer';
 import CollectionIcon from '../../icons/collections';
 import Menu from '../shared/Dropdown';
 import logo from '../../../img/cuest-logo.png';
@@ -14,6 +15,7 @@ import {
     Logo,
     ActiveMenu
 } from './styles';
+
 
 type DefaultProps = {
     router: Object,
@@ -82,7 +84,7 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
     }
     render() {
         console.log(this.props);
-        const { showCollections } = this.state;
+        const { showCollections, showDialog } = this.state;
         return (
             <NavLeft>
                 <Logo onClick={this.toCollections}>
@@ -117,6 +119,11 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                     </Dropdown>
                 }
                 {this.activeCollection()}
+                {showDialog &&
+                    <CollectionDialog
+                        close={() => this.setState({ showDialog: false })}
+                    />
+                }
             </NavLeft>
         );
     }
