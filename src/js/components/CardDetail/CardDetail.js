@@ -6,7 +6,7 @@ import { EditorState } from 'draft-js';
 import Editor from '../Editor/src/components/Editor';
 import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
-import { Container, ContainerInner, Main, EditorContainer } from './styles';
+import { Container, ContainerInner, Main, EditorContainer, editorStyle } from './styles';
 import Name from './Name';
 import Toast from '../shared/Toast';
 
