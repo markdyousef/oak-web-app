@@ -20,7 +20,6 @@ export const ContainerInner = styled.div`
 `;
 
 export const Main = styled.section`
-    margin-top: 60px;
     overflow: hidden;
     display: flex;
     flex: 1;
@@ -29,7 +28,6 @@ export const Main = styled.section`
 export const EditorContainer = styled.div`
     position: relative;
     margin: 0 auto;
-    margin-top: 20px;
     max-width: 1000px;
     width: 100%;
     display: flex;
@@ -37,10 +35,7 @@ export const EditorContainer = styled.div`
     height: 100%;
     overflow: scroll;
     height: 100vh;
-    padding: 50px 0 30px 0;
-    @media (max-width: 1200px) {
-        padding: 50px 40px 30px 160px;
-    }
+    padding: 80px 40px 30px 160px;
     &::-webkit-scrollbar {
         display: none;
     }
