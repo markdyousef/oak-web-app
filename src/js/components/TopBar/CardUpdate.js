@@ -2,7 +2,8 @@
 import React from 'react';
 import { RoundButton } from '../shared/Button';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
-import { EditNav } from './styles';
+import { EditNav, LabelsContainer, Labels } from './styles';
+import Dropdown from '../shared/Dropdown';
 
 type Props = {
     isLoading?: bool,
@@ -34,15 +35,19 @@ export default ({ ...props }: Props) => {
             />
     } else {
         cardActions = [
-            <div key="labels">
+            <Labels key="labels">
                 <RoundButton
                     text="Add label"
                     onClick={() => onShowLabels && onShowLabels(!showLabels)}
                 />
                     {showLabels &&
-                        <LabelsActionBox />
+                        <LabelsContainer>
+                            <Dropdown onClose={() => onShowLabels && onShowLabels(false)}>
+                                <LabelsActionBox />
+                            </Dropdown>
+                        </LabelsContainer>
                     }
-            </div>,
+            </Labels>,
             <RoundButton
                 key="save"
                 text="Save Card"

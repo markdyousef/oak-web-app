@@ -108,3 +108,15 @@ export const NavCenter = styled.div`
 export const EditNav = styled.div`
     display: flex;
 `;
+
+export const Labels = styled.div`
+    position: relative;
+`;
+
+export const LabelsContainer = styled.div`
+    position: absolute;
+    z-index: 9999;
+    width: 250px;
+    right: 0;
+    margin-top: 15px;
+`;

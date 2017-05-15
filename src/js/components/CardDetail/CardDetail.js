@@ -4,9 +4,8 @@ import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
 // import { Editor } from 'zen-editor';
 import Editor from '../Editor/src/components/Editor';
-import TopBar from './TopBar';
 import Comments from '../../containers/CommentsContainer';
-import { Container, ContainerInner, Main, EditorContainer, editorStyle } from './styles';
+import { Container, ContainerInner, Main, EditorContainer } from './styles';
 import Name from './Name';
 import Toast from '../shared/Toast';
 
@@ -37,17 +36,6 @@ type Props = {
 const CardDetail = ({ ...props }:Props) => {
     return (
         <Container>
-            {/* <TopBar
-                onClose={props.goBack}
-                onSave={props.onSave}
-                showEdit={props.showEdit}
-                onEdit={props.onEdit}
-                showComments={props.onShowComments}
-                isLoading={props.isLoading}
-                existingCard={props.existingCard}
-                showLabels={props.showLabels}
-                onShowLabels={props.onShowLabels}
-            /> */}
             {props.message && <Toast
                 message={props.message}
                 onClose={props.onCloseError}

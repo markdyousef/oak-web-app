@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles';
 import LabelsActionBoxContainer from '../../containers/LabelsActionBoxContainer';
+import Dropdown from '../shared/Dropdown';
 
 const Container = styled.div`
     width: 200px;
-    height: 100px;
+    ${''/* height: 100px; */}
     & h3 {
         font-size: 18px;
     }
@@ -18,6 +19,7 @@ const Select = styled.select`
 `;
 
 const Labels = styled.div`
+    position: relative;
     & button {
         width: 100%;
     }
@@ -40,6 +42,13 @@ const Footer = styled.div`
         font-size: 14px;
         cursor: pointer;
     }
+`;
+
+const LabelsContainer = styled.div`
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+    width: 250px;
 `;
 
 
@@ -99,14 +108,18 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                     <Labels>
                         <button onClick={() => onShowLabels()}>LABELS</button>
                         {showLabels &&
-                            <LabelsActionBoxContainer />
+                            <LabelsContainer>
+                                <Dropdown onClose={() => onShowLabels(false)} arrowPos="none">
+                                    <LabelsActionBoxContainer />
+                                </Dropdown>
+                            </LabelsContainer>
                         }
                     </Labels>
                 }
                 <Footer>
                     {collectionId &&
                     <button onClick={this.addCard}>
-                        Start Creating
+                        Save
                     </button>}
                 </Footer>
             </Container>

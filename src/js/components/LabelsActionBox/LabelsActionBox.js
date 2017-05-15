@@ -1,17 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import EditLabel from './EditLabel';
 import AddLabels from './AddLabels';
 import Dropdown from '../shared/Dropdown';
 import { labelColors } from '../../styles';
-
-const Container = styled.div`
-    position: absolute;
-    z-index: 9999;
-    margin-top: 20px;
-    width: 250px;
-`;
 
 type Data = {
     loading: bool,
@@ -163,13 +155,7 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
         }
     }
     render() {
-        return (
-            <Container>
-                <Dropdown arrowPos="left" onClose={this.onClose}>
-                    {this.renderLabels()}
-                </Dropdown>
-            </Container>
-        );
+        return this.renderLabels();
     }
 }
 
