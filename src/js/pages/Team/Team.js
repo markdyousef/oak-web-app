@@ -27,7 +27,6 @@ const Main = styled.section`
 `;
 
 const MainInner = styled.div`
-    margin-top: 60px;
     display: block;
     overflow-y: auto;
     overflow-x: hidden;

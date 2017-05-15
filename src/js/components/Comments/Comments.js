@@ -18,8 +18,9 @@ const Container = styled.section`
     justify-content: space-between;
     min-width: 1px;
     max-width: 350px;
-    height: 100vh;
-    padding-top: 80px;
+    min-height: 100px;
+    ${''/* height: 100vh; */}
+    ${''/* padding-top: 80px; */}
     border-left: 1px solid ${colors.lightGrey};
     background-color: ${colors.white};
     z-index: 99999;
@@ -47,6 +48,7 @@ const Comments = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 `;
 
 
