@@ -7,7 +7,7 @@ import { NextButton } from '../shared/Button';
 import Arrow from '../../icons/rightArrow';
 
 type Props = {
-    resetPassword: (token: string, password: string) => Object
+    resetPassword?: (token: string, password: string) => Object
 };
 
 type State = {
@@ -51,9 +51,11 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
             this.setState({ message: "Your passwords doesn't match." });
             return;
         }
-        resetPassword(token, password)
+        if (resetPassword) {
+            resetPassword(token, password)
             .then(res => console.log(res))
             .catch(err => console.log(err));
+        }
     }
     render() {
         const { password, passwordRepeat, message } = this.state;

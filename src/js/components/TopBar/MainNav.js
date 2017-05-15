@@ -54,18 +54,22 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
     toCollections = () => {
         const { router: { push } } = this.props;
         if (push) push('/');
+        this.setState({ showCollections: false });
+    }
+    goToCollection = (id:string) => {
+        const { router: { push } } = this.props;
+        if (push) push(`collection/${id}`)
     }
     renderRecommended = () => {
-        const { router: { push }, data } = this.props;
+        const { data } = this.props;
 
         const collections = (data && data.groves) ? data.groves : [];
-        const goTo = id => push ? push(`collection/${id}`) : null;
 
         return collections.map(collection =>
             <MenuItem
                 key={collection.id}
                 onClick={() => {
-                    goTo(collection.id);
+                    this.goToCollection(collection.id)
                     this.setState({ showCollections: false });
                 }}
             >
@@ -74,7 +78,11 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         ).slice(0, 3);
     }
     activeCollection = () => {
-        const { params: { collectionId }, data: { groves } } = this.props;
+        const {
+            params: { collectionId },
+            data: { groves },
+            router: { push }
+        } = this.props;
 
         if (!groves) return null;
         if (!collectionId) return null;
@@ -83,7 +91,13 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
             (grove => grove.id === collectionId));
 
         const { name } = groves[activeIndex];
-        return <ActiveMenu>{name}</ActiveMenu>
+        return (
+            <ActiveMenu
+                onClick={() => this.goToCollection(collectionId)}
+            >
+                {name}
+            </ActiveMenu>
+        )
 
     }
     render() {
@@ -96,8 +110,8 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                         src={logo}
                     />
                 </Logo>
+                <CollectionIcon />
                 <NavContainer>
-                    <CollectionIcon />
                     <Collections onClick={() => this.setState({ showCollections: !showCollections })}>
                         Collections
                     </Collections>

@@ -81,6 +81,7 @@ export const Logo = styled.div`
 export const ActiveMenu = styled.span`
     font-weight: bold;
     margin-left: 10px;
+    cursor: pointer;
 `;
 
 // Navigation Right

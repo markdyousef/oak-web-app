@@ -21,7 +21,7 @@ type Props = {
         push?: (path: string) => void,
         replace?: (path: string) => void
     },
-    params?: { cardId?: string },
+    params: { cardId?: string, collectionId?: string },
     showLabels?: bool,
     updateLabels?: (field: Object) => void,
     updateCard: (key: string, value: any) => void,
@@ -36,7 +36,8 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps = {
         router: {},
         location: {},
-        updateCard: () => {}
+        updateCard: () => {},
+        params: {}
     }
     state: State = {}
     onShowLabels = (show?:bool = true) => {
@@ -47,8 +48,12 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
             value: show
         });
     }
+    goToCard = (collectionId: string, cardId: string) => {
+        const { router: { replace } } = this.props;
+        if (replace) replace(`/collection/${collectionId}/card/${cardId}`)
+    }
     onSave = () => {
-        const { create, update, updateCard, card, router: { replace } } = this.props;
+        const { create, update, updateCard, card } = this.props;
         if (!card) return;
 
         const cardId = card.get('cardId');
@@ -72,15 +77,26 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         //     return;
         // }
         if (cardId && update) {
-            update(cardId, content, cover);
+            update(cardId, content, cover)
+                .then(id => this.goToCard(collectionId, id));
         } else if (create) {
-            create(collectionId, name, content, cover);
+            create(collectionId, name || '', content, cover)
+                .then(id => this.goToCard(collectionId, id));
         }
-        if (replace) replace(`/collection/${collectionId}/card/${cardId}`)
     }
     onCreate = () => {
         const { updateCard } = this.props;
         updateCard('menu', "CREATE");
+    }
+    onNewCard = () => {
+        const {
+            router: { push },
+            params: { collectionId }
+        } = this.props;
+        if (push) {
+            if (!collectionId) return push('/collection/card');
+            push(`/collection/${collectionId}/card`);
+        }
     }
     renderActionBar = () => {
         const {
@@ -102,7 +118,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         if (!inCardDetail) {
             return(
                 <RoundButton
-                    onClick={() => push && push('/collection/card')}
+                    onClick={this.onNewCard}
                     text="Create Card"
                     type="secondary"
                 />

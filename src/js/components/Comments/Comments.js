@@ -1,5 +1,6 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { EditorState } from 'draft-js';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
@@ -17,19 +18,27 @@ const Container = styled.section`
     justify-content: space-between;
     min-width: 1px;
     max-width: 350px;
-    height: calc(100vh - 60px);
+    height: 100vh;
+    padding-top: 80px;
     border-left: 1px solid ${colors.lightGrey};
     background-color: ${colors.white};
-    z-index: 999999999999;
+    z-index: 99999;
 `;
 
 const CommentsPanel = styled.div`
     padding: 16px 16px 4px;
     background: ${colors.white};
     flex: 1 1 auto;
-    overflow-y: auto;
+    position: relative;
     ${''/* display: flex;
     flex-direction: column-reverse; */}
+`;
+
+const CommentsContainer = styled.div`
+    position: absolute;
+    bottom: 0;
+    overflow-y: auto;
+    height: 100%;
 `;
 
 const Comments = styled.div`
@@ -40,11 +49,14 @@ const Comments = styled.div`
     flex-direction: column;
 `;
 
+
 const CommentsInput = styled.div`
     width: 100%;
     ${''/* position: absolute;
     bottom: 0; */}
 `;
+
+type DefaultProps = {};
 
 type Props = {
     comments: Array<Object>,
@@ -60,37 +72,61 @@ type Props = {
     }
 }
 
-export default ({ comments, create, failedComment, creator }:Props) => {
-    return (
-        <Container>
-            <CommentsPanel>
-                <Comments className="comments-panel">
-                    {(() => {
-                        if (comments.length > 0) {
-                            return comments.map(comment => (
-                                <Comment
-                                    key={comment.id}
-                                    {...comment}
+type State = {};
+
+export default class extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps = {};
+    state: State;
+    props: Props;
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+    scrollToBottom = () => {
+        const node = ReactDOM.findDOMNode(this.commentsEnd);
+        node.scrollIntoView({ behavior: 'smooth'});
+    }
+    render() {
+        const { comments, create, failedComment, creator } = this.props;
+        return (
+            <Container>
+                <CommentsPanel>
+                    <CommentsContainer>
+                        <Comments>
+                            {(() => {
+                                if (comments.length > 0) {
+                                    return comments.map(comment => (
+                                        <Comment
+                                            key={comment.id}
+                                            {...comment}
+                                        />
+                                    ));
+                                }
+                                return <NoComments />;
+                            })()}
+                            {failedComment && creator &&
+                                <FailedComment
+                                    failedComment={failedComment}
+                                    creator={creator}
+                                    onResend={create}
                                 />
-                            ));
-                        }
-                        return <NoComments />;
-                    })()}
-                    {failedComment && creator &&
-                        <FailedComment
-                            failedComment={failedComment}
-                            creator={creator}
-                            onResend={create}
+                            }
+                        </Comments>
+                        <div
+                            style={{ float: 'left', clear: 'both'}}
+                            ref={(element) => { this.commentsEnd = element}}
                         />
-                    }
-                </Comments>
-            </CommentsPanel>
-            <CommentsInput>
-                <CommentBox
-                    createComment={create}
-                    creator={creator}
-                />
-            </CommentsInput>
-        </Container>
-    );
-};
+                    </CommentsContainer>
+                </CommentsPanel>
+                <CommentsInput>
+                    <CommentBox
+                        createComment={create}
+                        creator={creator}
+                    />
+                </CommentsInput>
+            </Container>
+        );
+    }
+}

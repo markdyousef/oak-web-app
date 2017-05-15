@@ -1,6 +1,7 @@
 // @flow
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { signOut } from '../utils';
+import { signOut, getToken } from '../utils';
+import client from '../config/apollo';
 
 const networkInterface = createNetworkInterface({
     uri: 'https://empress.clai.io/graphql',
@@ -17,13 +18,17 @@ const checkAuth = (response) => {
             if (res.errors && res.errors.length > 0) {
                 const errors = res.errors;
                 const unauthorized = errors.findIndex(error => error.message === 'UNAUTHORIZED') > -1;
-                if (unauthorized) {
-                    signOut();
-                    document.cookie.split(";")
-                        .forEach(function(c) {
-                            document.cookie =
-                                c.replace(/^ +/, "")
-                                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+                const token = getToken();
+                if (unauthorized && token) {
+                    // signOut();
+                    localStorage.clear();
+                    // location.reload();
+                    client.resetStore();
+                    // document.cookie.split(";")
+                    //     .forEach(function(c) {
+                    //         document.cookie =
+                    //             c.replace(/^ +/, "")
+                    //             .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
                 }
             }
             // console.log('valid');
@@ -45,7 +50,7 @@ networkInterface
     // http://dev.apollodata.com/core/network.html
     .useAfter([{
         applyAfterware({ response }, next) {
-            // checkAuth(response)
+            checkAuth(response)
             next();
         }
     }]);

@@ -48,13 +48,13 @@ const CardDetail = ({ ...props }:Props) => {
                             editorState={props.editorState}
                             onChange={props.onChange}
                             addFile={props.addFile}
-                            placeholder="Write something"
+                            placeholder="Title..."
                             showFAB
-                            titel={<Name
-                                onChange={props.changeName}
-                                name={props.name}
-                                readOnly={!props.showEdit}
-                            />}
+                            // titel={<Name
+                            //     onChange={props.changeName}
+                            //     name={props.name}
+                            //     readOnly={!props.showEdit}
+                            // />}
                         />
                     </EditorContainer>
                     {props.showComments &&

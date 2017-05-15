@@ -4,7 +4,7 @@ import { RoundButton } from '../shared/Button';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
 import Menu from '../shared/Dropdown';
 import CreateCard from '../CreateCard';
-import { EditNav, Dropdown } from './styles';
+import { EditNav, Dropdown, NavContainer } from './styles';
 
 type Props = {
     isLoading?: bool,
@@ -22,26 +22,28 @@ type Props = {
 export default ({ ...props }: Props) => {
     return (
         <EditNav>
-            <RoundButton
-                text="Share Card"
-                onClick={props.onCreate}
-                type="secondary"
-                isLoading={props.isLoading}
-            />
-            {props.showMenu &&
-                <Dropdown style={{ right: '10px' }}>
-                    <Menu onClose={props.closeMenu}>
-                        <CreateCard
-                            collectionId={props.collectionId}
-                            collections={props.collections}
-                            addCard={props.saveCard}
-                            updateCollection={props.updateCollection}
-                            showLabels={props.showLabels}
-                            onShowLabels={props.onShowLabels}
-                        />
-                    </Menu>
-                </Dropdown>
-            }
+            <NavContainer>
+                <RoundButton
+                    text="Share Card"
+                    onClick={props.onCreate}
+                    type="secondary"
+                    isLoading={props.isLoading}
+                />
+                {props.showMenu &&
+                    <Dropdown style={{ right: '10px' }}>
+                        <Menu onClose={props.closeMenu}>
+                            <CreateCard
+                                collectionId={props.collectionId}
+                                collections={props.collections}
+                                addCard={props.saveCard}
+                                updateCollection={props.updateCollection}
+                                showLabels={props.showLabels}
+                                onShowLabels={props.onShowLabels}
+                            />
+                        </Menu>
+                    </Dropdown>
+                }
+            </NavContainer>
         </EditNav>
     );
 }
