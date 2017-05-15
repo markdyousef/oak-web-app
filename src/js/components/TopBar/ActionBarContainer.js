@@ -86,6 +86,7 @@ export default compose(
                         ownProps.updateCard('shouldUpdate', true);
                         ownProps.updateCard('cardId', id);
                         ownProps.updateCard('isSaved', true);
+                        return id;
                     })
                     .catch((err) => {
                         const message = {
@@ -102,11 +103,12 @@ export default compose(
             update: (id:string, content:string, coverId:string) =>
                 mutate({ variables: { id, content, coverId } })
                     .then(res => {
-                        console.log(res);
+                        const id = res.data.updateSeed.id;
                         ownProps.updateCard('message', null);
                         ownProps.updateCard('isLoading', false);
                         ownProps.updateCard('shouldUpdate', true);
                         ownProps.updateCard('isSaved', true);
+                        return id;
                     })
                     .catch(() => {
                         const message = {

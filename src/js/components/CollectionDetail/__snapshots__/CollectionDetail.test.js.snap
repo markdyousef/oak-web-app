@@ -116,6 +116,7 @@ ShallowWrapper {
         "context": Object {},
         "onDelete": [Function],
         "onFilter": [Function],
+        "onShowCard": [Function],
         "onSortCards": [Function],
         "props": Object {
           "data": Object {

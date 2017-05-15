@@ -118,6 +118,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         }
     }
     addCard = () => this.props.router.push(`/collection/${this.props.params.collectionId}/card`)
+    onShowCard = (cardId: string) => {
+        const { router: { push }, params: { collectionId }, updateCard } = this.props;
+        // view in read mode
+        updateCard({ key: 'readOnly', value: true });
+        push(`/collection/${collectionId}/card/${cardId}`);
+    }
     showDialog = () => {
         const { showDetail } = this.state;
         const { data, router } = this.props;
@@ -198,7 +204,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     key={item.id}
                                     {...item}
                                     content={content}
-                                    onShow={() => router.push(`/collection/${params.collectionId}/card/${item.id}`)}
+                                    onShow={() => this.onShowCard(item.id)}
                                     showComments={() => router.push(`/collection/${params.collectionId}/card/${item.id}/comments`)}
                                     isLiked={isLiked}
                                     cover={item.cover}

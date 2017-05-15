@@ -14,15 +14,9 @@ ShallowWrapper {
                     addFile={undefined}
                     editorState={undefined}
                     onChange={undefined}
-                    placeholder="Write something"
+                    placeholder="Title..."
                     readOnly={undefined}
-                    showFAB={true}
-                    titel={
-                        <Unknown
-                            name={undefined}
-                            onChange={undefined}
-                            readOnly={true} />
-                    } />
+                    showFAB={true} />
             </styled.div>
         </styled.section>
     </styled.div>
@@ -36,15 +30,9 @@ ShallowWrapper {
                               addFile={undefined}
                               editorState={undefined}
                               onChange={undefined}
-                              placeholder="Write something"
+                              placeholder="Title..."
                               readOnly={undefined}
-                              showFAB={true}
-                              titel={
-                                    <Unknown
-                                          name={undefined}
-                                          onChange={undefined}
-                                          readOnly={true} />
-                              } />
+                              showFAB={true} />
                   </styled.div>
             </styled.section>
       </styled.div>
@@ -107,15 +95,9 @@ ShallowWrapper {
                                                   addFile={undefined}
                                                   editorState={undefined}
                                                   onChange={undefined}
-                                                  placeholder="Write something"
+                                                  placeholder="Title..."
                                                   readOnly={undefined}
-                                                  showFAB={true}
-                                                  titel={
-                                                            <Unknown
-                                                                      name={undefined}
-                                                                      onChange={undefined}
-                                                                      readOnly={true} />
-                                                  } />
+                                                  showFAB={true} />
                               </styled.div>
                     </styled.section>
           </styled.div>
@@ -129,15 +111,9 @@ ShallowWrapper {
                                                   addFile={undefined}
                                                   editorState={undefined}
                                                   onChange={undefined}
-                                                  placeholder="Write something"
+                                                  placeholder="Title..."
                                                   readOnly={undefined}
-                                                  showFAB={true}
-                                                  titel={
-                                                            <Unknown
-                                                                      name={undefined}
-                                                                      onChange={undefined}
-                                                                      readOnly={true} />
-                                                  } />
+                                                  showFAB={true} />
                               </styled.div>
                     </styled.section>
           </styled.div>
