@@ -29,6 +29,7 @@ export const Main = styled.section`
 export const EditorContainer = styled.div`
     position: relative;
     margin: 0 auto;
+    margin-top: 20px;
     max-width: 1000px;
     width: 100%;
     display: flex;

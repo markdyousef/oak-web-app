@@ -18,7 +18,6 @@ const Container = styled.section`
     justify-content: space-between;
     min-width: 1px;
     max-width: 350px;
-    ${''/* height: calc(100vh - 60px); */}
     height: 100vh;
     padding-top: 80px;
     border-left: 1px solid ${colors.lightGrey};
@@ -116,7 +115,7 @@ export default class extends Component<DefaultProps, Props, State> {
                             }
                         </Comments>
                         <div
-                            // style={{ float: 'left', clear: 'both'}}
+                            style={{ float: 'left', clear: 'both'}}
                             ref={(element) => { this.commentsEnd = element}}
                         />
                     </CommentsContainer>

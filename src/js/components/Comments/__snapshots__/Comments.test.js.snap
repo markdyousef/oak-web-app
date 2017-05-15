@@ -8,9 +8,11 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.section>
     <styled.div>
-        <styled.div
-            className="comments-panel">
-            <Empty />
+        <styled.div>
+            <styled.div>
+                <Empty />
+            </styled.div>
+            <div />
         </styled.div>
     </styled.div>
     <styled.div>
@@ -22,9 +24,11 @@ ShallowWrapper {
   "nodes": Array [
     <styled.section>
       <styled.div>
-            <styled.div
-                  className="comments-panel">
-                  <Empty />
+            <styled.div>
+                  <styled.div>
+                        <Empty />
+                  </styled.div>
+                  <div />
             </styled.div>
       </styled.div>
       <styled.div>
@@ -38,9 +42,9 @@ ShallowWrapper {
   "renderer": ReactShallowRenderer {
     "_instance": ShallowComponentWrapper {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
+      "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Unknown
+      "_currentElement": <_class
         comments={Array []}
         create={[Function]}
         creator={null}
@@ -48,7 +52,7 @@ ShallowWrapper {
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StatelessComponent {
+      "_instance": _class {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
@@ -58,6 +62,7 @@ ShallowWrapper {
           "failedComment": null,
         },
         "refs": Object {},
+        "scrollToBottom": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -79,9 +84,11 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.section>
           <styled.div>
-                    <styled.div
-                              className="comments-panel">
-                              <Empty />
+                    <styled.div>
+                              <styled.div>
+                                        <Empty />
+                              </styled.div>
+                              <div />
                     </styled.div>
           </styled.div>
           <styled.div>
@@ -93,9 +100,11 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.section>
           <styled.div>
-                    <styled.div
-                              className="comments-panel">
-                              <Empty />
+                    <styled.div>
+                              <styled.div>
+                                        <Empty />
+                              </styled.div>
+                              <div />
                     </styled.div>
           </styled.div>
           <styled.div>
@@ -115,7 +124,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown
+  "unrendered": <_class
     comments={Array []}
     create={[Function]}
     creator={null}
