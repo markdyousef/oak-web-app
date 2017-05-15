@@ -44,19 +44,21 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <CreateCard />,
+      "_currentElement": <CreateCard
+        onShowLabels={[Function]} />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": CreateCard {
         "_reactInternalInstance": [Circular],
         "addCard": [Function],
+        "changeCollection": [Function],
         "context": Object {},
-        "props": Object {},
-        "refs": Object {},
-        "state": Object {
-          "collection": null,
+        "props": Object {
+          "onShowLabels": [Function],
         },
+        "refs": Object {},
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -117,6 +119,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <CreateCard />,
+  "unrendered": <CreateCard
+    onShowLabels={[Function]} />,
 }
 `;

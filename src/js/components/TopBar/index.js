@@ -5,6 +5,9 @@ import MainNavContainer from './MainNavContainer';
 import Settings from './Settings';
 import SettingsContainer from './SettingsContainer';
 import ActionBar from './ActionBar';
+import ActionBarContainer from './ActionBarContainer';
+import CardUpdate from './CardUpdate';
+import CardCreate from './CardCreate';
 
 export default TopBar;
 
@@ -14,5 +17,8 @@ export {
     MainNavContainer,
     Settings,
     SettingsContainer,
-    ActionBar
+    ActionBar,
+    ActionBarContainer,
+    CardCreate,
+    CardUpdate
 };

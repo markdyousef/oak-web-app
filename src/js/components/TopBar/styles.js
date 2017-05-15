@@ -4,16 +4,20 @@ import { colors } from '../../styles';
 export const Container = styled.nav`
     width: 100%;
     height: 60px;
+    margin-bottom: 60px;
     background-color: #fff;
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    justify-content: flex-end;
+    position: fixed;
     flex-shrink: 0;
+    z-index: 99999999;
 `;
 
 // Navigation left
 export const NavLeft = styled.div`
+    left: 0;
+    position: absolute;
     margin-left: 25px;
     height: 100%;
     display: flex;
@@ -91,4 +95,16 @@ export const Profile = styled.button`
     margin-left: 5px;
     padding: 0;
     margin-left: 15px;
+`;
+
+
+// Action Bar
+export const NavCenter = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+`;
+
+export const EditNav = styled.div`
+    display: flex;
 `;

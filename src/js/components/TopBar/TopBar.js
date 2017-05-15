@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
+import { withRouter } from 'react-router';
 import {
     MainNavContainer,
-    ActionBar,
+    ActionBarContainer,
     SettingsContainer
 } from './index';
 import { Container } from './styles';
@@ -11,8 +12,8 @@ export default () => {
     return (
         <Container>
             <MainNavContainer />
-            {/* <ActionBar /> */}
+            <ActionBarContainer />
             <SettingsContainer />
         </Container>
     );
-}
+};

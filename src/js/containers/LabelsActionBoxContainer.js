@@ -74,13 +74,14 @@ const removeSeedLabel = gql`
     }
 `;
 
-const mapStateToProps = (state: Object) => (
-    {
+const mapStateToProps = (state: Object) => {
+    return {
         cardId: state.card.get('cardId'),
         collectionId: state.card.get('collectionId'),
+        card: state.card,
         labels: state.labels
     }
-);
+};
 
 type Field = {
     key: string,
@@ -142,11 +143,11 @@ const mapDispatchToProps = (dispatch: Function) => (
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     graphql(getCollectionLabels, {
-        name: 'collection',
+        name: 'collectionLabels',
         options: ownProps => ({ variables: { id: ownProps.collectionId } })
     }),
     graphql(getCardLabels, {
-        name: 'card',
+        name: 'cardLabels',
         skip: props => !props.cardId,
         options: ownProps => ({ variables: { id: ownProps.cardId } })
     }),
@@ -183,10 +184,13 @@ export default compose(
                 mutate({ variables: { groveId, name } })
                     .then((res) => {
                         const id = res.data.createSeed.id;
+                        console.log(res);
+                        console.log(id);
                         ownProps.updateCard({
                             key: 'cardId',
                             value: id
                         });
+                        return id;
                     })
                     .catch(() => {
                         const message = {

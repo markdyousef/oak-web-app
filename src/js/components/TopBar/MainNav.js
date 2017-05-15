@@ -83,7 +83,6 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
 
     }
     render() {
-        console.log(this.props);
         const { showCollections, showDialog } = this.state;
         return (
             <NavLeft>

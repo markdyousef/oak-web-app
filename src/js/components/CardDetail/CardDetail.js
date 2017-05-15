@@ -35,10 +35,9 @@ type Props = {
 }
 
 const CardDetail = ({ ...props }:Props) => {
-    console.log(props.message);
     return (
         <Container>
-            <TopBar
+            {/* <TopBar
                 onClose={props.goBack}
                 onSave={props.onSave}
                 showEdit={props.showEdit}
@@ -48,7 +47,7 @@ const CardDetail = ({ ...props }:Props) => {
                 existingCard={props.existingCard}
                 showLabels={props.showLabels}
                 onShowLabels={props.onShowLabels}
-            />
+            /> */}
             {props.message && <Toast
                 message={props.message}
                 onClose={props.onCloseError}
@@ -57,7 +56,7 @@ const CardDetail = ({ ...props }:Props) => {
                 <Main>
                     <EditorContainer>
                         <Editor
-                            readOnly={!props.showEdit}
+                            readOnly={props.readOnly}
                             editorState={props.editorState}
                             onChange={props.onChange}
                             addFile={props.addFile}

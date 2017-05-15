@@ -22,7 +22,8 @@ type Data = {
 }
 
 type Props = {
-    collection?: Data,
+    collectionLabels?: Data,
+    cardLabels?: Object,
     card?: Object,
     collectionId?: string,
     cardId: ?string,
@@ -44,25 +45,25 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     state: State;
     componentWillReceiveProps(nextProps:Props) {
-        const { collection, card, labels } = nextProps;
+        const { collectionLabels, cardLabels, labels } = nextProps;
         const didInitialize = labels && labels.get('didInitialize');
 
         // TODO: find a better way to load into redux
-        if (!collection || collection.loading) return;
+        if (!collectionLabels || collectionLabels.loading) return;
         if (!didInitialize) {
             this.updateLabels('didInitialize', true);
-            // add collectionLabels to redux
-            if (collection.grove) {
-                const { grove } = collection;
+            // add collectionLabelsLabels to redux
+            if (collectionLabels.grove) {
+                const { grove } = collectionLabels;
                 this.updateLabels(
                     'collectionLabels',
                     (grove.labels) || []
                 );
             }
-            // add cardLabels to redux
-            if (!card || card.loading) return;
-            if (card.seed) {
-                const { seed } = card;
+            // add cardLabelsLabels to redux
+            if (!cardLabels || cardLabels.loading) return;
+            if (cardLabels.seed) {
+                const { seed } = cardLabels;
                 this.updateLabels(
                     'cardLabels',
                     (seed.labels) || []
@@ -76,27 +77,33 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
     }
     onClose = () => this.updateLabels('showLabels', false);
     changePage = (page: string) => this.updateLabels('page', page);
-    changeCardLabel = (labelId: string) => {
+    changeCardLabel = (labelId: string, hasSaved?: bool, cardId?: string) => {
         const {
             createCard,
             removeLabel,
             addLabel,
-            cardId,
             collectionId,
-            labels
+            labels,
+            card
         } = this.props;
-        if (!cardId && collectionId) {
-            createCard(collectionId, '')
-                .then(() => this.changeCardLabel(labelId));
+        if (!card) return;
+        console.log(card);
+        const id = (cardId) ? cardId : card.get('cardId');
+        const name = card && card.get('name');
+        if (!id && collectionId && !hasSaved) {
+            createCard(collectionId, name || '')
+                .then((id) => {
+                    this.changeCardLabel(labelId, true, id);
+                })
             return;
         }
-        if (!labels || !cardId) return;
+        if (!labels || !id) return;
         const cardLabels = labels.get('cardLabels');
         const labelExist = cardLabels.findIndex(id => id === labelId) > -1;
         if (labelExist) {
-            removeLabel(cardId, labelId);
+            removeLabel(id, labelId);
         } else {
-            addLabel(cardId, labelId);
+            addLabel(id, labelId);
         }
     }
     showEdit = (label: Object) => {
