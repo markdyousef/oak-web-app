@@ -31,7 +31,6 @@ const MainInner = styled.div`
     overflow-y: auto;
     overflow-x: hidden;
     height: 100vh;
-    padding-bottom: 40px;
 `;
 
 export default ({ children, router }:Object) => (

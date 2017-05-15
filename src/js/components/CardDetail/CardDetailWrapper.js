@@ -35,8 +35,12 @@ export default (CardDetail:Function) => {
                 }
             }
             componentWillReceiveProps(nextProps:Props) {
-                const { data, card } = nextProps;
+                const { data, card, shouldUpdate } = nextProps;
                 if (!data) return;
+                // if (shouldUpdate) {
+                //     this.updateCard('isLoading', true);
+                //     data.refetch();
+                // }
                 if (data.loading) {
                     this.updateCard('isLoading', true);
                     return;

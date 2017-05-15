@@ -29,7 +29,8 @@ const mapStateToProps = (state: Object) => {
     return {
         card: state.card,
         comments: state.comments,
-        showLabels: state.labels.get('showLabels')
+        showLabels: state.labels.get('showLabels'),
+        shouldUpdate: state.card.get('shouldUpdate')
     };
 };
 
