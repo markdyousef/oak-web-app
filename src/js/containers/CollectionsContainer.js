@@ -10,10 +10,10 @@ const getCollections = gql`
             id
             name,
             description,
-            cover {
-                id
-                urlThumb512
-            }
+            # cover {
+            #     id
+            #     urlThumb512
+            # }
         }
     }
 `;
