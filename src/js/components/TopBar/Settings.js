@@ -7,7 +7,8 @@ import {
     NavRight,
     Profile,
     Dropdown,
-    MenuItem
+    MenuItem,
+    NavContainer
 } from './styles'
 
 type DefaultProps = {
@@ -66,17 +67,19 @@ export default class Settings extends Component<DefaultProps, Props, State> {
         if (me && me.avatar) picture = me.avatar.urlThumb64;
         return (
             <NavRight>
-                <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
-                    <Avatar img={picture} />
-                </Profile>
-                {isOpen &&
-                    <Dropdown style={{ right: '10px' }}>
-                        <Menu onClose={() => this.setState({ isOpen: false})}>
-                            <MenuItem onClick={this.toSettings}>Settings</MenuItem>
-                            <MenuItem onClick={this.signOut}>Logout</MenuItem>
-                        </Menu>
-                    </Dropdown>
-                }
+                <NavContainer>
+                    <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
+                        <Avatar img={picture} />
+                    </Profile>
+                    {isOpen &&
+                        <Dropdown style={{ right: '10px' }}>
+                            <Menu onClose={() => this.setState({ isOpen: false})}>
+                                <MenuItem onClick={this.toSettings}>Settings</MenuItem>
+                                <MenuItem onClick={this.signOut}>Logout</MenuItem>
+                            </Menu>
+                        </Dropdown>
+                    }
+                </NavContainer>
             </NavRight>
         );
     }

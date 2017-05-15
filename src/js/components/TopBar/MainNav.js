@@ -13,7 +13,8 @@ import {
     All,
     Add,
     Logo,
-    ActiveMenu
+    ActiveMenu,
+    NavContainer
 } from './styles';
 
 
@@ -63,7 +64,10 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         return collections.map(collection =>
             <MenuItem
                 key={collection.id}
-                onClick={() => goTo(collection.id)}
+                onClick={() => {
+                    goTo(collection.id);
+                    this.setState({ showCollections: false });
+                }}
             >
                 {collection.name}
             </MenuItem>
@@ -92,32 +96,34 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                         src={logo}
                     />
                 </Logo>
-                <CollectionIcon />
-                <Collections onClick={() => this.setState({ showCollections: !showCollections })}>
-                    Collections
-                </Collections>
-                {showCollections &&
-                    <Dropdown style={{ left: '10px' }}>
-                        <Menu onClose={() => this.setState({ showCollections: false })} arrowPos="left">
-                            <MenuTitle>YOUR TOP COLLECTIONS</MenuTitle>
-                            {this.renderRecommended()}
-                            <All
-                                onClick={this.toCollections}
-                            >
-                                View All Collections
-                            </All>
-                            <Add
-                                onClick={() => this.setState({
-                                    showDialog: true,
-                                    showCollections: false
-                                })}
-                            >
-                                Add a Collection
-                            </Add>
-                        </Menu>
-                    </Dropdown>
-                }
-                {this.activeCollection()}
+                <NavContainer>
+                    <CollectionIcon />
+                    <Collections onClick={() => this.setState({ showCollections: !showCollections })}>
+                        Collections
+                    </Collections>
+                        {showCollections &&
+                            <Dropdown>
+                                <Menu onClose={() => this.setState({ showCollections: false })} arrowPos="left">
+                                    <MenuTitle>YOUR TOP COLLECTIONS</MenuTitle>
+                                    {this.renderRecommended()}
+                                    <All
+                                        onClick={this.toCollections}
+                                        >
+                                            View All Collections
+                                        </All>
+                                        <Add
+                                            onClick={() => this.setState({
+                                                showDialog: true,
+                                                showCollections: false
+                                            })}
+                                            >
+                                                Add a Collection
+                                            </Add>
+                                        </Menu>
+                                    </Dropdown>
+                                }
+                        {this.activeCollection()}
+                </NavContainer>
                 {showDialog &&
                     <CollectionDialog
                         close={() => this.setState({ showDialog: false })}

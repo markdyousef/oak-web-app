@@ -119,7 +119,7 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                 <Footer>
                     {collectionId &&
                     <button onClick={this.addCard}>
-                        Save
+                        Share
                     </button>}
                 </Footer>
             </Container>

@@ -24,6 +24,10 @@ export const NavLeft = styled.div`
     align-items: center;
 `;
 
+export const NavContainer = styled.div`
+    position: relative;
+`;
+
 export const Collections = styled.button`
     padding: 0;
     border: 0;
@@ -34,10 +38,10 @@ export const Collections = styled.button`
 `;
 
 export const Dropdown = styled.div`
-    top: 60px;
     position: absolute;
     min-width: 200px;
     z-index: 9999;
+    margin-top: 20px;
 `;
 
 export const MenuItem = styled.div`
@@ -70,7 +74,8 @@ export const Logo = styled.div`
     ${''/* height: 100%; */}
     width: 45px;
     margin-right: 25px;
-    border-right: 1px solid ${colors.lightGrey}
+    border-right: 1px solid ${colors.lightGrey};
+    cursor: pointer;
 `;
 
 export const ActiveMenu = styled.span`

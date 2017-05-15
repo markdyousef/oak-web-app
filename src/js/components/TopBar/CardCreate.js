@@ -23,7 +23,7 @@ export default ({ ...props }: Props) => {
     return (
         <EditNav>
             <RoundButton
-                text="Save Card"
+                text="Share Card"
                 onClick={props.onCreate}
                 type="secondary"
                 isLoading={props.isLoading}
