@@ -1,17 +1,11 @@
 exports[`test renders correctly 1`] = `
 <div
-  className="fugWDz">
-  <div
-    className="gqgaML">
-    <img
-      alt="cover"
-      src="test-file-stub" />
-  </div>
+  className="fzHBSU">
   <h3
-    className="inVPqc">
+    className="gdIZaD">
     collection
   </h3>
   <p
-    className="bXQudf" />
+    className="bZoGWv" />
 </div>
 `;
