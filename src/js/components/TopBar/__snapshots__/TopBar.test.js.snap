@@ -1,4 +1,4 @@
-exports[`test renders correctly 1`] = `
+exports[`test renders TopBar 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -6,23 +6,17 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.section>
-            <Unknown />
-            <styled.div />
-        </styled.section>
-    </styled.div>
-</styled.div>,
+  "node": <styled.nav>
+    <Apollo(withRouter(MainNav)) />
+    <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+    <Apollo(Apollo(withRouter(Settings))) />
+</styled.nav>,
   "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.section>
-                  <Unknown />
-                  <styled.div />
-            </styled.section>
-      </styled.div>
-</styled.div>,
+    <styled.nav>
+      <Apollo(withRouter(MainNav)) />
+      <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+      <Apollo(Apollo(withRouter(Settings))) />
+</styled.nav>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -37,9 +31,7 @@ ShallowWrapper {
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "children": null,
-        },
+        "props": Object {},
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -60,23 +52,17 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.section>
-                              <Unknown />
-                              <styled.div />
-                    </styled.section>
-          </styled.div>
-</styled.div>,
+        "_currentElement": <styled.nav>
+          <Apollo(withRouter(MainNav)) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+          <Apollo(Apollo(withRouter(Settings))) />
+</styled.nav>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.section>
-                              <Unknown />
-                              <styled.div />
-                    </styled.section>
-          </styled.div>
-</styled.div>,
+        "_renderedOutput": <styled.nav>
+          <Apollo(withRouter(MainNav)) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+          <Apollo(Apollo(withRouter(Settings))) />
+</styled.nav>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,

@@ -7,16 +7,6 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <TopBar
-        existingCard={undefined}
-        isLoading={undefined}
-        onClose={undefined}
-        onEdit={undefined}
-        onSave={undefined}
-        onShowLabels={undefined}
-        showComments={undefined}
-        showEdit={undefined}
-        showLabels={undefined} />
     <styled.div>
         <styled.section>
             <styled.div>
@@ -25,7 +15,7 @@ ShallowWrapper {
                     editorState={undefined}
                     onChange={undefined}
                     placeholder="Write something"
-                    readOnly={true}
+                    readOnly={undefined}
                     showFAB={true}
                     titel={
                         <Unknown
@@ -39,16 +29,6 @@ ShallowWrapper {
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <TopBar
-            existingCard={undefined}
-            isLoading={undefined}
-            onClose={undefined}
-            onEdit={undefined}
-            onSave={undefined}
-            onShowLabels={undefined}
-            showComments={undefined}
-            showEdit={undefined}
-            showLabels={undefined} />
       <styled.div>
             <styled.section>
                   <styled.div>
@@ -57,7 +37,7 @@ ShallowWrapper {
                               editorState={undefined}
                               onChange={undefined}
                               placeholder="Write something"
-                              readOnly={true}
+                              readOnly={undefined}
                               showFAB={true}
                               titel={
                                     <Unknown
@@ -120,16 +100,6 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <TopBar
-                    existingCard={undefined}
-                    isLoading={undefined}
-                    onClose={undefined}
-                    onEdit={undefined}
-                    onSave={undefined}
-                    onShowLabels={undefined}
-                    showComments={undefined}
-                    showEdit={undefined}
-                    showLabels={undefined} />
           <styled.div>
                     <styled.section>
                               <styled.div>
@@ -138,7 +108,7 @@ ShallowWrapper {
                                                   editorState={undefined}
                                                   onChange={undefined}
                                                   placeholder="Write something"
-                                                  readOnly={true}
+                                                  readOnly={undefined}
                                                   showFAB={true}
                                                   titel={
                                                             <Unknown
@@ -152,16 +122,6 @@ ShallowWrapper {
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <TopBar
-                    existingCard={undefined}
-                    isLoading={undefined}
-                    onClose={undefined}
-                    onEdit={undefined}
-                    onSave={undefined}
-                    onShowLabels={undefined}
-                    showComments={undefined}
-                    showEdit={undefined}
-                    showLabels={undefined} />
           <styled.div>
                     <styled.section>
                               <styled.div>
@@ -170,7 +130,7 @@ ShallowWrapper {
                                                   editorState={undefined}
                                                   onChange={undefined}
                                                   placeholder="Write something"
-                                                  readOnly={true}
+                                                  readOnly={undefined}
                                                   showFAB={true}
                                                   titel={
                                                             <Unknown

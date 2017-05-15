@@ -45,7 +45,7 @@ networkInterface
     // http://dev.apollodata.com/core/network.html
     .useAfter([{
         applyAfterware({ response }, next) {
-            checkAuth(response)
+            // checkAuth(response)
             next();
         }
     }]);
