@@ -96,8 +96,8 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                         src={logo}
                     />
                 </Logo>
+                <CollectionIcon />
                 <NavContainer>
-                    <CollectionIcon />
                     <Collections onClick={() => this.setState({ showCollections: !showCollections })}>
                         Collections
                     </Collections>

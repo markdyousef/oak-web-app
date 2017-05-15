@@ -1,6 +1,7 @@
 // @flow
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { signOut } from '../utils';
+import { signOut, getToken } from '../utils';
+import client from '../config/apollo';
 
 const networkInterface = createNetworkInterface({
     uri: 'https://empress.clai.io/graphql',
@@ -12,18 +13,25 @@ const networkInterface = createNetworkInterface({
 
 const checkAuth = (response) => {
     // has to be cloned to not interrupt applyAfterware
+    console.log(response);
     response.clone().json()
         .then((res) => {
             if (res.errors && res.errors.length > 0) {
                 const errors = res.errors;
                 const unauthorized = errors.findIndex(error => error.message === 'UNAUTHORIZED') > -1;
-                if (unauthorized) {
-                    signOut();
-                    document.cookie.split(";")
-                        .forEach(function(c) {
-                            document.cookie =
-                                c.replace(/^ +/, "")
-                                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+                const token = getToken();
+                console.log(token);
+                if (unauthorized && token) {
+                    // signOut();
+                    localStorage.clear();
+                    // location.reload();
+                    client.resetStore();
+                    console.log('doom');
+                    // document.cookie.split(";")
+                    //     .forEach(function(c) {
+                    //         document.cookie =
+                    //             c.replace(/^ +/, "")
+                    //             .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
                 }
             }
             // console.log('valid');
@@ -45,7 +53,7 @@ networkInterface
     // http://dev.apollodata.com/core/network.html
     .useAfter([{
         applyAfterware({ response }, next) {
-            // checkAuth(response)
+            checkAuth(response)
             next();
         }
     }]);
