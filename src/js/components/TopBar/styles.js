@@ -107,6 +107,7 @@ export const NavCenter = styled.div`
 
 export const EditNav = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 export const Labels = styled.div`
@@ -119,4 +120,21 @@ export const LabelsContainer = styled.div`
     width: 250px;
     right: 0;
     margin-top: 15px;
+`;
+
+export const IconButton = styled.div`
+    height: 18px;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    & span {
+        color: ${colors.grey};
+        font-size: 14px;
+    }
+    & svg {
+        height: 100%;
+        width: 18px;
+        margin-right: 3px;
+    }
 `;

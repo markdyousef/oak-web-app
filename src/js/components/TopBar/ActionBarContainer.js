@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { labels, card } from '../../store/actions';
+import { labels, card, comments } from '../../store/actions';
 import ActionBar from './ActionBar';
 import { getTeam } from '../../utils';
 
@@ -40,7 +40,8 @@ const mapStateToProps = (state: Object) => (
         collectionId: state.card.get('collectionId'),
         card: state.card,
         comments: state.comments,
-        showLabels: state.labels.get('showLabels')
+        showLabels: state.labels.get('showLabels'),
+        showComments: state.comments.get('showComments')
     }
 );
 
@@ -56,7 +57,12 @@ const mapDispatchToProps = (dispatch: Function) => (
         updateCard: (key: string, value: any) => {
             const field = { key, value };
             dispatch(card.updateCard(field))
-        }
+        },
+        onShowComments: (show: bool) =>
+            dispatch(comments.updateComments({
+                key: 'showComments',
+                value: show
+            }))
     }
 );
 

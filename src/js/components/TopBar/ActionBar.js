@@ -91,7 +91,9 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
             showLabels,
             updateCard,
             data,
-            params
+            params,
+            showComments,
+            onShowComments
         } = this.props;
         const inCardDetail =
             location.pathname &&
@@ -121,6 +123,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     onEdit={() => updateCard('readOnly', !readOnly)}
                     onSave={this.onSave}
                     isLoading={isLoading}
+                    onShowComments={() => onShowComments(!showComments)}
                 />
             );
         }

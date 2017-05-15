@@ -2,8 +2,10 @@
 import React from 'react';
 import { RoundButton } from '../shared/Button';
 import LabelsActionBox from '../../containers/LabelsActionBoxContainer';
-import { EditNav, LabelsContainer, Labels } from './styles';
+import { EditNav, LabelsContainer, Labels, IconButton } from './styles';
 import Dropdown from '../shared/Dropdown';
+import CommentsIcon from '../../icons/comments';
+import LikesIcon from '../../icons/likes';
 
 type Props = {
     isLoading?: bool,
@@ -12,7 +14,8 @@ type Props = {
     showLabels?: bool,
     readOnly?: bool,
     onEdit?: () => void,
-    onSave?: () => void
+    onSave?: () => void,
+    onShowComments?: () => void
 }
 
 export default ({ ...props }: Props) => {
@@ -60,6 +63,14 @@ export default ({ ...props }: Props) => {
 
     return (
         <EditNav>
+            <IconButton>
+                <CommentsIcon onClick={props.onShowComments} />
+                {/* <span>0</span> */}
+            </IconButton>
+            {/* <IconButton>
+                <LikesIcon />
+                <span>0</span>
+            </IconButton> */}
             {cardActions}
         </EditNav>
     );
