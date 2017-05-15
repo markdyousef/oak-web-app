@@ -54,28 +54,39 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         if (loading) return;
 
         if (seeds) {
-            this.setState({ cards: seeds, sortKey: 'date' });
+            // sort by date
+            const cards = [...seeds];
+            cards.sort((a, b) => {
+                if (a.updatedAt > b.updatedAt) return -1;
+                if (a.updatedAt < b.updatedAt) return 1;
+                return 0;
+            })
+            this.setState({ cards, sortKey: 'date' });
         }
         if (grove && grove.labels) {
             this.setState({ labels: grove.labels });
         }
     }
     onFilter = (key:string) => {
-        const { filterVals, cards } = this.state;
+        const { filterVals } = this.state;
         const { seeds } = this.props.data;
         let newFilters = filterVals;
-        const active = filterVals.indexOf(key);
+        console.log(newFilters);
+        const active = newFilters.indexOf(key);
         if (active > -1) {
-            newFilters = filterVals.filter(id => id !== key);
+            newFilters = newFilters.filter(id => id !== key);
         } else {
             newFilters.push(key);
         }
         let filteredCards = seeds;
         if (newFilters.length > 0) {
-            filteredCards = cards
+            filteredCards = seeds
                 .filter((card) => {
                     if (card.labels) {
-                        const hasLabel = card.labels.findIndex(label => label.id === key) > -1;
+                        const cardLabels = card.labels.map(label => label.id);
+                        const filters = newFilters.toString()
+                        const hasLabel = cardLabels.some(label => filters.includes(label));
+                        // const hasLabel = card.labels.findIndex(label => label.id === key) > -1;
                         if (hasLabel) return card;
                     }
                     return null;
@@ -94,16 +105,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         let sortedCards = [...cards];
         if (key === 'comments' || key === 'likes') {
             sortedCards.sort((a, b) => {
-                if (a[key].length > b[key].length) {
-                    return -1;
-                }
-                if (a[key].length < b[key].length) {
-                    return 1;
-                }
+                if (a[key].length > b[key].length) return -1;
+                if (a[key].length < b[key].length) return 1;
                 return 0;
             });
         } else {
-            sortedCards = seeds;
+            sortedCards.sort((a, b) => {
+                if (a.updatedAt > b.updatedAt) return -1;
+                if (a.updatedAt < b.updatedAt) return 1;
+                return 0;
+            });
         }
         this.setState({ cards: sortedCards, sortKey: key });
     }

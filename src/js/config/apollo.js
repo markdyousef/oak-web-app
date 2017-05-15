@@ -13,7 +13,6 @@ const networkInterface = createNetworkInterface({
 
 const checkAuth = (response) => {
     // has to be cloned to not interrupt applyAfterware
-    console.log(response);
     response.clone().json()
         .then((res) => {
             if (res.errors && res.errors.length > 0) {
