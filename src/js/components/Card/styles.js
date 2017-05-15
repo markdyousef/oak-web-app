@@ -71,6 +71,7 @@ export const Label = styled.div`
 export const Main = styled.div`
     margin-bottom: 16px;
     text-align: left;
+    cursor: pointer;
     & h1 {
         font-size: 32px;
         color: ${colors.black};

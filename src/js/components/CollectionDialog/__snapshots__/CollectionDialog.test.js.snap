@@ -16,22 +16,6 @@ exports[`test renders correctly 1`] = `
     </div>
     <div
       className="hbuMgW">
-      <div
-        className="ztAri"
-        onClick={[Function]}>
-        <img
-          alt="cover"
-          src="test-file-stub" />
-        <input
-          accept="image/*"
-          onChange={[Function]}
-          style={
-            Object {
-              "display": "none",
-            }
-          }
-          type="file" />
-      </div>
       <div>
         <h5
           className="dRMKoo" />

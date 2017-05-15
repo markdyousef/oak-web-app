@@ -170,7 +170,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
         let coverImg;
         if (cover && cover.urlThumb512) coverImg = cover.urlThumb512;
         return (
-            <Main>
+            <Main onClick={onShow}>
                 {coverImg && <img alt="card" src={coverImg} />}
                 {content && this.formatContent(content)}
                 <button onClick={onShow}>Read more</button>

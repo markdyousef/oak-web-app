@@ -19,7 +19,8 @@ exports[`test renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="fpmQly">
+    className="jTwEWM"
+    onClick={[Function]}>
     <button
       onClick={[Function]}>
       Read more

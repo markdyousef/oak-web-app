@@ -162,7 +162,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                         onClose={() => this.setState({ message: null })}
                     />}
                     <Main>
-                        <Upload onClick={this.onClick}>
+                        {/* <Upload onClick={this.onClick}>
                             <img src={picture || placeholder} alt="cover" />
                             <input
                                 type="file"
@@ -171,7 +171,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                                 onChange={this.onChange}
                                 style={{ display: 'none' }}
                             />
-                        </Upload>
+                        </Upload> */}
                         <Input
                             // title="NAME"
                             value={name}
