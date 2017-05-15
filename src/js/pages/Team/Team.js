@@ -27,12 +27,10 @@ const Main = styled.section`
 `;
 
 const MainInner = styled.div`
-    margin-top: 60px;
     display: block;
     overflow-y: auto;
     overflow-x: hidden;
     height: 100vh;
-    padding-bottom: 40px;
 `;
 
 export default ({ children, router }:Object) => (
