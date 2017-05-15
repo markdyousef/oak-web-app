@@ -9,7 +9,7 @@ const initialState = Map({
     shouldUpdate: false,
     cardId: '1',
     collectionId: null,
-    message: null
+    message: Map({ type: 'error', message: 'something' })
 });
 
 describe('comments reducer', () => {
@@ -31,4 +31,17 @@ describe('comments reducer', () => {
         const state = reducer(initialState, action);
         expect(state.get('cardId')).toEqual(null);
     });
+    it('should set card fields and ui state', () => {
+        const card = { id: '2' };
+        const action = actions.setCard(card);
+        const state = reducer(initialState, action);
+        expect(state.get('cardId')).toEqual(card.id);
+        expect(state.get('message')).toEqual(null);
+    })
+    xit('should set card content', () => {
+        const content = '{{cool: cool}}'
+        const action = actions.setCardContent(content);
+        const state = reducer(initialState, action);
+        expect(state).not.toEqual(initialState);
+    })
 });

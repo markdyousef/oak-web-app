@@ -1,4 +1,6 @@
 // @flow
+import { EditorState, convertFromRaw } from 'draft-js';
+import { decorator } from 'zen-editor';
 import * as types from '../constants/ActionTypes';
 import type { Action } from './reducers';
 
@@ -21,3 +23,37 @@ export const clearCard = () => (
         type: types.CLEAR_CARD
     }
 );
+
+type Card = {
+    id: string,
+    name?: string,
+
+}
+export const setCard = (card: Card) => (
+    {
+        type: types.SET_CARD,
+        data: { card }
+    }
+);
+
+export const setCardContent = (content: string) => {
+    // create editorstate based on content (string)
+    let editorState;
+    try {
+        editorState = JSON.parse(content);
+    } catch (e) {
+        editorState = null;
+    }
+    if (editorState !== null && typeof editorState === 'object') {
+        const state = convertFromRaw(content);
+        editorState = EditorState.createWithContent(state, decorator)
+        return {
+            type: types.SET_CARD_CONTENT,
+            data: { content: editorState }
+        }
+    }
+    return {
+        type: types.SET_CARD_CONTENT,
+        data: { message: 'wrong format!'}
+    }
+}

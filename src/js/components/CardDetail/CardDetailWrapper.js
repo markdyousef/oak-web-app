@@ -12,14 +12,6 @@ export default (CardDetail:Function) => {
             state: State;
             constructor(props:Props) {
                 super(props);
-                this.state = {
-                    showEdit: !props.params.cardId,
-                    isLoading: false,
-                    editorState: EditorState.createEmpty(decorator),
-                    images: [],
-                    message: null,
-                    name: ''
-                };
             }
             componentWillMount() {
                 const { params, updateCard, updateComments } = this.props;
@@ -43,14 +35,14 @@ export default (CardDetail:Function) => {
                 }
             }
             componentWillReceiveProps(nextProps:Props) {
-                const { data } = nextProps;
+                const { data, card } = nextProps;
                 if (!data) return;
                 if (data.loading) {
-                    this.setState({ isLoading: true });
+                    this.updateCard('isLoading', true);
                     return;
                 }
                 const { seed } = data;
-                if (seed.content) {
+                if (seed.content && card.get('isLoading')) {
                     // create editorstate based on content (string)
                     let content;
                     try {
@@ -60,77 +52,17 @@ export default (CardDetail:Function) => {
                     }
                     if (content !== null && typeof content === 'object') {
                         const state = convertFromRaw(content);
-                        this.setState({ editorState: EditorState.createWithContent(state, decorator) });
+                        this.updateCard('editorState', EditorState.createWithContent(state, decorator));
+                        this.updateCard('name', seed.name);
                     }
                 }
-                console.log(seed)
-                this.setState({
-                    isLoading: false,
-                    creator: data.me,
-                    name: seed.name
-                });
+                this.updateCard('isLoading', false);
             }
             componentWillUnmount() {
                 const { clearCard } = this.props;
                 clearCard();
             }
             updateCard = (key: string, value: any) => this.props.updateCard({ key, value })
-            onSave = () => {
-                const { editorState, name, images } = this.state;
-                const { create, update, data, updateCard, card } = this.props;
-                const cardId = card.get('cardId');
-                const collectionId = card.get('collectionId');
-                const newEditorState = changeUrls(editorState, images);
-                const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
-                const cover = images[0] && images[0].id;
-                // existing cards has a cardId
-                this.setState({ isLoading: true });
-
-                // no card name
-                if (!name) {
-                    const message = {
-                        type: 'error',
-                        message: 'Please provide a name for your card',
-                        onClick: this.onSave
-                    }
-                    this.setState({ message, isLoading: false });
-                    return;
-                }
-
-                if (cardId) {
-                    update(cardId, content, cover)
-                    .then(() => {
-                        if (data) data.refetch();
-                        this.setState({ isLoading: false, message: null });
-                        this.updateCard('shouldUpdate', true);
-                    })
-                    .catch(() => {
-                        const message = {
-                            type: 'error',
-                            message: "We couldn't update your card",
-                            onClick: this.onSave
-                        };
-                        this.setState({ message, isLoading: false });
-                    });
-                } else {
-                    create(collectionId, name, content, cover)
-                        .then((res) => {
-                            const id = res.data.createSeed.id;
-                            this.setState({ isLoading: false, message: null });
-                            if (data) data.refetch();
-                            this.updateCard('shouldUpdate', true);
-                            this.updateCard('cardId', id)
-                        })
-                        .catch(() => {
-                            const message = {
-                                type: 'error',
-                                message: "We couldn't create your card",
-                                onSave: this.onSave
-                            };
-                            this.setState({ message, isLoading: false });
-                        });
-                }
-            }
             onShowLabels = (show?:bool) =>
                 this.props.updateLabels({
                     key: 'showLabels',
@@ -153,25 +85,22 @@ export default (CardDetail:Function) => {
                         this.setState({ message });
                     });
             }
-            onChange = (editorState:EditorState) => this.setState({ editorState })
+            onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
             render() {
                 const { router, card, comments, showLabels } = this.props;
                 return (
                     <CardDetail
-                        onSave={this.onSave}
-                        goBack={() => router.goBack()}
                         onChange={this.onChange}
                         addFile={this.addFile}
-                        onEdit={() => this.setState({ showEdit: !this.state.showEdit })}
-                        onShowComments={() => this.setState({ showComments: !this.state.showComments })}
-                        onCloseError={() => this.setState({ message: null })}
+                        onCloseError={() => this.updateCard('message', { type: 'error', message: 'close'})}
                         existingCard={!!card.get('cardId')}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}
                         showLabels={showLabels}
                         onShowLabels={this.onShowLabels}
-                        changeName={name => this.setState({ name })}
-                        {...this.state}
+                        changeName={name => this.updateCard('name', name)}
+                        editorState={card.get('editorState')}
+                        readOnly={card.get('readOnly')}
                     />
                 );
             }
