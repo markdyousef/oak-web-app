@@ -19,13 +19,11 @@ const checkAuth = (response) => {
                 const errors = res.errors;
                 const unauthorized = errors.findIndex(error => error.message === 'UNAUTHORIZED') > -1;
                 const token = getToken();
-                console.log(token);
                 if (unauthorized && token) {
                     // signOut();
                     localStorage.clear();
                     // location.reload();
                     client.resetStore();
-                    console.log('doom');
                     // document.cookie.split(";")
                     //     .forEach(function(c) {
                     //         document.cookie =
