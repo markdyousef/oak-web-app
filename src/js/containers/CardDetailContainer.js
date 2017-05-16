@@ -7,16 +7,6 @@ import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
-        me {
-            id
-            name
-            username
-            avatar {
-                id
-                urlThumb64
-            }
-            gravatar
-        }
         seed(id: $id) {
             id
             name
@@ -25,12 +15,14 @@ const getCard = gql`
     }
 `;
 
-const mapStateToProps = (state: Object) => {
+const mapStateToProps = (state: Object, ownProps: Object) => {
+    // const { data: { seed } } = ownProps;
     return {
         card: state.card,
         comments: state.comments,
         showLabels: state.labels.get('showLabels'),
-        shouldUpdate: state.card.get('shouldUpdate')
+        shouldUpdate: state.card.get('shouldUpdate'),
+        isLoading: state.card.get('isLoading')
     };
 };
 
@@ -47,6 +39,10 @@ const mapDispatchToProps = (dispatch: Function) => (
             dispatch(comments.updateComments({
                 key: 'showComments',
                 value: false
+            })),
+            dispatch(card.updateCard({
+                key: 'shouldUpdate',
+                value: true
             }))
         },
         updateComments: (field: Field) =>
@@ -58,28 +54,14 @@ const mapDispatchToProps = (dispatch: Function) => (
     }
 );
 
-const mapQueriesToProps = ({ ownProps, state }) => {
-    console.log(ownProps, state);
-}
-
 const WrappedCompoenent = wrapper(CardDetail);
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     graphql(getCard, {
-        name: 'data',
         skip: props => !props.params.cardId,
-        options: props => ({ variables: { id: props.params.cardId } }),
-        // props: ({ ownProps, data }) => {
-        //     const { seed, loading } = data;
-        //     console.log(loading);
-        //     if (loading || !seed) return;
-        //
-        //     const { name, content } = seed;
-        //
-        //     ownProps.updateCard({ key: 'name', value: 'ccol'});
-        //     // console.log(content);
-        //     // ownProps.updateCardContent(content);
-        // }
+        options: props => ({ variables: { id: props.params.cardId }}),
+        props: ({ ownProps, data: { seed, loading } }) =>
+            ({ seed, loading })
     })
 )(WrappedCompoenent);

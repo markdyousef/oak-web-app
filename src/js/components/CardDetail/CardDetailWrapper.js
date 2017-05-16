@@ -34,38 +34,6 @@ export default (CardDetail:Function) => {
                     });
                 }
             }
-            componentWillReceiveProps(nextProps:Props) {
-                const { data, card, shouldUpdate } = nextProps;
-                if (!data) return;
-
-                // Tried to fix update card
-                // if (shouldUpdate) {
-                //     const { data: { refetch } } = this.props;
-                //     refetch();
-                //     this.updateCard('shouldUpdate', false);
-                //     this.updateCard('isLoading', false);
-                // }
-                if (data.loading) {
-                    this.updateCard('isLoading', true);
-                    return;
-                }
-                const { seed } = data;
-                if (seed.content && card.get('isLoading')) {
-                    // create editorstate based on content (string)
-                    let content;
-                    try {
-                        content = JSON.parse(seed.content);
-                    } catch (e) {
-                        content = null;
-                    }
-                    if (content !== null && typeof content === 'object') {
-                        const state = convertFromRaw(content);
-                        this.updateCard('editorState', EditorState.createWithContent(state, decorator));
-                        this.updateCard('name', seed.name);
-                    }
-                }
-                this.updateCard('isLoading', false);
-            }
             componentWillUnmount() {
                 const { clearCard } = this.props;
                 clearCard();
@@ -95,8 +63,7 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
             render() {
-                const { router, card, comments, showLabels, editorState } = this.props;
-                // const editorState = card.get('editorState');
+                const { router, card, comments, showLabels } = this.props;
                 return (
                     <CardDetail
                         onChange={this.onChange}

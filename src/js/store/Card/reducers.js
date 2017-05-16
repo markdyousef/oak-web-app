@@ -1,7 +1,7 @@
 // @flow
 import { fromJS, Map, List } from 'immutable';
 import * as types from '../constants/ActionTypes';
-import { EditorState } from 'draft-js';
+import { EditorState, convertFromRaw } from 'draft-js';
 import { decorator } from 'zen-editor';
 
 // type State = {
@@ -16,10 +16,13 @@ type State = Map<string, any>
 
 export type Action = {
     type?: string,
-    data?: Object
+    data?: Object,
+    result?: Object,
+    queryId?: string
 };
 
 const initialState:State = Map({
+    queryId: null,
     isLoading: false,
     shouldUpdate: false,
     cardId: null,
@@ -33,6 +36,22 @@ const initialState:State = Map({
     isSaved: false
 });
 
+const convertToEditor = (content: string):EditorState => {
+
+    let state;
+    try {
+        state = JSON.parse(content);
+    } catch (e) {
+        state = null;
+    }
+    if (state !== null && typeof state === 'object') {
+        const contentState = convertFromRaw(state);
+        return EditorState.createWithContent(contentState, decorator);
+
+    }
+    return EditorState.createEmpty(decorator);
+}
+
 export default (state: State = initialState, action: Action): State => {
     switch (action.type) {
     // case types.UPDATE_CARD:
@@ -44,7 +63,10 @@ export default (state: State = initialState, action: Action): State => {
         }
         return state;
     case types.CLEAR_CARD:
-        return initialState;
+        return state
+            .set('cardId', null)
+            .set('collectionId', null)
+            .set('editorState', EditorState.createEmpty(decorator))
     case types.SET_CARD:
         if (action.data && action.data.card) {
             const { data: { card } } = action;
@@ -59,6 +81,29 @@ export default (state: State = initialState, action: Action): State => {
         if (action.data && action.data.content) {
             const { data: { content } } = action;
             return state.mergeIn(['editorState'], content);
+        }
+        return state;
+    case 'APOLLO_QUERY_RESULT':
+        if (action.operationName === 'getCard' && action.result) {
+            const { result: { data }, queryId } = action;
+            if (data.seed && data.seed.content && queryId) {
+                const editorState = convertToEditor(data.seed.content);
+                console.log(queryId);
+                return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
+            }
+            return state;
+        }
+        return state;
+    case 'APOLLO_QUERY_RESULT_CLIENT':
+        console.log(state.get('queryId'));
+        if (action.queryId === state.get('queryId') && action.result) {
+            console.log('ddom');
+            const { result: { data }, queryId } = action;
+            if (data.seed && data.seed.content && queryId) {
+                console.log(data.seed);
+                const editorState = convertToEditor(data.seed.content);
+                return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
+            }
         }
         return state;
     default:
