@@ -4,7 +4,6 @@ import { colors } from '../../styles';
 export const Container = styled.nav`
     width: 100%;
     height: 60px;
-    margin-bottom: 60px;
     background-color: #fff;
     border-bottom: 1px solid ${colors.lightGrey};
     display: flex;
@@ -18,7 +17,7 @@ export const Container = styled.nav`
 export const NavLeft = styled.div`
     left: 0;
     position: absolute;
-    margin-left: 25px;
+    margin-left: 20px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -28,13 +27,24 @@ export const NavContainer = styled.div`
     position: relative;
 `;
 
+export const CollectionWrapper = styled.div`
+    cursor: pointer;
+    display: inline-block;
+`;
+
 export const Collections = styled.button`
     padding: 0;
     border: 0;
     background-color: #fff;
     font-size: 15px;
-    margin-left: 7px;
+    margin-right: 4px;
     cursor: pointer;
+`;
+
+export const ArrowWrapper = styled.div`
+    display: inline-block;
+    position: relative;
+    top: 1px;
 `;
 
 export const Dropdown = styled.div`
@@ -44,16 +54,19 @@ export const Dropdown = styled.div`
     margin-top: 20px;
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.a`
     width: 100%;
     cursor: pointer;
-    padding-top: 5px;
-    margin-top: 10px;
+    margin-top: 16px;
+    &:hover {
+        color: #34B289;
+    }
 `;
 
 export const MenuTitle = styled.div`
     color: ${colors.grey};
     font-size: 12px;
+    text-transform: uppercase;
 `;
 
 export const All = styled.div`
@@ -62,26 +75,49 @@ export const All = styled.div`
     font-size: 15px;
     border-bottom: 1px solid ${colors.lightGrey};
     cursor: pointer;
+    &:hover {
+        color: #34B289;
+    }
 `;
 
 export const Add = styled.div`
     display: flex;
     margin-top: 16px;
     cursor: pointer;
+    &:hover {
+        color: #34B289;
+    }
+    &:hover svg {
+        fill: #34B289;
+    }
+    & svg {
+        margin-right: 8px;
+    }
+`;
+
+export const Logowrapper = styled.div`
+    ${''/* height: 100%; */}
+    height: 60px;
+    border-right: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 `;
 
 export const Logo = styled.div`
     ${''/* height: 100%; */}
-    width: 45px;
-    margin-right: 25px;
-    border-right: 1px solid ${colors.lightGrey};
+    width: 28px;
+    height: 28px;
+    margin-right: 20px;
     cursor: pointer;
 `;
 
 export const ActiveMenu = styled.span`
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 8px;
     cursor: pointer;
+    display: inline-block;
 `;
 
 // Navigation Right
@@ -90,17 +126,21 @@ export const NavRight = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 25px;
+    margin-right: 20px;
+`;
+
+export const ProfileWrapper = styled.div`
+    height: 35px;
+    width: 35px;
+    margin-left: 8px;
 `;
 
 export const Profile = styled.button`
-    height: 32px;
-    width: 32px;
+    height: 35px;
+    width: 35px;
+    border: none;
     border-radius: 999em;
-    border: 1px solid #E5E5E5;
-    margin-left: 5px;
     padding: 0;
-    margin-left: 15px;
 `;
 
 
@@ -132,15 +172,15 @@ export const IconButton = styled.div`
     height: 18px;
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 16px;
     cursor: pointer;
     & span {
-        color: ${colors.grey};
+        color: ${colors.black};
         font-size: 14px;
     }
     & svg {
         height: 100%;
-        width: 18px;
-        margin-right: 3px;
+        height: 18px;
+        margin-right: 4px;
     }
 `;

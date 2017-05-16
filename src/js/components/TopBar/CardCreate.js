@@ -24,7 +24,7 @@ export default ({ ...props }: Props) => {
         <EditNav>
             <NavContainer>
                 <RoundButton
-                    text="Share Card"
+                    text="Share post"
                     onClick={props.onCreate}
                     type="secondary"
                     isLoading={props.isLoading}

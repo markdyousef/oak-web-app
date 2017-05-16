@@ -18,18 +18,21 @@ const Arrow = styled.div`
 
 const Menu = styled.div`
     display: block;
-    box-shadow: 1px 3px 7px rgba(32, 33, 35, 0.05);
+    box-shadow: 1px 3px 7px rgba(32, 33, 35, 0.08);
     width: 100%;
     background-color: #fff;
-    border: 1px solid #efefef;
+    border: 1px solid #e5e5e5;
     border-radius: 3px;
     padding: 20px;
+    margin-top: 0px;
     & a {
         color: #000;
         display: block;
-        margin-top: 10px;
+        margin-top: 16px;
         font-size: 16px;
-        font-family: 'Proxima Nova'
+    }
+    & a:first-child {
+        margin-top: 0;
     }
 `;
 
@@ -50,7 +53,7 @@ export default withLayer(({ children, arrowPos }: Props) => {
         style = { display: 'none' };
         break;
     default:
-        style = { right: '25px' };
+        style = { right: '16px' };
         break;
     }
     return (

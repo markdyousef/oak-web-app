@@ -7,11 +7,13 @@ export const style = (type) => {
             background-color: ${colors.green};
             border-color: ${colors.green};
             color: ${colors.white};
-            &:active {
-                background-color: #57B188
-            }
             &:hover {
-                border-color: ${colors.green}
+                color: #fff;
+                background: #34B289;
+            }
+            &:active {
+                background: #249E76;
+                border: 1px solid #249E76;
             }`;
     }
     if (type === 'alarm') {
@@ -56,7 +58,7 @@ export const Default = styled.button`
     border: 1px solid ${colors.lightGrey};
     font-size: 14px;
     background-color: ${colors.white};
-    padding: 8px 24px;
+    padding: 8px 16px;
     font-weight: bold;
     outline: none;
     cursor: pointer;

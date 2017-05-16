@@ -14,8 +14,21 @@ const Container = styled.div`
 `;
 
 const Select = styled.select`
-    margin: 15px 0;
+    margin: 16px 0;
     width: 100%;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    appearance: none;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    outline: none;
+    background-image: url(../../../img/dropdown-fat.svg);
+    background-size: 16px;
+    background-position: 50% 90%;
+    cursor: pointer;
 `;
 
 const Labels = styled.div`
@@ -89,12 +102,12 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
         const { collections, addCard, collectionId, showLabels, onShowLabels } = this.props;
         return (
             <Container>
-                <h3>Create Card in:</h3>
+                <h3>Share post in:</h3>
                 <Select
                     value={collectionId || ''}
                     onChange={event => this.changeCollection(event.target.value)}
                 >
-                    <option value="" selected>Select Collection</option>
+                    <option value="" selected>Select collection</option>
                     {collections && collections.map(item =>
                         <option
                             key={item.id}
