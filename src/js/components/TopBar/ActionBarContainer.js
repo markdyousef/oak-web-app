@@ -58,6 +58,8 @@ const mapDispatchToProps = (dispatch: Function) => (
             const field = { key, value };
             dispatch(card.updateCard(field))
         },
+        updateCardContent: (content: string) =>
+            dispatch(card.setCardContent(content)),
         onShowComments: (show: bool) =>
             dispatch(comments.updateComments({
                 key: 'showComments',
@@ -103,10 +105,11 @@ export default compose(
             update: (id:string, content:string, coverId:string) =>
                 mutate({ variables: { id, content, coverId } })
                     .then(res => {
-                        const id = res.data.updateSeed.id;
+                        const { id, content } = res.data.updateSeed;
+                        ownProps.updateCard('shouldUpdate', true);
+                        ownProps.updateCardContent(content);
                         ownProps.updateCard('message', null);
                         ownProps.updateCard('isLoading', false);
-                        ownProps.updateCard('shouldUpdate', true);
                         ownProps.updateCard('isSaved', true);
                         return id;
                     })

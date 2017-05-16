@@ -37,9 +37,13 @@ export default (CardDetail:Function) => {
             componentWillReceiveProps(nextProps:Props) {
                 const { data, card, shouldUpdate } = nextProps;
                 if (!data) return;
+
+                // Tried to fix update card
                 // if (shouldUpdate) {
-                //     this.updateCard('isLoading', true);
-                //     data.refetch();
+                //     const { data: { refetch } } = this.props;
+                //     refetch();
+                //     this.updateCard('shouldUpdate', false);
+                //     this.updateCard('isLoading', false);
                 // }
                 if (data.loading) {
                     this.updateCard('isLoading', true);
@@ -91,7 +95,8 @@ export default (CardDetail:Function) => {
             }
             onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
             render() {
-                const { router, card, comments, showLabels } = this.props;
+                const { router, card, comments, showLabels, editorState } = this.props;
+                // const editorState = card.get('editorState');
                 return (
                     <CardDetail
                         onChange={this.onChange}

@@ -37,13 +37,12 @@ export default (state: State = initialState, action: Action): State => {
     switch (action.type) {
     // case types.UPDATE_CARD:
     //     return state.set('shouldUpdate', action.shouldUpdate);
-    case types.CARD_STATE: {
+    case types.CARD_STATE:
         if (action.data && action.data.field) {
             const { data: { field } } = action;
             return state.set(field.key, fromJS(field.value));
         }
         return state;
-    }
     case types.CLEAR_CARD:
         return initialState;
     case types.SET_CARD:
@@ -55,6 +54,13 @@ export default (state: State = initialState, action: Action): State => {
                 .set('message', null)
                 .set('images', List([]))
         }
+        return state;
+    case types.SET_CARD_CONTENT:
+        if (action.data && action.data.content) {
+            const { data: { content } } = action;
+            return state.mergeIn(['editorState'], content);
+        }
+        return state;
     default:
         return state;
     }

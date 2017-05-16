@@ -52,17 +52,34 @@ const mapDispatchToProps = (dispatch: Function) => (
         updateComments: (field: Field) =>
             dispatch(comments.updateComments(field)),
         updateLabels: (field: Field) =>
-            dispatch(labels.updateLabels(field))
+            dispatch(labels.updateLabels(field)),
+        updateCardContent: (content:string) =>
+            dispatch(card.setCardContent(content))
     }
 );
+
+const mapQueriesToProps = ({ ownProps, state }) => {
+    console.log(ownProps, state);
+}
 
 const WrappedCompoenent = wrapper(CardDetail);
 
 export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
     graphql(getCard, {
         name: 'data',
         skip: props => !props.params.cardId,
-        options: props => ({ variables: { id: props.params.cardId } })
-    }),
-    connect(mapStateToProps, mapDispatchToProps),
+        options: props => ({ variables: { id: props.params.cardId } }),
+        // props: ({ ownProps, data }) => {
+        //     const { seed, loading } = data;
+        //     console.log(loading);
+        //     if (loading || !seed) return;
+        //
+        //     const { name, content } = seed;
+        //
+        //     ownProps.updateCard({ key: 'name', value: 'ccol'});
+        //     // console.log(content);
+        //     // ownProps.updateCardContent(content);
+        // }
+    })
 )(WrappedCompoenent);

@@ -78,7 +78,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         // }
         if (cardId && update) {
             update(cardId, content, cover)
-                .then(id => this.goToCard(collectionId, id));
+                .then(id => this.goToCard(collectionId, cardId));
         } else if (create) {
             create(collectionId, name || '', content, cover)
                 .then(id => this.goToCard(collectionId, id));

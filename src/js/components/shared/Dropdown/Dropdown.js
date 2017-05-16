@@ -29,7 +29,6 @@ const Menu = styled.div`
         display: block;
         margin-top: 10px;
         font-size: 16px;
-        font-family: 'Proxima Nova'
     }
 `;
 
