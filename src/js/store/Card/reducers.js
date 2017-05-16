@@ -83,6 +83,11 @@ export default (state: State = initialState, action: Action): State => {
             return state.mergeIn(['editorState'], content);
         }
         return state;
+    case types.SET_CARD_IMAGE:
+        if (action.data && action.data.image) {
+            const { data: { image } } = action;
+            return state.set('images', state.get('images').push(fromJS(image)));
+        }
     case 'APOLLO_QUERY_RESULT':
         if (action.operationName === 'getCard' && action.result) {
             const { result: { data }, queryId } = action;
@@ -95,9 +100,7 @@ export default (state: State = initialState, action: Action): State => {
         }
         return state;
     case 'APOLLO_QUERY_RESULT_CLIENT':
-        console.log(state.get('queryId'));
         if (action.queryId === state.get('queryId') && action.result) {
-            console.log('ddom');
             const { result: { data }, queryId } = action;
             if (data.seed && data.seed.content && queryId) {
                 console.log(data.seed);

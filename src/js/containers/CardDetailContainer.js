@@ -50,7 +50,9 @@ const mapDispatchToProps = (dispatch: Function) => (
         updateLabels: (field: Field) =>
             dispatch(labels.updateLabels(field)),
         updateCardContent: (content:string) =>
-            dispatch(card.setCardContent(content))
+            dispatch(card.setCardContent(content)),
+        addImage: (image: Object) =>
+            dispatch(card.addCardImage(image))
     }
 );
 

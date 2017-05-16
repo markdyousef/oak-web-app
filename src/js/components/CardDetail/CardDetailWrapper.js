@@ -45,12 +45,11 @@ export default (CardDetail:Function) => {
                     value: show
                 })
             addFile = (file: Object) => {
-                const { images } = this.state;
-                // TODO: add loading state
+                const { addImage } = this.props;
                 uploadImage(file)
                     .then((res) => {
-                        images.push({ ...res, name: file.name });
-                        this.setState({ images });
+                        const image = { ...res, name: file.name };
+                        addImage(image);
                     })
                     .catch(() => {
                         const message = {

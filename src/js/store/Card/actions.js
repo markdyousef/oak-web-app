@@ -57,3 +57,10 @@ export const setCardContent = (content: string) => {
         data: { message: 'wrong format!'}
     }
 }
+
+export const addCardImage = (image:Object) => (
+    {
+        type: types.SET_CARD_IMAGE,
+        data: { image }
+    }
+)
