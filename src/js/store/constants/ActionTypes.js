@@ -13,6 +13,7 @@ export const CARD_STATE:string = 'card/CARD_STATE';
 export const CLEAR_CARD:string ='card/CLEAR_CARD';
 export const SET_CARD:string = 'card/SET_CARD';
 export const SET_CARD_CONTENT:string = 'card/SET_CARD_CONTENT';
+export const SET_CARD_IMAGE:string = 'card/SET_CARD_IMAGE';
 
 // Labels
 export const LABELS_STATE:string = 'card/LABELS_STATE';

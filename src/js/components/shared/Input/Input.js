@@ -27,7 +27,6 @@ const H5 = styled.h5`
     color: ${colors.darkGrey};
     margin-bottom: 5px;
     text-transform: uppercase;
-    font-family: 'Proxima Nova' !important;
 `;
 
 const Default = styled.input`

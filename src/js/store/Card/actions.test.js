@@ -37,5 +37,13 @@ describe('actions', () => {
             data: { content }
         };
         expect(actions.setCardContent(content)).not.toEqual(expectedAction);
+    });
+    it('should return image with SET_CARD_IMAGE', () => {
+        const image = {};
+        const expectedAction = {
+            type: types.SET_CARD_IMAGE,
+            data: { image }
+        };
+        expect(actions.addCardImage(image)).toEqual(expectedAction);
     })
 });
