@@ -21,7 +21,19 @@ const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 220px;
+    margin-top: 60px;
+`;
+
+const HeaderContent = styled.section`
+    width: 100%;
+    max-width: 990px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: inherit;
+    @media (min-width: 1600px) {
+        max-width: 1328px;
+    }
 `;
 
 const Info = styled.div`
@@ -35,7 +47,7 @@ const Info = styled.div`
     }
     & p {
         font-size: 18px;
-        font-weight: normal;
+        font-weight: 300;
         padding-bottom: 24px;
         display: block;
         line-height: 1.48;
@@ -57,7 +69,6 @@ const Stats = styled.div`
         font-size: 12px;
         font-weight: 300;
         text-transform: uppercase;
-        padding-bottom: 8px;
     }
 `;
 
@@ -70,12 +81,17 @@ const ButtonGroup = styled.div`
 
 const Grid = styled.section`
     height: 100%;
-    padding: 20px;
+    padding: 20px 20px 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1080px;
+    margin: 0 auto;
     & a {
         margin: 8px;
+    }
+    @media (min-width: 1600px) {
+        max-width: 1440px;
     }
 `;
 
@@ -127,23 +143,24 @@ class Collections extends Component {
         return (
             <Container>
                 <Header>
-                    <Info>
-                        <h1>Collections</h1>
-                        <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
-                        <Stats>
-                            <div>
-                                <h3>{data.groves && data.groves.length}</h3>
-                                <h5>Collections</h5>
-                            </div>
-                        </Stats>
-                    </Info>
-                    <ButtonGroup>
-                        <SquareButton
-                            onClick={() => this.setState({ showAdd: true })}
-                            text="Add Collection"
-                            type="primary"
-                        />
-                        {showAdd &&
+                    <HeaderContent>
+                        <Info>
+                            <h1>Collections</h1>
+                            <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
+                            <Stats>
+                                <div>
+                                    <h3>{data.groves && data.groves.length}</h3>
+                                    <h5>Collections</h5>
+                                    </div>
+                            </Stats>
+                        </Info>
+                        <ButtonGroup>
+                            <SquareButton
+                                onClick={() => this.setState({ showAdd: true })}
+                                text="+ Add collection"
+                                type="primary"
+                                />
+                                {showAdd &&
                             <CollectionDialog
                                 close={() => {
                                     data.refetch();
@@ -151,7 +168,8 @@ class Collections extends Component {
                                 }}
                             />
                         }
-                    </ButtonGroup>
+                        </ButtonGroup>
+                    </HeaderContent>
                 </Header>
                 {this.renderCollections()}
             </Container>

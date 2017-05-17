@@ -15,7 +15,19 @@ export const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 220px;
+    margin-top: 60px;
+`;
+
+export const HeaderContent = styled.section`
+    width: 100%;
+    max-width: 990px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: inherit;
+    @media (min-width: 1600px) {
+        max-width: 1328px;
+    }
 `;
 
 export const Info = styled.div`
@@ -73,23 +85,17 @@ export const masonStyles = {
 };
 
 export const Grid = styled.section`
-    width: 90%;
+    padding: 20px 20px 80px;
+    max-width: 1048px;
     margin: 0 auto;
-    ${''/* width: 1200px; */}
-    ${''/* @media (min-width: 1200px) {
-        width: 1170px;
+    @media (min-width: 1600px) {
+        max-width: 1384px;
     }
-    @media (min-width: 900px) {
-        width: 970px;
-    }
-    @media (min-width: 750px) {
-        width: 730px;
-    } */}
 `;
 
 export const Loading = styled.div`
-    background-color: #393F43;
-    height: 20px;
+    background-color: #f2f2f2;
+    height: 12px;
     width: 100%;
     border-radius: 3px;
 `;

@@ -16,7 +16,7 @@ export const Container = styled.div`
     border: 1px solid ${colors.lightGrey};
     border-radius: 3px;
     padding: 16px;
-    margin: 5px;
+    margin: 8px;
     position: relative;
 `;
 

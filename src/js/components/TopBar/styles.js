@@ -10,7 +10,7 @@ export const Container = styled.nav`
     justify-content: flex-end;
     position: fixed;
     flex-shrink: 0;
-    z-index: 99999999;
+    z-index: 6001;
 `;
 
 // Navigation left
