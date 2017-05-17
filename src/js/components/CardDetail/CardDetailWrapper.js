@@ -44,21 +44,31 @@ export default (CardDetail:Function) => {
                     key: 'showLabels',
                     value: show
                 })
-            addFile = (file: Object) => {
+            addFile = (file: Object, type?: string) => {
                 const { addImage } = this.props;
-                uploadImage(file)
-                    .then((res) => {
-                        const image = { ...res, name: file.name };
-                        addImage(image);
-                    })
-                    .catch(() => {
-                        const message = {
-                            type: 'error',
-                            message: "File couldn't be added",
-                            onClick: () => this.addFile(file)
-                        };
-                        this.setState({ message });
-                    });
+                return new Promise ((resolve, reject) => {
+                    if (!type || type === 'image') {
+                        uploadImage(file)
+                            .then((res) => {
+                                const image = { ...res, type: 'image', file };
+                                addImage(image);
+                                resolve(image);
+                            })
+                            .catch(() => {
+                                const message = {
+                                    type: 'error',
+                                    message: "File couldn't be added",
+                                    onClick: () => this.addFile(file)
+                                };
+                                this.setState({ message });
+                                reject(message);
+                            });
+                    }
+                })
+
+            }
+            downloadFile = () => {
+
             }
             onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
             render() {

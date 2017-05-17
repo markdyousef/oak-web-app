@@ -1,23 +1,22 @@
 exports[`test renders correctly 1`] = `
 <div>
-  <section
-    className="llBzlB">
+  <div
+    className="gPCoSX">
     Add label:
-  </section>
-  <section
-    className="llBzlB">
-    <section
-      className="FPhLq">
+  </div>
+  <div
+    className="HUcDL">
+    <div
+      className="kTlHyk">
       No labels...
-    </section>
-  </section>
+    </div>
+  </div>
   <section
-    className="cDxvmS">
-    <button
-      className="cCNbVN"
+    className="jtCoML">
+    <div
       onClick={[Function]}>
       Create a new label
-    </button>
+    </div>
   </section>
 </div>
 `;

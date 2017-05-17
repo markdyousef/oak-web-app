@@ -8,7 +8,7 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <h3>
-        Create Card in:
+        Share post in:
     </h3>
     <styled.select
         onChange={[Function]}
@@ -16,15 +16,18 @@ ShallowWrapper {
         <option
             selected={true}
             value="">
-            Select Collection
+            Select collection
         </option>
     </styled.select>
+    <styled.div>
+        You can add labels to your post once you’ve selected a collection.
+    </styled.div>
     <styled.div />
 </styled.div>,
   "nodes": Array [
     <styled.div>
       <h3>
-            Create Card in:
+            Share post in:
       </h3>
       <styled.select
             onChange={[Function]}
@@ -32,9 +35,12 @@ ShallowWrapper {
             <option
                   selected={true}
                   value="">
-                  Select Collection
+                  Select collection
             </option>
       </styled.select>
+      <styled.div>
+            You can add labels to your post once you’ve selected a collection.
+      </styled.div>
       <styled.div />
 </styled.div>,
   ],
@@ -79,7 +85,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <h3>
-                    Create Card in:
+                    Share post in:
           </h3>
           <styled.select
                     onChange={[Function]}
@@ -87,15 +93,18 @@ ShallowWrapper {
                     <option
                               selected={true}
                               value="">
-                              Select Collection
+                              Select collection
                     </option>
           </styled.select>
+          <styled.div>
+                    You can add labels to your post once you’ve selected a collection.
+          </styled.div>
           <styled.div />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <h3>
-                    Create Card in:
+                    Share post in:
           </h3>
           <styled.select
                     onChange={[Function]}
@@ -103,9 +112,12 @@ ShallowWrapper {
                     <option
                               selected={true}
                               value="">
-                              Select Collection
+                              Select collection
                     </option>
           </styled.select>
+          <styled.div>
+                    You can add labels to your post once you’ve selected a collection.
+          </styled.div>
           <styled.div />
 </styled.div>,
       },

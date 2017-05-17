@@ -14,6 +14,7 @@ import type { DefaultProps, Props, State } from './types';
 import {
     Container,
     Header,
+    HeaderContent,
     Info,
     Stats,
     ButtonGroup,
@@ -251,6 +252,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         return (
             <Container>
                 <Header>
+                <HeaderContent>
                     {this.renderInfo()}
                     <ButtonGroup>
                         {/* <SquareButton
@@ -265,6 +267,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                         {this.showDialog()}
                         {this.showEdit()}
                     </ButtonGroup>
+                    </HeaderContent>
                 </Header>
                 <CollectionToolbar
                     onSort={this.onSortCards}

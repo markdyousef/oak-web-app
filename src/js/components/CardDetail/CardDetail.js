@@ -50,11 +50,6 @@ const CardDetail = ({ ...props }:Props) => {
                             addFile={props.addFile}
                             placeholder="Title..."
                             showFAB
-                            // titel={<Name
-                            //     onChange={props.changeName}
-                            //     name={props.name}
-                            //     readOnly={!props.showEdit}
-                            // />}
                         />
                     </EditorContainer>
                     {props.showComments &&
