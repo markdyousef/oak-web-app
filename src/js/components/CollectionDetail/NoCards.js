@@ -8,13 +8,13 @@ const Container = styled.div`
     width: 60%;
     max-width: 400px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     & img {
-        width: 60%;
+        width: 40%;
     }
     & h2 {
         font-size: 20px;
@@ -34,7 +34,6 @@ const Container = styled.div`
 const Empty = ({ onClick }:Object) => {
     return (
         <Container>
-            <h2>Cards</h2>
             <img src={empty} alt="empty state" />
             <p>A collection is much better with some cards!</p>
             <SquareButton

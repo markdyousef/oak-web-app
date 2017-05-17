@@ -21,15 +21,18 @@ const ActionMenu = styled.div`
     font-size: 14px;
     margin-left: 10px;
     color: ${colors.grey};
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
     align-items: center;
     & span {
         color: ${colors.grey};
         margin-right: 4px;
+        cursor: pointer;
     }
     & label {
         text-transform: capitalize;
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
@@ -37,11 +40,16 @@ const LabelsMenu = styled.div`
     font-size: 14px;
     margin-left: 16px;
     color: ${colors.grey};
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
     & span {
         color: ${colors.grey};
         margin-right: 4px;
+        cursor: pointer;
+    }
+    & label {
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
@@ -186,7 +194,7 @@ export default class Toolbar extends Component {
                         <span>
                             Filter:
                         </span>
-                        {(filters && filters.length < 1) && 'Labels'}
+                        <label>{(filters && filters.length < 1) && 'Labels'}</label>
                     </LabelsMenu>
                     {showFilter &&
                         <DropdownContainer>

@@ -25,8 +25,6 @@ const Menu = styled.div`
     border-radius: 3px;
     padding: 20px;
     margin-top: 0px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
     & a {
         color: #000;
         display: block;

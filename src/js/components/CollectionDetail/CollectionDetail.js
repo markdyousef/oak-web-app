@@ -21,6 +21,11 @@ import {
     Grid,
     masonStyles,
     Loading,
+    LoadingMedium,
+    LoadingShorter,
+    LoadingShort,
+    LoadingLonger,
+    LoadingLong,
     DropdownContainer,
     Dropdown,
     MenuItem
@@ -236,12 +241,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const info = Object.assign({}, grove);
         return (
             <Info>
-                <h1>{(loading) ? <Loading /> : info.name}</h1>
-                <h3>{(loading) ? <Loading /> : info.description}</h3>
+                <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : info.name}</h1>
+                <h3>{(loading) ? <Loading><LoadingLonger /><LoadingLong /></Loading> : info.description}</h3>
                 <Stats>
                     <div>
-                        <h3>{(loading) ? <Loading /> : info.stats && info.stats.seeds}</h3>
-                        <h5>{(loading) ? <Loading /> : 'Cards'}</h5>
+                        <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : info.stats && info.stats.seeds}</h3>
+                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Cards'}</h5>
                     </div>
                 </Stats>
             </Info>
@@ -263,6 +268,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                         <SquareButton
                             onClick={() => this.setState({ showEdit: !showEdit })}
                             text="Edit Collection"
+                            type="white"
                         />
                         {this.showDialog()}
                         {this.showEdit()}
