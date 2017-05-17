@@ -7,16 +7,6 @@ import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
     query getCard($id: ID!) {
-        me {
-            id
-            name
-            username
-            avatar {
-                id
-                urlThumb64
-            }
-            gravatar
-        }
         seed(id: $id) {
             id
             name
@@ -25,12 +15,14 @@ const getCard = gql`
     }
 `;
 
-const mapStateToProps = (state: Object) => {
+const mapStateToProps = (state: Object, ownProps: Object) => {
+    // const { data: { seed } } = ownProps;
     return {
         card: state.card,
         comments: state.comments,
         showLabels: state.labels.get('showLabels'),
-        shouldUpdate: state.card.get('shouldUpdate')
+        shouldUpdate: state.card.get('shouldUpdate'),
+        isLoading: state.card.get('isLoading')
     };
 };
 
@@ -47,22 +39,31 @@ const mapDispatchToProps = (dispatch: Function) => (
             dispatch(comments.updateComments({
                 key: 'showComments',
                 value: false
+            })),
+            dispatch(card.updateCard({
+                key: 'shouldUpdate',
+                value: true
             }))
         },
         updateComments: (field: Field) =>
             dispatch(comments.updateComments(field)),
         updateLabels: (field: Field) =>
-            dispatch(labels.updateLabels(field))
+            dispatch(labels.updateLabels(field)),
+        updateCardContent: (content:string) =>
+            dispatch(card.setCardContent(content)),
+        addImage: (image: Object) =>
+            dispatch(card.addCardImage(image))
     }
 );
 
 const WrappedCompoenent = wrapper(CardDetail);
 
 export default compose(
-    graphql(getCard, {
-        name: 'data',
-        skip: props => !props.params.cardId,
-        options: props => ({ variables: { id: props.params.cardId } })
-    }),
     connect(mapStateToProps, mapDispatchToProps),
+    graphql(getCard, {
+        skip: props => !props.params.cardId,
+        options: props => ({ variables: { id: props.params.cardId }}),
+        props: ({ ownProps, data: { seed, loading } }) =>
+            ({ seed, loading })
+    })
 )(WrappedCompoenent);

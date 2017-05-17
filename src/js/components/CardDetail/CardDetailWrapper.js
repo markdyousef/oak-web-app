@@ -34,34 +34,6 @@ export default (CardDetail:Function) => {
                     });
                 }
             }
-            componentWillReceiveProps(nextProps:Props) {
-                const { data, card, shouldUpdate } = nextProps;
-                if (!data) return;
-                // if (shouldUpdate) {
-                //     this.updateCard('isLoading', true);
-                //     data.refetch();
-                // }
-                if (data.loading) {
-                    this.updateCard('isLoading', true);
-                    return;
-                }
-                const { seed } = data;
-                if (seed.content && card.get('isLoading')) {
-                    // create editorstate based on content (string)
-                    let content;
-                    try {
-                        content = JSON.parse(seed.content);
-                    } catch (e) {
-                        content = null;
-                    }
-                    if (content !== null && typeof content === 'object') {
-                        const state = convertFromRaw(content);
-                        this.updateCard('editorState', EditorState.createWithContent(state, decorator));
-                        this.updateCard('name', seed.name);
-                    }
-                }
-                this.updateCard('isLoading', false);
-            }
             componentWillUnmount() {
                 const { clearCard } = this.props;
                 clearCard();
@@ -73,12 +45,11 @@ export default (CardDetail:Function) => {
                     value: show
                 })
             addFile = (file: Object) => {
-                const { images } = this.state;
-                // TODO: add loading state
+                const { addImage } = this.props;
                 uploadImage(file)
                     .then((res) => {
-                        images.push({ ...res, name: file.name });
-                        this.setState({ images });
+                        const image = { ...res, name: file.name };
+                        addImage(image);
                     })
                     .catch(() => {
                         const message = {

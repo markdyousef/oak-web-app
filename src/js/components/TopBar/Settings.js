@@ -51,13 +51,13 @@ export default class Settings extends Component<DefaultProps, Props, State> {
         if (logout && replace) {
             logout()
                 .then(() => {
-                    signOut();
                     replace({
                         pathname: '/login'
                     });
                 })
                 .catch(err => console.log(err));
         }
+        signOut();
     }
     render() {
         const { data: { me } } = this.props;

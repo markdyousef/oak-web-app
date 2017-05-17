@@ -52,7 +52,11 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         const { router: { replace } } = this.props;
         if (replace) replace(`/collection/${collectionId}/card/${cardId}`)
     }
-    onSave = () => {
+    goToColllection = (collectionId: string) => {
+        const { router: { push } } = this.props;
+        if (push) push(`/collection/${collectionId}`)
+    }
+    onSave = (newCard?: bool) => {
         const { create, update, updateCard, card } = this.props;
         if (!card) return;
 
@@ -78,10 +82,16 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         // }
         if (cardId && update) {
             update(cardId, content, cover)
-                .then(id => this.goToCard(collectionId, id));
+                .then(id => {
+                    if (newCard) return this.goToColllection(collectionId);
+                    this.goToCard(collectionId, cardId)
+                });
         } else if (create) {
             create(collectionId, name || '', content, cover)
-                .then(id => this.goToCard(collectionId, id));
+                .then(id => {
+                    if (newCard) return this.goToColllection(collectionId);
+                    this.goToCard(collectionId, id)
+                });
         }
     }
     onCreate = () => {
@@ -157,7 +167,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     updateCollection={collectionId => updateCard('collectionId', collectionId)}
                     showLabels={showLabels}
                     onShowLabels={this.onShowLabels}
-                    saveCard={this.onSave}
+                    saveCard={() => this.onSave(true)}
                 />
             )
         }

@@ -45,7 +45,7 @@ export const setCardContent = (content: string) => {
         editorState = null;
     }
     if (editorState !== null && typeof editorState === 'object') {
-        const state = convertFromRaw(content);
+        const state = convertFromRaw(editorState);
         editorState = EditorState.createWithContent(state, decorator)
         return {
             type: types.SET_CARD_CONTENT,
@@ -57,3 +57,10 @@ export const setCardContent = (content: string) => {
         data: { message: 'wrong format!'}
     }
 }
+
+export const addCardImage = (image:Object) => (
+    {
+        type: types.SET_CARD_IMAGE,
+        data: { image }
+    }
+)

@@ -9,7 +9,7 @@ exports[`test renders correctly 1`] = `
     <div>
       <div>
         <h5
-          className="dRMKoo">
+          className="invXpW">
           Name
         </h5>
         <input
@@ -22,7 +22,7 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="dRMKoo">
+          className="invXpW">
           Email
         </h5>
         <input
@@ -35,7 +35,7 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="dRMKoo">
+          className="invXpW">
           Password
         </h5>
         <input
