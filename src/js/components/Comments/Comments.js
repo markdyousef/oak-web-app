@@ -22,7 +22,7 @@ const Container = styled.section`
     padding-top: 80px;
     border-left: 1px solid ${colors.lightGrey};
     background-color: ${colors.white};
-    z-index: 99999;
+    // z-index: 99999;
 `;
 
 const CommentsPanel = styled.div`
