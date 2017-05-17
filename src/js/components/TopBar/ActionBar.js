@@ -83,13 +83,13 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         if (cardId && update) {
             update(cardId, content, cover)
                 .then(id => {
-                    if (newCard) return this.goToColllection(collectionId);
+                    if (newCard === true) return this.goToColllection(collectionId);
                     this.goToCard(collectionId, cardId)
                 });
         } else if (create) {
             create(collectionId, name || '', content, cover)
                 .then(id => {
-                    if (newCard) return this.goToColllection(collectionId);
+                    if (newCard === true) return this.goToColllection(collectionId);
                     this.goToCard(collectionId, id)
                 });
         }
