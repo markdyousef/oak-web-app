@@ -1,17 +1,21 @@
 // @flow
 import React, { Component } from 'react';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
-import CollectionIcon from '../../icons/collections';
+import ArrowDown from '../../icons/arrowDown';
+import AddCollection from '../../icons/add';
 import Menu from '../shared/Dropdown';
-import logo from '../../../img/cuest-logo.png';
+import logo from '../../../img/cuest-icon.svg';
 import {
     NavLeft,
+    CollectionWrapper,
     Collections,
+    ArrowWrapper,
     Dropdown,
     MenuTitle,
     MenuItem,
     All,
     Add,
+    Logowrapper,
     Logo,
     ActiveMenu,
     NavContainer
@@ -104,26 +108,32 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         const { showCollections, showDialog } = this.state;
         return (
             <NavLeft>
-                <Logo onClick={this.toCollections}>
-                    <img
-                        alt="logo"
-                        src={logo}
-                    />
-                </Logo>
-                <CollectionIcon />
+                <Logowrapper onClick={this.toCollections}>
+                    <Logo>
+                        <img
+                            alt="logo"
+                            src={logo}
+                            />
+                    </Logo>
+                </Logowrapper>
                 <NavContainer>
-                    <Collections onClick={() => this.setState({ showCollections: !showCollections })}>
-                        Collections
-                    </Collections>
+                    <CollectionWrapper onClick={() => this.setState({ showCollections: !showCollections })}>
+                        <Collections>
+                            Collections
+                            </Collections>
+                            <ArrowWrapper>
+                            <ArrowDown />
+                            </ArrowWrapper>
+                    </CollectionWrapper>
                         {showCollections &&
                             <Dropdown>
                                 <Menu onClose={() => this.setState({ showCollections: false })} arrowPos="left">
-                                    <MenuTitle>YOUR TOP COLLECTIONS</MenuTitle>
+                                    <MenuTitle>Your top collections</MenuTitle>
                                     {this.renderRecommended()}
                                     <All
                                         onClick={this.toCollections}
                                         >
-                                            View All Collections
+                                            View all collections
                                         </All>
                                         <Add
                                             onClick={() => this.setState({
@@ -131,7 +141,8 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                                                 showCollections: false
                                             })}
                                             >
-                                                Add a Collection
+                                            <AddCollection />
+                                                Add a collection
                                             </Add>
                                         </Menu>
                                     </Dropdown>
