@@ -161,9 +161,9 @@ export const Icon = styled.div`
 
 export const Settings = styled.div`
     position: absolute;
-    width: 100px;
+    width: 140px;
     bottom: -55px;
-    left: 82px;
+    left: 86px;
     z-index: 99;
 `;
 

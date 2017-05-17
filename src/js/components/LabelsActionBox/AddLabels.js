@@ -22,6 +22,14 @@ const LabelsSection = styled(Section)`
     max-height: 300px;
 `;
 
+const NoLabels = styled.div`
+    font-size: 13px;
+    text-align: center;
+    padding: 8px 0 24px;
+    font-weight: normal;
+    color: rgba(19, 21, 23, 0.5);
+`;
+
 const LabelContainer = styled.div`
     width: 100%;
     display: flex;
@@ -89,7 +97,7 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect, showEdit }
                         })}
                     </LabelsSection>
                     :
-                    <LabelsSection>No labels...</LabelsSection>
+                    <NoLabels>Your team has not created any labels in this collection. Create your first label below.</NoLabels>
                 }
             </Section>
             <ActionSection>

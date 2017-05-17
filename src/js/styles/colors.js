@@ -3,6 +3,7 @@ export default {
     black: '#131517',
     darkGrey: '#2D3438',
     grey: '#797C80',
+    fadedGrey: '#b3b5b9',
     lightGrey: '#E5E5E5',
     extraLightGrey: '#F9FAFB',
     white: '#FFFFFF',
