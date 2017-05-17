@@ -26,7 +26,7 @@ export default ({ ...props }: Props) => {
                 <RoundButton
                     text="Share post"
                     onClick={props.onCreate}
-                    type="secondary"
+                    type="disabled"
                     isLoading={props.isLoading}
                 />
                 {props.showMenu &&

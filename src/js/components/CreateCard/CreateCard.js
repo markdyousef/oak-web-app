@@ -6,7 +6,7 @@ import LabelsActionBoxContainer from '../../containers/LabelsActionBoxContainer'
 import Dropdown from '../shared/Dropdown';
 
 const Container = styled.div`
-    width: 200px;
+    width: 250px;
     ${''/* height: 100px; */}
     & h3 {
         font-size: 18px;
@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Select = styled.select`
-    margin: 16px 0;
+    margin: 16px 0 8px;
     width: 100%;
     width: 100%;
     border: 1px solid #e5e5e5;
@@ -29,31 +29,51 @@ const Select = styled.select`
     background-size: 16px;
     background-position: 50% 90%;
     cursor: pointer;
+    min-height: 44px;
+    line-height: 20px;
+`;
+
+const LabelText = styled.div`
+    font-size: 14px;
+    color: #131517;
+    line-height: 1.35;
+    margin-bottom: 16px;
 `;
 
 const Labels = styled.div`
     position: relative;
-    & button {
-        width: 100%;
-    }
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    appearance: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 3px;
+    text-align: left;
+    margin-bottom: 16px;
+    cursor: pointer;
+    min-height: 44px;
+    line-height: 20px;
 `;
 
 
 const Footer = styled.div`
     border-top: 1px solid ${colors.lightGrey};
     width: 100%;
-    height: 50px;
     position: relative;
+    display: flex;
+    justify-content: flex-end;
     & button {
-        position: absolute;
         right: 0;
-        margin-top: 20px;
+        margin-top: 16px;
         color: ${colors.green};
         border: none;
         padding: 0;
         background-color: ${colors.white};
         font-size: 14px;
         cursor: pointer;
+        font-weight: bold;
     }
 `;
 
@@ -62,6 +82,10 @@ const LabelsContainer = styled.div`
     right: 0;
     z-index: 9999;
     width: 250px;
+    margin-top: 11px;
+    left: -1px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 `;
 
 
@@ -119,16 +143,19 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                 </Select>
                 {collectionId &&
                     <Labels>
-                        <button onClick={() => onShowLabels()}>LABELS</button>
+                        <div onClick={() => onShowLabels()}>Add labels</div>
                         {showLabels &&
                             <LabelsContainer>
-                                <Dropdown onClose={() => onShowLabels(false)} arrowPos="none">
-                                    <LabelsActionBoxContainer />
+                                <Dropdown onClose={() => onShowLabels(false)} arrowPos='none'>
+                                    <LabelsActionBoxContainer/>
                                 </Dropdown>
                             </LabelsContainer>
                         }
                     </Labels>
                 }
+                <LabelText>
+                You can add labels to your post once you’ve selected a collection.
+                </LabelText>
                 <Footer>
                     {collectionId &&
                     <button onClick={this.addCard}>

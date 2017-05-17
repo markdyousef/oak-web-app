@@ -35,6 +35,7 @@ export default ({ ...props }: Props) => {
                 text="Edit post"
                 type="secondaryAction"
                 onClick={onEdit}
+                type="white"
             />
     } else {
         cardActions = [
@@ -42,6 +43,7 @@ export default ({ ...props }: Props) => {
                 <RoundButton
                     text="Add label"
                     onClick={() => onShowLabels && onShowLabels(!showLabels)}
+                    type="white"
                 />
                     {showLabels &&
                         <LabelsContainer>

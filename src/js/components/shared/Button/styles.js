@@ -33,12 +33,32 @@ export const style = (type) => {
             background-color: ${colors.white};
             border-color: ${colors.green};
             color: ${colors.green};
-            &:active {
-                background-color: #57B188
-            }
             &:hover {
-                border-color: ${colors.green}
+                color: #fff;
+                background: #34B289;
+            }
+            &:active {
+                background: #249E76;
+                border: 1px solid #249E76;
             }`;
+    }
+    if (type === 'white') {
+        return `
+            background-color: ${colors.white};
+            border-color: 1px solid #e5e5e5;
+            color: rgba(19, 21, 23, .75);
+            &:hover {
+                border-color: #DADCDE;
+            }
+            &:active {
+                background-color: #F8F8F8;
+            }`;
+    }
+    if (type === 'disabled') {
+        return `
+            background-color: ${colors.white};
+            border-color: 1px solid #e5e5e5;
+            color: rgba(19, 21, 23, .25);`;
     }
     if (type === 'transparent') {
         return `

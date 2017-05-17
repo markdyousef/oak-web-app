@@ -12,12 +12,11 @@ const valid = (notValid) => {
     }
     return `
     background-color: #fff;
-    &:focus {
-
-        border-color: #67C198
-    }
     &:hover {
         border-color: #B5D3C9
+    }
+    &:focus {
+        border-color: #67C198
     }`;
 };
 

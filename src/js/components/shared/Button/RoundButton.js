@@ -10,14 +10,6 @@ const Rounded = styled(Default)`
     padding: 8px 16px;
     margin-right: 8px;
     ${props => style(props.type)};
-    &:hover {
-        color: #fff;
-        background: #34B289;
-    }
-    &:active {
-        background: #249E76;
-        border: 1px solid #249E76;
-    }
 `;
 
 type Props = {

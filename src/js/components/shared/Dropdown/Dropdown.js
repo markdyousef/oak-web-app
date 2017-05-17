@@ -25,6 +25,8 @@ const Menu = styled.div`
     border-radius: 3px;
     padding: 20px;
     margin-top: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     & a {
         color: #000;
         display: block;
@@ -47,7 +49,7 @@ export default withLayer(({ children, arrowPos }: Props) => {
     let style;
     switch (arrowPos) {
     case 'left':
-        style = { left: '25px' };
+        style = { left: '24px' };
         break;
     case 'none':
         style = { display: 'none' };

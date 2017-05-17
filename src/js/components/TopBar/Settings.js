@@ -75,7 +75,7 @@ export default class Settings extends Component<DefaultProps, Props, State> {
                         </Profile>
                     </ProfileWrapper>
                     {isOpen &&
-                        <Dropdown style={{ right: '-6px', marginTop: '14px' }}>
+                        <Dropdown style={{ right: '-6px', marginTop: '12px' }}>
                             <Menu onClose={() => this.setState({ isOpen: false})}>
                                 <MenuItem onClick={this.toSettings}>Settings</MenuItem>
                                 <MenuItem onClick={this.signOut}>Logout</MenuItem>
