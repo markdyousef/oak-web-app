@@ -9,11 +9,11 @@ exports[`test renders correctly 1`] = `
     <div>
       <div>
         <h5
-          className="invXpW">
+          className="eKaiQM">
           Name
         </h5>
         <input
-          className="bwXyts"
+          className="llFZIf"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Name"
@@ -22,11 +22,11 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="invXpW">
+          className="eKaiQM">
           Email
         </h5>
         <input
-          className="bwXyts"
+          className="llFZIf"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Email"
@@ -35,11 +35,11 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="invXpW">
+          className="eKaiQM">
           Password
         </h5>
         <input
-          className="bwXyts"
+          className="llFZIf"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Password"

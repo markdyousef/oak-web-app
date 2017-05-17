@@ -8,29 +8,31 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <styled.section>
-        <styled.div>
-            <h1>
-                <styled.div />
-            </h1>
-            <h3>
-                <styled.div />
-            </h3>
+        <styled.section>
             <styled.div>
-                <div>
-                    <h3>
-                        <styled.div />
-                    </h3>
-                    <h5>
-                        <styled.div />
-                    </h5>
-                </div>
+                <h1>
+                    <styled.div />
+                </h1>
+                <h3>
+                    <styled.div />
+                </h3>
+                <styled.div>
+                    <div>
+                        <h3>
+                            <styled.div />
+                        </h3>
+                        <h5>
+                            <styled.div />
+                        </h5>
+                    </div>
+                </styled.div>
             </styled.div>
-        </styled.div>
-        <styled.div>
-            <Unknown
-                onClick={[Function]}
-                text="Edit Collection" />
-        </styled.div>
+            <styled.div>
+                <Unknown
+                    onClick={[Function]}
+                    text="Edit Collection" />
+            </styled.div>
+        </styled.section>
     </styled.section>
     <Toolbar
         active="date"
@@ -50,29 +52,31 @@ ShallowWrapper {
   "nodes": Array [
     <styled.div>
       <styled.section>
-            <styled.div>
-                  <h1>
-                        <styled.div />
-                  </h1>
-                  <h3>
-                        <styled.div />
-                  </h3>
+            <styled.section>
                   <styled.div>
-                        <div>
-                              <h3>
-                                    <styled.div />
-                              </h3>
-                              <h5>
-                                    <styled.div />
-                              </h5>
-                        </div>
+                        <h1>
+                              <styled.div />
+                        </h1>
+                        <h3>
+                              <styled.div />
+                        </h3>
+                        <styled.div>
+                              <div>
+                                    <h3>
+                                          <styled.div />
+                                    </h3>
+                                    <h5>
+                                          <styled.div />
+                                    </h5>
+                              </div>
+                        </styled.div>
                   </styled.div>
-            </styled.div>
-            <styled.div>
-                  <Unknown
-                        onClick={[Function]}
-                        text="Edit Collection" />
-            </styled.div>
+                  <styled.div>
+                        <Unknown
+                              onClick={[Function]}
+                              text="Edit Collection" />
+                  </styled.div>
+            </styled.section>
       </styled.section>
       <Toolbar
             active="date"
@@ -161,29 +165,31 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <styled.section>
-                    <styled.div>
-                              <h1>
-                                        <styled.div />
-                              </h1>
-                              <h3>
-                                        <styled.div />
-                              </h3>
+                    <styled.section>
                               <styled.div>
-                                        <div>
-                                                  <h3>
-                                                            <styled.div />
-                                                  </h3>
-                                                  <h5>
-                                                            <styled.div />
-                                                  </h5>
-                                        </div>
+                                        <h1>
+                                                  <styled.div />
+                                        </h1>
+                                        <h3>
+                                                  <styled.div />
+                                        </h3>
+                                        <styled.div>
+                                                  <div>
+                                                            <h3>
+                                                                      <styled.div />
+                                                            </h3>
+                                                            <h5>
+                                                                      <styled.div />
+                                                            </h5>
+                                                  </div>
+                                        </styled.div>
                               </styled.div>
-                    </styled.div>
-                    <styled.div>
-                              <Unknown
-                                        onClick={[Function]}
-                                        text="Edit Collection" />
-                    </styled.div>
+                              <styled.div>
+                                        <Unknown
+                                                  onClick={[Function]}
+                                                  text="Edit Collection" />
+                              </styled.div>
+                    </styled.section>
           </styled.section>
           <Toolbar
                     active="date"
@@ -203,29 +209,31 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <styled.section>
-                    <styled.div>
-                              <h1>
-                                        <styled.div />
-                              </h1>
-                              <h3>
-                                        <styled.div />
-                              </h3>
+                    <styled.section>
                               <styled.div>
-                                        <div>
-                                                  <h3>
-                                                            <styled.div />
-                                                  </h3>
-                                                  <h5>
-                                                            <styled.div />
-                                                  </h5>
-                                        </div>
+                                        <h1>
+                                                  <styled.div />
+                                        </h1>
+                                        <h3>
+                                                  <styled.div />
+                                        </h3>
+                                        <styled.div>
+                                                  <div>
+                                                            <h3>
+                                                                      <styled.div />
+                                                            </h3>
+                                                            <h5>
+                                                                      <styled.div />
+                                                            </h5>
+                                                  </div>
+                                        </styled.div>
                               </styled.div>
-                    </styled.div>
-                    <styled.div>
-                              <Unknown
-                                        onClick={[Function]}
-                                        text="Edit Collection" />
-                    </styled.div>
+                              <styled.div>
+                                        <Unknown
+                                                  onClick={[Function]}
+                                                  text="Edit Collection" />
+                              </styled.div>
+                    </styled.section>
           </styled.section>
           <Toolbar
                     active="date"

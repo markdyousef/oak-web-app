@@ -40,7 +40,7 @@ exports[`test renders TopNav 1`] = `
   <div
     className="bSDNIz">
     <button
-      className="hcxEYT"
+      className="iezAFt"
       onClick={[Function]}
       type="secondary">
       Create Card
