@@ -30,7 +30,7 @@ const Bubbles = styled.div`
     animation-duration: 1.25s;
     animation-iteration-count: infinite;
     animation-direction: linear;
-    background-color: #D4D5D7;
+    background-color: #FFF;
     height: 10px;
     margin-left: 5px;
     width: 10px;

@@ -2,29 +2,39 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
+import Pencil from '../../icons/pencil';
 import { Box as Label } from '../shared/Label';
 
-const Section = styled.section`
-    margin: 20px 0;
+const SectionTitle = styled.div`
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+`;
+
+const Section = styled.div`
+    font-size: 15px;
 `;
 
 const LabelsSection = styled(Section)`
-    height: 150px;
-    width: 100%;
+    padding: 8px 0 16px;
+    width: calc(100% + 20px);
     overflow-y: auto;
+    max-height: 300px;
 `;
 
 const LabelContainer = styled.div`
     width: 100%;
     display: flex;
-    & span {
-        max-width: 100px;
-    }
 `;
 
 const ActionSection = styled.section`
     border-top: 1px solid ${colors.lightGrey};
-    height: 50px;
+    padding-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding-right: 20px;
 `;
 
 const Button = styled.button`
@@ -34,7 +44,11 @@ const Button = styled.button`
     font-size: 14px;
     margin: 15px 0 !important;
     cursor: pointer;
-    font-weight: bold;
+`;
+
+const Edit = styled.div`
+    margin-top: 2px;
+    margin-right: 20px;
 `;
 
 type Props = {
@@ -47,9 +61,9 @@ type Props = {
 export default ({ cardLabels, collectionLabels, changePage, onSelect, showEdit }: Props) => {
     return (
         <div>
-            <Section>
+            <SectionTitle>
                 Add label:
-            </Section>
+            </SectionTitle>
             <Section>
                 {(collectionLabels && collectionLabels.length > 0) ?
                     <LabelsSection>
@@ -67,9 +81,9 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect, showEdit }
                                         name={label.name}
                                         isActive={isActive}
                                     />
-                                    <Button onClick={() => showEdit(label)}>
-                                        Edit
-                                    </Button>
+                                    <Edit onClick={() => showEdit(label)}>
+                                        <Pencil />
+                                    </Edit>
                                 </LabelContainer>
                             );
                         })}
@@ -79,9 +93,9 @@ export default ({ cardLabels, collectionLabels, changePage, onSelect, showEdit }
                 }
             </Section>
             <ActionSection>
-                <Button onClick={changePage}>
+                <div onClick={changePage}>
                     Create a new label
-                </Button>
+                </div>
             </ActionSection>
         </div>
     );

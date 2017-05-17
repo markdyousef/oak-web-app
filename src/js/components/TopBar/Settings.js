@@ -5,6 +5,7 @@ import Avatar from '../shared/Avatar';
 import { signOut } from '../../utils';
 import {
     NavRight,
+    ProfileWrapper,
     Profile,
     Dropdown,
     MenuItem,
@@ -68,11 +69,13 @@ export default class Settings extends Component<DefaultProps, Props, State> {
         return (
             <NavRight>
                 <NavContainer>
-                    <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
-                        <Avatar img={picture} />
-                    </Profile>
+                    <ProfileWrapper>
+                        <Profile onClick={() => this.setState({ isOpen: !isOpen })}>
+                            <Avatar img={picture} />
+                        </Profile>
+                    </ProfileWrapper>
                     {isOpen &&
-                        <Dropdown style={{ right: '10px' }}>
+                        <Dropdown style={{ right: '-6px', marginTop: '12px' }}>
                             <Menu onClose={() => this.setState({ isOpen: false})}>
                                 <MenuItem onClick={this.toSettings}>Settings</MenuItem>
                                 <MenuItem onClick={this.signOut}>Logout</MenuItem>

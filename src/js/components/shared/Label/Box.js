@@ -10,14 +10,15 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-top: 5px;
+    margin-bottom: 12px;
     & span {
-        width: 80%;
+        width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
         font-size: 15px;
         font-weight: normal;
-        color: #000 !important;
+        color: #131517 !important;
+        max-width: 120px;
     }
 
 `;
@@ -29,9 +30,10 @@ const Box = styled.div`
     height: 22px;
     width: 22px;
     border-radius: 3px;
-    margin-right: 5px;
+    margin-right: 8px;
     & svg {
-        fill: ${colors.white}
+        fill: ${colors.white};
+        height: 12px;
     }
 `;
 

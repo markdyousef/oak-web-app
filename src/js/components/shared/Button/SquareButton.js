@@ -7,6 +7,8 @@ import { Default, style } from './styles';
 const Squared = styled(Default)`
     color: #131517;
     border-radius: 3px;
+    min-height: 40px;
+    min-width: 85px;
     ${props => style(props.type)};
 `;
 

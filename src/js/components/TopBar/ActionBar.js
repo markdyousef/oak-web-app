@@ -129,7 +129,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
             return(
                 <RoundButton
                     onClick={this.onNewCard}
-                    text="Create Card"
+                    text="Create a post"
                     type="secondary"
                 />
             )

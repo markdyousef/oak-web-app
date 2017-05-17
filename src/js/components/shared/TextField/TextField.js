@@ -11,9 +11,8 @@ const H5 = styled.h5`
 `;
 
 const Default = styled.textarea`
-    padding: 12px 8px;
+    padding: 12px 10px;
     width: 100%;
-    max-width: 400px;
     border-radius: 3px;
     border: 1px solid ${colors.lightGrey};
     font-size: 15px;
@@ -21,12 +20,18 @@ const Default = styled.textarea`
     outline: none;
     background-color: #fff;
     resize: none;
-    &:focus {
-
-        border-color: #67C198
-    }
+    min-height: 80px;
     &:hover {
         border-color: #B5D3C9
+    }
+    &:focus {
+        border-color: #67C198
+    }
+    &::placeholder {
+        color: #e1e1e1;
+    }
+    &:focus::placeholder {
+        color: #f2f2f2;
     }
 `;
 

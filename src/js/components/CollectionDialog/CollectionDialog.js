@@ -4,7 +4,7 @@ import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
 import { uploadImage } from '../../utils';
-import { Container, Modal, Header, Close, Main, Upload, Buttons } from './styles'
+import { Container, Modal, Header, Intro, InputWrapper, InputLabels, Close, Main, Upload, Buttons } from './styles'
 import Toast from '../shared/Toast';
 import placeholder from '../../../img/collections-placeholder.svg';
 
@@ -172,23 +172,35 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                                 style={{ display: 'none' }}
                             />
                         </Upload> */}
-                        <Input
-                            // title="NAME"
-                            value={name}
-                            onChange={value => this.setState({ name: value })}
-                            placeholder="Name your collection"
-                        />
-                        <TextField
-                            // title="DESCRIPTION"
-                            value={description}
-                            onChange={value => this.setState({ description: value })}
-                            placeholder="Add a description..."
-                        />
+                        <Intro>
+                            Collections are where your team share posts around a specific topic - like ‘Development’ or ‘Design’.
+                        </Intro>
+                        <InputWrapper>
+                            <InputLabels>
+                                Name
+                                </InputLabels>
+                            <Input
+                                value={name}
+                                onChange={value => this.setState({ name: value })}
+                                placeholder="Name your collection"
+                            />
+                        </InputWrapper>
+                        <InputWrapper>
+                            <InputLabels>
+                                Description
+                            </InputLabels>
+                            <TextField
+                                value={description}
+                                onChange={value => this.setState({ description: value })}
+                                placeholder="Add a description..."
+                            />
+                        </InputWrapper>
                     </Main>
                     <Buttons>
                         <SquareButton
                             onClick={close}
                             text="Cancel"
+                            type="white"
                         />
                         <SquareButton
                             onClick={this.onSave}
