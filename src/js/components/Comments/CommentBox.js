@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const Input = styled.div`
     border: 1px solid ${colors.lightGrey};
-    padding: 10px 12px;
+    padding: 14px 12px;
     border-radius: 3px;
     &:hover {
         border-color: #B5D3C9;

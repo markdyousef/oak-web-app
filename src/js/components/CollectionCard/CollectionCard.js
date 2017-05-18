@@ -26,6 +26,7 @@ const Name = styled.h3`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 224px;
 `;
 
 const Description = styled.p`

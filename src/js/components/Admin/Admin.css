@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #5ed892;
+    --primary-color: #34B289;
     --main-black-color: #131517;
     --light-black-color: #2d3438;
     --dark-gray-color: #737a80;
@@ -12,15 +12,75 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.container h1 {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px;
+    height: 100vh;
+    background: #34B289;
 }
 
 .teamList {
-    margin-top: 20px;
-    width: 450px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 340px;
+    right: 0;
+    bottom: 0;
+}
+
+.teamList::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.teamListInner {
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100%;
+    padding: 0px 80px;
+    box-sizing: border-box;
+    margin-top: -48px;
+}
+
+.SidePanel {
+    width: 340px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    & img {
+        height: 28px;
+        position: absolute;
+        top: 16px;
+        left: 20px;
+    }
+}
+
+.SidePanelInner {
+    height: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    padding: 0px 20px;
+    flex-direction: column;
+    text-align: left;
+    margin-top: -16px;
+    & h1 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #131517;
+        display: block;
+        padding: 0;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+    & p {
+        display: block;
+        font-size: 14px;
+        line-height: 1.4;
+    }
 }

@@ -72,6 +72,13 @@ export const InputLabels = styled.div`
     padding-bottom: 4px;
 `;
 
+export const InputName = styled.div`
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(19, 21, 23, 0.5);
+    padding-top: 6px;
+`;
+
 export const Upload = styled.div`
     height: 210px;
     border: 1px solid ${colors.lightGrey};

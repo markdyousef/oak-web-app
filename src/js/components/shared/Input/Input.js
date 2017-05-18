@@ -28,9 +28,9 @@ const valid = (notValid) => {
 };
 
 const H5 = styled.h5`
-    font-size: 14px;
+    font-size: 13px;
     font-weight: lighter;
-    color: ${colors.darkGrey};
+    color: rgba(19, 21, 23, 0.5);
     margin-bottom: 5px;
 `;
 

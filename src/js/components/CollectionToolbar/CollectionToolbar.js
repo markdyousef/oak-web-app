@@ -76,11 +76,13 @@ const LabelContainer = styled.div`
 
 const Labels = styled.div`
     display: flex;
-    margin-right: 8px;
     & div {
         border-radius: 2px;
         display: inline-block;
-        padding: 8px;
+        padding: 4px 8px;
+        margin-right: 8px;
+        line-height: 16px;
+        height: 24px;
     }
 `;
 
