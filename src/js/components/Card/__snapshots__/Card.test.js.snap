@@ -2,8 +2,6 @@ exports[`test renders correctly 1`] = `
 <div
   className="bulTMS">
   <div
-    className="lmwPmP" />
-  <div
     className="cCSmWD"
     onClick={[Function]}>
     <div
