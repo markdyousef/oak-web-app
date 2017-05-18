@@ -115,7 +115,7 @@ export const Logo = styled.div`
 
 export const ActiveMenu = styled.span`
     font-weight: bold;
-    margin-left: 8px;
+    margin-left: 16px;
     cursor: pointer;
     display: inline-block;
 `;

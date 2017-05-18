@@ -25,9 +25,10 @@ const Container = styled.div`
     }
     & p {
         font-size: 15px;
-        line-height: 24px;
+        line-height: 1.4;
         text-align: center;
-        margin: 20px 0;
+        padding: 20px 0;
+        color: rgba(19, 21, 23, 0.5);
     }
 `;
 
@@ -40,6 +41,7 @@ const Empty = ({ onClick }:Object) => {
             <SquareButton
                 text="Create Collection"
                 onClick={onClick}
+                type="whiteLarge"
             />
         </Container>
     );

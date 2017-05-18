@@ -26,6 +26,7 @@ const Name = styled.h3`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 224px;
 `;
 
 const Description = styled.p`
@@ -34,9 +35,11 @@ const Description = styled.p`
     font-weight: 300;
     line-height: 1.54em;
     text-align: center;
-    ${''/* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; */}
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 3.2em;
 `;
 
 const CollectionCard = ({ name, description, picture }:Object) => {

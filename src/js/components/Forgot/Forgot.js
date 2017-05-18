@@ -74,9 +74,8 @@ export default class Login extends Component<DefaultProps, Props, State> {
                     </div>
                 </Box>
                 <ChangePage>
-                    <p>Remember your password? <Link to="/login">Sign in!</Link></p>
+                    <p>Did you remember your old password? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
-                <Footer />
             </Container>
         );
     }

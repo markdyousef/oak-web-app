@@ -28,10 +28,10 @@ const Default = styled.textarea`
         border-color: #67C198
     }
     &::placeholder {
-        color: #e1e1e1;
+        color: #b5b7b9;
     }
     &:focus::placeholder {
-        color: #f2f2f2;
+        color: #e1e1e1;
     }
 `;
 

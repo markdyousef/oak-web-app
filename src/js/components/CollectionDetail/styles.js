@@ -15,7 +15,6 @@ export const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 60px;
 `;
 
 export const HeaderContent = styled.section`
@@ -56,13 +55,13 @@ export const Stats = styled.div`
     & div {
         display: inline-block;
         margin-right: 20px;
-        min-width: 50px;
     }
     & h3 {
         font-size: 18px;
         font-weight: bold;
-        padding-bottom: 8px;
+        padding-bottom: 4px;
         display: block;
+        line-height: initial;
     }
     & h5 {
         font-size: 12px;
@@ -76,9 +75,6 @@ export const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    & button {
-        margin-top: 5px;
-    }
 `;
 
 export const masonStyles = {
@@ -93,26 +89,71 @@ export const Grid = styled.section`
     }
 `;
 
-export const Loading = styled.div`
-    background-color: #f2f2f2;
-    height: 12px;
-    width: 100%;
-    border-radius: 3px;
-`;
-
 export const DropdownContainer = styled.div`
     position: relative;
 `;
 
 export const Dropdown = styled.div`
-    top: 10px;
-    width: 160px;
+    top: 12px;
+    width: 180px;
     position: absolute;
     z-index: 99999;
-    font-size: 14px;
+    font-size: 15px;
+    & div {
+        right: 80px !important;
+    }
 `;
 
 export const MenuItem = styled.div`
     margin-top: 10px;
     cursor: pointer;
+    &:first-child {
+        margin-top: 0;
+    }
+`;
+
+
+/* LOADING STATE */
+
+export const Loading = styled.div`
+    display: inline-block;
+`;
+
+export const LoadingMedium = styled.div`
+    width: 150px;
+    height: 15px;
+    background-color: #f2f2f2;
+    border-radius: 99em;
+`;
+
+export const LoadingLonger = styled.div`
+    width: 420px;
+    display: block;
+    height: 12px;
+    background-color: #f2f2f2;
+    border-radius: 99em;
+    margin-bottom: 8px;
+`;
+
+export const LoadingLong = styled.div`
+    width: 350px;
+    display: block;
+    margin-top: 8px;
+    height: 12px;
+    background-color: #f2f2f2;
+    border-radius: 99em;
+`;
+
+export const LoadingShorter = styled.div`
+    width: 24px;
+    height: 10px;
+    background-color: #f2f2f2;
+    border-radius: 99em;
+`;
+
+export const LoadingShort = styled.div`
+    width: 48px;
+    height: 10px;
+    background-color: #f2f2f2;
+    border-radius: 99em;
 `;

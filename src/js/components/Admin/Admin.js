@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import CreateTeam from './CreateTeam';
 import Team from './Team';
+import logo from '../../../img/cuest-logo.svg';
 import { selectTeam } from '../../utils';
 
 import css from './Admin.css';
@@ -65,14 +66,26 @@ class Admin extends Component {
         const { teamName } = this.state;
         return (
             <div className={css.container}>
+            <div className={css.SidePanel}>
+                <img src={logo} alt="presentation" />
+                <div className={css.SidePanelInner}>
+                    <h1>
+                        Hi there! Welcome to Cuest.
+                    </h1>
+                    <p>
+                        We've created a team for you, so all you need to do is Sign in.
+                    </p>
+                </div>
+            </div>
                 <CreateTeam
                     onChange={value => this.setState({ teamName: value })}
                     onSubmit={this.createTeam}
                     teamName={teamName}
                 />
                 <div className={css.teamList}>
-                    <h1>Select a team:</h1>
-                    {this.renderTeams()}
+                    <div className={css.teamListInner}>
+                        {this.renderTeams()}
+                    </div>
                 </div>
             </div>
         );

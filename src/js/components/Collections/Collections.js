@@ -21,7 +21,6 @@ const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 60px;
 `;
 
 const HeaderContent = styled.section`
@@ -47,7 +46,7 @@ const Info = styled.div`
     }
     & p {
         font-size: 18px;
-        font-weight: 300;
+        font-weight: normal;
         padding-bottom: 24px;
         display: block;
         line-height: 1.48;
@@ -146,7 +145,7 @@ class Collections extends Component {
                     <HeaderContent>
                         <Info>
                             <h1>Collections</h1>
-                            <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
+                            <p>Here’s a quick overview of all your team’s collections.</p>
                             <Stats>
                                 <div>
                                     <h3>{data.groves && data.groves.length}</h3>
@@ -158,7 +157,7 @@ class Collections extends Component {
                             <SquareButton
                                 onClick={() => this.setState({ showAdd: true })}
                                 text="+ Add collection"
-                                type="primary"
+                                type="primaryLarge"
                                 />
                                 {showAdd &&
                             <CollectionDialog

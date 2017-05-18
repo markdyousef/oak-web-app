@@ -9,6 +9,8 @@ const Rounded = styled(Default)`
     font-weight: normal;
     padding: 8px 16px;
     margin-right: 8px;
+    min-width: 100px;
+    min-height: 35px;
     ${props => style(props.type)};
 `;
 

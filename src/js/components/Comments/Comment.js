@@ -7,27 +7,29 @@ import colors from '../../styles/colors';
 
 const Container = styled.div`
     width: 100%;
-    min-height: 60px;
     display: flex;
     flex-wrap: wrap;
+    padding: 8px 20px;
+    &:hover {
+        background: #F9F9F9;
+    }
 `;
 
 const Profile = styled.img`
     width: 35px;
     height: 35px;
     border-radius: 999em;
-    margin-right: 10px;
+    margin-right: 8px;
 `;
 
 const MessageContainer = styled.div`
-    min-width: 100px;
-    width: 80%;
+    width: calc(100% - 43px);
     & span {
         font-size: 15px;
         color: ${colors.black};
-        line-height: 1.45;
-        font-weight: 300;
-        padding-top: 8px;
+        line-height: 1.25;
+        font-weight: normal;
+        margin-left: -0.5px;
     }
 `;
 
@@ -36,7 +38,7 @@ const Header = styled.div`
     flex-wrap: wrap;
     align-items: baseline;
     & h3 {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: bold;
         color: #131517;
         margin-right: 5px;
@@ -79,7 +81,7 @@ export default ({ createdAt, text, creator }: Props) => {
             <MessageContainer>
                 <Header>
                     <h3>{name}</h3>
-                    <a>{username}</a>
+                { /* <a>{username}</a> */ }
                     <h5>{moment(createdAt).fromNow()}</h5>
                 </Header>
                 <Editor

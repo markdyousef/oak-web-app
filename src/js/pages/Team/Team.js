@@ -30,7 +30,8 @@ const MainInner = styled.div`
     display: block;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100vh;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
 `;
 
 export default ({ children, router }:Object) => (

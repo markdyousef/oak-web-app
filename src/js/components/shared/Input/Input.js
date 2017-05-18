@@ -13,24 +13,24 @@ const valid = (notValid) => {
     return `
     background-color: #fff;
     &:hover {
-        border-color: #B5D3C9
+        border-color: #B5D3C9;
     }
     &:focus {
-        border-color: #34b289
+        border-color: #34b289;
     }
     &::placeholder {
-        color: #e1e1e1;
+        color: #b5b7b9;
     }
     &:focus::placeholder {
-        color: #f2f2f2;
+        color: #e1e1e1;
     }
     `;
 };
 
 const H5 = styled.h5`
-    font-size: 14px;
+    font-size: 13px;
     font-weight: lighter;
-    color: ${colors.darkGrey};
+    color: rgba(19, 21, 23, 0.5);
     margin-bottom: 5px;
 `;
 
