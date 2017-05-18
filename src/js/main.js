@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import { requireAuth, requireTeam } from './utils';
 import initStore from './store/configureStore';
@@ -22,7 +22,7 @@ import User from './pages/User';
 import Admin from './containers/AdminContainer';
 import Team from './pages/Team';
 import Forgot from './containers/ForgotContainer';
-import Reset from './containers/ResetPasswordContainer';
+import ResetPassword from './containers/ResetPasswordContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -34,13 +34,13 @@ const store = initStore();
 
 const routes = (
     <ApolloProvider store={store} client={client}>
-        <Router history={hashHistory}>
+        <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
                     <Route path="signup" component={SignUp} />
                     <Route path="forgot" component={Forgot} />
-                    <Route path="reset" component={Reset} />
+                    <Route path="reset" component={ResetPassword} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>
