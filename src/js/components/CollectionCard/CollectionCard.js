@@ -15,6 +15,12 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
+    &:hover {
+        background: #fafafa;
+    }
+    &:active {
+        background: #f7f7f7;
+    }
 `;
 
 const Name = styled.h3`
