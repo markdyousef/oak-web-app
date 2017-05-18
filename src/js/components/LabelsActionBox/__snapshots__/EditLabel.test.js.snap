@@ -18,11 +18,11 @@ exports[`test renders correctly 1`] = `
     className="fsuQGr">
     <div>
       <h5
-        className="eKaiQM">
+        className="jIUOlj">
         NAME
       </h5>
       <input
-        className="llFZIf"
+        className="fhluRP"
         onChange={[Function]}
         onKeyDown={null}
         placeholder="Label name"
@@ -39,7 +39,7 @@ exports[`test renders correctly 1`] = `
       className="iuHIwX" />
   </section>
   <section
-    className="ibSfum">
+    className="koQQzt">
     <button
       className="iHaZMM"
       onClick={[Function]}>

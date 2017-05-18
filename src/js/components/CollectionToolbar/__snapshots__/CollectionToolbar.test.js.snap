@@ -22,6 +22,7 @@ ShallowWrapper {
             <span>
                 Filter:
             </span>
+            <label />
         </styled.div>
     </div>
     <styled.div />
@@ -43,6 +44,7 @@ ShallowWrapper {
                   <span>
                         Filter:
                   </span>
+                  <label />
             </styled.div>
       </div>
       <styled.div />
@@ -104,6 +106,7 @@ ShallowWrapper {
                               <span>
                                         Filter:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <styled.div />
@@ -125,6 +128,7 @@ ShallowWrapper {
                               <span>
                                         Filter:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <styled.div />

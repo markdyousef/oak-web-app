@@ -28,14 +28,18 @@ exports[`test renders correctly 1`] = `
         </div>
         <div>
           <h5
-            className="eKaiQM" />
+            className="jIUOlj" />
           <input
-            className="llFZIf"
+            className="fhluRP"
             onChange={[Function]}
             onKeyDown={null}
             placeholder="Name your collection"
             type="text"
             value="" />
+        </div>
+        <div
+          className="eIvltX">
+          Name your collection based on it\'s topic.
         </div>
       </div>
       <div
@@ -50,10 +54,14 @@ exports[`test renders correctly 1`] = `
             
           </h5>
           <textarea
-            className="dPYJsF"
+            className="fEVuwM"
             onChange={[Function]}
             placeholder="Add a description..."
             value="" />
+        </div>
+        <div
+          className="eIvltX">
+          Describe the purpose of this collection.
         </div>
       </div>
     </div>

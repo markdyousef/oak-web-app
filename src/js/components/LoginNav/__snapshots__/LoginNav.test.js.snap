@@ -2,14 +2,11 @@ exports[`test renders correctly 1`] = `
 <nav
   className="bBJzMy">
   <div
-    className="kgftmh">
+    className="dzbLtC">
     <a
       className="jmaJYZ"
       onClick={[Function]}
       style={Object {}}>
-      <img
-        alt="presentation"
-        src="test-file-stub" />
       <img
         alt="presentation"
         src="test-file-stub" />

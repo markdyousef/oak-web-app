@@ -11,18 +11,27 @@ ShallowWrapper {
         <styled.section>
             <styled.div>
                 <h1>
-                    <styled.div />
+                    <styled.div>
+                        <styled.div />
+                    </styled.div>
                 </h1>
                 <h3>
-                    <styled.div />
+                    <styled.div>
+                        <styled.div />
+                        <styled.div />
+                    </styled.div>
                 </h3>
                 <styled.div>
                     <div>
                         <h3>
-                            <styled.div />
+                            <styled.div>
+                                <styled.div />
+                            </styled.div>
                         </h3>
                         <h5>
-                            <styled.div />
+                            <styled.div>
+                                <styled.div />
+                            </styled.div>
                         </h5>
                     </div>
                 </styled.div>
@@ -30,7 +39,8 @@ ShallowWrapper {
             <styled.div>
                 <Unknown
                     onClick={[Function]}
-                    text="Edit Collection" />
+                    text="Edit Collection"
+                    type="whiteLarge" />
             </styled.div>
         </styled.section>
     </styled.section>
@@ -55,18 +65,27 @@ ShallowWrapper {
             <styled.section>
                   <styled.div>
                         <h1>
-                              <styled.div />
+                              <styled.div>
+                                    <styled.div />
+                              </styled.div>
                         </h1>
                         <h3>
-                              <styled.div />
+                              <styled.div>
+                                    <styled.div />
+                                    <styled.div />
+                              </styled.div>
                         </h3>
                         <styled.div>
                               <div>
                                     <h3>
-                                          <styled.div />
+                                          <styled.div>
+                                                <styled.div />
+                                          </styled.div>
                                     </h3>
                                     <h5>
-                                          <styled.div />
+                                          <styled.div>
+                                                <styled.div />
+                                          </styled.div>
                                     </h5>
                               </div>
                         </styled.div>
@@ -74,7 +93,8 @@ ShallowWrapper {
                   <styled.div>
                         <Unknown
                               onClick={[Function]}
-                              text="Edit Collection" />
+                              text="Edit Collection"
+                              type="whiteLarge" />
                   </styled.div>
             </styled.section>
       </styled.section>
@@ -168,18 +188,27 @@ ShallowWrapper {
                     <styled.section>
                               <styled.div>
                                         <h1>
-                                                  <styled.div />
+                                                  <styled.div>
+                                                            <styled.div />
+                                                  </styled.div>
                                         </h1>
                                         <h3>
-                                                  <styled.div />
+                                                  <styled.div>
+                                                            <styled.div />
+                                                            <styled.div />
+                                                  </styled.div>
                                         </h3>
                                         <styled.div>
                                                   <div>
                                                             <h3>
-                                                                      <styled.div />
+                                                                      <styled.div>
+                                                                                <styled.div />
+                                                                      </styled.div>
                                                             </h3>
                                                             <h5>
-                                                                      <styled.div />
+                                                                      <styled.div>
+                                                                                <styled.div />
+                                                                      </styled.div>
                                                             </h5>
                                                   </div>
                                         </styled.div>
@@ -187,7 +216,8 @@ ShallowWrapper {
                               <styled.div>
                                         <Unknown
                                                   onClick={[Function]}
-                                                  text="Edit Collection" />
+                                                  text="Edit Collection"
+                                                  type="whiteLarge" />
                               </styled.div>
                     </styled.section>
           </styled.section>
@@ -212,18 +242,27 @@ ShallowWrapper {
                     <styled.section>
                               <styled.div>
                                         <h1>
-                                                  <styled.div />
+                                                  <styled.div>
+                                                            <styled.div />
+                                                  </styled.div>
                                         </h1>
                                         <h3>
-                                                  <styled.div />
+                                                  <styled.div>
+                                                            <styled.div />
+                                                            <styled.div />
+                                                  </styled.div>
                                         </h3>
                                         <styled.div>
                                                   <div>
                                                             <h3>
-                                                                      <styled.div />
+                                                                      <styled.div>
+                                                                                <styled.div />
+                                                                      </styled.div>
                                                             </h3>
                                                             <h5>
-                                                                      <styled.div />
+                                                                      <styled.div>
+                                                                                <styled.div />
+                                                                      </styled.div>
                                                             </h5>
                                                   </div>
                                         </styled.div>
@@ -231,7 +270,8 @@ ShallowWrapper {
                               <styled.div>
                                         <Unknown
                                                   onClick={[Function]}
-                                                  text="Edit Collection" />
+                                                  text="Edit Collection"
+                                                  type="whiteLarge" />
                               </styled.div>
                     </styled.section>
           </styled.section>

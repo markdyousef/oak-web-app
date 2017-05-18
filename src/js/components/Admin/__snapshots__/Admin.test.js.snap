@@ -8,34 +8,64 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={undefined}>
+    <div
+        className={undefined}>
+        <img
+            alt="presentation"
+            src="test-file-stub" />
+        <div
+            className={undefined}>
+            <h1>
+                Hi there! Welcome to Cuest.
+            </h1>
+            <p>
+                We\'ve created a team for you, so all you need to do is Sign in.
+            </p>
+        </div>
+    </div>
     <CreateTeam
         onChange={[Function]}
         onSubmit={[Function]}
         teamName="" />
     <div
         className={undefined}>
-        <h1>
-            Select a team:
-        </h1>
-        <div>
-            You don\'t have any teams yet
+        <div
+            className={undefined}>
+            <div>
+                You don\'t have any teams yet
+            </div>
         </div>
     </div>
 </div>,
   "nodes": Array [
     <div
       className={undefined}>
+      <div
+            className={undefined}>
+            <img
+                  alt="presentation"
+                  src="test-file-stub" />
+            <div
+                  className={undefined}>
+                  <h1>
+                        Hi there! Welcome to Cuest.
+                  </h1>
+                  <p>
+                        We\'ve created a team for you, so all you need to do is Sign in.
+                  </p>
+            </div>
+      </div>
       <CreateTeam
             onChange={[Function]}
             onSubmit={[Function]}
             teamName="" />
       <div
             className={undefined}>
-            <h1>
-                  Select a team:
-            </h1>
-            <div>
-                  You don\'t have any teams yet
+            <div
+                  className={undefined}>
+                  <div>
+                        You don\'t have any teams yet
+                  </div>
             </div>
       </div>
 </div>,
@@ -91,34 +121,64 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={undefined}>
+          <div
+                    className={undefined}>
+                    <img
+                              alt="presentation"
+                              src="test-file-stub" />
+                    <div
+                              className={undefined}>
+                              <h1>
+                                        Hi there! Welcome to Cuest.
+                              </h1>
+                              <p>
+                                        We\'ve created a team for you, so all you need to do is Sign in.
+                              </p>
+                    </div>
+          </div>
           <CreateTeam
                     onChange={[Function]}
                     onSubmit={[Function]}
                     teamName="" />
           <div
                     className={undefined}>
-                    <h1>
-                              Select a team:
-                    </h1>
-                    <div>
-                              You don\'t have any teams yet
+                    <div
+                              className={undefined}>
+                              <div>
+                                        You don\'t have any teams yet
+                              </div>
                     </div>
           </div>
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={undefined}>
+          <div
+                    className={undefined}>
+                    <img
+                              alt="presentation"
+                              src="test-file-stub" />
+                    <div
+                              className={undefined}>
+                              <h1>
+                                        Hi there! Welcome to Cuest.
+                              </h1>
+                              <p>
+                                        We\'ve created a team for you, so all you need to do is Sign in.
+                              </p>
+                    </div>
+          </div>
           <CreateTeam
                     onChange={[Function]}
                     onSubmit={[Function]}
                     teamName="" />
           <div
                     className={undefined}>
-                    <h1>
-                              Select a team:
-                    </h1>
-                    <div>
-                              You don\'t have any teams yet
+                    <div
+                              className={undefined}>
+                              <div>
+                                        You don\'t have any teams yet
+                              </div>
                     </div>
           </div>
 </div>,

@@ -9,11 +9,11 @@ exports[`test renders correctly 1`] = `
     <div>
       <div>
         <h5
-          className="eKaiQM">
+          className="jIUOlj">
           EMAIL
         </h5>
         <input
-          className="llFZIf"
+          className="fhluRP"
           onChange={[Function]}
           onKeyDown={[Function]}
           placeholder="Email"
@@ -23,7 +23,7 @@ exports[`test renders correctly 1`] = `
     </div>
     <div>
       <button
-        className="exnCOy"
+        className="leFGPx"
         onClick={[Function]}>
         Reset password
         <svg
@@ -40,9 +40,9 @@ exports[`test renders correctly 1`] = `
     <div />
   </div>
   <div
-    className="iJtnyx">
+    className="lbNTMF">
     <p>
-      Remember your password? 
+      Did you remember your old password? 
       <a
         onClick={[Function]}
         style={Object {}}>
@@ -50,7 +50,5 @@ exports[`test renders correctly 1`] = `
       </a>
     </p>
   </div>
-  <section
-    className="fYstbg" />
 </section>
 `;
