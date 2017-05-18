@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
-const Container = styled.div `
+const Container = styled.div`
     height: 100%;
     display: flex;
     align-items: baseline;
@@ -13,6 +13,7 @@ const Container = styled.div `
     flex-direction: column;
     text-align: left;
     width: 100%;
+    cursor: pointer;
     & div {
         width: 100%;
         border-bottom: 1px solid #fff;
@@ -29,30 +30,11 @@ const Container = styled.div `
     }
 `;
 
-const Submit = styled.button `
-    position: absolute;
-    bottom: 80px;
-    right: 80px;
-    background: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    color: #34B289;
-    border-radius: 3px;
-    z-index: 9999;
-    display: block;
-    border: none;
-    padding: 16px 32px;
-    cursor: pointer;
-    &:active {
-        opacity: 0.8;
-    }
-`;
-
 
 const Team = ({ team, onSelect }:Object) => {
     return (
         <div>
-            <Container>
+            <Container onClick={onSelect}>
                 <div>
                 {team.name}
                 </div>
@@ -60,9 +42,6 @@ const Team = ({ team, onSelect }:Object) => {
                     Team name
                 </p>
             </Container>
-            <Submit onClick={onSelect}>
-                <span>Sign in to {team.name}</span>
-            </Submit>
         </div>
     );
 };
