@@ -122,10 +122,19 @@ class Collections extends Component {
             return (
                 <Grid>
                     {data.groves.map((grove) => {
-                        // const coverImg = (grove.cover && grove.cover.urlThumb512) && grove.cover.urlThumb512;
+                        const {
+                            creator: { gravatar, avatar },
+                            id,
+                            description,
+                            name
+                        } = grove;
+                        let picture;
+                        // prefer avatar over gravatar
+                        if (gravatar) picture = gravatar;
+                        if (avatar) picture = avatar.urlThumb64;
                         return (
-                            <Link to={`/collection/${grove.id}`} key={grove.id}>
-                                <CollectionCard name={grove.name} description={grove.description} />
+                            <Link to={`/collection/${id}`} key={id}>
+                                <CollectionCard name={name} description={description} picture={picture} />
                             </Link>
                         );
                     }

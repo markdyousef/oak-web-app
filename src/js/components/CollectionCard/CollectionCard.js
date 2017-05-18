@@ -14,6 +14,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 `;
 
 const Name = styled.h3`
@@ -42,11 +43,22 @@ const Description = styled.p`
     max-height: 3.2em;
 `;
 
+const Creator = styled.img`
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    height: 24px;
+    width: 24px;
+    border-radius: 99em;
+`;
+
 const CollectionCard = ({ name, description, picture }:Object) => {
+    console.log(picture);
     return (
         <Container>
             <Name>{name}</Name>
             <Description>{description}</Description>
+            {picture && <Creator src={picture} alt="creator" />}
         </Container>
     );
 };

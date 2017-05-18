@@ -8,12 +8,16 @@ const getCollections = gql`
     query groves($teamId: ID!) {
         groves(teamId: $teamId) {
             id
-            name,
-            description,
-            # cover {
-            #     id
-            #     urlThumb512
-            # }
+            name
+            description
+            creator {
+                id
+                avatar {
+                    id
+                    urlThumb64
+                }
+                gravatar
+            }
         }
     }
 `;
