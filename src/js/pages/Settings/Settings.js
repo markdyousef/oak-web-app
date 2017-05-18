@@ -10,8 +10,7 @@ const Container = styled.div`
     padding: 20px 0;
     background-color: #fff;
     height: 100vh;
-    margin-top: 60px;
-    padding-top: 80px;
+    padding-top: 60px;
 `;
 
 const Content = styled.div`

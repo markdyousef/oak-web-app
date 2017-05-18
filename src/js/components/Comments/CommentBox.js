@@ -13,8 +13,20 @@ const Container = styled.div`
 
 const Input = styled.div`
     border: 1px solid ${colors.lightGrey};
-    padding: 9px 12px;
+    padding: 10px 12px;
     border-radius: 3px;
+    &:hover {
+        border-color: #B5D3C9;
+    }
+    &:focus {
+        border-color: #34b289;
+    }
+    &::placeholder {
+        color: #b5b7b9;
+    }
+    &:focus::placeholder {
+        color: #e1e1e1;
+    }
 `;
 
 type DefaultProps = {}
@@ -67,6 +79,7 @@ export default class CommentBox extends Component<DefaultProps, Props, State> {
                         ref={(element) => { this.editor = element; }}
                         handleKeyCommand={this.handleKeyCommand}
                         keyBindingFn={this.keyBinding}
+                        placeholder="Write a comment..."
                     />
                 </Input>
             </Container>

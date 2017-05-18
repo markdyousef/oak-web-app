@@ -268,7 +268,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                         <SquareButton
                             onClick={() => this.setState({ showEdit: !showEdit })}
                             text="Edit Collection"
-                            type="white"
+                            type="whiteLarge"
                         />
                         {this.showDialog()}
                         {this.showEdit()}

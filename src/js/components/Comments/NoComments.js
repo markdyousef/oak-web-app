@@ -1,19 +1,22 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import empty from '../../../img/comments-empty-state.svg';
+import empty from '../../../img/no-comments.svg';
 
 const Container = styled.div`
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     margin: auto;
-    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
+    height: 100%;
+    padding-top: 48px;
     & img {
-        width: 60%;
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
     }
     & h2 {
         font-size: 20px;
@@ -24,18 +27,18 @@ const Container = styled.div`
     }
     & p {
         font-size: 15px;
-        line-height: 24px;
+        line-height: 1.4;
         text-align: center;
-        margin: 20px 0;
+        padding: 24px 0;
+        color: rgba(19, 21, 23, 0.5);
     }
 `;
 
 const Empty = () => {
     return (
         <Container>
-            <h2>Comments</h2>
             <img src={empty} alt="empty state" />
-            <p>None of your teammates has commented on this card yet. Be the first! </p>
+            <p>Be the first to write a comment<br /> to this post.</p>
         </Container>
     );
 };

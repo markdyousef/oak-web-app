@@ -76,9 +76,17 @@ const LabelContainer = styled.div`
 
 const Labels = styled.div`
     display: flex;
+    margin-right: 8px;
     & div {
-        margin-right: 4px;
+        border-radius: 2px;
+        display: inline-block;
+        padding: 8px;
     }
+`;
+
+const LabelName = styled.div`
+    font-size: 14px;
+    color: #131517;
 `;
 
 
@@ -181,7 +189,7 @@ export default class Toolbar extends Component {
                     {showSort &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showSort: false })}
                             >
                                 {this.renderSortItems()}
@@ -199,7 +207,7 @@ export default class Toolbar extends Component {
                     {showFilter &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showFilter: false })}
                             >
                                 {this.renderFilterItems()}

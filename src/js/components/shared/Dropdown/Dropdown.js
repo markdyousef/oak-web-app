@@ -49,6 +49,9 @@ export default withLayer(({ children, arrowPos }: Props) => {
     case 'left':
         style = { left: '24px' };
         break;
+    case 'moreleft':
+        style = { left: '48px' };
+        break;
     case 'none':
         style = { display: 'none' };
         break;

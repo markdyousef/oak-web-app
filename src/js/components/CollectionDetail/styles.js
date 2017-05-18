@@ -15,7 +15,6 @@ export const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 60px;
 `;
 
 export const HeaderContent = styled.section`
@@ -76,9 +75,6 @@ export const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    & button {
-        margin-top: 5px;
-    }
 `;
 
 export const masonStyles = {
@@ -98,16 +94,22 @@ export const DropdownContainer = styled.div`
 `;
 
 export const Dropdown = styled.div`
-    top: 10px;
-    width: 160px;
+    top: 12px;
+    width: 180px;
     position: absolute;
     z-index: 99999;
-    font-size: 14px;
+    font-size: 15px;
+    & div {
+        right: 80px !important;
+    }
 `;
 
 export const MenuItem = styled.div`
     margin-top: 10px;
     cursor: pointer;
+    &:first-child {
+        margin-top: 0;
+    }
 `;
 
 

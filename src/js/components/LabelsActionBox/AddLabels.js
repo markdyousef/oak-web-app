@@ -23,10 +23,11 @@ const LabelsSection = styled(Section)`
 `;
 
 const NoLabels = styled.div`
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
-    padding: 8px 0 24px;
+    padding: 16px 0 24px;
     font-weight: normal;
+    line-height: 1.4;
     color: rgba(19, 21, 23, 0.5);
 `;
 
@@ -43,6 +44,7 @@ const ActionSection = styled.section`
     margin-right: -20px;
     margin-left: -20px;
     padding-right: 20px;
+    font-weight: normal;
 `;
 
 const Button = styled.button`
