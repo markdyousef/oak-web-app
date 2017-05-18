@@ -51,6 +51,12 @@ export const LabelWrapper = styled.div`
     display: inline-block;
     border-radius: 3px;
     margin-right: 8px;
+    margin-bottom: 4px;
+    & span {
+        color: rgba(19, 21, 23, 0.8);
+        font-size: 14px;
+
+    }
 `;
 
 export const Labels = styled.div`
@@ -65,6 +71,7 @@ export const Label = styled.div`
     border-radius: 3px;
     line-height: 1.54;
     margin-right: 4px;
+    display: inline-block;
 `;
 
 export const Main = styled.div`
