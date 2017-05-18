@@ -67,9 +67,9 @@ const CommentsContainer = styled.div`
 `;
 
 const Comments = styled.div`
-    height: 100%;
+    min-height: calc(100vh - 196px);
     width: 100%;
-    display: block;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
 `;
