@@ -9,6 +9,12 @@ ShallowWrapper {
   "node": <styled.section>
     <styled.div>
         <styled.div>
+            Comments
+            <span>
+                ×
+            </span>
+        </styled.div>
+        <styled.div>
             <styled.div>
                 <Empty />
             </styled.div>
@@ -30,6 +36,12 @@ ShallowWrapper {
   "nodes": Array [
     <styled.section>
       <styled.div>
+            <styled.div>
+                  Comments
+                  <span>
+                        ×
+                  </span>
+            </styled.div>
             <styled.div>
                   <styled.div>
                         <Empty />
@@ -97,6 +109,12 @@ ShallowWrapper {
         "_currentElement": <styled.section>
           <styled.div>
                     <styled.div>
+                              Comments
+                              <span>
+                                        ×
+                              </span>
+                    </styled.div>
+                    <styled.div>
                               <styled.div>
                                         <Empty />
                               </styled.div>
@@ -118,6 +136,12 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <styled.section>
           <styled.div>
+                    <styled.div>
+                              Comments
+                              <span>
+                                        ×
+                              </span>
+                    </styled.div>
                     <styled.div>
                               <styled.div>
                                         <Empty />

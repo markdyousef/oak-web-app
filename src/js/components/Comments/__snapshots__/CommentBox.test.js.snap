@@ -147,6 +147,7 @@ ShallowWrapper {
             handleKeyCommand={[Function]}
             keyBindingFn={[Function]}
             onChange={[Function]}
+            placeholder="Write a comment..."
             readOnly={false}
             spellCheck={false}
             stripPastedStyles={false} />
@@ -294,6 +295,7 @@ ShallowWrapper {
                   handleKeyCommand={[Function]}
                   keyBindingFn={[Function]}
                   onChange={[Function]}
+                  placeholder="Write a comment..."
                   readOnly={false}
                   spellCheck={false}
                   stripPastedStyles={false} />
@@ -564,6 +566,7 @@ ShallowWrapper {
                               handleKeyCommand={[Function]}
                               keyBindingFn={[Function]}
                               onChange={[Function]}
+                              placeholder="Write a comment..."
                               readOnly={false}
                               spellCheck={false}
                               stripPastedStyles={false} />
@@ -711,6 +714,7 @@ ShallowWrapper {
                               handleKeyCommand={[Function]}
                               keyBindingFn={[Function]}
                               onChange={[Function]}
+                              placeholder="Write a comment..."
                               readOnly={false}
                               spellCheck={false}
                               stripPastedStyles={false} />

@@ -144,13 +144,13 @@ export default class Card extends Component<DefaultProps, Props, State> {
             </div>
         );
     }
-    renderHeader = () => {
-        const { creator: { name, username } } = this.props;
-        return (
-            <Header>
-            </Header>
-        );
-    }
+    // renderHeader = () => {
+    //     const { creator: { name, username } } = this.props;
+    //     return (
+    //         <Header>
+    //         </Header>
+    //     );
+    // }
     renderContent = () => {
         const { updatedAt, content, onShow, cover, labels } = this.props;
         let coverImg;
@@ -164,11 +164,11 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         {labels && labels.map((label, index) => {
                             const right = 16 + (index * 12);
                             return (
-                            <LabelWrapper>
+                            <LabelWrapper key={label.id}>
                                 <Label
-                                    key={label.id}
                                     style={{ background: label.color, right }}
                                 />
+                                <span>{label.name}</span>
                             </LabelWrapper>
                             );
                         }).reverse()}
@@ -187,7 +187,6 @@ export default class Card extends Component<DefaultProps, Props, State> {
         // prefer avatar over gravatar
         if (gravatar) picture = gravatar;
         if (avatar) picture = avatar.urlThumb64;
-        console.log(picture)
         return (
             <Bottom>
                 <div>
@@ -226,7 +225,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
     render() {
         return (
             <Container>
-                {this.renderHeader()}
+                {/* {this.renderHeader()} */}
                 {this.renderContent()}
                 {this.renderBottom()}
             </Container>

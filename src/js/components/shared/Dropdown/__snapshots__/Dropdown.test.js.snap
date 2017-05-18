@@ -4,10 +4,10 @@ exports[`test renders Dropdown 1`] = `
     className="hqCZJo"
     style={
       Object {
-        "right": "25px",
+        "right": "16px",
       }
     } />
   <div
-    className="cXHdwA" />
+    className="bpNjrJ" />
 </div>
 `;

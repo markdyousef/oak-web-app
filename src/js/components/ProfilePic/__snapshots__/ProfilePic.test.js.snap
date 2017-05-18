@@ -13,12 +13,13 @@ ShallowWrapper {
             src={null} />
     </styled.div>
     <styled.div>
-        <p>
-            Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
-        </p>
+        <label>
+            Clear frontal face pictures is an important way for teammates to identify each other.
+        </label>
         <Unknown
             onClick={[Function]}
-            text="Upload a file" />
+            text="Upload a file"
+            type="white" />
         <input
             accept="image/*"
             onChange={[Function]}
@@ -38,12 +39,13 @@ ShallowWrapper {
                   src={null} />
       </styled.div>
       <styled.div>
-            <p>
-                  Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
-            </p>
+            <label>
+                  Clear frontal face pictures is an important way for teammates to identify each other.
+            </label>
             <Unknown
                   onClick={[Function]}
-                  text="Upload a file" />
+                  text="Upload a file"
+                  type="white" />
             <input
                   accept="image/*"
                   onChange={[Function]}
@@ -106,12 +108,13 @@ ShallowWrapper {
                               src={null} />
           </styled.div>
           <styled.div>
-                    <p>
-                              Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
-                    </p>
+                    <label>
+                              Clear frontal face pictures is an important way for teammates to identify each other.
+                    </label>
                     <Unknown
                               onClick={[Function]}
-                              text="Upload a file" />
+                              text="Upload a file"
+                              type="white" />
                     <input
                               accept="image/*"
                               onChange={[Function]}
@@ -131,12 +134,13 @@ ShallowWrapper {
                               src={null} />
           </styled.div>
           <styled.div>
-                    <p>
-                              Upload a clear frontal face picture of yourself to give your teammates a more clear identification of you.
-                    </p>
+                    <label>
+                              Clear frontal face pictures is an important way for teammates to identify each other.
+                    </label>
                     <Unknown
                               onClick={[Function]}
-                              text="Upload a file" />
+                              text="Upload a file"
+                              type="white" />
                     <input
                               accept="image/*"
                               onChange={[Function]}

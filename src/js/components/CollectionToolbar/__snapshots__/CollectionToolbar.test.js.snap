@@ -11,16 +11,18 @@ ShallowWrapper {
         <styled.div
             onClick={[Function]}>
             <span>
-                Sort by
+                Sort by:
             </span>
+            <label />
         </styled.div>
     </div>
     <div>
         <styled.div
             onClick={[Function]}>
             <span>
-                Filter by
+                Filter:
             </span>
+            <label />
         </styled.div>
     </div>
     <styled.div />
@@ -31,16 +33,18 @@ ShallowWrapper {
             <styled.div
                   onClick={[Function]}>
                   <span>
-                        Sort by
+                        Sort by:
                   </span>
+                  <label />
             </styled.div>
       </div>
       <div>
             <styled.div
                   onClick={[Function]}>
                   <span>
-                        Filter by
+                        Filter:
                   </span>
+                  <label />
             </styled.div>
       </div>
       <styled.div />
@@ -91,16 +95,18 @@ ShallowWrapper {
                     <styled.div
                               onClick={[Function]}>
                               <span>
-                                        Sort by
+                                        Sort by:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <div>
                     <styled.div
                               onClick={[Function]}>
                               <span>
-                                        Filter by
+                                        Filter:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <styled.div />
@@ -111,16 +117,18 @@ ShallowWrapper {
                     <styled.div
                               onClick={[Function]}>
                               <span>
-                                        Sort by
+                                        Sort by:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <div>
                     <styled.div
                               onClick={[Function]}>
                               <span>
-                                        Filter by
+                                        Filter:
                               </span>
+                              <label />
                     </styled.div>
           </div>
           <styled.div />

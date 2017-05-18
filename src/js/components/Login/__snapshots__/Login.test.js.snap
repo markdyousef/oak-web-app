@@ -9,11 +9,11 @@ exports[`test renders correctly 1`] = `
     <div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj">
           EMAIL
         </h5>
         <input
-          className="bwXyts"
+          className="fhluRP"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Email"
@@ -22,11 +22,11 @@ exports[`test renders correctly 1`] = `
       </div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj">
           PASSWORD
         </h5>
         <input
-          className="bwXyts"
+          className="fhluRP"
           onChange={[Function]}
           onKeyDown={[Function]}
           placeholder="Password"
@@ -36,7 +36,7 @@ exports[`test renders correctly 1`] = `
     </div>
     <div>
       <button
-        className="exnCOy"
+        className="leFGPx"
         onClick={[Function]}>
         Sign in
         <svg
@@ -53,7 +53,7 @@ exports[`test renders correctly 1`] = `
     <div />
   </div>
   <div
-    className="iJtnyx">
+    className="lbNTMF">
     <p>
       Forgot your password? 
       <a
@@ -61,9 +61,8 @@ exports[`test renders correctly 1`] = `
         style={Object {}}>
         Get a new one
       </a>
+      .
     </p>
   </div>
-  <section
-    className="fYstbg" />
 </section>
 `;

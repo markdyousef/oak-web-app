@@ -2,8 +2,8 @@
 import React from 'react';
 import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
-import { Editor } from 'zen-editor';
-// import Editor from '../Editor/src/components/Editor';
+// import { Editor } from 'zen-editor';
+import Editor from '../Editor/src/components/Editor';
 import Comments from '../../containers/CommentsContainer';
 import { Container, ContainerInner, Main, EditorContainer } from './styles';
 import Name from './Name';
@@ -50,11 +50,6 @@ const CardDetail = ({ ...props }:Props) => {
                             addFile={props.addFile}
                             placeholder="Title..."
                             showFAB
-                            // titel={<Name
-                            //     onChange={props.changeName}
-                            //     name={props.name}
-                            //     readOnly={!props.showEdit}
-                            // />}
                         />
                     </EditorContainer>
                     {props.showComments &&
