@@ -11,31 +11,43 @@ const Container = styled.section`
     width: 100%;
     height: 100%;
     & h1 {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
     & h5 {
-        margin: 10px 5px;
-        font-size: 14px;
-        line-height: 17px;
+        margin: 8px 0;
+        font-size: 12px;
         color: ${colors.grey}
+        text-transform: uppercase;
     }
     & span {
         font-weight: bold;
     }
+    & p {
+        font-size: 14px;
+        line-height: 17px;
+        color: ${colors.grey}
+        margin-top: 8px;
+    }
+    & label {
+        font-size: 14px;
+        line-height: 17px;
+        color: ${colors.grey}
+        margin-bottom: 8px;
+    }
 `;
 
 const InputContainer = styled.div`
-    margin-top: 20px;
+    margin-top: 24px;
 `;
 
 const ErrorBox = styled.div`
-    height: 40px;
     color: ${colors.red}
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: flex-end;
+    margin-top: 24px;
 `;
 
 const Saved = styled.div`
@@ -155,11 +167,11 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
                         value={name}
                         placeholder="John Doe"
                         onChange={value => this.changeField('name', value)}
-                        title="Full Name"
+                        title="Full name"
                     />
-                    <h5>Your name goes whereever you go on Cuest, and
+                    <p>Your name goes whereever you go on Cuest, and
                         will help new teammates get to know you.
-                    </h5>
+                    </p>
                 </InputContainer>
                 <InputContainer>
                     <Input
@@ -168,8 +180,8 @@ export default class SettingsProfile extends Component<DefaultProps, Props, Stat
                         onChange={value => this.changeField('username', value)}
                         title="Username"
                     />
-                    <h5>Here's how you're username looks: <span>@{username}</span>
-                    </h5>
+                    <p>Here's how your username looks: <span>@{username}</span>
+                    </p>
                 </InputContainer>
                 <ErrorBox>
                     {errorMessage}

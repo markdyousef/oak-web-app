@@ -20,6 +20,9 @@ const Container = styled.div`
         color: #131517 !important;
         max-width: 120px;
     }
+    &:last-child {
+        margin-bottom: 0;
+    }
 
 `;
 

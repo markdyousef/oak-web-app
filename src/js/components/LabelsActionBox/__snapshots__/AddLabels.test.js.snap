@@ -7,12 +7,12 @@ exports[`test renders correctly 1`] = `
   <div
     className="HUcDL">
     <div
-      className="kTlHyk">
-      No labels...
+      className="iMrCHs">
+      Your team has not created any labels in this collection. Create your first label below.
     </div>
   </div>
   <section
-    className="jtCoML">
+    className="klaXgU">
     <div
       onClick={[Function]}>
       Create a new label

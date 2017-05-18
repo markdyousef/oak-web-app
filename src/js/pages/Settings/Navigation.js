@@ -9,19 +9,19 @@ const Container = styled.nav`
 `;
 
 const NavGroup = styled.div`
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     & h3 {
         font-size: 20px;
         line-height: 24px;
-        color: ${props => props.active ? colors.black : colors.grey};
-        margin-bottom: 12px;
-
+        color: ${props => props.active ? colors.black : colors.fadedGrey};
+        margin-bottom: 8px;
+        font-weight: bold;
     }
     & h5 {
         font-size: 14px;
         line-height: 17px;
-        color: ${props => props.active ? colors.black : colors.grey};
-        margin-bottom: 16px;
+        color: ${props => props.active ? colors.black : colors.fadedGrey};
+        margin-bottom: 12px;
     }
     & button {
         font-size: 15px;

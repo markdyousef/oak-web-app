@@ -30,7 +30,7 @@ const Bubbles = styled.div`
     animation-duration: 1.25s;
     animation-iteration-count: infinite;
     animation-direction: linear;
-    background-color: #FFF;
+    background-color: #e8e8e8;
     height: 10px;
     margin-left: 5px;
     width: 10px;
@@ -40,6 +40,7 @@ const Bubbles = styled.div`
 export default ({ color }) => {
     let style;
     if (color === 'green') style = { backgroundColor: '#67C198' };
+    if (color === 'white') style = { backgroundColor: '#fff' };
     return (
         <Container>
             <Bubbles style={style} />

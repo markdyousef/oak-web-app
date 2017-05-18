@@ -2,8 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
-import name from '../../../img/cuest.png';
-import logo from '../../../img/cuest-logo.png';
+import logo from '../../../img/cuest-logo.svg';
 import colors from '../../styles/colors';
 
 const Container = styled.nav`
@@ -30,6 +29,7 @@ const StyledLink = styled(Link)`
 const Left = styled.div`
     & img {
         margin-right: 5px;
+        height: 28px;
     }
 `;
 
@@ -43,7 +43,6 @@ export default () => {
             <Left>
                 <StyledLink to="login">
                     <img src={logo} alt="presentation" />
-                    <img src={name} alt="presentation" />
                 </StyledLink>
             </Left>
             <Right>

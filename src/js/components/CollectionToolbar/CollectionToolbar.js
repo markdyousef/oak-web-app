@@ -21,15 +21,18 @@ const ActionMenu = styled.div`
     font-size: 14px;
     margin-left: 10px;
     color: ${colors.grey};
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
     align-items: center;
     & span {
         color: ${colors.grey};
         margin-right: 4px;
+        cursor: pointer;
     }
     & label {
         text-transform: capitalize;
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
@@ -37,11 +40,16 @@ const LabelsMenu = styled.div`
     font-size: 14px;
     margin-left: 16px;
     color: ${colors.grey};
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
     & span {
         color: ${colors.grey};
         margin-right: 4px;
+        cursor: pointer;
+    }
+    & label {
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
@@ -69,8 +77,18 @@ const LabelContainer = styled.div`
 const Labels = styled.div`
     display: flex;
     & div {
-        margin-right: 4px;
+        border-radius: 2px;
+        display: inline-block;
+        padding: 4px 8px;
+        margin-right: 8px;
+        line-height: 16px;
+        height: 24px;
     }
+`;
+
+const LabelName = styled.div`
+    font-size: 14px;
+    color: #131517;
 `;
 
 
@@ -173,7 +191,7 @@ export default class Toolbar extends Component {
                     {showSort &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showSort: false })}
                             >
                                 {this.renderSortItems()}
@@ -186,12 +204,12 @@ export default class Toolbar extends Component {
                         <span>
                             Filter:
                         </span>
-                        {(filters && filters.length < 1) && 'Labels'}
+                        <label>{(filters && filters.length < 1) && 'Labels'}</label>
                     </LabelsMenu>
                     {showFilter &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showFilter: false })}
                             >
                                 {this.renderFilterItems()}

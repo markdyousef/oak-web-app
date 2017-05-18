@@ -19,12 +19,12 @@ ShallowWrapper {
             onChange={[Function]}
             onKeyDown={null}
             placeholder="John Doe"
-            title="Full Name"
+            title="Full name"
             type={null}
             value="" />
-        <h5>
+        <p>
             Your name goes whereever you go on Cuest, and will help new teammates get to know you.
-        </h5>
+        </p>
     </styled.div>
     <styled.div>
         <Input
@@ -35,13 +35,13 @@ ShallowWrapper {
             title="Username"
             type={null}
             value="" />
-        <h5>
-            Here\'s how you\'re username looks: 
+        <p>
+            Here\'s how your username looks: 
             <span>
                 @
                 
             </span>
-        </h5>
+        </p>
     </styled.div>
     <styled.div />
     <styled.div>
@@ -65,12 +65,12 @@ ShallowWrapper {
                   onChange={[Function]}
                   onKeyDown={null}
                   placeholder="John Doe"
-                  title="Full Name"
+                  title="Full name"
                   type={null}
                   value="" />
-            <h5>
+            <p>
                   Your name goes whereever you go on Cuest, and will help new teammates get to know you.
-            </h5>
+            </p>
       </styled.div>
       <styled.div>
             <Input
@@ -81,13 +81,13 @@ ShallowWrapper {
                   title="Username"
                   type={null}
                   value="" />
-            <h5>
-                  Here\'s how you\'re username looks: 
+            <p>
+                  Here\'s how your username looks: 
                   <span>
                         @
                         
                   </span>
-            </h5>
+            </p>
       </styled.div>
       <styled.div />
       <styled.div>
@@ -158,12 +158,12 @@ ShallowWrapper {
                               onChange={[Function]}
                               onKeyDown={null}
                               placeholder="John Doe"
-                              title="Full Name"
+                              title="Full name"
                               type={null}
                               value="" />
-                    <h5>
+                    <p>
                               Your name goes whereever you go on Cuest, and will help new teammates get to know you.
-                    </h5>
+                    </p>
           </styled.div>
           <styled.div>
                     <Input
@@ -174,13 +174,13 @@ ShallowWrapper {
                               title="Username"
                               type={null}
                               value="" />
-                    <h5>
-                              Here\'s how you\'re username looks: 
+                    <p>
+                              Here\'s how your username looks: 
                               <span>
                                         @
                                         
                               </span>
-                    </h5>
+                    </p>
           </styled.div>
           <styled.div />
           <styled.div>
@@ -204,12 +204,12 @@ ShallowWrapper {
                               onChange={[Function]}
                               onKeyDown={null}
                               placeholder="John Doe"
-                              title="Full Name"
+                              title="Full name"
                               type={null}
                               value="" />
-                    <h5>
+                    <p>
                               Your name goes whereever you go on Cuest, and will help new teammates get to know you.
-                    </h5>
+                    </p>
           </styled.div>
           <styled.div>
                     <Input
@@ -220,13 +220,13 @@ ShallowWrapper {
                               title="Username"
                               type={null}
                               value="" />
-                    <h5>
-                              Here\'s how you\'re username looks: 
+                    <p>
+                              Here\'s how your username looks: 
                               <span>
                                         @
                                         
                               </span>
-                    </h5>
+                    </p>
           </styled.div>
           <styled.div />
           <styled.div>

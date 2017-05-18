@@ -13,14 +13,12 @@ const Container = styled.section`
 `;
 
 const Bar = styled.div`
-    margin-top: 2px;
     position: fixed;
-    width: 80%;
+    width: 100%;
     height: 30px;
     min-width: 400px;
     z-index: 9999;
     background-color: ${props => props.error ? colors.orange : colors.green};
-    border-radius: 3px;
     display: flex;
     align-items: center;
     font-size: 14px;

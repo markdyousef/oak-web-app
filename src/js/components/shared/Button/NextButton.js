@@ -12,21 +12,22 @@ const Button = styled.button`
     border-radius: 3px;
     border: 1px solid ${colors.green};
     color: ${colors.white};
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     padding: 12px;
     cursor: pointer;
     &:hover {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
+        color: #fff;
+        background: #34B289;
     }
-    &:after {
-        box-shadow: inset 0 -2px rgba(0, 0, 0, 0.15);
-        transition: 0.2s;
+    &:active {
+        background: #249E76;
+        border: 1px solid #249E76;
     }
     & svg {
         fill: ${colors.white};
-        margin-left: 5px;
+        margin-left: 6px;
+        height: 14px;
     }
 `;
 

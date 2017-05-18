@@ -4,7 +4,7 @@ import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
 import { uploadImage } from '../../utils';
-import { Container, Modal, Header, Intro, InputWrapper, InputLabels, Close, Main, Upload, Buttons } from './styles'
+import { Container, Modal, Header, Intro, InputWrapper, InputLabels, InputName, Close, Main, Upload, Buttons } from './styles'
 import Toast from '../shared/Toast';
 import placeholder from '../../../img/collections-placeholder.svg';
 
@@ -184,6 +184,9 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                                 onChange={value => this.setState({ name: value })}
                                 placeholder="Name your collection"
                             />
+                            <InputName>
+                                Name your collection based on it's topic.
+                            </InputName>
                         </InputWrapper>
                         <InputWrapper>
                             <InputLabels>
@@ -194,6 +197,9 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                                 onChange={value => this.setState({ description: value })}
                                 placeholder="Add a description..."
                             />
+                            <InputName>
+                                Describe the purpose of this collection.
+                            </InputName>
                         </InputWrapper>
                     </Main>
                     <Buttons>

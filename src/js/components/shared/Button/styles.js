@@ -16,6 +16,21 @@ export const style = (type) => {
                 border: 1px solid #249E76;
             }`;
     }
+    if (type === 'primaryLarge') {
+        return `
+            background-color: ${colors.green};
+            border-color: ${colors.green};
+            color: ${colors.white};
+            min-width: 180px;
+            &:hover {
+                color: #fff;
+                background: #34B289;
+            }
+            &:active {
+                background: #249E76;
+                border: 1px solid #249E76;
+            }`;
+    }
     if (type === 'alarm') {
         return `
             background-color: ${colors.red};
@@ -47,6 +62,19 @@ export const style = (type) => {
             background-color: ${colors.white};
             border-color: 1px solid #e5e5e5;
             color: rgba(19, 21, 23, .75);
+            &:hover {
+                border-color: #DADCDE;
+            }
+            &:active {
+                background-color: #F8F8F8;
+            }`;
+    }
+    if (type === 'whiteLarge') {
+        return `
+            background-color: ${colors.white};
+            border-color: 1px solid #e5e5e5;
+            color: rgba(19, 21, 23, .75);
+            min-width: 180px;
             &:hover {
                 border-color: #DADCDE;
             }

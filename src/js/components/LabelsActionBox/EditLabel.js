@@ -46,9 +46,8 @@ const Section = styled.section`
 
 const ActionSection = styled.section`
     border-top: 1px solid ${colors.lightGrey};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: block;
+    text-align: right;
     padding: 16px 20px 0px;
     margin-left: -20px;
     margin-right: -20px;
@@ -80,6 +79,8 @@ const Save = styled.button`
 
 const Delete = styled(Save)`
     color: #131517;
+    position: absolute;
+    left: 20px;
 `;
 
 type Props = {

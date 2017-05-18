@@ -8,13 +8,13 @@ const Container = styled.div`
     width: 60%;
     max-width: 400px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     & img {
-        width: 60%;
+        width: 40%;
     }
     & h2 {
         font-size: 20px;
@@ -25,21 +25,25 @@ const Container = styled.div`
     }
     & p {
         font-size: 15px;
-        line-height: 24px;
+        line-height: 1.4;
         text-align: center;
-        margin: 20px 0;
+        padding: 20px 0;
+        color: rgba(19, 21, 23, 0.5);
+        max-width: 280px;
+        width: 100%;
+        margin: 0 auto;
     }
 `;
 
 const Empty = ({ onClick }:Object) => {
     return (
         <Container>
-            <h2>Cards</h2>
             <img src={empty} alt="empty state" />
-            <p>A collection is much better with some cards!</p>
+            <p>Great, now that you have the collection, all you need is some posts.</p>
             <SquareButton
-                text="Create a card"
+                text="Create a post"
                 onClick={onClick}
+                type="whiteLarge"
             />
         </Container>
     );

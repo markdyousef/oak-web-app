@@ -20,7 +20,7 @@ ShallowWrapper {
             type="password"
             value="" />
         <h5>
-            Enter your current password...
+            Enter your current password.
         </h5>
     </styled.div>
     <styled.div>
@@ -33,7 +33,7 @@ ShallowWrapper {
             type="password"
             value="" />
         <h5>
-            Create a strong new password to avoid trolls taking over your team ...
+            Create a strong new password to avoid trolls taking over your team.
         </h5>
     </styled.div>
     <styled.div>
@@ -46,7 +46,7 @@ ShallowWrapper {
             type="password"
             value="" />
         <h5>
-            ... and confirm!
+            Confirm your new password.
         </h5>
     </styled.div>
     <styled.div />
@@ -72,7 +72,7 @@ ShallowWrapper {
                   type="password"
                   value="" />
             <h5>
-                  Enter your current password...
+                  Enter your current password.
             </h5>
       </styled.div>
       <styled.div>
@@ -85,7 +85,7 @@ ShallowWrapper {
                   type="password"
                   value="" />
             <h5>
-                  Create a strong new password to avoid trolls taking over your team ...
+                  Create a strong new password to avoid trolls taking over your team.
             </h5>
       </styled.div>
       <styled.div>
@@ -98,7 +98,7 @@ ShallowWrapper {
                   type="password"
                   value="" />
             <h5>
-                  ... and confirm!
+                  Confirm your new password.
             </h5>
       </styled.div>
       <styled.div />
@@ -170,7 +170,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              Enter your current password...
+                              Enter your current password.
                     </h5>
           </styled.div>
           <styled.div>
@@ -183,7 +183,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              Create a strong new password to avoid trolls taking over your team ...
+                              Create a strong new password to avoid trolls taking over your team.
                     </h5>
           </styled.div>
           <styled.div>
@@ -196,7 +196,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              ... and confirm!
+                              Confirm your new password.
                     </h5>
           </styled.div>
           <styled.div />
@@ -222,7 +222,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              Enter your current password...
+                              Enter your current password.
                     </h5>
           </styled.div>
           <styled.div>
@@ -235,7 +235,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              Create a strong new password to avoid trolls taking over your team ...
+                              Create a strong new password to avoid trolls taking over your team.
                     </h5>
           </styled.div>
           <styled.div>
@@ -248,7 +248,7 @@ ShallowWrapper {
                               type="password"
                               value="" />
                     <h5>
-                              ... and confirm!
+                              Confirm your new password.
                     </h5>
           </styled.div>
           <styled.div />
