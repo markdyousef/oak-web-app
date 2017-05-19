@@ -250,7 +250,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 <Stats>
                     <div>
                         <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : info.stats && info.stats.seeds}</h3>
-                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Cards'}</h5>
+                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Posts'}</h5>
                     </div>
                 </Stats>
             </Info>

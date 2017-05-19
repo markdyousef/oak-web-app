@@ -35,7 +35,7 @@ const H5 = styled.h5`
 `;
 
 const Default = styled.input`
-    padding: 12px 10px;
+    padding: 14px 10px;
     width: 100%;
     border-radius: 3px;
     border: 1px solid ${colors.lightGrey};

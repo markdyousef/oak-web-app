@@ -18,6 +18,12 @@ export const Container = styled.div`
     padding: 16px 16px 20px;
     margin: 8px;
     position: relative;
+    &:hover {
+        background: #fafafa;
+    }
+    &:active {
+        background: #f7f7f7;
+    }
 `;
 
 export const Header = styled.div`
