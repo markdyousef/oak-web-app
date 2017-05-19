@@ -10,6 +10,9 @@ type DefaultProps = {};
 
 type Props = {
     createUser: (name: string, email: string, password: string, inviteToken: string) => Object,
+    params: {
+        token?: string
+    }
 };
 
 type State = {
@@ -23,19 +26,16 @@ type State = {
 export default class SignUp extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     props: Props;
-    state: State;
-    constructor() {
-        super();
-        this.state = {
-            name: '',
-            email: '',
-            password: '',
-            message: null,
-            token: ''
-        };
-    }
+    state: State = {
+        name: '',
+        email: '',
+        password: '',
+        message: null,
+        token: ''
+    };
     componentWillMount() {
-        const token = new URLSearchParams(location.search).get('token');
+        // const token = new URLSearchParams(location.search).get('token');
+        const { params: { token } } = this.props;
         this.setState({ token });
     }
     onSubmit = () => {
@@ -47,19 +47,26 @@ export default class SignUp extends Component<DefaultProps, Props, State> {
 
         // name validation
         if (name.length < 2) {
-            return this.setState({ message: 'please provide a valid name' });
+            this.setState({ message: 'please provide a valid name' });
+            return;
         }
         // email validation
         if (email.length < 6) {
-            return this.setState({ message: 'please provide a valid email' });
+            this.setState({ message: 'please provide a valid email' });
+            return;
         }
         // password validation
         if (password.length < 6) {
-            return this.setState({ message: 'your password should be at least 6 characters' });
+            this.setState({ message: 'your password should be at least 6 characters' });
+            return;
         }
-        return createUser(name, email, password, token)
+        if (token === undefined) {
+            this.setState({ message: "We couldn't create your account. Please contact abed@clai.io"});
+            return;
+        }
+        createUser(name, email, password, token)
             .then(() => this.setState({ message: 'Your account has been created ' }))
-            .catch(err => this.setState({ message: 'Lame!' }));
+            .catch(err => this.setState({ message: "Sorry, we couldn't create your account!" }));
     }
     render() {
         const { name, email, password, message } = this.state;
