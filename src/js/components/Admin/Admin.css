@@ -20,7 +20,7 @@
     height: 100%;
     position: absolute;
     top: 0;
-    left: 340px;
+    left: 380px;
     right: 0;
     bottom: 0;
 }
@@ -42,8 +42,13 @@
     margin-top: -48px;
 }
 
+.loading {
+    color: #fff;
+    font-size: 16px;
+}
+
 .SidePanel {
-    width: 340px;
+    width: 380px;
     background: #fff;
     position: absolute;
     top: 0;
@@ -70,7 +75,7 @@
     text-align: left;
     margin-top: -16px;
     & h1 {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: bold;
         color: #131517;
         display: block;
@@ -80,7 +85,8 @@
     }
     & p {
         display: block;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.4;
+        max-width: 280px;
     }
 }

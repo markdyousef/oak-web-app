@@ -61,9 +61,10 @@ export const style = (type) => {
         return `
             background-color: ${colors.white};
             border-color: 1px solid #e5e5e5;
-            color: rgba(19, 21, 23, .75);
+            color: rgba(19, 21, 23, .8);
             &:hover {
                 border-color: #DADCDE;
+                color: rgba(19, 21, 23, 1);
             }
             &:active {
                 background-color: #F8F8F8;
@@ -73,10 +74,11 @@ export const style = (type) => {
         return `
             background-color: ${colors.white};
             border-color: 1px solid #e5e5e5;
-            color: rgba(19, 21, 23, .75);
+            color: rgba(19, 21, 23, .8);
             min-width: 180px;
             &:hover {
                 border-color: #DADCDE;
+                color: rgba(19, 21, 23, 1);
             }
             &:active {
                 background-color: #F8F8F8;

@@ -93,7 +93,7 @@ class Admin extends Component<DefaultProps, Props, State> {
     }
     renderTeams = () => {
         const { data } = this.props;
-        if (data.loading) return <div>LOADING </div>;
+        if (data.loading) return <div className={css.loading}>Loading... </div>;
 
         if (data.teams && data.teams.length > 0) {
             return (
