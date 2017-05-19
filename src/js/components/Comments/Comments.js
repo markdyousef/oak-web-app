@@ -87,6 +87,7 @@ type Props = {
     comments: Array<Object>,
     create: Function,
     failedComment: ?EditorState,
+    onCloseComments: () => void,
     creator: ?{
         name: string,
         username: string,
@@ -113,14 +114,18 @@ export default class extends Component<DefaultProps, Props, State> {
         const node = ReactDOM.findDOMNode(this.commentsEnd);
         node.scrollIntoView({ behavior: 'smooth'});
     }
+    closeComments = () => {
+        console.log(this.props);
+    }
     render() {
-        const { comments, create, failedComment, creator } = this.props;
+        const { comments, create, failedComment, creator, onCloseComments } = this.props;
+        console.log(this.props);
         return (
             <Container>
                 <CommentsPanel>
                 <CommentsTitle>
                     Comments
-                    <span>&times;</span>
+                    <span onClick={onCloseComments}>&times;</span>
                 </CommentsTitle>
                     <CommentsContainer>
                         <Comments>

@@ -181,8 +181,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
     }
     renderBottom = () => {
         const { comments, showComments, creator: { avatar, gravatar } } = this.props;
-        const { likes, isLiked } = this.state;
-        const { showOptions } = this.state;
+        const { likes, isLiked, showOptions } = this.state;
         let picture;
         // prefer avatar over gravatar
         if (gravatar) picture = gravatar;

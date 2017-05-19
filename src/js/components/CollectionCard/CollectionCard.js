@@ -59,7 +59,6 @@ const Creator = styled.img`
 `;
 
 const CollectionCard = ({ name, description, picture }:Object) => {
-    console.log(picture);
     return (
         <Container>
             <Name>{name}</Name>
