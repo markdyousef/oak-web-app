@@ -14,7 +14,7 @@ const config = require('./base.config')({
     ],
 
     output: {
-        publicPath: './'
+        publicPath: '/'
     },
 
     postcssPlugins: [
