@@ -12,15 +12,9 @@ ShallowWrapper {
         style={undefined}>
         <styled.div>
             <h3 />
-            <button
-                onClick={undefined}>
-                Try again...
-            </button>
         </styled.div>
-        <styled.div
-            onClick={undefined}>
-            ×
-        </styled.div>
+        <Unknown
+            onClick={undefined} />
     </styled.div>
 </styled.section>,
   "nodes": Array [
@@ -30,15 +24,9 @@ ShallowWrapper {
             style={undefined}>
             <styled.div>
                   <h3 />
-                  <button
-                        onClick={undefined}>
-                        Try again...
-                  </button>
             </styled.div>
-            <styled.div
-                  onClick={undefined}>
-                  ×
-            </styled.div>
+            <Unknown
+                  onClick={undefined} />
       </styled.div>
 </styled.section>,
   ],
@@ -85,15 +73,9 @@ ShallowWrapper {
                     style={undefined}>
                     <styled.div>
                               <h3 />
-                              <button
-                                        onClick={undefined}>
-                                        Try again...
-                              </button>
                     </styled.div>
-                    <styled.div
-                              onClick={undefined}>
-                              ×
-                    </styled.div>
+                    <Unknown
+                              onClick={undefined} />
           </styled.div>
 </styled.section>,
         "_debugID": 2,
@@ -103,15 +85,9 @@ ShallowWrapper {
                     style={undefined}>
                     <styled.div>
                               <h3 />
-                              <button
-                                        onClick={undefined}>
-                                        Try again...
-                              </button>
                     </styled.div>
-                    <styled.div
-                              onClick={undefined}>
-                              ×
-                    </styled.div>
+                    <Unknown
+                              onClick={undefined} />
           </styled.div>
 </styled.section>,
       },

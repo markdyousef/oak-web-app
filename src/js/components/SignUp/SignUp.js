@@ -24,7 +24,9 @@ type State = {
 };
 
 export default class SignUp extends Component<DefaultProps, Props, State> {
-    static defaultProps: DefaultProps;
+    static defaultProps: DefaultProps = {
+        params: {}
+    };
     props: Props;
     state: State = {
         name: '',

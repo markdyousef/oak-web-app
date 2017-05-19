@@ -10,7 +10,8 @@ ShallowWrapper {
     <styled.div>
         <styled.div>
             Comments
-            <span>
+            <span
+                onClick={undefined}>
                 ×
             </span>
         </styled.div>
@@ -38,7 +39,8 @@ ShallowWrapper {
       <styled.div>
             <styled.div>
                   Comments
-                  <span>
+                  <span
+                        onClick={undefined}>
                         ×
                   </span>
             </styled.div>
@@ -78,6 +80,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": _class {
         "_reactInternalInstance": [Circular],
+        "closeComments": [Function],
         "context": Object {},
         "props": Object {
           "comments": Array [],
@@ -110,7 +113,8 @@ ShallowWrapper {
           <styled.div>
                     <styled.div>
                               Comments
-                              <span>
+                              <span
+                                        onClick={undefined}>
                                         ×
                               </span>
                     </styled.div>
@@ -138,7 +142,8 @@ ShallowWrapper {
           <styled.div>
                     <styled.div>
                               Comments
-                              <span>
+                              <span
+                                        onClick={undefined}>
                                         ×
                               </span>
                     </styled.div>
