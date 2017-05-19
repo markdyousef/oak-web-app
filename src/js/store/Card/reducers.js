@@ -67,6 +67,7 @@ export default (state: State = initialState, action: Action): State => {
             .set('cardId', null)
             .set('collectionId', null)
             .set('editorState', EditorState.createEmpty(decorator))
+            .set('images', List([]))
     case types.SET_CARD:
         if (action.data && action.data.card) {
             const { data: { card } } = action;

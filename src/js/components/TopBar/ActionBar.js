@@ -67,7 +67,8 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         const images = card.get('images');
         const newEditorState = changeUrls(editorState, images);
         const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
-        const cover = images[0] && images[0].id;
+        const cover = images.getIn([0, 'id']);
+        console.log(cover);
         // existing cards has a cardId
         updateCard('isLoading', true);
         // no card name
