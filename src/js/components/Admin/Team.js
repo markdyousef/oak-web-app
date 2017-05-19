@@ -13,20 +13,21 @@ const Container = styled.div`
     flex-direction: column;
     text-align: left;
     width: 100%;
-    cursor: pointer;
+    color: #fff;
     & div {
         width: 100%;
-        border-bottom: 1px solid #fff;
         padding: 16px 0;
-        font-size: 40px;
+        font-size: 56px;
         font-weight: 300;
         color: #fff;
     }
     & p {
         font-size: 14px;
         font-style: italic;
-        padding-top: 12px;
         color: #fff;
+    }
+    & nth:child {
+        margin-top: 40px;
     }
 `;
 
