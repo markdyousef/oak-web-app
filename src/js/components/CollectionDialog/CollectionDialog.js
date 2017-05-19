@@ -4,7 +4,7 @@ import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
 import { uploadImage } from '../../utils';
-import { Container, Modal, Header, Intro, InputWrapper, InputLabels, InputName, Close, Main, Upload, Buttons } from './styles'
+import { Container, Modal, Header, Intro, InputWrapper, InputLabels, Close, InputName, Main, Upload, Buttons } from './styles'
 import Toast from '../shared/Toast';
 import placeholder from '../../../img/collections-placeholder.svg';
 
@@ -75,7 +75,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                 isLoading: false,
                 message: {
                     type: 'error',
-                    message: 'Remember to name your collection',
+                    message: 'Don\'t forget to name your collection',
                     onClick: this.onSave
                 }
             });
@@ -112,7 +112,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                     this.setState({
                         message: {
                             type: 'error',
-                            message: "Sorry, we couldn't save your collection",
+                            message: "Sorry, we couldn't save your collection, please try again",
                             onClick: this.onSave
                         },
                         isLoading: false
@@ -128,7 +128,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                     this.setState({
                         message: {
                             type: 'error',
-                            message: "Sorry, we couldn't save your collection",
+                            message: "Sorry, we couldn't save your collection, please try again",
                             onClick: this.onSave
                         },
                         isLoading: false
@@ -153,12 +153,12 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
             <Container>
                 <Modal>
                     <Header>
-                        <h1>Add/Edit collection: </h1>
+                        <h1>Add/Edit collection</h1>
                         <Close onClick={close}>&times;</Close>
                     </Header>
                     {message && <Toast
                         message={message}
-                        style={{ width: '150px' }}
+                        style={{ width: '480px' }}
                         onClose={() => this.setState({ message: null })}
                     />}
                     <Main>

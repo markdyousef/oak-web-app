@@ -35,7 +35,7 @@ export const Header = styled.div`
     justify-content: space-between;
     padding: 20px;
     & h1 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
     }
 `;
@@ -68,7 +68,7 @@ export const InputWrapper = styled.div`
 export const InputLabels = styled.div`
     font-size: 14px;
     font-weight: bold;
-    color: #131517;
+    color: rgba(19, 21, 23, 0.75);
     padding-bottom: 4px;
 `;
 
