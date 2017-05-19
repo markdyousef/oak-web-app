@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import { requireAuth, requireTeam } from './utils';
 import initStore from './store/configureStore';
@@ -34,11 +34,11 @@ const store = initStore();
 
 const routes = (
     <ApolloProvider store={store} client={client}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
-                    <Route path="signup" component={SignUp} />
+                    <Route path="signup(/:token)" component={SignUp} />
                     <Route path="forgot" component={Forgot} />
                     <Route path="reset" component={ResetPassword} />
                 </Route>
