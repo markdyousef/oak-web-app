@@ -35,7 +35,7 @@ export const EditorContainer = styled.div`
     height: 100%;
     overflow: scroll;
     height: 100vh;
-    padding: 80px 40px;
+    padding: 120px 40px;
     &::-webkit-scrollbar {
         display: none;
     }

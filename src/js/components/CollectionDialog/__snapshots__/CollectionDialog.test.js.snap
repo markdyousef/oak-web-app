@@ -4,9 +4,9 @@ exports[`test renders correctly 1`] = `
   <div
     className="dCNjhq">
     <div
-      className="cNuFws">
+      className="lipyYZ">
       <h1>
-        Add/Edit collection: 
+        Add/Edit collection
       </h1>
       <button
         className="jVpBQq"
@@ -23,14 +23,14 @@ exports[`test renders correctly 1`] = `
       <div
         className="INVCQ">
         <div
-          className="lhSFEe">
+          className="dzHKlq">
           Name
         </div>
         <div>
           <h5
             className="jIUOlj" />
           <input
-            className="fhluRP"
+            className="denvxK"
             onChange={[Function]}
             onKeyDown={null}
             placeholder="Name your collection"
@@ -45,7 +45,7 @@ exports[`test renders correctly 1`] = `
       <div
         className="INVCQ">
         <div
-          className="lhSFEe">
+          className="dzHKlq">
           Description
         </div>
         <div>
@@ -68,7 +68,7 @@ exports[`test renders correctly 1`] = `
     <div
       className="gUgGzK">
       <button
-        className="hzptBB"
+        className="ejLHww"
         onClick={[Function]}
         type="white">
         Cancel

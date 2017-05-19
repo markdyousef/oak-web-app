@@ -77,7 +77,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const { filterVals } = this.state;
         const { seeds } = this.props.data;
         let newFilters = filterVals;
-        console.log(newFilters);
         const active = newFilters.indexOf(key);
         if (active > -1) {
             newFilters = newFilters.filter(id => id !== key);
@@ -106,13 +105,18 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         });
     }
     onSortCards = (key: string, items?: Array<Object>) => {
+        const sortKey = key.toLowerCase();
+        console.log(sortKey);
         const { data: { seeds } } = this.props;
         const cards = (items) || this.state.cards;
         let sortedCards = [...cards];
-        if (key === 'comments' || key === 'likes') {
+        console.log(sortedCards);
+        if (sortKey === 'comments' || sortKey === 'likes') {
             sortedCards.sort((a, b) => {
-                if (a[key].length > b[key].length) return -1;
-                if (a[key].length < b[key].length) return 1;
+                console.log(a[sortKey])
+                console.log(b[sortKey])
+                if (a[sortKey].length > b[sortKey].length) return -1;
+                if (a[sortKey].length < b[sortKey].length) return 1;
                 return 0;
             });
         } else {
@@ -122,7 +126,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 return 0;
             });
         }
-        this.setState({ cards: sortedCards, sortKey: key });
+        this.setState({ cards: sortedCards, sortKey });
     }
     onDelete = () => {
         const { data: { grove }, remove, router } = this.props;
@@ -246,7 +250,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 <Stats>
                     <div>
                         <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : info.stats && info.stats.seeds}</h3>
-                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Cards'}</h5>
+                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Posts'}</h5>
                     </div>
                 </Stats>
             </Info>

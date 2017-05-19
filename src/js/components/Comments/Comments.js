@@ -26,7 +26,7 @@ const Container = styled.section`
 `;
 
 const CommentsPanel = styled.div`
-    padding: 16px 16px 4px;
+    padding: 50px 16px 4px;
     background: ${colors.white};
     flex: 1 1 auto;
     position: relative;
@@ -58,17 +58,16 @@ const CommentsTitle = styled.div` {
 
 const CommentsContainer = styled.div`
     position: absolute;
-    bottom:8px;
+    bottom: 8px;
     overflow-y: auto;
-    height: 100%;
     width: 100%;
     left: 0;
     right: 0;
+    top: 49px;
 `;
 
 const Comments = styled.div`
-    height: 100%;
-    ${''/* min-height: 400px; */}
+    min-height: calc(100vh - 196px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -88,6 +87,7 @@ type Props = {
     comments: Array<Object>,
     create: Function,
     failedComment: ?EditorState,
+    onCloseComments: () => void,
     creator: ?{
         name: string,
         username: string,
@@ -114,14 +114,18 @@ export default class extends Component<DefaultProps, Props, State> {
         const node = ReactDOM.findDOMNode(this.commentsEnd);
         node.scrollIntoView({ behavior: 'smooth'});
     }
+    closeComments = () => {
+        console.log(this.props);
+    }
     render() {
-        const { comments, create, failedComment, creator } = this.props;
+        const { comments, create, failedComment, creator, onCloseComments } = this.props;
+        console.log(this.props);
         return (
             <Container>
                 <CommentsPanel>
                 <CommentsTitle>
                     Comments
-                    <span>&times;</span>
+                    <span onClick={onCloseComments}>&times;</span>
                 </CommentsTitle>
                     <CommentsContainer>
                         <Comments>
