@@ -39,16 +39,6 @@ export const User = styled.div`
         width: 25px;
         border-radius: 999em;
     }
-    & h4 {
-        font-size: 14px;
-        font-weight: bold;
-        color: ${colors.black}
-    }
-    & h5 {
-        font-size: 14px;
-        font-weight: normal;
-        color: ${colors.grey}
-    }
 `;
 
 export const LabelWrapper = styled.div`
@@ -89,7 +79,7 @@ export const Main = styled.div`
         color: rgba(19, 21, 23, 0.9);
         letter-spacing: -0.12px;
         padding-bottom: 8px;
-        line-height: 1.28;
+        line-height: 1.15;
         font-weight: bold;
         overflow: hidden;
         display: -webkit-box;
@@ -146,6 +136,73 @@ export const Bottom = styled.div`
         display: flex;
         align-items: center;
     }
+    & [data-title] {
+        position: relative;
+        &:after {
+            position: absolute;
+            font-size: 14px;
+            border-radius: .4rem;
+            content: attr(data-title);
+            padding: 6px 10px;
+            color: rgba(255,255,255,.8);
+            background-color: #000;
+            box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+            color: $wenk-font-color;
+            line-height: 1.25rem;
+            text-align: left;
+            z-index: 1;
+            pointer-events: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            left: 50%;
+            transform: translate(-50%, 10px);
+            white-space: pre;
+            width: auto;
+        }
+        &:before {
+            content: '';
+            height: 10px;
+            width: 10px;
+            transform: rotate(45deg);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 3px;
+            top: 31px;
+            background: #000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        &:hover {
+            overflow: visible;
+            &:after {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, 10px);
+            }
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &[data-title-pos="bottom"] {
+                &:after {
+                    bottom: auto;
+                    top: 100%;
+                    left: 50%;
+                    transform: translate(-50%, 10px);
+                }
+                &:hover {
+                    &:after {
+                        transform: translate(-50%, 10px);
+                    }
+                }
+            }
+        }
 `;
 
 export const Time = styled.span`
@@ -161,22 +218,91 @@ export const Icon = styled.div`
     align-items: center;
     margin-right: 16px;
     cursor: pointer;
-    & span {
+    position: relative;
+    & p {
         color: ${colors.black};
         font-size: 14px;
+        margin-left: 4px;
     }
     & svg {
         height: 100%;
         height: 18px;
-        margin-right: 4px;
+    }
+    & [data-title] {
+        position: relative;
+        &:after {
+            position: absolute;
+            font-size: 14px;
+            border-radius: .4rem;
+            content: attr(data-title);
+            padding: 6px 10px;
+            color: rgba(255,255,255,.8);
+            background-color: #000;
+            box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+            color: $wenk-font-color;
+            line-height: 1.25rem;
+            text-align: left;
+            z-index: 1;
+            pointer-events: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            left: 50%;
+            transform: translate(-50%, 10px);
+            white-space: pre;
+            width: auto;
+        }
+        &:before {
+            content: '';
+            height: 10px;
+            width: 10px;
+            transform: rotate(45deg);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 3px;
+            top: 24px;
+            background: #000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        &:hover {
+            overflow: visible;
+            &:after {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, 10px);
+            }
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &[data-title-pos="bottom"] {
+                &:after {
+                    bottom: auto;
+                    top: 100%;
+                    left: 50%;
+                    transform: translate(-50%, 10px);
+                }
+                &:hover {
+                    &:after {
+                        transform: translate(-50%, 10px);
+                    }
+                }
+            }
+        }
     }
 `;
 
 export const Settings = styled.div`
     position: absolute;
     width: 140px;
-    bottom: -55px;
-    left: 86px;
+    bottom: -72px;
+    left: -22px;
     z-index: 99;
 `;
 
