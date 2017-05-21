@@ -117,7 +117,7 @@ export default class SignUp extends Component<DefaultProps, Props, State> {
                 <ChangePage>
                     <p>Already have a user? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
-                <Footer />
+                {/* <Footer /> */}
             </Container>
         );
     }

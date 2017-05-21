@@ -110,7 +110,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const { data: { seeds } } = this.props;
         const cards = (items) || this.state.cards;
         let sortedCards = [...cards];
-        console.log(sortedCards);
         if (sortKey === 'comments' || sortKey === 'likes') {
             sortedCards.sort((a, b) => {
                 console.log(a[sortKey])
