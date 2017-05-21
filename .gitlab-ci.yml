@@ -25,6 +25,21 @@ test_job:
   script:
    - yarn run test
 
+deploy_to_dev:
+  stage: deploy
+  environment: development
+  only:
+    - development
+  script:
+    - which apk && apk add --quiet py-pip curl
+    - which pip && pip install --quiet awscli
+    - yarn run build
+    - aws s3 cp ./build s3://$S3_DEV_BUCKET --recursive
+    - >
+      curl -X POST
+      --data-urlencode 'payload={"text": "Deployed to Dev! :muscle::skin-tone-6:"}'
+      $SLACK_WEBHOOK
+
 deploy_to_prod:
   stage: deploy
   environment: production
