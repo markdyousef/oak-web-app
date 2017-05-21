@@ -237,7 +237,7 @@ export const Icon = styled.div`
             content: attr(data-title);
             padding: 6px 10px;
             color: rgba(255,255,255,.8);
-            background-color: #000;
+            background-color: #131517;
             box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
             color: $wenk-font-color;
             line-height: 1.25rem;
@@ -264,7 +264,7 @@ export const Icon = styled.div`
             margin-right: auto;
             border-radius: 3px;
             top: 24px;
-            background: #000;
+            background: #131517;
             opacity: 0;
             visibility: hidden;
         }
