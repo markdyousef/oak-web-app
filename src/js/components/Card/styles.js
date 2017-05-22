@@ -78,7 +78,6 @@ export const Main = styled.div`
         font-size: 24px;
         color: rgba(19, 21, 23, 0.9);
         letter-spacing: -0.12px;
-        padding-bottom: 8px;
         line-height: 1.15;
         font-weight: bold;
         overflow: hidden;
@@ -90,13 +89,14 @@ export const Main = styled.div`
         font-size: 20px;
         color: rgba(19, 21, 23, 0.5);
         letter-spacing: -0.08px;
-        padding-bottom: 12px;
+        padding-top: 8px;
         max-width: 100%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
     }
     & p {
+        padding-top: 12px;
         font-size: 16px;
         color: rgba(19, 21, 23, 0.8);
         line-height: 1.38;
