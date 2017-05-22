@@ -242,11 +242,12 @@ export const IconButton = styled.div`
     & span {
         color: ${colors.black};
         font-size: 14px;
+        margin-left: 4px;
     }
     & svg {
         height: 100%;
         height: 18px;
-        margin-right: 4px;
+        margin-top: 4px;
     }
     & [data-title] {
         position: relative;
@@ -283,7 +284,7 @@ export const IconButton = styled.div`
             margin-left: auto;
             margin-right: auto;
             border-radius: 3px;
-            top: 24px;
+            top: 27px;
             background: #131517;
             opacity: 0;
             visibility: hidden;
