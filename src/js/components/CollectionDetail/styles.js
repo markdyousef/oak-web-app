@@ -95,20 +95,57 @@ export const DropdownContainer = styled.div`
 
 export const Dropdown = styled.div`
     top: 12px;
-    width: 180px;
+    width: 220px;
     position: absolute;
     z-index: 99999;
     font-size: 15px;
-    & div {
-        right: 80px !important;
+    left: -20px;
+    & div:first-child {
+        right: 100px !important;
+    }
+    & div div div:first-child {
+        right: 0 !important;
     }
 `;
 
 export const MenuItem = styled.div`
-    margin-top: 10px;
+    margin-bottom: 16px;
     cursor: pointer;
-    &:first-child {
-        margin-top: 0;
+    position: relative;
+    z-index: 1;
+    font-size: 16px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:hover {
+        color: #fff;
+    }
+    &:hover span:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
+    }
+    &:hover label:before {
+        content: '';
+        background: #F76664;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
+    }
+    & label {
+        cursor: pointer;
     }
 `;
 

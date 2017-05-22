@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import ArrowDown from '../../icons/arrowDown';
 import AddCollection from '../../icons/add';
+import AllIcon from '../../icons/collections';
 import Menu from '../shared/Dropdown';
 import logo from '../../../img/cuest-icon.svg';
 import {
@@ -13,6 +14,7 @@ import {
     Dropdown,
     MenuTitle,
     MenuItem,
+    Divider,
     All,
     Add,
     Logowrapper,
@@ -130,9 +132,11 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                                 <Menu onClose={() => this.setState({ showCollections: false })} arrowPos="left">
                                     <MenuTitle>Your top collections</MenuTitle>
                                     {this.renderRecommended()}
+                                    <Divider />
                                     <All
                                         onClick={this.toCollections}
                                         >
+                                        <AllIcon />
                                             View all collections
                                         </All>
                                         <Add

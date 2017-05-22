@@ -35,7 +35,7 @@ const Select = styled.select`
 
 const LabelText = styled.div`
     font-size: 14px;
-    color: #131517;
+    color: rgba(19, 21, 23, 0.8);
     line-height: 1.35;
     margin-bottom: 16px;
 `;

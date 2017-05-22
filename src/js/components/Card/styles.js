@@ -42,7 +42,7 @@ export const User = styled.div`
 `;
 
 export const LabelWrapper = styled.div`
-    padding: 6px;
+    padding: 6px 8px;
     border: 1px solid #e5e5e5;
     display: inline-block;
     border-radius: 3px;
@@ -300,10 +300,36 @@ export const Icon = styled.div`
 
 export const Settings = styled.div`
     position: absolute;
-    width: 140px;
+    width: 160px;
     bottom: -72px;
     left: -22px;
     z-index: 99;
+    display: block !important;
+    & div div div {
+        position: relative;
+        z-index: 1;
+        margin-right: 0;
+        width: 100%;
+        height: initial;
+    }
+    & div div div:last-child {
+        margin-bottom: 0;
+    }
+    & div div div:hover {
+        color: #fff;
+    }
+    & div div div:hover:before {
+        content: '';
+        background: #F76664;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
+    }
 `;
 
 export const H1 = styled.h1`

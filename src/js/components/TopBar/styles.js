@@ -49,7 +49,7 @@ export const ArrowWrapper = styled.div`
 
 export const Dropdown = styled.div`
     position: absolute;
-    min-width: 200px;
+    min-width: 220px;
     z-index: 9999;
     margin-top: 20px;
 `;
@@ -58,8 +58,25 @@ export const MenuItem = styled.a`
     width: 100%;
     cursor: pointer;
     margin-top: 16px;
+    position: relative;
+    z-index: 1;
+    &:last-child {
+        margin-bottom: 0;
+    }
     &:hover {
-        color: #34B289;
+        color: #fff;
+    }
+    &:hover:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
     }
 `;
 
@@ -69,14 +86,44 @@ export const MenuTitle = styled.div`
     text-transform: uppercase;
 `;
 
+export const Divider = styled.div`
+    height: 1px;
+    background: ${colors.lightGrey};
+    width: 100%;
+    margin-top: 16px;
+`;
+
 export const All = styled.div`
-    padding: 16px 0;
-    color: ${colors.grey};
-    font-size: 15px;
-    border-bottom: 1px solid ${colors.lightGrey};
+    display: flex;
+    margin-top: 16px;
+    color: ${colors.black};
+    font-size: 16px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+    &:last-child {
+        margin-bottom: 0;
+    }
     &:hover {
-        color: #34B289;
+        color: #fff;
+    }
+    &:hover:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
+    }
+    &:hover svg {
+        fill: #fff;
+    }
+    & svg {
+        margin-right: 8px;
     }
 `;
 
@@ -84,11 +131,28 @@ export const Add = styled.div`
     display: flex;
     margin-top: 16px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+    &:last-child {
+        margin-bottom: 0;
+    }
     &:hover {
-        color: #34B289;
+        color: #fff;
+    }
+    &:hover:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
     }
     &:hover svg {
-        fill: #34B289;
+        fill: #fff;
     }
     & svg {
         margin-right: 8px;
@@ -141,6 +205,7 @@ export const Profile = styled.button`
     border: none;
     border-radius: 999em;
     padding: 0;
+    cursor: pointer;
 `;
 
 
