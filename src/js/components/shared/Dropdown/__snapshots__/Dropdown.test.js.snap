@@ -1,4 +1,6 @@
-exports[`test renders Dropdown 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Dropdown 1`] = `
 <div>
   <div
     className="hqCZJo"
@@ -6,8 +8,10 @@ exports[`test renders Dropdown 1`] = `
       Object {
         "right": "16px",
       }
-    } />
+    }
+  />
   <div
-    className="bpNjrJ" />
+    className="bpNjrJ"
+  />
 </div>
 `;

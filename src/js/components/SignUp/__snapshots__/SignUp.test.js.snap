@@ -1,15 +1,20 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <section
-  className="gmuKOB">
+  className="gmuKOB"
+>
   <div
-    className="khSIyb">
+    className="khSIyb"
+  >
     <h1>
       Create Account
     </h1>
     <div>
       <div>
         <h5
-          className="jIUOlj">
+          className="jIUOlj"
+        >
           Name
         </h5>
         <input
@@ -18,11 +23,13 @@ exports[`test renders correctly 1`] = `
           onKeyDown={null}
           placeholder="Name"
           type="name"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <h5
-          className="jIUOlj">
+          className="jIUOlj"
+        >
           Email
         </h5>
         <input
@@ -31,11 +38,13 @@ exports[`test renders correctly 1`] = `
           onKeyDown={null}
           placeholder="Email"
           type="email"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <h5
-          className="jIUOlj">
+          className="jIUOlj"
+        >
           Password
         </h5>
         <input
@@ -44,25 +53,29 @@ exports[`test renders correctly 1`] = `
           onKeyDown={null}
           placeholder="Password"
           type="password"
-          value="" />
+          value=""
+        />
       </div>
     </div>
     <div>
       <button
         className="leFGPx"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Create
       </button>
     </div>
     <div />
   </div>
   <div
-    className="lbNTMF">
+    className="lbNTMF"
+  >
     <p>
       Already have a user? 
       <a
         onClick={[Function]}
-        style={Object {}}>
+        style={Object {}}
+      >
         Sign in!
       </a>
     </p>

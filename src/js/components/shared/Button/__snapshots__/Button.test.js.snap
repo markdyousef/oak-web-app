@@ -1,8 +1,11 @@
-exports[`test renders SquareButton 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SquareButton 1`] = `
 <button
   className="hzsDdV"
   onClick={[Function]}
-  type={undefined}>
+  type={undefined}
+>
   Hello
 </button>
 `;

@@ -1,20 +1,27 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <div>
   <div
-    className="gPCoSX">
+    className="gPCoSX"
+  >
     Add label:
   </div>
   <div
-    className="HUcDL">
+    className="HUcDL"
+  >
     <div
-      className="iMrCHs">
+      className="iMrCHs"
+    >
       Your team has not created any labels in this collection. Create your first label below.
     </div>
   </div>
   <section
-    className="klaXgU">
+    className="klaXgU"
+  >
     <div
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Create a new label
     </div>
   </section>

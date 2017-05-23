@@ -1,12 +1,18 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <div
-  className="gmuKOB">
+  className="gmuKOB"
+>
   <section
-    className="bRolcZ">
+    className="bRolcZ"
+  >
     <section
-      className="fgNEUw">
+      className="fgNEUw"
+    >
       <div
-        className="jtxdxF">
+        className="jtxdxF"
+      >
         <h1>
           Collections
         </h1>
@@ -14,7 +20,8 @@ exports[`test renders correctly 1`] = `
           Here’s a quick overview of all your team’s collections.
         </p>
         <div
-          className="fdAREB">
+          className="fdAREB"
+        >
           <div>
             <h3 />
             <h5>
@@ -24,31 +31,36 @@ exports[`test renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="cWGcft">
+        className="cWGcft"
+      >
         <button
           className="csUoOE"
           onClick={[Function]}
-          type="primaryLarge">
+          type="primaryLarge"
+        >
           + Add collection
         </button>
       </div>
     </section>
   </section>
   <div
-    className="kgMqOw">
+    className="kgMqOw"
+  >
     <h2>
       Collections
     </h2>
     <img
       alt="empty state"
-      src="test-file-stub" />
+      src="test-file-stub"
+    />
     <p>
       You haven’t created any collections yet. Create your first collection by hitting the button below.
     </p>
     <button
       className="ivjHLz"
       onClick={[Function]}
-      type="whiteLarge">
+      type="whiteLarge"
+    >
       Create Collection
     </button>
   </div>

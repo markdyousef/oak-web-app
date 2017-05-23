@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -9,7 +11,8 @@ ShallowWrapper {
   "node": <styled.div>
     <div>
         <styled.div
-            onClick={[Function]}>
+            onClick={[Function]}
+        >
             <span>
                 Sort by:
             </span>
@@ -18,7 +21,8 @@ ShallowWrapper {
     </div>
     <div>
         <styled.div
-            onClick={[Function]}>
+            onClick={[Function]}
+        >
             <span>
                 Filter:
             </span>
@@ -31,7 +35,8 @@ ShallowWrapper {
     <styled.div>
       <div>
             <styled.div
-                  onClick={[Function]}>
+                  onClick={[Function]}
+            >
                   <span>
                         Sort by:
                   </span>
@@ -40,7 +45,8 @@ ShallowWrapper {
       </div>
       <div>
             <styled.div
-                  onClick={[Function]}>
+                  onClick={[Function]}
+            >
                   <span>
                         Filter:
                   </span>
@@ -93,7 +99,8 @@ ShallowWrapper {
         "_currentElement": <styled.div>
           <div>
                     <styled.div
-                              onClick={[Function]}>
+                              onClick={[Function]}
+                    >
                               <span>
                                         Sort by:
                               </span>
@@ -102,7 +109,8 @@ ShallowWrapper {
           </div>
           <div>
                     <styled.div
-                              onClick={[Function]}>
+                              onClick={[Function]}
+                    >
                               <span>
                                         Filter:
                               </span>
@@ -115,7 +123,8 @@ ShallowWrapper {
         "_renderedOutput": <styled.div>
           <div>
                     <styled.div
-                              onClick={[Function]}>
+                              onClick={[Function]}
+                    >
                               <span>
                                         Sort by:
                               </span>
@@ -124,7 +133,8 @@ ShallowWrapper {
           </div>
           <div>
                     <styled.div
-                              onClick={[Function]}>
+                              onClick={[Function]}
+                    >
                               <span>
                                         Filter:
                               </span>
