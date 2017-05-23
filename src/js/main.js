@@ -40,7 +40,7 @@ const routes = (
                     <Route path="login" component={Login} />
                     <Route path="signup(/:token)" component={SignUp} />
                     <Route path="forgot" component={Forgot} />
-                    <Route path="reset" component={ResetPassword} />
+                    <Route path="reset(/:token)" component={ResetPassword} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>

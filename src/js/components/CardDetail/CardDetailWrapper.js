@@ -1,10 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import { decorator } from 'zen-editor';
-import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { uploadImage, changeUrls } from '../../utils';
-import type { DefaultProps, State, Props } from './types';
+import { EditorState } from 'draft-js';
 import { is } from 'immutable';
+import { uploadImage } from '../../utils';
+import type { DefaultProps, State, Props } from './types';
 import CardLoading from './CardLoading';
 
 export default (CardDetail:Function) => {
@@ -12,9 +11,7 @@ export default (CardDetail:Function) => {
         class Wrapper extends Component<DefaultProps, Props, State> {
             static defaultProps: DefaultProps;
             state: State;
-            constructor(props:Props) {
-                super(props);
-            }
+            props: Props;
             componentWillMount() {
                 const { params, updateCard, updateComments } = this.props;
                 if (params.collectionId) {
@@ -37,7 +34,7 @@ export default (CardDetail:Function) => {
                 }
             }
             componentWillReceiveProps(nextProps: Props) {
-                const { loading } = this.props;
+                const { loading } = nextProps;
                 if (loading) {
                     this.updateCard('isLoading', true);
                 } else {
@@ -56,7 +53,7 @@ export default (CardDetail:Function) => {
                 })
             addFile = (file: Object, type?: string) => {
                 const { addImage } = this.props;
-                return new Promise ((resolve, reject) => {
+                return new Promise((resolve, reject) => {
                     if (!type || type === 'image') {
                         uploadImage(file)
                             .then((res) => {
@@ -74,8 +71,7 @@ export default (CardDetail:Function) => {
                                 reject(message);
                             });
                     }
-                })
-
+                });
             }
             onChange = (editorState:EditorState) => {
                 const { card } = this.props;
@@ -85,11 +81,9 @@ export default (CardDetail:Function) => {
                 if (!isEqual) this.updateCard('isEdited', true);
 
                 this.updateCard('editorState', editorState);
-
-
             }
             render() {
-                const { router, card, comments, showLabels, isLoading } = this.props;
+                const { card, comments, showLabels, isLoading } = this.props;
 
                 // loading state
                 if (isLoading) return <CardLoading />;
@@ -99,7 +93,7 @@ export default (CardDetail:Function) => {
                     <CardDetail
                         onChange={this.onChange}
                         addFile={this.addFile}
-                        onCloseError={() => this.updateCard('message', { type: 'error', message: 'close'})}
+                        onCloseError={() => this.updateCard('message', { type: 'error', message: 'close' })}
                         existingCard={!!card.get('cardId')}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}
