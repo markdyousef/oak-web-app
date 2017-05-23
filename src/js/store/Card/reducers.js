@@ -95,7 +95,6 @@ export default (state: State = initialState, action: Action): State => {
             const { result: { data }, queryId } = action;
             if (data.seed && data.seed.content && queryId) {
                 const editorState = convertToEditor(data.seed.content);
-                console.log(queryId);
                 return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
             }
             return state;
@@ -105,7 +104,6 @@ export default (state: State = initialState, action: Action): State => {
         if (action.queryId === state.get('queryId') && action.result) {
             const { result: { data }, queryId } = action;
             if (data.seed && data.seed.content && queryId) {
-                console.log(data.seed);
                 const editorState = convertToEditor(data.seed.content);
                 return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
             }

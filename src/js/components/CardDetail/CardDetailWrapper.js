@@ -5,6 +5,7 @@ import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
 import { uploadImage, changeUrls } from '../../utils';
 import type { DefaultProps, State, Props } from './types';
 import { is } from 'immutable';
+import CardLoading from './CardLoading';
 
 export default (CardDetail:Function) => {
     return (
@@ -33,6 +34,14 @@ export default (CardDetail:Function) => {
                         key: 'showComments',
                         value: true
                     });
+                }
+            }
+            componentWillReceiveProps(nextProps: Props) {
+                const { loading } = this.props;
+                if (loading) {
+                    this.updateCard('isLoading', true);
+                } else {
+                    this.updateCard('isLoading', false);
                 }
             }
             componentWillUnmount() {
@@ -68,9 +77,6 @@ export default (CardDetail:Function) => {
                 })
 
             }
-            downloadFile = () => {
-
-            }
             onChange = (editorState:EditorState) => {
                 const { card } = this.props;
                 // check if card has been edited
@@ -83,7 +89,12 @@ export default (CardDetail:Function) => {
 
             }
             render() {
-                const { router, card, comments, showLabels } = this.props;
+                const { router, card, comments, showLabels, isLoading } = this.props;
+
+                // loading state
+                if (isLoading) return <CardLoading />;
+
+
                 return (
                     <CardDetail
                         onChange={this.onChange}
