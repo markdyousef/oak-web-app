@@ -6,6 +6,7 @@ import AddCollection from '../../icons/add';
 import AllIcon from '../../icons/collections';
 import Menu from '../shared/Dropdown';
 import logo from '../../../img/cuest-icon.svg';
+import * as types from './contants';
 import {
     NavLeft,
     CollectionWrapper,
@@ -39,7 +40,9 @@ type Props = {
     },
     params: {
         collectionId?: string
-    }
+    },
+    trackEvent?: (type: string, action?: any) => void,
+    trackModal?: (type: string) => void
 };
 
 type State = {
@@ -53,6 +56,7 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         params: {},
         data: {}
     }
+    props: Props;
     state = {
         showCollections: false,
         showDialog: false
@@ -63,8 +67,11 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         this.setState({ showCollections: false });
     }
     goToCollection = (id:string) => {
-        const { router: { push } } = this.props;
-        if (push) push(`collection/${id}`)
+        const { router: { push }, trackEvent } = this.props;
+
+        if (trackEvent) trackEvent(types.COLLECTION);
+
+        if (push) push(`collection/${id}`);
     }
     renderRecommended = () => {
         const { data } = this.props;
@@ -72,22 +79,21 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
         const collections = (data && data.groves) ? data.groves : [];
 
         return collections.map(collection =>
-            <MenuItem
+            (<MenuItem
                 key={collection.id}
                 onClick={() => {
-                    this.goToCollection(collection.id)
+                    this.goToCollection(collection.id);
                     this.setState({ showCollections: false });
                 }}
             >
                 {collection.name}
-            </MenuItem>
+            </MenuItem>)
         ).slice(0, 3);
     }
     activeCollection = () => {
         const {
             params: { collectionId },
-            data: { groves },
-            router: { push }
+            data: { groves }
         } = this.props;
 
         if (!groves) return null;
@@ -103,8 +109,29 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
             >
                 {name}
             </ActiveMenu>
-        )
+        );
+    }
+    showCollections = () => {
+        const { trackEvent } = this.props;
+        const { showCollections } = this.state;
+        // Analytics
+        if (trackEvent) trackEvent(types.SHOW_COLLECTIONS, !showCollections);
 
+        this.setState({ showCollections: !showCollections });
+    }
+    showDialog = () => {
+        const { trackEvent, trackModal } = this.props;
+
+        // Analytics
+        if (trackEvent && trackModal) {
+            trackEvent(types.SHOW_COLLECTIONS, false);
+            trackModal(types.CREATE_COLLECTION);
+        }
+
+        this.setState({
+            showDialog: true,
+            showCollections: false
+        });
     }
     render() {
         const { showCollections, showDialog } = this.state;
@@ -115,43 +142,40 @@ export default class MainNav extends Component<DefaultProps, Props, State> {
                         <img
                             alt="logo"
                             src={logo}
-                            />
+                        />
                     </Logo>
                 </Logowrapper>
                 <NavContainer>
-                    <CollectionWrapper onClick={() => this.setState({ showCollections: !showCollections })}>
+                    <CollectionWrapper onClick={this.showCollections}>
                         <Collections>
                             Collections
                             </Collections>
-                            <ArrowWrapper>
+                        <ArrowWrapper>
                             <ArrowDown />
-                            </ArrowWrapper>
+                        </ArrowWrapper>
                     </CollectionWrapper>
-                        {showCollections &&
-                            <Dropdown>
-                                <Menu onClose={() => this.setState({ showCollections: false })} arrowPos="left">
-                                    <MenuTitle>Your top collections</MenuTitle>
-                                    {this.renderRecommended()}
-                                    <Divider />
-                                    <All
-                                        onClick={this.toCollections}
-                                        >
-                                        <AllIcon />
-                                            View all collections
-                                        </All>
-                                        <Add
-                                            onClick={() => this.setState({
-                                                showDialog: true,
-                                                showCollections: false
-                                            })}
-                                            >
-                                            <AddCollection />
-                                                Add a collection
-                                            </Add>
-                                        </Menu>
-                                    </Dropdown>
+                    {showCollections &&
+                    <Dropdown>
+                        <Menu onClose={this.showCollections} arrowPos="left">
+                            <MenuTitle>Your top collections</MenuTitle>
+                            {this.renderRecommended()}
+                            <Divider />
+                            <All
+                                onClick={this.toCollections}
+                            >
+                                <AllIcon />
+                                    View all collections
+                                </All>
+                            <Add
+                                onClick={this.showDialog}
+                            >
+                                <AddCollection />
+                                        Add a collection
+                                    </Add>
+                        </Menu>
+                    </Dropdown>
                                 }
-                        {this.activeCollection()}
+                    {this.activeCollection()}
                 </NavContainer>
                 {showDialog &&
                     <CollectionDialog

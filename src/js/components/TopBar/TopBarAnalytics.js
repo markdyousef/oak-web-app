@@ -6,16 +6,22 @@ import ReactGA from 'react-ga';
 export default (ActionBar: Function) => {
     return (
         class AnalyticsWrapper extends Component {
-            track = (type: string) => {
+            trackEvent = (type: string, value?: any) => {
+                console.log(value);
                 ReactGA.event({
                     category: 'Card',
-                    action: type
+                    action: type,
+                    label: String(value)
                 });
+            }
+            trackModal = (type:string) => {
+                ReactGA.modalview(type);
             }
             render() {
                 return (
                     <ActionBar
-                        track={this.track}
+                        trackEvent={this.trackEvent}
+                        trackModal={this.trackModal}
                         {...this.props}
                     />
                 );

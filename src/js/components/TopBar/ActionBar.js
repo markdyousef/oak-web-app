@@ -31,7 +31,7 @@ type Props = {
     data?: { loading: bool, collections: Array<Object> },
     showComments?: bool,
     onShowComments?: (bool) => void,
-    track?: (type: string) => void
+    trackEvent?: (type: string) => void
 };
 
 type State = {};
@@ -46,11 +46,11 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
     state: State = {}
     props: Props;
     onShowLabels = (show?:bool = true) => {
-        const { updateLabels, track } = this.props;
+        const { updateLabels, trackEvent } = this.props;
         if (!updateLabels) return;
 
         // Analytics
-        if (track) track(types.SHOW_LABELS);
+        if (trackEvent) trackEvent(types.SHOW_LABELS);
 
         updateLabels({
             key: 'showLabels',
@@ -58,18 +58,18 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         });
     }
     onShowComments = () => {
-        const { track, onShowComments, showComments } = this.props;
+        const { trackEvent, onShowComments, showComments } = this.props;
 
         // Analytics
-        if (track) track(types.SHOW_COMMENTS);
+        if (trackEvent) trackEvent(types.SHOW_COMMENTS);
 
         if (onShowComments) onShowComments(!showComments);
     }
     onEdit = () => {
-        const { updateCard, card, track } = this.props;
+        const { updateCard, card, trackEvent } = this.props;
 
         // Analytics
-        if (track) track(types.EDIT);
+        if (trackEvent) trackEvent(types.EDIT);
 
         const readOnly = card && card.get('readOnly');
         updateCard('readOnly', !readOnly);
@@ -83,11 +83,11 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         if (push) push(`/collection/${collectionId}`);
     }
     onSave = (newCard?: bool) => {
-        const { create, update, updateCard, card, track } = this.props;
+        const { create, update, updateCard, card, trackEvent } = this.props;
         if (!card) return;
 
         // Analytics
-        if (track) track(types.SAVE);
+        if (trackEvent) trackEvent(types.SAVE);
 
         const cardId = card.get('cardId');
         const collectionId = card.get('collectionId');
@@ -114,10 +114,10 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         }
     }
     onCreate = () => {
-        const { updateCard, track } = this.props;
+        const { updateCard, trackEvent } = this.props;
 
         // Analytics
-        if (track) track(types.CREATE);
+        if (trackEvent) trackEvent(types.CREATE);
 
         updateCard('menu', 'CREATE');
     }
@@ -125,11 +125,11 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         const {
             router: { push },
             params: { collectionId },
-            track
+            trackEvent
         } = this.props;
 
         // Analytics
-        if (track) track(types.NEW);
+        if (trackEvent) trackEvent(types.NEW);
 
         if (push) {
             if (!collectionId) {

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { labels, card, comments } from '../../store/actions';
 import ActionBar from './ActionBar';
 import { getTeam } from '../../utils';
-import withAnalytics from './ActionBarAnalytics';
+import withAnalytics from './TopBarAnalytics';
 
 const getCollectionList = gql`
     query topNav($teamId: ID!) {
