@@ -136,7 +136,8 @@ const mapDispatchToProps = (dispatch: Function) => (
                 key: 'page',
                 value: 'ADD'
             }));
-        }
+        },
+        clearLabels: () => dispatch(labels.clearLabels())
     }
 );
 
@@ -164,8 +165,7 @@ export default compose(
                             id: label.id
                         });
                     })
-                    .catch((err) => {
-                        console.log(err);
+                    .catch(() => {
                         const message = {
                             type: 'error',
                             message: "We couldn't create your label"
@@ -184,8 +184,6 @@ export default compose(
                 mutate({ variables: { groveId, name } })
                     .then((res) => {
                         const id = res.data.createSeed.id;
-                        console.log(res);
-                        console.log(id);
                         ownProps.updateCard({
                             key: 'cardId',
                             value: id
@@ -217,8 +215,7 @@ export default compose(
                             color: label.color
                         });
                     })
-                    .catch((err) => {
-                        console.log(err);
+                    .catch(() => {
                         const message = {
                             type: 'error',
                             message: "We couldn't create your label"
@@ -238,8 +235,7 @@ export default compose(
                     .then(() => {
                         ownProps.delete(id);
                     })
-                    .catch((err) => {
-                        console.log(err);
+                    .catch(() => {
                         const message = {
                             type: 'error',
                             message: "We couldn't create your label"

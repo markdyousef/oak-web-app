@@ -20,16 +20,19 @@ import {
     ButtonGroup,
     Grid,
     masonStyles,
+    DropdownContainer,
+    Dropdown,
+    MenuItem
+} from './styles';
+
+import {
     Loading,
     LoadingMedium,
     LoadingShorter,
     LoadingShort,
     LoadingLonger,
-    LoadingLong,
-    DropdownContainer,
-    Dropdown,
-    MenuItem
-} from './styles';
+    LoadingLong
+} from '../../styles';
 
 class CollectionDetail extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
@@ -106,7 +109,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
     }
     onSortCards = (key: string, items?: Array<Object>) => {
         const sortKey = key.toLowerCase();
-        console.log(sortKey);
         const { data: { seeds } } = this.props;
         const cards = (items) || this.state.cards;
         let sortedCards = [...cards];
@@ -185,12 +187,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     showEdit: false
                                 })}
                             >
-                                Update Collection
+                                <span>
+                                    Update collection
+                                </span>
                             </MenuItem>
                             <MenuItem
                                 onClick={this.onDelete}
                             >
-                                Delete Collection
+                                <label>
+                                    Delete collection
+                                </label>
                             </MenuItem>
                         </Menu>
                     </Dropdown>
@@ -260,22 +266,22 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         return (
             <Container>
                 <Header>
-                <HeaderContent>
-                    {this.renderInfo()}
-                    <ButtonGroup>
-                        {/* <SquareButton
-                            onClick={this.addCard}
-                            text="Add Card"
-                            type="primary"
-                        /> */}
-                        <SquareButton
-                            onClick={() => this.setState({ showEdit: !showEdit })}
-                            text="Edit Collection"
-                            type="whiteLarge"
-                        />
-                        {this.showDialog()}
-                        {this.showEdit()}
-                    </ButtonGroup>
+                    <HeaderContent>
+                        {this.renderInfo()}
+                        <ButtonGroup>
+                            {/* <SquareButton
+                                onClick={this.addCard}
+                                text="Add Card"
+                                type="primary"
+                            /> */}
+                            <SquareButton
+                                onClick={() => this.setState({ showEdit: !showEdit })}
+                                text="Edit collection"
+                                type="whiteLarge"
+                            />
+                            {this.showDialog()}
+                            {this.showEdit()}
+                        </ButtonGroup>
                     </HeaderContent>
                 </Header>
                 <CollectionToolbar

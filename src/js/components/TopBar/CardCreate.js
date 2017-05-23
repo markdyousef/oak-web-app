@@ -16,7 +16,8 @@ type Props = {
     saveCard?: () => void,
     updateCollection?: () => void,
     showLabels?: bool,
-    onShowLabels?: () => void
+    onShowLabels?: () => void,
+    isEdited?: bool
 }
 
 export default ({ ...props }: Props) => {
@@ -25,8 +26,8 @@ export default ({ ...props }: Props) => {
             <NavContainer>
                 <RoundButton
                     text="Share post"
-                    onClick={props.onCreate}
-                    type="disabled"
+                    onClick={(props.isEdited) ? props.onCreate: null}
+                    type={(props.isEdited) ? "primary" : "disabled"}
                     isLoading={props.isLoading}
                 />
                 {props.showMenu &&

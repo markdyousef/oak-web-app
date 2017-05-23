@@ -1,10 +1,11 @@
 // @flow
 import React, { Component } from 'react';
+import { convertToRaw } from 'draft-js';
 import { RoundButton } from '../shared/Button';
 import { NavCenter } from './styles';
 import { CardUpdate, CardCreate } from './index';
 import { changeUrls } from '../../utils';
-import { convertToRaw } from 'draft-js';
+import * as types from './contants';
 
 type DefaultProps = {
     updateCard: () => void
@@ -27,7 +28,10 @@ type Props = {
     updateCard: (key: string, value: any) => void,
     create?: (id: string, name: string, content: string, cover: string) => Promise<>,
     update?: (cardId: string, content: string, cover: string) => Promise<>,
-    data?: { loading: bool, collections: Array<Object> }
+    data?: { loading: bool, collections: Array<Object> },
+    showComments?: bool,
+    onShowComments?: (bool) => void,
+    trackEvent?: (type: string) => void
 };
 
 type State = {};
@@ -40,25 +44,50 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         params: {}
     }
     state: State = {}
+    props: Props;
     onShowLabels = (show?:bool = true) => {
-        const { updateLabels } = this.props;
+        const { updateLabels, trackEvent } = this.props;
         if (!updateLabels) return;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SHOW_LABELS);
+
         updateLabels({
             key: 'showLabels',
             value: show
         });
     }
+    onShowComments = () => {
+        const { trackEvent, onShowComments, showComments } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SHOW_COMMENTS);
+
+        if (onShowComments) onShowComments(!showComments);
+    }
+    onEdit = () => {
+        const { updateCard, card, trackEvent } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.EDIT);
+
+        const readOnly = card && card.get('readOnly');
+        updateCard('readOnly', !readOnly);
+    }
     goToCard = (collectionId: string, cardId: string) => {
         const { router: { replace } } = this.props;
-        if (replace) replace(`/collection/${collectionId}/card/${cardId}`)
+        if (replace) replace(`/collection/${collectionId}/card/${cardId}`);
     }
     goToColllection = (collectionId: string) => {
         const { router: { push } } = this.props;
-        if (push) push(`/collection/${collectionId}`)
+        if (push) push(`/collection/${collectionId}`);
     }
     onSave = (newCard?: bool) => {
-        const { create, update, updateCard, card } = this.props;
+        const { create, update, updateCard, card, trackEvent } = this.props;
         if (!card) return;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SAVE);
 
         const cardId = card.get('cardId');
         const collectionId = card.get('collectionId');
@@ -68,77 +97,74 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         const newEditorState = changeUrls(editorState, images);
         const content = JSON.stringify(convertToRaw(newEditorState.getCurrentContent()));
         const cover = images.getIn([0, 'id']);
-        console.log(cover);
         // existing cards has a cardId
         updateCard('isLoading', true);
-        // no card name
-        // if (!name) {
-        //     const message = {
-        //         type: 'error',
-        //         message: 'Please provide a name for your card',
-        //         onClick: this.onSave
-        //     }
-        //     this.updateCard('message', message);
-        //     return;
-        // }
         if (cardId && update) {
             update(cardId, content, cover)
-                .then(id => {
+                .then((id) => {
                     if (newCard === true) return this.goToColllection(collectionId);
                     this.goToCard(collectionId, cardId)
                 });
         } else if (create) {
             create(collectionId, name || '', content, cover)
-                .then(id => {
+                .then((id) => {
                     if (newCard === true) return this.goToColllection(collectionId);
-                    this.goToCard(collectionId, id)
+                    this.goToCard(collectionId, id);
                 });
         }
     }
     onCreate = () => {
-        const { updateCard } = this.props;
-        updateCard('menu', "CREATE");
+        const { updateCard, trackEvent } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.CREATE);
+
+        updateCard('menu', 'CREATE');
     }
     onNewCard = () => {
         const {
             router: { push },
-            params: { collectionId }
+            params: { collectionId },
+            trackEvent
         } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.NEW);
+
         if (push) {
-            if (!collectionId) return push('/collection/card');
+            if (!collectionId) {
+                push('/collection/card');
+                return;
+            }
             push(`/collection/${collectionId}/card`);
         }
     }
     renderActionBar = () => {
         const {
             location,
-            router: { push },
             collectionId,
             card,
             showLabels,
             updateCard,
             data,
-            params,
-            showComments,
-            onShowComments
+            params
         } = this.props;
         const inCardDetail =
             location.pathname &&
             location.pathname.includes('card');
 
         if (!inCardDetail) {
-            return(
+            return (
                 <RoundButton
                     onClick={this.onNewCard}
                     text="Create a post"
                     type="secondary"
                 />
-            )
+            );
         }
         const isLoading = card && card.get('isLoading');
-        const isSaved = card && card.get('isSaved');
         const cardId = params && params.cardId;
-        //Existing Card
+        // Existing Card
         if (inCardDetail && cardId) {
             // open existing card in readOnly
             const readOnly = card && card.get('readOnly');
@@ -147,31 +173,34 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     onShowLabels={this.onShowLabels}
                     showLabels={showLabels}
                     readOnly={readOnly}
-                    onEdit={() => updateCard('readOnly', !readOnly)}
+                    onEdit={this.onEdit}
                     onSave={this.onSave}
                     isLoading={isLoading}
-                    onShowComments={() => onShowComments(!showComments)}
+                    onShowComments={this.onShowComments}
                 />
             );
         }
-        //New Card
+        // New Card
         if (inCardDetail && !cardId) {
             const menu = card && card.get('menu');
+            const isEdited = card && card.get('isEdited');
             return (
                 <CardCreate
                     isLoading={isLoading}
                     onCreate={this.onCreate}
-                    showMenu={menu === "CREATE"}
+                    showMenu={menu === 'CREATE'}
                     closeMenu={() => updateCard('menu', null)}
                     collectionId={collectionId}
                     collections={data && data.collections}
-                    updateCollection={collectionId => updateCard('collectionId', collectionId)}
+                    updateCollection={id => updateCard('collectionId', id)}
                     showLabels={showLabels}
                     onShowLabels={this.onShowLabels}
                     saveCard={() => this.onSave(true)}
+                    isEdited={isEdited}
                 />
-            )
+            );
         }
+        return null;
     }
     render() {
         return (

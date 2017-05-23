@@ -69,4 +69,10 @@ describe('actions', () => {
         };
         expect(actions.updateActiveLabel(label)).toEqual(expectedAction);
     });
+    it('should clear labels', () => {
+        const expectedAction = {
+            type: types.CLEAR_LABELS
+        };
+        expect(actions.clearLabels()).toEqual(expectedAction);
+    })
 });

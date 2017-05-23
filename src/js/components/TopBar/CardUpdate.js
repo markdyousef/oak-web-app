@@ -66,11 +66,15 @@ export default ({ ...props }: Props) => {
     return (
         <EditNav>
             <IconButton>
-                <CommentsIcon onClick={props.onShowComments} />
+                <span data-title="Comment" data-title-pos="bottom">
+                    <CommentsIcon onClick={props.onShowComments} />
+                </span>
                 {<span>0</span> }
             </IconButton>
             {<IconButton>
-                <LikesIcon />
+                <span data-title="Like" data-title-pos="bottom">
+                    <LikesIcon />
+                </span>
                 <span>0</span>
             </IconButton> }
             {cardActions}

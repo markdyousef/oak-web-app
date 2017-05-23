@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -18,7 +20,8 @@ ShallowWrapper {
             placeholder={null}
             title="Password"
             type="password"
-            value="" />
+            value=""
+        />
         <h5>
             Enter your current password.
         </h5>
@@ -31,7 +34,8 @@ ShallowWrapper {
             placeholder={null}
             title="New password"
             type="password"
-            value="" />
+            value=""
+        />
         <h5>
             Create a strong new password to avoid trolls taking over your team.
         </h5>
@@ -44,7 +48,8 @@ ShallowWrapper {
             placeholder={null}
             title="Confirm password"
             type="password"
-            value="" />
+            value=""
+        />
         <h5>
             Confirm your new password.
         </h5>
@@ -54,7 +59,8 @@ ShallowWrapper {
         <Unknown
             onClick={[Function]}
             text="Save"
-            type="primary" />
+            type="primary"
+        />
     </styled.div>
 </styled.section>,
   "nodes": Array [
@@ -70,7 +76,8 @@ ShallowWrapper {
                   placeholder={null}
                   title="Password"
                   type="password"
-                  value="" />
+                  value=""
+            />
             <h5>
                   Enter your current password.
             </h5>
@@ -83,7 +90,8 @@ ShallowWrapper {
                   placeholder={null}
                   title="New password"
                   type="password"
-                  value="" />
+                  value=""
+            />
             <h5>
                   Create a strong new password to avoid trolls taking over your team.
             </h5>
@@ -96,7 +104,8 @@ ShallowWrapper {
                   placeholder={null}
                   title="Confirm password"
                   type="password"
-                  value="" />
+                  value=""
+            />
             <h5>
                   Confirm your new password.
             </h5>
@@ -106,7 +115,8 @@ ShallowWrapper {
             <Unknown
                   onClick={[Function]}
                   text="Save"
-                  type="primary" />
+                  type="primary"
+            />
       </styled.div>
 </styled.section>,
   ],
@@ -117,7 +127,8 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <SettingsAccount
-        updatePassword={[Function]} />,
+        updatePassword={[Function]}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -168,7 +179,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="Password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Enter your current password.
                     </h5>
@@ -181,7 +193,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="New password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Create a strong new password to avoid trolls taking over your team.
                     </h5>
@@ -194,7 +207,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="Confirm password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Confirm your new password.
                     </h5>
@@ -204,7 +218,8 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Save"
-                              type="primary" />
+                              type="primary"
+                    />
           </styled.div>
 </styled.section>,
         "_debugID": 2,
@@ -220,7 +235,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="Password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Enter your current password.
                     </h5>
@@ -233,7 +249,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="New password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Create a strong new password to avoid trolls taking over your team.
                     </h5>
@@ -246,7 +263,8 @@ ShallowWrapper {
                               placeholder={null}
                               title="Confirm password"
                               type="password"
-                              value="" />
+                              value=""
+                    />
                     <h5>
                               Confirm your new password.
                     </h5>
@@ -256,7 +274,8 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Save"
-                              type="primary" />
+                              type="primary"
+                    />
           </styled.div>
 </styled.section>,
       },
@@ -271,6 +290,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <SettingsAccount
-    updatePassword={[Function]} />,
+    updatePassword={[Function]}
+/>,
 }
 `;

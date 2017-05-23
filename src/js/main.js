@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
+import ReactGA from 'react-ga';
 import { requireAuth, requireTeam } from './utils';
 import initStore from './store/configureStore';
 import client from './config/apollo';
@@ -29,18 +30,25 @@ import '../index.html';
 import '../css/reset.css';
 import '../css/app.css';
 
+// initialize Google Analytics
+ReactGA.initialize('UA-99763169-1', {
+    debug: true
+});
+const fireTracking = () => {
+    ReactGA.pageview(window.location.hash);
+};
 
 const store = initStore();
 
 const routes = (
     <ApolloProvider store={store} client={client}>
-        <Router history={hashHistory}>
+        <Router onUpdate={fireTracking} history={hashHistory}>
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
                     <Route path="signup(/:token)" component={SignUp} />
                     <Route path="forgot" component={Forgot} />
-                    <Route path="reset" component={ResetPassword} />
+                    <Route path="reset(/:token)" component={ResetPassword} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>

@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -12,7 +14,8 @@ ShallowWrapper {
     </h1>
     <ProfilePic
         onChange={[Function]}
-        picture={null} />
+        picture={null}
+    />
     <styled.div>
         <Input
             notValid={false}
@@ -21,7 +24,8 @@ ShallowWrapper {
             placeholder="John Doe"
             title="Full name"
             type={null}
-            value="" />
+            value=""
+        />
         <p>
             Your name goes whereever you go on Cuest, and will help new teammates get to know you.
         </p>
@@ -34,9 +38,10 @@ ShallowWrapper {
             placeholder="john"
             title="Username"
             type={null}
-            value="" />
+            value=""
+        />
         <p>
-            Here\'s how your username looks: 
+            Here's how your username looks: 
             <span>
                 @
                 
@@ -48,7 +53,8 @@ ShallowWrapper {
         <Unknown
             onClick={[Function]}
             text="Save"
-            type="primary" />
+            type="primary"
+        />
     </styled.div>
 </styled.section>,
   "nodes": Array [
@@ -58,7 +64,8 @@ ShallowWrapper {
       </h1>
       <ProfilePic
             onChange={[Function]}
-            picture={null} />
+            picture={null}
+      />
       <styled.div>
             <Input
                   notValid={false}
@@ -67,7 +74,8 @@ ShallowWrapper {
                   placeholder="John Doe"
                   title="Full name"
                   type={null}
-                  value="" />
+                  value=""
+            />
             <p>
                   Your name goes whereever you go on Cuest, and will help new teammates get to know you.
             </p>
@@ -80,9 +88,10 @@ ShallowWrapper {
                   placeholder="john"
                   title="Username"
                   type={null}
-                  value="" />
+                  value=""
+            />
             <p>
-                  Here\'s how your username looks: 
+                  Here's how your username looks: 
                   <span>
                         @
                         
@@ -94,7 +103,8 @@ ShallowWrapper {
             <Unknown
                   onClick={[Function]}
                   text="Save"
-                  type="primary" />
+                  type="primary"
+            />
       </styled.div>
 </styled.section>,
   ],
@@ -106,7 +116,8 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <SettingsProfile
         data={Object {}}
-        updateUser={[Function]} />,
+        updateUser={[Function]}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -151,7 +162,8 @@ ShallowWrapper {
           </h1>
           <ProfilePic
                     onChange={[Function]}
-                    picture={null} />
+                    picture={null}
+          />
           <styled.div>
                     <Input
                               notValid={false}
@@ -160,7 +172,8 @@ ShallowWrapper {
                               placeholder="John Doe"
                               title="Full name"
                               type={null}
-                              value="" />
+                              value=""
+                    />
                     <p>
                               Your name goes whereever you go on Cuest, and will help new teammates get to know you.
                     </p>
@@ -173,9 +186,10 @@ ShallowWrapper {
                               placeholder="john"
                               title="Username"
                               type={null}
-                              value="" />
+                              value=""
+                    />
                     <p>
-                              Here\'s how your username looks: 
+                              Here's how your username looks: 
                               <span>
                                         @
                                         
@@ -187,7 +201,8 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Save"
-                              type="primary" />
+                              type="primary"
+                    />
           </styled.div>
 </styled.section>,
         "_debugID": 2,
@@ -197,7 +212,8 @@ ShallowWrapper {
           </h1>
           <ProfilePic
                     onChange={[Function]}
-                    picture={null} />
+                    picture={null}
+          />
           <styled.div>
                     <Input
                               notValid={false}
@@ -206,7 +222,8 @@ ShallowWrapper {
                               placeholder="John Doe"
                               title="Full name"
                               type={null}
-                              value="" />
+                              value=""
+                    />
                     <p>
                               Your name goes whereever you go on Cuest, and will help new teammates get to know you.
                     </p>
@@ -219,9 +236,10 @@ ShallowWrapper {
                               placeholder="john"
                               title="Username"
                               type={null}
-                              value="" />
+                              value=""
+                    />
                     <p>
-                              Here\'s how your username looks: 
+                              Here's how your username looks: 
                               <span>
                                         @
                                         
@@ -233,7 +251,8 @@ ShallowWrapper {
                     <Unknown
                               onClick={[Function]}
                               text="Save"
-                              type="primary" />
+                              type="primary"
+                    />
           </styled.div>
 </styled.section>,
       },
@@ -249,6 +268,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <SettingsProfile
     data={Object {}}
-    updateUser={[Function]} />,
+    updateUser={[Function]}
+/>,
 }
 `;
