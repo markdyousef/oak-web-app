@@ -13,17 +13,17 @@ exports[`renders correctly 1`] = `
       <div
         className="jtxdxF"
       >
-        <h1>
-          Collections
-        </h1>
+        <h1 />
         <p>
-          Here’s a quick overview of all your team’s collections.
+          Here is a quick overview of all your team’s collections.
         </p>
         <div
           className="fdAREB"
         >
           <div>
-            <h3 />
+            <h3>
+              0
+            </h3>
             <h5>
               Collections
             </h5>

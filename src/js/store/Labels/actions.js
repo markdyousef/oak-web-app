@@ -79,3 +79,9 @@ export const updateActiveLabel = (label: Object): Action => (
         }
     }
 );
+
+export const clearLabels = (): Action => (
+    {
+        type: types.CLEAR_LABELS
+    }
+);

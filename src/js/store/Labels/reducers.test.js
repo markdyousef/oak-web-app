@@ -81,4 +81,13 @@ describe('labels reducer', () => {
         const collectionLabels = state.get('collectionLabels');
         expect(collectionLabels).toContain(label);
     });
+    it('should clear collectionLabels and set didInitialize to false', () => {
+        const action = actions.clearLabels();
+        const state = reducer(initialState, action);
+        const collectionLabels = state.get('collectionLabels');
+        const didInitialize = state.get('didInitialize');
+
+        expect(collectionLabels).toEqual(List([]));
+        expect(didInitialize).toEqual(false);
+    })
 });

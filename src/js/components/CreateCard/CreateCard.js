@@ -123,7 +123,7 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
         if (updateCollection) updateCollection(id);
     }
     render() {
-        const { collections, addCard, collectionId, showLabels, onShowLabels } = this.props;
+        const { collections, collectionId, showLabels, onShowLabels } = this.props;
         return (
             <Container>
                 <h3>Share post in:</h3>
@@ -146,8 +146,8 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                         <div onClick={() => onShowLabels()}>Add labels</div>
                         {showLabels &&
                             <LabelsContainer>
-                                <Dropdown onClose={() => onShowLabels(false)} arrowPos='none'>
-                                    <LabelsActionBoxContainer/>
+                                <Dropdown onClose={() => onShowLabels(false)} arrowPos="none">
+                                    <LabelsActionBoxContainer />
                                 </Dropdown>
                             </LabelsContainer>
                         }
