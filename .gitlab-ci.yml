@@ -2,7 +2,9 @@ image: node:7.10-alpine
 
 stages:
   - test
-  - deploy
+  - deploy_prod
+  - deploy_dev
+  - build
 
 variables:
   S3_DEV_BUCKET: "dev.clai.io/cuest-web/"
@@ -16,7 +18,7 @@ before_script:
    - yarn install
 
 build_job:
-  stage: test
+  stage: build
   script:
    - yarn run build
 
@@ -26,7 +28,7 @@ test_job:
    - yarn run test
 
 deploy_to_dev:
-  stage: deploy
+  stage: deploy_dev
   environment: development
   only:
     - development
@@ -41,7 +43,7 @@ deploy_to_dev:
       $SLACK_WEBHOOK
 
 deploy_to_prod:
-  stage: deploy
+  stage: deploy_prod
   environment: production
   only:
     - master

@@ -37,7 +37,7 @@ const config = require('./base.config')({
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(true),
         new webpack.optimize.DedupePlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb/),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
