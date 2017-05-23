@@ -53,7 +53,7 @@ const Info = styled.div`
         display: block;
         letter-spacing: -.04em;
     }
-    & p {
+    & h3 {
         font-size: 18px;
         font-weight: normal;
         padding-bottom: 24px;
@@ -176,10 +176,10 @@ class Collections extends Component<DefaultProps, Props, State> {
         return (
             <Info>
                 <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : Collections}</h1>
-                <p>{(loading) ?
+                <h3>{(loading) ?
                     <Loading><LoadingLonger /><LoadingLong /></Loading>
                     : 'Here is a quick overview of all your team’s collections.'}
-                </p>
+                </h3>
                 <Stats>
                     <div>
                         <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : groves && groves.length}</h3>

@@ -10,13 +10,13 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.nav>
     <Apollo(withRouter(MainNav)) />
-    <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+    <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
     <Apollo(Apollo(withRouter(Settings))) />
 </styled.nav>,
   "nodes": Array [
     <styled.nav>
       <Apollo(withRouter(MainNav)) />
-      <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+      <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
       <Apollo(Apollo(withRouter(Settings))) />
 </styled.nav>,
   ],
@@ -56,13 +56,13 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.nav>
           <Apollo(withRouter(MainNav)) />
-          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
           <Apollo(Apollo(withRouter(Settings))) />
 </styled.nav>,
         "_debugID": 2,
         "_renderedOutput": <styled.nav>
           <Apollo(withRouter(MainNav)) />
-          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
           <Apollo(Apollo(withRouter(Settings))) />
 </styled.nav>,
       },

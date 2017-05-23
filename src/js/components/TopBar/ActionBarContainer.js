@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { labels, card, comments } from '../../store/actions';
 import ActionBar from './ActionBar';
 import { getTeam } from '../../utils';
+import withAnalytics from './ActionBarAnalytics';
 
 const getCollectionList = gql`
     query topNav($teamId: ID!) {
@@ -122,4 +123,4 @@ export default compose(
                     })
         })
     }),
-)(withRouter(ActionBar));
+)(withRouter(withAnalytics(ActionBar)));

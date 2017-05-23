@@ -11,12 +11,12 @@ exports[`renders correctly 1`] = `
       className="fgNEUw"
     >
       <div
-        className="jtxdxF"
+        className="reaYi"
       >
         <h1 />
-        <p>
+        <h3>
           Here is a quick overview of all your team’s collections.
-        </p>
+        </h3>
         <div
           className="fdAREB"
         >
