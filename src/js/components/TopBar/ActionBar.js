@@ -5,6 +5,7 @@ import { RoundButton } from '../shared/Button';
 import { NavCenter } from './styles';
 import { CardUpdate, CardCreate } from './index';
 import { changeUrls } from '../../utils';
+import * as types from './contants';
 
 type DefaultProps = {
     updateCard: () => void
@@ -29,7 +30,8 @@ type Props = {
     update?: (cardId: string, content: string, cover: string) => Promise<>,
     data?: { loading: bool, collections: Array<Object> },
     showComments?: bool,
-    onShowComments?: (bool) => void
+    onShowComments?: (bool) => void,
+    trackEvent?: (type: string) => void
 };
 
 type State = {};
@@ -44,12 +46,33 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
     state: State = {}
     props: Props;
     onShowLabels = (show?:bool = true) => {
-        const { updateLabels } = this.props;
+        const { updateLabels, trackEvent } = this.props;
         if (!updateLabels) return;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SHOW_LABELS);
+
         updateLabels({
             key: 'showLabels',
             value: show
         });
+    }
+    onShowComments = () => {
+        const { trackEvent, onShowComments, showComments } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SHOW_COMMENTS);
+
+        if (onShowComments) onShowComments(!showComments);
+    }
+    onEdit = () => {
+        const { updateCard, card, trackEvent } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.EDIT);
+
+        const readOnly = card && card.get('readOnly');
+        updateCard('readOnly', !readOnly);
     }
     goToCard = (collectionId: string, cardId: string) => {
         const { router: { replace } } = this.props;
@@ -60,8 +83,11 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         if (push) push(`/collection/${collectionId}`);
     }
     onSave = (newCard?: bool) => {
-        const { create, update, updateCard, card } = this.props;
+        const { create, update, updateCard, card, trackEvent } = this.props;
         if (!card) return;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.SAVE);
 
         const cardId = card.get('cardId');
         const collectionId = card.get('collectionId');
@@ -73,16 +99,6 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         const cover = images.getIn([0, 'id']);
         // existing cards has a cardId
         updateCard('isLoading', true);
-        // no card name
-        // if (!name) {
-        //     const message = {
-        //         type: 'error',
-        //         message: 'Please provide a name for your card',
-        //         onClick: this.onSave
-        //     }
-        //     this.updateCard('message', message);
-        //     return;
-        // }
         if (cardId && update) {
             update(cardId, content, cover)
                 .then((id) => {
@@ -98,14 +114,23 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         }
     }
     onCreate = () => {
-        const { updateCard } = this.props;
+        const { updateCard, trackEvent } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.CREATE);
+
         updateCard('menu', 'CREATE');
     }
     onNewCard = () => {
         const {
             router: { push },
-            params: { collectionId }
+            params: { collectionId },
+            trackEvent
         } = this.props;
+
+        // Analytics
+        if (trackEvent) trackEvent(types.NEW);
+
         if (push) {
             if (!collectionId) {
                 push('/collection/card');
@@ -122,9 +147,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
             showLabels,
             updateCard,
             data,
-            params,
-            showComments,
-            onShowComments
+            params
         } = this.props;
         const inCardDetail =
             location.pathname &&
@@ -150,10 +173,10 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     onShowLabels={this.onShowLabels}
                     showLabels={showLabels}
                     readOnly={readOnly}
-                    onEdit={() => updateCard('readOnly', !readOnly)}
+                    onEdit={this.onEdit}
                     onSave={this.onSave}
                     isLoading={isLoading}
-                    onShowComments={() => onShowComments(!showComments)}
+                    onShowComments={this.onShowComments}
                 />
             );
         }

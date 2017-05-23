@@ -9,15 +9,15 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.nav>
-    <Apollo(withRouter(MainNav)) />
-    <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
-    <Apollo(Apollo(withRouter(Settings))) />
+    <Apollo(withRouter(AnalyticsWrapper)) />
+    <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
+    <Apollo(Apollo(withRouter(AnalyticsWrapper))) />
 </styled.nav>,
   "nodes": Array [
     <styled.nav>
-      <Apollo(withRouter(MainNav)) />
-      <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
-      <Apollo(Apollo(withRouter(Settings))) />
+      <Apollo(withRouter(AnalyticsWrapper)) />
+      <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
+      <Apollo(Apollo(withRouter(AnalyticsWrapper))) />
 </styled.nav>,
   ],
   "options": Object {},
@@ -55,15 +55,15 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.nav>
-          <Apollo(withRouter(MainNav)) />
-          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
-          <Apollo(Apollo(withRouter(Settings))) />
+          <Apollo(withRouter(AnalyticsWrapper)) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
+          <Apollo(Apollo(withRouter(AnalyticsWrapper))) />
 </styled.nav>,
         "_debugID": 2,
         "_renderedOutput": <styled.nav>
-          <Apollo(withRouter(MainNav)) />
-          <Connect(Apollo(Apollo(Apollo(withRouter(ActionBar))))) />
-          <Apollo(Apollo(withRouter(Settings))) />
+          <Apollo(withRouter(AnalyticsWrapper)) />
+          <Connect(Apollo(Apollo(Apollo(withRouter(AnalyticsWrapper))))) />
+          <Apollo(Apollo(withRouter(AnalyticsWrapper))) />
 </styled.nav>,
       },
       "_renderedNodeType": 1,

@@ -14,7 +14,7 @@ ShallowWrapper {
     <div
         className={undefined}
     >
-        <Apollo(Collections) />
+        <Apollo(AnalyticsWrapper) />
     </div>
 </div>,
   "nodes": Array [
@@ -24,7 +24,7 @@ ShallowWrapper {
       <div
             className={undefined}
       >
-            <Apollo(Collections) />
+            <Apollo(AnalyticsWrapper) />
       </div>
 </div>,
   ],
@@ -68,7 +68,7 @@ ShallowWrapper {
           <div
                     className={undefined}
           >
-                    <Apollo(Collections) />
+                    <Apollo(AnalyticsWrapper) />
           </div>
 </div>,
         "_debugID": 2,
@@ -78,7 +78,7 @@ ShallowWrapper {
           <div
                     className={undefined}
           >
-                    <Apollo(Collections) />
+                    <Apollo(AnalyticsWrapper) />
           </div>
 </div>,
       },
