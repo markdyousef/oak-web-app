@@ -185,12 +185,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     showEdit: false
                                 })}
                             >
-                                Update Collection
+                                <span>
+                                    Update collection
+                                </span>
                             </MenuItem>
                             <MenuItem
                                 onClick={this.onDelete}
                             >
-                                Delete Collection
+                                <label>
+                                    Delete collection
+                                </label>
                             </MenuItem>
                         </Menu>
                     </Dropdown>
@@ -270,7 +274,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                         /> */}
                         <SquareButton
                             onClick={() => this.setState({ showEdit: !showEdit })}
-                            text="Edit Collection"
+                            text="Edit collection"
                             type="whiteLarge"
                         />
                         {this.showDialog()}

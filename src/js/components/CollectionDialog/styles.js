@@ -24,6 +24,7 @@ export const Modal = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 1px 10px rgba(19, 21, 23, 0.25);
 `;
 
 export const Header = styled.div`
@@ -48,6 +49,10 @@ export const Close = styled.button`
     font-weight: 100;
     margin-top: -8px;
     margin-right: -10px;
+    color: rgba(19, 21, 23, 0.5);
+    &:hover {
+        color: rgba(19, 21, 23, 1);
+    }
 `;
 
 export const Main = styled.div`

@@ -64,14 +64,33 @@ const MenuItem = styled.div`
     margin-bottom: 16px;
     cursor: pointer;
     font-weight: ${props => props.active ? 'bolder' : 'normal'};
+    position: relative;
+    z-index: 1;
     &:last-child {
         margin-bottom: 0;
+    }
+    &:hover {
+        color: #fff;
+    }
+    &:hover:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
     }
 `;
 
 const LabelContainer = styled.div`
-    max-height: 150px;
-    overflow: auto;
+    max-height: 190px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: -20px -14px -20px -20px;
 `;
 
 const Labels = styled.div`

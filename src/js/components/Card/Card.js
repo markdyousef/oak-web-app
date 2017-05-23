@@ -20,7 +20,8 @@ import {
     Settings,
     H1,
     H2,
-    P
+    P,
+    Tooltip
 } from './styles';
 
 type DefaultProps = {
@@ -180,7 +181,7 @@ export default class Card extends Component<DefaultProps, Props, State> {
         );
     }
     renderBottom = () => {
-        const { comments, showComments, creator: { avatar, gravatar } } = this.props;
+        const { comments, showComments, creator: { name, avatar, gravatar } } = this.props;
         const { likes, isLiked, showOptions } = this.state;
         let picture;
         // prefer avatar over gravatar
@@ -190,15 +191,21 @@ export default class Card extends Component<DefaultProps, Props, State> {
             <Bottom>
                 <div>
                     <Icon onClick={showComments}>
-                        <CommentsIcon />
-                        <span>{(comments) ? comments.length : 0}</span>
+                        <span data-title="Comment" data-title-pos="bottom">
+                            <CommentsIcon />
+                        </span>
+                        <p>{(comments) ? comments.length : 0}</p>
                     </Icon>
                     <Icon onClick={this.handleLike}>
-                        <LikesIcon isLiked={isLiked} />
-                        <span>{likes.length}</span>
+                        <span data-title="Like" data-title-pos="bottom">
+                            <LikesIcon isLiked={isLiked} />
+                        </span>
+                        <p>{likes.length}</p>
                     </Icon>
                     <Icon onClick={() => this.setState({ showOptions: !showOptions })}>
-                        <DotsIcon />
+                        <span data-title="More" data-title-pos="bottom">
+                            <DotsIcon />
+                        </span>
                         {showOptions &&
                             <Settings>
                                 <Dropdown
@@ -211,13 +218,11 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         }
                     </Icon>
                 </div>
+                    <span data-title={name} data-title-pos="bottom">
                     <User>
-                        <img src={picture} alt="avatar" />
-                        { /* <div>
-                            <h4>{name}</h4>
-                            <h5>@{username}</h5>
-                        </div> */ }
+                            <img src={picture} alt="avatar" />
                     </User>
+                </span>
             </Bottom>
         );
     }
