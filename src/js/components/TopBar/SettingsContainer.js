@@ -3,12 +3,14 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router';
 import Settings from './Settings';
-import withAnalytics from './TopBarAnalytics';
+import withAnalytics from '../../utils/withAnalytics';
 
 const getAvatar = gql`
     query getAvatar {
         me {
             id
+            name
+            username
             avatar {
                 id
                 urlThumb64

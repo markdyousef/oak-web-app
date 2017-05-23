@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { withRouter } from 'react-router';
 import { getTeam } from '../../utils';
 import MainNav from './MainNav';
-import withAnalytics from './TopBarAnalytics';
+import withAnalytics from '../../utils/withAnalytics';
 
 const getMainNav = gql`
     query topNav($teamId: ID!) {

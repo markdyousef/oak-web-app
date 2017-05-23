@@ -19,9 +19,13 @@ type DefaultProps = {
 
 type Props = {
     data: {
+        loading?: bool,
         me?: {
             gravatar: string,
-            avatar: Object
+            avatar: Object,
+            id: string,
+            name: string,
+            username: string
         }
     },
     router: {
@@ -29,7 +33,8 @@ type Props = {
         replace?: (path: Object) => void
     },
     logout?: () => Promise<>,
-    trackEvent?: (type: string, action?: any) => void
+    trackEvent?: (type: string, action?: any) => void,
+    setUser?: (user: Object) => void
 };
 
 type State = {
@@ -48,6 +53,17 @@ export default class Settings extends Component<DefaultProps, Props, State> {
     toSettings = () => {
         const { router: { push } } = this.props;
         if (push) push('/my-settings');
+    }
+    componentWillReceiveProps(nextProps: Props) {
+        const { data: { loading, me }, setUser } = nextProps;
+
+        if (!loading && me && setUser) {
+            setUser({
+                id: me.id,
+                name: me.name,
+                username: me.username
+            });
+        }
     }
     signOut = () => {
         const { router: { replace }, logout } = this.props;

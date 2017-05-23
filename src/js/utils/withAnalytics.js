@@ -17,11 +17,15 @@ export default (ActionBar: Function) => {
             trackModal = (type:string) => {
                 ReactGA.modalview(type);
             }
+            setUser = (user: Object) => {
+                ReactGA.set(user);
+            }
             render() {
                 return (
                     <ActionBar
                         trackEvent={this.trackEvent}
                         trackModal={this.trackModal}
+                        setUser={this.setUser}
                         {...this.props}
                     />
                 );
