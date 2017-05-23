@@ -39,7 +39,7 @@ ShallowWrapper {
             <styled.div>
                 <Unknown
                     onClick={[Function]}
-                    text="Edit Collection"
+                    text="Edit collection"
                     type="whiteLarge" />
             </styled.div>
         </styled.section>
@@ -93,7 +93,7 @@ ShallowWrapper {
                   <styled.div>
                         <Unknown
                               onClick={[Function]}
-                              text="Edit Collection"
+                              text="Edit collection"
                               type="whiteLarge" />
                   </styled.div>
             </styled.section>
@@ -216,7 +216,7 @@ ShallowWrapper {
                               <styled.div>
                                         <Unknown
                                                   onClick={[Function]}
-                                                  text="Edit Collection"
+                                                  text="Edit collection"
                                                   type="whiteLarge" />
                               </styled.div>
                     </styled.section>
@@ -270,7 +270,7 @@ ShallowWrapper {
                               <styled.div>
                                         <Unknown
                                                   onClick={[Function]}
-                                                  text="Edit Collection"
+                                                  text="Edit collection"
                                                   type="whiteLarge" />
                               </styled.div>
                     </styled.section>

@@ -2,14 +2,14 @@ exports[`test renders correctly 1`] = `
 <section
   className="FlxLp">
   <div
-    className="dCNjhq">
+    className="iyHTQd">
     <div
       className="lipyYZ">
       <h1>
         Add/Edit collection
       </h1>
       <button
-        className="jVpBQq"
+        className="kHDlwp"
         onClick={[Function]}>
         ×
       </button>
