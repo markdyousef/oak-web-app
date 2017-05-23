@@ -10,27 +10,34 @@ import CheckIcon from '../../icons/checkmark';
 const Grid = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
+    width: calc(100% + 10px);
+    flex-grow: 1;
+    margin: 0px 0 0 -10px;
 `;
 
 const Label = styled.div`
     width: 30px;
-    height: 30px;
+    height: 33.5px;
     border-radius: 3px;
     cursor: pointer;
     margin: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: calc(100% * (1/5) - 10px - 1px);
+    flex-grow: 1;
+    margin: 10px 0 0 10px;
     & svg {
-        fill: ${colors.white}
+        fill: ${colors.white};
+        position: relative;
+        top: 1px;
     }
 `;
 
 const Section = styled.section`
-    margin: 20px 0;
+    margin: 16px 0;
     & h5 {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: lighter;
         color: ${colors.grey};
         font-family: 'proxima-nova'
@@ -39,10 +46,11 @@ const Section = styled.section`
 
 const ActionSection = styled.section`
     border-top: 1px solid ${colors.lightGrey};
-    display: flex;
-    height: 50px;
-    align-items: center;
-    justify-content: space-between;
+    display: block;
+    text-align: right;
+    padding: 16px 20px 0px;
+    margin-left: -20px;
+    margin-right: -20px;
 `;
 
 const Back = styled.button`
@@ -50,12 +58,14 @@ const Back = styled.button`
     border: none;
     background-color: #fff;
     padding: 0;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: normal;
+    font-size: 13px;
     display: flex;
     align-items: center;
     & svg {
-        margin-right: 5px;
+        margin-right: 6px;
+        height: 13px;
+        margin-left: -2px;
     }
 `;
 
@@ -68,7 +78,9 @@ const Save = styled.button`
 `;
 
 const Delete = styled(Save)`
-    color: ${colors.red};
+    color: #131517;
+    position: absolute;
+    left: 20px;
 `;
 
 type Props = {
@@ -126,18 +138,18 @@ export default ({ ...props }:Props) => {
             <ActionSection>
                 {onCreate &&
                     <Save onClick={onCreate}>
-                        Save
-                    </Save>
-                }
-                {onUpdate &&
-                    <Save onClick={onUpdate}>
-                        Update
+                        Save label
                     </Save>
                 }
                 {onDelete &&
                     <Delete onClick={onDelete}>
                         Delete
                     </Delete>
+                }
+                {onUpdate &&
+                    <Save onClick={onUpdate}>
+                        Savel label
+                    </Save>
                 }
             </ActionSection>
         </div>

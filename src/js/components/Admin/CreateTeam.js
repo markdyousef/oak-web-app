@@ -6,9 +6,8 @@ import { SquareButton } from '../../components/shared/Button';
 
 const Container = styled.div`
     display: flex;
-    width: 450px;
+    width: 100%;
 `;
-
 
 const CreateTeam = ({ teamName, onChange, onSubmit }:Object) => {
     return (

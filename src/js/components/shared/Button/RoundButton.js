@@ -6,6 +6,11 @@ import { Default, style } from './styles';
 
 const Rounded = styled(Default)`
     border-radius: 999em;
+    font-weight: normal;
+    padding: 8px 16px;
+    margin-right: 8px;
+    min-width: 100px;
+    min-height: 35px;
     ${props => style(props.type)};
 `;
 

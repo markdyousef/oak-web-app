@@ -22,7 +22,7 @@ import User from './pages/User';
 import Admin from './containers/AdminContainer';
 import Team from './pages/Team';
 import Forgot from './containers/ForgotContainer';
-import Reset from './containers/ResetPasswordContainer';
+import ResetPassword from './containers/ResetPasswordContainer';
 
 // Let webpack create the html file in the build folder
 import '../index.html';
@@ -38,9 +38,9 @@ const routes = (
             <Route path="/" component={App}>
                 <Route component={Anonymous}>
                     <Route path="login" component={Login} />
-                    <Route path="signup" component={SignUp} />
+                    <Route path="signup(/:token)" component={SignUp} />
                     <Route path="forgot" component={Forgot} />
-                    <Route path="reset" component={Reset} />
+                    <Route path="reset(/:token)" component={ResetPassword} />
                 </Route>
                 <Route component={Authenticated} onEnter={requireAuth}>
                     <Route component={User}>

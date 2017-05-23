@@ -7,7 +7,10 @@ import { NextButton } from '../shared/Button';
 import Arrow from '../../icons/rightArrow';
 
 type Props = {
-    resetPassword?: (token: string, password: string) => Object
+    resetPassword?: (token: string, password: string) => Promise<>,
+    params: {
+        token?: string
+    }
 };
 
 type State = {
@@ -17,10 +20,15 @@ type State = {
     token: string
 };
 
-type DefaultProps = {};
+type DefaultProps = {
+    resetPassword: () => void
+};
 
 export default class ResetPassword extends Component<DefaultProps, Props, State> {
-    static defaultProps: DefaultProps;
+    static defaultProps: DefaultProps = {
+        resetPassword: () => {},
+        params: {}
+    };
     props: Props;
     state: State;
     constructor() {
@@ -33,7 +41,8 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
         };
     }
     componentWillMount() {
-        const token = new URLSearchParams(location.search).get('token');
+        // const token = new URLSearchParams(location.search).get('token');
+        const { params: { token } } = this.props;
         this.setState({ token });
     }
     onSubmit = () => {
@@ -59,6 +68,7 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
     }
     render() {
         const { password, passwordRepeat, message } = this.state;
+        console.log(this.props);
         return (
             <Container>
                 <Box>
@@ -102,7 +112,7 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
                 <ChangePage>
                     <p>Did you remember your old password? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
-                <Footer />
+                {/* <Footer /> */}
             </Container>
         );
     }

@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -9,11 +11,14 @@ ShallowWrapper {
   "node": <styled.div>
     <styled.div>
         <styled.div>
+            <styled.div>
+                Settings
+            </styled.div>
             <Navigation
                 activeSection={0}
-                onSelect={[Function]} />
+                onSelect={[Function]}
+            />
         </styled.div>
-        <styled.div />
         <styled.div>
             <Apollo(Apollo(SettingsProfile)) />
         </styled.div>
@@ -23,11 +28,14 @@ ShallowWrapper {
     <styled.div>
       <styled.div>
             <styled.div>
+                  <styled.div>
+                        Settings
+                  </styled.div>
                   <Navigation
                         activeSection={0}
-                        onSelect={[Function]} />
+                        onSelect={[Function]}
+                  />
             </styled.div>
-            <styled.div />
             <styled.div>
                   <Apollo(Apollo(SettingsProfile)) />
             </styled.div>
@@ -73,11 +81,14 @@ ShallowWrapper {
         "_currentElement": <styled.div>
           <styled.div>
                     <styled.div>
+                              <styled.div>
+                                        Settings
+                              </styled.div>
                               <Navigation
                                         activeSection={0}
-                                        onSelect={[Function]} />
+                                        onSelect={[Function]}
+                              />
                     </styled.div>
-                    <styled.div />
                     <styled.div>
                               <Apollo(Apollo(SettingsProfile)) />
                     </styled.div>
@@ -87,11 +98,14 @@ ShallowWrapper {
         "_renderedOutput": <styled.div>
           <styled.div>
                     <styled.div>
+                              <styled.div>
+                                        Settings
+                              </styled.div>
                               <Navigation
                                         activeSection={0}
-                                        onSelect={[Function]} />
+                                        onSelect={[Function]}
+                              />
                     </styled.div>
-                    <styled.div />
                     <styled.div>
                               <Apollo(Apollo(SettingsProfile)) />
                     </styled.div>

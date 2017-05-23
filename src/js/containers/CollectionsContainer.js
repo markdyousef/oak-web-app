@@ -8,12 +8,16 @@ const getCollections = gql`
     query groves($teamId: ID!) {
         groves(teamId: $teamId) {
             id
-            name,
-            description,
-            # cover {
-            #     id
-            #     urlThumb512
-            # }
+            name
+            description
+            creator {
+                id
+                avatar {
+                    id
+                    urlThumb64
+                }
+                gravatar
+            }
         }
     }
 `;
@@ -21,6 +25,7 @@ const getCollections = gql`
 export default compose(
     graphql(getCollections, {
         name: 'data',
-        options: () => ({ variables: { teamId: getTeam() } })
+        options: () => ({ variables: { teamId: getTeam() } }),
+        props: ({ data: { groves, loading, refetch } }) => ({ groves, loading, refetch })
     })
 )(Collections);

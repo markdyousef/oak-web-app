@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -7,17 +9,21 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className={undefined}>
+    className={undefined}
+>
     <div
-        className={undefined}>
+        className={undefined}
+    >
         <Apollo(Collections) />
     </div>
 </div>,
   "nodes": Array [
     <div
-      className={undefined}>
+      className={undefined}
+>
       <div
-            className={undefined}>
+            className={undefined}
+      >
             <Apollo(Collections) />
       </div>
 </div>,
@@ -57,17 +63,21 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className={undefined}>
+          className={undefined}
+>
           <div
-                    className={undefined}>
+                    className={undefined}
+          >
                     <Apollo(Collections) />
           </div>
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className={undefined}>
+          className={undefined}
+>
           <div
-                    className={undefined}>
+                    className={undefined}
+          >
                     <Apollo(Collections) />
           </div>
 </div>,

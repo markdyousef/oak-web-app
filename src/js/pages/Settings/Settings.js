@@ -9,7 +9,8 @@ const Container = styled.div`
     width: 100%;
     padding: 20px 0;
     background-color: #fff;
-    height: calc(100vh - 60px);
+    height: 100vh;
+    padding-top: 60px;
 `;
 
 const Content = styled.div`
@@ -18,28 +19,25 @@ const Content = styled.div`
     flex-wrap: wrap;
 `;
 
-const Divider = styled.div`
-    max-height: 600px;
-    margin: 0 80px;
-    width: 1px;
-    background-color: ${colors.lightGrey};
-    @media (max-width: 1000px) {
-        width: 0;
-    }
+const Title = styled.div`
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 40px;
 `;
 
 const NavContainer = styled.div`
-    max-height: 580px;
     width: 100%;
     max-width: 220px;
 `;
 
 const MainContainer = styled.div`
-    max-height: 580px;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    padding-left: 100px;
     & h1 {
         font-size: 24px;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 16px;
     }
 `;
 
@@ -56,9 +54,9 @@ class Settings extends Component {
             <Container>
                 <Content>
                     <NavContainer>
+                    <Title>Settings</Title>
                         <Navigation activeSection={activeSection} onSelect={section => this.setState({ activeSection: section })} />
                     </NavContainer>
-                    <Divider />
                     <MainContainer>
                         {(activeSection === 0) &&
                             <SettingsProfile />

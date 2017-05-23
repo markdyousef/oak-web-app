@@ -9,6 +9,15 @@ import CollectionDialog from '../../containers/CollectionDialogContainer';
 import DotSpinner from '../../components/shared/DotSpinner';
 import NoCollections from './NoCollections';
 
+import {
+    Loading,
+    LoadingMedium,
+    LoadingShorter,
+    LoadingShort,
+    LoadingLonger,
+    LoadingLong
+} from '../../styles';
+
 const Container = styled.div`
     width: 100%;
 `;
@@ -21,7 +30,18 @@ const Header = styled.section`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 220px;
+`;
+
+const HeaderContent = styled.section`
+    width: 100%;
+    max-width: 990px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: inherit;
+    @media (min-width: 1600px) {
+        max-width: 1328px;
+    }
 `;
 
 const Info = styled.div`
@@ -57,7 +77,6 @@ const Stats = styled.div`
         font-size: 12px;
         font-weight: 300;
         text-transform: uppercase;
-        padding-bottom: 8px;
     }
 `;
 
@@ -70,47 +89,78 @@ const ButtonGroup = styled.div`
 
 const Grid = styled.section`
     height: 100%;
-    padding: 20px;
+    padding: 20px 20px 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1080px;
+    margin: 0 auto;
     & a {
         margin: 8px;
     }
+    @media (min-width: 1600px) {
+        max-width: 1440px;
+    }
 `;
 
-class Collections extends Component {
-    static propTypes = {
-        data: PropTypes.shape({
-            loading: PropTypes.bool,
-            groves: PropTypes.arrayOf(PropTypes.shape({
-                name: PropTypes.string.isRequired,
-                id: PropTypes.string.isRequired,
-                description: PropTypes.string,
-                cover: PropTypes.object
-            }))
-        }).isRequired
+type DefaultProps = {
+    loading: bool,
+    groves: Array<Object>
+};
+
+type Props = {
+    loading?: bool,
+    refetch: () => Promise<>,
+    groves?: Array<{
+        id: string,
+        name: string,
+        description: string,
+        creator: {
+            id: string,
+            avatar?: {
+                id: string,
+                urlThumb64: string
+            },
+            gravatar?: string
+        }
+    }>
+};
+
+type State = {
+    showAdd: bool
+};
+
+class Collections extends Component<DefaultProps, Props, State> {
+    static defaultProps: DefaultProps = {
+        loading: false,
+        groves: []
     };
-    static defaultProps = {};
-    constructor() {
-        super();
-        this.state = {
-            showAdd: false
-        };
-    }
+    props: Props;
+    state: State = {
+        showAdd: false
+    };
     renderCollections = () => {
-        const { data } = this.props;
+        const { loading, groves } = this.props;
 
-        if (data.loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
+        if (loading) return <div style={{ marginTop: '40px' }}><DotSpinner /></div>;
 
-        if (data.groves && data.groves.length > 0) {
+        if (groves && groves.length > 0) {
             return (
                 <Grid>
-                    {data.groves.map((grove) => {
-                        // const coverImg = (grove.cover && grove.cover.urlThumb512) && grove.cover.urlThumb512;
+                    {groves.map((grove) => {
+                        const {
+                            creator: { gravatar, avatar },
+                            id,
+                            description,
+                            name
+                        } = grove;
+                        let picture;
+                        // prefer avatar over gravatar
+                        if (gravatar) picture = gravatar;
+                        if (avatar) picture = avatar.urlThumb64;
                         return (
-                            <Link to={`/collection/${grove.id}`} key={grove.id}>
-                                <CollectionCard name={grove.name} description={grove.description} />
+                            <Link to={`/collection/${id}`} key={id}>
+                                <CollectionCard name={name} description={description} picture={picture} />
                             </Link>
                         );
                     }
@@ -121,37 +171,49 @@ class Collections extends Component {
 
         return <NoCollections onClick={() => this.setState({ showAdd: true })} />;
     }
+    renderInfo = () => {
+        const { groves, loading } = this.props;
+        return (
+            <Info>
+                <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : Collections}</h1>
+                <p>{(loading) ?
+                    <Loading><LoadingLonger /><LoadingLong /></Loading>
+                    : 'Here is a quick overview of all your team’s collections.'}
+                </p>
+                <Stats>
+                    <div>
+                        <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : groves && groves.length}</h3>
+                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Collections'}</h5>
+                    </div>
+                </Stats>
+            </Info>
+        );
+    }
+    onClose = () => {
+        const { refetch } = this.props;
+        refetch();
+        this.setState({ showAdd: false });
+    }
     render() {
         const { showAdd } = this.state;
-        const { data } = this.props;
         return (
             <Container>
                 <Header>
-                    <Info>
-                        <h1>Collections</h1>
-                        <p>A collection of useful articles, work, notes & anything else needed to stimulate collective learning.</p>
-                        <Stats>
-                            <div>
-                                <h3>{data.groves && data.groves.length}</h3>
-                                <h5>Collections</h5>
-                            </div>
-                        </Stats>
-                    </Info>
-                    <ButtonGroup>
-                        <SquareButton
-                            onClick={() => this.setState({ showAdd: true })}
-                            text="Add Collection"
-                            type="primary"
-                        />
-                        {showAdd &&
-                            <CollectionDialog
-                                close={() => {
-                                    data.refetch();
-                                    this.setState({ showAdd: false });
-                                }}
+                    <HeaderContent>
+                        {this.renderInfo()}
+                        <ButtonGroup>
+                            <SquareButton
+                                onClick={() => this.setState({ showAdd: true })}
+                                text="+ Add collection"
+                                type="primaryLarge"
                             />
+                            {showAdd &&
+                                <CollectionDialog
+                                    close={this.onClose}
+                                />
                         }
-                    </ButtonGroup>
+                        </ButtonGroup>
+                    </HeaderContent>
                 </Header>
                 {this.renderCollections()}
             </Container>

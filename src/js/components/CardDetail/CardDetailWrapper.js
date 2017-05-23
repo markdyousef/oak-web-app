@@ -1,18 +1,17 @@
 // @flow
 import React, { Component } from 'react';
-import { decorator } from 'zen-editor';
-import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
-import { uploadImage, changeUrls } from '../../utils';
+import { EditorState } from 'draft-js';
+import { is } from 'immutable';
+import { uploadImage } from '../../utils';
 import type { DefaultProps, State, Props } from './types';
+import CardLoading from './CardLoading';
 
 export default (CardDetail:Function) => {
     return (
         class Wrapper extends Component<DefaultProps, Props, State> {
             static defaultProps: DefaultProps;
             state: State;
-            constructor(props:Props) {
-                super(props);
-            }
+            props: Props;
             componentWillMount() {
                 const { params, updateCard, updateComments } = this.props;
                 if (params.collectionId) {
@@ -34,6 +33,14 @@ export default (CardDetail:Function) => {
                     });
                 }
             }
+            componentWillReceiveProps(nextProps: Props) {
+                const { loading } = nextProps;
+                if (loading) {
+                    this.updateCard('isLoading', true);
+                } else {
+                    this.updateCard('isLoading', false);
+                }
+            }
             componentWillUnmount() {
                 const { clearCard } = this.props;
                 clearCard();
@@ -44,30 +51,49 @@ export default (CardDetail:Function) => {
                     key: 'showLabels',
                     value: show
                 })
-            addFile = (file: Object) => {
+            addFile = (file: Object, type?: string) => {
                 const { addImage } = this.props;
-                uploadImage(file)
-                    .then((res) => {
-                        const image = { ...res, name: file.name };
-                        addImage(image);
-                    })
-                    .catch(() => {
-                        const message = {
-                            type: 'error',
-                            message: "File couldn't be added",
-                            onClick: () => this.addFile(file)
-                        };
-                        this.setState({ message });
-                    });
+                return new Promise((resolve, reject) => {
+                    if (!type || type === 'image') {
+                        uploadImage(file)
+                            .then((res) => {
+                                const image = { ...res, type: 'image', file };
+                                addImage(image);
+                                resolve(image);
+                            })
+                            .catch(() => {
+                                const message = {
+                                    type: 'error',
+                                    message: "File couldn't be added",
+                                    onClick: () => this.addFile(file)
+                                };
+                                this.setState({ message });
+                                reject(message);
+                            });
+                    }
+                });
             }
-            onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
+            onChange = (editorState:EditorState) => {
+                const { card } = this.props;
+                // check if card has been edited
+                const content = card.get('editorState').getCurrentContent();
+                const isEqual = is(editorState.getCurrentContent(), content);
+                if (!isEqual) this.updateCard('isEdited', true);
+
+                this.updateCard('editorState', editorState);
+            }
             render() {
-                const { router, card, comments, showLabels } = this.props;
+                const { card, comments, showLabels, isLoading } = this.props;
+
+                // loading state
+                if (isLoading) return <CardLoading />;
+
+
                 return (
                     <CardDetail
                         onChange={this.onChange}
                         addFile={this.addFile}
-                        onCloseError={() => this.updateCard('message', { type: 'error', message: 'close'})}
+                        onCloseError={() => this.updateCard('message', { type: 'error', message: 'close' })}
                         existingCard={!!card.get('cardId')}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}

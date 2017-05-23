@@ -3,24 +3,47 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors';
 
-const Container = styled.button `
+const Container = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    flex-direction: column;
+    text-align: left;
     width: 100%;
-    max-width: 400px;
-    height: 60px;
-    background-color: ${colors.white};
-    border: 1px solid ${colors.green};
-    border-radius: 3px;
-    font-size: 15px;
-    margin: 5px;
-    cursor: pointer;
+    color: #fff;
+    & div {
+        width: 100%;
+        padding: 16px 0;
+        font-size: 56px;
+        font-weight: 300;
+        color: #fff;
+    }
+    & p {
+        font-size: 14px;
+        font-style: italic;
+        color: #fff;
+    }
+    & nth:child {
+        margin-top: 40px;
+    }
 `;
 
 
 const Team = ({ team, onSelect }:Object) => {
     return (
-        <Container onClick={onSelect}>
-            {team.name}
-        </Container>
+        <div>
+            <Container onClick={onSelect}>
+                <div>
+                {team.name}
+                </div>
+                <p>
+                    Team name
+                </p>
+            </Container>
+        </div>
     );
 };
 

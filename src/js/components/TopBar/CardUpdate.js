@@ -32,9 +32,10 @@ export default ({ ...props }: Props) => {
     if (readOnly) {
         cardActions =
             <RoundButton
-                text="Edit Card"
+                text="Edit post"
                 type="secondaryAction"
                 onClick={onEdit}
+                type="white"
             />
     } else {
         cardActions = [
@@ -42,6 +43,7 @@ export default ({ ...props }: Props) => {
                 <RoundButton
                     text="Add label"
                     onClick={() => onShowLabels && onShowLabels(!showLabels)}
+                    type="white"
                 />
                     {showLabels &&
                         <LabelsContainer>
@@ -53,7 +55,7 @@ export default ({ ...props }: Props) => {
             </Labels>,
             <RoundButton
                 key="save"
-                text="Save Card"
+                text="Save post"
                 onClick={onSave}
                 type="secondary"
                 isLoading={isLoading}
@@ -64,13 +66,17 @@ export default ({ ...props }: Props) => {
     return (
         <EditNav>
             <IconButton>
-                <CommentsIcon onClick={props.onShowComments} />
-                {/* <span>0</span> */}
+                <span data-title="Comment" data-title-pos="bottom">
+                    <CommentsIcon onClick={props.onShowComments} />
+                </span>
+                {<span>0</span> }
             </IconButton>
-            {/* <IconButton>
-                <LikesIcon />
+            {<IconButton>
+                <span data-title="Like" data-title-pos="bottom">
+                    <LikesIcon />
+                </span>
                 <span>0</span>
-            </IconButton> */}
+            </IconButton> }
             {cardActions}
         </EditNav>
     );

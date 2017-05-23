@@ -6,17 +6,17 @@ import { uploadImage } from '../../utils';
 
 const Container = styled.div`
     display: flex;
-    padding: 20px;
-    border: 1px solid ${colors.lightGrey};
     background: ${colors.white};
     border-radius: 3px;
     flex-wrap: wrap;
+    padding-top: 24px;
+    padding-bottom: 16px;
 `;
 
 const Avatar = styled.div`
     height: 100px;
     width: 100px;
-    margin-right: 20px;
+    margin-right: 32px;
     & img {
         width: 100%;
         height: 100%;
@@ -25,7 +25,7 @@ const Avatar = styled.div`
 `;
 
 const Upload = styled.div`
-    width: 60%;
+    width: calc(100% - 132px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,13 +72,13 @@ export default class ProfilePic extends Component {
                     <img src={picture} alt="avatar" />
                 </Avatar>
                 <Upload>
-                    <p>
-                        Upload a clear frontal face picture of yourself
-                        to give your teammates a more clear identification of you.
-                    </p>
+                    <label>
+                        Clear frontal face pictures is an important way for teammates to identify each other.
+                    </label>
                     <SquareButton
                         text="Upload a file"
                         onClick={this.onClick}
+                        type="white"
                     />
                     <input
                         type="file"

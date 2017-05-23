@@ -14,16 +14,25 @@ import type { DefaultProps, Props, State } from './types';
 import {
     Container,
     Header,
+    HeaderContent,
     Info,
     Stats,
     ButtonGroup,
     Grid,
     masonStyles,
-    Loading,
     DropdownContainer,
     Dropdown,
     MenuItem
 } from './styles';
+
+import {
+    Loading,
+    LoadingMedium,
+    LoadingShorter,
+    LoadingShort,
+    LoadingLonger,
+    LoadingLong
+} from '../../styles';
 
 class CollectionDetail extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
@@ -71,7 +80,6 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const { filterVals } = this.state;
         const { seeds } = this.props.data;
         let newFilters = filterVals;
-        console.log(newFilters);
         const active = newFilters.indexOf(key);
         if (active > -1) {
             newFilters = newFilters.filter(id => id !== key);
@@ -100,13 +108,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         });
     }
     onSortCards = (key: string, items?: Array<Object>) => {
+        const sortKey = key.toLowerCase();
         const { data: { seeds } } = this.props;
         const cards = (items) || this.state.cards;
         let sortedCards = [...cards];
-        if (key === 'comments' || key === 'likes') {
+        if (sortKey === 'comments' || sortKey === 'likes') {
             sortedCards.sort((a, b) => {
-                if (a[key].length > b[key].length) return -1;
-                if (a[key].length < b[key].length) return 1;
+                console.log(a[sortKey])
+                console.log(b[sortKey])
+                if (a[sortKey].length > b[sortKey].length) return -1;
+                if (a[sortKey].length < b[sortKey].length) return 1;
                 return 0;
             });
         } else {
@@ -116,7 +127,7 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                 return 0;
             });
         }
-        this.setState({ cards: sortedCards, sortKey: key });
+        this.setState({ cards: sortedCards, sortKey });
     }
     onDelete = () => {
         const { data: { grove }, remove, router } = this.props;
@@ -176,12 +187,16 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
                                     showEdit: false
                                 })}
                             >
-                                Update Collection
+                                <span>
+                                    Update collection
+                                </span>
                             </MenuItem>
                             <MenuItem
                                 onClick={this.onDelete}
                             >
-                                Delete Collection
+                                <label>
+                                    Delete collection
+                                </label>
                             </MenuItem>
                         </Menu>
                     </Dropdown>
@@ -235,12 +250,12 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         const info = Object.assign({}, grove);
         return (
             <Info>
-                <h1>{(loading) ? <Loading /> : info.name}</h1>
-                <h3>{(loading) ? <Loading /> : info.description}</h3>
+                <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : info.name}</h1>
+                <h3>{(loading) ? <Loading><LoadingLonger /><LoadingLong /></Loading> : info.description}</h3>
                 <Stats>
                     <div>
-                        <h3>{(loading) ? <Loading /> : info.stats && info.stats.seeds}</h3>
-                        <h5>{(loading) ? <Loading /> : 'Cards'}</h5>
+                        <h3>{(loading) ? <Loading><LoadingShorter /></Loading> : info.stats && info.stats.seeds}</h3>
+                        <h5>{(loading) ? <Loading><LoadingShort /></Loading> : 'Posts'}</h5>
                     </div>
                 </Stats>
             </Info>
@@ -251,20 +266,23 @@ class CollectionDetail extends Component<DefaultProps, Props, State> {
         return (
             <Container>
                 <Header>
-                    {this.renderInfo()}
-                    <ButtonGroup>
-                        {/* <SquareButton
-                            onClick={this.addCard}
-                            text="Add Card"
-                            type="primary"
-                        /> */}
-                        <SquareButton
-                            onClick={() => this.setState({ showEdit: !showEdit })}
-                            text="Edit Collection"
-                        />
-                        {this.showDialog()}
-                        {this.showEdit()}
-                    </ButtonGroup>
+                    <HeaderContent>
+                        {this.renderInfo()}
+                        <ButtonGroup>
+                            {/* <SquareButton
+                                onClick={this.addCard}
+                                text="Add Card"
+                                type="primary"
+                            /> */}
+                            <SquareButton
+                                onClick={() => this.setState({ showEdit: !showEdit })}
+                                text="Edit collection"
+                                type="whiteLarge"
+                            />
+                            {this.showDialog()}
+                            {this.showEdit()}
+                        </ButtonGroup>
+                    </HeaderContent>
                 </Header>
                 <CollectionToolbar
                     onSort={this.onSortCards}

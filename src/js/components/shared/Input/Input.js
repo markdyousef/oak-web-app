@@ -12,27 +12,31 @@ const valid = (notValid) => {
     }
     return `
     background-color: #fff;
-    &:focus {
-
-        border-color: #67C198
-    }
     &:hover {
-        border-color: #B5D3C9
-    }`;
+        border-color: #B5D3C9;
+    }
+    &:focus {
+        border-color: #34b289;
+    }
+    &::placeholder {
+        color: #b5b7b9;
+    }
+    &:focus::placeholder {
+        color: #e1e1e1;
+    }
+    `;
 };
 
 const H5 = styled.h5`
-    font-size: 12px;
+    font-size: 13px;
     font-weight: lighter;
-    color: ${colors.darkGrey};
+    color: rgba(19, 21, 23, 0.5);
     margin-bottom: 5px;
-    text-transform: uppercase;
 `;
 
 const Default = styled.input`
-    padding: 12px 8px;
+    padding: 14px 10px;
     width: 100%;
-    max-width: 400px;
     border-radius: 3px;
     border: 1px solid ${colors.lightGrey};
     font-size: 15px;

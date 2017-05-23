@@ -1,38 +1,47 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <section
-  className="gmuKOB">
+  className="gmuKOB"
+>
   <div
-    className="khSIyb">
+    className="khSIyb"
+  >
     <h1>
       Reset password
     </h1>
     <div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj"
+        >
           EMAIL
         </h5>
         <input
-          className="bwXyts"
+          className="denvxK"
           onChange={[Function]}
           onKeyDown={[Function]}
           placeholder="Email"
           type="email"
-          value="" />
+          value=""
+        />
       </div>
     </div>
     <div>
       <button
-        className="exnCOy"
-        onClick={[Function]}>
+        className="leFGPx"
+        onClick={[Function]}
+      >
         Reset password
         <svg
           height="16"
           viewBox="0 0 16 16"
-          width="16">
+          width="16"
+        >
           <g>
             <path
-              d="M10.9,2.8l4.8,4.8c0.1,0.1,0.1,0.2,0.1,0.4s-0.1,0.3-0.1,0.4l-4.8,4.8c-0.2,0.2-0.5,0.2-0.7,0s-0.2-0.5,0-0.7l4-4H0.6 C0.3,8.5,0.1,8.3,0.1,8s0.2-0.5,0.5-0.5h13.6l-4-4C10,3.3,10,3,10.2,2.8S10.7,2.6,10.9,2.8z" />
+              d="M10.9,2.8l4.8,4.8c0.1,0.1,0.1,0.2,0.1,0.4s-0.1,0.3-0.1,0.4l-4.8,4.8c-0.2,0.2-0.5,0.2-0.7,0s-0.2-0.5,0-0.7l4-4H0.6 C0.3,8.5,0.1,8.3,0.1,8s0.2-0.5,0.5-0.5h13.6l-4-4C10,3.3,10,3,10.2,2.8S10.7,2.6,10.9,2.8z"
+            />
           </g>
         </svg>
       </button>
@@ -40,17 +49,17 @@ exports[`test renders correctly 1`] = `
     <div />
   </div>
   <div
-    className="iJtnyx">
+    className="lbNTMF"
+  >
     <p>
-      Remember your password? 
+      Did you remember your old password? 
       <a
         onClick={[Function]}
-        style={Object {}}>
+        style={Object {}}
+      >
         Sign in!
       </a>
     </p>
   </div>
-  <section
-    className="fYstbg" />
 </section>
 `;

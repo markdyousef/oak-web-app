@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles';
+import Close from '../../../icons/close';
 
 const Container = styled.section`
     position: fixed;
@@ -13,20 +14,20 @@ const Container = styled.section`
 `;
 
 const Bar = styled.div`
-    margin-top: 2px;
     position: fixed;
-    width: 80%;
-    height: 30px;
+    width: 100%;
     min-width: 400px;
     z-index: 9999;
     background-color: ${props => props.error ? colors.orange : colors.green};
-    border-radius: 3px;
     display: flex;
     align-items: center;
     font-size: 14px;
     color: ${colors.white};
-    padding: 0 20px;
+    padding: 12px 20px;
     justify-content: space-between;
+    & svg {
+        cursor: pointer;
+    }
 `;
 
 const Message = styled.div`
@@ -43,14 +44,6 @@ const Message = styled.div`
         font-family: 'proxima nova';
         cursor: pointer;
     }
-`;
-
-export const Close = styled.div`
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 30px;
-    font-weight: normal;
-    color: ${colors.white}
 `;
 
 type Props = {
@@ -85,13 +78,8 @@ export default class Toast extends Component<DefaultProps, Props, State> {
                 >
                     <Message>
                         <h3>{message}</h3>
-                        <button onClick={onClick}>
-                            Try again...
-                        </button>
                     </Message>
-                    <Close onClick={onClose}>
-                        &times;
-                    </Close>
+                    <Close onClick={onClose} />
                 </Bar>
             </Container>
         );

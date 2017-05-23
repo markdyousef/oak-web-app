@@ -50,7 +50,7 @@ class Login extends Component<DefaultProps, Props, State> {
         return loginUser(email, password)
             .then((res) => {
                 // save token to localstorage
-                saveToken(res.data.loginUser);
+                saveToken(true);
                 router.replace({
                     pathname: '/home'
                 });
@@ -104,9 +104,8 @@ class Login extends Component<DefaultProps, Props, State> {
                     </div>
                 </Box>
                 <ChangePage>
-                    <p>Forgot your password? <Link to="/forgot">Get a new one</Link></p>
+                    <p>Forgot your password? <Link to="/forgot">Get a new one</Link>.</p>
                 </ChangePage>
-                <Footer />
             </Container>
         );
     }

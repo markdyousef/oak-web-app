@@ -38,9 +38,9 @@ const ErrorMessage = styled.div`
 `;
 
 const ChangePage = styled.div`
-    max-width: 300px;
+    max-width: 360px;
     margin: auto;
-    margin-top: 32px;
+    padding-top: 32px;
     color: ${colors.grey};
     text-align: center;
     & a {

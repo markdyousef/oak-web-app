@@ -28,14 +28,14 @@ export const Main = styled.section`
 export const EditorContainer = styled.div`
     position: relative;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 820px;
     width: 100%;
     display: flex;
     flex: 1;
     height: 100%;
     overflow: scroll;
     height: 100vh;
-    padding: 80px 40px 30px 160px;
+    padding: 120px 40px;
     &::-webkit-scrollbar {
         display: none;
     }

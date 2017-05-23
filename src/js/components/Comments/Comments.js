@@ -18,15 +18,15 @@ const Container = styled.section`
     justify-content: space-between;
     min-width: 1px;
     max-width: 350px;
-    height: 100vh;
-    padding-top: 80px;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
     border-left: 1px solid ${colors.lightGrey};
     background-color: ${colors.white};
-    z-index: 99999;
+    z-index: 4001;
 `;
 
 const CommentsPanel = styled.div`
-    padding: 16px 16px 4px;
+    padding: 50px 16px 4px;
     background: ${colors.white};
     flex: 1 1 auto;
     position: relative;
@@ -34,16 +34,40 @@ const CommentsPanel = styled.div`
     flex-direction: column-reverse; */}
 `;
 
+const CommentsTitle = styled.div` {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fafafa;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #131517;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 4005;
+    & span {
+        font-size: 38px;
+        position: absolute;
+        right: 20px;
+        top: 6px;
+        font-weight: 100;
+        cursor: pointer;
+    }
+`;
+
 const CommentsContainer = styled.div`
     position: absolute;
-    bottom: 0;
+    bottom: 8px;
     overflow-y: auto;
-    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 49px;
 `;
 
 const Comments = styled.div`
-    height: 100%;
-    ${''/* min-height: 400px; */}
+    min-height: calc(100vh - 196px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,6 +87,7 @@ type Props = {
     comments: Array<Object>,
     create: Function,
     failedComment: ?EditorState,
+    onCloseComments: () => void,
     creator: ?{
         name: string,
         username: string,
@@ -89,11 +114,19 @@ export default class extends Component<DefaultProps, Props, State> {
         const node = ReactDOM.findDOMNode(this.commentsEnd);
         node.scrollIntoView({ behavior: 'smooth'});
     }
+    closeComments = () => {
+        console.log(this.props);
+    }
     render() {
-        const { comments, create, failedComment, creator } = this.props;
+        const { comments, create, failedComment, creator, onCloseComments } = this.props;
+        console.log(this.props);
         return (
             <Container>
                 <CommentsPanel>
+                <CommentsTitle>
+                    Comments
+                    <span onClick={onCloseComments}>&times;</span>
+                </CommentsTitle>
                     <CommentsContainer>
                         <Comments>
                             {(() => {

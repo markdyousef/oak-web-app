@@ -27,7 +27,8 @@ type Props = {
     updateLabels: (id: string, name: string, color: string) => Promise<>,
     removeLabel: (id: string) => Promise<>,
     createCard: (id: string, name: string) => Promise<>,
-    editLabel?: (label: Object) => void
+    editLabel?: (label: Object) => void,
+    clearLabels?: () => void
 };
 
 type State = {};
@@ -36,6 +37,7 @@ type DefaultProps = {};
 class LabelsActionBox extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     state: State;
+    props: Props;
     componentWillReceiveProps(nextProps:Props) {
         const { collectionLabels, cardLabels, labels } = nextProps;
         const didInitialize = labels && labels.get('didInitialize');
@@ -62,6 +64,10 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
                 )
             }
         }
+    }
+    componentWillUnmount() {
+        const { clearLabels } = this.props;
+        if (clearLabels) clearLabels();
     }
     updateLabels = (key:string, value: any) => {
         const { update } = this.props;

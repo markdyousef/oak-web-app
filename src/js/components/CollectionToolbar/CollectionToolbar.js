@@ -6,38 +6,50 @@ import colors from '../../styles/colors';
 import { Box as Label, Chip } from '../shared/Label';
 
 const Container = styled.div`
-    width: 100%;
-    height: 60px;
+    max-width: 1050px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px 20px 0;
     position: relative;
+    @media (min-width: 1600px) {
+        max-width: 1386px;
+    }
 `;
 
 const ActionMenu = styled.div`
     font-size: 14px;
     margin-left: 10px;
-    color: ${colors.black};
-    font-weight: bold;
+    color: ${colors.grey};
+    font-weight: normal;
     cursor: pointer;
     align-items: center;
     & span {
         color: ${colors.grey};
-        margin-right: 5px;
+        margin-right: 4px;
+        cursor: pointer;
+    }
+    & label {
+        text-transform: capitalize;
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
 const LabelsMenu = styled.div`
     font-size: 14px;
-    margin-left: 10px;
-    color: ${colors.black};
-    font-weight: bold;
+    margin-left: 16px;
+    color: ${colors.grey};
+    font-weight: normal;
     cursor: pointer;
-    ${''/* display: flex;
-    align-items: center; */}
     & span {
         color: ${colors.grey};
-        margin-right: 5px;
+        margin-right: 4px;
+        cursor: pointer;
+    }
+    & label {
+        font-weight: bold;
+        cursor: pointer;
     }
 `;
 
@@ -49,22 +61,53 @@ const DropdownContainer = styled.div`
 `;
 
 const MenuItem = styled.div`
-    margin-bottom: 5px;
+    margin-bottom: 16px;
     cursor: pointer;
-    font-weight: ${props => props.active ? 'bolder' : 'normal'}
+    font-weight: ${props => props.active ? 'bolder' : 'normal'};
+    position: relative;
+    z-index: 1;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:hover {
+        color: #fff;
+    }
+    &:hover:before {
+        content: '';
+        background: #34b289;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -8px;
+        width: calc(100% + 16px);
+        height: 32px;
+        z-index: -1;
+    }
 `;
 
 const LabelContainer = styled.div`
-    max-height: 150px;
-    overflow: auto;
+    max-height: 190px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: -20px -14px -20px -20px;
 `;
 
 const Labels = styled.div`
     display: flex;
-    margin-left: 10px;
     & div {
-        margin-right: 5px;
+        border-radius: 2px;
+        display: inline-block;
+        padding: 4px 8px;
+        margin-right: 8px;
+        line-height: 16px;
+        height: 24px;
     }
+`;
+
+const LabelName = styled.div`
+    font-size: 14px;
+    color: #131517;
 `;
 
 
@@ -95,9 +138,9 @@ export default class Toolbar extends Component {
     renderSortItems = () => {
         const { active, onSort } = this.props;
         const sortItems = [
-            { name: 'date' },
-            { name: 'likes' },
-            { name: 'comments' }
+            { name: 'Date' },
+            { name: 'Comments' },
+            { name: 'Likes' }
         ];
 
         return sortItems.map(item => (
@@ -160,14 +203,14 @@ export default class Toolbar extends Component {
                 <div>
                     <ActionMenu onClick={() => this.setState({ showSort: !showSort })}>
                         <span>
-                            Sort by
+                            Sort by:
                         </span>
-                        {active}
+                        <label>{active}</label>
                     </ActionMenu>
                     {showSort &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showSort: false })}
                             >
                                 {this.renderSortItems()}
@@ -178,14 +221,14 @@ export default class Toolbar extends Component {
                 <div>
                     <LabelsMenu onClick={() => this.setState({ showFilter: !showFilter })}>
                         <span>
-                            Filter by
+                            Filter:
                         </span>
-                        {(filters && filters.length < 1) && 'labels'}
+                        <label>{(filters && filters.length < 1) && 'Labels'}</label>
                     </LabelsMenu>
                     {showFilter &&
                         <DropdownContainer>
                             <Dropdown
-                                arrowPos="left"
+                                arrowPos="moreleft"
                                 onClose={() => this.setState({ showFilter: false })}
                             >
                                 {this.renderFilterItems()}

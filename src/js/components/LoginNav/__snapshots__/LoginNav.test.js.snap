@@ -1,21 +1,25 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <nav
-  className="bBJzMy">
+  className="bBJzMy"
+>
   <div
-    className="kgftmh">
+    className="dzbLtC"
+  >
     <a
       className="jmaJYZ"
       onClick={[Function]}
-      style={Object {}}>
+      style={Object {}}
+    >
       <img
         alt="presentation"
-        src="test-file-stub" />
-      <img
-        alt="presentation"
-        src="test-file-stub" />
+        src="test-file-stub"
+      />
     </a>
   </div>
   <div
-    className="iaCmgk" />
+    className="iaCmgk"
+  />
 </nav>
 `;

@@ -82,14 +82,23 @@ export default (Comments:Function) => {
                         }));
                 }
             }
+            onCloseComments = () => {
+                const { updateComments } = this.props;
+                updateComments({
+                    key: 'showComments',
+                    value: false
+                });
+            }
             render() {
                 const { comments, failedComment } = this.state;
+                console.log(this.props);
                 return (
                     <Comments
                         comments={comments}
                         failedComment={failedComment}
                         creator={{}}
                         create={this.createComment}
+                        onCloseComments={this.onCloseComments}
                     />
                 );
             }

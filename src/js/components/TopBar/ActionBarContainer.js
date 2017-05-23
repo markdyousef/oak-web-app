@@ -16,8 +16,8 @@ const getCollectionList = gql`
     }
 `;
 
-const createSeed = gql`
-    mutation createSeed($groveId: ID!, $name: String!, $content: String, $coverId: ID) {
+const createCardDetail = gql`
+    mutation createCardDetail($groveId: ID!, $name: String!, $content: String, $coverId: ID) {
         createSeed(groveId: $groveId, name: $name, content: $content, coverId: $coverId) {
             id
             content
@@ -25,8 +25,8 @@ const createSeed = gql`
     }
 `;
 
-const updateSeed = gql`
-    mutation updateSeed($id: ID!, $content: String!, $coverId: ID) {
+const updateCardDetail = gql`
+    mutation updateCardDetail($id: ID!, $content: String!, $coverId: ID) {
         updateSeed(id: $id, content: $content, coverId: $coverId) {
             id
             content
@@ -76,12 +76,11 @@ export default compose(
             data: { loading, collections: groves || [] }
         })
     }),
-    graphql(createSeed, {
+    graphql(createCardDetail, {
         props: ({ ownProps, mutate }) => ({
             create: (groveId, name, content, coverId) =>
                 mutate({ variables: { groveId, name, content, coverId } })
                     .then(res => {
-                        console.log(res);
                         const id = res.data.createSeed.id;
                         ownProps.updateCard('message', null);
                         ownProps.updateCard('isLoading', false);
@@ -100,7 +99,7 @@ export default compose(
                     })
         })
     }),
-    graphql(updateSeed, {
+    graphql(updateCardDetail, {
         props: ({ ownProps, mutate }) => ({
             update: (id:string, content:string, coverId:string) =>
                 mutate({ variables: { id, content, coverId } })

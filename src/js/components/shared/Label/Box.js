@@ -6,32 +6,58 @@ import { colors } from '../../../styles';
 
 const Container = styled.div`
     width: 100%;
-    ${''/* padding: 0 10px; */}
-    display: flex;
+    display: block;
     align-items: center;
     cursor: pointer;
-    margin-top: 5px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+    padding-left: 20px;
+    padding-right: 6px;
+    &:first-child {
+        padding-top: 20px;
+    }
+    &:hover:before {
+        content: '';
+        background: #f2f2f2;
+        border-radius: 3px;
+        padding: 4px 8px;
+        color: #fff;
+        position: absolute;
+        margin: -6px -8px;
+        width: calc(100% - 20px);
+        height: 34px;
+        z-index: -1;
+    }
     & span {
-        width: 80%;
+        width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: normal;
-        color: #000 !important;
+        color: #131517 !important;
+        max-width: 120px;
+        vertical-align: middle;
+        display: inline-block;
     }
-
+    &:last-child {
+        padding-bottom: 20px;
+        margin-bottom: 0;
+    }
 `;
 
 const Box = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    vertical-align: middle;
     height: 22px;
     width: 22px;
     border-radius: 3px;
-    margin-right: 5px;
+    margin-right: 8px;
     & svg {
-        fill: ${colors.white}
+        fill: ${colors.white};
+        height: 12px;
+        margin-left: 3.5px;
+        margin-top: 5px;
     }
 `;
 

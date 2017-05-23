@@ -62,8 +62,8 @@ export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     graphql(getCard, {
         skip: props => !props.params.cardId,
-        options: props => ({ variables: { id: props.params.cardId }}),
-        props: ({ ownProps, data: { seed, loading } }) =>
+        options: props => ({ variables: { id: props.params.cardId } }),
+        props: ({ data: { seed, loading } }) =>
             ({ seed, loading })
     })
 )(WrappedCompoenent);

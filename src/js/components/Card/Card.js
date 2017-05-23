@@ -9,8 +9,10 @@ import {
     Container,
     Header,
     User,
+    LabelWrapper,
     Labels,
     Label,
+    Paragraph,
     Main,
     Bottom,
     Time,
@@ -18,7 +20,8 @@ import {
     Settings,
     H1,
     H2,
-    P
+    P,
+    Tooltip
 } from './styles';
 
 type DefaultProps = {
@@ -129,93 +132,104 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         return <H1 key={block.key}>{block.text}</H1>;
                     case 'header-two':
                         return <H2 key={block.key}>{block.text}</H2>;
-                    default:
+                    }
+                })}
+                <Paragraph>
+                {blocks.map((block) => {
+                    switch (block.type) {
+                    case 'unstyled':
                         return <P key={block.key}>{block.text}</P>;
                     }
                 })}
+                </Paragraph>
             </div>
         );
     }
-    renderHeader = () => {
-        const { creator: { name, username, avatar, gravatar }, labels } = this.props;
-        let picture;
-        // prefer avatar over gravatar
-        if (gravatar) picture = gravatar;
-        if (avatar) picture = avatar.urlThumb64;
-        return (
-            <Header>
-                <Labels>
-                    {labels && labels.map((label, index) => {
-                        const right = 16 + (index * 12);
-                        return (
-                            <Label
-                                key={label.id}
-                                style={{ background: label.color, right }}
-                            />
-                        );
-                    }).reverse()}
-                </Labels>
-                <User>
-                    <img src={picture} alt="avatar" />
-                    <div>
-                        <h4>{name}</h4>
-                        <h5>@{username}</h5>
-                    </div>
-                </User>
-            </Header>
-        );
-    }
+    // renderHeader = () => {
+    //     const { creator: { name, username } } = this.props;
+    //     return (
+    //         <Header>
+    //         </Header>
+    //     );
+    // }
     renderContent = () => {
-        const { content, onShow, cover } = this.props;
+        const { updatedAt, content, onShow, cover, labels } = this.props;
         let coverImg;
         if (cover && cover.urlThumb512) coverImg = cover.urlThumb512;
         return (
             <Main onClick={onShow}>
                 {coverImg && <img alt="card" src={coverImg} />}
                 {content && this.formatContent(content)}
-                <button onClick={onShow}>Read more</button>
+                { /* <button onClick={onShow}>Read more</button> */ }
+                    <Labels>
+                        {labels && labels.map((label, index) => {
+                            const right = 16 + (index * 12);
+                            return (
+                            <LabelWrapper key={label.id}>
+                                <Label
+                                    style={{ background: label.color, right }}
+                                />
+                                <span>{label.name}</span>
+                            </LabelWrapper>
+                            );
+                        }).reverse()}
+                    </Labels>
+                <Time>
+                    {moment(updatedAt).fromNow()}
+                </Time>
             </Main>
         );
     }
     renderBottom = () => {
-        const { updatedAt, comments, showComments } = this.props;
-        const { likes, isLiked } = this.state;
-        const { showOptions } = this.state;
+        const { comments, showComments, creator: { name, avatar, gravatar } } = this.props;
+        const { likes, isLiked, showOptions } = this.state;
+        let picture;
+        // prefer avatar over gravatar
+        if (gravatar) picture = gravatar;
+        if (avatar) picture = avatar.urlThumb64;
         return (
             <Bottom>
                 <div>
                     <Icon onClick={showComments}>
-                        <CommentsIcon />
-                        <span>{(comments) ? comments.length : 0}</span>
+                        <span data-title="Comment" data-title-pos="bottom">
+                            <CommentsIcon />
+                        </span>
+                        <p>{(comments) ? comments.length : 0}</p>
                     </Icon>
                     <Icon onClick={this.handleLike}>
-                        <LikesIcon isLiked={isLiked} />
-                        <span>{likes.length}</span>
+                        <span data-title="Like" data-title-pos="bottom">
+                            <LikesIcon isLiked={isLiked} />
+                        </span>
+                        <p>{likes.length}</p>
                     </Icon>
                     <Icon onClick={() => this.setState({ showOptions: !showOptions })}>
-                        <DotsIcon />
+                        <span data-title="More" data-title-pos="bottom">
+                            <DotsIcon />
+                        </span>
                         {showOptions &&
                             <Settings>
                                 <Dropdown
                                     arrowPos="left"
                                     onClose={() => this.setState({ showOptions: false })}
                                 >
-                                    <Icon onClick={this.removeCard}>Delete</Icon>
+                                    <Icon onClick={this.removeCard}>Delete post</Icon>
                                 </Dropdown>
                             </Settings>
                         }
                     </Icon>
                 </div>
-                <Time>
-                    {moment(updatedAt).fromNow()}
-                </Time>
+                    <span data-title={name} data-title-pos="bottom">
+                    <User>
+                            <img src={picture} alt="avatar" />
+                    </User>
+                </span>
             </Bottom>
         );
     }
     render() {
         return (
             <Container>
-                {this.renderHeader()}
+                {/* {this.renderHeader()} */}
                 {this.renderContent()}
                 {this.renderBottom()}
             </Container>

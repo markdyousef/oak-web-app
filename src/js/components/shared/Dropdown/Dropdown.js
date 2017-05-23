@@ -18,17 +18,21 @@ const Arrow = styled.div`
 
 const Menu = styled.div`
     display: block;
-    box-shadow: 1px 3px 7px rgba(32, 33, 35, 0.05);
+    box-shadow: 1px 3px 7px rgba(32, 33, 35, 0.08);
     width: 100%;
     background-color: #fff;
-    border: 1px solid #efefef;
+    border: 1px solid #e5e5e5;
     border-radius: 3px;
     padding: 20px;
+    margin-top: 0px;
     & a {
         color: #000;
         display: block;
-        margin-top: 10px;
+        margin-top: 16px;
         font-size: 16px;
+    }
+    & a:first-child {
+        margin-top: 0;
     }
 `;
 
@@ -43,13 +47,16 @@ export default withLayer(({ children, arrowPos }: Props) => {
     let style;
     switch (arrowPos) {
     case 'left':
-        style = { left: '25px' };
+        style = { left: '24px' };
+        break;
+    case 'moreleft':
+        style = { left: '48px' };
         break;
     case 'none':
         style = { display: 'none' };
         break;
     default:
-        style = { right: '25px' };
+        style = { right: '16px' };
         break;
     }
     return (

@@ -9,23 +9,22 @@ export const Container = styled.section`
     bottom: 0;
     width: 100%;
     height: 100%;
-    z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    background-color: rgba(19, 21, 23, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
 export const Modal = styled.div`
-    width: 400px;
-    ${''/* height: 350px; */}
+    width: 480px;
     background-color: #fff;
     border-radius: 3px;
-    border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 1px 10px rgba(19, 21, 23, 0.25);
 `;
 
 export const Header = styled.div`
@@ -37,7 +36,7 @@ export const Header = styled.div`
     justify-content: space-between;
     padding: 20px;
     & h1 {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
     }
 `;
@@ -46,16 +45,43 @@ export const Close = styled.button`
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    font-size: 25px;
+    font-size: 45px;
+    font-weight: 100;
+    margin-top: -8px;
+    margin-right: -10px;
+    color: rgba(19, 21, 23, 0.5);
+    &:hover {
+        color: rgba(19, 21, 23, 1);
+    }
 `;
 
 export const Main = styled.div`
-    margin-top: 20px;
-    padding: 5px 20px;
+    padding: 20px;
     width: 100%;
-    & div {
-        margin-top: 20px;
-    }
+`;
+
+export const Intro = styled.div`
+    font-size: 16px;
+    color: #131517;
+    line-height: 1.35;
+`;
+
+export const InputWrapper = styled.div`
+    padding-top: 24px;
+`;
+
+export const InputLabels = styled.div`
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(19, 21, 23, 0.75);
+    padding-bottom: 4px;
+`;
+
+export const InputName = styled.div`
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(19, 21, 23, 0.5);
+    padding-top: 6px;
 `;
 
 export const Upload = styled.div`
@@ -76,7 +102,8 @@ export const Upload = styled.div`
 `;
 
 export const Buttons = styled.div`
-    padding: 15px;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;

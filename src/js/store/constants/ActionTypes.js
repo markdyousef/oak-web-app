@@ -24,3 +24,4 @@ export const REMOVE_COLLECTION_LABEL:string = 'card/REMOVE_COLLECTION_LABEL';
 export const EDIT_COLLECTION_LABEL: string = 'card/EDIT_COLLECTION_LABEL';
 export const UPDATE_ACTIVE_LABEL: string = 'card/UPDATE_ACTIVE_LABEL';
 export const UPDATE_COLLECTION_LABEL: string = 'card/UPDATE_COLLECTION_LABEL';
+export const CLEAR_LABELS: string = 'card/CLEAR_LABELS';

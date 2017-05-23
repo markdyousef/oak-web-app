@@ -124,6 +124,11 @@ export default (state: StateRecord = initialState, action: Action): StateRecord 
         }
         return state;
     }
+    case types.CLEAR_LABELS: {
+        return state
+            .set('didInitialize', false)
+            .set('collectionLabels', List([]));
+    }
     default:
         return state;
     }

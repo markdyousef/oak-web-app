@@ -1,73 +1,84 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <section
-  className="gmuKOB">
+  className="gmuKOB"
+>
   <div
-    className="khSIyb">
+    className="khSIyb"
+  >
     <h1>
       Create Account
     </h1>
     <div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj"
+        >
           Name
         </h5>
         <input
-          className="bwXyts"
+          className="denvxK"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Name"
           type="name"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj"
+        >
           Email
         </h5>
         <input
-          className="bwXyts"
+          className="denvxK"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Email"
           type="email"
-          value="" />
+          value=""
+        />
       </div>
       <div>
         <h5
-          className="invXpW">
+          className="jIUOlj"
+        >
           Password
         </h5>
         <input
-          className="bwXyts"
+          className="denvxK"
           onChange={[Function]}
           onKeyDown={null}
           placeholder="Password"
           type="password"
-          value="" />
+          value=""
+        />
       </div>
     </div>
     <div>
       <button
-        className="exnCOy"
-        onClick={[Function]}>
+        className="leFGPx"
+        onClick={[Function]}
+      >
         Create
       </button>
     </div>
     <div />
   </div>
   <div
-    className="iJtnyx">
+    className="lbNTMF"
+  >
     <p>
       Already have a user? 
       <a
         onClick={[Function]}
-        style={Object {}}>
+        style={Object {}}
+      >
         Sign in!
       </a>
     </p>
   </div>
-  <section
-    className="fYstbg" />
 </section>
 `;

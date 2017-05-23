@@ -33,7 +33,8 @@ const initialState:State = Map({
     name: '',
     readOnly: false,
     menu: null,
-    isSaved: false
+    isSaved: false,
+    isEdited: false
 });
 
 const convertToEditor = (content: string):EditorState => {
@@ -67,6 +68,7 @@ export default (state: State = initialState, action: Action): State => {
             .set('cardId', null)
             .set('collectionId', null)
             .set('editorState', EditorState.createEmpty(decorator))
+            .set('images', List([]))
     case types.SET_CARD:
         if (action.data && action.data.card) {
             const { data: { card } } = action;
@@ -93,7 +95,6 @@ export default (state: State = initialState, action: Action): State => {
             const { result: { data }, queryId } = action;
             if (data.seed && data.seed.content && queryId) {
                 const editorState = convertToEditor(data.seed.content);
-                console.log(queryId);
                 return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
             }
             return state;
@@ -103,7 +104,6 @@ export default (state: State = initialState, action: Action): State => {
         if (action.queryId === state.get('queryId') && action.result) {
             const { result: { data }, queryId } = action;
             if (data.seed && data.seed.content && queryId) {
-                console.log(data.seed);
                 const editorState = convertToEditor(data.seed.content);
                 return state.mergeIn(['editorState'], editorState).set('queryId', queryId);
             }

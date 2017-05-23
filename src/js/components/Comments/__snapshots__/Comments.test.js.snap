@@ -1,4 +1,6 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -9,6 +11,14 @@ ShallowWrapper {
   "node": <styled.section>
     <styled.div>
         <styled.div>
+            Comments
+            <span
+                onClick={undefined}
+            >
+                ×
+            </span>
+        </styled.div>
+        <styled.div>
             <styled.div>
                 <Empty />
             </styled.div>
@@ -18,18 +28,28 @@ ShallowWrapper {
                         "clear": "both",
                         "float": "left",
                       }
-                } />
+                }
+            />
         </styled.div>
     </styled.div>
     <styled.div>
         <CommentBox
             createComment={[Function]}
-            creator={null} />
+            creator={null}
+        />
     </styled.div>
 </styled.section>,
   "nodes": Array [
     <styled.section>
       <styled.div>
+            <styled.div>
+                  Comments
+                  <span
+                        onClick={undefined}
+                  >
+                        ×
+                  </span>
+            </styled.div>
             <styled.div>
                   <styled.div>
                         <Empty />
@@ -40,13 +60,15 @@ ShallowWrapper {
                                     "clear": "both",
                                     "float": "left",
                                   }
-                        } />
+                        }
+                  />
             </styled.div>
       </styled.div>
       <styled.div>
             <CommentBox
                   createComment={[Function]}
-                  creator={null} />
+                  creator={null}
+            />
       </styled.div>
 </styled.section>,
   ],
@@ -60,12 +82,14 @@ ShallowWrapper {
         comments={Array []}
         create={[Function]}
         creator={null}
-        failedComment={null} />,
+        failedComment={null}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": _class {
         "_reactInternalInstance": [Circular],
+        "closeComments": [Function],
         "context": Object {},
         "props": Object {
           "comments": Array [],
@@ -97,27 +121,13 @@ ShallowWrapper {
         "_currentElement": <styled.section>
           <styled.div>
                     <styled.div>
-                              <styled.div>
-                                        <Empty />
-                              </styled.div>
-                              <div
-                                        style={
-                                                  Object {
-                                                            "clear": "both",
-                                                            "float": "left",
-                                                          }
-                                        } />
+                              Comments
+                              <span
+                                        onClick={undefined}
+                              >
+                                        ×
+                              </span>
                     </styled.div>
-          </styled.div>
-          <styled.div>
-                    <CommentBox
-                              createComment={[Function]}
-                              creator={null} />
-          </styled.div>
-</styled.section>,
-        "_debugID": 2,
-        "_renderedOutput": <styled.section>
-          <styled.div>
                     <styled.div>
                               <styled.div>
                                         <Empty />
@@ -128,13 +138,47 @@ ShallowWrapper {
                                                             "clear": "both",
                                                             "float": "left",
                                                           }
-                                        } />
+                                        }
+                              />
                     </styled.div>
           </styled.div>
           <styled.div>
                     <CommentBox
                               createComment={[Function]}
-                              creator={null} />
+                              creator={null}
+                    />
+          </styled.div>
+</styled.section>,
+        "_debugID": 2,
+        "_renderedOutput": <styled.section>
+          <styled.div>
+                    <styled.div>
+                              Comments
+                              <span
+                                        onClick={undefined}
+                              >
+                                        ×
+                              </span>
+                    </styled.div>
+                    <styled.div>
+                              <styled.div>
+                                        <Empty />
+                              </styled.div>
+                              <div
+                                        style={
+                                                  Object {
+                                                            "clear": "both",
+                                                            "float": "left",
+                                                          }
+                                        }
+                              />
+                    </styled.div>
+          </styled.div>
+          <styled.div>
+                    <CommentBox
+                              createComment={[Function]}
+                              creator={null}
+                    />
           </styled.div>
 </styled.section>,
       },
@@ -152,6 +196,7 @@ ShallowWrapper {
     comments={Array []}
     create={[Function]}
     creator={null}
-    failedComment={null} />,
+    failedComment={null}
+/>,
 }
 `;

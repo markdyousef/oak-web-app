@@ -12,7 +12,7 @@ const Container = styled.section`
         margin-bottom: 20px;
     }
     & h5 {
-        margin: 10px 5px;
+        margin: 8px 0;
         font-size: 14px;
         line-height: 17px;
         color: ${colors.grey}
@@ -108,7 +108,7 @@ export default class SettingsAccount extends Component {
                         onChange={value => this.changeField('password', value)}
                         title="Password"
                     />
-                    <h5>Enter your current password...</h5>
+                    <h5>Enter your current password.</h5>
                 </InputContainer>
                 <InputContainer>
                     <Input
@@ -118,7 +118,7 @@ export default class SettingsAccount extends Component {
                         title="New password"
                         notValid={errorField === 'repeat'}
                     />
-                    <h5>Create a strong new password to avoid trolls taking over your team ...</h5>
+                    <h5>Create a strong new password to avoid trolls taking over your team.</h5>
                 </InputContainer>
                 <InputContainer>
                     <Input
@@ -128,7 +128,7 @@ export default class SettingsAccount extends Component {
                         title="Confirm password"
                         notValid={errorField === 'repeat'}
                     />
-                    <h5>... and confirm!</h5>
+                    <h5>Confirm your new password.</h5>
                 </InputContainer>
                 <ErrorBox>
                     {errorMessage}

@@ -14,6 +14,14 @@
     --red: #e87385;
 }
 
+.wf-loading {
+    visibility: hidden;
+}
+
+.wf-active, .wf-inactive {
+    visibility: visible;
+}
+
 html,
 body {
     margin: 0;
