@@ -25,6 +25,7 @@ const getCollections = gql`
 export default compose(
     graphql(getCollections, {
         name: 'data',
-        options: () => ({ variables: { teamId: getTeam() } })
+        options: () => ({ variables: { teamId: getTeam() } }),
+        props: ({ data: { groves, loading, refetch } }) => ({ groves, loading, refetch })
     })
 )(Collections);

@@ -112,7 +112,7 @@ export default class ResetPassword extends Component<DefaultProps, Props, State>
                 <ChangePage>
                     <p>Did you remember your old password? <Link to="/login">Sign in!</Link></p>
                 </ChangePage>
-                <Footer />
+                {/* <Footer /> */}
             </Container>
         );
     }
