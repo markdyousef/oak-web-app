@@ -4,6 +4,7 @@ import { decorator } from 'zen-editor';
 import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
 import { uploadImage, changeUrls } from '../../utils';
 import type { DefaultProps, State, Props } from './types';
+import { is } from 'immutable';
 
 export default (CardDetail:Function) => {
     return (
@@ -70,7 +71,17 @@ export default (CardDetail:Function) => {
             downloadFile = () => {
 
             }
-            onChange = (editorState:EditorState) => this.updateCard('editorState', editorState)
+            onChange = (editorState:EditorState) => {
+                const { card } = this.props;
+                // check if card has been edited
+                const content = card.get('editorState').getCurrentContent();
+                const isEqual = is(editorState.getCurrentContent(), content);
+                if (!isEqual) this.updateCard('isEdited', true);
+
+                this.updateCard('editorState', editorState);
+
+
+            }
             render() {
                 const { router, card, comments, showLabels } = this.props;
                 return (

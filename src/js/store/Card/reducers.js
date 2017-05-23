@@ -33,7 +33,8 @@ const initialState:State = Map({
     name: '',
     readOnly: false,
     menu: null,
-    isSaved: false
+    isSaved: false,
+    isEdited: false
 });
 
 const convertToEditor = (content: string):EditorState => {

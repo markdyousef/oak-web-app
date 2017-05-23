@@ -157,6 +157,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         //New Card
         if (inCardDetail && !cardId) {
             const menu = card && card.get('menu');
+            const isEdited = card && card.get('isEdited');
             return (
                 <CardCreate
                     isLoading={isLoading}
@@ -169,6 +170,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     showLabels={showLabels}
                     onShowLabels={this.onShowLabels}
                     saveCard={() => this.onSave(true)}
+                    isEdited={isEdited}
                 />
             )
         }
