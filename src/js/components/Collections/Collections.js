@@ -8,6 +8,7 @@ import { SquareButton } from '../shared/Button';
 import CollectionDialog from '../../containers/CollectionDialogContainer';
 import DotSpinner from '../../components/shared/DotSpinner';
 import NoCollections from './NoCollections';
+import * as types from './contants';
 
 import {
     Loading,
@@ -123,7 +124,9 @@ type Props = {
             },
             gravatar?: string
         }
-    }>
+    }>,
+    trackEvent?: (type: string, action?: any) => void,
+    trackModal?: (type: string) => void
 };
 
 type State = {
@@ -169,7 +172,7 @@ class Collections extends Component<DefaultProps, Props, State> {
             );
         }
 
-        return <NoCollections onClick={() => this.setState({ showAdd: true })} />;
+        return <NoCollections onClick={this.onShow} />;
     }
     renderInfo = () => {
         const { groves, loading } = this.props;
@@ -190,9 +193,19 @@ class Collections extends Component<DefaultProps, Props, State> {
         );
     }
     onClose = () => {
-        const { refetch } = this.props;
+        const { refetch, trackEvent } = this.props;
+        // Analytics
+        if (trackEvent) trackEvent(types.CREATE_COLLECTION, false);
+
         refetch();
         this.setState({ showAdd: false });
+    }
+    onShow = () => {
+        const { trackEvent } = this.props;
+        // Analytics
+        if (trackEvent) trackEvent(types.CREATE_COLLECTION, true);
+
+        this.setState({ showAdd: true });
     }
     render() {
         const { showAdd } = this.state;
@@ -203,7 +216,7 @@ class Collections extends Component<DefaultProps, Props, State> {
                         {this.renderInfo()}
                         <ButtonGroup>
                             <SquareButton
-                                onClick={() => this.setState({ showAdd: true })}
+                                onClick={this.onShow}
                                 text="+ Add collection"
                                 type="primaryLarge"
                             />

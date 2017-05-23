@@ -1,0 +1,5 @@
+// @flow
+
+
+// ANALYTICS
+export const CREATE_COLLECTION: string = 'COLLECTIONS/CREATE_COLLECTION';
