@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const postcssFocus = require('postcss-focus');
 const postcssCssNext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 const config = require('./base.config')({
@@ -31,7 +32,8 @@ const config = require('./base.config')({
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new BundleAnalyzerPlugin()
     ],
 
     babelQuery: {
