@@ -35,7 +35,7 @@ deploy_to_dev:
   script:
     - which apk && apk add --quiet py-pip curl
     - which pip && pip install --quiet awscli
-    - yarn run build
+    - NODE_ENV=development yarn run build
     - aws s3 cp ./build s3://$S3_DEV_BUCKET --recursive
     - >
       curl -X POST
@@ -50,7 +50,7 @@ deploy_to_prod:
   script:
     - which apk && apk add --quiet py-pip curl
     - which pip && pip install --quiet awscli
-    - yarn run build
+    - NODE_ENV=production yarn run build
     - aws s3 cp ./build s3://$S3_PROD_BUCKET --recursive
     - >
       curl -X POST

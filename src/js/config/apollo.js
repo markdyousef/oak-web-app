@@ -3,8 +3,16 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { signOut, getToken } from '../utils';
 import client from '../config/apollo';
 
+// Change url depending on environment
+const { NODE_ENV } = process.env;
+let URL = 'https://empress.clai.io:1337/graphql';
+if (NODE_ENV === 'production') {
+    URL = 'https://empress.clai.io/graphql';
+}
+
+
 const networkInterface = createNetworkInterface({
-    uri: 'https://empress.clai.io/graphql',
+    uri: URL,
     // send cookies in request header
     opts: {
         credentials: 'include'
