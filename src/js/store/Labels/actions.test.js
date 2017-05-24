@@ -1,6 +1,7 @@
 // @flow
 import * as actions from './actions';
 import * as types from '../constants/ActionTypes';
+import { batchActions } from '../actions';
 
 describe('actions', () => {
     it('should update labels state', () => {
@@ -83,11 +84,11 @@ describe('actions', () => {
             }
         ];
         const expectAction = {
-            type: types.BATCH_LABEL_ACTIONS,
+            type: types.BATCH_ACTIONS,
             data: {
                 actions: batchedActions
             }
         };
-        expect(actions.batchActions(batchedActions)).toEqual(expectAction);
+        expect(batchActions(batchedActions)).toEqual(expectAction);
     });
 });

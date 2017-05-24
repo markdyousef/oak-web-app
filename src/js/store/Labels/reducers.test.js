@@ -3,6 +3,7 @@ import { List, Map } from 'immutable';
 import reducer, { State } from './reducers';
 import * as types from '../constants/ActionTypes';
 import * as actions from './actions';
+import { batchActions } from '../actions';
 
 const initialState: StateRecord = State({
     showLabels: false,
@@ -103,7 +104,7 @@ describe('labels reducer', () => {
             value: 'ADD'
         });
         const batchedActions = [firstAction, secondAction, thirdAction];
-        const action = actions.batchActions(batchedActions);
+        const action = batchActions(batchedActions);
         const state = reducer(initialState, action);
         const collectionLabels = state.get('collectionLabels');
         const activeLabel = state.get('activeLabel');

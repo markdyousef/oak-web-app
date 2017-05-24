@@ -2,7 +2,7 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card, labels } from '../store/actions';
+import { card, labels, batchActions } from '../store/actions';
 import LabelsActionBox from '../components/LabelsActionBox';
 
 const getCollectionLabels = gql`
@@ -94,7 +94,7 @@ const mapDispatchToProps = (dispatch: Function) => (
         update: (field: Field) =>
             dispatch(labels.updateLabels(field)),
         create: (label: Object) => {
-            dispatch(labels.batchActions([
+            dispatch(batchActions([
                 labels.addCollectionLabel(label),
                 labels.updateActiveLabel({
                     name: '',
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch: Function) => (
             ]));
         },
         delete: (labelId: string) => {
-            dispatch(labels.batchActions([
+            dispatch(batchActions([
                 labels.removeCollectionLabel(labelId),
                 labels.removeCardLabel(labelId),
                 labels.updateLabels({
@@ -126,7 +126,7 @@ const mapDispatchToProps = (dispatch: Function) => (
         detach: (labelId: string) =>
             dispatch(labels.removeCardLabel(labelId)),
         editLabel: (label: Object) => {
-            dispatch(labels.batchActions([
+            dispatch(batchActions([
                 labels.editCollectionLabel(label),
                 labels.updateLabels({
                     key: 'page',
@@ -137,7 +137,7 @@ const mapDispatchToProps = (dispatch: Function) => (
         updateActiveLabel: (label: Object) =>
             dispatch(labels.updateActiveLabel(label)),
         updateLabel: (label: Object) => {
-            dispatch(labels.batchActions([
+            dispatch(batchActions([
                 labels.updateCollectionLabel(label),
                 labels.updateLabels({
                     key: 'page',

@@ -7,13 +7,6 @@ type Field = {
     value: any
 }
 
-export const batchActions = (actions: Array<Object>) => (
-    {
-        type: types.BATCH_LABEL_ACTIONS,
-        data: { actions }
-    }
-);
-
 export const updateLabels = (field: Field): Action => (
     {
         type: types.LABELS_STATE,

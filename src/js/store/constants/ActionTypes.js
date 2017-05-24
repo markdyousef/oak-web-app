@@ -25,4 +25,4 @@ export const EDIT_COLLECTION_LABEL: string = 'card/EDIT_COLLECTION_LABEL';
 export const UPDATE_ACTIVE_LABEL: string = 'card/UPDATE_ACTIVE_LABEL';
 export const UPDATE_COLLECTION_LABEL: string = 'card/UPDATE_COLLECTION_LABEL';
 export const CLEAR_LABELS: string = 'card/CLEAR_LABELS';
-export const BATCH_LABEL_ACTIONS: string = 'card/BATCH_LABEL_ACTIONS';
+export const BATCH_ACTIONS: string = 'card/BATCH_ACTIONS';

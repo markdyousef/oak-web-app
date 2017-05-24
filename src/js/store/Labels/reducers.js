@@ -3,6 +3,7 @@ import { List, Map, fromJS } from 'immutable';
 import { defineRecord } from '../types/record';
 import type { Record } from '../types/record';
 import * as types from '../constants/ActionTypes';
+import { enableBatching } from '../../utils';
 
 export type StateShape = {
     showLabels: bool,
@@ -44,20 +45,7 @@ export const initialState: StateRecord = State({
     page: 'ADD'
 });
 
-const enableBatching = (reducer) => {
-    return function batchingReducer(state, action) {
-        switch (action.type) {
-        case types.BATCH_LABEL_ACTIONS:
-            if (action.data && action.data.actions) {
-                const { data: { actions } } = action;
-                return actions.reduce(reducer, state);
-            }
-            return reducer(state, action);
-        default:
-            return reducer(state, action);
-        }
-    };
-};
+
 
 export default enableBatching((state: StateRecord = initialState, action: Action): StateRecord => {
     switch (action.type) {
