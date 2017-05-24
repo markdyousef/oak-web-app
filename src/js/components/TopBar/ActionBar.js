@@ -24,7 +24,7 @@ type Props = {
     },
     params: { cardId?: string, collectionId?: string },
     showLabels?: bool,
-    updateLabels?: (field: Object) => void,
+    updateLabels?: (key: string, value: any) => void,
     updateCard: (key: string, value: any) => void,
     create?: (id: string, name: string, content: string, cover: string) => Promise<>,
     update?: (cardId: string, content: string, cover: string) => Promise<>,
@@ -52,10 +52,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
         // Analytics
         if (trackEvent) trackEvent(types.SHOW_LABELS);
 
-        updateLabels({
-            key: 'showLabels',
-            value: show
-        });
+        if (updateLabels) updateLabels('showLabels', show);
     }
     onShowComments = () => {
         const { trackEvent, onShowComments, showComments } = this.props;
@@ -139,6 +136,13 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
             push(`/collection/${collectionId}/card`);
         }
     }
+    selectCollection = (id: string) => {
+        const { updateCard, updateLabels, collectionId } = this.props;
+        updateCard('prevCollectionId', collectionId);
+        updateCard('collectionId', id);
+        updateCard('cardLabels', []);
+        if (updateLabels) updateLabels('didInitialize', false);
+    }
     renderActionBar = () => {
         const {
             location,
@@ -192,7 +196,7 @@ export default class ActionBar extends Component<DefaultProps, Props, State> {
                     closeMenu={() => updateCard('menu', null)}
                     collectionId={collectionId}
                     collections={data && data.collections}
-                    updateCollection={id => updateCard('collectionId', id)}
+                    updateCollection={id => this.selectCollection(id)}
                     showLabels={showLabels}
                     onShowLabels={this.onShowLabels}
                     saveCard={() => this.onSave(true)}

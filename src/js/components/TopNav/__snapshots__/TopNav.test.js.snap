@@ -63,8 +63,15 @@ exports[`renders TopNav 1`] = `
       className="UvsRy"
       onClick={[Function]}
     >
-      <div
-        className={undefined}
+      <img
+        className="ecZEdU"
+        src={undefined}
+        style={
+          Object {
+            "height": undefined,
+            "width": undefined,
+          }
+        }
       />
     </button>
   </div>

@@ -2,7 +2,7 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card, comments, labels } from '../store/actions';
+import { card, comments, labels, batchActions } from '../store/actions';
 import { CardDetail, wrapper } from '../components/CardDetail';
 
 const getCard = gql`
@@ -11,12 +11,19 @@ const getCard = gql`
             id
             name
             content
+            creator {
+                username
+                avatar {
+                    id
+                    urlThumb64
+                }
+                gravatar
+            }
         }
     }
 `;
 
-const mapStateToProps = (state: Object, ownProps: Object) => {
-    // const { data: { seed } } = ownProps;
+const mapStateToProps = (state: Object) => {
     return {
         card: state.card,
         comments: state.comments,
@@ -34,17 +41,18 @@ const mapDispatchToProps = (dispatch: Function) => (
     {
         updateCard: (field:Field) =>
             dispatch(card.updateCard(field)),
-        clearCard: () => {
-            dispatch(card.clearCard());
-            dispatch(comments.updateComments({
-                key: 'showComments',
-                value: false
-            })),
-            dispatch(card.updateCard({
-                key: 'shouldUpdate',
-                value: true
-            }))
-        },
+        clearCard: () =>
+            dispatch(batchActions([
+                card.clearCard(),
+                comments.updateComments({
+                    key: 'showComments',
+                    value: false
+                }),
+                card.updateCard({
+                    key: 'shouldUpdate',
+                    value: true
+                })
+            ])),
         updateComments: (field: Field) =>
             dispatch(comments.updateComments(field)),
         updateLabels: (field: Field) =>

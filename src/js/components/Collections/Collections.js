@@ -178,7 +178,7 @@ class Collections extends Component<DefaultProps, Props, State> {
         const { groves, loading } = this.props;
         return (
             <Info>
-                <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : Collections}</h1>
+                <h1>{(loading) ? <Loading><LoadingMedium /></Loading> : 'Collections'}</h1>
                 <h3>{(loading) ?
                     <Loading><LoadingLonger /><LoadingLong /></Loading>
                     : 'Here is a quick overview of all your team’s collections.'}
@@ -222,7 +222,7 @@ class Collections extends Component<DefaultProps, Props, State> {
                             />
                             {showAdd &&
                                 <CollectionDialog
-                                    close={this.onClose}
+                                    onClose={this.onClose}
                                 />
                         }
                         </ButtonGroup>

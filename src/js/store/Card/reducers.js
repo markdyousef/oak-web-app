@@ -3,6 +3,7 @@ import { fromJS, Map, List } from 'immutable';
 import * as types from '../constants/ActionTypes';
 import { EditorState, convertFromRaw } from 'draft-js';
 import { decorator } from 'zen-editor';
+import { enableBatching } from '../../utils';
 
 // type State = {
 //     isLoading: bool,
@@ -27,6 +28,7 @@ const initialState:State = Map({
     shouldUpdate: false,
     cardId: null,
     collectionId: null,
+    prevCollectionId: null,
     message: null,
     editorState: EditorState.createEmpty(decorator),
     images: List([]),
@@ -53,7 +55,7 @@ const convertToEditor = (content: string):EditorState => {
     return EditorState.createEmpty(decorator);
 }
 
-export default (state: State = initialState, action: Action): State => {
+export default enableBatching((state: State = initialState, action: Action): State => {
     switch (action.type) {
     // case types.UPDATE_CARD:
     //     return state.set('shouldUpdate', action.shouldUpdate);
@@ -112,4 +114,4 @@ export default (state: State = initialState, action: Action): State => {
     default:
         return state;
     }
-};
+});

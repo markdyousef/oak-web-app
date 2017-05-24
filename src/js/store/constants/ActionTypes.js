@@ -10,7 +10,7 @@ export const COMMENTS_STATE:string = 'comments/COMMENTS_STATE';
 
 // Card
 export const CARD_STATE:string = 'card/CARD_STATE';
-export const CLEAR_CARD:string ='card/CLEAR_CARD';
+export const CLEAR_CARD:string = 'card/CLEAR_CARD';
 export const SET_CARD:string = 'card/SET_CARD';
 export const SET_CARD_CONTENT:string = 'card/SET_CARD_CONTENT';
 export const SET_CARD_IMAGE:string = 'card/SET_CARD_IMAGE';
@@ -25,3 +25,4 @@ export const EDIT_COLLECTION_LABEL: string = 'card/EDIT_COLLECTION_LABEL';
 export const UPDATE_ACTIVE_LABEL: string = 'card/UPDATE_ACTIVE_LABEL';
 export const UPDATE_COLLECTION_LABEL: string = 'card/UPDATE_COLLECTION_LABEL';
 export const CLEAR_LABELS: string = 'card/CLEAR_LABELS';
+export const BATCH_ACTIONS: string = 'card/BATCH_ACTIONS';

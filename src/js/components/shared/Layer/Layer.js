@@ -22,16 +22,24 @@ export default (WrappedComponent: Function) => {
                 this.state = {};
             }
             componentDidMount() {
-                document.addEventListener('click', this.handleClickEvent, true)
+                document.addEventListener('click', this.handleClickEvent, true);
+                document.addEventListener('keydown', this.handleKeyEvent, true);
             }
             componentWillUnmount() {
-                document.removeEventListener('click', this.handleClickEvent, true)
+                document.removeEventListener('click', this.handleClickEvent, true);
+                document.removeEventListener('keydown', this.handleKeyEvent, true);
             }
             handleClickEvent = (event: Event) => {
                 const { onClose } = this.props;
                 const domNode = ReactDOM.findDOMNode(this);
 
                 if (!domNode || !domNode.contains(event.target)) {
+                    if (onClose) onClose();
+                }
+            }
+            handleKeyEvent = (event: Event) => {
+                const { onClose } = this.props;
+                if (event.key === 'Escape') {
                     if (onClose) onClose();
                 }
             }

@@ -31,15 +31,15 @@ deploy_to_dev:
   stage: deploy_dev
   environment: development
   only:
-    - development
+    - develop
   script:
     - which apk && apk add --quiet py-pip curl
     - which pip && pip install --quiet awscli
-    - yarn run build
+    - NODE_ENV=development yarn run build
     - aws s3 cp ./build s3://$S3_DEV_BUCKET --recursive
     - >
       curl -X POST
-      --data-urlencode 'payload={"text": "Deployed to Dev! :muscle::skin-tone-6:"}'
+      --data-urlencode 'payload={"text": "Deployed to Dev http://dev.clai.io/cuest-web! :package:"}'
       $SLACK_WEBHOOK
 
 deploy_to_prod:
@@ -50,9 +50,9 @@ deploy_to_prod:
   script:
     - which apk && apk add --quiet py-pip curl
     - which pip && pip install --quiet awscli
-    - yarn run build
+    - NODE_ENV=production yarn run build
     - aws s3 cp ./build s3://$S3_PROD_BUCKET --recursive
     - >
       curl -X POST
-      --data-urlencode 'payload={"text": "Deployed to Prod! :muscle::skin-tone-6:"}'
+      --data-urlencode 'payload={"text": "Deployed to Prod https://app.cuest.io! :rocket:"}'
       $SLACK_WEBHOOK

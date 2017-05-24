@@ -15,7 +15,7 @@ const Container = styled.div`
     padding-left: 20px;
     padding-right: 6px;
     &:first-child {
-        padding-top: 20px;
+        margin-top: 20px;
     }
     &:hover:before {
         content: '';
@@ -25,7 +25,7 @@ const Container = styled.div`
         color: #fff;
         position: absolute;
         margin: -6px -8px;
-        width: calc(100% - 20px);
+        width: calc(100% - 12px);
         height: 34px;
         z-index: -1;
     }
@@ -56,7 +56,7 @@ const Box = styled.div`
     & svg {
         fill: ${colors.white};
         height: 12px;
-        margin-left: 3.5px;
+        margin-left: 3px;
         margin-top: 5px;
     }
 `;

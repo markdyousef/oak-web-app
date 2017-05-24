@@ -3,6 +3,7 @@ import { List, Map, fromJS } from 'immutable';
 import { defineRecord } from '../types/record';
 import type { Record } from '../types/record';
 import * as types from '../constants/ActionTypes';
+import { enableBatching } from '../../utils';
 
 export type StateShape = {
     showLabels: bool,
@@ -44,7 +45,9 @@ export const initialState: StateRecord = State({
     page: 'ADD'
 });
 
-export default (state: StateRecord = initialState, action: Action): StateRecord => {
+
+
+export default enableBatching((state: StateRecord = initialState, action: Action): StateRecord => {
     switch (action.type) {
     case types.LABELS_STATE: {
         if (action.data && action.data.field) {
@@ -132,4 +135,4 @@ export default (state: StateRecord = initialState, action: Action): StateRecord 
     default:
         return state;
     }
-};
+});

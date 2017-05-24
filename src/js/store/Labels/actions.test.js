@@ -1,6 +1,7 @@
 // @flow
 import * as actions from './actions';
 import * as types from '../constants/ActionTypes';
+import { batchActions } from '../actions';
 
 describe('actions', () => {
     it('should update labels state', () => {
@@ -74,5 +75,20 @@ describe('actions', () => {
             type: types.CLEAR_LABELS
         };
         expect(actions.clearLabels()).toEqual(expectedAction);
-    })
+    });
+    it('should return a batch of actions', () => {
+        const batchedActions = [
+            {
+                type: types.ADD_CARD_LABEL,
+                data: { id: 'id' }
+            }
+        ];
+        const expectAction = {
+            type: types.BATCH_ACTIONS,
+            data: {
+                actions: batchedActions
+            }
+        };
+        expect(batchActions(batchedActions)).toEqual(expectAction);
+    });
 });

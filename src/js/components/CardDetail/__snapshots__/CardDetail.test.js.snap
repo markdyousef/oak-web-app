@@ -13,11 +13,11 @@ ShallowWrapper {
         <styled.section>
             <styled.div>
                 <App
-                    addFile={undefined}
-                    editorState={undefined}
-                    onChange={undefined}
+                    addFile={[Function]}
+                    editorState={null}
+                    onChange={[Function]}
                     placeholder="Title..."
-                    readOnly={undefined}
+                    readOnly={false}
                     showFAB={true}
                 />
             </styled.div>
@@ -30,11 +30,11 @@ ShallowWrapper {
             <styled.section>
                   <styled.div>
                         <App
-                              addFile={undefined}
-                              editorState={undefined}
-                              onChange={undefined}
+                              addFile={[Function]}
+                              editorState={null}
+                              onChange={[Function]}
                               placeholder="Title..."
-                              readOnly={undefined}
+                              readOnly={false}
                               showFAB={true}
                         />
                   </styled.div>
@@ -49,13 +49,14 @@ ShallowWrapper {
       "_compositeType": 2,
       "_context": Object {},
       "_currentElement": <CardDetail
-        addLabel={[Function]}
-        create={[Function]}
-        createComment={[Function]}
-        params={Object {}}
-        removeLabel={[Function]}
-        router={Object {}}
-        update={[Function]}
+        addFile={[Function]}
+        editorState={null}
+        isLoading={false}
+        message={null}
+        onChange={[Function]}
+        onCloseError={[Function]}
+        readOnly={false}
+        showComments={false}
 />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -64,13 +65,14 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "addLabel": [Function],
-          "create": [Function],
-          "createComment": [Function],
-          "params": Object {},
-          "removeLabel": [Function],
-          "router": Object {},
-          "update": [Function],
+          "addFile": [Function],
+          "editorState": null,
+          "isLoading": false,
+          "message": null,
+          "onChange": [Function],
+          "onCloseError": [Function],
+          "readOnly": false,
+          "showComments": false,
         },
         "refs": Object {},
         "state": null,
@@ -97,11 +99,11 @@ ShallowWrapper {
                     <styled.section>
                               <styled.div>
                                         <App
-                                                  addFile={undefined}
-                                                  editorState={undefined}
-                                                  onChange={undefined}
+                                                  addFile={[Function]}
+                                                  editorState={null}
+                                                  onChange={[Function]}
                                                   placeholder="Title..."
-                                                  readOnly={undefined}
+                                                  readOnly={false}
                                                   showFAB={true}
                                         />
                               </styled.div>
@@ -114,11 +116,11 @@ ShallowWrapper {
                     <styled.section>
                               <styled.div>
                                         <App
-                                                  addFile={undefined}
-                                                  editorState={undefined}
-                                                  onChange={undefined}
+                                                  addFile={[Function]}
+                                                  editorState={null}
+                                                  onChange={[Function]}
                                                   placeholder="Title..."
-                                                  readOnly={undefined}
+                                                  readOnly={false}
                                                   showFAB={true}
                                         />
                               </styled.div>
@@ -137,13 +139,14 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <CardDetail
-    addLabel={[Function]}
-    create={[Function]}
-    createComment={[Function]}
-    params={Object {}}
-    removeLabel={[Function]}
-    router={Object {}}
-    update={[Function]}
+    addFile={[Function]}
+    editorState={null}
+    isLoading={false}
+    message={null}
+    onChange={[Function]}
+    onCloseError={[Function]}
+    readOnly={false}
+    showComments={false}
 />,
 }
 `;

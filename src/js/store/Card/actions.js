@@ -46,21 +46,21 @@ export const setCardContent = (content: string) => {
     }
     if (editorState !== null && typeof editorState === 'object') {
         const state = convertFromRaw(editorState);
-        editorState = EditorState.createWithContent(state, decorator)
+        editorState = EditorState.createWithContent(state, decorator);
         return {
             type: types.SET_CARD_CONTENT,
             data: { content: editorState }
-        }
+        };
     }
     return {
         type: types.SET_CARD_CONTENT,
-        data: { message: 'wrong format!'}
-    }
-}
+        data: { message: 'wrong format!' }
+    };
+};
 
 export const addCardImage = (image:Object) => (
     {
         type: types.SET_CARD_IMAGE,
         data: { image }
     }
-)
+);

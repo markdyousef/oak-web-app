@@ -91,7 +91,6 @@ export default (Comments:Function) => {
             }
             render() {
                 const { comments, failedComment } = this.state;
-                console.log(this.props);
                 return (
                     <Comments
                         comments={comments}

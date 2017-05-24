@@ -31,7 +31,7 @@ export const uploadImage = (file: Object, type?: ImgType, id?:string):Promise<*>
             fetch(url, options)
                 .then(res => res.json())
                 .then((res) => {
-                    const fileUrl = res.urlOriginal;
+                    const fileUrl = res.urlThumb512;
                     resolve({ id: res.id, url: fileUrl });
                 })
                 .catch(err => reject(err));

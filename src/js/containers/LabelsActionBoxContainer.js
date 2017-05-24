@@ -2,7 +2,7 @@
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import { connect } from 'react-redux';
-import { card, labels } from '../store/actions';
+import { card, labels, batchActions } from '../store/actions';
 import LabelsActionBox from '../components/LabelsActionBox';
 
 const getCollectionLabels = gql`
@@ -78,9 +78,10 @@ const mapStateToProps = (state: Object) => {
     return {
         cardId: state.card.get('cardId'),
         collectionId: state.card.get('collectionId'),
+        prevCollectionId: state.card.get('prevCollectionId'),
         card: state.card,
         labels: state.labels
-    }
+    };
 };
 
 type Field = {
@@ -94,23 +95,27 @@ const mapDispatchToProps = (dispatch: Function) => (
         update: (field: Field) =>
             dispatch(labels.updateLabels(field)),
         create: (label: Object) => {
-            dispatch(labels.addCollectionLabel(label));
-            dispatch(labels.updateCollectionLabel({
-                name: '',
-                color: ''
-            }));
-            dispatch(labels.updateLabels({
-                key: 'page',
-                value: 'ADD'
-            }));
+            dispatch(batchActions([
+                labels.addCollectionLabel(label),
+                labels.updateActiveLabel({
+                    name: '',
+                    color: ''
+                }),
+                labels.updateLabels({
+                    key: 'page',
+                    value: 'ADD'
+                })
+            ]));
         },
         delete: (labelId: string) => {
-            dispatch(labels.removeCollectionLabel(labelId));
-            dispatch(labels.removeCardLabel(labelId));
-            dispatch(labels.updateLabels({
-                key: 'page',
-                value: 'ADD'
-            }));
+            dispatch(batchActions([
+                labels.removeCollectionLabel(labelId),
+                labels.removeCardLabel(labelId),
+                labels.updateLabels({
+                    key: 'page',
+                    value: 'ADD'
+                })
+            ]));
         },
         attach: (labelId: string) => {
             dispatch(labels.addCardLabel(labelId));
@@ -122,22 +127,25 @@ const mapDispatchToProps = (dispatch: Function) => (
         detach: (labelId: string) =>
             dispatch(labels.removeCardLabel(labelId)),
         editLabel: (label: Object) => {
-            dispatch(labels.editCollectionLabel(label));
-            dispatch(labels.updateLabels({
-                key: 'page',
-                value: 'EDIT'
-            }));
+            dispatch(batchActions([
+                labels.editCollectionLabel(label),
+                labels.updateLabels({
+                    key: 'page',
+                    value: 'EDIT'
+                })
+            ]));
         },
         updateActiveLabel: (label: Object) =>
             dispatch(labels.updateActiveLabel(label)),
         updateLabel: (label: Object) => {
-            dispatch(labels.updateCollectionLabel(label));
-            dispatch(labels.updateLabels({
-                key: 'page',
-                value: 'ADD'
-            }));
-        },
-        clearLabels: () => dispatch(labels.clearLabels())
+            dispatch(batchActions([
+                labels.updateCollectionLabel(label),
+                labels.updateLabels({
+                    key: 'page',
+                    value: 'ADD'
+                })
+            ]));
+        }
     }
 );
 

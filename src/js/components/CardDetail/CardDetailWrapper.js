@@ -12,6 +12,10 @@ export default (CardDetail:Function) => {
             static defaultProps: DefaultProps;
             state: State;
             props: Props;
+            constructor(props: Props) {
+                super(props);
+                this.existingCard = !!props.card.get('cardId');
+            }
             componentWillMount() {
                 const { params, updateCard, updateComments } = this.props;
                 if (params.collectionId) {
@@ -83,7 +87,7 @@ export default (CardDetail:Function) => {
                 this.updateCard('editorState', editorState);
             }
             render() {
-                const { card, comments, showLabels, isLoading } = this.props;
+                const { card, comments, showLabels, isLoading, seed } = this.props;
 
                 // loading state
                 if (isLoading) return <CardLoading />;
@@ -94,7 +98,7 @@ export default (CardDetail:Function) => {
                         onChange={this.onChange}
                         addFile={this.addFile}
                         onCloseError={() => this.updateCard('message', { type: 'error', message: 'close' })}
-                        existingCard={!!card.get('cardId')}
+                        existingCard={this.existingCard}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}
                         showLabels={showLabels}
@@ -102,6 +106,7 @@ export default (CardDetail:Function) => {
                         changeName={name => this.updateCard('name', name)}
                         editorState={card.get('editorState')}
                         readOnly={card.get('readOnly')}
+                        creator={seed && seed.creator}
                     />
                 );
             }
