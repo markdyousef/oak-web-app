@@ -30,10 +30,16 @@ import '../index.html';
 import '../css/reset.css';
 import '../css/app.css';
 
+
 // initialize Google Analytics
-ReactGA.initialize('UA-99763169-1', {
-    debug: true
-});
+const { NODE_ENV } = process.env;
+if (NODE_ENV === 'production') {
+    ReactGA.initialize('UA-99763169-1');
+} else {
+    ReactGA.initialize('UA-99763169-1', {
+        debug: true
+    });
+}
 const fireTracking = () => {
     ReactGA.pageview(window.location.hash);
 };
