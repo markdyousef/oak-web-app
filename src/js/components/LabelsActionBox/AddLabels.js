@@ -17,10 +17,12 @@ const Section = styled.div`
 
 const LabelsSection = styled(Section)`
     padding: 8px 0 16px;
-    width: calc(100% + 20px);
+    width: calc(100% + 36px);
     overflow-y: auto;
     max-height: 300px;
     margin-left: -20px;
+    padding-right: 16px;
+    margin-right: -16px;
 `;
 
 const NoLabels = styled.div`

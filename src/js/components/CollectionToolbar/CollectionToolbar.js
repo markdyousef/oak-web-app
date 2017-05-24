@@ -91,7 +91,8 @@ const LabelContainer = styled.div`
     max-height: 190px;
     overflow: scroll;
     overflow-x: hidden;
-    margin: -20px -8px -20px -20px;
+    margin: -20px -16px -20px -20px;
+    padding-right: 8px;
 `;
 
 const Labels = styled.div`
