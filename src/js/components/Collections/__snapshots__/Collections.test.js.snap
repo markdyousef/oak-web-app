@@ -13,7 +13,9 @@ exports[`renders correctly 1`] = `
       <div
         className="reaYi"
       >
-        <h1 />
+        <h1>
+          Collections
+        </h1>
         <h3>
           Here is a quick overview of all your team’s collections.
         </h3>
