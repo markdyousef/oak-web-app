@@ -3,6 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import CollectionDialog from '../components/CollectionDialog';
 import { getTeam } from '../utils';
+import withLayer from '../components/shared/Layer';
 
 const createGrove = gql`
     mutation createGrove($teamId: ID!, $name: String!, $description: String, $coverId: ID) {

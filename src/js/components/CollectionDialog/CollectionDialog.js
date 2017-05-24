@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import Input from '../shared/Input';
 import { SquareButton } from '../shared/Button';
 import TextField from '../shared/TextField';
-import { Container, Modal, Header, Intro, InputWrapper, InputLabels, Close, InputName, Main, Upload, Buttons } from './styles'
+import { Container, Header, Intro, InputWrapper, InputLabels, Close, InputName, Main, Buttons } from './styles'
 import Toast from '../shared/Toast';
+import Modal from '../shared/Modal';
 
 type DefaultProps = {
     name: '',
@@ -15,7 +16,7 @@ type DefaultProps = {
 };
 
 type Props = {
-    close: () => void,
+    onClose: () => void,
     create: (name: string, description: ?string) => Object,
     update: (id: string, name: ?string, description: ?string, coverId: ?string) => Object,
     name: ?string,
@@ -36,7 +37,7 @@ type State = {
     isLoading: bool
 };
 
-class CollectionDialog extends Component<DefaultProps, Props, State> {
+export default class CollectionDialog extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
     state: State;
     input: HTMLInputElement;
@@ -53,7 +54,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
     }
     onSave = () => {
         const { id, name, description, editMode } = this.state;
-        const { create, update, close } = this.props;
+        const { create, update, onClose } = this.props;
 
         if (name.length < 1) {
             this.setState({
@@ -72,7 +73,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
             update(id, name, description)
                 .then(() => {
                     this.setState({ isLoading: false });
-                    close();
+                    onClose();
                 })
                 .catch(() => {
                     this.setState({
@@ -88,7 +89,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
             create(name, description)
                 .then(() => {
                     this.setState({ isLoading: false })
-                    close()
+                    onClose()
                 })
                 .catch(() => {
                     this.setState({
@@ -103,14 +104,14 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
         }
     }
     render() {
-        const { close } = this.props;
+        const { onClose } = this.props;
         const { name, description, isLoading, message } = this.state;
         return (
             <Container>
-                <Modal>
+                <Modal onClose={onClose}>
                     <Header>
                         <h1>Add/Edit collection</h1>
-                        <Close onClick={close}>&times;</Close>
+                        <Close onClick={onClose}>&times;</Close>
                     </Header>
                     {message && <Toast
                         message={message}
@@ -150,7 +151,7 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
                     </Main>
                     <Buttons>
                         <SquareButton
-                            onClick={close}
+                            onClick={onClose}
                             text="Cancel"
                             type="white"
                         />
@@ -166,5 +167,3 @@ class CollectionDialog extends Component<DefaultProps, Props, State> {
         );
     }
 }
-
-export default CollectionDialog;

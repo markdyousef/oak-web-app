@@ -222,7 +222,7 @@ class Collections extends Component<DefaultProps, Props, State> {
                             />
                             {showAdd &&
                                 <CollectionDialog
-                                    close={this.onClose}
+                                    onClose={this.onClose}
                                 />
                         }
                         </ButtonGroup>
