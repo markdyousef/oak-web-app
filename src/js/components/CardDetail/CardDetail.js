@@ -19,9 +19,11 @@ const CardDetail = ({ ...props }:Props) => {
             <ContainerInner>
                 <Main>
                     <EditorContainer>
-                        <Author
-                            creator={props.creator}
-                        />
+                        {props.existingCard &&
+                            <Author
+                                creator={props.creator}
+                            />
+                        }
                         <Editor
                             readOnly={props.readOnly}
                             editorState={props.editorState}
