@@ -10,27 +10,18 @@ import Name from './Name';
 import Toast from '../shared/Toast';
 
 type Props = {
-    showComments: bool,
-    editorState: EditorState,
-    isLoading: bool,
-    existingCard: bool,
-    goBack: Function,
-    onSave: Function,
-    collectionId: string,
-    onChange: (editorState: EditorState) => void,
-    showEdit: bool,
-    onEdit: () => void,
-    onShowComments: () => void,
-    addFile: (file: Object) => void,
-    onShowLabels: (show:bool) => void,
-    showLabels: bool,
-    changeName: (name: string) => void,
-    message: ?{
+    showComments?: bool,
+    editorState?: EditorState,
+    isLoading?: bool,
+    onChange?: (editorState: EditorState) => void,
+    addFile?: (file: Object) => void,
+    readOnly?: bool,
+    message?: {
         type: string,
         message: string,
         onClick: Function
     },
-    onCloseError: Function
+    onCloseError?: Function
 }
 
 const CardDetail = ({ ...props }:Props) => {
@@ -60,5 +51,18 @@ const CardDetail = ({ ...props }:Props) => {
         </Container>
     );
 };
+
+const defaultProps = {
+    readOnly: false,
+    showComments: false,
+    editorState: null,
+    isLoading: false,
+    onChange: () => {},
+    addFile: () => {},
+    message: null,
+    onCloseError: () => {}
+};
+
+CardDetail.defaultProps = defaultProps;
 
 export default CardDetail;
