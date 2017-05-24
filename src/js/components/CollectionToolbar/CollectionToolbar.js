@@ -12,6 +12,7 @@ const Container = styled.div`
     align-items: center;
     padding: 20px 20px 0;
     position: relative;
+    min-height: 44px;
     @media (min-width: 1600px) {
         max-width: 1386px;
     }
@@ -90,7 +91,7 @@ const LabelContainer = styled.div`
     max-height: 190px;
     overflow: scroll;
     overflow-x: hidden;
-    margin: -20px -14px -20px -20px;
+    margin: -20px -8px -20px -20px;
 `;
 
 const Labels = styled.div`

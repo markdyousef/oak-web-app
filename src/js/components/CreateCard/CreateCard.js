@@ -142,8 +142,8 @@ export default class CreateCard extends Component<DefaultProps, Props, State> {
                     )}
                 </Select>
                 {collectionId &&
-                    <Labels>
-                        <div onClick={() => onShowLabels()}>Add labels</div>
+                    <Labels onClick={() => onShowLabels()}>
+                        <div>Add labels</div>
                         {showLabels &&
                             <LabelsContainer>
                                 <Dropdown onClose={() => onShowLabels(false)} arrowPos='none'>

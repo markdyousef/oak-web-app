@@ -20,6 +20,7 @@ const LabelsSection = styled(Section)`
     width: calc(100% + 20px);
     overflow-y: auto;
     max-height: 300px;
+    margin-left: -20px;
 `;
 
 const NoLabels = styled.div`
@@ -34,6 +35,8 @@ const NoLabels = styled.div`
 const LabelContainer = styled.div`
     width: 100%;
     display: flex;
+    margin-top: -20px;
+    position: relative;
 `;
 
 const ActionSection = styled.section`
@@ -57,8 +60,10 @@ const Button = styled.button`
 `;
 
 const Edit = styled.div`
-    margin-top: 2px;
-    margin-right: 20px;
+    position: absolute;
+    top: 22px;
+    right: 6px;
+    z-index: 1;
 `;
 
 type Props = {
