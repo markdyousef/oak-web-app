@@ -1,10 +1,10 @@
 image: node:7.10-alpine
 
 stages:
+  - build
   - test
   - deploy_prod
   - deploy_dev
-  - build
 
 variables:
   S3_DEV_BUCKET: "dev.clai.io/cuest-web/"

@@ -7,7 +7,6 @@ export default (ActionBar: Function) => {
     return (
         class AnalyticsWrapper extends Component {
             trackEvent = (type: string, value?: any) => {
-                console.log(value);
                 ReactGA.event({
                     category: 'Card',
                     action: type,
