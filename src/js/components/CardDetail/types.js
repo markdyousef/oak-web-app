@@ -1,5 +1,14 @@
 import type { EditorState } from 'draft-js';
 
+export type Creator = {
+    username: string,
+    gravatar: string,
+    avatar: {
+        id: string,
+        urlThumb64: string
+    }
+}
+
 type Data = {
     refetch: Function,
     loading: bool,
@@ -10,11 +19,12 @@ type Data = {
         gravatar: string
 
     },
-    seed: {
+    seed?: {
         id: string,
         content: ?string,
         labels: Array<Object>,
-        comments: Array<Object>
+        comments: Array<Object>,
+        creator: Creator
     }
 }
 

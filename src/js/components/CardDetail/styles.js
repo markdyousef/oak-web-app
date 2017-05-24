@@ -31,6 +31,7 @@ export const EditorContainer = styled.div`
     max-width: 820px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     flex: 1;
     height: 100%;
     overflow: scroll;

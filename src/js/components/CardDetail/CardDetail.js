@@ -1,28 +1,13 @@
 // @flow
 import React from 'react';
-import { EditorState } from 'draft-js';
 // TODO: change back to distributed npm package
 // import { Editor } from 'zen-editor';
 import Editor from '../Editor/src/components/Editor';
 import Comments from '../../containers/CommentsContainer';
 import { Container, ContainerInner, Main, EditorContainer } from './styles';
-import Name from './Name';
+import { Props } from './types';
 import Toast from '../shared/Toast';
-
-type Props = {
-    showComments?: bool,
-    editorState?: EditorState,
-    isLoading?: bool,
-    onChange?: (editorState: EditorState) => void,
-    addFile?: (file: Object) => void,
-    readOnly?: bool,
-    message?: {
-        type: string,
-        message: string,
-        onClick: Function
-    },
-    onCloseError?: Function
-}
+import Author from './Author';
 
 const CardDetail = ({ ...props }:Props) => {
     return (
@@ -34,6 +19,9 @@ const CardDetail = ({ ...props }:Props) => {
             <ContainerInner>
                 <Main>
                     <EditorContainer>
+                        <Author
+                            creator={props.creator}
+                        />
                         <Editor
                             readOnly={props.readOnly}
                             editorState={props.editorState}

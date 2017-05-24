@@ -11,6 +11,14 @@ const getCard = gql`
             id
             name
             content
+            creator {
+                username
+                avatar {
+                    id
+                    urlThumb64
+                }
+                gravatar
+            }
         }
     }
 `;

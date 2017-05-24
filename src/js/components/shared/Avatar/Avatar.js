@@ -1,20 +1,26 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
-import css from './Avatar.css';
+const Avatar = styled.img`
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border-radius: 999em;
+    border: none;
+    background-color: #ddd;
+`;
 
-const Avatar = ({ img }:Object) => (
-    <div className={css.avatar}>
-        {img && <img src={img} alt="profile" />}
-    </div>
-);
 
-Avatar.propTypes = {
-    img: PropTypes.string
+type Props = {
+    img?: string,
+    size?: string
+}
+
+export default ({ img, size }:Props) => {
+    const style = {
+        height: size,
+        width: size
+    };
+    return (<Avatar src={img} style={style} />);
 };
-
-Avatar.defaultProps = {
-    img: null
-};
-
-export default Avatar;

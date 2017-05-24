@@ -83,7 +83,7 @@ export default (CardDetail:Function) => {
                 this.updateCard('editorState', editorState);
             }
             render() {
-                const { card, comments, showLabels, isLoading } = this.props;
+                const { card, comments, showLabels, isLoading, seed } = this.props;
 
                 // loading state
                 if (isLoading) return <CardLoading />;
@@ -102,6 +102,7 @@ export default (CardDetail:Function) => {
                         changeName={name => this.updateCard('name', name)}
                         editorState={card.get('editorState')}
                         readOnly={card.get('readOnly')}
+                        creator={seed && seed.creator}
                     />
                 );
             }
