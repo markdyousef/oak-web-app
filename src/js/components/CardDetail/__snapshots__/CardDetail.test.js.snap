@@ -12,9 +12,6 @@ ShallowWrapper {
     <styled.div>
         <styled.section>
             <styled.div>
-                <Unknown
-                    creator={undefined}
-                />
                 <App
                     addFile={[Function]}
                     editorState={null}
@@ -32,9 +29,6 @@ ShallowWrapper {
       <styled.div>
             <styled.section>
                   <styled.div>
-                        <Unknown
-                              creator={undefined}
-                        />
                         <App
                               addFile={[Function]}
                               editorState={null}
@@ -104,9 +98,6 @@ ShallowWrapper {
           <styled.div>
                     <styled.section>
                               <styled.div>
-                                        <Unknown
-                                                  creator={undefined}
-                                        />
                                         <App
                                                   addFile={[Function]}
                                                   editorState={null}
@@ -124,9 +115,6 @@ ShallowWrapper {
           <styled.div>
                     <styled.section>
                               <styled.div>
-                                        <Unknown
-                                                  creator={undefined}
-                                        />
                                         <App
                                                   addFile={[Function]}
                                                   editorState={null}
