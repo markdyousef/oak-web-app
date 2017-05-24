@@ -44,7 +44,22 @@ export const initialState: StateRecord = State({
     page: 'ADD'
 });
 
-export default (state: StateRecord = initialState, action: Action): StateRecord => {
+const enableBatching = (reducer) => {
+    return function batchingReducer(state, action) {
+        switch (action.type) {
+        case types.BATCH_LABEL_ACTIONS:
+            if (action.data && action.data.actions) {
+                const { data: { actions } } = action;
+                return actions.reduce(reducer, state);
+            }
+            return reducer(state, action);
+        default:
+            return reducer(state, action);
+        }
+    };
+};
+
+export default enableBatching((state: StateRecord = initialState, action: Action): StateRecord => {
     switch (action.type) {
     case types.LABELS_STATE: {
         if (action.data && action.data.field) {
@@ -132,4 +147,4 @@ export default (state: StateRecord = initialState, action: Action): StateRecord 
     default:
         return state;
     }
-};
+});

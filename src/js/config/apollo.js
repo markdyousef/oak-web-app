@@ -5,6 +5,7 @@ import client from '../config/apollo';
 
 // Change url depending on environment
 const { NODE_ENV } = process.env;
+// TODO: change to provided url
 let URL = 'https://empress.clai.io:1337/graphql';
 if (NODE_ENV === 'production') {
     URL = 'https://empress.clai.io/graphql';

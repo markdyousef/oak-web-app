@@ -89,5 +89,28 @@ describe('labels reducer', () => {
 
         expect(collectionLabels).toEqual(List([]));
         expect(didInitialize).toEqual(false);
-    })
+    });
+    it('should reduce actions array and change state', () => {
+        const label = { name: 'cool', color: '#000' };
+
+        const firstAction = actions.addCollectionLabel(label);
+        const secondAction = actions.updateActiveLabel({
+            name: '',
+            color: ''
+        });
+        const thirdAction = actions.updateLabels({
+            key: 'page',
+            value: 'ADD'
+        });
+        const batchedActions = [firstAction, secondAction, thirdAction];
+        const action = actions.batchActions(batchedActions);
+        const state = reducer(initialState, action);
+        const collectionLabels = state.get('collectionLabels');
+        const activeLabel = state.get('activeLabel');
+        const page = state.get('page');
+
+        expect(collectionLabels).toContain(label);
+        expect(activeLabel).toEqual(Map({ name: '', color: '' }));
+        expect(page).toEqual('ADD');
+    });
 });

@@ -74,5 +74,20 @@ describe('actions', () => {
             type: types.CLEAR_LABELS
         };
         expect(actions.clearLabels()).toEqual(expectedAction);
-    })
+    });
+    it('should return a batch of actions', () => {
+        const batchedActions = [
+            {
+                type: types.ADD_CARD_LABEL,
+                data: { id: 'id' }
+            }
+        ];
+        const expectAction = {
+            type: types.BATCH_LABEL_ACTIONS,
+            data: {
+                actions: batchedActions
+            }
+        };
+        expect(actions.batchActions(batchedActions)).toEqual(expectAction);
+    });
 });
