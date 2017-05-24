@@ -39,14 +39,12 @@ export default (WrappedComponent: Function) => {
             }
             handleKeyEvent = (event: Event) => {
                 const { onClose } = this.props;
-                console.log(event);
                 if (event.key === 'Escape') {
                     if (onClose) onClose();
                 }
             }
             render() {
                 const { children } = this.props;
-                console.log(this.props);
                 return (
                     <WrappedComponent {...this.props}>
                         {children && children}

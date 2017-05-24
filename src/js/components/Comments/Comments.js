@@ -114,12 +114,8 @@ export default class extends Component<DefaultProps, Props, State> {
         const node = ReactDOM.findDOMNode(this.commentsEnd);
         node.scrollIntoView({ behavior: 'smooth'});
     }
-    closeComments = () => {
-        console.log(this.props);
-    }
     render() {
         const { comments, create, failedComment, creator, onCloseComments } = this.props;
-        console.log(this.props);
         return (
             <Container>
                 <CommentsPanel>

@@ -8,6 +8,7 @@ const Container = styled.div`
     height: 54px;
     display: flex;
     align-items: center;
+    margin-bottom: 32px;
 `;
 
 const Name = styled.h3`

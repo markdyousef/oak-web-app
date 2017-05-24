@@ -8,12 +8,24 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className={undefined}
+  "node": <styled.img
+    src={undefined}
+    style={
+        Object {
+            "height": undefined,
+            "width": undefined,
+          }
+    }
 />,
   "nodes": Array [
-    <div
-      className={undefined}
+    <styled.img
+      src={undefined}
+      style={
+            Object {
+                  "height": undefined,
+                  "width": undefined,
+                }
+      }
 />,
   ],
   "options": Object {},
@@ -22,10 +34,9 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Avatar
+      "_currentElement": <Unknown
         channels={Array []}
         getTeam={[Function]}
-        img={null}
         name="clai"
 />,
       "_debugID": 1,
@@ -37,7 +48,6 @@ ShallowWrapper {
         "props": Object {
           "channels": Array [],
           "getTeam": [Function],
-          "img": null,
           "name": "clai",
         },
         "refs": Object {},
@@ -60,15 +70,27 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}
+        "_currentElement": <styled.img
+          src={undefined}
+          style={
+                    Object {
+                              "height": undefined,
+                              "width": undefined,
+                            }
+          }
 />,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className={undefined}
+        "_renderedOutput": <styled.img
+          src={undefined}
+          style={
+                    Object {
+                              "height": undefined,
+                              "width": undefined,
+                            }
+          }
 />,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -78,10 +100,9 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Avatar
+  "unrendered": <Unknown
     channels={Array []}
     getTeam={[Function]}
-    img={null}
     name="clai"
 />,
 }

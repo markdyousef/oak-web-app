@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
       </h1>
       <button
         className="kHDlwp"
-        onClick={[Function]}
+        onClick={undefined}
       >
         ×
       </button>
@@ -88,7 +88,7 @@ exports[`renders correctly 1`] = `
     >
       <button
         className="ejLHww"
-        onClick={[Function]}
+        onClick={undefined}
         type="white"
       >
         Cancel
