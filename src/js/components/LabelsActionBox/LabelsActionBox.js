@@ -28,7 +28,8 @@ type Props = {
     removeLabel: (id: string) => Promise<>,
     createCard: (id: string, name: string) => Promise<>,
     editLabel?: (label: Object) => void,
-    clearLabels?: () => void
+    clearLabels?: () => void,
+    prevCollectionId?: string
 };
 
 type State = {};
@@ -36,10 +37,10 @@ type DefaultProps = {};
 
 class LabelsActionBox extends Component<DefaultProps, Props, State> {
     static defaultProps: DefaultProps;
-    state: State;
+    state: State = {};
     props: Props;
     componentWillReceiveProps(nextProps:Props) {
-        const { collectionLabels, cardLabels, labels } = nextProps;
+        const { collectionLabels, cardLabels, labels, collectionId, prevCollectionId } = nextProps;
         const didInitialize = labels && labels.get('didInitialize');
 
         // TODO: find a better way to load into redux
@@ -54,20 +55,20 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
                     (grove.labels) || []
                 );
             }
-            // add cardLabelsLabels to redux
-            if (!cardLabels || cardLabels.loading) return;
-            if (cardLabels.seed) {
-                const { seed } = cardLabels;
-                this.updateLabels(
-                    'cardLabels',
-                    (seed.labels) || []
-                )
-            }
         }
+        const newCollection = (collectionId !== prevCollectionId || prevCollectionId === null);
+        // // add cardLabelsLabels to redux
+        // // only set on new collection
+        // if (cardLabels && cardLabels.seed && newCollection) {
+        //     const { seed } = cardLabels;
+        //     this.updateLabels(
+        //         'cardLabels',
+        //         (seed.labels) || []
+        //     );
+        // }
     }
     componentWillUnmount() {
-        const { clearLabels } = this.props;
-        if (clearLabels) clearLabels();
+        this.updateLabels('didInitialize', false);
     }
     updateLabels = (key:string, value: any) => {
         const { update } = this.props;
@@ -85,7 +86,6 @@ class LabelsActionBox extends Component<DefaultProps, Props, State> {
             card
         } = this.props;
         if (!card) return;
-        console.log(card);
         const id = (cardId) ? cardId : card.get('cardId');
         const name = card && card.get('name');
         if (!id && collectionId && !hasSaved) {

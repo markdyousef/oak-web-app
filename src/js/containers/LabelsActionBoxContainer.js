@@ -78,6 +78,7 @@ const mapStateToProps = (state: Object) => {
     return {
         cardId: state.card.get('cardId'),
         collectionId: state.card.get('collectionId'),
+        prevCollectionId: state.card.get('prevCollectionId'),
         card: state.card,
         labels: state.labels
     };
@@ -144,8 +145,7 @@ const mapDispatchToProps = (dispatch: Function) => (
                     value: 'ADD'
                 })
             ]));
-        },
-        clearLabels: () => dispatch(labels.clearLabels())
+        }
     }
 );
 

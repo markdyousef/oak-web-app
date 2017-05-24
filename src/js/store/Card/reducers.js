@@ -28,6 +28,7 @@ const initialState:State = Map({
     shouldUpdate: false,
     cardId: null,
     collectionId: null,
+    prevCollectionId: null,
     message: null,
     editorState: EditorState.createEmpty(decorator),
     images: List([]),

@@ -53,10 +53,12 @@ type Field = {
 
 const mapDispatchToProps = (dispatch: Function) => (
     {
-        updateLabels: (field: Field) =>
-            dispatch(labels.updateLabels(field)),
+        updateLabels: (key: string, value: any) => {
+            const field:Field = { key, value };
+            dispatch(labels.updateLabels(field));
+        },
         updateCard: (key: string, value: any) => {
-            const field = { key, value };
+            const field:Field = { key, value };
             dispatch(card.updateCard(field))
         },
         updateCardContent: (content: string) =>
@@ -73,7 +75,7 @@ export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     graphql(getCollectionList, {
         options: () => ({ variables: { teamId: getTeam() } }),
-        props: ({ ownProps, data: { loading, groves } }) => ({
+        props: ({ data: { loading, groves } }) => ({
             data: { loading, collections: groves || [] }
         })
     }),
@@ -81,7 +83,7 @@ export default compose(
         props: ({ ownProps, mutate }) => ({
             create: (groveId, name, content, coverId) =>
                 mutate({ variables: { groveId, name, content, coverId } })
-                    .then(res => {
+                    .then((res) => {
                         const id = res.data.createSeed.id;
                         ownProps.updateCard('message', null);
                         ownProps.updateCard('isLoading', false);
