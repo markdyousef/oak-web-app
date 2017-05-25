@@ -12,10 +12,6 @@ export default (CardDetail:Function) => {
             static defaultProps: DefaultProps;
             state: State;
             props: Props;
-            constructor(props: Props) {
-                super(props);
-                this.existingCard = !!props.card.get('cardId');
-            }
             componentWillMount() {
                 const { params, updateCard, updateComments } = this.props;
                 if (params.collectionId) {
@@ -98,7 +94,7 @@ export default (CardDetail:Function) => {
                         onChange={this.onChange}
                         addFile={this.addFile}
                         onCloseError={() => this.updateCard('message', { type: 'error', message: 'close' })}
-                        existingCard={this.existingCard}
+                        existingCard={card.get('cardId')}
                         showComments={comments.get('showComments')}
                         collectionId={card.get('collectionId')}
                         showLabels={showLabels}

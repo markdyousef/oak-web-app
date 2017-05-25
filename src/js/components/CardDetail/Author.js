@@ -5,10 +5,10 @@ import Avatar from '../shared/Avatar';
 import type { Creator } from './types';
 
 const Container = styled.div`
-    height: 54px;
     display: flex;
     align-items: center;
-    margin-bottom: 32px;
+    height: 54px;
+    margin-bottom: 20px;
 `;
 
 const Name = styled.h3`
@@ -28,8 +28,8 @@ export default({ creator }: Props) => {
     if (creator && creator.avatar) picture = creator.avatar.urlThumb64;
     return (
         <Container>
-            <Avatar img={picture} alt="author" size="54px" />
-            <Name>{creator && creator.username}</Name>
+            {picture && <Avatar img={picture} alt="author" size="35px" />}
+            {<Name>{creator && creator.username}</Name>}
         </Container>
     );
 };

@@ -7,7 +7,6 @@ import LikesIcon from '../../icons/likes';
 import DotsIcon from '../../icons/dots';
 import {
     Container,
-    Header,
     User,
     LabelWrapper,
     Labels,
@@ -20,8 +19,7 @@ import {
     Settings,
     H1,
     H2,
-    P,
-    Tooltip
+    P
 } from './styles';
 
 type DefaultProps = {
@@ -161,19 +159,19 @@ export default class Card extends Component<DefaultProps, Props, State> {
                 {coverImg && <img alt="card" src={coverImg} />}
                 {content && this.formatContent(content)}
                 { /* <button onClick={onShow}>Read more</button> */ }
-                    <Labels>
-                        {labels && labels.map((label, index) => {
-                            const right = 16 + (index * 12);
-                            return (
+                <Labels>
+                    {labels && labels.map((label, index) => {
+                        const right = 16 + (index * 12);
+                        return (
                             <LabelWrapper key={label.id}>
                                 <Label
                                     style={{ background: label.color, right }}
                                 />
                                 <span>{label.name}</span>
                             </LabelWrapper>
-                            );
-                        }).reverse()}
-                    </Labels>
+                        );
+                    }).reverse()}
+                </Labels>
                 <Time>
                     {moment(updatedAt).fromNow()}
                 </Time>
@@ -218,9 +216,9 @@ export default class Card extends Component<DefaultProps, Props, State> {
                         }
                     </Icon>
                 </div>
-                    <span data-title={name} data-title-pos="bottom">
+                <span data-title={name} data-title-pos="bottom">
                     <User>
-                            <img src={picture} alt="avatar" />
+                        <img src={picture} alt="avatar" />
                     </User>
                 </span>
             </Bottom>
